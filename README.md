@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `18 / 358` (`5.0%`)
+- **Vidéos traitées** : `19 / 358` (`5.3%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -35,6 +35,7 @@
 | 2026-09-18 | [QDsenEcAJIk](https://www.youtube.com/watch?v=QDsenEcAJIk) | **Anthropic’s CEO: How to Build a 1 Person Business with Claude** | [2026-09-18_YT-[QDsenEcAJIk]_Anthropic’s CEO How to Build a 1 Person Business with Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-18_YT-[QDsenEcAJIk]_Anthropic’s CEO How to Build a 1 Person Business with Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-18_YT-[QDsenEcAJIk]_Anthropic’s CEO How to Build a 1 Person Business with Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-18 | [oWCcN6hSFjA](https://www.youtube.com/watch?v=oWCcN6hSFjA) | **This ONE GPT-6 Astra Skill Replaces Your Higgsfield Subscription** | [2026-09-18_YT-[oWCcN6hSFjA]_This ONE GPT-6 Astra Skill Replaces Your Higgsfield Subscription_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-18_YT-[oWCcN6hSFjA]_This ONE GPT-6 Astra Skill Replaces Your Higgsfield Subscription_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-18_YT-[oWCcN6hSFjA]_This ONE GPT-6 Astra Skill Replaces Your Higgsfield Subscription_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-16 | [FqnNL8fnUWo](https://www.youtube.com/watch?v=FqnNL8fnUWo) | **How to Build GPT-6 Astra Automations (that don’t eat your usage limit)** | [2026-09-16_YT-[FqnNL8fnUWo]_How to Build GPT-6 Astra Automations (that don’t eat your usage limit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-16_YT-[FqnNL8fnUWo]_How to Build GPT-6 Astra Automations (that don’t eat your usage limit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-16_YT-[FqnNL8fnUWo]_How to Build GPT-6 Astra Automations (that don’t eat your usage limit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-09-16 | [ff7om2bBLKM](https://www.youtube.com/watch?v=ff7om2bBLKM) | **Grok Bot Manages My Inbox (and has its own)** | [2026-09-16_YT-[ff7om2bBLKM]_Grok Bot Manages My Inbox (and has its own)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-16_YT-[ff7om2bBLKM]_Grok Bot Manages My Inbox (and has its own)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-16_YT-[ff7om2bBLKM]_Grok Bot Manages My Inbox (and has its own)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
