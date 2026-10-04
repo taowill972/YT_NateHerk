@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `14 / 358` (`3.9%`)
+- **Vidéos traitées** : `15 / 358` (`4.2%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -31,6 +31,7 @@
 | 2026-09-23 | [eF3yeJuifoQ](https://www.youtube.com/watch?v=eF3yeJuifoQ) | **I Tested Opus 5.5 vs. GPT-6 Sol on 10 Real Use Cases** | [2026-09-23_YT-[eF3yeJuifoQ]_I Tested Opus 5.5 vs. GPT-6 Sol on 10 Real Use Cases_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-23_YT-[eF3yeJuifoQ]_I Tested Opus 5.5 vs. GPT-6 Sol on 10 Real Use Cases_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-23_YT-[eF3yeJuifoQ]_I Tested Opus 5.5 vs. GPT-6 Sol on 10 Real Use Cases_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-21 | [X-pbJWKmwi0](https://www.youtube.com/watch?v=X-pbJWKmwi0) | **Build & Sell with Codex (5+ Hour Course)** | [2026-09-21_YT-[X-pbJWKmwi0]_Build & Sell with Codex (5+ Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-21_YT-[X-pbJWKmwi0]_Build & Sell with Codex (5+ Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-21_YT-[X-pbJWKmwi0]_Build & Sell with Codex (5+ Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-19 | [ymgH8jS6Wb8](https://www.youtube.com/watch?v=ymgH8jS6Wb8) | **I Tested Jev on 12 Real Use Cases. My Honest Thoughts.** | [2026-09-19_YT-[ymgH8jS6Wb8]_I Tested Jev on 12 Real Use Cases. My Honest Thoughts._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-19_YT-[ymgH8jS6Wb8]_I Tested Jev on 12 Real Use Cases. My Honest Thoughts._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-19_YT-[ymgH8jS6Wb8]_I Tested Jev on 12 Real Use Cases. My Honest Thoughts._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-09-19 | [9KOtMsZ9I28](https://www.youtube.com/watch?v=9KOtMsZ9I28) | **Comment créer des compétences Codex mieux que 99 % des gens** | [2026-09-19_YT-[9KOtMsZ9I28]_Comment créer des compétences Codex mieux que 99 % des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-19_YT-[9KOtMsZ9I28]_Comment créer des compétences Codex mieux que 99 % des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-19_YT-[9KOtMsZ9I28]_Comment créer des compétences Codex mieux que 99 % des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `2` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
