@@ -17,7 +17,7 @@
 
 | Date | Réf. Vidéo | Titre Français / Sujet | Fiche Markdown | Fiche Interactive HTML | Captures |
 | :--- | :--- | :--- | :--- | :--- | :---: |
-| 2026-09-24 | [QCkHIyEPIYo](https://www.youtube.com/watch?v=QCkHIyEPIYo) | **J'ai demandé à Opus 5.5 de me créer la même application à tous les niveaux d'effort** | [2026-09-24_YT-[QCkHIyEPIYo]_J'ai demandé à Opus 5.5 de me créer la même application à tous les niveaux d'eff_by-[gemini-3.5-flash-lite+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-24_YT-[QCkHIyEPIYo]_J'ai demandé à Opus 5.5 de me créer la même application à tous les niveaux d'eff_by-[gemini-3.5-flash-lite+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-24_YT-[QCkHIyEPIYo]_J'ai demandé à Opus 5.5 de me créer la même application à tous les niveaux d'eff_by-[gemini-3.5-flash-lite+gemini-3.5-flash-lite].html) | `84` |
+| 2026-10-03 | [DFlELTiSPk8](https://www.youtube.com/watch?v=DFlELTiSPk8) | **Tout comprendre à Codex sans savoir coder** | [2026-10-03_YT-[DFlELTiSPk8]_Tout comprendre à Codex sans savoir coder_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-03_YT-[DFlELTiSPk8]_Tout comprendre à Codex sans savoir coder_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-03_YT-[DFlELTiSPk8]_Tout comprendre à Codex sans savoir coder_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `75` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
