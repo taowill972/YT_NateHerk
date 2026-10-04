@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `5 / 358` (`1.4%`)
+- **Vidéos traitées** : `6 / 358` (`1.7%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -22,6 +22,7 @@
 | 2026-10-02 | [l8ywUsEJ2XQ](https://www.youtube.com/watch?v=l8ywUsEJ2XQ) | **Comment réellement créer et vendre un logiciel avec l'IA quand on n'y connaît rien** | [2026-10-02_YT-[l8ywUsEJ2XQ]_Comment réellement créer et vendre un logiciel avec l'IA quand on n'y connaît ri_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-02_YT-[l8ywUsEJ2XQ]_Comment réellement créer et vendre un logiciel avec l'IA quand on n'y connaît ri_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-02_YT-[l8ywUsEJ2XQ]_Comment réellement créer et vendre un logiciel avec l'IA quand on n'y connaît ri_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `83` |
 | 2026-10-01 | [pY5_Ux_YJjo](https://www.youtube.com/watch?v=pY5_Ux_YJjo) | **J'ai testé l'ultra-rapide à 500 $/mois de Codex. Ce qu'il faut savoir.** | [2026-10-01_YT-[pY5_Ux_YJjo]_J'ai testé l'ultra-rapide à 500 $mois de Codex. Ce qu'il faut savoir._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-01_YT-[pY5_Ux_YJjo]_J'ai testé l'ultra-rapide à 500 $mois de Codex. Ce qu'il faut savoir._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-01_YT-[pY5_Ux_YJjo]_J'ai testé l'ultra-rapide à 500 $mois de Codex. Ce qu'il faut savoir._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `82` |
 | 2026-09-30 | [BvvfZKKz4Yo](https://www.youtube.com/watch?v=BvvfZKKz4Yo) | **J'ai testé Dots d'OpenAI contre Muse de Meta : Ce qu'il faut savoir** | [2026-09-30_YT-[BvvfZKKz4Yo]_J'ai testé Dots d'OpenAI contre Muse de Meta Ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-30_YT-[BvvfZKKz4Yo]_J'ai testé Dots d'OpenAI contre Muse de Meta Ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-30_YT-[BvvfZKKz4Yo]_J'ai testé Dots d'OpenAI contre Muse de Meta Ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `64` |
+| 2026-09-29 | [7eo-11K2e3c](https://www.youtube.com/watch?v=7eo-11K2e3c) | **J'ai testé Sonnet 5.5 vs Opus 5.5 : Ce qu'il faut savoir** | [2026-09-29_YT-[7eo-11K2e3c]_J'ai testé Sonnet 5.5 vs Opus 5.5 Ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-29_YT-[7eo-11K2e3c]_J'ai testé Sonnet 5.5 vs Opus 5.5 Ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-29_YT-[7eo-11K2e3c]_J'ai testé Sonnet 5.5 vs Opus 5.5 Ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `87` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
