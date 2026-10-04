@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `8 / 358` (`2.2%`)
+- **Vidéos traitées** : `9 / 358` (`2.5%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -25,6 +25,7 @@
 | 2026-09-29 | [7eo-11K2e3c](https://www.youtube.com/watch?v=7eo-11K2e3c) | **J'ai testé Sonnet 5.5 vs Opus 5.5 : Ce qu'il faut savoir** | [2026-09-29_YT-[7eo-11K2e3c]_J'ai testé Sonnet 5.5 vs Opus 5.5 Ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-29_YT-[7eo-11K2e3c]_J'ai testé Sonnet 5.5 vs Opus 5.5 Ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-29_YT-[7eo-11K2e3c]_J'ai testé Sonnet 5.5 vs Opus 5.5 Ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `87` |
 | 2026-09-28 | [eg_1NXDcoPk](https://www.youtube.com/watch?v=eg_1NXDcoPk) | **J'ai donné 10 000 $ à GPT-6 Astra pour trader des actions... Et voilà ce qu'il s'est passé** | [2026-09-28_YT-[eg_1NXDcoPk]_J'ai donné 10 000 $ à GPT-6 Astra pour trader des actions... Et voilà ce qu'il s_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-28_YT-[eg_1NXDcoPk]_J'ai donné 10 000 $ à GPT-6 Astra pour trader des actions... Et voilà ce qu'il s_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-28_YT-[eg_1NXDcoPk]_J'ai donné 10 000 $ à GPT-6 Astra pour trader des actions... Et voilà ce qu'il s_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `70` |
 | 2026-09-27 | [Ktnwygcnd8U](https://www.youtube.com/watch?v=Ktnwygcnd8U) | **Non, sérieusement. Claude Code commence à devenir dangereux** | [2026-09-27_YT-[Ktnwygcnd8U]_Non, sérieusement. Claude Code commence à devenir dangereux_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-27_YT-[Ktnwygcnd8U]_Non, sérieusement. Claude Code commence à devenir dangereux_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-27_YT-[Ktnwygcnd8U]_Non, sérieusement. Claude Code commence à devenir dangereux_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `82` |
+| 2026-09-25 | [7jHXoPGnA4c](https://www.youtube.com/watch?v=7jHXoPGnA4c) | **Opus 5.5 vient de révolutionner le montage vidéo (compétences gratuites)** | [2026-09-25_YT-[7jHXoPGnA4c]_Opus 5.5 vient de révolutionner le montage vidéo (compétences gratuites)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-25_YT-[7jHXoPGnA4c]_Opus 5.5 vient de révolutionner le montage vidéo (compétences gratuites)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-25_YT-[7jHXoPGnA4c]_Opus 5.5 vient de révolutionner le montage vidéo (compétences gratuites)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `87` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
