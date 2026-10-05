@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `40 / 358` (`11.2%`)
+- **Vidéos traitées** : `41 / 358` (`11.5%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -57,6 +57,7 @@
 | 2026-09-01 | [NyfYxpXiw_0](https://www.youtube.com/watch?v=NyfYxpXiw_0) | **Tous les concepts de bots Grok expliqués simplement** | [2026-09-01_YT-[NyfYxpXiw_0]_Tous les concepts de bots Grok expliqués simplement_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-01_YT-[NyfYxpXiw_0]_Tous les concepts de bots Grok expliqués simplement_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-01_YT-[NyfYxpXiw_0]_Tous les concepts de bots Grok expliqués simplement_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `59` |
 | 2026-08-31 | [4hKJ9X6rGFo](https://www.youtube.com/watch?v=4hKJ9X6rGFo) | **Créer et Vendre des Bots Grok (Cours de 2 Heures)** | [2026-08-31_YT-[4hKJ9X6rGFo]_Créer et Vendre des Bots Grok (Cours de 2 Heures)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-31_YT-[4hKJ9X6rGFo]_Créer et Vendre des Bots Grok (Cours de 2 Heures)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-31_YT-[4hKJ9X6rGFo]_Créer et Vendre des Bots Grok (Cours de 2 Heures)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `38` |
 | 2026-08-28 | [PYjbeY8sGLs](https://www.youtube.com/watch?v=PYjbeY8sGLs) | **I Cloned Calendly and Now It’s Free Forever** | [2026-08-28_YT-[PYjbeY8sGLs]_I Cloned Calendly and Now It’s Free Forever_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-28_YT-[PYjbeY8sGLs]_I Cloned Calendly and Now It’s Free Forever_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-28_YT-[PYjbeY8sGLs]_I Cloned Calendly and Now It’s Free Forever_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-08-27 | [gQef3d3erOs](https://www.youtube.com/watch?v=gQef3d3erOs) | **Set Up a Personal Hermes in 14 Mins (no VPS or mac mini)** | [2026-08-27_YT-[gQef3d3erOs]_Set Up a Personal Hermes in 14 Mins (no VPS or mac mini)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-27_YT-[gQef3d3erOs]_Set Up a Personal Hermes in 14 Mins (no VPS or mac mini)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-27_YT-[gQef3d3erOs]_Set Up a Personal Hermes in 14 Mins (no VPS or mac mini)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
