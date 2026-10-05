@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `28 / 358` (`7.8%`)
+- **Vidéos traitées** : `29 / 358` (`8.1%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -45,6 +45,7 @@
 | 2026-09-07 | [yysILVsfLFM](https://www.youtube.com/watch?v=yysILVsfLFM) | **I Turned GPT-6 Astra Into the Ultimate AI Second Brain** | [2026-09-07_YT-[yysILVsfLFM]_I Turned GPT-6 Astra Into the Ultimate AI Second Brain_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-07_YT-[yysILVsfLFM]_I Turned GPT-6 Astra Into the Ultimate AI Second Brain_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-07_YT-[yysILVsfLFM]_I Turned GPT-6 Astra Into the Ultimate AI Second Brain_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-06 | [WfJPBVXPt8k](https://www.youtube.com/watch?v=WfJPBVXPt8k) | **I Tested GPT-6 Astra vs Fable 5.1 on 15 Real Use Cases** | [2026-09-06_YT-[WfJPBVXPt8k]_I Tested GPT-6 Astra vs Fable 5.1 on 15 Real Use Cases_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-06_YT-[WfJPBVXPt8k]_I Tested GPT-6 Astra vs Fable 5.1 on 15 Real Use Cases_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-06_YT-[WfJPBVXPt8k]_I Tested GPT-6 Astra vs Fable 5.1 on 15 Real Use Cases_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-05 | [9oi-b5Dvtso](https://www.youtube.com/watch?v=9oi-b5Dvtso) | **GPT-6 Astra Voice Mode Automates Literally Anything** | [2026-09-05_YT-[9oi-b5Dvtso]_GPT-6 Astra Voice Mode Automates Literally Anything_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-05_YT-[9oi-b5Dvtso]_GPT-6 Astra Voice Mode Automates Literally Anything_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-05_YT-[9oi-b5Dvtso]_GPT-6 Astra Voice Mode Automates Literally Anything_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-09-04 | [QhmhUgccaS0](https://www.youtube.com/watch?v=QhmhUgccaS0) | **GPT-6 Astra FINALLY Kills AI Website Slop** | [2026-09-04_YT-[QhmhUgccaS0]_GPT-6 Astra FINALLY Kills AI Website Slop_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-04_YT-[QhmhUgccaS0]_GPT-6 Astra FINALLY Kills AI Website Slop_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-04_YT-[QhmhUgccaS0]_GPT-6 Astra FINALLY Kills AI Website Slop_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `84` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
