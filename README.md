@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `21 / 358` (`5.9%`)
+- **Vidéos traitées** : `22 / 358` (`6.1%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -38,6 +38,7 @@
 | 2026-09-16 | [ff7om2bBLKM](https://www.youtube.com/watch?v=ff7om2bBLKM) | **Grok Bot Manages My Inbox (and has its own)** | [2026-09-16_YT-[ff7om2bBLKM]_Grok Bot Manages My Inbox (and has its own)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-16_YT-[ff7om2bBLKM]_Grok Bot Manages My Inbox (and has its own)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-16_YT-[ff7om2bBLKM]_Grok Bot Manages My Inbox (and has its own)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-13 | [68HH9HVFJDM](https://www.youtube.com/watch?v=68HH9HVFJDM) | **AI News in 10 mins: 10% chance AI kills all humans** | [2026-09-13_YT-[68HH9HVFJDM]_AI News in 10 mins 10% chance AI kills all humans_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-13_YT-[68HH9HVFJDM]_AI News in 10 mins 10% chance AI kills all humans_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-13_YT-[68HH9HVFJDM]_AI News in 10 mins 10% chance AI kills all humans_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-13 | [HIRDzMtuWFk](https://www.youtube.com/watch?v=HIRDzMtuWFk) | **Anthropic Engineer Explains: What to Build Instead of AI Agents** | [2026-09-13_YT-[HIRDzMtuWFk]_Anthropic Engineer Explains What to Build Instead of AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-13_YT-[HIRDzMtuWFk]_Anthropic Engineer Explains What to Build Instead of AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-13_YT-[HIRDzMtuWFk]_Anthropic Engineer Explains What to Build Instead of AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-09-11 | [6LNlCpQPYFc](https://www.youtube.com/watch?v=6LNlCpQPYFc) | **Comment vraiment choisir le bon agent IA** | [2026-09-11_YT-[6LNlCpQPYFc]_Comment vraiment choisir le bon agent IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-11_YT-[6LNlCpQPYFc]_Comment vraiment choisir le bon agent IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-11_YT-[6LNlCpQPYFc]_Comment vraiment choisir le bon agent IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `1` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
