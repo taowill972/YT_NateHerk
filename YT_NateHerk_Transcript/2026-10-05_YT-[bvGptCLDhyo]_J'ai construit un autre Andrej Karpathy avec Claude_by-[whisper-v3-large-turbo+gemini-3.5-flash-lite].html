@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 J&#x27;ai construit un autre Andrej Karpathy avec Claude — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 J&#x27;ai construit un autre Andrej Karpathy avec Claude</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-10-05</span>
+                <span class="badge">⏱️ 00:10:45</span>
+                <span class="badge">🆔 <code>bvGptCLDhyo</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=bvGptCLDhyo" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo présentée par Nate Herk explore une approche novatrice de l'ingénierie par agents IA en transformant l'expertise cognitive d'Andrej Karpathy — pionnier de l'IA (OpenAI, Tesla, Anthropic) et pédagogue d'exception — en un agent conversationnel et pédagogique fonctionnel sous Claude Code. Plutôt qu'un simple clone vocal ou stylistique, l'objectif est de condenser la méthodologie de pensée, les frameworks d'apprentissage et les exigences techniques de Karpathy pour pallier les défauts inhérents aux LLM, tels que le zèle explicatif excessif ou l'hallucination de code non vérifié. <br><br>La démonstration technique détaille un pipeline rigoureux en quatre étapes majeures : l'ingestion massive de données publiques et privées (blogs, dépôts GitHub, publications sur X, transcriptions YouTube via des API dédiées), la structuration de ces données brutes (plus de 700 000 mots) dans un second cerveau organisé sous forme de wiki LLM interconnecté (visualisable via Obsidian), l'extraction de règles comportementales strictes fondées sur des citations vérifiables, et enfin la génération de sous-agents modulaires et de compétences personnalisées (`/karpathi-teach`). Le résultat obtenu est un tuteur et un partenaire de code taillé sur mesure, capable d'enseigner et de développer selon des principes stricts de vérification empirique et de simplicité itérative.<br><br>Cette méthodologie démontre qu'il est possible de démocratiser l'accès à l'expertise de classe mondiale en injectant de la connaissance hautement qualifiée dans des flux de travail automatisés. En répliquant cette architecture pour d'autres domaines (vente, coaching, recherche), les développeurs et créateurs peuvent s'affranchir des limites de leur propre champ de compétences et concevoir des systèmes d'IA robustes, transparents et alignés sur les meilleures pratiques de l'industrie.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Claude Code** : Environnement de développement et d'exécution principal utilisé pour orchestrer les agents, traiter les prompts et intégrer les compétences personnalisées.<br>* **Claude / Opus 5.5** : Modèle de langage sous-jacent servant de moteur cognitif pour interpréter les sources, structurer le wiki et exécuter les sous-agents.<br>* **YouTube Transcript API** : Paquet Python open source permettant d'extraire automatiquement et gratuitement les sous-titres des vidéos YouTube.<br>* **YTDLP** : Outil de téléchargement et d'extraction de données multimédias open source, combiné pour collecter les ressources vidéo de référence.<br>* **TwitterAPI.io** : API payante (à faible coût) utilisée pour extraire l'historique complet des publications sur X (anciennement Twitter) d'Andrej Karpathy depuis 2023.<br>* **Obsidian** : Interface logicielle visuelle optionnelle permettant de naviguer à travers le wiki LLM interconnecté et d'explorer la cartographie des concepts.<br>* **Kit AIOS** : Kit de système d'exploitation pour agents et automatisations mis à disposition gratuitement par le créateur pour accélérer la mise à l'échelle des architectures IA.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Dépassement des limites des LLM par la spécialisation cognitive** : Demander à un LLM généraliste d'expliquer un concept complexe conduit souvent à des réponses verbeuses, superficielles ou erronées. Injecter la structure mentale d'un expert reconnu résout ce problème en privilégiant la rigueur pédagogique et factuelle.<br>* **Le clonage de raisonnement plutôt que de surface** : L'initiative ne vise pas à imiter le style superficiel ou la voix d'une personnalité, mais à modéliser sa structure de pensée, ses méthodes de débogage et ses critères de validation du code.<br>* **Ingestion de données multi-sources à grande échelle** : L'extraction de la matière première repose sur la consolidation de flux hétérogènes (blogs, GitHub, X, transcriptions YouTube) traités en parallèle par des agents spécialisés pour optimiser le temps d'exécution.<br>* **Le passage des données brutes au wiki interconnecté (Second Cerveau)** : Pour éviter l'effet « aiguille dans une botte de foin », les 700 000 mots collectés sont structurés par un LLM sous forme de wiki où les concepts, règles et sources sont reliés par des liens dynamiques indexés.<br>* **Traçabilité et vérifiabilité des règles** : Chaque règle comportementale extraite doit impérativement être adossée à une citation exacte ou à un horodatage d'origine, éliminant ainsi les suppositions infondées de l'IA et garantissant son ancrage empirique.<br>* **Application du principe « Construis-le ou tu ne le comprends pas »** : La première règle fondamentale héritée de Karpathy impose une validation par l'exécution pratique, évitant de livrer ou d'expliquer du code dont le fonctionnement n'a pas été prouvé au préalable.<br>* **Priorité au terme du premier ordre** : La méthodologie enseigne l'art de l'essentialalisme technique : identifier la composante unique et critique qui fait fonctionner le système, valider son intégrité, puis complexifier progressivement par l'ajout d'une seule brique à la fois.<br>* **Pédagogie de l'erreur intentionnelle** : À l'instar des cours de Karpathy, l'agent intègre la pratique salutaire de montrer d'abord la version boguée ou défaillante du code, exposant ainsi les causes racines plutôt que de présenter un résultat magique mais incompréhensible.<br>* **Architecture modulaire via les sous-agents** : L'utilisation de sous-agents dotés de fenêtres de contexte et de mémoires isolées permet d'exécuter des tâches spécifiques sans polluer ni saturer la conversation principale en cours avec l'utilisateur.<br>* **Intégration de compétences sur mesure (`/commands`)** : La création de commandes personnalisées (comme `/karpathi-teach`) permet d'injecter des consignes strictes et d'évaluer les réponses de l'IA à l'aide d'une liste de contrôle rigoureuse basée sur les règles de l'expert.<br>* **Transférabilité de la méthode à d'autres disciplines** : Le pipeline de construction présenté n'est pas limité à l'IA ; il peut être répliqué pour modéliser n'importe quel expert sectoriel (experts en vente, auteurs, coachs) afin de se constituer des tuteurs personnalisés ultra-performants.<br>* **Synergie entre automatisation et montée en compétences** : En interagissant avec ces agents experts, l'utilisateur s'approprie progressivement les concepts sous-jacents, intégrant de nouvelles compétences qu'il peut ensuite réinjecter dans ses propres flux de travail et systèmes autonomes.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude Code</span><span class="tool-tag">Claude / Opus 5.5</span><span class="tool-tag">YouTube Transcript API</span><span class="tool-tag">YTDLP</span><span class="tool-tag">TwitterAPI.io</span><span class="tool-tag">Obsidian</span><span class="tool-tag">Kit AIOS</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Dépassement des limites des LLM par la spécialisation cognitive** : Demander à un LLM généraliste d&#x27;expliquer un concept complexe conduit souvent à des réponses verbeuses, superficielles ou erronées. Injecter la structure mentale d&#x27;un expert reconnu résout ce problème en privilégiant la rigueur pédagogique et factuelle.</span></li><li><span class="point-bullet">✦</span><span>Le clonage de raisonnement plutôt que de surface** : L&#x27;initiative ne vise pas à imiter le style superficiel ou la voix d&#x27;une personnalité, mais à modéliser sa structure de pensée, ses méthodes de débogage et ses critères de validation du code.</span></li><li><span class="point-bullet">✦</span><span>Ingestion de données multi-sources à grande échelle** : L&#x27;extraction de la matière première repose sur la consolidation de flux hétérogènes (blogs, GitHub, X, transcriptions YouTube) traités en parallèle par des agents spécialisés pour optimiser le temps d&#x27;exécution.</span></li><li><span class="point-bullet">✦</span><span>Le passage des données brutes au wiki interconnecté (Second Cerveau)** : Pour éviter l&#x27;effet « aiguille dans une botte de foin », les 700 000 mots collectés sont structurés par un LLM sous forme de wiki où les concepts, règles et sources sont reliés par des liens dynamiques indexés.</span></li><li><span class="point-bullet">✦</span><span>Traçabilité et vérifiabilité des règles** : Chaque règle comportementale extraite doit impérativement être adossée à une citation exacte ou à un horodatage d&#x27;origine, éliminant ainsi les suppositions infondées de l&#x27;IA et garantissant son ancrage empirique.</span></li><li><span class="point-bullet">✦</span><span>Application du principe « Construis-le ou tu ne le comprends pas »** : La première règle fondamentale héritée de Karpathy impose une validation par l&#x27;exécution pratique, évitant de livrer ou d&#x27;expliquer du code dont le fonctionnement n&#x27;a pas été prouvé au préalable.</span></li><li><span class="point-bullet">✦</span><span>Priorité au terme du premier ordre** : La méthodologie enseigne l&#x27;art de l&#x27;essentialalisme technique : identifier la composante unique et critique qui fait fonctionner le système, valider son intégrité, puis complexifier progressivement par l&#x27;ajout d&#x27;une seule brique à la fois.</span></li><li><span class="point-bullet">✦</span><span>Pédagogie de l&#x27;erreur intentionnelle** : À l&#x27;instar des cours de Karpathy, l&#x27;agent intègre la pratique salutaire de montrer d&#x27;abord la version boguée ou défaillante du code, exposant ainsi les causes racines plutôt que de présenter un résultat magique mais incompréhensible.</span></li><li><span class="point-bullet">✦</span><span>Architecture modulaire via les sous-agents** : L&#x27;utilisation de sous-agents dotés de fenêtres de contexte et de mémoires isolées permet d&#x27;exécuter des tâches spécifiques sans polluer ni saturer la conversation principale en cours avec l&#x27;utilisateur.</span></li><li><span class="point-bullet">✦</span><span>Intégration de compétences sur mesure (`/commands`)** : La création de commandes personnalisées (comme `/karpathi-teach`) permet d&#x27;injecter des consignes strictes et d&#x27;évaluer les réponses de l&#x27;IA à l&#x27;aide d&#x27;une liste de contrôle rigoureuse basée sur les règles de l&#x27;expert.</span></li><li><span class="point-bullet">✦</span><span>Transférabilité de la méthode à d&#x27;autres disciplines** : Le pipeline de construction présenté n&#x27;est pas limité à l&#x27;IA ; il peut être répliqué pour modéliser n&#x27;importe quel expert sectoriel (experts en vente, auteurs, coachs) afin de se constituer des tuteurs personnalisés ultra-performants.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:33</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce n&#x27;est pas le Claude que vous connaissez. Je viens de transformer l&#x27;un des plus grands esprits de l&#x27;IA en un agent Claude. Andrej Karpathy est l&#x27;un des ingénieurs principaux d&#x27;Anthropic, un cofondateur d&#x27;OpenAI, et la personne dont tout le monde dit qu&#x27;elle explique l&#x27;IA mieux que quiconque sur Terre. Et aujourd&#x27;hui, je vais vous montrer les quatre étapes exactes pour transformer ses pensées en votre propre agent Claude, alors allons-y. Bon, alors rapidement, qui est ce type ? Il a été l&#x27;un des membres fondateurs d&#x27;OpenAI en 2015. Ensuite, il a dirigé l&#x27;IA chez Tesla pendant environ cinq années, menant l&#x27;équipe de vision par ordinateur derrière l&#x27;Autopilot. Puis il est parti pour se consacrer à l&#x27;éducation à plein temps et a fondé Eureka Labs. Et depuis le mois de mai de cette année, il est chez Anthropic sur le pré-entraînement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (TechCrunch)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre d&#x27;article de presse sur l&#x27;embauche d&#x27;Andrej Karpathy par Tesla.
+[DESC_IMAGE_1] [DESC_IMAGE_2] [DESC_IMAGE_3]</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;un article d&#x27;archive illustrant le parcours professionnel d&#x27;Andrej Karpathy.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000025_seg1.jpg" alt="Image 3 : Capture d&#x27;écran d&#x27;un article de TechCrunch titré &quot;Tesla hires deep learning expert Andrej Karpathy to lead Autopilot vision&quot;." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000025_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:25</span>
+                        <span class="caption-text">Image 3 : Capture d&#x27;écran d&#x27;un article de TechCrunch titré &quot;Tesla hires deep learning expert Andrej Karpathy to lead Autopilot vision&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:33 - 00:01:04</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">équipe, qui est l&#x27;équipe qui entraîne les modèles Claude avant qu&#x27;ils ne soient rendus publics. Et à côté, il a publié tellement de vidéos YouTube et de cours différents sur la création avec l&#x27;IA. Donc ce que nous construisons aujourd&#x27;hui n&#x27;est pas un clone vocal d&#x27;Andrej Karpathy. Ce n&#x27;est pas une imitation de lui. C&#x27;est un agent qui condense la façon dont le meilleur professeur d&#x27;IA, Andrej Karpathy, explique les choses, et il vous l&#x27;enseigne de la même manière. Il suit donc sept règles qui proviennent toutes de ses propres écrits, de ses blogs et de ses conférences, des choses comme construire d&#x27;abord la plus petite version, prédire ce qui va se passer avant de l&#x27;exécuter, montrer la version cassée, et ne jamais donner de code que vous n&#x27;avez pas exécuté vous-même.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> YouTube, Interface web personnalisée / application</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre de vidéo YouTube et interface de démonstration interactive avec options numérotées.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;interface du projet Agent Karpathy.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000041_seg2.jpg" alt="Capture montrant une vidéo YouTube intitulée &#x27;Deep Dive into LLMs like ChatGPT&#x27; par Andrej Karpathy." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000041_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:41</span>
+                        <span class="caption-text">Capture montrant une vidéo YouTube intitulée &#x27;Deep Dive into LLMs like ChatGPT&#x27; par Andrej Karpathy.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000057_seg2.jpg" alt="Gros plan sur une interface utilisateur moderne avec des boutons clairs étiquetés &#x27;#1&#x27;, &#x27;#2&#x27;, &#x27;#3&#x27;, &#x27;WRITING&#x27;, et &#x27;BLOGS&#x27;." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000057_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:57</span>
+                        <span class="caption-text">Gros plan sur une interface utilisateur moderne avec des boutons clairs étiquetés &#x27;#1&#x27;, &#x27;#2&#x27;, &#x27;#3&#x27;, &#x27;WRITING&#x27;, et &#x27;BLOGS&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:05 - 00:01:27</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc c&#x27;est bien plus qu&#x27;un simple clone d&#x27;une personne. Il s&#x27;agit plutôt de cloner la façon dont son cerveau pense. Alors maintenant, je parie que vous vous demandez, pourquoi est-ce qu&#x27;on construirait réellement un truc pareil ? Pensons à ce qui se passe quand vous demandez à Claude d&#x27;expliquer quelque chose que vous ne comprenez pas. Il risque d&#x27;en faire trop dans ses explications. Il pourrait inventer des trucs en chemin. Et au final, vous avez juste l&#x27;impression de n&#x27;avoir rien appris et de vous sentir encore plus submergé. Et si vous construisez quelque chose pour un client, c&#x27;est comme ça que vous finissez par livrer du code que vous ne pouvez ni réparer ni expliquer quand il plante.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de type application de chat &quot;Claude Code&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Question utilisateur : &quot;Can you explain what the difference between API and MCP is?&quot; et réponse en cours de génération &quot;API vs MCP Imagine you have...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;une démonstration de l&#x27;interface de chat posant une question technique sur l&#x27;API et le MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000116_seg3.jpg" alt="Une capture d&#x27;écran de l&#x27;interface &quot;Claude Code&quot; montrant une conversation où l&#x27;utilisateur demande la différence entre API et MCP." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000116_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:16</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface &quot;Claude Code&quot; montrant une conversation où l&#x27;utilisateur demande la différence entre API et MCP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:27 - 00:01:47</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et Andrej Karpathy a été confronté exactement au même problème. En août de l&#x27;année dernière, il a effectivement publié publiquement qu&#x27;il avait essayé de demander à Claude Code de lui enseigner en même temps qu&#x27;il écrivait le code. Et selon ses propres mots, cela n&#x27;a pas du tout fonctionné, car il veut vraiment beaucoup plus écrire du code que d&#x27;expliquer quoi que ce soit en cours de route. Donc, construire cet agent ici va corriger la pire habitude de l&#x27;IA, qui est d&#x27;avoir l&#x27;air d&#x27;avoir raison au lieu d&#x27;avoir réellement raison.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de publication sur les réseaux sociaux (X / Twitter)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du tweet d&#x27;Andrej Karpathy détaillant ses flux de travail avec les LLM (Cursor, Claude Code) et son constat sur l&#x27;apprentissage simultané.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage à l&#x27;écran d&#x27;une citation textuelle d&#x27;Andrej Karpathy à l&#x27;appui des propos du présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000132_seg4.jpg" alt="Capture d&#x27;écran d&#x27;un message publié sur les réseaux sociaux par Andrej Karpathy concernant son expérience avec l&#x27;assistance des LLM pour le codage." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000132_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:32</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un message publié sur les réseaux sociaux par Andrej Karpathy concernant son expérience avec l&#x27;assistance des LLM pour le codage.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000137_seg4.jpg" alt="Suite du message d&#x27;Andrej Karpathy avec une ligne surlignée en jaune soulignant qu&#x27;il a essayé d&#x27;utiliser Claude Code pour lui apprendre des choses en même temps." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000137_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:37</span>
+                        <span class="caption-text">Suite du message d&#x27;Andrej Karpathy avec une ligne surlignée en jaune soulignant qu&#x27;il a essayé d&#x27;utiliser Claude Code pour lui apprendre des choses en même temps.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:47 - 00:02:06</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et la raison la plus importante, c&#x27;est honnêtement ceci : la qualité de ce que vous construisez avec l&#x27;IA dépend de l&#x27;expertise présente dans le système. Et vous n&#x27;allez pas être un expert en tout. Vous savez, je ne suis pas un chercheur en apprentissage automatique. Je ne suis pas un expert en apprentissage automatique, mais je peux certainement demander à des agents de rassembler tout ce qu&#x27;un véritable expert a dit, de compiler le tout en quelque chose que Claude peut réellement utiliser, et ensuite je peux simplement discuter avec lui jusqu&#x27;à ce que je comprenne.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUNE</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:06 - 00:02:28</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, une fois que je comprends un peu mieux, j&#x27;ai déjà toutes ces connaissances dans mon projet et je peux intégrer ces connaissances dans mes propres compétences, mes propres agents et mes propres flux de travail, ce qui est exactement ce que nous faisons aujourd&#x27;hui avec Carpathie. Et ce qui est vraiment génial, c&#x27;est qu&#x27;une fois que vous avez fait cela avec Carpathie, vous pouvez le faire avec pratiquement n&#x27;importe qui. Vous pouvez le faire avec votre professeur de vente préféré, ou un auteur que vous aimez vraiment, ou un coach que vous payez déjà. Et ce sont fondamentalement les quatre mêmes étapes, de la même manière que nous construisons cette sorte de second cerveau.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Graphisme d&#x27;animation / Interface vidéo standard</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte schématique &#x27;CLAUDE&#x27; relié à &#x27;SKILLS&#x27;</p>
+                        <p><strong>Action / Démonstration :</strong> Animation graphique illustrant l&#x27;intégration des compétences d&#x27;IA</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000212_seg6.jpg" alt="Schéma graphique animé illustrant une connexion entre un dossier &#x27;CLAUDE&#x27; et un module &#x27;SKILLS&#x27;." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000212_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:12</span>
+                        <span class="caption-text">Schéma graphique animé illustrant une connexion entre un dossier &#x27;CLAUDE&#x27; et un module &#x27;SKILLS&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:29 - 00:02:52</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, très rapidement, avant qu&#x27;on ne passe à la création, j&#x27;ai tout à fait gratuitement ce kit AIOS pour vous les gars pour vous aider à créer et faire passer à l&#x27;échelle vos systèmes d&#x27;exploitation. Si vous combinez ce genre de configuration avec des choses comme le cerveau de Carpathie, ça va juste être un énorme déclic et c&#x27;est comme ça que je suis capable d&#x27;aller aussi vite. Donc le lien pour ça sera en bas dans la description, mais passons à la création. Bon, alors je vais faire ça à l&#x27;intérieur de Cloud Code et il va y avoir six prompts à exécuter ici et je vais tous les montrer à l&#x27;écran pour que vous puissiez simplement faire une capture d&#x27;écran et les coller dans votre propre Cloud Code.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de type graphe de connaissances / notes et liste graphique de prompts.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des différents prompts et structure de graphe visuel du kit AIOS.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle des composants du kit AIOS et de ses structures de prompts.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000235_seg7.jpg" alt="Aperçu du kit AIOS présenté sous forme de graphe de notes interconnectées avec le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000235_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:35</span>
+                        <span class="caption-text">Aperçu du kit AIOS présenté sous forme de graphe de notes interconnectées avec le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000246_seg7.jpg" alt="Liste numérotée de cinq prompts du kit AIOS (The crawl, The wiki, The rules, Two files, Run gate)." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000246_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:46</span>
+                        <span class="caption-text">Liste numérotée de cinq prompts du kit AIOS (The crawl, The wiki, The rules, Two files, Run gate).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:52 - 00:03:13</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc d&#x27;abord, Claude a besoin de tout ce qui se trouve à l&#x27;intérieur de la tête d&#x27;Andrej Karpathy. Des choses comme ses blogs, les transcriptions de ses cours, ses dépôts GitHub, ses publications sur X. Tout cela va être fondamentalement gratuit et public. Mais Claude Code pourrait ne pas être capable de tout récupérer gratuitement, car cela pourrait se trouver derrière une sorte de mur payant ou de barrière logicielle. Donc ce que j&#x27;ai fait pour YouTube, c&#x27;est que je lui ai fait récupérer les sous-titres avec deux paquets Python gratuits.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude et page de documentation technique / rapport de sécurité.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source Python montrant l&#x27;utilisation de `subprocess.Popen` avec `shell=True` et des explications sur une faille d&#x27;injection de commande.
+[DESC_IMAGE_3] Présentation d&#x27;une vulnérabilité de sécurité logicielle liée à une injection de commande dans un webhook.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000257_seg8.jpg" alt="Le présentateur s&#x27;exprime face caméra avec une fenêtre d&#x27;interface Claude en incrustation à gauche montrant des options de chat et des boutons &#x27;Blogs&#x27; et &#x27;Lecture transcripts&#x27;." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000257_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:57</span>
+                        <span class="caption-text">Le présentateur s&#x27;exprime face caméra avec une fenêtre d&#x27;interface Claude en incrustation à gauche montrant des options de chat et des boutons &#x27;Blogs&#x27; et &#x27;Lecture transcripts&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000308_seg8.jpg" alt="Une page de documentation ou de rapport technique affichant du code Python lié à une vulnérabilité de type &#x27;Shell command injection via webhook payload&#x27;." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000308_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:08</span>
+                        <span class="caption-text">Une page de documentation ou de rapport technique affichant du code Python lié à une vulnérabilité de type &#x27;Shell command injection via webhook payload&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:13 - 00:03:46</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">YouTube Transcript API et YTDLP. Et puis pour X, j&#x27;utilise une API appelée TwitterAPI.io, qui est une API payante, mais j&#x27;ai extrait pratiquement chaque publication qu&#x27;il a faite depuis 2023, et ça a coûté environ un dollar. Ce n&#x27;est vraiment pas une API très chère du tout. Donc voici le prompt pour le parcours. Il indique essentiellement où tout récupérer, quel outil utiliser pour chaque source. Et je lui ai dit d&#x27;exécuter un agent par source, pour qu&#x27;ils fonctionnent tous en même temps et en parallèle, afin que ça ne prenne pas une éternité. Je lui ai dit de noter ce qu&#x27;il a obtenu pour que vous puissiez réellement le vérifier. Et ça m&#x27;a pris environ 45 minutes à une heure pour que tous ces agents s&#x27;exécutent et récupèrent tout. Et ce qu&#x27;on obtient à la fin, c&#x27;est un dossier brut avec un sous-dossier.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique textuelle / Éditeur de prompt</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt &quot;01 Prompt - The crawl&quot; détaillant l&#x27;utilisation de youtube-transcript-api, yt-dlp et TwitterAPI.io pour collecter et structurer les données.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage à l&#x27;écran du prompt utilisé pour orchestrer les agents d&#x27;extraction de données.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000330_seg9.jpg" alt="Fenêtre de terminal ou d&#x27;interface affichant le texte &quot;01 Prompt - The crawl&quot; avec des instructions de web scraping pour collecter les données d&#x27;Andrej Karpathy." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000330_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:30</span>
+                        <span class="caption-text">Fenêtre de terminal ou d&#x27;interface affichant le texte &quot;01 Prompt - The crawl&quot; avec des instructions de web scraping pour collecter les données d&#x27;Andrej Karpathy.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000338_seg9.jpg" alt="Vue complète et nette du même prompt de crawl montrant l&#x27;ensemble des instructions pour récupérer le contenu public (blog, GitHub, transcriptions YouTube, posts X via TwitterAPI.io)." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000338_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:38</span>
+                        <span class="caption-text">Vue complète et nette du même prompt de crawl montrant l&#x27;ensemble des instructions pour récupérer le contenu public (blog, GitHub, transcriptions YouTube, posts X via TwitterAPI.io).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:46 - 00:04:22</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">par source et plus de 700 000 mots provenant directement d&#x27;Andrej Karpathy lui-même. Maintenant, vous pourriez tout simplement vous arrêter là et pointer Claude vers ce dossier, mais tous ces mots, vous savez, brouillons, ça ne rentre pas vraiment dans la tête de Claude de la bonne manière pour qu&#x27;il puisse réellement filtrer tout ça correctement, n&#x27;est-ce pas ? Du genre, ça va être trop désordonné. C&#x27;est comme chercher une aiguille dans une botte de foin. Donc ce que nous allons faire, c&#x27;est ce que Karpathy a dit à tout le monde de faire en avril dernier. Il a publié un message expliquant qu&#x27;il fait compiler par un LLM ses sources brutes sous forme de wiki. Les fichiers bruts ne sont pas touchés, mais le LLM les lit essentiellement tous, puis les relie entre eux avec des pages, tient un index, tient un journal, et maintenant vous êtes capable d&#x27;interroger tout cela d&#x27;une manière qui a beaucoup plus de sens parce qu&#x27;il y a</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique animée / Schéma conceptuel</p>
+                        <p><strong>Contenu textuel & Code :</strong> Étiquettes de modules et icônes de fichiers divers (PDF, Excel, audio) pointant vers un modèle de langage (LLM).</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration visuelle du traitement de données brutes par un modèle de langage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000355_seg10.jpg" alt="Schéma animé montrant des blocs de modules reliés (Planner, Carousel, Clickup, Researcher, Hooks)." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000355_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:55</span>
+                        <span class="caption-text">Schéma animé montrant des blocs de modules reliés (Planner, Carousel, Clickup, Researcher, Hooks).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000413_seg10.jpg" alt="Schéma animé représentant une multitude de fichiers bruts (&quot;Raw files&quot;) de types variés (PDF, AUD, XLSX, DOC) connectés à un LLM." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000413_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:13</span>
+                        <span class="caption-text">Schéma animé représentant une multitude de fichiers bruts (&quot;Raw files&quot;) de types variés (PDF, AUD, XLSX, DOC) connectés à un LLM.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:22 - 00:04:57</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">comme des relations. Et vous résumez toute cette idée dans un gist, et c&#x27;est ce que je vais coller dans l&#x27;agent de codage. Le lien vers le gist est dans la description de cette vidéo. Donc ce que nous faisons est plutôt amusant. Nous stockons le cerveau de Carpathia à l&#x27;intérieur du propre système de mémoire wiki LLM de Carpathia. Et si vous me suivez depuis un moment, vous savez que j&#x27;ai fait pas mal de vidéos sur ce sujet et que j&#x27;ai configuré tout un tas de wikis LLM différents dans mon propre AIOS. Très bien, voici donc le prompt pour configurer le wiki. Vous allez coller le gist, puis vous allez dire à Claude de l&#x27;utiliser sur le dossier brut, qui est simplement tout ce que Claude vient juste d&#x27;extraire pour vous. Et ce qui en ressort, c&#x27;est un wiki à l&#x27;intérieur d&#x27;Obsidian. Maintenant, Obsidian n&#x27;est en fait que la couche visuelle par-dessus, c&#x27;est ce que je vous montre ici. Et vous n&#x27;avez pas besoin d&#x27;Obsidian pour obtenir ce</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (ou application de prise de notes similaire avec vue graphique) et interface de prompt textuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de gist GitHub (&quot;gist.github.com/karpathy/442a6bf555914893e9891c11519de94f&quot;) et instruction : &quot;Use it as the framework and compile everything in karpathy-brain/raw into a wiki of his brain&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du processus d&#x27;intégration du gist de Karpathy dans un système de connaissances et de l&#x27;utilisation du prompt avec un agent de codage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000439_seg11.jpg" alt="Vue graphique d&#x27;un wiki (type Obsidian) montrant les relations entre différentes notes et concepts liés à l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000439_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:39</span>
+                        <span class="caption-text">Vue graphique d&#x27;un wiki (type Obsidian) montrant les relations entre différentes notes et concepts liés à l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000448_seg11.jpg" alt="Un bloc de texte affichant un prompt (&quot;Prompt - The wiki&quot;) faisant référence au gist de Karpathy et aux instructions pour compiler les données dans un wiki." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000448_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:48</span>
+                        <span class="caption-text">Un bloc de texte affichant un prompt (&quot;Prompt - The wiki&quot;) faisant référence au gist de Karpathy et aux instructions pour compiler les données dans un wiki.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:57 - 00:05:32</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pour fonctionner. Mais si vous voulez le voir visuellement, Obsidian fonctionne. Vous pouvez voir ici en bas, nous avons les sources. Nous avons une page par chose qu&#x27;il a écrite ou dite. Nous avons des sujets sur ce qu&#x27;il sait. Nous avons des principes. Nous avons les règles. Nous avons des méthodes. Nous avons la façon dont il explique. Nous avons la façon dont il débogue. Nous avons en gros, juste comme je l&#x27;ai dit, la façon dont son cerveau fonctionne et chaque fois que vous voyez l&#x27;un de ces liens violets, c&#x27;est le wiki qui connecte une page à une autre ou une méthode à une autre. Chaque règle renvoie à la source d&#x27;où elle vient ou aux sources d&#x27;où elle vient. Chaque source renvoie aux règles qu&#x27;elle soutient. Donc, au lieu d&#x27;avoir simplement un tas de notes comme nous l&#x27;avions tout à l&#x27;heure, nous avons maintenant comme cette toile interconnectée ou une sorte de carte des relations et chaque fois que quelque chose de nouveau y est entré</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (application de prise de notes et gestion de connaissances)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de principes et méthodes de travail (ex: &#x27;03-predict-then-run-then-compare&#x27;, &#x27;12-memory-that-compounds&#x27;), métadonnées YAML, tags (anthropic, openai, career)</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et consultation de notes structurées dans le coffre-fort Obsidian</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000506_seg12.jpg" alt="Vue d&#x27;Obsidian montrant une liste de méthodes numérotées dans le volet de gauche et les propriétés d&#x27;une note dans le panneau de droite." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000506_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:06</span>
+                        <span class="caption-text">Vue d&#x27;Obsidian montrant une liste de méthodes numérotées dans le volet de gauche et les propriétés d&#x27;une note dans le panneau de droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000524_seg12.jpg" alt="Interface d&#x27;Obsidian affichant les métadonnées et propriétés détaillées d&#x27;une page de source intitulée &#x27;anthropic-move-and-work-philosophy&#x27;." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000524_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:24</span>
+                        <span class="caption-text">Interface d&#x27;Obsidian affichant les métadonnées et propriétés détaillées d&#x27;une page de source intitulée &#x27;anthropic-move-and-work-philosophy&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:32 - 00:05:52</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous absorbez un nouveau blog ou une nouvelle idée, le LLM va une fois de plus l&#x27;absorber et le lier à tout un tas d&#x27;autres concepts. Maintenant, cette prochaine étape est ce qui le fait penser comme lui au lieu de simplement savoir ce qu&#x27;il a dit par le passé. Voici donc le prompt pour configurer les règles. Il extrait fondamentalement ses règles du wiki, et chaque règle doit être connectée à une citation exacte de lui et d&#x27;où elle provient, parce que nous ne voulons pas que Claude invente des choses.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation graphique / Diapositive textuelle</p>
+                        <p><strong>Contenu textuel & Code :</strong> &quot;03 Prompt - The rules: Read the wiki and write his rules for how he builds and how he teaches. Only keep a rule if it shows up in at least two different places, like his blog and a lecture. Every rule needs an exact quote from him with the source it came from. Give me the seven strongest ones.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage à l&#x27;écran du prompt configurant les règles d&#x27;extraction pour le LLM.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000547_seg13.jpg" alt="Capture d&#x27;écran affichant une boîte de dialogue avec le titre &quot;03 Prompt - The rules&quot; et un prompt textuel détaillé sur fond sombre." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000547_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:47</span>
+                        <span class="caption-text">Capture d&#x27;écran affichant une boîte de dialogue avec le titre &quot;03 Prompt - The rules&quot; et un prompt textuel détaillé sur fond sombre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:52 - 00:06:15</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce qu&#x27;on a là, c&#x27;était sept règles. Numéro un : construis-le ou tu ne le comprends pas. Numéro deux : le terme du premier ordre d&#x27;abord. En gros, trouve la seule pièce qui compte, montre qu&#x27;elle fonctionne, puis ajoute juste une chose à la fois. Et à peu près tout ce cours est construit de cette façon. Numéro trois : prédire, puis exécuter, puis comparer. Il dira le nombre qu&#x27;il attend avant d&#x27;exécuter la cellule parce que, selon ses mots, la plupart du temps, ça s&#x27;entraînera, mais en fonctionnant silencieusement un peu moins bien.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUNE</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:16 - 00:06:34</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le numéro quatre est de montrer d&#x27;abord la mauvaise version. Il laisse ses propres bugs dans l&#x27;enregistrement exprès. Le numéro cinq est de le prouver, ne l&#x27;affirmez pas. Le numéro six est de dire ce que vous avez supposé. Sa principale critique concernant Cloud Code est que les modèles font de mauvaises suppositions à votre place et foncent ensuite tête baissée sans vérifier. Et le numéro sept est que la simplicité l&#x27;emporte. Et ce qui est génial, c&#x27;est que vous pouvez vérifier n&#x27;importe lequel de ces points.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de présentation de liste.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran listant les règles avec &#x27;Show the wrong version first&#x27; au numéro 4.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage des points clés de la critique à l&#x27;écran sous forme de liste numérotée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000620_seg15.jpg" alt="Capture d&#x27;écran montrant une interface graphique avec des listes numérotées et des boutons verts étiquetés avec des directives de présentation comme &#x27;Show the wrong version first&#x27; (#4)." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000620_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:20</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface graphique avec des listes numérotées et des boutons verts étiquetés avec des directives de présentation comme &#x27;Show the wrong version first&#x27; (#4).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:34 - 00:06:57</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez cliquer sur la citation et cela ouvrira la page d&#x27;où elle provient avec l&#x27;horodatage ou avec la source exacte. Et s&#x27;il n&#x27;y a pas de source, l&#x27;agent doit dire explicitement qu&#x27;il fait déduire à partir de choses que Carpathie a dites. Maintenant, ces règles doivent vivre quelque part où l&#x27;agent peut réellement les lire. Voici donc le prompt quatre, et il demande à Claude de les transformer en deux fichiers pour nous. Ce premier fichier est un sous-agent. Et au cas où vous ne sauriez pas ce que c&#x27;est, c&#x27;est un Claude séparé avec ses propres instructions et sa propre mémoire et fenêtre de contexte.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique textuelle affichant un prompt de configuration de sous-agent.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt demandant de transformer des règles en un sous-agent Claude Code appelé &quot;karpathy&quot;, configuré pour lire le wiki, citer ses sources, et créer une compétence &quot;karpathy-teach&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage à l&#x27;écran du prompt détaillé pour la création et la configuration du sous-agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000651_seg16.jpg" alt="Capture d&#x27;écran montrant un encadré de prompt intitulé &quot;04 Prompt - Two files&quot; avec l&#x27;étiquette &quot;SUBAGENT&quot;." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000651_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:51</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un encadré de prompt intitulé &quot;04 Prompt - Two files&quot; avec l&#x27;étiquette &quot;SUBAGENT&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:57 - 00:07:27</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">De sorte que si vous voulez confier une tâche à un sous-agent, cela ne traîne pas toute votre conversation avec lui. Et vous pouvez voir ici, à l&#x27;intérieur du fichier du sous-agent, nous pouvons voir les sept règles. Nous pouvons également voir comment il parle, et nous pouvons voir la boucle sur laquelle il tourne pour chaque tâche. C&#x27;est donc fondamentalement comme un petit agent Carpathic miniature. Maintenant, le second est une compétence. Vous pouvez donc voir ici que lorsque je tape barre oblique Carpathic tiret teach, puis tout ce sur quoi je bloque, cela entre dans l&#x27;agent avec les règles, et ensuite cela évalue la réponse par rapport à une liste de contrôle, une ligne par règle, et ensuite cela va réellement me montrer tout. Ce sont donc les deux choses que nous avons, un agent Carpathic et une compétence Carpathic.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de terminal sombre / environnement de développement, éditeur de code ou assistant IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt détaillé pour configurer le sous-agent &#x27;karpathy&#x27; avec sept règles et une commande &#x27;/karpathy-teach&#x27; en cours d&#x27;exécution.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration d&#x27;un sous-agent IA et exécution d&#x27;une tâche de revue de code déléguée avec évaluation par grille de notation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000704_seg17.jpg" alt="Un encadré sombre affichant un prompt textuel décrivant la configuration de règles pour un sous-agent Claude Code nommé karpathy." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000704_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:04</span>
+                        <span class="caption-text">Un encadré sombre affichant un prompt textuel décrivant la configuration de règles pour un sous-agent Claude Code nommé karpathy.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000719_seg17.jpg" alt="Une interface de développement avec un terminal sombre montrant une exécution de commande &#x27;/karpathy-teach&#x27; pour une revue de code Python." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000719_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:19</span>
+                        <span class="caption-text">Une interface de développement avec un terminal sombre montrant une exécution de commande &#x27;/karpathy-teach&#x27; pour une revue de code Python.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:27 - 00:08:01</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Bon, maintenant, voici une autre chose qui est vraiment importante lorsque nous configurons ceci. Nous voulons que l&#x27;agent s&#x27;assure qu&#x27;il exécute son code avant de vous répondre. Et c&#x27;est pourquoi construire ceci à l&#x27;intérieur de Cloud Code fonctionne si bien, parce qu&#x27;il peut déjà écrire et exécuter du code. Et c&#x27;est une étape dont nous devons nous assurer que l&#x27;agent ne peut pas sauter selon les propres règles de Carpathie. Donc, voici le cinquième prompt. Il s&#x27;agit essentiellement d&#x27;ajouter une barrière d&#x27;exécution. Il ajoute un crochet, qui est un petit script qui s&#x27;exécute juste au moment où l&#x27;agent essaie de terminer son tour. Donc, s&#x27;il a écrit du code et ne l&#x27;a jamais exécuté, le crochet va essentiellement bloquer la réponse et il la renverra avec un message disant, hé, vous devez exécuter ceci avant de dire que ça fonctionne. Donc, nous intégrons en quelque sorte une boucle de vérification. Et vous n&#x27;avez évidemment pas besoin de coder ou d&#x27;écrire ce crochet vous-même. Vous le demandez simplement avec ce prompt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface CLI (Claude), Éditeur de prompt / Fenêtre de chat, Bloc de code Python</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes terminal, prompt textuel « Add a Stop hook to this project... », code source Python de test de revues (dictionnaire `review` avec `pros`, `cons`, `score`)</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration d&#x27;un hook d&#x27;arrêt (Stop hook) pour exiger que l&#x27;agent exécute son code avant de valider son fonctionnement</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000735_seg18.jpg" alt="Capture d&#x27;écran montrant une interface de terminal de type CLI (perf-audit - claude) avec une invite de commande et le mode automatique activé." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000735_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:35</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de terminal de type CLI (perf-audit - claude) avec une invite de commande et le mode automatique activé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000744_seg18.jpg" alt="Capture d&#x27;écran affichant une boîte de texte contenant un prompt de configuration (Prompt - Run gate) définissant une règle d&#x27;arrêt pour l&#x27;agent." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000744_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:44</span>
+                        <span class="caption-text">Capture d&#x27;écran affichant une boîte de texte contenant un prompt de configuration (Prompt - Run gate) définissant une règle d&#x27;arrêt pour l&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000752_seg18.jpg" alt="Capture d&#x27;écran montrant un extrait de code Python dans une interface de chat, manipulant des dictionnaires de revues et affichant des scores." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000752_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:52</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un extrait de code Python dans une interface de chat, manipulant des dictionnaires de revues et affichant des scores.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:01 - 00:08:34</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc maintenant, il va s&#x27;exécuter, il va tester et il va corriger. Et ce n&#x27;est qu&#x27;après tout cela que vous verrez réellement la chose finale. Et puis la dernière étape, bien sûr, c&#x27;est juste de le tester. Donc quelques prompts différents que nous utilisons pour le tester. Je lui ai demandé ici de construire quelque chose de réel et de m&#x27;apprendre comment ça marche, ce qui était un tokeniseur par paires d&#x27;octets, qui est la chose qui transforme le texte en nombres avant qu&#x27;un grand modèle de langage ne le voie jamais. Et regardez ce qu&#x27;il fait ici. La première fois, il écrit ce que « terminé » signifie avant de toucher au moindre code. Et puis il construit la plus petite version qui fonctionne sur une minuscule entrée, et avant de l&#x27;exécuter, il me dit ce qu&#x27;il s&#x27;attend à voir. Ensuite, il l&#x27;exécute et me montre le résultat réel, puis il me montre une version qui plante et pourquoi, et ensuite il la corrige. Et puis à</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un éditeur de projet ou d&#x27;un outil de documentation (Herk-2.0).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur le tokenizer BPE, les modèles de langage et des extraits de code Python (count_pairs, merge).</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage et lecture d&#x27;une spécification technique pour la construction d&#x27;un tokenizer.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000825_seg19.jpg" alt="Capture d&#x27;écran d&#x27;une interface de développement montrant un document technique sur le &quot;Byte-pair tokenizer from scratch&quot; avec des explications textuelles et du code." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000825_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:25</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;une interface de développement montrant un document technique sur le &quot;Byte-pair tokenizer from scratch&quot; avec des explications textuelles et du code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:34 - 00:08:56</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en bas, il liste fondamentalement tout ce qu&#x27;il a exécuté, ce qui est sorti, ce qu&#x27;il a changé, et quelle règle il suivait pour chacun de ces mouvements. Donc, au lieu d&#x27;obtenir juste un bloc de code en retour et puis l&#x27;agent qui dit, hé, ça fonctionne, j&#x27;ai pratiquement été guidé à travers tout cela, une étape à la fois, et maintenant je peux comprendre beaucoup mieux ce qui vient de se passer. Maintenant, une autre chose que vous pouvez tester, c&#x27;est sa révision. Donc, avant qu&#x27;un élément ne soit envoyé à un client, je peux lui poser une question, qui est : est-ce que le client accepterait ceci, et qu&#x27;est-ce qu&#x27;il voudrait supprimer ou, vous savez, des questions de ce genre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de terminal ou de sortie textuelle d&#x27;un agent IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif décrivant les modifications du code source (bpe.py) et les sources référencées.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage des explications détaillées et de la traçabilité des modifications effectuées par l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000839_seg20.jpg" alt="Capture d&#x27;écran montrant du texte technique avec les sections &#x27;What I changed and why&#x27; et &#x27;Where this came from&#x27;, listant les actions d&#x27;un agent IA." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000839_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:39</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant du texte technique avec les sections &#x27;What I changed and why&#x27; et &#x27;Where this came from&#x27;, listant les actions d&#x27;un agent IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:56 - 00:09:16</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et voici un script que Claude m&#x27;a écrit et que je peux utiliser comme exemple. Ce script extrait des commentaires YouTube et il a fonctionné sans problème lorsque Claude l&#x27;a testé. L&#x27;agent le lit, prédit qu&#x27;il va planter à cause d&#x27;un emoji sous un terminal Windows normal, l&#x27;exécute quand même de cette façon, puis plante avant d&#x27;écrire le moindre fichier. Dire que ça fonctionne n&#x27;était donc vrai que dans un contexte ou un terminal bien précis. Donc ici, vous pouvez voir que Claude a été capable de passer en revue et de supprimer tout un tas d&#x27;éléments superflus.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;agent IA de code (style Fable/Karpathy).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du rapport de code mentionnant le plantage sous Windows console (cp1252) sur le premier emoji.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage des résultats d&#x27;analyse et de test de l&#x27;agent sur le script Python.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000901_seg21.jpg" alt="Interface d&#x27;un agent IA affichant un rapport de code de style Karpathy avec un texte analysant les plantages sous Windows." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000901_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:01</span>
+                        <span class="caption-text">Interface d&#x27;un agent IA affichant un rapport de code de style Karpathy avec un texte analysant les plantages sous Windows.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000906_seg21.jpg" alt="Gros plan sur le texte du rapport de code expliquant le problème de plantage de la console Windows (cp1252) à cause d&#x27;un emoji." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000906_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:06</span>
+                        <span class="caption-text">Gros plan sur le texte du rapport de code expliquant le problème de plantage de la console Windows (cp1252) à cause d&#x27;un emoji.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:16 - 00:09:35</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et a été capable de me donner une analyse sur la façon dont nous résolvons réellement cela, le nettoyons et l&#x27;examinons avant de pouvoir réellement, genre, l&#x27;expédier. Et ensuite, cela prouve que la version allégée attrape les mêmes questions en les faisant tourner toutes les deux côte à côte et en me le montrant réellement. Et puis l&#x27;autre chose que je voulais soulever, c&#x27;est que cette chose va simplement continuer à apprendre. En juillet dernier, Carpathie a publié des messages sur la façon dont il parle de manière incohérente au modèle par la voix pendant 10 minutes, et ensuite il laisse le modèle nettoyer tout ce texte.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de documentation / revue de code et Twitter (X).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de critères de réussite (Rubric) et publication sur les LLM par Andrej Karpathy.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des critères de validation et affichage de retours d&#x27;expérience sur l&#x27;utilisation des IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000921_seg22.jpg" alt="Capture d&#x27;écran montrant un panneau d&#x27;évaluation et de revue de code (Rubric) avec des critères de succès." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000921_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:21</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un panneau d&#x27;évaluation et de revue de code (Rubric) avec des critères de succès.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000931_seg22.jpg" alt="Capture d&#x27;écran d&#x27;un tweet d&#x27;Andrej Karpathy sur les interactions avec les LLM." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000931_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:31</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un tweet d&#x27;Andrej Karpathy sur les interactions avec les LLM.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:36 - 00:09:57</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je peux donc exécuter slash Carpathie tiret ingest avec n&#x27;importe quel type de lien. Il vérifiera ensuite le dossier brut, écrira une page source pour la publication, puis mettra à jour chaque page touchée par cette publication. Il a ajouté un nouveau comportement ici à la règle 6. Donc maintenant, l&#x27;agent sait qu&#x27;il doit me poser quelques questions lorsque ma requête est trop succincte au lieu de simplement deviner. Et une règle qui était sur le banc de touche avec une seule source derrière elle a obtenu sa seconde source et est devenue une règle officielle.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil d&#x27;ingestion et éditeur de texte/notes.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Résumé des pages créées et modifiées après l&#x27;exécution de la commande de traitement (Source page, Pages touched, Principle 06).</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;une commande d&#x27;ingestion de données et mise à jour automatique des fichiers de documentation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000941_seg23.jpg" alt="Vue d&#x27;ensemble de l&#x27;interface montrant les résultats d&#x27;exécution de la commande de traitement des données (Ingest)." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000941_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:41</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;interface montrant les résultats d&#x27;exécution de la commande de traitement des données (Ingest).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_000946_seg23.jpg" alt="Gros plan sur le texte détaillant les pages modifiées, notamment le comportement de la règle 06." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_000946_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:46</span>
+                        <span class="caption-text">Gros plan sur le texte détaillant les pages modifiées, notamment le comportement de la règle 06.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:57 - 00:10:16</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, comme il comprend comment ce wiki fonctionne, il va mettre à jour l&#x27;index, il va mettre à jour la page tendance, il va mettre à jour le journal. Donc le cerveau vient de s&#x27;améliorer grâce à l&#x27;ajout d&#x27;un seul lien, et je n&#x27;ai jamais eu à toucher au wiki à la main ou à configurer manuellement ces relations ou ces liens. Et c&#x27;était bien sûr sa règle aussi. D&#x27;accord, donc en prenant du recul, nous avions quatre étapes. Nous avons donné à Claude tout ce qui se trouvait dans la tête de quelqu&#x27;un, la tête de Karpathy, et nous l&#x27;avons compilé dans un wiki.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUNE</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:16 - 00:10:35</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous transformons cela en ses propres règles avec une citation pour chacune d&#x27;elles. Nous le faisons s&#x27;exécuter avant qu&#x27;il ne parle, et nous le faisons tester sur des choses qui sont réelles. Et la phrase avec laquelle je voudrais vous laisser aujourd&#x27;hui est l&#x27;une de mes citations préférées, et c&#x27;est quelque chose qu&#x27;il a lui-même dit cette année, à savoir que vous pouvez externaliser votre réflexion, mais vous ne pouvez pas externaliser votre compréhension. Vous n&#x27;allez pas être l&#x27;expert en tout, et c&#x27;est très bien ainsi, mais vous pouvez certainement faire appel à l&#x27;expert et vous construire sur sa base.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Graphique de présentation animé (overlay vidéo)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte des 4 étapes clés de la méthodologie d&#x27;automatisation IA</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage visuel des étapes de la stratégie présentée</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/bvGptCLDhyo/bvGptCLDhyo_001021_seg25.jpg" alt="Un graphique montrant les 4 étapes de la méthode avec des cartes numérotées, notamment &quot;Compile it into a wiki&quot;, &quot;Codify his rules with quotes&quot; et &quot;Run &amp; test on real tasks&quot;." loading="lazy" onclick="openLightbox('../screenshots/bvGptCLDhyo/bvGptCLDhyo_001021_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:21</span>
+                        <span class="caption-text">Un graphique montrant les 4 étapes de la méthode avec des cartes numérotées, notamment &quot;Compile it into a wiki&quot;, &quot;Codify his rules with quotes&quot; et &quot;Run &amp; test on real tasks&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:35 - 00:10:44</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais de toute façon, c&#x27;est tout pour celui-ci, alors si vous avez apprécié la vidéo ou si vous avez appris quelque chose de nouveau, n&#x27;hésitez pas à laisser un pouce bleu. Ça m&#x27;aide vraiment énormément, et comme toujours, je vous remercie d&#x27;être arrivés jusqu&#x27;à la fin de la vidéo, et je vous dis à la prochaine. Merci tout le monde.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUNE</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
