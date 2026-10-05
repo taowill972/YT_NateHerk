@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `23 / 358` (`6.4%`)
+- **Vidéos traitées** : `24 / 358` (`6.7%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -40,6 +40,7 @@
 | 2026-09-13 | [HIRDzMtuWFk](https://www.youtube.com/watch?v=HIRDzMtuWFk) | **Anthropic Engineer Explains: What to Build Instead of AI Agents** | [2026-09-13_YT-[HIRDzMtuWFk]_Anthropic Engineer Explains What to Build Instead of AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-13_YT-[HIRDzMtuWFk]_Anthropic Engineer Explains What to Build Instead of AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-13_YT-[HIRDzMtuWFk]_Anthropic Engineer Explains What to Build Instead of AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-11 | [6LNlCpQPYFc](https://www.youtube.com/watch?v=6LNlCpQPYFc) | **Comment vraiment choisir le bon agent IA** | [2026-09-11_YT-[6LNlCpQPYFc]_Comment vraiment choisir le bon agent IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-11_YT-[6LNlCpQPYFc]_Comment vraiment choisir le bon agent IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-11_YT-[6LNlCpQPYFc]_Comment vraiment choisir le bon agent IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `1` |
 | 2026-09-09 | [5QmOhvVssxY](https://www.youtube.com/watch?v=5QmOhvVssxY) | **Thank You for 1M Subscribers** | [2026-09-09_YT-[5QmOhvVssxY]_Thank You for 1M Subscribers_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-09_YT-[5QmOhvVssxY]_Thank You for 1M Subscribers_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-09_YT-[5QmOhvVssxY]_Thank You for 1M Subscribers_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-09-08 | [o3IEkKXXXvo](https://www.youtube.com/watch?v=o3IEkKXXXvo) | **GPT-6 Astra Finally Solves AI Video Editing (full guide)** | [2026-09-08_YT-[o3IEkKXXXvo]_GPT-6 Astra Finally Solves AI Video Editing (full guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-08_YT-[o3IEkKXXXvo]_GPT-6 Astra Finally Solves AI Video Editing (full guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-08_YT-[o3IEkKXXXvo]_GPT-6 Astra Finally Solves AI Video Editing (full guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
