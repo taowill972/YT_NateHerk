@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `34 / 358` (`9.5%`)
+- **Vidéos traitées** : `35 / 358` (`9.8%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -51,6 +51,7 @@
 | 2026-09-03 | [NbUTIFEEXLY](https://www.youtube.com/watch?v=NbUTIFEEXLY) | **Actu IA en 5 min : GPT-6 Astra** | [2026-09-03_YT-[NbUTIFEEXLY]_Actu IA en 5 min GPT-6 Astra_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-03_YT-[NbUTIFEEXLY]_Actu IA en 5 min GPT-6 Astra_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-03_YT-[NbUTIFEEXLY]_Actu IA en 5 min GPT-6 Astra_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `92` |
 | 2026-09-02 | [FBVNS1l5Vb8](https://www.youtube.com/watch?v=FBVNS1l5Vb8) | **Comment Anthropic rédige VRAIMENT les prompts de Fable 5.1** | [2026-09-02_YT-[FBVNS1l5Vb8]_Comment Anthropic rédige VRAIMENT les prompts de Fable 5.1_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-02_YT-[FBVNS1l5Vb8]_Comment Anthropic rédige VRAIMENT les prompts de Fable 5.1_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-02_YT-[FBVNS1l5Vb8]_Comment Anthropic rédige VRAIMENT les prompts de Fable 5.1_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `85` |
 | 2026-09-02 | [FFWtxjvW2ts](https://www.youtube.com/watch?v=FFWtxjvW2ts) | **Fable 5.1 ENTERRE enfin la bouillie de sites web générée par IA** | [2026-09-02_YT-[FFWtxjvW2ts]_Fable 5.1 ENTERRE enfin la bouillie de sites web générée par IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-02_YT-[FFWtxjvW2ts]_Fable 5.1 ENTERRE enfin la bouillie de sites web générée par IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-02_YT-[FFWtxjvW2ts]_Fable 5.1 ENTERRE enfin la bouillie de sites web générée par IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `91` |
+| 2026-09-01 | [8IyORt-7rOQ](https://www.youtube.com/watch?v=8IyORt-7rOQ) | **Fable 5.1 vient de sortir. C'est hallucinant.** | [2026-09-01_YT-[8IyORt-7rOQ]_Fable 5.1 vient de sortir. C'est hallucinant._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-01_YT-[8IyORt-7rOQ]_Fable 5.1 vient de sortir. C'est hallucinant._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-01_YT-[8IyORt-7rOQ]_Fable 5.1 vient de sortir. C'est hallucinant._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `84` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
