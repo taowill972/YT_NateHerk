@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `46 / 358` (`12.8%`)
+- **Vidéos traitées** : `47 / 358` (`13.1%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -63,6 +63,7 @@
 | 2026-08-24 | [ZzHsJW10iq4](https://www.youtube.com/watch?v=ZzHsJW10iq4) | **Everything Goldman Sachs Taught Me About AI (In 10 minutes)** | [2026-08-24_YT-[ZzHsJW10iq4]_Everything Goldman Sachs Taught Me About AI (In 10 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-24_YT-[ZzHsJW10iq4]_Everything Goldman Sachs Taught Me About AI (In 10 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-24_YT-[ZzHsJW10iq4]_Everything Goldman Sachs Taught Me About AI (In 10 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-23 | [UsfCe5fJK6A](https://www.youtube.com/watch?v=UsfCe5fJK6A) | **100 Hours Testing Deepseek Harness vs. Claude Code. What You Need to Know.** | [2026-08-23_YT-[UsfCe5fJK6A]_100 Hours Testing Deepseek Harness vs. Claude Code. What You Need to Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-23_YT-[UsfCe5fJK6A]_100 Hours Testing Deepseek Harness vs. Claude Code. What You Need to Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-23_YT-[UsfCe5fJK6A]_100 Hours Testing Deepseek Harness vs. Claude Code. What You Need to Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-22 | [QUI6Ug4cHnE](https://www.youtube.com/watch?v=QUI6Ug4cHnE) | **I Built The Ultimate Claude Website Design Skill (steal this)** | [2026-08-22_YT-[QUI6Ug4cHnE]_I Built The Ultimate Claude Website Design Skill (steal this)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-22_YT-[QUI6Ug4cHnE]_I Built The Ultimate Claude Website Design Skill (steal this)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-22_YT-[QUI6Ug4cHnE]_I Built The Ultimate Claude Website Design Skill (steal this)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-08-21 | [_kK_4cOYF4o](https://www.youtube.com/watch?v=_kK_4cOYF4o) | **This Stealth Model Makes Claude Code Free. Here's How.** | [2026-08-21_YT-[_kK_4cOYF4o]_This Stealth Model Makes Claude Code Free. Here's How._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-21_YT-[_kK_4cOYF4o]_This Stealth Model Makes Claude Code Free. Here's How._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-21_YT-[_kK_4cOYF4o]_This Stealth Model Makes Claude Code Free. Here's How._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
