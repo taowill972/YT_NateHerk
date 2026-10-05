@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `48 / 358` (`13.4%`)
+- **Vidéos traitées** : `49 / 358` (`13.7%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -65,6 +65,7 @@
 | 2026-08-22 | [QUI6Ug4cHnE](https://www.youtube.com/watch?v=QUI6Ug4cHnE) | **I Built The Ultimate Claude Website Design Skill (steal this)** | [2026-08-22_YT-[QUI6Ug4cHnE]_I Built The Ultimate Claude Website Design Skill (steal this)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-22_YT-[QUI6Ug4cHnE]_I Built The Ultimate Claude Website Design Skill (steal this)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-22_YT-[QUI6Ug4cHnE]_I Built The Ultimate Claude Website Design Skill (steal this)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-21 | [_kK_4cOYF4o](https://www.youtube.com/watch?v=_kK_4cOYF4o) | **This Stealth Model Makes Claude Code Free. Here's How.** | [2026-08-21_YT-[_kK_4cOYF4o]_This Stealth Model Makes Claude Code Free. Here's How._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-21_YT-[_kK_4cOYF4o]_This Stealth Model Makes Claude Code Free. Here's How._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-21_YT-[_kK_4cOYF4o]_This Stealth Model Makes Claude Code Free. Here's How._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-21 | [yCACmFTiCto](https://www.youtube.com/watch?v=yCACmFTiCto) | **Turn Claude Into a One Person Marketing Team in 38 Mins** | [2026-08-21_YT-[yCACmFTiCto]_Turn Claude Into a One Person Marketing Team in 38 Mins_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-21_YT-[yCACmFTiCto]_Turn Claude Into a One Person Marketing Team in 38 Mins_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-21_YT-[yCACmFTiCto]_Turn Claude Into a One Person Marketing Team in 38 Mins_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-08-20 | [tgjYMym_0-c](https://www.youtube.com/watch?v=tgjYMym_0-c) | **Sell These 5 Most In Demand AI Automations in 2026** | [2026-08-20_YT-[tgjYMym_0-c]_Sell These 5 Most In Demand AI Automations in 2026_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-20_YT-[tgjYMym_0-c]_Sell These 5 Most In Demand AI Automations in 2026_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-20_YT-[tgjYMym_0-c]_Sell These 5 Most In Demand AI Automations in 2026_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
