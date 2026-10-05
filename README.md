@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `38 / 358` (`10.6%`)
+- **Vidéos traitées** : `39 / 358` (`10.9%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -55,6 +55,7 @@
 | 2026-09-01 | [8IyORt-7rOQ](https://www.youtube.com/watch?v=8IyORt-7rOQ) | **Fable 5.1 vient de sortir. C'est hallucinant.** | [2026-09-01_YT-[8IyORt-7rOQ]_Fable 5.1 vient de sortir. C'est hallucinant._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-01_YT-[8IyORt-7rOQ]_Fable 5.1 vient de sortir. C'est hallucinant._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-01_YT-[8IyORt-7rOQ]_Fable 5.1 vient de sortir. C'est hallucinant._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `84` |
 | 2026-09-01 | [Lbax7_pW2Nw](https://www.youtube.com/watch?v=Lbax7_pW2Nw) | **Anthropic apprend à Claude à devenir maléfique (résultats réels)** | [2026-09-01_YT-[Lbax7_pW2Nw]_Anthropic apprend à Claude à devenir maléfique (résultats réels)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-01_YT-[Lbax7_pW2Nw]_Anthropic apprend à Claude à devenir maléfique (résultats réels)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-01_YT-[Lbax7_pW2Nw]_Anthropic apprend à Claude à devenir maléfique (résultats réels)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `81` |
 | 2026-09-01 | [NyfYxpXiw_0](https://www.youtube.com/watch?v=NyfYxpXiw_0) | **Tous les concepts de bots Grok expliqués simplement** | [2026-09-01_YT-[NyfYxpXiw_0]_Tous les concepts de bots Grok expliqués simplement_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-09-01_YT-[NyfYxpXiw_0]_Tous les concepts de bots Grok expliqués simplement_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-09-01_YT-[NyfYxpXiw_0]_Tous les concepts de bots Grok expliqués simplement_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `59` |
+| 2026-08-31 | [4hKJ9X6rGFo](https://www.youtube.com/watch?v=4hKJ9X6rGFo) | **Créer et Vendre des Bots Grok (Cours de 2 Heures)** | [2026-08-31_YT-[4hKJ9X6rGFo]_Créer et Vendre des Bots Grok (Cours de 2 Heures)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-31_YT-[4hKJ9X6rGFo]_Créer et Vendre des Bots Grok (Cours de 2 Heures)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-31_YT-[4hKJ9X6rGFo]_Créer et Vendre des Bots Grok (Cours de 2 Heures)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `38` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
