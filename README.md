@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `42 / 358` (`11.7%`)
+- **Vidéos traitées** : `43 / 358` (`12.0%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -59,6 +59,7 @@
 | 2026-08-28 | [PYjbeY8sGLs](https://www.youtube.com/watch?v=PYjbeY8sGLs) | **I Cloned Calendly and Now It’s Free Forever** | [2026-08-28_YT-[PYjbeY8sGLs]_I Cloned Calendly and Now It’s Free Forever_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-28_YT-[PYjbeY8sGLs]_I Cloned Calendly and Now It’s Free Forever_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-28_YT-[PYjbeY8sGLs]_I Cloned Calendly and Now It’s Free Forever_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-27 | [gQef3d3erOs](https://www.youtube.com/watch?v=gQef3d3erOs) | **Set Up a Personal Hermes in 14 Mins (no VPS or mac mini)** | [2026-08-27_YT-[gQef3d3erOs]_Set Up a Personal Hermes in 14 Mins (no VPS or mac mini)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-27_YT-[gQef3d3erOs]_Set Up a Personal Hermes in 14 Mins (no VPS or mac mini)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-27_YT-[gQef3d3erOs]_Set Up a Personal Hermes in 14 Mins (no VPS or mac mini)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-26 | [bg0C-2iUUqM](https://www.youtube.com/watch?v=bg0C-2iUUqM) | **I Tested Claude Code vs. Codex on Design. It Wasn't Even Close.** | [2026-08-26_YT-[bg0C-2iUUqM]_I Tested Claude Code vs. Codex on Design. It Wasn't Even Close._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-26_YT-[bg0C-2iUUqM]_I Tested Claude Code vs. Codex on Design. It Wasn't Even Close._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-26_YT-[bg0C-2iUUqM]_I Tested Claude Code vs. Codex on Design. It Wasn't Even Close._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-08-25 | [DoHPZf7jEQ4](https://www.youtube.com/watch?v=DoHPZf7jEQ4) | **The 3-Step System Behind My $20K/Month AI Agency Retainers** | [2026-08-25_YT-[DoHPZf7jEQ4]_The 3-Step System Behind My $20KMonth AI Agency Retainers_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-25_YT-[DoHPZf7jEQ4]_The 3-Step System Behind My $20KMonth AI Agency Retainers_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-25_YT-[DoHPZf7jEQ4]_The 3-Step System Behind My $20KMonth AI Agency Retainers_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
