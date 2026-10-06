@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `51 / 358` (`14.2%`)
+- **Vidéos traitées** : `52 / 358` (`14.5%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -68,6 +68,7 @@
 | 2026-08-20 | [tgjYMym_0-c](https://www.youtube.com/watch?v=tgjYMym_0-c) | **Sell These 5 Most In Demand AI Automations in 2026** | [2026-08-20_YT-[tgjYMym_0-c]_Sell These 5 Most In Demand AI Automations in 2026_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-20_YT-[tgjYMym_0-c]_Sell These 5 Most In Demand AI Automations in 2026_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-20_YT-[tgjYMym_0-c]_Sell These 5 Most In Demand AI Automations in 2026_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-19 | [TMPUUyQC5aM](https://www.youtube.com/watch?v=TMPUUyQC5aM) | **A Week of Grok Bot Lessons in 10 Mins** | [2026-08-19_YT-[TMPUUyQC5aM]_A Week of Grok Bot Lessons in 10 Mins_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-19_YT-[TMPUUyQC5aM]_A Week of Grok Bot Lessons in 10 Mins_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-19_YT-[TMPUUyQC5aM]_A Week of Grok Bot Lessons in 10 Mins_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-18 | [zpS6JGJNaGg](https://www.youtube.com/watch?v=zpS6JGJNaGg) | **Comment vendre des workflows Claude (sans lancer d'agence)** | [2026-08-18_YT-[zpS6JGJNaGg]_Comment vendre des workflows Claude (sans lancer d'agence)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-18_YT-[zpS6JGJNaGg]_Comment vendre des workflows Claude (sans lancer d'agence)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-18_YT-[zpS6JGJNaGg]_Comment vendre des workflows Claude (sans lancer d'agence)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-08-14 | [WCrnS09vpfo](https://www.youtube.com/watch?v=WCrnS09vpfo) | **I Made Codex and Claude Code Build the Same App. One Clearly Won.** | [2026-08-14_YT-[WCrnS09vpfo]_I Made Codex and Claude Code Build the Same App. One Clearly Won._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-14_YT-[WCrnS09vpfo]_I Made Codex and Claude Code Build the Same App. One Clearly Won._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-14_YT-[WCrnS09vpfo]_I Made Codex and Claude Code Build the Same App. One Clearly Won._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
