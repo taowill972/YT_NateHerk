@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `67 / 358` (`18.7%`)
+- **Vidéos traitées** : `68 / 358` (`19.0%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -84,6 +84,7 @@
 | 2026-07-14 | [eFOTQpbGcy8](https://www.youtube.com/watch?v=eFOTQpbGcy8) | **Le poste en IA à 200 000 $ qui n'existait pas l'année dernière** | [2026-07-14_YT-[eFOTQpbGcy8]_Le poste en IA à 200 000 $ qui n'existait pas l'année dernière_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-14_YT-[eFOTQpbGcy8]_Le poste en IA à 200 000 $ qui n'existait pas l'année dernière_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-14_YT-[eFOTQpbGcy8]_Le poste en IA à 200 000 $ qui n'existait pas l'année dernière_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `83` |
 | 2026-07-12 | [zyvdl__Ywfk](https://www.youtube.com/watch?v=zyvdl__Ywfk) | **Claude Code + Clay font de la génération de leads un vrai jeu d'enfant** | [2026-07-12_YT-[zyvdl__Ywfk]_Claude Code + Clay font de la génération de leads un vrai jeu d'enfant_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-12_YT-[zyvdl__Ywfk]_Claude Code + Clay font de la génération de leads un vrai jeu d'enfant_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-12_YT-[zyvdl__Ywfk]_Claude Code + Clay font de la génération de leads un vrai jeu d'enfant_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `51` |
 | 2026-07-11 | [jdbOVepEtUE](https://www.youtube.com/watch?v=jdbOVepEtUE) | **Claude Code for Non-Coders (6 Hour Course)** | [2026-07-11_YT-[jdbOVepEtUE]_Claude Code for Non-Coders (6 Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-11_YT-[jdbOVepEtUE]_Claude Code for Non-Coders (6 Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-11_YT-[jdbOVepEtUE]_Claude Code for Non-Coders (6 Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-07-10 | [EthxaDswUFo](https://www.youtube.com/watch?v=EthxaDswUFo) | **I Tested GPT 5.6 Sol vs Fable 5. What You Need To Know.** | [2026-07-10_YT-[EthxaDswUFo]_I Tested GPT 5.6 Sol vs Fable 5. What You Need To Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-10_YT-[EthxaDswUFo]_I Tested GPT 5.6 Sol vs Fable 5. What You Need To Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-10_YT-[EthxaDswUFo]_I Tested GPT 5.6 Sol vs Fable 5. What You Need To Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
