@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `57 / 358` (`15.9%`)
+- **Vidéos traitées** : `58 / 358` (`16.2%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -74,6 +74,7 @@
 | 2026-08-12 | [PQBYZQqan2g](https://www.youtube.com/watch?v=PQBYZQqan2g) | **Grok Bot is For Real. What You Need to Know.** | [2026-08-12_YT-[PQBYZQqan2g]_Grok Bot is For Real. What You Need to Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-12_YT-[PQBYZQqan2g]_Grok Bot is For Real. What You Need to Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-12_YT-[PQBYZQqan2g]_Grok Bot is For Real. What You Need to Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-11 | [LVAHYV4Xrto](https://www.youtube.com/watch?v=LVAHYV4Xrto) | **How to Build a One Person AI Business (Using Claude Code)** | [2026-08-11_YT-[LVAHYV4Xrto]_How to Build a One Person AI Business (Using Claude Code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-11_YT-[LVAHYV4Xrto]_How to Build a One Person AI Business (Using Claude Code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-11_YT-[LVAHYV4Xrto]_How to Build a One Person AI Business (Using Claude Code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-10 | [IVx8OSMbTss](https://www.youtube.com/watch?v=IVx8OSMbTss) | **Build & Sell AI SaaS Products (2 HOUR COURSE)** | [2026-08-10_YT-[IVx8OSMbTss]_Build & Sell AI SaaS Products (2 HOUR COURSE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-10_YT-[IVx8OSMbTss]_Build & Sell AI SaaS Products (2 HOUR COURSE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-10_YT-[IVx8OSMbTss]_Build & Sell AI SaaS Products (2 HOUR COURSE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-08-04 | [7WZ6XldxX0U](https://www.youtube.com/watch?v=7WZ6XldxX0U) | **5 000 heures de développement IA en seulement 17 minutes** | [2026-08-04_YT-[7WZ6XldxX0U]_5 000 heures de développement IA en seulement 17 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-04_YT-[7WZ6XldxX0U]_5 000 heures de développement IA en seulement 17 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-04_YT-[7WZ6XldxX0U]_5 000 heures de développement IA en seulement 17 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `87` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
