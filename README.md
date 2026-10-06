@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `63 / 358` (`17.6%`)
+- **Vidéos traitées** : `64 / 358` (`17.9%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -80,6 +80,7 @@
 | 2026-07-24 | [2J3uX8iRNng](https://www.youtube.com/watch?v=2J3uX8iRNng) | **J'ai testé Opus 5 contre Fable 5. Ce qu'il faut savoir.** | [2026-07-24_YT-[2J3uX8iRNng]_J'ai testé Opus 5 contre Fable 5. Ce qu'il faut savoir._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-24_YT-[2J3uX8iRNng]_J'ai testé Opus 5 contre Fable 5. Ce qu'il faut savoir._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-24_YT-[2J3uX8iRNng]_J'ai testé Opus 5 contre Fable 5. Ce qu'il faut savoir._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `78` |
 | 2026-07-23 | [Ek1NBfnnTH0](https://www.youtube.com/watch?v=Ek1NBfnnTH0) | **Copiez mon système d'exploitation IA idéal (5 conseils simples)** | [2026-07-23_YT-[Ek1NBfnnTH0]_Copiez mon système d'exploitation IA idéal (5 conseils simples)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-23_YT-[Ek1NBfnnTH0]_Copiez mon système d'exploitation IA idéal (5 conseils simples)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-23_YT-[Ek1NBfnnTH0]_Copiez mon système d'exploitation IA idéal (5 conseils simples)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `94` |
 | 2026-07-22 | [vY0EzTP-7EA](https://www.youtube.com/watch?v=vY0EzTP-7EA) | **Comment je gagnerais de l'argent avec Claude si ma vie en dépendait** | [2026-07-22_YT-[vY0EzTP-7EA]_Comment je gagnerais de l'argent avec Claude si ma vie en dépendait_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-22_YT-[vY0EzTP-7EA]_Comment je gagnerais de l'argent avec Claude si ma vie en dépendait_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-22_YT-[vY0EzTP-7EA]_Comment je gagnerais de l'argent avec Claude si ma vie en dépendait_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `79` |
+| 2026-07-20 | [8MEJen0nblQ](https://www.youtube.com/watch?v=8MEJen0nblQ) | **Pourquoi votre offre en IA ne se vend pas, et comment y remédier** | [2026-07-20_YT-[8MEJen0nblQ]_Pourquoi votre offre en IA ne se vend pas, et comment y remédier_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-20_YT-[8MEJen0nblQ]_Pourquoi votre offre en IA ne se vend pas, et comment y remédier_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-20_YT-[8MEJen0nblQ]_Pourquoi votre offre en IA ne se vend pas, et comment y remédier_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `82` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
