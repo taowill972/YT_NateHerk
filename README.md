@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `69 / 358` (`19.3%`)
+- **Vidéos traitées** : `70 / 358` (`19.6%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -86,6 +86,7 @@
 | 2026-07-11 | [jdbOVepEtUE](https://www.youtube.com/watch?v=jdbOVepEtUE) | **Claude Code for Non-Coders (6 Hour Course)** | [2026-07-11_YT-[jdbOVepEtUE]_Claude Code for Non-Coders (6 Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-11_YT-[jdbOVepEtUE]_Claude Code for Non-Coders (6 Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-11_YT-[jdbOVepEtUE]_Claude Code for Non-Coders (6 Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-07-10 | [EthxaDswUFo](https://www.youtube.com/watch?v=EthxaDswUFo) | **I Tested GPT 5.6 Sol vs Fable 5. What You Need To Know.** | [2026-07-10_YT-[EthxaDswUFo]_I Tested GPT 5.6 Sol vs Fable 5. What You Need To Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-10_YT-[EthxaDswUFo]_I Tested GPT 5.6 Sol vs Fable 5. What You Need To Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-10_YT-[EthxaDswUFo]_I Tested GPT 5.6 Sol vs Fable 5. What You Need To Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-07-09 | [J_jswzXhYJA](https://www.youtube.com/watch?v=J_jswzXhYJA) | **GPT 5.6 Sol Made This Entire Video** | [2026-07-09_YT-[J_jswzXhYJA]_GPT 5.6 Sol Made This Entire Video_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-09_YT-[J_jswzXhYJA]_GPT 5.6 Sol Made This Entire Video_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-09_YT-[J_jswzXhYJA]_GPT 5.6 Sol Made This Entire Video_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-07-08 | [R0qF17BVl9w](https://www.youtube.com/watch?v=R0qF17BVl9w) | **Fable 5 Just Built Me a Business With One Prompt** | [2026-07-08_YT-[R0qF17BVl9w]_Fable 5 Just Built Me a Business With One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-08_YT-[R0qF17BVl9w]_Fable 5 Just Built Me a Business With One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-08_YT-[R0qF17BVl9w]_Fable 5 Just Built Me a Business With One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `1` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
