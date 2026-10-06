@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `55 / 358` (`15.4%`)
+- **Vidéos traitées** : `56 / 358` (`15.6%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -72,6 +72,7 @@
 | 2026-08-13 | [CB5bG4mvnS0](https://www.youtube.com/watch?v=CB5bG4mvnS0) | **Codex's Browser Agent Automates Literally Anything** | [2026-08-13_YT-[CB5bG4mvnS0]_Codex's Browser Agent Automates Literally Anything_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-13_YT-[CB5bG4mvnS0]_Codex's Browser Agent Automates Literally Anything_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-13_YT-[CB5bG4mvnS0]_Codex's Browser Agent Automates Literally Anything_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-12 | [XNQBCRcwXV4](https://www.youtube.com/watch?v=XNQBCRcwXV4) | **I Deleted All My Claude Skills... And Claude Got Smarter** | [2026-08-12_YT-[XNQBCRcwXV4]_I Deleted All My Claude Skills... And Claude Got Smarter_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-12_YT-[XNQBCRcwXV4]_I Deleted All My Claude Skills... And Claude Got Smarter_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-12_YT-[XNQBCRcwXV4]_I Deleted All My Claude Skills... And Claude Got Smarter_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-12 | [PQBYZQqan2g](https://www.youtube.com/watch?v=PQBYZQqan2g) | **Grok Bot is For Real. What You Need to Know.** | [2026-08-12_YT-[PQBYZQqan2g]_Grok Bot is For Real. What You Need to Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-12_YT-[PQBYZQqan2g]_Grok Bot is For Real. What You Need to Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-12_YT-[PQBYZQqan2g]_Grok Bot is For Real. What You Need to Know._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-08-11 | [LVAHYV4Xrto](https://www.youtube.com/watch?v=LVAHYV4Xrto) | **How to Build a One Person AI Business (Using Claude Code)** | [2026-08-11_YT-[LVAHYV4Xrto]_How to Build a One Person AI Business (Using Claude Code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-08-11_YT-[LVAHYV4Xrto]_How to Build a One Person AI Business (Using Claude Code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-08-11_YT-[LVAHYV4Xrto]_How to Build a One Person AI Business (Using Claude Code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
