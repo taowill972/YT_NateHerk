@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `72 / 358` (`20.1%`)
+- **Vidéos traitées** : `73 / 358` (`20.4%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -89,6 +89,7 @@
 | 2026-07-08 | [R0qF17BVl9w](https://www.youtube.com/watch?v=R0qF17BVl9w) | **Fable 5 Just Built Me a Business With One Prompt** | [2026-07-08_YT-[R0qF17BVl9w]_Fable 5 Just Built Me a Business With One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-08_YT-[R0qF17BVl9w]_Fable 5 Just Built Me a Business With One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-08_YT-[R0qF17BVl9w]_Fable 5 Just Built Me a Business With One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `1` |
 | 2026-07-07 | [XTBWVVcF3Pk](https://www.youtube.com/watch?v=XTBWVVcF3Pk) | **How I Make Opus Think Like Fable (5 easy steps)** | [2026-07-07_YT-[XTBWVVcF3Pk]_How I Make Opus Think Like Fable (5 easy steps)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-07_YT-[XTBWVVcF3Pk]_How I Make Opus Think Like Fable (5 easy steps)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-07_YT-[XTBWVVcF3Pk]_How I Make Opus Think Like Fable (5 easy steps)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-07-03 | [hQvwMj7IJe4](https://www.youtube.com/watch?v=hQvwMj7IJe4) | **Fable 5 + le Wiki LLM de Karpathy, c'est littéralement de la triche** | [2026-07-03_YT-[hQvwMj7IJe4]_Fable 5 + le Wiki LLM de Karpathy, c'est littéralement de la triche_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-03_YT-[hQvwMj7IJe4]_Fable 5 + le Wiki LLM de Karpathy, c'est littéralement de la triche_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-03_YT-[hQvwMj7IJe4]_Fable 5 + le Wiki LLM de Karpathy, c'est littéralement de la triche_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-07-03 | [pbrln2TVeh4](https://www.youtube.com/watch?v=pbrln2TVeh4) | **How Claude is Creating a New Generation of Millionaires** | [2026-07-03_YT-[pbrln2TVeh4]_How Claude is Creating a New Generation of Millionaires_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-03_YT-[pbrln2TVeh4]_How Claude is Creating a New Generation of Millionaires_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-03_YT-[pbrln2TVeh4]_How Claude is Creating a New Generation of Millionaires_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
