@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `98 / 358` (`27.4%`)
+- **Vidéos traitées** : `99 / 358` (`27.7%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -115,6 +115,7 @@
 | 2026-05-30 | [jZgcWCzxh1I](https://www.youtube.com/watch?v=jZgcWCzxh1I) | **Claude Code : Comprendre clairement les workflows dynamiques** | [2026-05-30_YT-[jZgcWCzxh1I]_Claude Code Comprendre clairement les workflows dynamiques_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-30_YT-[jZgcWCzxh1I]_Claude Code Comprendre clairement les workflows dynamiques_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-30_YT-[jZgcWCzxh1I]_Claude Code Comprendre clairement les workflows dynamiques_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-05-29 | [0WDkwMxj13s](https://www.youtube.com/watch?v=0WDkwMxj13s) | **I Turned Claude Opus 4.8 Into My Entire AI Operating System** | [2026-05-29_YT-[0WDkwMxj13s]_I Turned Claude Opus 4.8 Into My Entire AI Operating System_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-29_YT-[0WDkwMxj13s]_I Turned Claude Opus 4.8 Into My Entire AI Operating System_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-29_YT-[0WDkwMxj13s]_I Turned Claude Opus 4.8 Into My Entire AI Operating System_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-05-28 | [q5lg3npxjAc](https://www.youtube.com/watch?v=q5lg3npxjAc) | **Opus 4.8 Just Dropped. Here's How To Actually Use It.** | [2026-05-28_YT-[q5lg3npxjAc]_Opus 4.8 Just Dropped. Here's How To Actually Use It._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-28_YT-[q5lg3npxjAc]_Opus 4.8 Just Dropped. Here's How To Actually Use It._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-28_YT-[q5lg3npxjAc]_Opus 4.8 Just Dropped. Here's How To Actually Use It._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-05-26 | [RLjaUES9P8A](https://www.youtube.com/watch?v=RLjaUES9P8A) | **100 Hours Testing Claude Code vs ChatGPT Codex (honest results)** | [2026-05-26_YT-[RLjaUES9P8A]_100 Hours Testing Claude Code vs ChatGPT Codex (honest results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-26_YT-[RLjaUES9P8A]_100 Hours Testing Claude Code vs ChatGPT Codex (honest results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-26_YT-[RLjaUES9P8A]_100 Hours Testing Claude Code vs ChatGPT Codex (honest results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
