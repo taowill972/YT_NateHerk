@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `81 / 358` (`22.6%`)
+- **Vidéos traitées** : `82 / 358` (`22.9%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -98,6 +98,7 @@
 | 2026-06-22 | [-zL_trhnQaI](https://www.youtube.com/watch?v=-zL_trhnQaI) | **So You Learned Claude, Now What?** | [2026-06-22_YT-[-zL_trhnQaI]_So You Learned Claude, Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-22_YT-[-zL_trhnQaI]_So You Learned Claude, Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-22_YT-[-zL_trhnQaI]_So You Learned Claude, Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-19 | [EuzYhzB0vbI](https://www.youtube.com/watch?v=EuzYhzB0vbI) | **Finally. Agent Loops Clearly Explained.** | [2026-06-19_YT-[EuzYhzB0vbI]_Finally. Agent Loops Clearly Explained._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-19_YT-[EuzYhzB0vbI]_Finally. Agent Loops Clearly Explained._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-19_YT-[EuzYhzB0vbI]_Finally. Agent Loops Clearly Explained._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-19 | [2OD14-0cot4](https://www.youtube.com/watch?v=2OD14-0cot4) | **GLM 5.2 in Claude Code is Blowing My Mind** | [2026-06-19_YT-[2OD14-0cot4]_GLM 5.2 in Claude Code is Blowing My Mind_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-19_YT-[2OD14-0cot4]_GLM 5.2 in Claude Code is Blowing My Mind_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-19_YT-[2OD14-0cot4]_GLM 5.2 in Claude Code is Blowing My Mind_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-06-18 | [RzLV8sfFdMM](https://www.youtube.com/watch?v=RzLV8sfFdMM) | **How to Use Claude Code Better Than 98% of People** | [2026-06-18_YT-[RzLV8sfFdMM]_How to Use Claude Code Better Than 98% of People_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-18_YT-[RzLV8sfFdMM]_How to Use Claude Code Better Than 98% of People_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-18_YT-[RzLV8sfFdMM]_How to Use Claude Code Better Than 98% of People_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `6` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
