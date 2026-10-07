@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `76 / 358` (`21.2%`)
+- **Vidéos traitées** : `77 / 358` (`21.5%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -93,6 +93,7 @@
 | 2026-07-01 | [vcU85OrwuV0](https://www.youtube.com/watch?v=vcU85OrwuV0) | **How Anthropic Engineers Actually Prompt Fable 5** | [2026-07-01_YT-[vcU85OrwuV0]_How Anthropic Engineers Actually Prompt Fable 5_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-07-01_YT-[vcU85OrwuV0]_How Anthropic Engineers Actually Prompt Fable 5_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-07-01_YT-[vcU85OrwuV0]_How Anthropic Engineers Actually Prompt Fable 5_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-29 | [Tj3018n5MVg](https://www.youtube.com/watch?v=Tj3018n5MVg) | **Stanford's Method Turns Claude Into a PHD Level Research Team** | [2026-06-29_YT-[Tj3018n5MVg]_Stanford's Method Turns Claude Into a PHD Level Research Team_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-29_YT-[Tj3018n5MVg]_Stanford's Method Turns Claude Into a PHD Level Research Team_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-29_YT-[Tj3018n5MVg]_Stanford's Method Turns Claude Into a PHD Level Research Team_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-25 | [iTY8Q449YNQ](https://www.youtube.com/watch?v=iTY8Q449YNQ) | **I asked Claude Code to make me as much money as possible** | [2026-06-25_YT-[iTY8Q449YNQ]_I asked Claude Code to make me as much money as possible_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-25_YT-[iTY8Q449YNQ]_I asked Claude Code to make me as much money as possible_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-25_YT-[iTY8Q449YNQ]_I asked Claude Code to make me as much money as possible_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-06-24 | [S2ME69hra-k](https://www.youtube.com/watch?v=S2ME69hra-k) | **Why Watching AI Videos Isn't Enough** | [2026-06-24_YT-[S2ME69hra-k]_Why Watching AI Videos Isn't Enough_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-24_YT-[S2ME69hra-k]_Why Watching AI Videos Isn't Enough_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-24_YT-[S2ME69hra-k]_Why Watching AI Videos Isn't Enough_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
