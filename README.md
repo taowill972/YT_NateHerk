@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `101 / 358` (`28.2%`)
+- **Vidéos traitées** : `102 / 358` (`28.5%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -118,6 +118,7 @@
 | 2026-05-26 | [RLjaUES9P8A](https://www.youtube.com/watch?v=RLjaUES9P8A) | **100 Hours Testing Claude Code vs ChatGPT Codex (honest results)** | [2026-05-26_YT-[RLjaUES9P8A]_100 Hours Testing Claude Code vs ChatGPT Codex (honest results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-26_YT-[RLjaUES9P8A]_100 Hours Testing Claude Code vs ChatGPT Codex (honest results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-26_YT-[RLjaUES9P8A]_100 Hours Testing Claude Code vs ChatGPT Codex (honest results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-05-25 | [8ktcSaSTvxk](https://www.youtube.com/watch?v=8ktcSaSTvxk) | **Le Manuel Stratégique pour une Agence IA à 100 Millions de Dollars** | [2026-05-25_YT-[8ktcSaSTvxk]_Le Manuel Stratégique pour une Agence IA à 100 Millions de Dollars_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-25_YT-[8ktcSaSTvxk]_Le Manuel Stratégique pour une Agence IA à 100 Millions de Dollars_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-25_YT-[8ktcSaSTvxk]_Le Manuel Stratégique pour une Agence IA à 100 Millions de Dollars_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-05-22 | [Pi-m8R068r4](https://www.youtube.com/watch?v=Pi-m8R068r4) | **The AI Offer You Can Sell Tomorrow Morning** | [2026-05-22_YT-[Pi-m8R068r4]_The AI Offer You Can Sell Tomorrow Morning_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-22_YT-[Pi-m8R068r4]_The AI Offer You Can Sell Tomorrow Morning_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-22_YT-[Pi-m8R068r4]_The AI Offer You Can Sell Tomorrow Morning_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-05-21 | [6cEQEba0i2A](https://www.youtube.com/watch?v=6cEQEba0i2A) | **Give Me 10 Mins and I'll Save You Millions of Claude Tokens** | [2026-05-21_YT-[6cEQEba0i2A]_Give Me 10 Mins and I'll Save You Millions of Claude Tokens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-21_YT-[6cEQEba0i2A]_Give Me 10 Mins and I'll Save You Millions of Claude Tokens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-21_YT-[6cEQEba0i2A]_Give Me 10 Mins and I'll Save You Millions of Claude Tokens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
