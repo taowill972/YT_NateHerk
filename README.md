@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `93 / 358` (`26.0%`)
+- **Vidéos traitées** : `94 / 358` (`26.3%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -110,6 +110,7 @@
 | 2026-06-06 | [lkR6mvqQQlk](https://www.youtube.com/watch?v=lkR6mvqQQlk) | **Claude Mythos arrive-t-il ?** | [2026-06-06_YT-[lkR6mvqQQlk]_Claude Mythos arrive-t-il_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-06_YT-[lkR6mvqQQlk]_Claude Mythos arrive-t-il_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-06_YT-[lkR6mvqQQlk]_Claude Mythos arrive-t-il_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `91` |
 | 2026-06-05 | [NDeyhGnNECc](https://www.youtube.com/watch?v=NDeyhGnNECc) | **L'AGI est là. Anthropic vient de le prouver.** | [2026-06-05_YT-[NDeyhGnNECc]_L'AGI est là. Anthropic vient de le prouver._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-05_YT-[NDeyhGnNECc]_L'AGI est là. Anthropic vient de le prouver._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-05_YT-[NDeyhGnNECc]_L'AGI est là. Anthropic vient de le prouver._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `83` |
 | 2026-06-04 | [c0kaKxM2pHg](https://www.youtube.com/watch?v=c0kaKxM2pHg) | **La compétence qui a décuplé mes projets Claude Code** | [2026-06-04_YT-[c0kaKxM2pHg]_La compétence qui a décuplé mes projets Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-04_YT-[c0kaKxM2pHg]_La compétence qui a décuplé mes projets Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-04_YT-[c0kaKxM2pHg]_La compétence qui a décuplé mes projets Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `3` |
+| 2026-06-03 | [vfWTyEreOEc](https://www.youtube.com/watch?v=vfWTyEreOEc) | **I Tested Every Claude Code Feature, These 12 Are the Best** | [2026-06-03_YT-[vfWTyEreOEc]_I Tested Every Claude Code Feature, These 12 Are the Best_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-03_YT-[vfWTyEreOEc]_I Tested Every Claude Code Feature, These 12 Are the Best_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-03_YT-[vfWTyEreOEc]_I Tested Every Claude Code Feature, These 12 Are the Best_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
