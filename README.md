@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `84 / 358` (`23.5%`)
+- **Vidéos traitées** : `85 / 358` (`23.7%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -101,6 +101,7 @@
 | 2026-06-18 | [RzLV8sfFdMM](https://www.youtube.com/watch?v=RzLV8sfFdMM) | **How to Use Claude Code Better Than 98% of People** | [2026-06-18_YT-[RzLV8sfFdMM]_How to Use Claude Code Better Than 98% of People_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-18_YT-[RzLV8sfFdMM]_How to Use Claude Code Better Than 98% of People_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-18_YT-[RzLV8sfFdMM]_How to Use Claude Code Better Than 98% of People_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `6` |
 | 2026-06-17 | [DTCyvo6cC54](https://www.youtube.com/watch?v=DTCyvo6cC54) | **Every Level of a Claude Second Brain Explained** | [2026-06-17_YT-[DTCyvo6cC54]_Every Level of a Claude Second Brain Explained_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-17_YT-[DTCyvo6cC54]_Every Level of a Claude Second Brain Explained_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-17_YT-[DTCyvo6cC54]_Every Level of a Claude Second Brain Explained_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-16 | [CvA8-aScqio](https://www.youtube.com/watch?v=CvA8-aScqio) | **We Might Actually Need to Stop AI** | [2026-06-16_YT-[CvA8-aScqio]_We Might Actually Need to Stop AI_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-16_YT-[CvA8-aScqio]_We Might Actually Need to Stop AI_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-16_YT-[CvA8-aScqio]_We Might Actually Need to Stop AI_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-06-15 | [3XIGcM7VICc](https://www.youtube.com/watch?v=3XIGcM7VICc) | **Learn These 6 AI Skills Now (Before Everyone Else Does)** | [2026-06-15_YT-[3XIGcM7VICc]_Learn These 6 AI Skills Now (Before Everyone Else Does)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-15_YT-[3XIGcM7VICc]_Learn These 6 AI Skills Now (Before Everyone Else Does)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-15_YT-[3XIGcM7VICc]_Learn These 6 AI Skills Now (Before Everyone Else Does)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
