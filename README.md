@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `78 / 358` (`21.8%`)
+- **Vidéos traitées** : `79 / 358` (`22.1%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -95,6 +95,7 @@
 | 2026-06-25 | [iTY8Q449YNQ](https://www.youtube.com/watch?v=iTY8Q449YNQ) | **I asked Claude Code to make me as much money as possible** | [2026-06-25_YT-[iTY8Q449YNQ]_I asked Claude Code to make me as much money as possible_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-25_YT-[iTY8Q449YNQ]_I asked Claude Code to make me as much money as possible_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-25_YT-[iTY8Q449YNQ]_I asked Claude Code to make me as much money as possible_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-24 | [S2ME69hra-k](https://www.youtube.com/watch?v=S2ME69hra-k) | **Why Watching AI Videos Isn't Enough** | [2026-06-24_YT-[S2ME69hra-k]_Why Watching AI Videos Isn't Enough_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-24_YT-[S2ME69hra-k]_Why Watching AI Videos Isn't Enough_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-24_YT-[S2ME69hra-k]_Why Watching AI Videos Isn't Enough_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-23 | [GpSqBjW6hR4](https://www.youtube.com/watch?v=GpSqBjW6hR4) | **I Battle Tested Sakana Fugu's Fable Killer** | [2026-06-23_YT-[GpSqBjW6hR4]_I Battle Tested Sakana Fugu's Fable Killer_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-23_YT-[GpSqBjW6hR4]_I Battle Tested Sakana Fugu's Fable Killer_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-23_YT-[GpSqBjW6hR4]_I Battle Tested Sakana Fugu's Fable Killer_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-06-22 | [-zL_trhnQaI](https://www.youtube.com/watch?v=-zL_trhnQaI) | **So You Learned Claude, Now What?** | [2026-06-22_YT-[-zL_trhnQaI]_So You Learned Claude, Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-22_YT-[-zL_trhnQaI]_So You Learned Claude, Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-22_YT-[-zL_trhnQaI]_So You Learned Claude, Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
