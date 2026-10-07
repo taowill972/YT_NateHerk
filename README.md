@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `87 / 358` (`24.3%`)
+- **Vidéos traitées** : `88 / 358` (`24.6%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -104,6 +104,7 @@
 | 2026-06-15 | [3XIGcM7VICc](https://www.youtube.com/watch?v=3XIGcM7VICc) | **Learn These 6 AI Skills Now (Before Everyone Else Does)** | [2026-06-15_YT-[3XIGcM7VICc]_Learn These 6 AI Skills Now (Before Everyone Else Does)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-15_YT-[3XIGcM7VICc]_Learn These 6 AI Skills Now (Before Everyone Else Does)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-15_YT-[3XIGcM7VICc]_Learn These 6 AI Skills Now (Before Everyone Else Does)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-12 | [ONmaDdOBGig](https://www.youtube.com/watch?v=ONmaDdOBGig) | **Claude Fable 5 a fait toute cette vidéo tout seul.** | [2026-06-12_YT-[ONmaDdOBGig]_Claude Fable 5 a fait toute cette vidéo tout seul._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-12_YT-[ONmaDdOBGig]_Claude Fable 5 a fait toute cette vidéo tout seul._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-12_YT-[ONmaDdOBGig]_Claude Fable 5 a fait toute cette vidéo tout seul._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `85` |
 | 2026-06-12 | [diY71x7GUjI](https://www.youtube.com/watch?v=diY71x7GUjI) | **De zéro à Directeur de l'IA en 1 an (en partant de zéro)** | [2026-06-12_YT-[diY71x7GUjI]_De zéro à Directeur de l'IA en 1 an (en partant de zéro)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-12_YT-[diY71x7GUjI]_De zéro à Directeur de l'IA en 1 an (en partant de zéro)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-12_YT-[diY71x7GUjI]_De zéro à Directeur de l'IA en 1 an (en partant de zéro)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `92` |
+| 2026-06-10 | [8QQ_INxAhRs](https://www.youtube.com/watch?v=8QQ_INxAhRs) | **J'ai transformé Claude en le second cerveau ultime** | [2026-06-10_YT-[8QQ_INxAhRs]_J'ai transformé Claude en le second cerveau ultime_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-10_YT-[8QQ_INxAhRs]_J'ai transformé Claude en le second cerveau ultime_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-10_YT-[8QQ_INxAhRs]_J'ai transformé Claude en le second cerveau ultime_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `77` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
