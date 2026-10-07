@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `90 / 358` (`25.1%`)
+- **Vidéos traitées** : `91 / 358` (`25.4%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -107,6 +107,7 @@
 | 2026-06-10 | [8QQ_INxAhRs](https://www.youtube.com/watch?v=8QQ_INxAhRs) | **J'ai transformé Claude en le second cerveau ultime** | [2026-06-10_YT-[8QQ_INxAhRs]_J'ai transformé Claude en le second cerveau ultime_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-10_YT-[8QQ_INxAhRs]_J'ai transformé Claude en le second cerveau ultime_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-10_YT-[8QQ_INxAhRs]_J'ai transformé Claude en le second cerveau ultime_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `77` |
 | 2026-06-09 | [dYrrEKXtttk](https://www.youtube.com/watch?v=dYrrEKXtttk) | **Claude Mythos est enfin là.** | [2026-06-09_YT-[dYrrEKXtttk]_Claude Mythos est enfin là._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-09_YT-[dYrrEKXtttk]_Claude Mythos est enfin là._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-09_YT-[dYrrEKXtttk]_Claude Mythos est enfin là._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `81` |
 | 2026-06-09 | [e18sdZLwP7o](https://www.youtube.com/watch?v=e18sdZLwP7o) | **Comment créer des sous-agents Claude mieux que 99 % des gens** | [2026-06-09_YT-[e18sdZLwP7o]_Comment créer des sous-agents Claude mieux que 99 % des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-09_YT-[e18sdZLwP7o]_Comment créer des sous-agents Claude mieux que 99 % des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-09_YT-[e18sdZLwP7o]_Comment créer des sous-agents Claude mieux que 99 % des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `78` |
+| 2026-06-06 | [lkR6mvqQQlk](https://www.youtube.com/watch?v=lkR6mvqQQlk) | **Claude Mythos arrive-t-il ?** | [2026-06-06_YT-[lkR6mvqQQlk]_Claude Mythos arrive-t-il_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-06_YT-[lkR6mvqQQlk]_Claude Mythos arrive-t-il_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-06_YT-[lkR6mvqQQlk]_Claude Mythos arrive-t-il_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `91` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
