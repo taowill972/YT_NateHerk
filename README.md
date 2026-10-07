@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `95 / 358` (`26.5%`)
+- **Vidéos traitées** : `96 / 358` (`26.8%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -112,6 +112,7 @@
 | 2026-06-04 | [c0kaKxM2pHg](https://www.youtube.com/watch?v=c0kaKxM2pHg) | **La compétence qui a décuplé mes projets Claude Code** | [2026-06-04_YT-[c0kaKxM2pHg]_La compétence qui a décuplé mes projets Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-04_YT-[c0kaKxM2pHg]_La compétence qui a décuplé mes projets Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-04_YT-[c0kaKxM2pHg]_La compétence qui a décuplé mes projets Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `3` |
 | 2026-06-03 | [vfWTyEreOEc](https://www.youtube.com/watch?v=vfWTyEreOEc) | **I Tested Every Claude Code Feature, These 12 Are the Best** | [2026-06-03_YT-[vfWTyEreOEc]_I Tested Every Claude Code Feature, These 12 Are the Best_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-03_YT-[vfWTyEreOEc]_I Tested Every Claude Code Feature, These 12 Are the Best_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-03_YT-[vfWTyEreOEc]_I Tested Every Claude Code Feature, These 12 Are the Best_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-02 | [NHFbAg2b54U](https://www.youtube.com/watch?v=NHFbAg2b54U) | **100 Years of Artificial Intelligence Explained** | [2026-06-02_YT-[NHFbAg2b54U]_100 Years of Artificial Intelligence Explained_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-02_YT-[NHFbAg2b54U]_100 Years of Artificial Intelligence Explained_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-02_YT-[NHFbAg2b54U]_100 Years of Artificial Intelligence Explained_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `1` |
+| 2026-05-30 | [jZgcWCzxh1I](https://www.youtube.com/watch?v=jZgcWCzxh1I) | **Claude Code : Comprendre clairement les workflows dynamiques** | [2026-05-30_YT-[jZgcWCzxh1I]_Claude Code Comprendre clairement les workflows dynamiques_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-30_YT-[jZgcWCzxh1I]_Claude Code Comprendre clairement les workflows dynamiques_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-30_YT-[jZgcWCzxh1I]_Claude Code Comprendre clairement les workflows dynamiques_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
