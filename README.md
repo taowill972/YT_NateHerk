@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `103 / 358` (`28.8%`)
+- **Vidéos traitées** : `104 / 358` (`29.1%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -120,6 +120,7 @@
 | 2026-05-22 | [Pi-m8R068r4](https://www.youtube.com/watch?v=Pi-m8R068r4) | **The AI Offer You Can Sell Tomorrow Morning** | [2026-05-22_YT-[Pi-m8R068r4]_The AI Offer You Can Sell Tomorrow Morning_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-22_YT-[Pi-m8R068r4]_The AI Offer You Can Sell Tomorrow Morning_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-22_YT-[Pi-m8R068r4]_The AI Offer You Can Sell Tomorrow Morning_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-05-21 | [6cEQEba0i2A](https://www.youtube.com/watch?v=6cEQEba0i2A) | **Give Me 10 Mins and I'll Save You Millions of Claude Tokens** | [2026-05-21_YT-[6cEQEba0i2A]_Give Me 10 Mins and I'll Save You Millions of Claude Tokens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-21_YT-[6cEQEba0i2A]_Give Me 10 Mins and I'll Save You Millions of Claude Tokens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-21_YT-[6cEQEba0i2A]_Give Me 10 Mins and I'll Save You Millions of Claude Tokens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-05-19 | [brB-hSiV2iU](https://www.youtube.com/watch?v=brB-hSiV2iU) | **What Karpathy Joining Anthropic Actually Means For Claude** | [2026-05-19_YT-[brB-hSiV2iU]_What Karpathy Joining Anthropic Actually Means For Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-19_YT-[brB-hSiV2iU]_What Karpathy Joining Anthropic Actually Means For Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-19_YT-[brB-hSiV2iU]_What Karpathy Joining Anthropic Actually Means For Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `1` |
+| 2026-05-18 | [kB9iMD0EjT8](https://www.youtube.com/watch?v=kB9iMD0EjT8) | **Comment utiliser vos projets Claude Code dans Codex en 5 minutes** | [2026-05-18_YT-[kB9iMD0EjT8]_Comment utiliser vos projets Claude Code dans Codex en 5 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-18_YT-[kB9iMD0EjT8]_Comment utiliser vos projets Claude Code dans Codex en 5 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-18_YT-[kB9iMD0EjT8]_Comment utiliser vos projets Claude Code dans Codex en 5 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `5` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
