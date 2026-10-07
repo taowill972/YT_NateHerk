@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `80 / 358` (`22.3%`)
+- **Vidéos traitées** : `81 / 358` (`22.6%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -97,6 +97,7 @@
 | 2026-06-23 | [GpSqBjW6hR4](https://www.youtube.com/watch?v=GpSqBjW6hR4) | **I Battle Tested Sakana Fugu's Fable Killer** | [2026-06-23_YT-[GpSqBjW6hR4]_I Battle Tested Sakana Fugu's Fable Killer_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-23_YT-[GpSqBjW6hR4]_I Battle Tested Sakana Fugu's Fable Killer_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-23_YT-[GpSqBjW6hR4]_I Battle Tested Sakana Fugu's Fable Killer_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-22 | [-zL_trhnQaI](https://www.youtube.com/watch?v=-zL_trhnQaI) | **So You Learned Claude, Now What?** | [2026-06-22_YT-[-zL_trhnQaI]_So You Learned Claude, Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-22_YT-[-zL_trhnQaI]_So You Learned Claude, Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-22_YT-[-zL_trhnQaI]_So You Learned Claude, Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-19 | [EuzYhzB0vbI](https://www.youtube.com/watch?v=EuzYhzB0vbI) | **Finally. Agent Loops Clearly Explained.** | [2026-06-19_YT-[EuzYhzB0vbI]_Finally. Agent Loops Clearly Explained._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-19_YT-[EuzYhzB0vbI]_Finally. Agent Loops Clearly Explained._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-19_YT-[EuzYhzB0vbI]_Finally. Agent Loops Clearly Explained._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-06-19 | [2OD14-0cot4](https://www.youtube.com/watch?v=2OD14-0cot4) | **GLM 5.2 in Claude Code is Blowing My Mind** | [2026-06-19_YT-[2OD14-0cot4]_GLM 5.2 in Claude Code is Blowing My Mind_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-06-19_YT-[2OD14-0cot4]_GLM 5.2 in Claude Code is Blowing My Mind_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-06-19_YT-[2OD14-0cot4]_GLM 5.2 in Claude Code is Blowing My Mind_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
