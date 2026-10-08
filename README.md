@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `120 / 358` (`33.5%`)
+- **Vidéos traitées** : `121 / 358` (`33.8%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -17,6 +17,7 @@
 
 | Date | Réf. Vidéo | Titre Français / Sujet | Fiche Markdown | Fiche Interactive HTML | Captures |
 | :--- | :--- | :--- | :--- | :--- | :---: |
+| 2026-10-08 | [oz2CwrPV2Rg](https://www.youtube.com/watch?v=oz2CwrPV2Rg) | **Les ingénieurs d'Anthropic viennent de multiplier par 10 le Claude Code de tout le monde** | [2026-10-08_YT-[oz2CwrPV2Rg]_Les ingénieurs d'Anthropic viennent de multiplier par 10 le Claude Code de tout _by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-08_YT-[oz2CwrPV2Rg]_Les ingénieurs d'Anthropic viennent de multiplier par 10 le Claude Code de tout _by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-08_YT-[oz2CwrPV2Rg]_Les ingénieurs d'Anthropic viennent de multiplier par 10 le Claude Code de tout _by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `92` |
 | 2026-10-05 | [bvGptCLDhyo](https://www.youtube.com/watch?v=bvGptCLDhyo) | **J'ai construit un autre Andrej Karpathy avec Claude** | [2026-10-05_YT-[bvGptCLDhyo]_J'ai construit un autre Andrej Karpathy avec Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-05_YT-[bvGptCLDhyo]_J'ai construit un autre Andrej Karpathy avec Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-05_YT-[bvGptCLDhyo]_J'ai construit un autre Andrej Karpathy avec Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `36` |
 | 2026-10-03 | [DFlELTiSPk8](https://www.youtube.com/watch?v=DFlELTiSPk8) | **Tout comprendre à Codex sans savoir coder** | [2026-10-03_YT-[DFlELTiSPk8]_Tout comprendre à Codex sans savoir coder_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-03_YT-[DFlELTiSPk8]_Tout comprendre à Codex sans savoir coder_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-03_YT-[DFlELTiSPk8]_Tout comprendre à Codex sans savoir coder_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `75` |
 | 2026-10-02 | [9hetShMMp2s](https://www.youtube.com/watch?v=9hetShMMp2s) | **Les mods de Claude Code changent la donne. Configurez ces 5 DÈS MAINTENANT.** | [2026-10-02_YT-[9hetShMMp2s]_Les mods de Claude Code changent la donne. Configurez ces 5 DÈS MAINTENANT._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-02_YT-[9hetShMMp2s]_Les mods de Claude Code changent la donne. Configurez ces 5 DÈS MAINTENANT._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-02_YT-[9hetShMMp2s]_Les mods de Claude Code changent la donne. Configurez ces 5 DÈS MAINTENANT._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `74` |
