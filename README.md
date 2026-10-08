@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `110 / 358` (`30.7%`)
+- **Vidéos traitées** : `111 / 358` (`31.0%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -127,6 +127,7 @@
 | 2026-05-12 | [ZRb7D6R64hM](https://www.youtube.com/watch?v=ZRb7D6R64hM) | **Every Level of Claude Explained in 21 Minutes** | [2026-05-12_YT-[ZRb7D6R64hM]_Every Level of Claude Explained in 21 Minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-12_YT-[ZRb7D6R64hM]_Every Level of Claude Explained in 21 Minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-12_YT-[ZRb7D6R64hM]_Every Level of Claude Explained in 21 Minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-05-12 | [ZAaxx3qyT8g](https://www.youtube.com/watch?v=ZAaxx3qyT8g) | **Claude Code Just Got an Agent Dashboard** | [2026-05-12_YT-[ZAaxx3qyT8g]_Claude Code Just Got an Agent Dashboard_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-12_YT-[ZAaxx3qyT8g]_Claude Code Just Got an Agent Dashboard_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-12_YT-[ZAaxx3qyT8g]_Claude Code Just Got an Agent Dashboard_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-05-10 | [gb5TlGw6Uks](https://www.youtube.com/watch?v=gb5TlGw6Uks) | **Hermes Agent: Zero to Personal AI Assistant (1 Hour Course)** | [2026-05-10_YT-[gb5TlGw6Uks]_Hermes Agent Zero to Personal AI Assistant (1 Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-10_YT-[gb5TlGw6Uks]_Hermes Agent Zero to Personal AI Assistant (1 Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-10_YT-[gb5TlGw6Uks]_Hermes Agent Zero to Personal AI Assistant (1 Hour Course)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-05-09 | [YHk45NEpspE](https://www.youtube.com/watch?v=YHk45NEpspE) | **This is The Most Powerful Tool to Give to Claude Code** | [2026-05-09_YT-[YHk45NEpspE]_This is The Most Powerful Tool to Give to Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-09_YT-[YHk45NEpspE]_This is The Most Powerful Tool to Give to Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-09_YT-[YHk45NEpspE]_This is The Most Powerful Tool to Give to Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
