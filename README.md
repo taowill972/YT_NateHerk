@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `117 / 358` (`32.7%`)
+- **Vidéos traitées** : `118 / 358` (`33.0%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -134,6 +134,7 @@
 | 2026-05-05 | [xn6Z5PYyAIE](https://www.youtube.com/watch?v=xn6Z5PYyAIE) | **Higgsfield vient de transformer Claude en agence de création** | [2026-05-05_YT-[xn6Z5PYyAIE]_Higgsfield vient de transformer Claude en agence de création_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-05_YT-[xn6Z5PYyAIE]_Higgsfield vient de transformer Claude en agence de création_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-05_YT-[xn6Z5PYyAIE]_Higgsfield vient de transformer Claude en agence de création_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `93` |
 | 2026-05-04 | [-cdexJWN8YA](https://www.youtube.com/watch?v=-cdexJWN8YA) | **Créer des agents vocaux réalistes n'a jamais été aussi simple** | [2026-05-04_YT-[-cdexJWN8YA]_Créer des agents vocaux réalistes n'a jamais été aussi simple_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-04_YT-[-cdexJWN8YA]_Créer des agents vocaux réalistes n'a jamais été aussi simple_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-04_YT-[-cdexJWN8YA]_Créer des agents vocaux réalistes n'a jamais été aussi simple_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `89` |
 | 2026-05-03 | [eRS3CmvrOvA](https://www.youtube.com/watch?v=eRS3CmvrOvA) | **J’ai testé plus de 100 compétences Claude Code. Voici les 6 meilleures** | [2026-05-03_YT-[eRS3CmvrOvA]_J’ai testé plus de 100 compétences Claude Code. Voici les 6 meilleures_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-03_YT-[eRS3CmvrOvA]_J’ai testé plus de 100 compétences Claude Code. Voici les 6 meilleures_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-03_YT-[eRS3CmvrOvA]_J’ai testé plus de 100 compétences Claude Code. Voici les 6 meilleures_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `100` |
+| 2026-05-01 | [bCljOfCH8Ms](https://www.youtube.com/watch?v=bCljOfCH8Ms) | **Créez et vendez des systèmes d'exploitation Claude Code (Cours de plus de 2 heures)** | [2026-05-01_YT-[bCljOfCH8Ms]_Créez et vendez des systèmes d'exploitation Claude Code (Cours de plus de 2 heur_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-01_YT-[bCljOfCH8Ms]_Créez et vendez des systèmes d'exploitation Claude Code (Cours de plus de 2 heur_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-01_YT-[bCljOfCH8Ms]_Créez et vendez des systèmes d'exploitation Claude Code (Cours de plus de 2 heur_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `88` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
