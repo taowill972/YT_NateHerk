@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `114 / 358` (`31.8%`)
+- **Vidéos traitées** : `115 / 358` (`32.1%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -131,6 +131,7 @@
 | 2026-05-08 | [35WuZxbAY68](https://www.youtube.com/watch?v=35WuZxbAY68) | **Overwhelmed By AI? Just Copy My Tech Stack** | [2026-05-08_YT-[35WuZxbAY68]_Overwhelmed By AI Just Copy My Tech Stack_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-08_YT-[35WuZxbAY68]_Overwhelmed By AI Just Copy My Tech Stack_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-08_YT-[35WuZxbAY68]_Overwhelmed By AI Just Copy My Tech Stack_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-05-07 | [3QclAjmu5Tw](https://www.youtube.com/watch?v=3QclAjmu5Tw) | **Claude Just Solved Session Limits** | [2026-05-07_YT-[3QclAjmu5Tw]_Claude Just Solved Session Limits_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-07_YT-[3QclAjmu5Tw]_Claude Just Solved Session Limits_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-07_YT-[3QclAjmu5Tw]_Claude Just Solved Session Limits_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-05-06 | [3TdD8Qv5Tk8](https://www.youtube.com/watch?v=3TdD8Qv5Tk8) | **Maîtrisez 97 % de Codex en 1 heure (cours complet)** | [2026-05-06_YT-[3TdD8Qv5Tk8]_Maîtrisez 97 % de Codex en 1 heure (cours complet)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-06_YT-[3TdD8Qv5Tk8]_Maîtrisez 97 % de Codex en 1 heure (cours complet)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-06_YT-[3TdD8Qv5Tk8]_Maîtrisez 97 % de Codex en 1 heure (cours complet)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `86` |
+| 2026-05-05 | [xn6Z5PYyAIE](https://www.youtube.com/watch?v=xn6Z5PYyAIE) | **Higgsfield vient de transformer Claude en agence de création** | [2026-05-05_YT-[xn6Z5PYyAIE]_Higgsfield vient de transformer Claude en agence de création_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-05-05_YT-[xn6Z5PYyAIE]_Higgsfield vient de transformer Claude en agence de création_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-05-05_YT-[xn6Z5PYyAIE]_Higgsfield vient de transformer Claude en agence de création_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `93` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
