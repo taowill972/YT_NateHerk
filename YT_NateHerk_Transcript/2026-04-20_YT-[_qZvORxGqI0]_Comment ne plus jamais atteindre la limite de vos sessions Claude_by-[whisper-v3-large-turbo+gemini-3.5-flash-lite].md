@@ -12,1093 +12,872 @@
 ## 📌 Synthèse Exécutive & Outils
 
 ### 💡 Résumé
-Dans cette vidéo intitulée **Comment ne plus jamais atteindre la limite de vos sessions Claude**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.
+
+La vidéo de Nate Herk aborde l'un des goulets d'étranglement les plus critiques pour les développeurs et ingénieurs utilisant Claude et Claude Code : l'atteinte prématurée et coûteuse des limites de session due à une mauvaise gestion du contexte. À travers des démonstrations pratiques, incluant l'utilisation de tableaux de bord de jetons personnalisés et de compétences dédiées, la vidéo démontre comment les sessions longues détruisent l'efficacité financière et opérationnelle des agents IA. 
+
+L'analyse technique révèle que le modèle de facturation et de lecture séquentielle des jetons crée une inflation exponentielle des coûts et du temps de traitement au fil des messages. En s'appuyant sur les recommandations officielles d'Anthropic, la vidéo expose des stratégies concrètes — telles que l'utilisation de la commande `/context`, le recours systématique au retour en arrière (`/rewind`) plutôt qu'aux corrections en cascade, et le remplacement du compactage automatique par des actions manuelles anticipées — permettant de préserver durablement les performances des modèles et d'optimiser drastiquement l'ingénierie des flux de travail.
 
 ### 🛠️ Outils, Modèles & Logiciels Présentés
-- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.
+
+* **Claude** : Le modèle de langage et l'écosystème conversationnel d'Anthropic au cœur des problématiques de gestion de contexte et de sessions.
+* **Claude Code** : L'outil de développement en ligne de commande offrant une fenêtre de contexte d'un million de tokens, exposé à la surcharge de démarrage et à la pourriture contextuelle.
+* **Opus 5.5** : Mentionné comme jalon technologique associé aux performances avancées des agents IA dans l'écosystème d'ingénierie moderne.
+* **Tableau de bord de jetons personnalisé** : Un outil développé sur mesure pour surveiller en temps réel la consommation et la charge des jetons dans les sessions de codage.
+* **Commandes natives (`/context`, `/rewind`, `/clear`, `/compact`)** : Les utilitaires intégrés indispensables pour inspecter, purger, remonter dans l'historique ou résumer les sessions de travail.
+* **Serveurs MCP (Model Context Protocol)** : Des composants d'architecture et d'outils externes qui s'ajoutent à la surcharge initiale du contexte dès le lancement d'une session.
 
 ### 🔑 Points Clés & Enseignements Stratégiques
-- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.
-- Automatiser les cycles de création logicielle de bout en bout.
+
+* **Inflation exponentielle des coûts de jetons** : À chaque nouveau message, Claude relit l'intégralité de l'historique de la conversation depuis le début, transformant la croissance des coûts en une courbe exponentielle plutôt que linéaire.
+* **Le coût caché de l'historique** : Jusqu'à 98,5 % des jetons consommés dans une session de plus de 100 messages peuvent être gaspillés à simplement relire les échanges précédents.
+* **Surcharge de démarrage invisible** : Une nouvelle session de Claude Code brûle immédiatement environ 8 000 jetons rien qu'en surcharge système (instructions, fichiers `cloud.md`, serveurs MCP et compétences), un chiffre pouvant grimper jusqu'à 62 000 jetons selon la configuration.
+* **Diagnostic proactif avec `/context`** : L'utilisation systématique de la commande `/context` au démarrage permet d'identifier les jetons invisibles consommés et de purger les éléments superflus avant d'engager le moindre échange.
+* **Le phénomène de la « pourriture du contexte »** : À mesure qu'une session s'allonge, l'attention du modèle se dilue, entraînant une baisse drastique des performances, des oubli, des contradictions et des modifications erronées de fichiers.
+* **Chute de la précision de récupération** : La précision de recherche interne de l'IA chute de 92 % à 256 000 tokens pour descendre à 78 % à un million de tokens, prouvant que saturer la fenêtre de contexte nuit gravement à la fiabilité.
+* **Inefficacité du compactage automatique** : L'auto-compaction déclenchée par défaut à 95 % de la fenêtre intervient au pire moment (pic de pourriture contextuelle) et ne conserve que 20 à 30 % des détails d'origine.
+* **Supériorité de la compaction manuelle anticipée** : Effectuer un compactage manuel autour de 60 % de la capacité de la fenêtre de contexte surpasse largement l'automatisation tardive en termes de rétention d'informations utiles.
+* **L'arme stratégique du `/rewind`** : Plutôt que de dire à Claude « cela n'a pas fonctionné, essaie ceci » (ce qui pollue le contexte avec du code cassé et de mauvaises approches), l'utilisation du retour en arrière (`/rewind` ou double Échap) efface proprement les tentatives infructueuses.
+* **Délégation via les sous-agents** : Transférer des tâches complexes vers de nouvelles fenêtres de contexte indépendantes (sous-agents) permet d'isoler les flux de travail et de récupérer uniquement le résultat final, évitant la pollution de la session principale.
 
 ---
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:23]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. Ce modèle est littéralement partout et pour de très bonnes raisons. Il est intelligent, il est bon marché, il a un goût incroyable, c'est un modèle d'IA incroyable. Mais avec chaque modèle d'IA, vous avez le choix de l'effort, que ce soit faible, moyen, élevé, extra, max ou code ultra.
+> Si vous utilisez Claude, cette vidéo va vous faire économiser de l'argent aujourd'hui. Atteindre les limites de session a été un énorme problème ces derniers temps dans toute la communauté, alors aujourd'hui je vais vous montrer tout ce que je sais sur la façon de vous assurer de ne pas atteindre votre limite. Je vais vous montrer un tableau de bord de jetons personnalisé que j'ai construit, je vais vous montrer des compétences personnalisées que j'ai construites pour vous aider à gérer vos limites de session, je vais vous montrer les meilleurs outils gratuits qui vous aident à réduire la quantité de jetons que vous envoyez, et je vais vous montrer les meilleures pratiques actuelles d'Anthropic pour vous assurer de ne pas atteindre votre limite.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de X (Twitter).
+**Interface & Outils** : Plan d'utilisation Claude, Token Dashboard, Interface de terminal / Éditeur de code (Claude Code)
 
-**Contenu textuel & Code** : Un tweet avec une vidéo intégrée montrant un environnement 3D tropical.
+**Contenu textuel & Code** : Statistiques d'utilisation des tokens, graphiques de consommation journalière, instructions textuelles et code markdown
 
-**Action / Démonstration** : Affichage d'un exemple de contenu généré par IA pour illustrer le propos.
+**Action / Démonstration** : Présentation des limites de session de Claude et visualisation des données d'utilisation de l'API / des tokens
 
-![Capture d'écran d'un post sur le réseau social X montrant une vidéo de paysage tropical généré par IA et un texte sur la perturbation des créateurs techniques.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000005_seg1.jpg)
-*⏱️ 00:00:05 — Capture d'écran d'un post sur le réseau social X montrant une vidéo de paysage tropical généré par IA et un texte sur la perturbation des créateurs techniques.*
+![Capture d'écran montrant les limites d'utilisation du plan Claude (Plan usage) avec des barres de progression à 100% pour la limite de 5 heures et les limites hebdomadaires.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000006_seg1.jpg)
+*⏱️ 00:00:06 — Capture d'écran montrant les limites d'utilisation du plan Claude (Plan usage) avec des barres de progression à 100% pour la limite de 5 heures et les limites hebdomadaires.*
+
+![Tableau de bord d'analyse des tokens (Token Dashboard) affichant les sessions, les requêtes (turns), les tokens d'entrée/sortie, la lecture de cache et le coût estimé.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000012_seg1.jpg)
+*⏱️ 00:00:12 — Tableau de bord d'analyse des tokens (Token Dashboard) affichant les sessions, les requêtes (turns), les tokens d'entrée/sortie, la lecture de cache et le coût estimé.*
+
+![Interface de terminal ou d'éditeur affichant du texte markdown avec des instructions sur un chatbot RAG n8n et une barre de statut en bas indiquant le mode automatique et l'utilisation du contexte.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000018_seg1.jpg)
+*⏱️ 00:00:18 — Interface de terminal ou d'éditeur affichant du texte markdown avec des instructions sur un chatbot RAG n8n et une barre de statut en bas indiquant le mode automatique et l'utilisation du contexte.*
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:24 - 00:00:46]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc dans cette vidéo, j'ai donné exactement le même prompt à Opus 5.5 et je l'ai exécuté sur chaque niveau d'effort et nous allons comparer les résultats. Nous examinerons la qualité de toutes les différentes sorties réelles, mais nous allons aussi examiner combien de temps chacun d'eux a fonctionné, combien cela nous a coûté s'il s'agissait de la facturation par API, le total des jetons, combien de vérifications ils ont exécutées et combien de questions ils m'ont réellement posées tout au long du processus.
+> Donc, peu importe où vous utilisez Claude, je vais vous faire économiser de l'argent dans cette vidéo, alors ne perdons pas de temps et entrons directement dans le vif du sujet. Commençons donc par le commencement, ici, avec ce qu'est le contexte. Le contexte, c'est fondamentalement tout ce que Claude Code peut voir en même temps. Cela inclut l'invite système, votre conversation complète, chaque appel d'outil, chaque sortie d'outil, chaque fichier que Claude a lu, chaque compétence, serveur MCP ou agent de votre projet.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc / interface de présentation (type Miro ou Figma) avec un tableau de comparaison structuré.
+**Interface & Outils** : Présentation vidéo avec diapositives graphiques et incrustation du présentateur.
 
-**Contenu textuel & Code** : Tableau comparatif avec les colonnes Low, Medium, High, Extra, Max, Ultracode et les lignes Run time, API cost, Total tokens, Checks, Questions asked.
+**Contenu textuel & Code** : Schémas explicatifs sur la mémoire de travail de Claude et les composants de la fenêtre de contexte (system prompt, conversation, tool calls, files read).
+[Démonstration] Le présentateur explique les concepts théoriques de la fenêtre de contexte à l'aide de visuels textuels.
 
-**Action / Démonstration** : Affichage des critères de comparaison des différents niveaux d'effort d'Opus 5.5.
-
-![Tableau de comparaison montrant les différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) et métriques.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000029_seg2.jpg)
-*⏱️ 00:00:29 — Tableau de comparaison montrant les différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) et métriques.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:47 - 00:01:23]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et les résultats que nous avons obtenus ne correspondent pas du tout à ce que j'attendais, donc j'ai hâte de partager cela avec vous les gars. Ne perdons pas de temps et entrons directement dans le vif du sujet. Bon, alors plongeons directement là-dedans. Je veux commencer simplement en vous montrant le prompt réel que nous avons utilisé, que nous avons donné à chacun de ces différents agents. Je vais aller dans les fichiers ici, et nous allons ouvrir ce fichier markdown de prompt, et je vais vous montrer ce que nous avons obtenu. Voici donc le slash objectif que j'ai fourni.
+> C'est fondamentalement tout ce genre de choses. Pensez-y comme à la mémoire de travail actuelle de Claude. Maintenant, Claude Code nous offre une fenêtre de contexte d'un million de tokens, ce qui est énorme, mais avant même que vous ne tapiez quoi que ce soit dedans, vous en brûlez déjà environ 8 000 rien qu'en raison de la surcharge de démarrage, donc des choses comme vos instructions système ou votre fichier cloud.md ou, vous savez, vos fichiers de contexte ou, comme je l'ai dit, les outils MCP, les compétences, des choses comme ça. Et honnêtement, ça pourrait être bien plus que ces 8 000. Quand j'ai découvert ça pour la première fois, j'ai réalisé que j'avais en fait environ 62 000 tokens juste à partir d'une nouvelle session. Donc si ce n'est pas déjà fait, allez dans une nouvelle session, tapez `/context` et voyez ce que vous avez.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de type IDE / assistant de code (Cursor ou application similaire) avec un panneau latéral de discussion et une incrustation vidéo.
+**Interface & Outils** : Présentation vidéo avec diapositive graphique explicative et incrustation vidéo du présentateur.
 
-**Contenu textuel & Code** : Texte du prompt demandant de construire un monde 3D interactif et navigable représentant la conférence AIS Live à partir d'enregistrements.
+**Contenu textuel & Code** : Schémas conceptuels sur la fenêtre de contexte, texte '1M hard cutoff', et mention de la commande '/context'.
 
-**Action / Démonstration** : Le présentateur introduit l'interface de l'outil d'IA et le prompt en cours de test.
+**Action / Démonstration** : Explication visuelle du fonctionnement de la mémoire de travail et de la surcharge de tokens au démarrage d'une session.
 
-![Interface d'un assistant de code affichant un prompt sur un projet de monde 3D, avec une incrustation vidéo du présentateur sur le côté gauche.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000048_seg3.jpg)
-*⏱️ 00:00:48 — Interface d'un assistant de code affichant un prompt sur un projet de monde 3D, avec une incrustation vidéo du présentateur sur le côté gauche.*
+![Schéma explicatif montrant la gestion de la fenêtre de contexte (Context window) de 1 million de tokens, avec un mécanisme de résumé automatique lorsque la limite est atteinte.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000056_seg3.jpg)
+*⏱️ 00:00:56 — Schéma explicatif montrant la gestion de la fenêtre de contexte (Context window) de 1 million de tokens, avec un mécanisme de résumé automatique lorsque la limite est atteinte.*
+
+![Diapositive illustrant la consommation initiale de tokens avec le texte '8K' et la mention 'Startup overhead — before you send a single message. Run /context on a fresh session.'](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000114_seg3.jpg)
+*⏱️ 00:01:14 — Diapositive illustrant la consommation initiale de tokens avec le texte '8K' et la mention 'Startup overhead — before you send a single message. Run /context on a fresh session.'*
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:23 - 00:01:43]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> J'ai dit, tu dois me créer un monde 3D qui est une conférence tech réaliste dans laquelle je peux me promener en vue à la troisième personne. Tu vas regarder ce dossier, qui contient mes ressources d'enregistrement d'événements de AIS Live. Et ce dossier est un dossier Frame.io de 105 gigaoctets d'enregistrements vidéo. C'était un événement complètement virtuel. Tout a été enregistré et tous les enregistrements sont ici même. J'ai dit, ton objectif est de prendre cet événement et de le transformer en un monde 3D explorable qui me donne l'impression d'être réellement allé à une vraie conférence en personne avec différentes salles, différentes pistes, différentes scènes, bla, bla, bla. N'hésite pas à utiliser key.ai si tu as besoin de générer des images ou des vidéos. Et tu peux aussi utiliser n'importe quoi d'autre à l'intérieur de mon projet Herc 2, qui est comme mon système d'exploitation IA. J'ai dit,
+> assis devant avant même d'envoyer quoi que ce soit. Et cela pourrait vous dire de supprimer des éléments ou de déplacer certaines choses en fonction de ce nombre que vous voyez, car sinon, il pourrait y avoir beaucoup de jetons invisibles dont vous ignorez même la consommation. Et très rapidement, il y a une chose super importante que vous devez comprendre sur le fonctionnement des jetons. Et cette seule chose a permis à des gens d'économiser des centaines et des milliers de jetons. Je vais donc insérer un extrait très rapidement.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Éditeur de code (type VS Code/Cursor) et interface web Frame.io
+**Interface & Outils** : Visual Studio Code et diapositive de présentation
 
-**Contenu textuel & Code** : Fichier Markdown PROMPT.md détaillant les instructions pour concevoir un monde 3D de conférence tech avec vue à la troisième personne à partir de ressources d'événements AIS Live (lien Frame.io).
+**Contenu textuel & Code** : Commande `/context`, statistiques de tokens par catégorie (System prompt: 8.7k, System tools: 11.3k, MCP tools: 2.4k, System tools deferred: 19.9k), et texte "8K Startup overhead — before you send a single message"
 
-**Action / Démonstration** : Présentation du prompt initial demandant à l'agent IA de transformer un dossier d'enregistrements de 105 Go en un monde virtuel 3D explorable.
+**Action / Démonstration** : Analyse et affichage de la consommation de tokens initiale avant l'envoi du premier message dans l'interface de développement
 
-![Éditeur de code affichant le fichier PROMPT.md contenant les instructions pour créer un monde 3D interactif basé sur un dossier d'enregistrements d'événements.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000107_seg4.jpg)
-*⏱️ 00:01:07 — Éditeur de code affichant le fichier PROMPT.md contenant les instructions pour créer un monde 3D interactif basé sur un dossier d'enregistrements d'événements.*
+![L'éditeur VS Code affichant les détails d'utilisation du contexte avec la commande `/context`, montrant la consommation de tokens par catégorie (System prompt, System tools, etc.) et le présentateur en incrustation.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000128_seg4.jpg)
+*⏱️ 00:01:28 — L'éditeur VS Code affichant les détails d'utilisation du contexte avec la commande `/context`, montrant la consommation de tokens par catégorie (System prompt, System tools, etc.) et le présentateur en incrustation.*
 
-![Interface Frame.io affichant un dossier d'une taille de 105,69 Go contenant les ressources d'enregistrement d'événements pour 'GA Access (For AIS)' et 'VIP Access'.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000116_seg4.jpg)
-*⏱️ 00:01:16 — Interface Frame.io affichant un dossier d'une taille de 105,69 Go contenant les ressources d'enregistrement d'événements pour 'GA Access (For AIS)' et 'VIP Access'.*
+![Une diapositive de présentation sur fond sombre titrée "BEFORE YOU TYPE" indiquant "TOKENS ALREADY GONE 8K" avec le texte explicatif "Startup overhead — before you send a single message. Run /context on a fresh session." et le présentateur en incrustation.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000138_seg4.jpg)
+*⏱️ 00:01:38 — Une diapositive de présentation sur fond sombre titrée "BEFORE YOU TYPE" indiquant "TOKENS ALREADY GONE 8K" avec le texte explicatif "Startup overhead — before you send a single message. Run /context on a fresh session." et le présentateur en incrustation.*
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:43 - 00:02:03]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> vous serez jugé sur la créativité, le design, la physique et la sensation générale lorsque j'explorerai le monde en 3D que vous avez construit. Et c'était fondamentalement la fin des instructions. Donc, comme vous pouvez le voir sur ce côté gauche, j'ai exécuté ceci à travers tous les différents niveaux d'effort. Commençons par le niveau bas et montons jusqu'à ultra code. Très bien. Donc ici, nous avons le résultat du niveau bas. Ouvrons ceci et jetons un coup d'œil. Nous avons donc AIS live, le sommet des services IA en personne enfin, et nous avons pu cliquer partout. Tout d'abord, cela ne fait pas très personnalisé. Genre, ce n'of pas le logo d'AIS Live. Ce n'est même pas nos couleurs. Donc je n'ike pas trop ça, mais entrons ici. D'accord. C'est bien trop lumineux. Hum, nous avons une carte en haut à droite. Nous avons une ville par ici. Je ne peux pas dire quelle ville c'est.
+> Donc, alors que j'ai optimisé ma propre gestion des jetons, je pense que ce qui est vraiment important de réaliser d'abord, c'est comment fonctionnent réellement les jetons. Parce qu'une fois que vous realizez comment Claude utilise les jetons, cela rend très clair la façon dont vous devriez réellement rétroconcevoir votre façon de travailler afin d'utiliser moins de jetons. Donc, un jeton est la plus petite unité de texte qu'un modèle d'IA lit et vous facture.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application logicielle (interface type Claude / assistant de code) avec un panneau latéral de sélection des sessions (Hello, Extra, High, Max, etc.) et une zone de chat centrale.
+**Interface & Outils** : Présentation vidéo avec diapositive de texte intégrée
 
-**Contenu textuel & Code** : Message de l'assistant IA demandant si la tâche de construction d'un monde 3D doit commencer ("Hi Nate. This worktree has the effort-test task queued in PROMPT.md : build a walkable third-person 3D world... Should I begin, or did you have something else in mind?"), avec la réponse de l'utilisateur saisie dans le champ du bas ("yes, start the task in PROMPT.md").
+**Contenu textuel & Code** : Définition d'un jeton comme plus petite unité de texte et explication du mécanisme de relecture de l'historique complet par Claude à chaque message.
 
-**Action / Démonstration** : L'utilisateur navigue dans les différents niveaux de test d'effort dans le panneau de gauche et valide le lancement de la tâche.
+**Action / Démonstration** : Présentation théorique illustrée par du texte à l'écran.
 
-![Interface d'une application d'IA affichant une discussion avec un assistant virtuel sur un test d'effort pour un monde 3D.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000142_seg5.jpg)
-*⏱️ 00:01:42 — Interface d'une application d'IA affichant une discussion avec un assistant virtuel sur un test d'effort pour un monde 3D.*
+![Diapositive explicative sur le fonctionnement des jetons (« How tokens actually work ») avec des puces textuelles et le présentateur en médaillon vidéo.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000148_seg5.jpg)
+*⏱️ 00:01:48 — Diapositive explicative sur le fonctionnement des jetons (« How tokens actually work ») avec des puces textuelles et le présentateur en médaillon vidéo.*
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:02:03 - 00:02:21]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> C'est. D'accord. C'est Chicago, ce qui est plutôt cool parce que tu sais, j'habite à Chicago, mais bref, en haut à droite, on peut voir une carte. Nous avons un hall d'accueil. Nous avons une salle d'exposition. Nous avons un salon VIP, la scène principale. La carte montre également où se trouve chaque autre personne et cela se synchronise en direct. Donc on peut voir l'inscription. On peut voir le premier jour, la keynote de l'hyper agent, le débriefing en direct. Cool. Donc ça connaît vraiment le programme et puis il y a le deuxième jour. Donc il a trouvé ça, c'est bien. Nous avons ces petits ballons ici que je peux espérer botter. D'accord. Le visage, oh, regardez ça. Si je vais par ici, tous les gens disparaissent tout simplement. Très mauvais. Très mauvais. D'accord. Alors voyons voir. Est-ce que je peux courir ? D'accord.
+> C'est à peu près un jeton pour un mot, mais ce n'est pas tout à fait vrai, c'est juste une bonne référence de base. Donc, à chaque fois que vous envoyez un message, Claude relit toute la conversation depuis le début, et tous ces éléments sont des jetons pour lesquels il vous facture. Donc, au premier message, il le lira, puis il lira sa réponse, puis au deuxième message, et ensuite la réponse, tout cela jusqu'à votre dernière instruction.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D immersive / plateforme virtuelle d'événement en ligne.
+**Interface & Outils** : Présentation vidéo avec incrustation du présentateur.
 
-**Contenu textuel & Code** : Carte de navigation, panneaux d'information "DAY 1", zones de l'événement (Lobby, Expo Hall, Main Stage).
+**Contenu textuel & Code** : Texte explicatif sur les tokens et le fonctionnement de la mémoire contextuelle de Claude.
 
-**Action / Démonstration** : Navigation et exploration d'un environnement virtuel interactif à l'aide d'un avatar.
-
-![Vue d'un espace virtuel 3D avec un avatar et une mini-carte en haut à droite indiquant l'emplacement actuel.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000216_seg6.jpg)
-*⏱️ 00:02:16 — Vue d'un espace virtuel 3D avec un avatar et une mini-carte en haut à droite indiquant l'emplacement actuel.*
-
-![Vue dans l'espace virtuel montrant un panneau affichant le programme du premier jour (DAY 1).](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000224_seg6.jpg)
-*⏱️ 00:02:24 — Vue dans l'espace virtuel montrant un panneau affichant le programme du premier jour (DAY 1).*
-
-![Vue de l'exposition virtuelle avec des avatars colorés et une installation lumineuse au centre.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000232_seg6.jpg)
-*⏱️ 00:02:32 — Vue de l'exposition virtuelle avec des avatars colorés et une installation lumineuse au centre.*
+**Action / Démonstration** : Présentation du concept théorique des tokens par le présentateur.
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:21 - 00:02:57]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je peux aller un peu plus vite. Je vais d'abord aller par ici. Il y a des goodies, euh, certifiés AIS plus glido. D'accord. Donc il y a les stands réels qu'on avait dans l'événement virtuel. On avait des stands. Donc c'est plutôt cool. Un petit endroit pour prendre des photos. Salle C. En ce moment, nous avons Tangy Frederick qui anime un atelier. D'accord. Mais ce n'est pas une vidéo. Comme vous pouvez le voir, c'est juste une image. Elle ne bouge pas. C'est donc juste une image. Ces gens sont en train de disparaître. Ce doivent être des fantômes. Allons par ici vers la salle A.
+> et ça fait ça à chaque fois. Et je pense que rien que ça, c'est une énorme prise de conscience pour beaucoup de gens. Cela signifie que pendant que vous avez une conversation avec Claude, votre coût s'accumule, il ne s'ajoute pas seulement, il augmente de façon exponentielle. Ce qui signifie que le premier message peut coûter 500 jetons, et le trentième message en coûte 15 000 parce qu'il relit tout ce qui précède. Un développeur a effectivement suivi un chat de plus de 100 messages et a constaté que 98,5 % de tous les jetons étaient simplement dépensés à relire l'historique de chat précédent dans la session. C'est un énorme gaspillage. Alors oui, on peut faire valoir l'argument selon lequel, eh bien, il a besoin du contexte et il a besoin de comprendre ce que nous faisons, mais quand même, 98,5 % c'est
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif (similaire à Gather.town ou un jeu en ligne)
+**Interface & Outils** : Présentation vidéo avec diapositive explicative et incrustation vidéo du présentateur.
 
-**Contenu textuel & Code** : Éléments graphiques d'un événement virtuel, stands, blocs de goodies AIS et tutoriels textuels affichés sur des écrans virtuels.
+**Contenu textuel & Code** : Texte à l'écran : "How tokens actually work. - This means cost compounds, not adds. Message 1 might cost 500 tokens. Message 30 costs 15,000+, because it's re-reading everything before it. - One developer tracked a 100+ message chat: 98.5% of all tokens were spent re-reading old history. Only 1.5% went toward new output."
 
-**Action / Démonstration** : Exploration et navigation du présentateur dans l'espace virtuel pour montrer les différents stands et salles d'atelier.
+**Action / Démonstration** : Présentation des statistiques et du fonctionnement du coût cumulatif des tokens par le présentateur.
 
-![Vue d'un monde virtuel interactif montrant le stand de l'événement avec des goodies et des blocs marqués "AIS".](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000246_seg7.jpg)
-*⏱️ 00:02:46 — Vue d'un monde virtuel interactif montrant le stand de l'événement avec des goodies et des blocs marqués "AIS".*
-
-![Navigation du personnage virtuel dans la salle C de l'événement virtuel avec des tables lumineuses et des écrans d'information.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000252_seg7.jpg)
-*⏱️ 00:02:52 — Navigation du personnage virtuel dans la salle C de l'événement virtuel avec des tables lumineuses et des écrans d'information.*
-
-![Gros plan sur un écran virtuel dans la salle d'atelier montrant des instructions pour l'obtention d'une clé API.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000258_seg7.jpg)
-*⏱️ 00:02:58 — Gros plan sur un écran virtuel dans la salle d'atelier montrant des instructions pour l'obtention d'une clé API.*
+![Diapositive explicative intitulée "How tokens actually work." avec des puces détaillant le coût cumulatif des tokens et l'historique des conversations, tandis que le présentateur apparaît en médaillon dans le coin inférieur droit.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000230_seg7.jpg)
+*⏱️ 00:02:30 — Diapositive explicative intitulée "How tokens actually work." avec des puces détaillant le coût cumulatif des tokens et l'historique des conversations, tandis que le présentateur apparaît en médaillon dans le coin inférieur droit.*
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:02:57 - 00:03:32]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons Liberty White. D'accord. Très cool. Vos 30 premiers jours en automatisation. Encore une fois, c'est juste une image fixe et les gens ont des bugs d'affichage. Donc ce n'est pas très bien ici. Je vais aller sur la scène principale et voir ce que nous avons. D'accord, cool. Nous avons donc une scène qui a l'air principale. Les gens ont des bugs d'affichage. Vraiment grave. Ce n'est vraiment pas très bien. Notre vidéo est en train de bouger. J'ai vu mon visage ici et j'ai vu celui de Devin, mais maintenant ils ont disparu. Donc je ne sais pas ce qui s'est passé. D'accord. On dirait que c'est plutôt un diaporama. Rien n'est encore vraiment diffusé. Quoi qu'il en soit, entrons ici.
+> fou. Donc, jetez un rapide coup d'œil à ce graphique ici. Sur l'axe des x, nous avons le numéro du message. Et à mesure qu'il augmente, vous pouvez voir que nous avons notre coût par message et nos jetons cumulés qui augmentent, mais ce n'est pas linéaire. C'est fondamentalement que chaque message relit tous les précédents et il doit en tenir compte. Donc, le message un pourrait être de 500, le message 30 pourrait être de 15 500, ce qui fait 31 fois plus. Et puis, après 30 messages, vous pourriez déjà être à près d'un quart de million de jetons cumulés. Très bien, super. Je suis content que vous sachiez cela maintenant. Revenons à la vidéo, ce qui nous amène à la pourriture du contexte. Et dans mon esprit, je pense fondamentalement à la pourriture du contexte comme un mot sophistiqué pour désigner la démence de l'IA, parce que cette
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif (plate-forme de type événement virtuel / métavers).
+**Interface & Outils** : Présentation vidéo avec graphiques et diapositives intégrés.
 
-**Contenu textuel & Code** : Textes d'affichage et signalétique virtuelle d'événements ("Foundation track", "Main Stage", "AIS LIVE AI Services Summit").
+**Contenu textuel & Code** : Graphique avec axe X (numéro de message) et axe Y (jetons cumulés / coût par message), et mention 'Startup overhead' avec '8K' jetons.
 
-**Action / Démonstration** : Navigation et déplacement d'un avatar à travers un espace virtuel d'événement en ligne.
+**Action / Démonstration** : Explication par le présentateur de la consommation non linéaire des jetons dans une session de chat.
 
-![Vue de l'avatar naviguant dans un auditorium virtuel rempli de participants numérisés lors d'un atelier.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000317_seg8.jpg)
-*⏱️ 00:03:17 — Vue de l'avatar naviguant dans un auditorium virtuel rempli de participants numérisés lors d'un atelier.*
+![Graphique explicatif montrant l'évolution du coût des jetons par message et le cumul total sur une session de 30 messages.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000305_seg8.jpg)
+*⏱️ 00:03:05 — Graphique explicatif montrant l'évolution du coût des jetons par message et le cumul total sur une session de 30 messages.*
 
-![Vue en face d'une grande scène principale affichant le logo "AIS LIVE AI Services Summit" dans l'environnement virtuel 3D.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000324_seg8.jpg)
-*⏱️ 00:03:24 — Vue en face d'une grande scène principale affichant le logo "AIS LIVE AI Services Summit" dans l'environnement virtuel 3D.*
+![Diapositive illustrant les frais généraux de démarrage avec 8K jetons déjà consommés avant d'envoyer un seul message.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000323_seg8.jpg)
+*⏱️ 00:03:23 — Diapositive illustrant les frais généraux de démarrage avec 8K jetons déjà consommés avant d'envoyer un seul message.*
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:32 - 00:04:09]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons d'autres stands. Nous avons hyper agent. Nous avons Claude Code. Nous avons plus de goodies. La salle B, c'est Dave Ebelor. Je suppose que c'est exactement la même chose. Nous avons du café. Et ensuite, je suppose que le salon VIP, accès VIP seulement. C'est plutôt cool, mais il ne se passe vraiment rien ici. Cet écran est bien trop lumineux. Bon. Donc je pense que vous comprenez l'ambiance qu'on obtient ici avec Opus 5.5 en effort faible. Et c'est là que les choses deviennent intéressantes. Combien de temps pensez-vous que cela a duré ? Combien de temps ? Celui-ci a duré 16 minutes et 43 secondes. Combien pensez-vous que cela a coûté ?
+> ce qui se produit fondamentalement à mesure que votre session s'allonge et que les performances du modèle commencent à se dégrader parce que son attention se répartit sur chaque token, chaque message qui a été envoyé. Et fondamentalement, il commence à être vraiment distrait. Il commence à oublier des choses. Il commence à se contredire et à modifier des fichiers sans les lire au préalable. Et il devient très vague et sensiblement pire. Et les statistiques nous montrent en réalité que la précision de la récupération chute de 92 % à 256 000 tokens pour descendre jusqu'à 78 % à un million de tokens. Donc même si vous pouvez remplir votre fenêtre de contexte d'un million de tokens, le modèle sera nettement moins performant pour trouver ce dont il a besoin à l'intérieur
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc ou de prise de notes collaborative (type Excalidraw ou canevas web)
+**Interface & Outils** : Présentation vidéo
 
-**Contenu textuel & Code** : Tableau avec les colonnes Low, Medium, High, Extra, Max, Ultracode et les lignes Run time, API cost, Total tokens, Checks, Questions asked.
+**Contenu textuel & Code** : Texte à l'écran 'THE BIG PROBLEM', 'CONTEXT ROT', 'AI DEMENTIA.' et une barre de progression graphique en blocs.
 
-**Action / Démonstration** : Présentation des différents niveaux de performance et métriques d'évaluation dans le canevas.
-
-![Tableau de comparaison d'efforts "Opus 5.5 Efforts" affichant des niveaux de performance (Low, Medium, High, Extra, Max, Ultracode) et des métriques associées.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000351_seg9.jpg)
-*⏱️ 00:03:51 — Tableau de comparaison d'efforts "Opus 5.5 Efforts" affichant des niveaux de performance (Low, Medium, High, Extra, Max, Ultracode) et des métriques associées.*
+**Action / Démonstration** : Le présentateur explique le concept de la dégradation du contexte (context rot).
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:04:09 - 00:04:46]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> 3,91 dollars si c'eût été une facturation par API. J'utilise évidemment mon abonnement ici, mais nous allons simplement calculer cela avec la facturation par API. Le total des jetons était de 191 000. Il a effectué 22 vérifications. Donc, pour la vérification, il a ouvert 22 fois le navigateur et exécuté différents types de vérifications. Soit 22 catégories de vérifications. Et combien de questions m'a-t-il posées ? Il m'a posé un total de zéro question tout au long de cette invite de commande d'objectif globale. D'accord. Alors ouvrons l'effort moyen et voyons ce que nous avons. D'accord, c'est parti. Effort moyen. Nous avons Nate Herc. Nous avons mon badge. C'est aux couleurs de la marque AI's life.
+> de cette fenêtre. Et maintenant, si vous y pensez, à mesure que le modèle commence à empirer, votre efficacité en matière de jetons baisse considérablement, car vous pourriez devoir dépenser 500 000 jetons, par exemple, pour obtenir un résultat qui aurait pu vous en prendre 200 000 si le modèle fonctionnait comme il le devrait. Essayez donc d'éviter la pourriture contextuelle à tout prix dans l'ensemble de vos sessions. Bien, ensuite nous avons le compactage automatique. Celui-ci va s'activer automatiquement, d'où le nom de compactage automatique, vers 95 % de votre fenêtre. Mais toute la communauté s'accorde à dire que c'est bien trop tard. Et je suis entièrement d'accord. Parce qu'lorsqu'il se compacte automatiquement, vous ne conservez qu'environ 20 à 30 % des détails d'origine.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau blanc ou application de mind mapping/diagramme (ex: Excalidraw ou similaire).
+**Interface & Outils** : Présentation vidéo avec incrustation d'infographie.
 
-**Contenu textuel & Code** : Tableau avec les lignes 'Run time', 'API cost', 'Total tokens', 'Checks', 'Questions asked' et les colonnes 'Low', 'Medium', 'High', 'Ex'.
+**Contenu textuel & Code** : Texte « RETRIEVAL ACCURACY » et « ACCURACY AT 256K -> 1M TOKENS » avec les pourcentages « 92% -> 78% ».
 
-**Action / Démonstration** : Le présentateur commente le tableau de données chiffrées affichant le coût de l'API ($3.91) et le nombre total de jetons (191.3K).
+**Action / Démonstration** : Le présentateur explique l'impact de la baisse de performance du modèle sur l'efficacité des jetons.
 
-![Un tableau comparatif montrant les métriques de performance et de coût, notamment 'Run time: 16m 43s', 'API cost: $3.91', 'Total tokens: 191.3K', et 'Checks'.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000405_seg10.jpg)
-*⏱️ 00:04:05 — Un tableau comparatif montrant les métriques de performance et de coût, notamment 'Run time: 16m 43s', 'API cost: $3.91', 'Total tokens: 191.3K', et 'Checks'.*
+![Diapositive présentant la précision de récupération (Retrieval Accuracy) qui chute de 92% à 78% lorsque la taille du contexte passe de 256K à 1M de tokens, avec le présentateur en médaillon.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000418_seg10.jpg)
+*⏱️ 00:04:18 — Diapositive présentant la précision de récupération (Retrieval Accuracy) qui chute de 92% à 78% lorsque la taille du contexte passe de 256K à 1M de tokens, avec le présentateur en médaillon.*
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:04:46 - 00:05:23]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc ça a déjà l'air un tout petit peu mieux. Ça ressemble à nos palettes de couleurs qui ont utilisé nos directives de marque. Premier jour de construction, deuxième jour de gain, VIP. Cool. D'accord. Je vais entrer dans le lieu. D'accord. Waouh. Donc une ambiance un peu similaire. C'est en arrière-plan. Ça ne ressemble pas à Chicago, n'est-ce pas ? Non, ça ressemble à, honnêtement, ça ressemble à une ville inventée. Quoi qu'il en soit, c'est drôle qu'ils aient décidé de faire ça. Voyons si je peux me déplacer un peu plus vite. Oh, waouh.
+> Donc vous perdez une tonne de contexte important. Et le modèle fait cette compaction à son niveau d'intelligence le plus bas possible. Parce qu'évidemment, l'auto-compaction se déclenche genre au pic de la pourriture du contexte. Alors imaginez que vous faites vos valises pour un voyage. Si vous deviez faire vos valises la veille au soir, vous auriez le temps de réfléchir et vous prendriez toutes les bonnes affaires et vousisseriez probablement rien oublier parce que vous feriez une liste et vous la vérifieriez. Mais si vous bourrez votre sac de manière frénétique parce que vous vous êtes réveillé cinq minutes avant de devoir partir, vous allez probablement oublier votre chargeur, votre brosse à dents, des choses comme ça. Et c'est fondamentalement l'auto-compaction à 95 %. Donc la solution serait tout simplement la compaction manuelle. J'aime faire ça à environ 60 % de mon parcours dans ma fenêtre de contexte si je suis à
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web interactive / Environnement virtuel 3D (AIS Live)
+**Interface & Outils** : Présentation vidéo avec diapositive explicative et incrustation du présentateur.
 
-**Contenu textuel & Code** : Page d'accueil de l'événement virtuel avec badges, options de navigation, contrôles clavier et affichage du nombre de sessions.
+**Contenu textuel & Code** : Schéma de la fenêtre de contexte, texte "Manual VS Auto", "Manual: Pack the night before", "Auto: 5 min before you leave".
 
-**Action / Démonstration** : Le présentateur clique sur le bouton pour entrer dans l'événement virtuel 3D et explore l'environnement.
+**Action / Démonstration** : Explication par le présentateur du fonctionnement de la compaction automatique du contexte et comparaison avec une préparation de voyage.
 
-![Interface web de l'application 'AIS Live' montrant un badge de pass VIP personnalisé au nom de 'NATE HERK' et un bouton 'ENTER THE VENUE'.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000431_seg11.jpg)
-*⏱️ 00:04:31 — Interface web de l'application 'AIS Live' montrant un badge de pass VIP personnalisé au nom de 'NATE HERK' et un bouton 'ENTER THE VENUE'.*
+![Schéma explicatif montrant la compaction de la fenêtre de contexte (Context window) avec un résumé (summary) et le mécanisme de "hard cutoff" à 1M.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000455_seg11.jpg)
+*⏱️ 00:04:55 — Schéma explicatif montrant la compaction de la fenêtre de contexte (Context window) avec un résumé (summary) et le mécanisme de "hard cutoff" à 1M.*
 
-![Vue immersive 3D à l'intérieur de l'espace virtuel 'AIS Live', montrant des avatars de type rétro/low-poly dans un hall d'accueil avec vue sur des gratte-ciels la nuit.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000441_seg11.jpg)
-*⏱️ 00:04:41 — Vue immersive 3D à l'intérieur de l'espace virtuel 'AIS Live', montrant des avatars de type rétro/low-poly dans un hall d'accueil avec vue sur des gratte-ciels la nuit.*
+![Diapositive comparant la méthode "Manual" (Pack the night before, ~60%) et la méthode "Auto" (5 min before you leave, ~95%).](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000505_seg11.jpg)
+*⏱️ 00:05:05 — Diapositive comparant la méthode "Manual" (Pack the night before, ~60%) et la méthode "Auto" (5 min before you leave, ~95%).*
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:05:23 - 00:05:48]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Les gens interagissent avec moi. Regardez. Si je m'approche de ce type, il vient de lever le bras. Bon, maintenant il ne veut plus du tout avoir affaire à moi. Mais tous ces petits robots ici doivent prendre des décisions. Je ne sais pas s'ils utilisent Jev. C'est sûr que non. Je ne le lui ai pas dit. En fait, ma clé Jev est à l'arrière. Je ne sais pas. Peut-être qu'elle l'a utilisée. Quoi qu'il en soit, nous pouvons voir ici que nous avons la salle d'atelier C, le laboratoire des agents. Sympa. Donc celui-ci est en fait en cours d'exécution. Vous pouvez voir qu'il s'agit d'une vraie vidéo lue par Tangy. Tout le monde ici est en train de travailler sur un ordinateur portable. Ils ne buguent pas. C'est plutôt cool. De plus, mon badge est sur ma poitrine, ce qui est plutôt cool. Je peux venir par ici. Nous avons une carte en haut à droite, comme vous pouvez le voir, mais je peux venir par ici. Nous avons un
+> comme le modèle à 250 000, qui bat définitivement la compaction automatique à 95 % à chaque fois. Cependant, il y a quelque chose que j'aime faire, que je fais beaucoup plus souvent par rapport au simple fait de compacter manuellement. Et je vais aborder cela dans une minute ici. Et d'ailleurs, beaucoup de ces diagrammes que vous pourriez voir ici proviennent de l'article d'Anthropic. Et je pensais qu'ils étaient vraiment bons. Donc je voulais les glisser ici. Mais de toute façon, en parlant de l'article d'Anthropic, celui-ci était là, cette prochaine sorte de section.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de métavers / monde virtuel 3D (type Gather Town ou équivalent en 3D)
+**Interface & Outils** : Présentation vidéo et interface de lecteur de tweet (réseau social X).
 
-**Contenu textuel & Code** : Environnement virtuel interactif peuplé d'avatars et d'éléments de bureau
+**Contenu textuel & Code** : Texte comparatif sur les processus manuels et automatiques, et un diagramme de gestion de session pour Claude Code.
 
-**Action / Démonstration** : Navigation et exploration d'un espace virtuel 3D peuplé de personnages non-joueurs (robots/avatars)
+**Action / Démonstration** : Le présentateur explique les concepts de compaction automatique versus manuelle.
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:05:48 - 00:06:21]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> hall d'exposition. C'est là que nous avons le stand Glido. Et ça diffuse en ce moment. Oui, ça diffuse la vidéo de nous parlant de Glido. Ça diffuse la vidéo d'Ed et moi parlant de notre programme de certification. Nous avons le logo AIS Plus juste ici, qui est un peu dans un endroit bizarre. Ce sont les diapositives des conférenciers et les points clés. Donc wow, ce sont toutes les ressources que nous avons distribuées après l'événement. Elles sont toutes là également. Nous pouvons voir que nous avons un projecteur sur la communauté. C'est donc Aiden qui parle de son contrat qu'il a décroché et c'est diffusé en direct. Ces gens regardent.
+> Et j'ai vraiment aimé la façon dont ils l'ont présenté. Donc, en gros, ils ont dit qu'après absolument chaque intervention de Claude, vous avez fondamentalement cinq options. La première étant de continuer, ce qui signifie que vous répondez simplement, vous envoyez un autre message, et c'est très naturel et il est facile de se retrouver dans cette boucle de simple continuation. Et ensuite, vous avez slash rewind, qui vous permet de revenir à un message précédent et de supprimer tout ce qui suit. Donc c'est très cool. Vous pouvez aussi faire slash clear, pour recommencer entièrement à zéro. Vous pouvez faire slash compact pour résumer la session et remplacer l'historique par ce résumé. Ou vous pouvez envoyer des messages à un sous-agent. Donc, en gros, déléguer le travail.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D de type salon d'exposition.
+**Interface & Outils** : Présentation vidéo avec diapositive graphique et incrustation du présentateur.
 
-**Contenu textuel & Code** : Panneaux textuels, diapositives de présentation et interfaces de navigation virtuelle.
+**Contenu textuel & Code** : Texte listant les options : Continue, /rewind, /clear, /compact, Sub-agent, ainsi que les descriptions du niveau de contexte conservé.
 
-**Action / Démonstration** : Navigation et exploration dans l'espace d'exposition virtuel par le présentateur.
+**Action / Démonstration** : Le présentateur détaille et explique les cinq options disponibles lors de l'utilisation de Claude.
+
+![Une diapositive montrant une liste de cinq options disponibles après chaque réponse ("After every reply, you have five options"), avec le présentateur incrusté en bas à droite.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000557_seg13.jpg)
+*⏱️ 00:05:57 — Une diapositive montrant une liste de cinq options disponibles après chaque réponse ("After every reply, you have five options"), avec le présentateur incrusté en bas à droite.*
+
+![Un schéma explicatif illustrant les cinq options (Fresh session, Compact, Subagent, Rewind, Continue) et la quantité de contexte conservée pour chacune.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000613_seg13.jpg)
+*⏱️ 00:06:13 — Un schéma explicatif illustrant les cinq options (Fresh session, Compact, Subagent, Rewind, Continue) et la quantité de contexte conservée pour chacune.*
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:06:21 - 00:06:44]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Ils sont plutôt engagés. On a un hyper agent. C'était, c'est ce que je voulais dire. Si vous avez vu ces gens lever les mains en disant bonjour, c'était plutôt marrant. Regardez, regardez, le voilà qui recommence. Bref. Bon. Où est-ce que je suis maintenant ? Maintenant, je suis dans le hall principal. On a un bar à café. On a un grand logo, qui est le vrai logo. C'est trop lumineux, mais on a le logo. On peut voir si on peut entrer ici dans le parcours des fondations. On a Sabrina Romanov et Liberty White. Donc différentes formations juste là. On peut entrer dans cette salle. C'est le parcours avancé. Donc qu'est-ce qui se passe ici. On a Dave Ebelar et Saman qui parlent de différentes choses là-dedans. Et maintenant, allons jeter un œil à la scène principale. Oh, attendez, il y a une vidéo de moi là-haut. C'est genre un VIP
+> vers une nouvelle fenêtre de contexte, et ensuite vous obtenez une sorte de résultat final. Très rapidement, les gars, je sais que nous allons couvrir une tonne d'informations dans cette vidéo. J'ai donc regroupé tout ce dont nous allons parler dans un guide de ressources complet auquel vous pouvez accéder tout à fait gratuitement. Le lien pour cela se trouvera dans la description. Rejoignez ma communauté School gratuite. Et c'est là que vous pourrez obtenir ce document, comme je l'ai dit, tout à fait gratuitement ainsi que toutes les autres ressources gratuites que j'ai publiées avec toutes mes vidéos YouTube. Je vous retrouve donc là-bas. Revenons à la vidéo.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif (type metaverse/plateforme d'événement en ligne).
+**Interface & Outils** : Présentation vidéo
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant "Main Lobby", mini-carte de navigation et options d'interaction.
+**Contenu textuel & Code** : Texte promotionnel pour un document de ressources et logo AIS
 
-**Action / Démonstration** : Navigation et exploration d'un espace virtuel 3D par l'utilisateur et des agents IA.
-
-![Vue principale du hall virtuel 3D (Main Lobby) avec des avatars et des barres d'outils d'interaction.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000555_seg14.jpg)
-*⏱️ 00:05:55 — Vue principale du hall virtuel 3D (Main Lobby) avec des avatars et des barres d'outils d'interaction.*
-
-![Avatars se déplaçant dans un espace virtuel d'événement en ligne vers une salle de conférence.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000604_seg14.jpg)
-*⏱️ 00:06:04 — Avatars se déplaçant dans un espace virtuel d'événement en ligne vers une salle de conférence.*
-
-![Vue en mouvement montrant plusieurs avatars interactifs regroupés autour d'une table dans l'espace virtuel.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000612_seg14.jpg)
-*⏱️ 00:06:12 — Vue en mouvement montrant plusieurs avatars interactifs regroupés autour d'une table dans l'espace virtuel.*
+**Action / Démonstration** : Le présentateur introduit un guide de ressources complet disponible en description.
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:06:45 - 00:07:17]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section ? Ouais, on ira voir ça dans une minute. Mais bref, voici la scène principale. Ça a l'air vraiment, vraiment très bien. On a une grande scène. On a genre quatre personnes assises ici. On a les trois écrans d'Alex là-haut avec Hyper Agent. Est-ce que j'ai le droit de monter sur scène ? Oh, et il me laisse monter sur scène. D'accord. C'est plutôt sympa. Bon les gars, prenons un selfie. Laissez-moi mettre tout le monde en arrière-plan. Venez par ici. Bref, c'est plutôt, plutôt cool. Par contre, toutes les places ne sont pas occupées. Donc il faut qu'on travaille là-dessus. Mais bref, je vais y retourner en courant pour voir ce que c'était que cette section VIP. D'accord. Le salon VIP. J'ai l'impression que c'est comme un aéroport ou un truc comme ça.
+> Donc, plongeons un peu dans tout ça, car une fois que vous commencez à comprendre lesquels vous devriez utiliser dans quel scénario, cela peut changer la donne pour vous. Donc, slash rewind, qui est la habitude numéro un qu'Anthropic recommande. Maintenant, je faisais beaucoup cela manuellement, sans utiliser la véritable fonctionnalité slash rewind, mais je vais définitivement commencer à utiliser cette fonctionnalité, car fondamentalement, vous pouvez appuyer deux fois sur Échap ou vous pouvez exécuter slash rewind, et cela vous permet de revenir à n'importe quel message précédent dans votre session, et tout ce qui se trouve à ce moment-là après est supprimé, ce qui est évidemment énorme pour le contexte. Et c'est beaucoup plus puissant que vous ne le pensez, car la plupart du temps, lorsque Claude
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application virtuelle 3D Hyper Agent
+**Interface & Outils** : Présentation visuelle (diapositives avec schémas explicatifs et incrustation vidéo du présentateur).
 
-**Contenu textuel & Code** : Interface de conférence virtuelle avec écrans de keynote et mini-carte de navigation
+**Contenu textuel & Code** : Diagrammes de flux comparant "Correcting" (tentatives multiples accumulées dans le contexte) et "Rewinding" (retour en arrière pour n'envoyer qu'un prompt propre).
 
-**Action / Démonstration** : Navigation et exploration de l'espace de conférence virtuel 3D par le présentateur
+**Action / Démonstration** : Explication comparative des méthodes de correction et de retour en arrière dans l'agent IA.
+
+![Schéma comparatif entre la correction classique et l'utilisation de la fonction Rewinding avec la touche 'esc', et le présentateur en médaillon.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000709_seg15.jpg)
+*⏱️ 00:07:09 — Schéma comparatif entre la correction classique et l'utilisation de la fonction Rewinding avec la touche 'esc', et le présentateur en médaillon.*
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:07:17 - 00:07:48]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> OK, super. Donc maintenant, nous avons les sessions VIP ici. Une foire aux questions VIP avec la lecture vidéo en direct de Nate juste ici. C'est vraiment, vraiment super. Et nous avons comme un bar ou quelque chose comme ça. Génial. Je dirais que c'est un très bon résultat. Maintenant, en ce qui concerne les statistiques ici, celui-ci a pris une heure et 13 minutes à s'exécuter. Il nous aurait coûté 12 dollars et 44 cents. Il a utilisé 490 000 jetons et il a fait 23 vérifications.
+> fait quelque chose de travers, et je le fais beaucoup moi-même, il faut bien l'admettre, je vais simplement dire quelque chose du genre, ça n'a pas fonctionné, essaie plutôt ceci. Et ensuite Claude essaie autre chose. Et la plupart du temps, ça fonctionne. Donc on se dit, ok, il n'y a rien de mal dans ce que je viens de faire. Mais si vous y pensez, cette tentative infructueuse, ce code cassé, peu importe ce qu'il a fait de travers, la mauvaise approche, tout cela est toujours présent dans votre contexte. Et c'est toujours lu à chaque fois. Et cela ne fait que polluer vos futures réponses. Maintenant, je pense qu'il y a un argument à faire valoir sur le fait que si vous laissez des choses comme ça, il est capable de lire à travers et il est capable d'apprendre et il est capable de ne pas commettre cette même erreur une deuxième fois.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de monde virtuel / salon VIP et tableau de bord de métriques.
+**Interface & Outils** : Présentation vidéo avec schéma explicatif en blocs et flux de texte.
 
-**Contenu textuel & Code** : Vidéo en direct intégrée dans un espace virtuel 3D, sous-titres, et tableau de métriques (Run time: 16m 43s, API cost: $3.91, Total tokens: 191.3K).
+**Contenu textuel & Code** : Schémas textuels 'Correcting' (file reads -> attempt A -> 'no, try B' -> attempt B -> 'no, try C' -> attempt C) et 'Rewinding' (file reads -> attempt A -> 'use C, not A/B' -> attempt C), illustrant la gestion du contexte.
 
-**Action / Démonstration** : Visite guidée du salon virtuel VIP avec présentation de la session vidéo en direct.
+**Action / Démonstration** : Le présentateur explique l'optimisation du contexte par le retour en arrière (rewinding) plutôt que par la correction successive.
 
-![Capture d'écran montrant l'espace virtuel VIP avec le présentateur en vidéo en direct et un bar en arrière-plan.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000656_seg16.jpg)
-*⏱️ 00:06:56 — Capture d'écran montrant l'espace virtuel VIP avec le présentateur en vidéo en direct et un bar en arrière-plan.*
+![Schéma comparatif illustrant deux méthodes d'interaction avec une IA : 'Correcting' (corriger itérativement) et 'Rewinding' (revenir en arrière), avec le présentateur visible en incrustation.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000725_seg16.jpg)
+*⏱️ 00:07:25 — Schéma comparatif illustrant deux méthodes d'interaction avec une IA : 'Correcting' (corriger itérativement) et 'Rewinding' (revenir en arrière), avec le présentateur visible en incrustation.*
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:07:48 - 00:08:21]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et il nous a posé un total de zéro question une fois de plus. Très bien, passons au niveau élevé. C'était déjà un résultat plutôt correct et Anthropic eux-mêmes dans leur vidéo, ou désolé, pas une vidéo, un article sur comment prompter Opus 5.5, ils ont dit de commencer simplement par le niveau moyen et de l'ajuster à la hausse ou à la baisse si nécessaire. C'était donc un résultat moyen. Passons au niveau élevé et voyons ce que nous avons obtenu. Très rapidement, les gars, je dois prendre une seconde pour vous parler du sponsor de la vidéo d'aujourd'hui, Hostinger. Donc ces deux modèles viennent de me construire une version fonctionnelle de la même chose. Et maintenant, je suis exactement là où je finis toujours, avec quelque chose de terminé sur mon ordinateur portable et aucun moyen rapide de le mettre en ligne. Et c'est le fossé que le connecteur d'Hostinger comble. C'est une extension gratuite
+> Mais je pense qu'il y a différentes manières d'enseigner essentiellement à Claude de ne pas faire la même erreur deux fois, qui sont plus efficaces ou plus économiques en jetons que de simplement la laisser là. Peut-être avez-vous simplement un journal de décisions ou peut-être le prompt-ez-vous mieux la prochaine fois, des choses comme ça. Donc, faire un retour en arrière est préférable parce que maintenant votre contexte est propre. Et lorsque vous faites slash retour en arrière, il y a aussi une option résumer à partir d'ici dans ce menu, qui vous crée fondamentalement un message de transition, qui est une note du futur soi de Claude à son passé soi disant, voici ce que nous avons découvert, faites-le de cette façon. D'accord. Alors maintenant, parlons de compact et clair. Donc, la règle empirique du genre
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Logiciel de prise de notes/tableau blanc (Image 1), éditeur Cursor avec agent Claude Code intégré (Image 2).
+**Interface & Outils** : Présentation vidéo avec diapositive graphique et vignette du présentateur
 
-**Contenu textuel & Code** : Tableau de métriques de performance IA (Image 1) ; prompt de construction d'un calculateur HTML, logs de réflexion ("Ruminating", "dataviz skill") et paramètres de configuration de modèle Opus 5.5 (Image 2).
+**Contenu textuel & Code** : Texte affichant « #1 HABIT », « ANTHROPIC'S #1 RECOMMENDATION », « /REWIND » et une frise chronologique illustrant le retour en arrière.
 
-**Action / Démonstration** : Comparaison des coûts et efficacité de l'IA (Image 1) ; exécution d'une tâche de développement web automatisée via l'agent Claude Code (Image 2).
+**Action / Démonstration** : Le présentateur explique la fonctionnalité de retour en arrière ou de journal de décision pour éviter de répéter les mêmes erreurs avec l'IA.
 
-![Un tableau comparatif des performances de l'agent Opus 5.5 selon les niveaux de réglage (Low, Medium, High, Extra), affichant le temps d'exécution, le coût API, le nombre de tokens, les vérifications et les questions posées.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000722_seg17.jpg)
-*⏱️ 00:07:22 — Un tableau comparatif des performances de l'agent Opus 5.5 selon les niveaux de réglage (Low, Medium, High, Extra), affichant le temps d'exécution, le coût API, le nombre de tokens, les vérifications et les questions posées.*
-
-![Capture d'écran de l'interface de développement Cursor avec Claude Code, montrant le processus de construction d'un calculateur de ROI ("Northwind ROI calculator") en mode agentique avec des étapes de réflexion.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000739_seg17.jpg)
-*⏱️ 00:07:39 — Capture d'écran de l'interface de développement Cursor avec Claude Code, montrant le processus de construction d'un calculateur de ROI ("Northwind ROI calculator") en mode agentique avec des étapes de réflexion.*
+![Une diapositive sombre avec le texte '/REWIND' et la mention 'ANTHROPIC'S #1 RECOMMENDATION', accompagnée d'une vidéo incrustée du présentateur en bas à droite.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000757_seg17.jpg)
+*⏱️ 00:07:57 — Une diapositive sombre avec le texte '/REWIND' et la mention 'ANTHROPIC'S #1 RECOMMENDATION', accompagnée d'une vidéo incrustée du présentateur en bas à droite.*
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:08:21 - 00:08:54]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> pour votre éditeur qui intègre votre compte Hostinger dans l'outil de programmation que vous utilisez déjà, que ce soit VS Code, Cursor, Cloud Code, Codex, et j'en passe. Vous vous connectez une seule fois en un clic, et à partir de là, votre agent peut déployer le site, y pointer un domaine, configurer les enregistrements DNS et vérifier votre VPS sans que vous n'ayez jamais à quitter l'éditeur. Ainsi, peu importe celui que vous finirez par préférer, ce qu'il a construit n'est qu'à quelques minutes d'une véritable URL sur un hébergement géré. L'extension Connector est gratuite avec n'offrant n'importe quel plan d'hébergement, donc si vous avez encore besoin de l'hébergement sous-jacent, profitez du plan illimité grâce au lien dans la description et utilisez le code NATEHERK pour obtenir 10 % de réduction. Cela inclut également un nom de domaine gratuit et un e-mail professionnel pour l'année. Et c'est toujours le moyen le moins cher que j'ai trouvé pour obtenir quelque
+> Du point de vue de la documentation, ce serait que si vous commencez une nouvelle tâche, faites slash clear. Et si vous continuez la même tâche, faites slash compact. Et honnêtement, je ne suis plus du tout d'accord. Je n'utilise plus du tout slash compact. Ce que je fais en réalité, c'est essentiellement ma propre version. Si j'utilise Opus avec une fenêtre de contexte d'un million de jetons, si je dépasse environ 120 000 jetons, soit environ 12 %, alors je dis simplement à Claude, hé, donne-moi un résumé complet de tout ce que nous avons fait et l'état actuel de ce que nous sommes sur le point de faire ensuite. Et ensuite, je prends simplement ce résumé et je fais
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Hostinger Integration, Claude Code
+**Interface & Outils** : Diapositive de présentation / Schéma conceptuel
 
-**Contenu textuel & Code** : "Manage Hostinger from your IDE", "Connected VIA OAUTH", "AVAILABLE TOOLS" (Websites, Domains, Subscriptions & Payments, Email Marketing)
+**Contenu textuel & Code** : Texte du schéma : "long session", "/compact", "Compact (LLM-written summary)", "mid-task, keep momentum", "/clear", "Fresh + brief (your hand-written brief)", "high-stakes next step"
 
-**Action / Démonstration** : Connexion du compte Hostinger via OAuth dans l'IDE pour permettre à l'assistant d'accéder aux outils de gestion.
+**Action / Démonstration** : Le présentateur explique et compare l'utilisation des commandes '/compact' et '/clear' dans son workflow.
 
-![Interface montrant l'intégration de Hostinger dans l'IDE avec le statut connecté et les outils disponibles (Websites, Domains, Subscriptions, Email Marketing), ainsi que Claude Code et le présentateur en incrustation.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000757_seg18.jpg)
-*⏱️ 00:07:57 — Interface montrant l'intégration de Hostinger dans l'IDE avec le statut connecté et les outils disponibles (Websites, Domains, Subscriptions, Email Marketing), ainsi que Claude Code et le présentateur en incrustation.*
+![Schéma explicatif comparant les commandes '/compact' et '/clear' pour la gestion des sessions longues.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000829_seg18.jpg)
+*⏱️ 00:08:29 — Schéma explicatif comparant les commandes '/compact' et '/clear' pour la gestion des sessions longues.*
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:08:54 - 00:09:26]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> vous avez construit sur une vraie URL. Donc revenons à la vidéo. D'accord. Encore une fois, très, très marqué par la marque. C'est un écran de chargement encore meilleur que le précédent. Nous avons ce petit effet sympa en arrière-plan. Nous avons le logo. Nous allons entrer dans le lieu. D'accord. Nous y voilà. Ça a l'air plutôt bien. Nous commençons à l'extérieur et vous pouvez voir que nous avons ces drapeaux pour tous les intervenants, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. C'est plutôt cool. Nous avons des blocs en direct ici.
+> un slash clear, je le colle, et je continue. Donc en gros, je fais juste une réinitialisation et j'ai l'impression de ne pas avoir réinitialisé parce que j'ai déjà tout ce contexte. Ça pointe déjà, vous savez, vers tous les fichiers de plan, les fichiers de décision ou les listes de tâches qui ont été créés. Et c'est aussi très important. Si vous perdez tout cet historique de conversation, vous devez vous assurer de stocker les données quelque part. Donc comme je l'ai dit, des tableaux de suivi, des journaux d'activité, des listes de tâches, des choses comme ça. De cette façon, même si vous réinitialisez une session, on n'a pas l'impression d'avoir fait une réinitialisation. C'est un peu comme si vous vouliez fermer tous vos onglets Chrome, mais que vous aviez quand même tous vos signaux ou favoris auxquels vous pouvez accéder très rapidement.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web interactive en 3D / environnement virtuel hébergé
+**Interface & Outils** : Diapositive de présentation vidéo (slide)
 
-**Contenu textuel & Code** : Interface d'un salon virtuel 3D nommé 'AIS LIVE' avec mini-carte, bannières nominatives, contrôles à l'écran (WASD, Mouse, E, Tab, etc.)
+**Contenu textuel & Code** : Texte explicatif du workflow de gestion des tokens : résumé, commande /clear, collage et continuation
 
-**Action / Démonstration** : Chargement de l'application web, entrée dans le lieu virtuel (venue) et exploration de la place 3D avec les contrôles de déplacement.
-
-![Écran de chargement et d'accueil de la plateforme virtuelle 'AIS LIVE' avec logo, description de l'événement et contrôles clavier/souris affichés.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000829_seg19.jpg)
-*⏱️ 00:08:29 — Écran de chargement et d'accueil de la plateforme virtuelle 'AIS LIVE' avec logo, description de l'événement et contrôles clavier/souris affichés.*
-
-![Entrée dans l'univers virtuel 3D (AIS Live Plaza) avec un avatar au centre, des bâtiments, des arbres et des instructions textuelles en haut.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000835_seg19.jpg)
-*⏱️ 00:08:35 — Entrée dans l'univers virtuel 3D (AIS Live Plaza) avec un avatar au centre, des bâtiments, des arbres et des instructions textuelles en haut.*
-
-![Navigation dans la place virtuelle montrant des bannières avec des noms de conférenciers, des avatars et un petit robot sphérique au sol.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000841_seg19.jpg)
-*⏱️ 00:08:41 — Navigation dans la place virtuelle montrant des bannières avec des noms de conférenciers, des avatars et un petit robot sphérique au sol.*
+**Action / Démonstration** : Le présentateur explique sa méthode de gestion du contexte et des tokens dans l'interface de développement
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:09:27 - 00:09:48]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Il a pris cette photo de moi, votre hôte, Nate Herc, John, Dave, Nate Herc. Voilà. OK. Les portes. Génial. Ce sont des portes coulissantes automatiques en verre. J'adore ça. On peut voir l'enregistrement VIP. On peut voir l'admission générale. On peut venir par ici et on peut découvrir l'expo avec différents stands, le projecteur sur la communauté. Vous pouvez aussi voir qu'en haut à gauche, j'ai un passeport. Donc c'est du genre, ça va montrer combien d'endroits j'ai visités. Tout cela est une lecture réelle. Nous avons un mur de ressources avec tous les différents intervenants. Ils ont aussi une session de networking par ici. Donc je vais y aller très rapidement et voir de quoi il s'agit. Nous avons donc le bar à cold brew AIS. Nous avons différents membres de la communauté qui ont été mis en avant ou mis en lumière.
+> Et ouais, c'est un peu la façon dont, dans mon esprit, pour une raison quelconque, j'y pense. Mais cette seule habitude, si vous pouvez réellement opérer ce changement et commencer à le faire, c'est probablement ce qui a fait la différence la plus notable sur le remplissage effectif de ma limite de session. Donc ce que j'ai fait, c'est que j'ai réellement créé une compétence pour ça. Donc juste ici, vous pouvez voir que j'ai, vous savez, une longue conversation juste ici. Nous avons environ 224 000 jetons de la fenêtre qui ont déjà été utilisés.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement de conférence virtuelle 3D (Metaverse/Plateforme événementielle immersive).
+**Interface & Outils** : Visual Studio Code, Claude Code CLI, Interface vidéo incrustée (Picture-in-Picture)
 
-**Contenu textuel & Code** : Interfaces utilisateur superposées (HUD) incluant une barre de progression "Passport", une mini-carte en haut à droite et des menus contextuels en bas à droite.
+**Contenu textuel & Code** : Code source, arborescence du projet, échanges avec l'assistant Claude Code et indicateur d'utilisation des tokens (22% de 1M)
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par l'avatar de l'utilisateur à travers différentes zones de l'exposition.
+**Action / Démonstration** : Navigation et explication du flux de travail de l'agent IA par le présentateur sur l'éditeur de code
 
-![Vue à la première personne dans un environnement virtuel 3D représentant un hall d'accueil de conférence avec des comptoirs de "VIP Check-in" et "Registration".](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000856_seg20.jpg)
-*⏱️ 00:08:56 — Vue à la première personne dans un environnement virtuel 3D représentant un hall d'accueil de conférence avec des comptoirs de "VIP Check-in" et "Registration".*
-
-![Navigation dans un espace d'exposition virtuel (Expo Hall) avec des stands d'information et des avatars de visiteurs.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000905_seg20.jpg)
-*⏱️ 00:09:05 — Navigation dans un espace d'exposition virtuel (Expo Hall) avec des stands d'information et des avatars de visiteurs.*
-
-![Vue panoramique du hall principal montrant la circulation des avatars vers les zones d'enregistrement et les baies vitrées coulissantes.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000914_seg20.jpg)
-*⏱️ 00:09:14 — Vue panoramique du hall principal montrant la circulation des avatars vers les zones d'enregistrement et les baies vitrées coulissantes.*
+![Interface de Visual Studio Code affichant un terminal Claude Code (Opus 4.7) avec une barre de progression de tokens à 224k / 1000k, et le présentateur en incrustation à gauche.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000943_seg20.jpg)
+*⏱️ 00:09:43 — Interface de Visual Studio Code affichant un terminal Claude Code (Opus 4.7) avec une barre de progression de tokens à 224k / 1000k, et le présentateur en incrustation à gauche.*
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:09:48 - 00:10:24]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> On a l'aile VIP. Attends, quoi ? Récupère un bracelet. Oh, je dois vraiment aller chercher le bracelet. D'accord. Laisse-moi m'enregistrer rapidement. Le bracelet est déjà mis. Attends, quoi ? D'accord. Oh, d'accord. Maintenant, les portes se sont ouvertes pour moi. Cool. Je peux entrer ici. Oh, ça mène juste à la scène principale. Salon VIP. Il y a une séance de questions-réponses en cours. Ça a l'air très sympa. Je veux dire, je suis très impressionné par la façon dont il est capable de faire ça. Waouh. D'accord. Donc c'est vraiment bien. Ce qu'on a fait, c'est qu'on a eu des salles de discussion VIP avec différentes personnes. Tu peux voir qu'il y a différentes salles, différents membres de l'équipe AIS qui vont dans des trucs. C'est vraiment sympa. C'est très sympa. C'est un bien meilleur VIP
+> Donc je tape simplement slash session handoff, comme vous le voyez. Et maintenant ce qui se passe, c'est que ça va essentiellement parcourir tout le processus de lecture de tout, de son analyse, et me donner les trucs importants que je dois savoir. Et ça crache ce résultat. Ça montre où ça a commencé, les décisions verrouillées, et ce qui a été livré. Ça montre les fichiers clés pour la prochaine session. Ça montre l'état d'exécution, la vérification, les questions reportées et ouvertes, et ensuite reprendre à partir d'ici. Donc en gros maintenant je copie tout ce résultat. Je fais un slash clear, et ensuite je colle simplement ce résultat et je l'exécute. Et maintenant ce projet est fondamentalement complètement réorienté sur ce qu'il doit faire. Il dit, d'accord, je suis prêt.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Plateforme de conférence virtuelle 3D / environnement virtuel type metavers
+**Interface & Outils** : Visual Studio Code (VS Code) avec terminal intégré et interface de chat/CLI IA.
 
-**Contenu textuel & Code** : Interface utilisateur avec mini-carte, indicateurs de statut (Passport, VIP), légende des commandes, et écrans affichant des sessions vidéo
+**Contenu textuel & Code** : Commande `/session-handoff`, texte d'analyse de l'assistant IA détaillant l'état du traitement et la séquence suggérée, ainsi que des indicateurs de jetons (606 tokens, Opus 4.7, 22% de la limite de contexte).
 
-**Action / Démonstration** : Navigation et exploration d'un environnement virtuel de conférence 3D par un avatar contrôlé par l'utilisateur
+**Action / Démonstration** : Exécution de la commande de transfert de session (`/session-handoff`) dans l'outil de ligne de commande IA intégré à l'éditeur.
 
-![Vue d'un espace virtuel 3D « Registration Concourse » montrant un avatar et l'interface utilisateur du jeu ou de la plateforme de conférence virtuelle.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000932_seg21.jpg)
-*⏱️ 00:09:32 — Vue d'un espace virtuel 3D « Registration Concourse » montrant un avatar et l'interface utilisateur du jeu ou de la plateforme de conférence virtuelle.*
-
-![Vue de la « VIP Lounge » dans l'espace virtuel, affichant un écran vidéo de la session et des avatars assis.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000940_seg21.jpg)
-*⏱️ 00:09:40 — Vue de la « VIP Lounge » dans l'espace virtuel, affichant un écran vidéo de la session et des avatars assis.*
-
-![Vue de l'espace « VIP Working Sessions » avec plusieurs salles thématiques virtuelles (« Price It Right », « Turn Your Expertise into a Service », « Land Your First Paying Client »).](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000948_seg21.jpg)
-*⏱️ 00:09:48 — Vue de l'espace « VIP Working Sessions » avec plusieurs salles thématiques virtuelles (« Price It Right », « Turn Your Expertise into a Service », « Land Your First Paying Client »).*
+![Capture d'écran montrant l'éditeur VS Code avec une interface de terminal intégrée affichant le résultat de la commande de session handoff et l'historique des échanges avec l'assistant IA, avec le présentateur visible en incrustation.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_000957_seg21.jpg)
+*⏱️ 00:09:57 — Capture d'écran montrant l'éditeur VS Code avec une interface de terminal intégrée affichant le résultat de la commande de session handoff et l'historique des échanges avec l'assistant IA, avec le présentateur visible en incrustation.*
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:10:24 - 00:10:49]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expérience que ce qui a été montré dans le premier élément. D'accord. After party VIP. Regardez ça. On a une piste de danse. On a tous ces éléments ici. On a la lecture de l'after party VIP juste ici. Et il y a une estrade de DJ. C'est tellement marrant. Il y a un petit bug ici, un petit glitch par là, mais c'est génial. Oh, chouette. Donc quand je suis ici sur la scène principale, on a des sous-titres. Vous pouvez voir juste ici en bas de mon écran, on a ces sous-titres de Wyatt qui est en train de parler ici. On a des lumières. On a le panneau. Très cool. Belle scène principale. Je vais aller par ici, on peut aller à la fondation,
+> Voici tous les fichiers que je dois lire. Voici où nous nous sommes arrêtés. Donne-moi la prochaine tâche. Et maintenant, j'ai une fenêtre de contexte complètement fraîche. Donc aussi, cette compétence sera rattachée dans la communauté School gratuite. Juste la communauté School gratuite a tout ce que je partage un jour ou l'autre. Donc, rejoignez-la simplement. Très bien. Ensuite, nous avons des sous-agents. C'est donc en quelque sorte le dernier concept principal de base. Chaque sous-agent obtiendra sa propre fenêtre de contexte fraîche. Il fait son propre travail. Il fait ses propres recherches. Il synthétise les résultats. Et puis il renvoie en gros un résultat vers votre session principale.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de monde virtuel 3D / métavers interactif
+**Interface & Outils** : Visual Studio Code, diapositive de présentation graphique.
 
-**Contenu textuel & Code** : Environnement 3D interactif avec avatars, écrans vidéo de participants et affichage de l'événement VIP After-Party.
+**Contenu textuel & Code** : Texte de résumé de session de travail et instructions pour l'IA, interface de terminal IA. Schéma conceptuel sur la délégation avec des sous-agents (Agent 01, Agent 02, Agent 03).
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par le présentateur.
+**Action / Démonstration** : Présentation et explication du fonctionnement des sessions de handoff et de la délégation de tâches aux sous-agents IA.
 
-![Vue d'un monde virtuel 3D représentant une after-party VIP avec une piste de danse lumineuse, des avatars et des écrans vidéo.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001004_seg22.jpg)
-*⏱️ 00:10:04 — Vue d'un monde virtuel 3D représentant une after-party VIP avec une piste de danse lumineuse, des avatars et des écrans vidéo.*
+![Capture d'écran montrant l'interface de Visual Studio Code avec un terminal affichant le statut d'un modèle d'IA (Opus 4.7) et le présentateur incrusté en bas à gauche.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001030_seg22.jpg)
+*⏱️ 00:10:30 — Capture d'écran montrant l'interface de Visual Studio Code avec un terminal affichant le statut d'un modèle d'IA (Opus 4.7) et le présentateur incrusté en bas à gauche.*
 
-![Autre angle de la piste de danse virtuelle de l'after-party VIP avec des ballons et des avatars en mouvement.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001013_seg22.jpg)
-*⏱️ 00:10:13 — Autre angle de la piste de danse virtuelle de l'after-party VIP avec des ballons et des avatars en mouvement.*
-
-![Vue d'une salle de conférence virtuelle 3D (Main Stage) avec un public d'avatars assis et un grand écran de présentation.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001021_seg22.jpg)
-*⏱️ 00:10:21 — Vue d'une salle de conférence virtuelle 3D (Main Stage) avec un public d'avatars assis et un grand écran de présentation.*
+![Diapositive de présentation intitulée "DELEGATION" montrant le concept de sous-agents comparés à des assistants de recherche, avec le présentateur incrusté en bas à droite.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001037_seg22.jpg)
+*⏱️ 00:10:37 — Diapositive de présentation intitulée "DELEGATION" montrant le concept de sous-agents comparés à des assistants de recherche, avec le présentateur incrusté en bas à droite.*
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:10:50 - 00:11:14]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> avancés, et les parcours d'entreprise par ici. Alors voyons voir. Nous avons l'anatomie de trois vraies transactions. Nous avons hyper agent. Nous avons les évaluations avec Nate et Ed ici. Nous avons Dave qui s'occupe des trucs avancés. C'est vraiment bien. Je veux dire, évidemment, chacun, chacun de ces résultats jusqu'à présent, faible était correct. Moyen était mieux. Élevé a été encore mieux. Voyons si cette tendance se poursuit et allons voir ce que cela nous a coûté. Donc, le niveau élevé a fonctionné pendant une heure et sept minutes. Donc un peu plus rapide que le niveau moyen, cela nous aurait coûté 16 dollars et 31 cents. Il a utilisé un demi-million de tokens, 509 000. Il a fait 22 vérifications. Et il nous a aussi demandé, enfin, non, je me suis trompé. Ce
+> Donc si vous y pensez, c'est comme un stagiaire en recherche, si vous vouliez qu'un stagiaire en recherche fouille dans genre 50 articles, vous ne resteriez pas assis là à le regarder ou la regarder faire. Et vous neisseriez pas non plus de lire les articles. Vous diriez simplement, hé, fais-moi juste savoir quand tu as genre un résumé ou quand tu as l'information dont j'ai besoin. Et donc vous ne gaspillez pas votre espace mental avec tout ce superflu, vous obtenez simplement ce que vous voulez en retour. Maintenant, vous pouvez simplement dire explicitement des choses comme lance un sous-agent pour vérifier ceci, lance un sous-agent pour examiner votre base de code et me résumer ceci.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau blanc ou application de mind mapping / diagramme (style Excalidraw ou similaire).
+**Interface & Outils** : Schéma conceptuel/diagramme de flux personnalisé affiché à l'écran.
 
-**Contenu textuel & Code** : Tableau de données comparatives : Run time (16m 43s à 1h 07m), API cost ($3.91 à $16.31), Total tokens (191.3K à 419.2K), Checks, Questions asked.
+**Contenu textuel & Code** : Blocs de texte illustrant le flux : "Parent context", "user prompt", "Task(*explore auth/*)", "Subagent context", "final report", et la légende "The exploration noise is garbage-collected when the subagent exits".
 
-**Action / Démonstration** : Présentation et analyse comparative des performances et des coûts selon différents niveaux d'effort (Low, Medium, High, Extra).
+**Action / Démonstration** : Le diagramme illustre visuellement comment un sous-agent traite une tâche lourde de manière isolée pour ne renvoyer que le rapport final au contexte parent.
 
-![Tableau comparatif des niveaux d'effort (Low, Medium, High, Extra) affichant des métriques telles que le temps d'exécution, le coût API, le nombre de tokens et de vérifications.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001057_seg23.jpg)
-*⏱️ 00:10:57 — Tableau comparatif des niveaux d'effort (Low, Medium, High, Extra) affichant des métriques telles que le temps d'exécution, le coût API, le nombre de tokens et de vérifications.*
+![Schéma explicatif illustrant la délégation entre un contexte parent et un sous-agent (Subagent context) avec le présentateur en médaillon dans le coin inférieur droit.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001056_seg23.jpg)
+*⏱️ 00:10:56 — Schéma explicatif illustrant la délégation entre un contexte parent et un sous-agent (Subagent context) avec le présentateur en médaillon dans le coin inférieur droit.*
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:11:15 - 00:11:43]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> l'un m'a posé une question et spoiler, c'est le seul qui nous a posé une question tout au long de tout ça. Donc voyons voir, il nous en reste trois : extra, max et ultra code. Laissez-moi ouvrir extra et nous verrons ce que nous avons. D'accord. Donc celui-ci a l'air plutôt bien. Je dirais honnêtement que jusqu'à présent, l'écran de chargement haut était le meilleur. Celui que nous venons de voir, mais de toute façon, entrons dans le live d'AIS.
+> Et une autre chose cool, c'est que chaque fois que vous créez un sous-agent, il peut utiliser un modèle moins cher. Alors, lancez-moi un sous-agent pour résumer ceci et assurez-vous que ce sous-agent utilise Haiku. Et ce qui finit par se produire, c'est que la tâche de ce sous-agent était tellement moins chère que si Opus l'avait fait, et les performances et la qualité sont à peu près les mêmes. La clé ici est de savoir quelles tâches déléguer réellement. Bon. Passons donc à d'autres conseils pratiques. Alors, ce premier, qui a l'air vraiment évident et dugenre, pourquoi tu dis ça, Nate ? C'est tellement évident, mais c'est, c'est énorme.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc ou de prise de notes avec un tableau structuré (style Notion ou interface web).
+**Interface & Outils** : Présentation vidéo avec diagrammes graphiques animés (infographie explicative).
 
-**Contenu textuel & Code** : Tableau comparatif avec les lignes : Run time (16m 43s, 1h 13m, 1h 7m), API cost ($3.91, $12.44, $16.31), Total tokens (191.3K, 419.2K, 509.3K), Checks (22, 23, 22), Questions asked (0, 0, 1).
+**Contenu textuel & Code** : Schéma d'architecture de délégation montrant "Parent context", "Subagent context", et l'analogie "Sub-agents = Research interns" avec des tâches assignées et le modèle Haiku.
+[DESC_IMAGE_1]
 
-**Action / Démonstration** : Le présentateur commente les résultats du niveau "Extra" et met en avant la colonne correspondante.
+**Action / Démonstration** : Le présentateur explique visuellement comment le contexte d'un sous-agent isole le bruit et ne renvoie que le rapport final au contexte parent.
 
-![Un tableau comparatif montrant les métriques de différents niveaux d'effort (Low, Medium, High, Extra) avec le présentateur en médaillon à gauche.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001111_seg24.jpg)
-*⏱️ 00:11:11 — Un tableau comparatif montrant les métriques de différents niveaux d'effort (Low, Medium, High, Extra) avec le présentateur en médaillon à gauche.*
+![Schéma explicatif montrant la relation entre le contexte parent et le contexte d'un sous-agent (Subagent context) avec le retour d'un rapport final synthétique.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001122_seg24.jpg)
+*⏱️ 00:11:22 — Schéma explicatif montrant la relation entre le contexte parent et le contexte d'un sous-agent (Subagent context) avec le retour d'un rapport final synthétique.*
+
+![Schéma illustrant la session principale (Main session) déléguant des tâches à trois sous-agents (Agent 01, 02, 03) utilisant le modèle Haiku.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001129_seg24.jpg)
+*⏱️ 00:11:29 — Schéma illustrant la session principale (Main session) déléguant des tâches à trois sous-agents (Agent 01, 02, 03) utilisant le modèle Haiku.*
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:11:44 - 00:12:18]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. D'accord. Donc on a comme de petits extraits sonores. Je peux discuter avec des gens. Le panneau sur la guerre des outils a réglé quelques débats pour moi. Sympa. Bonne perspective là-bas. On est dehors à nouveau. On a ces différentes bannières, bien qu'elles soient toutes les mêmes. Elles n'affichent pas de noms de personnes différents. Donc grand logo AIS live. L'aile des ateliers est par ici. Et passons par les portes coulissantes en verre pour voir ce qu'on a. Donc on a le café AIS. La carte est en bas à droite, et elle n'est pas très descriptive.
+> Il surveille la limite de votre session. C'est-à-dire que si vous utilisez la nouvelle application de bureau, vous pouvez voir la quantité de limite de session qu'il vous reste. Surveillez-la simplement constamment. Si vous avez deux moniteurs, gardez-en un ouvert sur les autres onglets, vous pouvez toujours la surveiller. Le simple fait de pouvoir y jeter un coup d'œil de temps en temps changera votre façon de concevoir le prompt que vous pourriez envoyer, ou de savoir si vous devez lancer cette équipe d'agents ou non, vous savez, des choses comme ça. Et soyez simplement stratégique à ce sujet. Si vous approchez de la fin de votre session et que cela a été une longue session, allez faire une promenade ou profitez-en pour aller chercher un encas ou quelque chose comme ça. Et d'un autre côté, s'il vous reste environ 50 % de votre session et qu'elle va se réinitialiser dans environ une heure ou une demi-heure, alors profitez-en à fond.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de métavers 3D / plateforme virtuelle interactive.
+**Interface & Outils** : Application de bureau de suivi des limites d'utilisation de l'IA (Claude).
 
-**Contenu textuel & Code** : Environnement virtuel 3D avec avatars, bannières et mini-carte en bas à droite.
+**Contenu textuel & Code** : Graphiques de consommation : 5-hour limit (73%), Weekly - all models (73%), Weekly - Claude Design (86%), Sonnet only (9%).
 
-**Action / Démonstration** : Navigation et déplacement d'un avatar à travers l'espace virtuel du métavers.
+**Action / Démonstration** : Présentation des métriques de consommation et des conseils pour gérer l'utilisation des modèles d'IA en fonction des quotas restants.
 
-![Vue d'un monde virtuel 3D de type métavers ou jeu montrant un personnage en train de marcher près de bannières publicitaires et de lampadaires.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001132_seg25.jpg)
-*⏱️ 00:11:32 — Vue d'un monde virtuel 3D de type métavers ou jeu montrant un personnage en train de marcher près de bannières publicitaires et de lampadaires.*
+![Capture montrant l'interface de suivi d'utilisation du plan (Plan usage) avec les limites de session (5-hour limit, Weekly - all models, Weekly - Claude Design, Sonnet only).](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001152_seg25.jpg)
+*⏱️ 00:11:52 — Capture montrant l'interface de suivi d'utilisation du plan (Plan usage) avec les limites de session (5-hour limit, Weekly - all models, Weekly - Claude Design, Sonnet only).*
 
-![Vue de l'environnement virtuel en extérieur montrant d'autres avatars au loin et des bâtiments illuminés.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001138_seg25.jpg)
-*⏱️ 00:11:38 — Vue de l'environnement virtuel en extérieur montrant d'autres avatars au loin et des bâtiments illuminés.*
-
-![Le personnage virtuel se déplace vers l'entrée d'un bâtiment ou d'un hall d'exposition virtuel.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001145_seg25.jpg)
-*⏱️ 00:11:45 — Le personnage virtuel se déplace vers l'entrée d'un bâtiment ou d'un hall d'exposition virtuel.*
+![Capture montrant les conseils de stratégie avec les états de limite : "50% left - Resets soon: Abuse it." et "Close to limit: Take a walk."](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001210_seg25.jpg)
+*⏱️ 00:12:10 — Capture montrant les conseils de stratégie avec les états de limite : "50% left - Resets soon: Abuse it." et "Close to limit: Take a walk."*
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:12:19 - 00:12:38]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> J'aime bien comment les autres cartes nous ont dit quoi, genre où se trouvaient les choses, mais celle-ci a l'air très professionnelle. On peut voir ici la scène principale. Allons y faire un tour rapidement. Ils ont tous ces ballons qui volent partout, ce qui je trouve est assez drôle. Les ballons de plage AIS. On me voit là-haut en train de parler. Je crois que j'introduisais l'un des jours. Continuons par ici vers la salle d'atelier sur ce côté gauche. D'accord. Donc ici, nous avons le théâtre Hyper Agent. Nous avons cette session sponsorisée ici par Hyper Agent, mais cela nous montre aussi ce qui va s'y passer. C'est vraiment drôle qu'on puisse discuter avec des gens. Salmon a créé un représentant commercial vocal en direct. La salle du juste prix était comble. Avez-vous pris le guide d'accompagnement VIP ? C'est trop drôle. Nous avons le parcours avancé dans
+> Vous savez, essayez de pousser ce truc jusqu'à la limite. Essayez de lancer des équipes d'agents. Essayez de travailler sur une base de code lourde que vous deviez traiter depuis un moment. Essayez de faire des choses dont vous savez qu'elles vont consommer beaucoup de vos jetons. Soyez donc stratégique quant au moment où vous réalisez de petits flux de travail de productivité ou des choses de ce genre, ou lorsque vous faites du code approfondi ou de la construction approfondie. D'accord. Donc, le prochain est plutôt cool.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de métaverse / plateforme virtuelle 3D d'événements en ligne
+**Interface & Outils** : Présentation vidéo avec diapositive graphique de stratégie
 
-**Contenu textuel & Code** : Environnement virtuel 3D interactif, avatars, écrans vidéo intégrés et interfaces de discussion
+**Contenu textuel & Code** : Texte stratégique sur la gestion des limites d'utilisation de l'IA (Abuse it / Take a walk)
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par le présentateur sous forme d'avatar
+**Action / Démonstration** : Le présentateur explique la stratégie d'utilisation intensive des jetons d'IA jusqu'aux limites.
 
-![Vue principale d'un espace virtuel 3D avec un écran géant montrant une retransmission vidéo et des avatars d'utilisateurs.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001200_seg26.jpg)
-*⏱️ 00:12:00 — Vue principale d'un espace virtuel 3D avec un écran géant montrant une retransmission vidéo et des avatars d'utilisateurs.*
-
-![Hall d'entrée virtuel 3D (Grand Lobby) avec des avatars d'utilisateurs et des panneaux indicateurs d'ateliers.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001209_seg26.jpg)
-*⏱️ 00:12:09 — Hall d'entrée virtuel 3D (Grand Lobby) avec des avatars d'utilisateurs et des panneaux indicateurs d'ateliers.*
-
-![Couloir virtuel 3D interactif avec plusieurs avatars d'utilisateurs discutant ou se déplaçant.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001217_seg26.jpg)
-*⏱️ 00:12:17 — Couloir virtuel 3D interactif avec plusieurs avatars d'utilisateurs discutant ou se déplaçant.*
+![Une diapositive de présentation avec le titre "STRATEGY" et "KNOW WHAT'S LEFT", affichant deux encadrés de conseils : "ABUSE IT." (50% left) et "TAKE A WALK." (Close to limit), avec le présentateur incrusté en bas à droite.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001223_seg26.jpg)
+*⏱️ 00:12:23 — Une diapositive de présentation avec le titre "STRATEGY" et "KNOW WHAT'S LEFT", affichant deux encadrés de conseils : "ABUSE IT." (50% left) et "TAKE A WALK." (Close to limit), avec le présentateur incrusté en bas à droite.*
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:12:38 - 00:13:16]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> ici. Encore une fois, nous avons la lecture en direct. Est-ce que c'est la lecture en direct ? Oh, d'accord. Ça a commencé une fois que je suis entré, mais je peux prendre place. Oh la la. Je peux regarder ça. Je peux me lever. Je veux m'asseoir au premier rang. C'est plutôt cool. C'est très bien. J'aime ça. Et vous savez ce que j'ai remarqué jusqu'à présent ? Le personnage que j'incarne me ressemble un peu. Je pense qu'il a été modélisé à partir de mes photos de profil ou quelque chose comme ça. Quoi qu'il en soit, nous avons Sabrina ici, l'animatrice de la salle ici, prenez n'importe quel siège libre. D'accord, cool. Et j'ai vraiment aimé la fonctionnalité pour s'asseoir. C'est plutôt marrant. Genre, on pourrait vraiment assister à cet atelier et participer. Bref, ça nous montre les intervenants. Ça nous montre les
+> Fondamentalement, l'idée est de tout convertir en Markdown. Le Markdown est tellement plus rapide et tellement moins cher pour les modèles d'IA, avec une réduction énorme des tokens. Donc, par exemple, pour du HTML vers du Markdown, vous obtenez environ 90 % de tokens en moins. Pour du PDF vers du Markdown, vous obtenez environ 65 à 70 % de réduction de tokens. Pour des fichiers docx vers du Markdown, vous obtenez environ 33 % de réduction de tokens. Donc cela signifie que vous pouvez faire tenir à peu près trois fois plus de contenu dans la même fenêtre de contexte. Donc, par exemple, un PDF de 40 pages pourrait en fait occuper la même quantité d'espace qu'un fichier Markdown de 130 pages. Et vous pouvez simplement utiliser un outil comme docling ou beaucoup d'autres pour convertir ces fichiers en quelques secondes, car les tokenizers traitent le texte vraiment,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle de type métavers/salle de classe en 3D
+**Interface & Outils** : Présentation vidéo avec graphique de données et vignette du présentateur en bas à droite.
 
-**Contenu textuel & Code** : Interface d'un événement virtuel en direct avec un écran de projection affichant un atelier et des avatars d'utilisateurs.
+**Contenu textuel & Code** : Texte et graphiques en barres illustrant l'efficacité de la conversion en Markdown (HTML -> MD : -90%, PDF -> MD : -68%, DOCX -> MD : -33%).
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par le présentateur.
+**Action / Démonstration** : Le présentateur explique l'économie de tokens réalisée en convertissant les documents au format Markdown.
+
+![Graphique montrant les pourcentages de réduction de tokens lors de la conversion de différents formats vers Markdown : HTML vers MD (-90%), PDF vers MD (-68%), DOCX vers MD (-33%).](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001248_seg27.jpg)
+*⏱️ 00:12:48 — Graphique montrant les pourcentages de réduction de tokens lors de la conversion de différents formats vers Markdown : HTML vers MD (-90%), PDF vers MD (-68%), DOCX vers MD (-33%).*
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:13:16 - 00:13:51]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> ordre du jour. Il y a un petit tapis rouge ici pour prendre des photos. On peut prendre la pose. Oh, wouah. C'est plutôt cool. Bibliothèque de ressources, devenir certifié AIS Plus, Glido, Hyper Agent, AIS Plus, trois vraies affaires. Génial. Je veux dire, je dirais vraiment que jusqu'à présent, chacune est meilleure. Et on n'a même pas encore vérifié la section VIP, le salon VIP. Montons ici très vite. J'espère que je pourrai entrer. Sympa. On a une réinitialisation des outils. Ce sont les différentes pièces dans lesquelles on pourrait aller. Donc encore une fois, je pourrais prendre la feuille de calcul et je pourrais essayer de comprendre comment tarifer mes trucs. C'est tellement cool. C'est vraiment mieux que la précédente où on a en quelque sorte juste
+> très efficacement. Et les PDF, les documents et le HTML contiennent tous ce bruit de mise en page, de métadonnées et de formatage dont le modèle n'a pas besoin. Tout ce dont le modèle a besoin, c'est du contenu de ce document, qui se résume généralement au texte. Maintenant, si vous avez besoin de reconnaissance optique de caractères et si vous avez besoin de vision ou quelque chose de ce genre, c'est une autre histoire. Mais si c'est basé sur du texte, donnez simplement le texte à Claude. Très bien, la prochaine astuce consiste à utiliser slash by the way ou slash btw. Cela ouvre essentiellement une superposition rapide pour les questions secondaires qui n'entrent pas réellement dans l'historique de votre conversation. Donc, si vous êtes plongé dans un projet et que vous devez poser une question rapide sur ce projet, faites simplement slash BTW, tapez la question, et cela conserve ce contexte.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Plateforme événementielle virtuelle interactive de style métavers.
+**Interface & Outils** : VS Code, Terminal Claude Code
 
-**Contenu textuel & Code** : Texte affiché : "Expo Hall", "Hyperagent Title Sponsor", "Workshops", et des questions stratégiques sur les tarifs ("If you doubled your rate, what would change?").
+**Contenu textuel & Code** : Commandes et échanges textuels avec un assistant IA dans VS Code (ex: "how would we build this out on mobile?", "Answering...", "Opus 4.7").
 
-**Action / Démonstration** : Navigation de l'utilisateur (avatar) dans un espace virtuel d'exposition, visite du salon VIP et lecture de documents de travail ("Price It Right" worksheet).
+**Action / Démonstration** : Navigation et démonstration de l'utilisation d'un outil de développement assisté par IA dans VS Code.
 
-![Vue d'une salle d'exposition virtuelle ("Expo Hall") avec des stands pour AIS+, Hyperagent et Glido.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001307_seg28.jpg)
-*⏱️ 00:13:07 — Vue d'une salle d'exposition virtuelle ("Expo Hall") avec des stands pour AIS+, Hyperagent et Glido.*
-
-![Vue de l'entrée principale ou "Lobby" d'un événement virtuel avec des escaliers et des zones dédiées aux ateliers.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001315_seg28.jpg)
-*⏱️ 00:13:15 — Vue de l'entrée principale ou "Lobby" d'un événement virtuel avec des escaliers et des zones dédiées aux ateliers.*
-
-![Vue à la première personne dans un "VIP Lounge" où des avatars sont assis autour d'une table, avec des questions affichées à l'écran.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001323_seg28.jpg)
-*⏱️ 00:13:23 — Vue à la première personne dans un "VIP Lounge" où des avatars sont assis autour d'une table, avec des questions affichées à l'écran.*
+![Interface de VS Code affichant un terminal interactif avec Claude Code montrant des prompts et l'utilisation de l'agent.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001343_seg28.jpg)
+*⏱️ 00:13:43 — Interface de VS Code affichant un terminal interactif avec Claude Code montrant des prompts et l'utilisation de l'agent.*
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:13:51 - 00:14:26]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> propre, mais vous pouvez quand même obtenir une réponse à votre question. Bon, évidemment, le suivant concerne le mode plan, ce qui est énorme. Boris Cherney, le créateur de CloudCode, commence chaque session en mode plan. Je fais la même chose. Je suis fondamentalement Boris Cherney. Mais toute l'idée est que si vous utilisez des jetons au départ pour clarifier le plan avant de commencer à construire, vous n'aurez pas à le corriger. Et en fin de compte, ce sera moins cher à long terme lorsqu'il s'agit, vous savez, d'être efficace avec vos jetons. C'est pourquoi je mets tous mes efforts dans le plan d'abord, je m'assure qu'il est correct, et ensuite je laisse Claude réaliser l'implémentation du premier coup parce qu'il comprend ce qu'il doit faire et il comprend ce que vous voulez. J'utilise donc des choses comme Ultraplan tout le temps ou Superpowers tout
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc / diagramme (type Excalidraw ou similaire).
+**Interface & Outils** : Visual Studio Code, Claude Code extension
 
-**Contenu textuel & Code** : Tableau de données : Durée (1h 13m, 1h 7m, 1h 31m...), Coût ($12.44, $16.31...), Tokens (419.2K, 509.3K...) et barres graphiques.
+**Contenu textuel & Code** : Interface graphique de Claude Code dans VS Code avec options de saisie et de mode d'édition.
 
-**Action / Démonstration** : Présentation et analyse des résultats statistiques des différents tests d'exécution.
+**Action / Démonstration** : Présentation de l'interface de l'outil Claude Code au sein de l'éditeur.
 
-![Un tableau comparatif affichant les statistiques de différents niveaux d'effort (Medium, High, Extra, Max, Ultracode) avec des durées, des coûts et le nombre de tokens.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001338_seg29.jpg)
-*⏱️ 00:13:38 — Un tableau comparatif affichant les statistiques de différents niveaux d'effort (Medium, High, Extra, Max, Ultracode) avec des durées, des coûts et le nombre de tokens.*
+![Interface de Visual Studio Code affichant l'extension Claude Code avec le présentateur en bas à gauche.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001417_seg29.jpg)
+*⏱️ 00:14:17 — Interface de Visual Studio Code affichant l'extension Claude Code avec le présentateur en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:14:26 - 00:15:02]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> le temps. Et je mettrai des liens vers des vidéos que j'ai faites sur les deux juste ici. Je vous recommande vraiment de regarder d'abord cette vidéo sur les Superpowers. Très bien. Et pour celle-ci, vous savez qu'on ne pouvait pas faire de vidéo sur les tokens sans parler de la discipline concernant Claude.md. Gardez donc ce fichier sous les 200 lignes, soit environ 2 000 tokens, car il se charge à chaque session. Donc s'il est trop lourd, vous paierez pour ce poids à chaque conversation. Vous disposez d'un espace limité, alors n'y tassez pas tout. N'y mettez que ce dont vous avez réellement besoin et seulement ce dont Claude a besoin pour faire du bon travail. Vous pouvez également faire des choses comme déplacer des instructions spécialisées dans des fichiers de contexte vers lesquels le routage est effectué ou des compétences vers lesquelles le routage est effectué.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D / Environnement virtuel interactif (AIS live).
+**Interface & Outils** : Visual Studio Code
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle avec mini-carte, bannières d'événements et commandes de déplacement (WASD).
+**Contenu textuel & Code** : Fichier CLAUDE.md montrant la structure d'architecture ('data/atlas.json', 'scripts/validate.ts') et des commandes npm (install, run dev, run build).
 
-**Action / Démonstration** : Navigation et exploration de l'environnement virtuel 3D par le présentateur.
+**Action / Démonstration** : Le présentateur explique l'importance de structurer et limiter la taille du fichier CLAUDE.md pour optimiser les tokens et la discipline des agents.
+
+![Éditeur de code Visual Studio Code affichant un fichier de configuration CLAUDE.md avec les instructions de l'architecture et les commandes bash.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001444_seg30.jpg)
+*⏱️ 00:14:44 — Éditeur de code Visual Studio Code affichant un fichier de configuration CLAUDE.md avec les instructions de l'architecture et les commandes bash.*
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:15:02 - 00:15:36]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
+> et de cette façon, ils ne se chargent que à la demande quand ils sont réellement nécessaires. Et vous pourriez utiliser un fichier .clawed ignore pour exclure des dossiers ou des fichiers que vous ne voulez pas que Claude lise réellement, ce qui pourrait être un très, très gros coup si vous avez genre un dépôt massif. Très bien, alors que je suis assis ici en train de monter la vidéo, il y a encore une chose dont je me suis rendu compte que je voulais dire, c'était que les jetons de sortie coûtent plus cher que les jetons d'entrée. Donc beaucoup de gens pourraient penser que vous pourriez dire, hé, Claude, sois super concis et donne-moi juste, tu sais, des réponses d'une seule phrase plutôt que des paragraphes. Et cela vous ferait économiser des jetons. Et en théorie, oui, mais dans le grand schéma des choses, ce n'est pas ce qui est réellement
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D virtuelle de type métavers/conférence en ligne
+**Interface & Outils** : Présentation vidéo avec diapositive infographique et encadré webcam.
 
-**Contenu textuel & Code** : Environnement virtuel 3D interactif avec affichage de listes de conférenciers et de stands d'exposition
+**Contenu textuel & Code** : Texte listant des pratiques (Quick Wins, /btw, Plan mode, <200 lines) et tarifs des modèles Claude (Opus, Sonnet, Haiku).
 
-**Action / Démonstration** : Exploration d'un espace de conférence virtuel 3D et interaction avec des avatars et des éléments d'interface
-
-![Vue d'un espace virtuel 3D de type métavers avec des avatars de participants, une grande fresque de conférenciers au fond et le présentateur dans une vignette à gauche.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001444_seg31.jpg)
-*⏱️ 00:14:44 — Vue d'un espace virtuel 3D de type métavers avec des avatars de participants, une grande fresque de conférenciers au fond et le présentateur dans une vignette à gauche.*
-
-![Navigation dans le hall virtuel montrant des avatars qui interagissent autour d'une table haute et une photo souvenir incrustée à l'écran.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001453_seg31.jpg)
-*⏱️ 00:14:53 — Navigation dans le hall virtuel montrant des avatars qui interagissent autour d'une table haute et une photo souvenir incrustée à l'écran.*
-
-![Entrée dans l'exposition virtuelle (« Expo Hall ») avec des stands thématisés (« Evals Lab », « Enterprise AI ») et des avatars de visiteurs.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001502_seg31.jpg)
-*⏱️ 00:15:02 — Entrée dans l'exposition virtuelle (« Expo Hall ») avec des stands thématisés (« Evals Lab », « Enterprise AI ») et des avatars de visiteurs.*
+**Action / Démonstration** : Le présentateur explique les bonnes pratiques et astuces pour l'utilisation des modèles d'intelligence artificielle.
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:15:36 - 00:16:11]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> qui va être le facteur décisif entre si vous atteignez votre limite ou non, parce qu'il y a tellement de jetons de sortie qui sont dépensés sans que vous ne le voyiez vraiment dans vos fichiers et des choses comme ça. Donc, vous savez, il pourrait y avoir, j'ai vu ce plugin caveman que les gens utilisent, j'ai en fait vu quelqu'un faire une expérience et tester combien cela économise vraiment de jetons. Et il s'avère que ce n'était pas vraiment autant que les gens le pensaient, parce qu'encore une fois, il y a tellement plus de jetons de sortie que juste ce que Claude vous redonne dans la fenêtre. Donc je pense qu'il est important de comprendre que les jetons de sortie coûtent plus cher que les jetons d'entrée, mais dire simplement d'être concis ne va pas vraiment faire bouger les choses. Je voulais donc aussi mentionner cela. Donc un autre
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D en ligne (type métavers de conférence).
+**Interface & Outils** : Tableau de bord web personnalisé ("Token dashboard") affichant des graphiques de consommation et des listes de sessions récentes.
 
-**Contenu textuel & Code** : Interface utilisateur avec mini-carte, commandes clavier (WASD, Shift, Space), et affichage des zones de conférence.
+**Contenu textuel & Code** : Graphiques en barres ("Tokens by project", "Top tools"), diagramme circulaire ("Token usage by model") et tableau des sessions récentes avec les projets et nombres de tokens.
 
-**Action / Démonstration** : Exploration et navigation dans l'espace virtuel de conférence par le présentateur.
+**Action / Démonstration** : Le présentateur commente les statistiques de consommation des jetons d'IA affichées à l'écran.
 
-![Vue d'un espace d'exposition virtuel 3D avec des écrans affichant des statistiques financières et des avatars d'utilisateurs.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001517_seg32.jpg)
-*⏱️ 00:15:17 — Vue d'un espace d'exposition virtuel 3D avec des écrans affichant des statistiques financières et des avatars d'utilisateurs.*
-
-![Navigation d'un avatar dans un salon de réseautage virtuel (Networking Lounge) en 3D.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001523_seg32.jpg)
-*⏱️ 00:15:23 — Navigation d'un avatar dans un salon de réseautage virtuel (Networking Lounge) en 3D.*
-
-![Vue d'une scène principale virtuelle (Main Stage) où un avatar s'approche d'un amphithéâtre en ligne avec des écrans de retransmission.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001529_seg32.jpg)
-*⏱️ 00:15:29 — Vue d'une scène principale virtuelle (Main Stage) où un avatar s'approche d'un amphithéâtre en ligne avec des écrans de retransmission.*
+![Tableau de bord d'analyse de l'utilisation des tokens d'IA avec des graphiques statistiques et le présentateur en médaillon.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001545_seg32.jpg)
+*⏱️ 00:15:45 — Tableau de bord d'analyse de l'utilisation des tokens d'IA avec des graphiques statistiques et le présentateur en médaillon.*
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:16:11 - 00:16:47]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
+> Une chose super importante est de savoir réellement où vont vos tokens, car cela va en quelque sorte amener votre cerveau à réfléchir à la manière de mieux les économiser. C'est donc un tableau de bord des tokens que j'ai créé. Je vais rendre ce dépôt public et vous pourrez y accéder tout à fait gratuitement. Il vous suffit de rejoindre ma communauté School gratuite. Le lien pour cela se trouvera dans la description et vous pourrez le trouver là-bas et l'installer. Mais en gros, cela nous montre des choses comme nos sessions, nos tours, nos tokens d'entrée, nos tokens de sortie, la lecture du cache et la création du cache, ce qui est important à comprendre. Et si vous ne comprenez pas ce que cela signifie, regardez juste ici. C'est assez simple. Mais de toute façon, nous pouvons voir au cours des sept derniers jours ou des trente derniers jours ce qui s'est réellement passé avec nos utilisations de tokens selon les modèles et selon les différents projets.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de métavers ou de conférence virtuelle en 3D.
+**Interface & Outils** : Application web (Tableau de bord personnalisé "Token Dashboard")
 
-**Contenu textuel & Code** : Environnement virtuel 3D interactif avec des avatars et des écrans vidéo de diffusion.
+**Contenu textuel & Code** : Statistiques sur l'utilisation des tokens (Sessions: 252, Turns: 21,435, Input: 454.4K, Output: 10.4M, Cache Read: 1.5B, Cache Create: 54M, Coût estimé: $3955.26), graphiques journaliers "Your daily work", "Daily cache reads", "Tokens by project" et "Token usage by model".
 
-**Action / Démonstration** : Navigation et interaction d'un avatar dans un espace de conférence virtuel.
+**Action / Démonstration** : Le présentateur commente le tableau de bord de suivi des tokens qu'il a créé pour analyser et optimiser la consommation de l'IA.
+
+![Capture d'écran montrant le tableau de bord personnalisé des tokens avec des graphiques d'utilisation, des statistiques par session et un encart vidéo du présentateur en bas à droite.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001620_seg33.jpg)
+*⏱️ 00:16:20 — Capture d'écran montrant le tableau de bord personnalisé des tokens avec des graphiques d'utilisation, des statistiques par session et un encart vidéo du présentateur en bas à droite.*
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:16:47 - 00:17:21]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Très cool, très cool. OK, allons par ici. Je vois une section à l'étage. Donc c'est marrant comme ils choisissent tous de mettre la section VIP à l'étage. Je veux dire, je ne déteste pas ça. Oh la vache, ils ont un escalator. Pas croyable. Je vais discuter avec ce type sur l'escalator. Glenn a 15 ans d'expérience en agence. Ses trucs de "land and expand" étaient en or. Du bon boulot, Glenn. Cool, donc je vais, je n'arrive même pas à dépasser ce type pourtant.
+> et à travers différents outils qui sont appelés. Et cela devrait vous donner des informations intéressantes parce qu'ici même vous pouvez voir dans mon projet Herc2, qui est en quelque sorte mon assistant exécutif, mon second cerveau, vous pouvez voir que j'ai beaucoup plus de jetons d'entrée que de jetons de sortie. Maintenant, évidemment, les jetons de sortie sont plus cher, mais quand même, cela devrait me signaler qu'il se passe quelque chose ici. Genre, pourquoi tous mes autres projets ont-ils significativement plus de sortie que d'entrée ? Mais ici, j'ai, vous savez, 2 millions de plus en entrée. Pourquoi est-ce que je pense que c'est le cas ? Parce que j'ai récemment fait en sorte qu'il lise tout et qu'il m'aide à réorganiser les choses et qu'il m'aide, vous savez, à trouver la meilleure façon d'optimiser ce projet. Donc je sais que c'est pour ça, mais c'est important d'aller voir ce genre de choses. Maintenant
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle 3D (environnement virtuel en ligne).
+**Interface & Outils** : Tableau de bord Web ("Token Dashboard")
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant des indications de navigation, une mini-carte en bas à droite et un panneau de conférence en haut à droite.
+**Contenu textuel & Code** : Graphiques montrant la consommation de jetons par projet, notamment le projet "Herk-2" avec ses détails d'utilisation (input: 6,485,823 / output: 4,313,036), ainsi que l'utilisation par modèle.
 
-**Action / Démonstration** : Exploration d'un environnement virtuel 3D et déplacement vers l'étage VIP via un escalator.
+**Action / Démonstration** : Le présentateur commente les graphiques du tableau de bord en pointant la section dédiée aux jetons par projet.
 
-![Vue générale de la réception dans l'espace virtuel 3D avec un grand hall et de grandes baies vitrées.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001600_seg34.jpg)
-*⏱️ 00:16:00 — Vue générale de la réception dans l'espace virtuel 3D avec un grand hall et de grandes baies vitrées.*
-
-![Approche des escalators menant au niveau VIP avec un panneau indicateur jaune "VIP LEVEL".](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001604_seg34.jpg)
-*⏱️ 00:16:04 — Approche des escalators menant au niveau VIP avec un panneau indicateur jaune "VIP LEVEL".*
-
-![Interaction avec un avatar sur l'escalator affichant une bulle de dialogue sur son expérience en agence.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001609_seg34.jpg)
-*⏱️ 00:16:09 — Interaction avec un avatar sur l'escalator affichant une bulle de dialogue sur son expérience en agence.*
+![Un tableau de bord sombre affichant des statistiques d'utilisation de jetons d'IA, avec des graphiques en barres et un diagramme circulaire. Le présentateur apparaît dans une petite fenêtre incrustée en bas à droite.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001656_seg34.jpg)
+*⏱️ 00:16:56 — Un tableau de bord sombre affichant des statistiques d'utilisation de jetons d'IA, avec des graphiques en barres et un diagramme circulaire. Le présentateur apparaît dans une petite fenêtre incrustée en bas à droite.*
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:17:21 - 00:17:55]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, j'ai dû sauter par-dessus lui. D'accord, niveau VIP, badge requis. Oh la la. Tu te moques de moi ? Je dois aller chercher mon badge. Bon, super. Maintenant, ça montre que je suis un vrai VIP et je peux aller ici dans la section VIP. On a de super petites sessions de travail par ici, auxquelles on peut se greffer. Je me demande si ça va me laisser m'asseoir ici. Je peux juste discuter. Je peux participer ? Ça ne me laisse pas m'asseoir et participer. C'est pas grave. On a la "War Room" sur les prix. Oh, c'est peut-être l'after-party. Allons voir ce qui se passe par ici. Ou peut-être que je dois juste entrer par là. D'accord. C'est bizarre. Je devais juste entrer par ici. Cette after-party n'est pas aussi cool que l'autre. Mais bref, allons voir ce qui se passe par ici.
+> ce qui est génial aussi, c'est que vous pouvez aller voir vos vrais prompts. Donc ici, je peux voir quels prompts ont réellement consommé le plus de jetons et je peux regarder ça et comprendre, bon, qu'est-ce que j'ai fait ici ? Est-ce que j'avais besoin de vider ma session plus tôt ? Pourquoi est-ce que j'ai consommé autant de jetons ici ? Et comment je fais pour que ça ne se reproduise plus ? Donc par exemple, si je veux ouvrir ce projet juste ici, et que je peux ouvrir ce prompt et aller dans la session, on peut voir tout ce que j'ai réellement fait ici. On peut voir tous les appels d'outils, on peut voir ce qui s'est passé. Et je pourrais analyser ça ou même demander à Cloud Code de l'analyser pour moi afin de comprendre pourquoi ça a pris autant de jetons. L'onglet des sessions nous montre aussi toutes nos différentes sessions et combien de tours et combien de jetons. Nous avons aussi des projets donc je peux voir par
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de monde virtuel / métavers de conférence en ligne.
+**Interface & Outils** : Tableau de bord web (Token Dashboard)
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant le profil de Nate Herk ("Founder, AI Automation Society", badge VIP) et la carte de navigation de l'événement.
+**Contenu textuel & Code** : Liste de prompts avec les colonnes Cache Cost, Prompt, Model, Tokens, Cache RD et Session, affichant les prompts les plus consommateurs de jetons.
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par le présentateur en incarnant un avatar 3D.
+**Action / Démonstration** : Visualisation et analyse des prompts qui ont consommé le plus de jetons par l'utilisateur.
+
+![Capture d'écran montrant l'interface d'un tableau de bord de suivi des jetons (Token Dashboard) avec la liste des prompts et leur coût en tokens.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001730_seg35.jpg)
+*⏱️ 00:17:30 — Capture d'écran montrant l'interface d'un tableau de bord de suivi des jetons (Token Dashboard) avec la liste des prompts et leur coût en tokens.*
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:17:55 - 00:18:28]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> dans les ateliers. D'accord. Ce n'était pas bien. Regardez ça. On peut tout voir et je viens de bugger et maintenant boum. Donc ce n'est pas bon. Je dirais qu'globalement, je veux dire, vous captez l'ambiance de comment ça fonctionne, mais je dirais que celui d'avant, qui était, je crois, élevé, celui-là, je l'aimais mieux. Je ne peux pas non plus m'asseoir dans ces chaises. Ouais. Donc je n'aime pas la façon de marcher dans celui-ci.
+> projetter combien de jetons j'utilise et combien de sessions j'ai eues. Et ensuite, j'ai une section de compétences, qui là ne fonctionne vraiment pas. Ce n'est pas exactement super facile d'obtenir les jetons par appel, mais vous pouvez voir, vous pouvez au moins voir combien de fois vos différentes compétences ont été invoquées. Et puis aussi une section de conseils. Maintenant, je n'ai pas vraiment intégré beaucoup d'IA ici, mais ce serait un peu le but, mais ça va vous montrer, Hé, ce fichier a été ouvert 181 fois. Ce fichier a été ouvert 166 fois. Cette commande bash a été exécutée 67 fois au cours des sept derniers jours. Vous pourriez donc être capaz d'identifier des schémas dont vous ne remarquez même pas qu'ils se produisent. Donc de toute façon, comme je l'ai dit, le dépôt GitHub dans la communauté School gratuite, tout ce que vous avez à faire est de prendre l'URL, de la donner à Claude Code et de dire,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application metaverse / plateforme d'événements virtuels en 3D (Workshop Wing / HyperAgent Lab)
+**Interface & Outils** : Interface Web (Tableau de bord personnalisé de monitoring pour agent IA).
 
-**Contenu textuel & Code** : Environnement virtuel 3D avec interface de navigation, mini-carte, affichage des salles et panneaux de présentation
+**Contenu textuel & Code** : Tableau de données avec les colonnes : SKILL, INVOCATIONS, TOKENS PER CALL, SESSIONS, LAST USED. On y voit des noms de compétences comme "paperclip", "superpowers:brainstorming", "linkedin-post", etc.
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par le présentateur en vue subjective 3D
+**Action / Démonstration** : Navigation dans l'onglet "Skills" du tableau de bord pour analyser l'utilisation des ressources par compétence.
 
-![Vue d'un avatar virtuel naviguant dans un couloir en 3D d'une plateforme virtuelle de type événementiel ou metaverse (Workshop Wing).](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001653_seg36.jpg)
-*⏱️ 00:16:53 — Vue d'un avatar virtuel naviguant dans un couloir en 3D d'une plateforme virtuelle de type événementiel ou metaverse (Workshop Wing).*
-
-![L'avatar s'approche de l'entrée de la salle Room C - HyperAgent Lab.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001657_seg36.jpg)
-*⏱️ 00:16:57 — L'avatar s'approche de l'entrée de la salle Room C - HyperAgent Lab.*
-
-![Vue à l'intérieur de la Room C montrant des avatars assistant à un atelier avec des présentations et des bulles de discussion.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001702_seg36.jpg)
-*⏱️ 00:17:02 — Vue à l'intérieur de la Room C montrant des avatars assistant à un atelier avec des présentations et des bulles de discussion.*
+![Tableau de bord "Token Dashboard" affichant une liste détaillée des compétences (skills) d'un agent IA, incluant le nombre d'invocations, de jetons par appel et de sessions.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001803_seg36.jpg)
+*⏱️ 00:18:03 — Tableau de bord "Token Dashboard" affichant une liste détaillée des compétences (skills) d'un agent IA, incluant le nombre d'invocations, de jetons par appel et de sessions.*
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:18:28 - 00:18:58]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je n'aime pas trop l'ambiance et il y a quelques bugs. Donc, jusqu'à présent, si nous voulons regarder notre liste, j'aime bien Extra Extra, c'est celui que j'ai préféré jusqu'à présent. Mais bref, celui-ci était au maximum. Celui-ci était au maximum juste ici. Voyons donc combien de temps cela a duré : deux heures et 28 minutes. Ça a donc duré longtemps, 50 dollars et 38 cents, 1,18 million de jetons. Il a donc effectivement atteint une compaction et a dû s'auto-compacter. Et puis il a fait 51 vérifications. L'a-t-il vraiment fait, hein ? Parce qu'il y avait beaucoup de bugs là-dedans. Et de toute façon, celui-ci ne nous a posé zéro question. Donc, jusqu'à présent, chaque fois, c's'est avéré à peu près plus cher et a pris plus de temps, à part ici. Mais ceux-ci en gros
+> Hé, aide-moi à configurer ça. Très bien. Donc avant d'aborder des questions de philosophie plus larges sur les raisons pour lesquelles je ne pense même pas que vous ayez besoin d'utiliser le modèle à fenêtre d'un million de tokens, je veux vous balancer quelques statistiques. Donc, très vite, première stat : un développeur a analysé sur GitHub 18 000 blocs de réflexion répartis sur 7 000 sessions. La profondeur de réflexion a chuté de 67 % à mesure que les sessions s'allongeaient, et les modifications sans lecture sont passées de 6 % à 34 %. Donc en gros, plus la session est longue, plus Claude devient paresseux et bâclé. Je sais qu'on le sait, mais cette statistique permet vraiment de bien s'en rendre compte.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau de bord d'analyse ou interface de visualisation de données.
+**Interface & Outils** : Présentation graphique (type slide deck).
 
-**Contenu textuel & Code** : Tableau avec des métriques de temps (ex. 1h 13m, 1h 31m), de coût ($12.44, $25.92) et de tokens (419.2K, 733.7K) pour chaque niveau d'effort.
+**Contenu textuel & Code** : Texte : « PHILOSOPHY », « 1M IS INSURANCE, NOT A GOAL », « FIRST 20% IS PRIME TIME », « 0 - 20% », « DIMINISHING RETURNS ».
 
-**Action / Démonstration** : Présentation des résultats comparatifs des différents modèles ou configurations testés.
+**Action / Démonstration** : Le présentateur explique sa philosophie sur l'inutilité relative des très grandes fenêtres de contexte (1 million de tokens) pour la plupart des usages.
 
-![Tableau comparatif affichant les performances, les coûts et le nombre de tokens pour différents niveaux de réglage ("Medium", "High", "Extra", "Max", "Ultracode").](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001716_seg37.jpg)
-*⏱️ 00:17:16 — Tableau comparatif affichant les performances, les coûts et le nombre de tokens pour différents niveaux de réglage ("Medium", "High", "Extra", "Max", "Ultracode").*
+![Une diapositive de présentation sombre affichant le titre « 1M IS INSURANCE, NOT A GOAL » et le slogan « FIRST 20% IS PRIME TIME », accompagnée d'une barre de progression illustrant le concept de « Diminishing returns » (rendements décroissants) pour le reste de la fenêtre contextuelle.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001836_seg37.jpg)
+*⏱️ 00:18:36 — Une diapositive de présentation sombre affichant le titre « 1M IS INSURANCE, NOT A GOAL » et le slogan « FIRST 20% IS PRIME TIME », accompagnée d'une barre de progression illustrant le concept de « Diminishing returns » (rendements décroissants) pour le reste de la fenêtre contextuelle.*
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:18:59 - 00:19:32]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> a pris un temps très similaire, mais à chaque fois, il a utilisé plus de tokens parce qu'il a réfléchi davantage. Et puis, vous savez, ces tokens vont coûter plus cher. Mais bref, passons au dernier, qui est ultra code. Donc, nous espérons vraiment que celui-ci est le meilleur. Allons donc sur ce localhost et voyons ce que nous avons. D'accord, super. Regardez ce badge. C'est un joli badge host all access. Nous avons un petit visuel sympa juste ici. Nous allons entrer AIS Live. Cool. D'accord. Bienvenue, Nate. J'aime la marche. Ça a l'air réaliste. J'aime le logo, même s'il manque le petit point rouge qui donne l'impression que c'est du direct. La carte en haut à droite
+> Bien, deuxième statistique. Un utilisateur est passé d'une dépense de 345 dollars par mois en jetons à 42 000 dollars par mois, et la qualité des résultats est restée totalement inchangée. Donc, même travail, même résultat, mais à cause des habitudes liées aux jetons, je ne sais pas ce qui est arrivé à ce pauvre type, mais le coût a augmenté tellement, tellement, et la qualité n'a même pas fait un bond. C'est donc une mauvaise gestion du contexte. Troisième statistique. Le problème de précision de récupération que j'ai mentionné plus tôt, 92 % à 256 000 jetons tombe à 78 % à 1 million. Donc, ce n'est pas parce que vous pouvez remplir un million de jetons que vous devez le faire, ce qui mène très bien
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau comparatif de données et interface d'application web 3D.
+**Interface & Outils** : Graphique de présentation (type Keynote/Slide).
 
-**Contenu textuel & Code** : Données de performance (temps, coût, tokens) pour différents modes d'effort de l'IA, et interface visuelle d'un événement virtuel.
+**Contenu textuel & Code** : Texte affiché : "STAT 02", "SAME QUALITY • 122× COST", "$345 -> $42K".
 
-**Action / Démonstration** : Comparaison des métriques des différents modes d'effort et transition vers l'affichage de l'application générée.
+**Action / Démonstration** : Le présentateur explique une statistique sur l'inefficacité des dépenses liées à l'utilisation des jetons IA.
 
-![Tableau de comparaison montrant les niveaux d'effort (High, Extra, Max, Ultracode) avec les durées, les coûts et le nombre de tokens.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001752_seg38.jpg)
-*⏱️ 00:17:52 — Tableau de comparaison montrant les niveaux d'effort (High, Extra, Max, Ultracode) avec les durées, les coûts et le nombre de tokens.*
-
-![Interface virtuelle 3D 'AIS LIVE' avec un avatar au premier plan dans le hall d'enregistrement.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001809_seg38.jpg)
-*⏱️ 00:18:09 — Interface virtuelle 3D 'AIS LIVE' avec un avatar au premier plan dans le hall d'enregistrement.*
+![Une infographie illustrant une comparaison de coûts : passage de 345 $ à 42 000 $ pour une qualité de résultat identique, avec la mention "122x cost".](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001907_seg38.jpg)
+*⏱️ 00:19:07 — Une infographie illustrant une comparaison de coûts : passage de 345 $ à 42 000 $ pour une qualité de résultat identique, avec la mention "122x cost".*
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:19:32 - 00:20:08]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> est un petit peu mieux étiqueté, donc je peux voir ce qui se passe. Je vais venir ici et récupérer mon bracelet VIP très rapidement. D'accord, super. Ça me dit aussi quoi faire. Donc en haut à gauche, ça dit de scanner au portique VIP sur le mur est du hall. Donc je crois que l'est serait par là, non ? Ne mange jamais de gaufres molles. Ouais. Ailes VIP, scanner le bracelet. D'accord, cool. Maintenant je suis dans la section VIP. Je peux voir ces différentes pièces. L'outil a été réinitialisé. La vidéo en direct est en train d'être diffusée. Je suis capable de voir les sous-titres juste là de ce dont on est en train de parler. Ça diffuse aussi les sons, mais je ne diffuse tout simplement pas l'audio pour vous les gars parce que je ne veux pas saturer.
+> en passant au point suivant sur la raison pour laquelle je l'utilise à peine. Donc, quand les gens entendent 1 million, ils pensent qu'ils ont un million de jetons avec lesquels jouer. Et ensuite, ils commencent à gaspiller. Ils arrêtent d'utiliser des sous-agents. Ils arrêtent d'être intentionnels. Ils déchargent tout dans une seule session géante parce qu'ils pensent qu'ils ont de la place. Et parce que la barre de progression, vous savez, selon l'endroit où vous utilisez Claude Code, n'en est qu'à moitié. Donc autant continuer. Mais les règles sur la façon dont fonctionnent les modèles d'IA n'ont pas changé. Une plus grande fenêtre ne signifie pas un meilleur résultat. Cela signifie simplement plus d'espace pour la pourriture du contexte et plus d'espace pour que le modèle se distrait et plus d'espace pour, vous savez, tout ce genre de choses. Ce million, c'est juste une assurance. Ce n'est pas du tout un objectif de le remplir. Vraiment les premiers, genre,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : AUCUNE
+**Interface & Outils** : Diapositive de présentation (graphique pédagogique).
 
-**Contenu textuel & Code** : AUCUN
+**Contenu textuel & Code** : Texte affiché : "PHILOSOPHY", "1M IS INSURANCE, NOT A GOAL", "FIRST 20% IS PRIME TIME", et une barre de progression légendée "0-20% DIMINISHING RETURNS".
 
-**Action / Démonstration** : AUCUNE
+**Action / Démonstration** : Illustration conceptuelle utilisée par le présentateur pour expliquer que la majorité de la valeur des jetons IA se trouve dans les premiers 20% de la fenêtre contextuelle.
+
+![Une diapositive de présentation illustrant la philosophie sur l'utilisation des jetons IA, avec le texte "1M IS INSURANCE, NOT A GOAL" et "FIRST 20% IS PRIME TIME".](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001941_seg39.jpg)
+*⏱️ 00:19:41 — Une diapositive de présentation illustrant la philosophie sur l'utilisation des jetons IA, avec le texte "1M IS INSURANCE, NOT A GOAL" et "FIRST 20% IS PRIME TIME".*
 
 ---
 
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
+### ⏱️ `[00:20:08 - 00:20:30]` | Segment #40
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Encore une fois, celui-ci fonctionne avec Cody et Mustafa là-dedans. C'est génial. Vidéo en direct. La vidéo ne se lance pas tant qu'on n'entre pas, par contre. Donc, honnêtement, je pense que c'est un bon choix. Dès que j'entre, par contre, la vidéo commence. Sympa. Belle attention. Toutes ces pièces. Génial. Ouais. Je veux dire, ça fait très haut de gamme. Voici une salle de guerre des prix. Entrons ici. Moi et John là-dedans.
+> Tu sais, de zéro à 20 % de ta session, c’est le moment idéal. Et c’est là que le Cloud.MD est le plus frais. C’est là que le modèle est le plus prêt. Quand j’utilise Opus avec un million de contexte, je ne dépasse jamais environ 120k tokens ou environ 12 %. Et ce n’est pas nécessairement parce que si tu arrives à 200k, ça va être horrible. C’est juste parce que, dans ma tête, je me suis dit, OK, 120k, c’est mon chiffre.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de monde virtuel / espace collaboratif 3D
+**Interface & Outils** : Présentation vidéo avec diapositive graphique.
 
-**Contenu textuel & Code** : Environnement virtuel en 3D avec des salles de réunion, des panneaux indicateurs textuels ("VIP Wing", "Price It Right - First 10 Clients Plan") et un avatar en mouvement.
+**Contenu textuel & Code** : Texte affiché : '1M IS INSURANCE, NOT A GOAL', 'FIRST 20% IS PRIME TIME', et une barre de progression '0 - 20% DIMINISHING RETURNS'.
 
-**Action / Démonstration** : Navigation et exploration d'un espace virtuel 3D avec affichage de salles interactives.
-
-![Capture d'écran montrant l'interface d'un espace virtuel 3D (type monde virtuel ou métavers) avec un avatar qui se déplace dans une zone nommée "VIP Wing", tandis que le présentateur apparaît en incrustation vidéo à gauche.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001854_seg40.jpg)
-*⏱️ 00:18:54 — Capture d'écran montrant l'interface d'un espace virtuel 3D (type monde virtuel ou métavers) avec un avatar qui se déplace dans une zone nommée "VIP Wing", tandis que le présentateur apparaît en incrustation vidéo à gauche.*
+**Action / Démonstration** : Le présentateur parle de l'utilisation optimale de la fenêtre de contexte d'un modèle d'IA (les premiers 20%).
 
 ---
 
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
+### ⏱️ `[00:20:30 - 00:21:07]` | Segment #41
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et ensuite nous avons l'after-party sympa. Cet after-party n'est pas encore aussi animé. Et nous avons plus de ballons de plage pour une raison quelconque, mais cet after-party est cool. Je veux dire, ça nous donne une bonne ambiance et il y a la rediffusion juste ici de notre questions-réponses de l'after-party, tout cela est en direct aussi. Génial. Ok. Allons vers la grande scène. Ça m'invite aussi à prendre une place côté allée à la grande scène, qui est tout droit à travers l'expo. Donc en fait, allons d'abord à travers l'expo. Qu'est-ce que vous construisez. Il y a beaucoup de gens qui parlent de différentes choses par ici. Waouh. Il y a aussi comme un petit truc de basketball. Est-ce que je peux le lancer ? Je peux. Est-ce que je dois regarder en haut pour le lancer ? Ok.
+> Je vais prendre l'habitude de toujours tout effacer et de prendre cette habitude, vous savez, de stocker des choses et d'avoir des feuilles de suivi et de faire toutes ces bonnes pratiques afin de savoir que je gère toujours bien ma session. Et d'ailleurs, à propos de toute cette histoire de 120 000 jetons, je veux dire, prenez ça avec des pincettes, parce qu'il va se passer qu'il y aura des moments où vous travaillez sur un gros projet de code ou vous utilisez, vous savez, des hyperframes pour monter une vidéo et vous allez dépasser les 120 et vous ne voulez pas vous arrêter en plein milieu de l'exécution parce que c'est en train de générer tout un tas de jetons. Mais pour moi, c'est juste en quelque sorte ma référence de base. Et si vous vous demandez d'où je sors ça, c'est parce que lorsque nous n'avions que 200 000 jetons dans la fenêtre de contexte,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de métavers / espace virtuel 3D (Gather ou similaire)
+**Interface & Outils** : Logiciel de présentation (type PowerPoint/Keynote).
 
-**Contenu textuel & Code** : Environnement virtuel 3D interactif avec interface de navigation et mini-carte
+**Contenu textuel & Code** : Texte affiché : "1M IS INSURANCE, NOT A GOAL", "FIRST 20% IS PRIME TIME", et une barre de progression indiquant "0 - 20% DIMINISHING RETURNS".
 
-**Action / Démonstration** : Exploration et visite guidée de l'espace virtuel par le présentateur
-
-![Vue d'une simulation virtuelle 3D montrant l'after-party avec des avatars et des ballons de plage.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001917_seg41.jpg)
-*⏱️ 00:19:17 — Vue d'une simulation virtuelle 3D montrant l'after-party avec des avatars et des ballons de plage.*
+**Action / Démonstration** : Aucune action technique ou logicielle montrée, il s'agit d'un support visuel statique illustrant les propos du présentateur.
 
 ---
 
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
+### ⏱️ `[00:21:07 - 00:21:40]` | Segment #42
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Eh bien, pas terrible. Mais bref, nous avons un stand AIS plus. Nous avons le stand Glido. Est-ce que ça diffuse en direct ? Oui, ça diffuse définitivement en direct. Sympa. Nous avons le stand de l'hyper agent. Nous avons d'autres trucs par ici. Ok, cool. Je vais aller dans la salle principale et voir si on peut trouver une place côté allée. Dès qu'on entre, tout commence à jouer. On a une très belle ambiance de scène. Comment je fais pour trouver une place côté allée par contre. Voilà. Il a fallu que je trouve la bonne. Je prends la place côté allée. Il n'y a personne sur scène, ce qui est bizarre. J'aimais bien quand il y avait du monde sur scène dans les versions précédentes.
+> J'étais fondamentalement toujours en train de nettoyer et de compacter quand j'arrivais à environ 60 %, ce qui représentait environ 120 000 jetons, donc j'ai toujours gardé ça comme référence du moment où, quand j'arrive à ce point, je vais essayer de faire ce que je peux pour réinitialiser, réécrire les mémoires, réécrire la progression, puis continuer sur un modèle neuf. Vous pouvez aussi faire des choses comme le chaînage de sessions, donc si vous avez un gros projet, vous n'avez pas tout à faire en une seule session, les chaîner ensemble, en avoir une pour la découverte où vous pouvez demander à Claude de lire des fichiers PDF et de lire la base de code et, vous savez, de vous donner simplement un beau document de synthèse. Et ensuite, vous pouvez déplacer toutes ces informations dans une session de planification où il
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web interactive / Environnement virtuel 3D de conférence AIS Live.
+**Interface & Outils** : Diapositive de présentation graphique (style tableau de bord/slide).
 
-**Contenu textuel & Code** : Éléments textuels d'interface utilisateur (Expo Hall, Main Stage, Grab a seat, options de navigation).
+**Contenu textuel & Code** : Texte pédagogique sur l'optimisation des jetons ("1M is insurance", "20% is prime time", "0-20% diminishing returns").
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par le présentateur se dirigeant vers la salle principale.
+**Action / Démonstration** : Présentation théorique illustrant la stratégie de nettoyage des jetons avant saturation, en appui du discours du présentateur.
 
-![Vue de l'Expo Hall virtuel dans l'espace 3D avec les différents stands de la conférence AIS.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001948_seg42.jpg)
-*⏱️ 00:19:48 — Vue de l'Expo Hall virtuel dans l'espace 3D avec les différents stands de la conférence AIS.*
-
-![Entrée du présentateur dans la salle principale (Main Stage) de l'événement virtuel.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_001955_seg42.jpg)
-*⏱️ 00:19:55 — Entrée du présentateur dans la salle principale (Main Stage) de l'événement virtuel.*
-
-![Gros plan sur les spectateurs virtuels assis dans l'auditorium de la Main Stage avec l'interface de visionnage "Grab a seat".](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002001_seg42.jpg)
-*⏱️ 00:20:01 — Gros plan sur les spectateurs virtuels assis dans l'auditorium de la Main Stage avec l'interface de visionnage "Grab a seat".*
+![Une diapositive de présentation avec un fond sombre illustrant une philosophie de gestion des jetons IA, affichant le texte "1M IS INSURANCE, NOT A GOAL", "FIRST 20% IS PRIME TIME" et une barre de progression indiquant "0-20% DIMINISHING RETURNS".](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002115_seg42.jpg)
+*⏱️ 00:21:15 — Une diapositive de présentation avec un fond sombre illustrant une philosophie de gestion des jetons IA, affichant le texte "1M IS INSURANCE, NOT A GOAL", "FIRST 20% IS PRIME TIME" et une barre de progression indiquant "0-20% DIMINISHING RETURNS".*
 
 ---
 
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
+### ⏱️ `[00:21:40 - 00:22:16]` | Segment #43
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Prenons un petit selfie. Bref, on a moi et Pat là-haut. Pat est tout habillé comme un ouvrier du bâtiment. Comme vous pouvez voir, on faisait une petite simulation d'appel de découverte dans cet exemple. Je vais revenir par l'expo et on va aller ici dans l'aile des ateliers et juste vérifier si ces chambres sont fondamentalement exactement pareilles qu'elles le devraient. Maintenant, je ne peux pas vraiment discuter avec les gens. Je le pouvais avant, dans les versions précédentes, discuter avec les gens, ce que je trouvais être une très jolie touche. Et on a l'atelier parcours fondation. Est-ce que je peux m'asseoir ?
+> lit cela et cela crée un plan. Et ensuite, vous prenez ce plan terminé et vous le déplacez dans votre session d'exécution. Donc je pense que vous avez compris. C'est un peu comme une chaîne de montage. Chaque session a une tâche spécialisée. Donc comme je l'ai dit, il est vraiment important de commencer à prendre ces habitude-là. Donc si vous débutez tout juste, restez peut-être simplement avec la fenêtre de contexte de 200k pendant un petit moment, apprenez la discipline, apprenez à être intentionnel, et ensuite vous pourrez passer à 1 million si vous en avez même besoin. Vous pourriez même réaliser que vous n'en avez pas besoin, car je pense que plus vous avez d'espace, cela invite simplement à de plus mauvaises habitudes. Comme si vous essayez de perdre du poids, mais que vous avez toujours des biscuits posés sur votre bureau, vous allez juste être tenté tout le temps d'attraper plus de biscuits. Alors pourquoi ne pas simplement jeter les biscuits si vous n'en avez pas besoin ?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle 3D interactive (type monde virtuel ou métavers).
+**Interface & Outils** : Logiciel de présentation (diapositive graphique).
 
-**Contenu textuel & Code** : Interface de navigation virtuelle affichant des indications textuelles ('Main Stage', 'Expo Hall', 'Workshop Wing', mini-carte en haut à droite).
+**Contenu textuel & Code** : Schéma en 3 étapes : 01 DISCOVER (Read -> summary doc), 02 PLAN (Summary -> plan), 03 BUILD (Plan -> execution). Titre principal : "WORK THE ASSEMBLY LINE."
 
-**Action / Démonstration** : Navigation et exploration guidée à travers différentes zones d'un environnement virtuel interactif en 3D.
+**Action / Démonstration** : Illustration conceptuelle du processus de travail automatisé par des agents IA, où chaque étape traite une sortie de l'étape précédente.
 
-![Vue d'une scène virtuelle 3D représentant une grande estrade ("Main Stage") avec des avatars virtuels et des écrans informatifs.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002014_seg43.jpg)
-*⏱️ 00:20:14 — Vue d'une scène virtuelle 3D représentant une grande estrade ("Main Stage") avec des avatars virtuels et des écrans informatifs.*
-
-![Navigation dans un hall d'exposition virtuel ("Expo Hall") avec plusieurs avatars d'utilisateurs et des panneaux indicateurs.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002020_seg43.jpg)
-*⏱️ 00:20:20 — Navigation dans un hall d'exposition virtuel ("Expo Hall") avec plusieurs avatars d'utilisateurs et des panneaux indicateurs.*
-
-![Déplacement dans un couloir virtuel ("Workshop Wing") avec des avatars discutant entre eux, illustrant l'exploration de l'espace virtuel.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002025_seg43.jpg)
-*⏱️ 00:20:25 — Déplacement dans un couloir virtuel ("Workshop Wing") avec des avatars discutant entre eux, illustrant l'exploration de l'espace virtuel.*
+![Diapositive de présentation illustrant le concept de "Session Chaining" sous forme de chaîne de montage en trois étapes.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002149_seg43.jpg)
+*⏱️ 00:21:49 — Diapositive de présentation illustrant le concept de "Session Chaining" sous forme de chaîne de montage en trois étapes.*
 
 ---
 
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
+### ⏱️ `[00:22:16 - 00:22:49]` | Segment #44
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je ne peux pas m'asseoir. Je ne sais pas. Nous avons Liberty qui parle en ce moment et elle est en train de parler et nous pouvons l'entendre. Donc c'est bien, mais ça ne me laisse pas m'asseoir. Et regardez ça. Je deviens assez instable juste ici. Ça buguait de la façon dont je marchais. Ça ne voulait pour ainsi dire pas me laisser marcher. Ce n'est pas bon. Pareil. Nous avons cette piste avancée dedans. Génial. Donc dans l'ensemble, ils ont une ambiance très similaire. Je dirai que je suis impressionné par la façon dont ils ont pu raconter une histoire à partir de ce que nous faisaient. Bibliothèque de points clés des intervenants. D'accord. C'est cool. Je ne pense pas que nous ayons vu ça depuis différents endroits, mais ce sont comme les ressources et ça montre des trucs sympas. Oh, ouah. Je
+> Maintenant, il y a aussi beaucoup d'autres frameworks que d'autres personnes ont déjà conçus et que vous pouvez simplement intégrer dans votre projet. Je vais donc mettre le lien de ce tweet dans la description de cette vidéo. Il contient 10 dépôts GitHub différents pour dépenser 60 à 90 % de jetons en moins dans Claude Code. Je ne vais pas tous les passer en revue ici. Je vais les survoler rapidement. Mais ce qu'il est important de garder à l'esprit, ce n'est pas que vous voulez mettre les 10 dans un projet et simplement le laisser tourner, car cela ne va pas vraiment marcher. Chacun d'eux fait quelque chose de différent. Ils abordent la gestion du contexte et la réduction des jetons de différentes manières. La clé est donc de les analyser, peut-être même de les nourrir
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel en ligne 3D (type Gather.town ou similaire)
+**Interface & Outils** : Navigateur web (X / Twitter) et webcam du présentateur.
 
-**Contenu textuel & Code** : Interface d'un espace virtuel avec des salles nommées 'Workshop A', 'Workshop B' et 'Speaker Takeaways Library'
+**Contenu textuel & Code** : Publication de @DeRonin_ listant "10 GitHub repos to spend 60-90% less tokens in Claude Code" incluant RTK (Rust Token Killer) et Context Mode.
 
-**Action / Démonstration** : Exploration et navigation d'un avatar dans différentes salles de l'environnement virtuel
+**Action / Démonstration** : Le présentateur présente à l'écran les ressources et frameworks externes pour optimiser l'utilisation des tokens d'IA.
 
-![Vue d'un espace virtuel nommé 'Workshop A - Foundation Track' avec un avatar et des sous-titres 'All right.'](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002040_seg44.jpg)
-*⏱️ 00:20:40 — Vue d'un espace virtuel nommé 'Workshop A - Foundation Track' avec un avatar et des sous-titres 'All right.'*
-
-![Navigation dans la zone 'Workshop B - Advanced Track' d'un environnement virtuel interactif avec des tables et des chaises](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002048_seg44.jpg)
-*⏱️ 00:20:48 — Navigation dans la zone 'Workshop B - Advanced Track' d'un environnement virtuel interactif avec des tables et des chaises*
-
-![Exploration de la bibliothèque 'Speaker Takeaways Library' dans l'environnement virtuel avec des avatars et des présentations](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002056_seg44.jpg)
-*⏱️ 00:20:56 — Exploration de la bibliothèque 'Speaker Takeaways Library' dans l'environnement virtuel avec des avatars et des présentations*
+![Capture d'écran montrant un tweet sur X (Twitter) listant des dépôts GitHub pour réduire la consommation de jetons, avec le présentateur visible en incrustation à droite.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002225_seg44.jpg)
+*⏱️ 00:22:25 — Capture d'écran montrant un tweet sur X (Twitter) listant des dépôts GitHub pour réduire la consommation de jetons, avec le présentateur visible en incrustation à droite.*
 
 ---
 
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
+### ⏱️ `[00:22:49 - 00:23:21]` | Segment #45
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> peut en fait ouvrir toutes ces choses et nous pouvons prendre des photos ici même aussi. Super. Prendre une photo. Je peux aussi l'enregistrer. Genre, je peux vraiment télécharger ceci. Et maintenant nous avons cette photo que nous venons de prendre à cet événement en direct d'AIS. Très bien. Eh bien, je pense qu'il est temps pour moi de tirer quelques conclusions, mais voyons d'abord ce que cette exécution nous a coûté. Cela a pris une heure et 35 minutes. C'était donc beaucoup plus rapide que le maximum. Cela n'a coûté que 18 dollars et 69 cents. Waouh. C'était donc un peu plus cher que le niveau élevé, moins cher que l'extra et beaucoup moins cher que le maximum. Cela a également consommé 606 000 jetons et 42 vérifications avec zéro question. Maintenant, une autre chose intéressante à noter est que tout
+> tout intégrer dans votre produit et dire, hé, sur la base de ce que nous faisons ici dans ce projet spécifique avec cet objectif final spécifique, lequel de ces répertoires nous aiderait probablement le plus. Maintenant, si l'un d'entre eux vous semble particulièrement intéressant, faites-le-moi savoir dans les commentaires et je ferai un tutoriel complet et approfondi dessus. Mais pour l'instant, jetons juste un coup d'œil rapide. Nous avons Rust Token Killer, qui est un proxy CLI qui filtre la sortie du terminal avant qu'elle n'atteigne votre contexte. Nous avons Context Mode, qui met en bac à sable la sortie d'un outil brut dans SQLite au lieu de la déverser dans le contexte. Nous avons donc vu de très belles statistiques ici avec Context Mode. Nous avons Code Review Graph. Nous avons Token
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Visionneuse d'images Windows / Application de diagramme
+**Interface & Outils** : Plateforme de réseau social (X/Twitter) affichant une liste de dépôts GitHub.
 
-**Contenu textuel & Code** : Photo de l'événement AIS LIVE avec des avatars sur un tapis rouge / Tableau de données (durées, prix, métriques)
+**Contenu textuel & Code** : Liste de recommandations : "1. RTK (Rust Token Killer)", "2. Context Mode", "3. code-review-graph", avec leurs avantages respectifs pour réduire la consommation de jetons.
 
-**Action / Démonstration** : Visualisation de la photo capturée lors de l'événement.
+**Action / Démonstration** : Le présentateur passe en revue une liste de solutions techniques pour optimiser le contexte des agents IA comme Claude Code.
 
-![L'image montre une visionneuse d'images affichant une photo prise lors de l'événement en direct 'AIS LIVE'.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002113_seg45.jpg)
-*⏱️ 00:21:13 — L'image montre une visionneuse d'images affichant une photo prise lors de l'événement en direct 'AIS LIVE'.*
+![Capture d'un post X listant des outils d'optimisation de jetons (RTK) pour Claude Code, avec le présentateur en médaillon.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002257_seg45.jpg)
+*⏱️ 00:22:57 — Capture d'un post X listant des outils d'optimisation de jetons (RTK) pour Claude Code, avec le présentateur en médaillon.*
+
+![Capture du même post X montrant les points 2 et 3 (Context Mode et code-review-graph) avec le présentateur en médaillon.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002313_seg45.jpg)
+*⏱️ 00:23:13 — Capture du même post X montrant les points 2 et 3 (Context Mode et code-review-graph) avec le présentateur en médaillon.*
 
 ---
 
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
+### ⏱️ `[00:23:21 - 00:23:57]` | Segment #46
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> ces exécutions, aucune d'entre elles n'a utilisé de sous-agent. J'ai vérifié et je me suis assuré qu'aucune d'elles n'avait utilisé de sous-agents. Elles ne voulaient déléguer aucun travail, ce qui était intéressant. Donc ces jetons sont ce qui a été reflété à l'intérieur de cette session. Évidemment, comme je l'ai dit, celle-ci a dépassé, vous savez, 950 000, donc, ou peu importe quelle est la fenêtre de compaction. Je ne la laisse généralement jamais monter si haut, mais comme c'était un objectif global et que je n'étais pas impliqué, celle-ci a dû se compacter, mais les autres ont simplement tourné dans cette unique session. Et ce sont les statistiques globales. Et aussi, très rapidement concernant les trucs d'UltraCode, les gars, je ne sais pas si vous l'avez remarqué, mais quand j'ai fait tourner UltraCode ces derniers temps, ça a juste fait bizarre. Ça a semblé un peu buggé. Je, plusieurs fois je l'ai fait tourner
+> Sauveur. Voici celui du Homme des cavernes dont je parlais et qui fait parler Claude comme un homme des cavernes. Nous avons Claude Token Efficient, qui est un fichier Claude.nmd qui maintient les réponses concises. Nous avons l'optimiseur de jetons MCP. Nous avons l'optimiseur de jetons Claude, un autre optimiseur de jetons et le contexte Claude. Donc encore une fois, vous n'avez pas besoin des 10, choisissez-en deux ou trois en fonction de votre flux de travail. Voici un petit arbre de décision ou quelques directives sur la façon de les utiliser. Mais comme je l'ai dit, la meilleure façon de faire est de donner à Claude Code ces répertoires et de lui faire expliquer en langage naturel ce que chacun fait et lequel conviendrait le mieux à votre projet spécifique. Faites-moi donc savoir si vous voulez
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau ou outil de présentation avec une incrustation vidéo du présentateur en bas à gauche.
+**Interface & Outils** : Navigateur web affichant un fil d'actualité Twitter / X.
 
-**Contenu textuel & Code** : Tableau de données chiffrées : Run time (de 16m 43s à 2h 28m), API cost (de $3.91 à $50.38), Total tokens (de 191.3K à 1.18M), Checks, et Questions asked.
+**Contenu textuel & Code** : Texte du post détaillant des projets GitHub comme 'claude-token-efficient' et 'token-optimizer-mcp' ainsi que des conseils d'association.
 
-**Action / Démonstration** : Le présentateur explique les résultats des différentes exécutions présentées dans le tableau de données.
+**Action / Démonstration** : Le présentateur commente la liste des outils d'optimisation de jetons affichée à l'écran.
 
-![Un tableau comparatif montrant les performances et coûts de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec les métriques Run time, API cost, Total tokens, Checks et Questions asked.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002149_seg46.jpg)
-*⏱️ 00:21:49 — Un tableau comparatif montrant les performances et coûts de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec les métriques Run time, API cost, Total tokens, Checks et Questions asked.*
+![Capture d'écran montrant un post sur les réseaux sociaux (X/Twitter) listant des outils d'optimisation de jetons pour Claude, avec le présentateur visible en incrustation à droite.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002330_seg46.jpg)
+*⏱️ 00:23:30 — Capture d'écran montrant un post sur les réseaux sociaux (X/Twitter) listant des outils d'optimisation de jetons pour Claude, avec le présentateur visible en incrustation à droite.*
+
+![Suite du même post sur les réseaux sociaux détaillant les recommandations pour combiner les outils (« how to stack them »), avec le présentateur en incrustation.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002348_seg46.jpg)
+*⏱️ 00:23:48 — Suite du même post sur les réseaux sociaux détaillant les recommandations pour combiner les outils (« how to stack them »), avec le présentateur en incrustation.*
 
 ---
 
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
+### ⏱️ `[00:23:57 - 00:24:17]` | Segment #47
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> et je me suis dit, est-ce que ça tourne vraiment sous UltraCode ? Ça a fait pas mal de vérifications de plus que ces autres-là, mais pour une raison quelconque, ça ne me semblait pas correct, parce qu'essentiellement, ce qu'est UltraCode, c'est un effort supplémentaire et c'est tout simplement l'utilisation de flux de travail plus dynamiques pour faire les choses. Et donc, à force de fouiller dans les journaux de session et même quand je regardais ce truc se construire dans UltraCode, ça ne lançait aucun de ces flux de travail dynamiques et j'ai essayé plusieurs fois.
+> me permettre d'analyser en profondeur n'importe lequel d'entre eux, mais je me suis dit que ce serait une super ressource à consulter. Le lien sera dans la description de cette vidéo YouTube. Et la dernière chose que je voulais vous laisser, les gars, c'est que si vous avez une mauvaise session, si vous avez l'impression que Claude déraille, mais que vous n'êtes peut-être même pas, vous savez, près de ce genre de zone de pourriture contextuelle, mais que vous avez simplement l'impression de vous répéter ou quoi que ce soit, effacez tout simplement ouvrez-en une nouvelle.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou tableau de bord de type interface de notes/visualisation (marquée « Opus 5.5 Efforts »).
+**Interface & Outils** : Navigateur web (Twitter/X)
 
-**Contenu textuel & Code** : Tableau de données comparatives : Run time, API cost, Total tokens, Checks, Questions asked pour différents modes de configuration (Low à Ultracode).
+**Contenu textuel & Code** : Publication listant des outils comme "RTK (Rust Token Killer)" et "Context Mode" pour réduire les tokens de Claude Code, Cursor et Copilot.
 
-**Action / Démonstration** : Le présentateur commente et analyse les performances et les coûts affichés dans le tableau comparatif entre les différents niveaux d'effort.
+**Action / Démonstration** : Le présentateur présente une ressource utile sous forme de post Twitter qui sera mise en lien dans la description.
 
-![Un tableau comparatif montrant les performances de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec des métriques comme le temps d'exécution, le coût API, le nombre total de tokens, les vérifications et les questions posées, avec le présentateur visible dans un encadré à gauche.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002218_seg47.jpg)
-*⏱️ 00:22:18 — Un tableau comparatif montrant les performances de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec des métriques comme le temps d'exécution, le coût API, le nombre total de tokens, les vérifications et les questions posées, avec le présentateur visible dans un encadré à gauche.*
+![Capture d'écran montrant un tweet de Ronin (@DeRonin_) listant des dépôts GitHub pour réduire la consommation de tokens dans Claude Code, avec le présentateur incrusté en bas à droite.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002402_seg47.jpg)
+*⏱️ 00:24:02 — Capture d'écran montrant un tweet de Ronin (@DeRonin_) listant des dépôts GitHub pour réduire la consommation de tokens dans Claude Code, avec le présentateur incrusté en bas à droite.*
 
 ---
 
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
+### ⏱️ `[00:24:17 - 00:24:42]` | Segment #48
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc je ne sais pas si c'est un bug actuellement dans le harness de CloudCode ou si c'est juste avec Opus 5.5, c'est un tout petit peu pire avec UltraCode en ce moment ou quelque chose comme ça, mais dans les deux cas, ce sont les véritables niveaux d'effort globaux et tout cela semble tout à fait logique quand on regarde un peu comment ils progressent. Jetons donc un œil à ceci. Coût maximum par rapport au minimum, nous avions 12,9 fois sur l'exécution la moins chère par rapport à l'exécution la plus chère, ce qui, je crois, allait de 3,98 $ à 50,38 $.
+> Parfois, ouvrez simplement une nouvelle session et repartez de zéro, à la fois pour votre propre santé mentale, mais aussi pour la santé mentale de cette session Claude. C'est donc tout ce que j'ai pour vous aujourd'hui concernant la gestion de vos limites de session, mieux que 99 % des personnes qui utilisent Claude Code. Si vous faites ces choses régulièrement, je vous le garantis, vous tirerez bien plus parti de votre abonnement Claude Code que beaucoup ne le feront. Je pense donc que vous êtes maintenant prêts à vous plonger plus profondément dans ces 18 astuces dont je vous ai parlé. Et vous pouvez le faire en regardant cette vidéo que je vais placer juste ici. Et j'espère vous y voir, les gars.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou tableau de bord avec le présentateur visible en incrustation à gauche.
+**Interface & Outils** : N/A
 
-**Contenu textuel & Code** : Tableau avec les colonnes : Low, Medium, High, Extra, Max, Ultracode, et les lignes : Run time, API cost, Total tokens, Checks, Questions asked.
+**Contenu textuel & Code** : Texte de conclusion : "THANKS FOR WATCHING", "WHEN IN DOUBT", "CLEAR IT.", "START FRESH."
 
-**Action / Démonstration** : Présentation et analyse des performances et des coûts selon les différents niveaux d'effort des modèles d'IA.
-
-![Tableau comparatif des niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) affichant le temps d'exécution, le coût API, le nombre total de tokens, les vérifications et les questions posées.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002241_seg48.jpg)
-*⏱️ 00:22:41 — Tableau comparatif des niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) affichant le temps d'exécution, le coût API, le nombre total de tokens, les vérifications et les questions posées.*
+**Action / Démonstration** : Le présentateur conclut la vidéo en résumant le conseil de réinitialiser les sessions avec l'IA.
 
 ---
 
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
+### ⏱️ `[00:24:42 - 00:24:49]` | Segment #49
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc c'était bas et max. En ce qui concerne les vérifications max par rapport au bas, nous avons eu un multiple de 2,3 fois. Le total pour les six était de 127 dollars et ultra code était de 18,69 dollars. Regardons la vitesse par rapport au coût ici. Laissez-moi donc dézoomer un peu pour que nous puissions voir tout cela. Sur l'axe des X, nous avons le temps d'exécution. Sur l'axe des Y, nous avons le coût.
+> Mais si vous avez apprécié celui-ci et que vous avez appris quelque chose de nouveau, veuillez mettre un pouce bleu. Ça m'aide énormément. Et comme toujours, je vous remercie d'être arrivés jusqu'à la fin de la vidéo, et je vous dis à la prochaine.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de test et de rapport de métriques (Opus Effort Test)
+**Interface & Outils** : Aucun éditeur ou terminal (écran de fin de vidéo).
 
-**Contenu textuel & Code** : Texte explicatif sur les sessions de test et cartes de métriques chiffrées (12.9x, 2.3x, $18.69, $127.65)
+**Contenu textuel & Code** : Texte affiché : "WHEN IN DOUBT CLEAR IT. START FRESH."
 
-**Action / Démonstration** : Présentation des résultats comparatifs de coûts et de vérifications entre différents niveaux d'effort.
-
-![Capture d'écran montrant le présentateur à gauche et une interface de tableau de bord affichant des statistiques sur les coûts et les vérifications (ex: 12.9x Max cost vs Low, 2.3x Max checks vs Low, $18.69 Ultracode cost, $127.65 Total across all six).](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002305_seg49.jpg)
-*⏱️ 00:23:05 — Capture d'écran montrant le présentateur à gauche et une interface de tableau de bord affichant des statistiques sur les coûts et les vérifications (ex: 12.9x Max cost vs Low, 2.3x Max checks vs Low, $18.69 Ultracode cost, $127.65 Total across all six).*
-
----
-
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc j'ai l'impression que le mieux serait en bas à gauche, mais pas vraiment. Donc de toute façon, vous pouvez voir que low était bon marché et rapide. Max était lent et cher. Mais ce genre de graphique a généralement du sens. Plus vous augmentez l'effort, plus ça va coûter cher et plus ça va prendre un peu plus de temps. C'est logique. Maintenant voyons la croissance par rapport à low. Nous avons donc le temps d'exécution en bleu, les coûts d'API en orange, les jetons en vert, et les vérifications en or jaunâtre, moutarde.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web montrant un graphique analytique (vitesse par rapport au coût) d'un test nommé 'Opus Effort Test'.
-
-**Contenu textuel & Code** : Graphique à nuage de points comparant la vitesse (axe X, temps d'exécution) et le coût en dollars (axe Y, coût API) pour différents niveaux de test (Low, Medium, High, Extra, Ultracode, Max). Une infobulle affiche les détails du point 'Low' (16m 43s - $3.91 - 191.3K tokens - 22 checks).
-
-**Action / Démonstration** : Le présentateur commente le graphique montrant que le niveau 'Low' est rapide et bon marché, tandis que 'Max' est lent et cher.
-
-![Capture d'écran montrant le présentateur à gauche et un graphique de résultats intitulé 'Speed vs cost' comparant différents niveaux d'effort (Low, Medium, High, Extra, Ultracode, Max) en fonction du temps d'exécution et du coût de l'API.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002325_seg50.jpg)
-*⏱️ 00:23:25 — Capture d'écran montrant le présentateur à gauche et un graphique de résultats intitulé 'Speed vs cost' comparant différents niveaux d'effort (Low, Medium, High, Extra, Ultracode, Max) en fonction du temps d'exécution et du coût de l'API.*
-
----
-
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et d'ailleurs, la raison pour laquelle UltraCode apparaît comme ça, c'est parce qu'il utilise réellement un niveau d'effort supplémentaire. Il est simplement incité et il utilise plutôt des flux de travail dynamiques et des choses comme ça, ce qui fait que, vous savez, c'est logique parce qu'en gros, il utilisait un supplément sous le capot. C'est aussi pourquoi Claude l'a étiqueté ici en orange. Quoi qu'il en soit, si nous continuons plus bas ici, c'est généralement logique, n'est-ce pas ?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de test et de visualisation de données (graphique de performance 'Opus Effort Test')
-
-**Contenu textuel & Code** : Graphique comparatif intitulé 'Growth relative to Low' avec les courbes 'Run time', 'API cost', 'Tokens', et 'Checks' allant de 'Low' à 'Ultracode'.
-
-**Action / Démonstration** : Présentation des résultats d'un test comparatif sur différents niveaux d'effort de l'IA.
-
-![Un graphique montrant la croissance relative des performances par rapport au niveau 'Low' (bas), incluant les métriques de temps d'exécution, de coût d'API, de tokens et de vérifications (Checks), avec en bas à gauche une incrustation vidéo du présentateur.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002347_seg51.jpg)
-*⏱️ 00:23:47 — Un graphique montrant la croissance relative des performances par rapport au niveau 'Low' (bas), incluant les métriques de temps d'exécution, de coût d'API, de tokens et de vérifications (Checks), avec en bas à gauche une incrustation vidéo du présentateur.*
-
----
-
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> À mesure que le niveau d'effort augmente, encore une fois, ces métriques vont augmenter. Le temps d'exécution, les coûts d'API, les jetons et les vérifications. C'est la même chose ici avec le temps d'exécution. Cela nous donne simplement des graphiques linéaires individuels maintenant pour chacune de ces différentes métriques, comme le coût d'API, les vérifications, le total des jetons, le coût par vérification, et tous les chiffres au même endroit. Des données plutôt cool, donc.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de visualisation de données / tableau de bord de test (Opus Effort Test).
-
-**Contenu textuel & Code** : Graphique linéaire comparant quatre métriques : Run time (8.9x), API cost (12.9x), Tokens (6.2x) et Checks (2.3x) sur une échelle allant de 'Low' à 'Ultracode'.
-
-**Action / Démonstration** : Le présentateur commente l'augmentation des différentes métriques en fonction du niveau d'effort configuré.
-
-![Un graphique montrant la croissance relative de différentes métriques (coût API, temps d'exécution, jetons, vérifications) en fonction du niveau d'effort, avec le présentateur visible à gauche.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002406_seg52.jpg)
-*⏱️ 00:24:06 — Un graphique montrant la croissance relative de différentes métriques (coût API, temps d'exécution, jetons, vérifications) en fonction du niveau d'effort, avec le présentateur visible à gauche.*
-
----
-
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je dirais que rien ici n'est trop choquant. Ce qui a été le plus choquant pour moi, ce sont ces résultats. Mes deux principaux favoris étaient high, qui est celui-ci, et extra, qui est celui-ci. Donc je dois retourner ici et me souvenir de ce que j'en pensais. J'ai vraiment aimé cette sensation. Celui-ci donne aussi simplement l'impression d'être le plus fluide. La physique était agréable. La porte coulissante en verre était agréable. Je n'ai pas vraiment remarqué beaucoup de bugs dans celui-ci, ce qui est ce que j'ai vraiment aimé.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web interactive de type monde virtuel 3D (AIS Live)
-
-**Contenu textuel & Code** : Interface utilisateur affichant le titre 'AIS LIVE - Real Projects, Real Revenue', des instructions de contrôle clavier/souris et un monde virtuel en 3D isométrique.
-
-**Action / Démonstration** : Exploration de l'espace virtuel et interaction avec la plateforme interactive 3D.
-
-![Écran d'accueil de la plateforme virtuelle 'AIS LIVE' montrant les contrôles de navigation et le bouton d'entrée.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002426_seg53.jpg)
-*⏱️ 00:24:26 — Écran d'accueil de la plateforme virtuelle 'AIS LIVE' montrant les contrôles de navigation et le bouton d'entrée.*
-
-![Vue de la place virtuelle 'AIS Live Plaza' avec des avatars et des bannières informatives.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002431_seg53.jpg)
-*⏱️ 00:24:31 — Vue de la place virtuelle 'AIS Live Plaza' avec des avatars et des bannières informatives.*
-
-![Navigation dans l'environnement virtuel 'AIS Live Plaza' avec un avatar en vue subjective/troisième personne.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002435_seg53.jpg)
-*⏱️ 00:24:35 — Navigation dans l'environnement virtuel 'AIS Live Plaza' avec un avatar en vue subjective/troisième personne.*
-
----
-
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je ne me rappelle plus si celui-ci était un où, oh, je ne pouvais pas parler aux gens par contre. Je pouvais juste traverser tout droit à travers eux. Je ne pouvais pas m'asseoir dans celui-ci non plus. Voici un autre petit truc visuel où je fais essentiellement juste traverser tout droit à travers ce mur. Donc je n'aime pas trop ça. Mais je pense, est-ce que c'était celui-là où je pouvais m'asseoir dans ces sessions ? Non. D'accord. Donc je ne pense pas que c'était mon gagnant alors. Celui-ci est extra haut. Je pense que c'est le gagnant. Ouais. Je pense que c'était celui que j'aimais le plus. J'adorais toute cette ambiance. J'adorais que je pouvais clavarder avec des gens. C'était définitivement celui où nous pouvions venir ici et nous pouvions nous asseoir où nous voulions, prendre un siège, nous lever. Je pouvais lire ces trois offres et je pouvais clavarder avec eux. J'ai aussi réalisé qu'il y avait de petites sections pour simuler des appels de découverte ici aussi.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D interactive (plateforme d'événement virtuel AIS Live).
-
-**Contenu textuel & Code** : Interface utilisateur avec commandes de déplacement, mini-carte et affichage de la scène principale.
-
-**Action / Démonstration** : Exploration d'un monde virtuel 3D et navigation à travers les espaces de l'événement.
-
-![Vue à la troisième personne dans l'environnement virtuel 3D montrant des avatars et une scène principale.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002448_seg54.jpg)
-*⏱️ 00:24:48 — Vue à la troisième personne dans l'environnement virtuel 3D montrant des avatars et une scène principale.*
-
-![Écran d'accueil de l'application web interactive 'AIS LIVE' avec un bouton 'ENTER AIS LIVE'.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002457_seg54.jpg)
-*⏱️ 00:24:57 — Écran d'accueil de l'application web interactive 'AIS LIVE' avec un bouton 'ENTER AIS LIVE'.*
-
-![Navigation de l'avatar dans le hall virtuel du monde 3D menant à la 'Main Stage'.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002505_seg54.jpg)
-*⏱️ 00:25:05 — Navigation de l'avatar dans le hall virtuel du monde 3D menant à la 'Main Stage'.*
-
----
-
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons des goodies et des sacs en tissu, ce qui est de la vraie physique. J'aime bien ça. C'était celui où l'on pouvait s'asseoir partout. Oui, j'ai vraiment, vraiment aimé celui-là. Bien que je pense que le seul inconvénient de celui-ci, c'est qu'il n'y avait pas vraiment d'after-party VIP, parce que je crois que c'était le salon. Et je pense que c'était la seule partie de la section VIP, c'est-à-dire ces différentes pièces où l'on pouvait entrer et s'asseoir. Mais à part ça, il n'offrait pas une super expérience VIP par rapport à certains des autres qu'on a vus. Donc mon gagnant ici va définitivement être Extra. Extra a fait un travail phénoménal. C'était environ deux fois moins long et deux fois moins cher que Max. Donc Max, je pense, c'était vraiment beaucoup trop pour pas assez de bien. Je pense que les points forts étaient corrects. Ça pouvait,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D et tableau de données "Opus 5.5 Efforts"
-
-**Contenu textuel & Code** : Texte de présentation et tableau comparatif de performances (Run time, API cost, Total tokens, Checks, Questions asked) pour différents niveaux (Low, Medium, High, Extra, Max, Ultracode)
-
-**Action / Démonstration** : Navigation dans un espace virtuel 3D puis affichage et sélection d'un tableau comparatif de performances de modèles d'IA
-
-![Vue d'un monde virtuel en 3D représentant un couloir de conférence ("West Concourse") avec un avatar en mouvement.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002523_seg55.jpg)
-*⏱️ 00:25:23 — Vue d'un monde virtuel en 3D représentant un couloir de conférence ("West Concourse") avec un avatar en mouvement.*
-
-![Vue dans un salon VIP virtuel où des avatars sont assis autour d'une table avec des écrans affichant du texte.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002532_seg55.jpg)
-*⏱️ 00:25:32 — Vue dans un salon VIP virtuel où des avatars sont assis autour d'une table avec des écrans affichant du texte.*
-
-![Tableau comparatif "Opus 5.5 Efforts" détaillant le temps d'exécution, le coût API, les tokens et le nombre de vérifications selon différents niveaux d'effort.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002542_seg55.jpg)
-*⏱️ 00:25:42 — Tableau comparatif "Opus 5.5 Efforts" détaillant le temps d'exécution, le coût API, les tokens et le nombre de vérifications selon différents niveaux d'effort.*
-
----
-
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> avec peut-être un ou deux prompts de plus, arrivé là où je l'aimais vraiment. Mais pour un objectif de slash, Extra a fourni un résultat incroyable ici. Je n'ai pas adoré Medium. Et pour une grande partie de mon travail intellectuel et de ce que je fais, Medium fonctionne très bien. Mais pour cette tâche précisément, j'avais besoin de beaucoup de raisonnement. Il devait parcourir des tonnes de choses. Il devait parcourir des tonnes de vidéos. Il devait trouver beaucoup de choses à l'intérieur de mes projets. Il devait créer une expérience et raconter une histoire à partir de tout. Je pense qu'Extra a fait un travail phénoménamental. En général, cependant, j'ai aimé beaucoup de ces résultats, mais Extra est celui avec lequel je voudrais commencer dès maintenant. Si je voulais vraiment faire de cela une application et un univers super, super polis et cool, je commencerais par le résultat d'Extra et probablement
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou tableau de bord avec une interface sombre présentant un tableau de données analytiques.
-
-**Contenu textuel & Code** : Tableau avec les colonnes Low, Medium, High, Extra, Max, Ultracode et les lignes : Run time, API cost, Total tokens, Checks, Questions asked.
-
-**Action / Démonstration** : Le présentateur commente et analyse les résultats chiffrés du tableau comparatif pour différents niveaux de performance.
-
-![Tableau comparatif affichant les performances selon différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec des métriques telles que le temps d'exécution, le coût API, le total des tokens, les vérifications et les questions posées.](../screenshots/_qZvORxGqI0/_qZvORxGqI0_002600_seg56.jpg)
-*⏱️ 00:26:00 — Tableau comparatif affichant les performances selon différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec des métriques telles que le temps d'exécution, le coût API, le total des tokens, les vérifications et les questions posées.*
-
----
-
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> continuez à itérer avec Extra. Donc de toute façon, les gars, c'était l'expérience. J'espère que vous avez trouvé cela instructif. J'espère que vous avez appris quelque chose de nouveau. Et si c'est le cas, veuillez mettre un pouce bleu. Ça m'aide énormément. Et comme toujours, je vous remercie d'être arrivés jusqu'à la fin de la vidéo, et je vous dis à la prochaine. Merci à tous.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Aucune interface logicielle visible.
-
-**Contenu textuel & Code** : Aucun code, commande ou donnée technique affichés.
-
-**Action / Démonstration** : Le présentateur conclut la vidéo en parlant à l'audience.
+**Action / Démonstration** : Conclusion de la vidéo par le présentateur.
 
 ---
 
