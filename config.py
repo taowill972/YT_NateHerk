@@ -6,9 +6,9 @@ REPO_DIR = BASE_DIR
 TRANSCRIPTS_DIR = BASE_DIR / "YT_NateHerk_Transcript"
 CATALOG_FILE = BASE_DIR / "catalog.json"
 STATE_FILE = BASE_DIR / "state.json"
-WORK_DIR = Path("/tmp/yt_nateherk_work")
+WORK_DIR = BASE_DIR / "work"
 SCREENSHOTS_DIR = BASE_DIR / "screenshots"
-LOG_FILE = Path("/var/log/yt_nateherk.log")
+LOG_FILE = BASE_DIR / "yt_nateherk.log"
 
 # Channel Information
 CHANNEL_ID = "UC2ojq-nuP8ceeHqiroeKhBA"

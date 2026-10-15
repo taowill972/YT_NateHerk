@@ -240,35 +240,29 @@ def process_single_video(
     title_fr = translate_title_fr(title_en)
     print(f"[Pipeline] Titre traduit (FR) : {title_fr}", flush=True)
 
-    # 3. Téléchargement vidéo optimisé
+    # 3. Téléchargement vidéo optimisé (authentique pour chaque video_id)
     if not video_target_file.exists() or video_target_file.stat().st_size == 0:
-        # Vérifier si déjà téléchargé dans /tmp/target_test
-        pre_dl = Path(f"/tmp/target_test/video.mp4")
-        if pre_dl.exists() and pre_dl.stat().st_size > 1000000:
-            print(f"[Pipeline] Utilisation du fichier vidéo pré-téléchargé {pre_dl}...", flush=True)
-            shutil.copyfile(pre_dl, video_target_file)
-        else:
-            print(f"[Pipeline] Téléchargement vidéo (360p/480p) pour frames et audio...", flush=True)
-            dl_cmd = [
+        print(f"[Pipeline] Téléchargement vidéo réelle (360p/480p) pour {video_id}...", flush=True)
+        dl_cmd = [
+            "yt-dlp",
+            "--proxy", PROXY,
+            "--extractor-args", f"youtube:player_client={PLAYER_CLIENT}",
+            "-f", "18/worst[ext=mp4]/worst",
+            "-o", str(video_target_file),
+            f"https://www.youtube.com/watch?v={video_id}"
+        ]
+        res_dl = subprocess.run(dl_cmd, capture_output=True, text=True)
+        if res_dl.returncode != 0 or not video_target_file.exists() or video_target_file.stat().st_size == 0:
+            print(f"[Pipeline] Repli téléchargement avec format alternatif...", flush=True)
+            dl_cmd_fallback = [
                 "yt-dlp",
                 "--proxy", PROXY,
-                "--extractor-args", f"youtube:player_client={PLAYER_CLIENT}",
-                "-f", "18/worst[ext=mp4]/worst",
+                "-f", "bestvideo[height<=480]+bestaudio/best[height<=480]/worst",
+                "--merge-output-format", "mp4",
                 "-o", str(video_target_file),
                 f"https://www.youtube.com/watch?v={video_id}"
             ]
-            res_dl = subprocess.run(dl_cmd, capture_output=True, text=True)
-            if res_dl.returncode != 0:
-                print(f"[Pipeline] Erreur yt-dlp video, repli direct audio...", flush=True)
-                dl_cmd_audio = [
-                    "yt-dlp",
-                    "--proxy", PROXY,
-                    "--extractor-args", f"youtube:player_client={PLAYER_CLIENT}",
-                    "-f", "ba/b",
-                    "-o", str(video_target_file),
-                    f"https://www.youtube.com/watch?v={video_id}"
-                ]
-                subprocess.run(dl_cmd_audio, check=True)
+            subprocess.run(dl_cmd_fallback, check=True)
 
     # 4. Transcription et découpage en blocs temporels
     blocks: List[Dict[str, Any]] = []

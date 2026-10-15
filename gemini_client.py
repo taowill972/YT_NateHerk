@@ -164,9 +164,12 @@ def process_multimodal_block(
             "Si c'est musical ou sans parole, indique : [Séquence sonore / Ambiance musicale].\n"
             "Réponds uniquement avec le texte français complet mot pour mot."
         )
-        verbatim_fr = call_gemini_audio([{"text": audio_prompt}])
-        if verbatim_fr and verbatim_fr.strip():
-            default_res["verbatim_fr"] = verbatim_fr.strip()
+        for _ in range(3):
+            verbatim_fr = call_gemini_audio([{"text": audio_prompt}])
+            if verbatim_fr and verbatim_fr.strip():
+                default_res["verbatim_fr"] = verbatim_fr.strip()
+                break
+            time.sleep(1.0)
 
     # 2. Analyse visuelle multimodale via Gemini 3.5 Flash-Lite
     n_imgs = len(candidate_frames)
@@ -208,7 +211,13 @@ def process_multimodal_block(
             except Exception:
                 pass
 
-    raw_vis = call_gemini_visual(visual_parts)
+    raw_vis = ""
+    for _ in range(3):
+        raw_vis = call_gemini_visual(visual_parts)
+        if raw_vis and raw_vis.strip():
+            break
+        time.sleep(1.0)
+
     if not raw_vis:
         return default_res
 
