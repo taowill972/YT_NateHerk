@@ -20,11 +20,11 @@ CHANNEL_DOMAIN = "AI Automation, Agents IA, Claude Code, Opus 5.5, Codex, Workfl
 
 # Models
 AUDIO_GEMINI_MODEL = "gemini-3.5-flash-lite"
-AUDIO_FALLBACK_MODELS = ["gemini-3.8-flash", "gemini-2.5-flash-lite"]
+AUDIO_FALLBACK_MODELS = ["gemini-3.5-flash", "gemini-3.8-flash"]
 WHISPER_MODEL = "large-v3-turbo"
 
 VISUAL_GEMINI_MODEL = "gemini-3.5-flash-lite"
-VISUAL_FALLBACK_MODELS = ["gemini-2.5-flash-lite"]
+VISUAL_FALLBACK_MODELS = ["gemini-3.1-flash-lite", "gemini-3.5-flash"]
 
 MODEL_SIGNATURE = f"whisper-v3-large-turbo+{VISUAL_GEMINI_MODEL}"
 
