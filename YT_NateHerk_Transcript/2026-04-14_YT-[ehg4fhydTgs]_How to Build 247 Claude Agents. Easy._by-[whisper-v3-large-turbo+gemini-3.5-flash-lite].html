@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 How to Build 24/7 Claude Agents. Easy. — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 How to Build 24/7 Claude Agents. Easy.</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-14</span>
+                <span class="badge">⏱️ 00:16:27</span>
+                <span class="badge">🆔 <code>ehg4fhydTgs</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=ehg4fhydTgs" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **How to Build 24/7 Claude Agents. Easy.**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:34</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cloud Code has finally brought us routines, which basically means you can inject a prompt into Cloud Code, but it can be running on the web, so your laptop does not have to stay open. And I&#x27;m so excited about it. I&#x27;ve already been playing around with it. I&#x27;ve been migrating my automations over there, but there are a lot of little gotchas, so I&#x27;m here to explain exactly how you can actually set up these automations so that they work. So today, April 14th, Cloud tweeted, now in research preview, routines in Cloud Code. You configure a routine once, which is basically like a prompt, and it can run on a schedule from an API call or in response to an event, and it runs on Anthropix web infrastructure. So that&#x27;s awesome. So you can call a routine from an API. You can</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:34 - 00:01:07</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">have GitHub events trigger it, or they can be scheduled, which are like the scheduled automations that we already have, but now they run on the web. So you really can create these from anywhere. You can do it right here as a scheduled trigger to run scheduled remote agents, which is in the terminal. You could also go to clawed AI slash code. So you could do it on the web. And right here, you see, I have three web-based routines right here. Or what I&#x27;m going to be showing you guys today is just doing it in the desktop app. Because right here, if I go to my scheduled tasks, you can see that I&#x27;ve got some like these four that are local. And then I&#x27;ve got these four that are running inside of a GitHub repository. So these are the remote ones. If I go up here and click on</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:07 - 00:01:39</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">new task, this is where we could set up a new local task or a new remote task. It&#x27;s very similar. You set up the name, you set up what Cloud should do, and this is the actual prompt. So I&#x27;ll talk more about that in a sec, but then you would configure your model, your repository, and your cloud environment. You set the cadence, hourly, daily, weekdays. I think the minimum is once an hour. Like you couldn&#x27;t go like every 10 minutes or something, but still not bad at all. This is where you could configure all of your connectors. So if you need to connect Slack or Gmail or, you know, whatever it is, you can connect them right here, but you can also just do your regular API</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:39 - 00:02:12</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">endpoints with your API keys. And then of course you&#x27;ve got your permissions. So you can choose how Claude should be acting. Now, the one thing about these are, these are meant to be a one shot prompt. You&#x27;re not around. So you probably want to make sure that it doesn&#x27;t ever have to stop and ask you questions. Otherwise, what&#x27;s the point of the automation? So like I said, there&#x27;s tons of things to dive into here and I&#x27;m not going to try to bore you guys, but some of this is really important because when I first got the setup, my automations weren&#x27;t just migrating over and working. So I&#x27;m going to tell you guys the issues that I ran into and hopefully answer everything that you need to know so that you won&#x27;t have to go into the comments and ask these common</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:12 - 00:02:32</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">questions. I can just answer them right here for you. So let me just, first of all, real quick, show you guys what I tested out. The first thing I wanted to test out is if I came in here and I created a new routine for just shooting a message to my ClickUp. Obviously that&#x27;s not any value, but I just wanted to see how it worked. Because what I wanted to do is see if I could do this without adding my connector of ClickUp.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:32 - 00:02:54</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And I was able to actually get this to fire off, but it didn&#x27;t work right away. So let me show you guys what I ran into. So the way that this works is you need a GitHub repository to sync it to in order for this to actually run. So it&#x27;s gonna clone my Herc2 project right here in the web. It&#x27;s gonna be able to read my cloud.md. It&#x27;s gonna be able to read my scripts and my skills. And then after it finishes the job, it basically just destroys that little cloud GitHub clone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:54 - 00:03:13</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But as you guys know, you don&#x27;t push your secrets into GitHub. Because if you see here, my Herc2 project, this is my .env file with all of my API keys. And this is listed in the gitignore, which basically says, hey, when you push to GitHub, you don&#x27;t include these files. So what that means is in here, if this is only looking at your GitHub repo, there&#x27;s no .env.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:14 - 00:03:33</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So how do you get your API keys into this routine that runs on the web? Well, what you do is inside of this scheduled task, you have a cloud environment. So if I click on this one, You can see this one is called NateHurt Cloud. So if I open up the settings, what do you see? You have the name of this cloud environment, you have the network access, and you have environment variables.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:33 - 00:03:54</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So right here is where I put in my YouTube API key, my ClickUp API key, any of the other API keys that I need to give this cloud environment access to. And then the other thing you have to do is you have to look at the access levels because right here you can see that this one is on full, but by default, this will be on trusted, I believe. And that means you can only download packages from verified sources from Anthropic.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:55 - 00:04:15</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And when we talk about this later, I&#x27;ll have a link which you can go see all of them. You can even do custom if you wanted to allow specific domains that aren&#x27;t on that list. But in order for ClickUp to work in this case, I had to go on full because when I went on trusted, it said, hey, we can&#x27;t actually do that. But when I changed this to full, it let me send a message to my ClickUp. And that is how I got this message right here that says just testing that the remote tasks work and the credentials work.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:15 - 00:04:40</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So basically when these run, whatever you have here as your instructions is what gets prompted. And that&#x27;s exactly the same way that the scheduled tasks locally work. So right here you can see I say, send a message in the internal ClickUp channel. And right here, the actual thing that it says was send a message in the internal ClickUp channel. So think of a scheduled task or a routine as you basically typing in a prompt and then someone coming in to your laptop and typing it in for you.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:40 - 00:05:00</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it&#x27;s the exact same type of interaction as you talking to Cloud Code. But that&#x27;s why once again, you wanna make sure it&#x27;s specific enough so that it can basically one shot it. Okay, so let&#x27;s take a little deeper now. What I tried to do is I did another one, which I wanted it to be able to use the YouTube data API in order to grab some YouTube comments for me and give me a little analysis in, you know, ClickUp or whatever.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:01 - 00:05:22</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So this is the prompt I said, right? Analyze 50 of my most recent comments from YouTube and give me a quick bullet rundown. My YouTube API key is available as an environment variable. Use it directly from the environment. Don&#x27;t look for a .env. Because what happens is in your repo, right? So in this Herc2 project, when I normally run this, it grabs all my API keys from the .env.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:22 - 00:05:40</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And maybe it reads the cloud.md and realizes that&#x27;s where a lot of those live. So by default, it&#x27;s maybe going to try to look in the .env and it&#x27;s not gonna be smart enough to figure out. And so for ClickUp, it was fine, it figured it out. But for some reason with this YouTube one, it didn&#x27;t. So I had to explicitly tell it, hey, look in the environment variable rather than in the .env.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:40 - 00:06:00</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So you can see this first time I ran it, 1241, I didn&#x27;t say that and it couldn&#x27;t do it. It said like, hey, I can&#x27;t find that, I&#x27;m getting an error. And I even tried to tell it here and it still didn&#x27;t work. But then on this most recent run, when I updated the prompt a little bit, it was able to fetch it right away using the API key. And now I have a remote routine that would work.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:00 - 00:06:34</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Obviously I need to update this. I&#x27;m gonna migrate over my other automations, but this was just for testing purposes. And then another one that I do is I have some automations here, which basically opens up a browser using Playwright CLI, and it does some stuff in my school community because there&#x27;s no publicly accessible API. We&#x27;ve kind of figured out a way to automate it without using browser. I&#x27;m not really going to dive into that right now. But what I wanted to tell you guys about that is I tried to basically move over this school wins engagement post or sorry, automation into a remote session. So I copied the exact same prompts that was in my regular schedule task.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:34 - 00:07:06</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then I just added this little snippet at the end. But what happened is this wasn&#x27;t working because it basically said, Hey, you know, like when you do this, it spins up a browser, but there&#x27;s no cookies because all of this is running remotely. And all I have to look at is the GitHub repo. I can&#x27;t look at the local, you know, cookies that we&#x27;ve used in the last couple sessions of this automation. And so it doesn&#x27;t seem like this would work because once again, it has no access to that stuff. So if I wanted to do an automation like this, I would have to use an endpoint that takes authentication in the form of like actual cookies or a header or, you know, like an API key,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:06 - 00:07:42</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">because every single one of these runs is going to be stateless. And after the run, the GitHub clone just gets deleted. Now, the exception of that is if the automation is changing something in your code base or doing a review. If it does do that, it will create a new branch for you, or it will give you some sort of output and not just delete everything that it just did. But for an automation like this, it would just delete it. But hopefully after you guys have seen those examples, you now have the ability to come in and, you know, make some changes if you need in order to make sure that your automations are running. And what I mean by that is you understand this should be a very specific prompt. This is how you change the model. You have to have a GitHub repo. You can change the</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:42 - 00:08:11</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">settings for your cloud environments right here. You set the schedule, you add any connectors you might need, which would honestly be a little easier if you added just like a Slack connector, and then you can set your permissions here. Now, the other thing to be aware of is you do have limits. So if I come over here to my settings, you can see if I go to my usage, we have our regular session limits, our model limits, but for additional features, we have daily included routine runs. And I haven&#x27;t run any yet on the actual schedule. I&#x27;ve just been testing them, but we are at zero for 15.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:11 - 00:08:29</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I could only have 15 automations running with routines per day because I&#x27;m on the max $200 a month plan. Your limits would be less if you&#x27;re on pro, I think maybe three or maybe five. I&#x27;ll, I have that information later on, but just something to keep in mind. All right, so let&#x27;s just dive into a little bit more of the details here that may answer some questions you guys have.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:30 - 00:09:02</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I think it&#x27;s pretty clear at this point what it is. I&#x27;m going to give you guys this entire doc as well as anything else I&#x27;ve talked about in my free school community. The link for that is down in the description. So some of the stuff I might not cover if you want to read more about it Then just go ahead and grab that free resource. So we know what it is. I think we know how it works, right? Like you define a routine which is a prompt you connect a github repo You could also trigger it by apis or by a github action and then you can connect your connectors And basically it acts as you talking to your own cloud code Because of the fact that this is working off of a cloned repo</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:02 - 00:09:23</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s going to read the cloud.md file automatically every time So if you have a massive project, like a Herc2 project, for example, with tons of context and tons of stuff, maybe you don&#x27;t want to put that repo into the cloud to be a routine run because there&#x27;s a lot of context in that Cloud.md and in that whole GitHub repo that might not matter for this automation.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:23 - 00:09:42</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So maybe you&#x27;re better off setting up a specific GitHub repo per scheduled routine. But of course, Cloud.md best practices, putting in the information that&#x27;s important, because this stuff is going to drain your Cloud Code session limits the exact same way as it would if you were open up in Cloud Code, just talking to it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:42 - 00:10:01</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So once again, three trigger types, schedule, API, which I think is really cool. You can have a different automation, make a post request to some sort of routine. And then of course, GitHub. So you can have it automatically fire off kind of on a web hook based on new PRs, new pushes, new issues, new releases, things like that. So how does this compare to what already exists?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:01 - 00:10:21</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We have routines, which is the new feature. We have desktop scheduled tasks, and then we have something like just a slash loop command. So routines run on Anthropics cloud and these other two run on your machine. Do you need the machine on? No for routines, that&#x27;s huge. But for desktop scheduled tasks and for loop, you need your machine on. Do you need a session open? No, That&#x27;s the same across all three.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:22 - 00:10:41</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Do they survive across restarts? The first two do, but loop does not. That has to live within a specific session. Local file access, no for the routines because it works off of the GitHub repo. And for the next two, yes, you have local file access. Permission prompts with routines, it&#x27;s fully autonomous. And for these two, they are configurable. And then the minimum interval routines is one hour.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:41 - 00:11:02</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And these two are both, could go every minute if you want. Okay, so let&#x27;s talk about the environments. Obviously your .env is git ignored unless you push it into the GitHub repo. You know, ultimately, if you push it into a private repo, you&#x27;re probably okay, but you wanna be really, really careful because then, you know, there&#x27;s history there. And if other people, you know, end up collaborating on it, you just don&#x27;t wanna do that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:02 - 00:11:21</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So you wanna put your API keys in the environment variable, like I showed you guys earlier. You want to look at the network access, whether that is full or trusted or none or custom, and potentially some setup scripts. So that&#x27;s not something I showed you guys yet. If you&#x27;re creating a new remote task, you can do a setup script, which is basically just a script that will run when this new session fires up before Cloud Code launches.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:21 - 00:11:40</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So if you need to install any packages or anything like that. Okay, so what&#x27;s the difference between trusted and full? So trusted only reaches the known vetted services from Anthropic, which I thought I linked right here, but I just linked it there. This basically shows you all of the different domains that are allowed. So right here, you can see we&#x27;ve got Anthropic services, we&#x27;ve got version control.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:41 - 00:11:59</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We&#x27;ve also got some cloud platforms like Google, stuff like this right here. These are the ones that are kind of already verified. So what is the risk of going on full? Well, if Claude reads malicious content during a run, then it theoretically could be tricked into sending data to an external server. And with Trusted, that outbound request would get blocked.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:59 - 00:12:18</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, practical risk for private repos where you control the inputs is very low, but I definitely just wanted to at least acknowledge that. So connectors, this is different than just adding your API key. This is more of like the connectors you would add to your actual Claude chat or like Claude Cowork, where you would OAuth into like Slack or ClickUp or stuff like that. Here are some security details.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:18 - 00:12:40</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I&#x27;m not going to go super deep into this. You could also do some more research and download this doc. But of course, there are some things to be thinking about like your API triggers or what&#x27;s going on with your GitHub repos and the branches. Because once again, everything is going to be running as you. So if you&#x27;re not testing out these routines before you just kind of send them off every hour or something, you just have to be thinking about what could happen without permissions and stuff like that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:40 - 00:13:15</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Limits and quotas. So it looks like on Pro, you can have five runs a day. on max you can have 15 runs a day and on team and enterprise you can have 25 routines a day if you hit the cap the orgs with extra usage enabled can exceed it on metered overage and then we have the minimum scheduled interval which is one hour and there are also resource limits so every one of these routines in the cloud runs on four vcpus 16 gigs of ram and 30 gigs of disk space so once again just be thinking about are you putting an absolutely massive github repo up into the cloud right now to run. That could just be wasting resources for no reason. So what persists versus</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:15 - 00:13:41</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">what gets destroyed? The cloud branches gets pushed to your GitHub repo and the session also stays. So as you saw, if I came into here and I looked at all of these tasks, I could see all of the past runs and I could go look at them to see if something&#x27;s going wrong. But the actual cloud environment that gets cloned will be destroyed. Basically the rule of thumb here is if something&#x27;s local or if cloud code can&#x27;t reach it in your GitHub repo or via an API, then it won&#x27;t work.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:41 - 00:14:00</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We already talked a little bit about writing good prompts, but you definitely want them to be more specific. For example, with my scheduled automation here, this is much more specific, right? I have a skill that I want it to run. I give it the order of operations, but something more like this YouTube comments one, this is not what you&#x27;d want to put in there unless you were defining a skill to just let it run.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:00 - 00:14:24</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Because once again, this is supposed to be a one-shot prompt. So you want to make sure it gets it right on the first try. Okay, so why is this so exciting? And why does this beat normal automation? because we are actually keeping the agentic framework. If you know when I talk about the WAT framework where we have workflows and agents and tools, when we actually push those automations to the cloud and it&#x27;s just sort of a Python script, we&#x27;re losing the agentic piece.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:24 - 00:14:45</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We&#x27;re only sending off really the tools and the workflow. But in this case, we&#x27;re keeping the WA and the T all running together because the agent is looking at the CloudMD, it&#x27;s looking at its scripts and it&#x27;s figuring out what to do. And if it runs into errors mid-run, it will self-correct. And if you configure it the right way, it will be able to sort of like leave a memory trail and it can leave like, you know, updates.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:46 - 00:15:05</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Even though each run is stateless, you can still have them kind of continuously get better. And real quick, let&#x27;s speed run through these common questions. Do I need to know cron syntax? Nope. You just can schedule a natural language super easy. Can it access my local files? Nope. It only gets what&#x27;s in your GitHub repo or your APIs. What model does it use? You can choose any of the models as you guys saw.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:06 - 00:15:24</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Can you watch it work in real time? Yes, you can hit run now and then you can obviously watch it go right there. Same way you would in Claude. You can even talk to it after it&#x27;s done or interrupt it and then continue going. Can it use my MCP service? Yes, that is what the connectors are. Can teammates use my routines? Nope, these belong to your individual account.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:24 - 00:15:57</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You might be able to share those if you&#x27;re on a team plan, but I haven&#x27;t actually yet tested that myself. What&#x27;s the cost? It&#x27;s just your normal subscription usage. So keep that in mind. What happens when a run fails? Every one of them will be stored in your history. So you can go see why they failed. You could maybe even have it at the end of every single routine say, Hey, if this does fail, just shoot me a Slack message to let me know things like that. And can I test a run before going live? Yes. In fact, you should test it multiple times before it goes live. You just go into the routine, you hit run now, and then it will pop up as running. And then you just watch it, you know, watch it go through its order of operations and you can inject and you can</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:57 - 00:16:18</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">help it correct itself so that you have confidence that once it shoots off the prompt next time, you won&#x27;t have to get in the way at all. But anyways, that&#x27;s going to do it for this one. I hope that those tips and some of the examples that I showed you were helpful. And now you can go off and try to migrate your scheduled tasks or any other automations that you&#x27;ve been meaning to build into these web-based routines and not have to keep your hardware on.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-42">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:19 - 00:16:27</span>
+                <span class="segment-idx">Segment #42</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So if you enjoyed the video or you learned something new, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video. I&#x27;ll see you on the next one. Thanks everyone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
