@@ -31,11 +31,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > Today I'm going to show you guys how Claude can be a complete game changer for editing videos, whether that's text on screen like up here or whether that's subtitles down at the bottom like right here. Or it could be motion graphics or charts and different elements. It can be pretty much anything you want it to be. I can move my face around if I want. I can do anything by just using my natural language. You don't have to know how to code at all. And I'm going to show you guys a ton of other examples. So let's not waste any time and let's just get straight into the video.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Aucune interface logicielle ou outil technique n'est affiché.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Aucun code, commande ou donnée technique n'est visible.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur s'exprime et gesticule pour introduire son sujet, sans effectuer de manipulation technique sur un outil.
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -45,20 +45,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > So yeah, pretty wild. By the end of this video, you'll know exactly how to do all of this that I just did using Claude and it's so much easier than you may think. And I'm going to give you guys a repo and a skill and all the stuff that you need to get set up exactly like I've been set up here for completely free. So stay tuned and I'll show you how. So Claude is now a video editing team and this has already been saving me so much time it's actually crazy. Now one thing I want to put into perspective real quick is if you've never edited videos yourself, if you've never like used keyframes and animated motion graphics and things like that, you may not realize how long this 23 second clip would have taken you to edit manually. But if I wanted to edit this by hand,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Logiciel de montage vidéo personnalisé (probablement basé sur une interface web de type studio de création) et Google Docs.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte de script technique (`editing.loop()`, `analyze_clip`, `sync_captions`), plan de la vidéo ("Claude Is Now a Video Editing Team"), et slogan ("No code required").
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Présentation des outils d'automatisation de montage vidéo et du plan de cours pour les spectateurs.
-
-![Interface de logiciel de montage vidéo avec une fenêtre de prévisualisation affichant un script de boucle d'édition et des statistiques de croissance.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000032_seg2.jpg)
-*⏱️ 00:00:32 — Interface de logiciel de montage vidéo avec une fenêtre de prévisualisation affichant un script de boucle d'édition et des statistiques de croissance.*
-
-![Capture d'écran d'un document Google Docs listant le plan de la vidéo, incluant les méthodes "Claude Design" et "Hyperframes".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000042_seg2.jpg)
-*⏱️ 00:00:42 — Capture d'écran d'un document Google Docs listant le plan de la vidéo, incluant les méthodes "Claude Design" et "Hyperframes".*
-
-![Interface de logiciel de montage affichant un écran de texte animé avec le titre "No code required" et une barre de progression.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000051_seg2.jpg)
-*⏱️ 00:00:51 — Interface de logiciel de montage affichant un écran de texte animé avec le titre "No code required" et une barre de progression.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -68,14 +59,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > it would have probably taken me like two hours. And you know, I'm not a crazy good video editor. So maybe some of the best could do this in 30, 45 an hour. But the people on my team who actually know how to edit videos really well said that this is a complete game changer. So we're going to talk about two different methods. The first one is using Claude Design. Yeah, Claude Design, the web app that we showed off yesterday. If you didn't see that video, I'll tag it right up here. But inside of Claude Design, not only can you make websites and slide decks, but you can actually animate things. I'll show you guys some examples. We'll go through a live build together. It's really cool. And then we're going to talk about how to do it with hyperframes, which is kind of like
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de développement ou d'édition vidéo (possiblement un outil utilisant Hyperframes/Claude).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte à l'écran : "INPUT: Natural language. Describe it. Claude builds it."
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Présentation de l'outil capable de transformer une commande en langage naturel en un rendu vidéo.
-
-![Interface logicielle de type studio de création vidéo affichant un texte promotionnel "Natural language. Describe it. Claude builds it." au centre.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000108_seg3.jpg)
-*⏱️ 00:01:08 — Interface logicielle de type studio de création vidéo affichant un texte promotionnel "Natural language. Describe it. Claude builds it." au centre.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -85,14 +73,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > a better version of Remotion, if you guys have seen that. It's a little bit more setup, but it's way more powerful. So I'm going to walk you guys through both of those. So real quick before we do that, let's just start with a taste. Let me show you guys a few different examples of what's happened here. So obviously you guys already saw that Claude Edit intro, but let's look at one that I made called the HyperFrames sizzle, which just basically shows off the power of what HyperFrames could really do. All right, here we go. So we got this cool little terminal thing that installs HyperFrames, HyperFrames times cloud code, write HTML, render video, built for agents.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Lecteur vidéo (interface de prévisualisation de fichier .mp4)
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte affiché : "HYPERFRAMES CLAUDE CODE", sous-titre de commande : "$ npx hyperframes render --quality high"
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur illustre le résultat final (sizzle) du rendu réalisé avec Hyperframes pour montrer la puissance de l'outil avant d'entrer dans les détails techniques.
-
-![Capture d'écran montrant une démonstration vidéo (sizzle reel) présentant un titre animé "HYPERFRAMES CLAUDE CODE" avec une ligne de commande visible en transparence.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000157_seg4.jpg)
-*⏱️ 00:01:57 — Capture d'écran montrant une démonstration vidéo (sizzle reel) présentant un titre animé "HYPERFRAMES CLAUDE CODE" avec une ligne de commande visible en transparence.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -130,17 +115,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > I'm not exactly sure what happened. That's weird. For some reason, the draft had my logo, but the final version didn't. So I would have to tweak that. But basically that's what happened there. And all of this, this entire video was animated and edited and created by Hyperframes and Claude Code. Okay. Now let me show you one called the first agent promo. And we actually made this one in Claude Design. So in here, you can see that I basically, the other day, I made this thing called the first agent promo. So it basically made me a website. And so what I did with this is I converted this up here. I exported this to a standalone HTML, as you can see right here. I downloaded that standalone HTML. And then I went back into a new project right here, the first agent release video.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Claude Design (interface de conception web/UI d'Anthropic).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Logs d'exécution de l'agent : "Let me check what code-referenced resources exist in app.jsx" et références au logo ("AIS Logo.png").
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le système analyse les ressources du projet pour générer un export HTML autonome ("Save as standalone HTML").
-
-![Interface web de "Claude Design" listant des projets récents et des modèles de design, incluant des dossiers comme "First Agent Release Video".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000323_seg7.jpg)
-*⏱️ 00:03:23 — Interface web de "Claude Design" listant des projets récents et des modèles de design, incluant des dossiers comme "First Agent Release Video".*
-
-![Interface de Claude montrant un panneau latéral avec des logs de processus ("Reading", "Searching", "Generating HTML") et un menu d'exportation ouvert sur la droite.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000332_seg7.jpg)
-*⏱️ 00:03:32 — Interface de Claude montrant un panneau latéral avec des logs de processus ("Reading", "Searching", "Generating HTML") et un menu d'exportation ouvert sur la droite.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -164,20 +143,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > $500, 500 seats, claim your seat, join for 20 bucks. It all is just like super branded to the same way that the actual site is. And once again in here, my prompt was create me an animation for the first AirAgent promotion. I dropped in the standalone HTML for this launch. There should be motion graphics, animations, and visual elements that explain what's going on. It should feel fast paced and engaging. That's it. And then it created me this. Once again, this 30-ish second clip would have taken multiple hours to edit by hand. Okay. So method one is using Claude design. How do we actually make a video? How do we make it feel branded? And where are the limitations of cloud
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de travail de type "Artifacts" (probablement Claude.ai ou un outil similaire), intégrant un panneau de chat à gauche et un visualiseur de projet à droite.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte du prompt : "Create me an animation for the first AI agent promotion. I dropped in the standalone HTML for this launch. There should be motion graphics, animations, and visual elements..."
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : L'utilisateur soumet un fichier HTML à l'IA et lui demande de générer une animation promotionnelle, l'IA traite le fichier (lecture, extraction) pour générer le rendu visuel.
-
-![Interface de chat IA affichant un prompt détaillé pour créer une animation de promotion d'agent IA, avec une prévisualisation vidéo en cours de lecture.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000424_seg9.jpg)
-*⏱️ 00:04:24 — Interface de chat IA affichant un prompt détaillé pour créer une animation de promotion d'agent IA, avec une prévisualisation vidéo en cours de lecture.*
-
-![Gros plan sur le prompt saisi dans l'interface de chat, mettant en évidence la demande de création d'une animation dynamique basée sur un fichier HTML.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000432_seg9.jpg)
-*⏱️ 00:04:32 — Gros plan sur le prompt saisi dans l'interface de chat, mettant en évidence la demande de création d'une animation dynamique basée sur un fichier HTML.*
-
-![Vue identique à la première, montrant l'interaction entre les logs de l'agent (lecture de fichiers) et la sortie vidéo affichée dans le canevas principal.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000440_seg9.jpg)
-*⏱️ 00:04:40 — Vue identique à la première, montrant l'interaction entre les logs de l'agent (lecture de fichiers) et la sortie vidéo affichée dans le canevas principal.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -187,17 +157,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > design? So you guys pretty much just saw all that, right? I came in here and I have my AI Automation Society design system. So now it understands my logos, my branding, my colors, my typography. And that's how it made all of this stuff for me feel like the real website, which real quick, just to show you guys, it looks like this. So this is basically exactly what you saw in those other two things, the promo video and the website. It has the same buttons. It has the same font. It has the same colors. And now every video I make or every, whatever I make in Cloud Design will also look like that. So let's say we want to make a new video. If I go here to from
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Claude Design (outil de conception IA) ; Site web généré (AI Automation Society).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Noms de projets ("First Agent Release Video", "AI Time"), sélecteur de système de design, texte promotionnel du site ("World's largest AI automation community", statistiques membres).
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Présentation de l'intégration d'un système de design personnalisé dans Claude Design pour générer une interface de site web cohérente.
-
-![Interface de l'outil "Claude Design" affichant la bibliothèque de projets avec une sélection active du "AI Automation Society Design System".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000457_seg10.jpg)
-*⏱️ 00:04:57 — Interface de l'outil "Claude Design" affichant la bibliothèque de projets avec une sélection active du "AI Automation Society Design System".*
-
-![Interface web finale du site "AI Automation Society" affichant un design professionnel avec le titre, des boutons d'appel à l'action et des statistiques de communauté.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000505_seg10.jpg)
-*⏱️ 00:05:05 — Interface web finale du site "AI Automation Society" affichant un design professionnel avec le titre, des boutons d'appel à l'action et des statistiques de communauté.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -207,19 +171,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > template and I click on animation, now we can actually make a timeline based motion design. So I'm going to call this one, um, May short demo, and we're going to create from template. So what I want to do here is instead of just animating, you know, motion graphics, I wanted to take a video of mine and somehow animate that with things on top of it. So I'm going to drop in a video file real quick. Okay. So I just attached this file, um, right here, you can see may short six. So it's like a 18 second clip or something. And I want it to animate it. So I'm going to say, Hey, I just gave you a video, an MP4 called may short six. And what I want you to do is create a
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Claude Design (interface web de prototypage d'Anthropic).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : - Image 1 : Nom de projet "May Short Demo", option "Animation (Timeline-based motion design)", sélection du "AI Automation Society Design System".
-- Image 2 : Prompt vide avec tags de contexte : "Animated video", "AI Automation Society Design System", "may_shorts_6.mp4".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : - Image 1 : L'utilisateur clique sur le bouton "Create from template".
-- Image 2 : L'utilisateur prépare son prompt pour demander une génération basée sur la vidéo importée.
-
-![Interface "Claude Design" invitant à créer un nouveau projet à partir d'un template nommé "May Short Demo" avec l'option "Animation" sélectionnée.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000531_seg11.jpg)
-*⏱️ 00:05:31 — Interface "Claude Design" invitant à créer un nouveau projet à partir d'un template nommé "May Short Demo" avec l'option "Animation" sélectionnée.*
-
-![Interface de chat de l'outil Claude Design avec un champ de saisie prompt actif, montrant des fichiers joints ("Animated video", "Design system", "may_shorts_6.mp4").](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000550_seg11.jpg)
-*⏱️ 00:05:50 — Interface de chat de l'outil Claude Design avec un champ de saisie prompt actif, montrant des fichiers joints ("Animated video", "Design system", "may_shorts_6.mp4").*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -229,14 +185,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > landscape video. Um, I want you to animate this so that people can watch the video and there will will be text and motion graphics and animations that sync up and go along with what I'm actually saying in the video. And it should be engaging and keep their attention while visually illustrating the concepts.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Claude (interface web de projet IA)
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Menu "Start with context", zone de dépôt de fichiers, liste de fichiers importés ("Animated video", "AI Automation Society Design System", "may_shorts_6.mp4") et champ de saisie prompt.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Interface de configuration montrant le processus d'ajout de contexte multimédia et documentaire pour l'IA avant la génération.
-
-![Capture d'écran de l'interface de Claude (Project/Artifacts) montrant la section de gestion de contexte avec des options pour importer des systèmes de design, des captures d'écran, du code ou des fichiers Figma, accompagnée du présentateur en incrustation.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000603_seg12.jpg)
-*⏱️ 00:06:03 — Capture d'écran de l'interface de Claude (Project/Artifacts) montrant la section de gestion de contexte avec des options pour importer des systèmes de design, des captures d'écran, du code ou des fichiers Figma, accompagnée du présentateur en incrustation.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -246,14 +199,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > Okay, so that is my prompt. I'm gonna shoot that off. And now Cloud Design is basically going to start asking me some questions and it's going to start making this video. Now what you'll notice here is it can't actually read or listen to or understand what's being said in the video, which when you're animating a video, that's super important. And that's one of the limitations you would have to basically feed in like the transcript of it so that it could actually understand what's being said and where. So here it says paste in the video with the rough timestamps.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de Cloud Design (outil de conception assistée par IA).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Le prompt de l'utilisateur demandant la création d'une vidéo paysage animée synchronisée avec un fichier MP4 nommé "May Short 6", et la réponse de l'agent confirmant la planification de l'animation.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Envoi du prompt par l'utilisateur et traitement initial des fichiers par l'agent IA.
-
-![L'interface de l'application Cloud Design montrant une conversation avec un agent IA à gauche et une zone de gestion de fichiers à droite, avec le présentateur en incrustation.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000623_seg13.jpg)
-*⏱️ 00:06:23 — L'interface de l'application Cloud Design montrant une conversation avec un agent IA à gauche et une zone de gestion de fichiers à droite, avec le présentateur en incrustation.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -263,14 +213,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > And you know, if you had to do that manually, it's a little bit of work. Luckily for us in my cloud code project, we've already done this. And by the way, if you're overwhelmed looking at this, don't be, I'm going to explain it later, but I would come down here to my May short six project. And I already did basically extract the script. So if I go to assets, you can see I have May short 6.json. And this basically transcribed this whole video word for word with timestamp. So I'm just going to copy this, go back into Cloud Design, paste that in. So now it should be able to see the actual script. And then it asks me some other questions. So where does your talking head sit?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Éditeur de code Hyperframes (basé sur VS Code).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Arborescence de fichiers incluant des dossiers comme 'video-projects', 'aisoc-app-release', 'may-shorts-6', et un fichier 'AGENTS.md'. La zone centrale affiche le logo Claude Code et une instruction sur l'utilisation de 'CLAUDE.md'.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur navigue dans l'arborescence des fichiers du projet dans la colonne de gauche.
-
-![Interface de l'éditeur Hyperframes montrant une structure de dossiers de projets vidéo dans la barre latérale et une page d'accueil Claude Code au centre.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000651_seg14.jpg)
-*⏱️ 00:06:51 — Interface de l'éditeur Hyperframes montrant une structure de dossiers de projets vidéo dans la barre latérale et une page d'accueil Claude Code au centre.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -280,17 +227,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > It could be full width behind me with graphics overlay on top. It could be me on the left, graphics on the right. And I'm just basically going to say, decide for me. Let's see what it can do. Visual energy level. Let's go with punchy. What kind of motion graphics? We will do animated captions. We will do diagrams, progress bars, screen. Yeah, all that. Sure. We'll do full AIS dark theme. The end card CTA will be joined the free community and we'll do landscape and shoot that off. So what I like about Cloud Design is it does a good job of asking you questions. But once again, like I said, the limitation is it can't actually read or listen to and transcribe
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Outil de prototypage d'interface utilisateur (probablement un environnement de design assisté par IA comme Napkin).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Formulaires de sélection avec des choix comme "Decide for me", "Punchy & fast", "Animated captions", et un résumé textuel des préférences de branding (AIS dark theme, Roboto Mono).
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Configuration et paramétrage d'un projet de création de contenu vidéo via une interface interactive.
-
-![Interface interactive d'un outil de design type "Napkin" où l'utilisateur sélectionne des options de mise en page, d'énergie visuelle et de style pour une vidéo.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000724_seg15.jpg)
-*⏱️ 00:07:24 — Interface interactive d'un outil de design type "Napkin" où l'utilisateur sélectionne des options de mise en page, d'énergie visuelle et de style pour une vidéo.*
-
-![Interface de l'outil affichant un résumé des paramètres choisis dans le volet de gauche (layout, tone, branding) et la structure des fichiers du projet dans le volet central.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000741_seg15.jpg)
-*⏱️ 00:07:41 — Interface de l'outil affichant un résumé des paramètres choisis dans le volet de gauche (layout, tone, branding) et la structure des fichiers du projet dans le volet central.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -300,17 +241,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > the video. You would have to give it that timestamp stuff if you want it to actually sync the text and animations to what you're saying, which obviously is very important. And of course, so that it actually knows what motion graphics to create. Okay. So that took like two minutes. Let's see what we got. I've built over 500 AI workflows and most of them businesses don't need, they don't need flashy automations or cool AI demos. They want simple things that save time or make money.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Napkin (Outil de prototypage UI/IA).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Image 1 : Liste de tâches (Progress 0/5) détaillant les étapes de production vidéo. Image 2 : "Scene map" avec un minutage précis (ex: 0-2.7s "500 AI workflows") et interface de prévisualisation vidéo.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Exécution d'un script d'automatisation IA pour générer un plan de montage et des éléments graphiques synchronisés avec une narration.
-
-![Interface de l'outil « Napkin » affichant une liste de tâches (To-Do list) de création de contenu vidéo et une structure de fichiers de projet.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000756_seg16.jpg)
-*⏱️ 00:07:56 — Interface de l'outil « Napkin » affichant une liste de tâches (To-Do list) de création de contenu vidéo et une structure de fichiers de projet.*
-
-![Interface de l'outil « Napkin » montrant le résultat final généré : une vidéo composée avec le présentateur en médaillon et des éléments graphiques (texte, cartes de workflows) à droite.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000807_seg16.jpg)
-*⏱️ 00:08:07 — Interface de l'outil « Napkin » montrant le résultat final généré : une vidéo composée avec le présentateur en médaillon et des éléments graphiques (texte, cartes de workflows) à droite.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -320,14 +255,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > That's it. The workflows that actually work are boring stuff that replaces real work. That's what businesses pay for. Comment 500W and I'll send you the full breakdown. Okay. That is crazy. I mean, this is like super fast paced. There's lots of animations in some ways. This actually might be a bit better than what we would do later with hyperframes because like that is really impressive.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de plateforme de conception graphique/montage vidéo (UI de type éditeur web).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Script de production détaillant la structure de la vidéo ("Scene map", "0-2.7s 500 AI workflows", etc.) et graphique de données intitulé "REAL WORK. REAL MONEY" avec des colonnes chiffrées (ex: $4,800, $9,200).
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Édition et prévisualisation d'un montage vidéo incluant des éléments de motion design et des statistiques de performance.
-
-![Interface de conception vidéo (type Canva ou outil de montage web) affichant un plan de montage détaillé avec un script textuel à gauche et le rendu visuel de la vidéo à droite, montrant le présentateur et un graphique de revenus.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000818_seg17.jpg)
-*⏱️ 00:08:18 — Interface de conception vidéo (type Canva ou outil de montage web) affichant un plan de montage détaillé avec un script textuel à gauche et le rendu visuel de la vidéo à droite, montrant le présentateur et un graphique de revenus.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -337,20 +269,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > Yeah. I mean, I am very impressed that it was able to do this anyways. What you would do now, if you want to export this, it doesn't actually let you export this as a MP4. So you would either just make this full screen and you would just screen record it, which would be fine. Or if it's a longer video, you could actually do this. You could go here and hand off the Claude code and just copy this command. And then you could come into Claude and just literally give it this and then say, hey, render this as an MP4. And it would actually be able to do it for you. And then you get the download, which is exactly what I did here with the first agent promo, the render. You can see that we have the first agent promo and that's exactly the same flow I did. I gave it that link and I
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de design (type Canvas/Web), Fenêtre "Send to local coding agent", Claude Code (intégré à l'éditeur).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Commande shell/API : "Fetch this design file, read its readme, and implement the relevant aspects of the design. https://api.anthropic.com/.../May+Short+6+--+Animated.html"
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur explique comment transférer un fichier de design généré vers un agent de codage local pour automatiser l'implémentation logicielle.
-
-![Interface de design affichant une vidéo générée avec une carte "COMMENT 500W" et le flux vidéo du présentateur.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000844_seg18.jpg)
-*⏱️ 00:08:44 — Interface de design affichant une vidéo générée avec une carte "COMMENT 500W" et le flux vidéo du présentateur.*
-
-![Fenêtre modale "Send to local coding agent" contenant une commande pour implémenter un fichier de design via Claude Code.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000852_seg18.jpg)
-*⏱️ 00:08:52 — Fenêtre modale "Send to local coding agent" contenant une commande pour implémenter un fichier de design via Claude Code.*
-
-![Éditeur de code (Hyperframes Editor/VS Code) avec l'interface de Claude Code ouverte, prête à recevoir une instruction d'implémentation.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000901_seg18.jpg)
-*⏱️ 00:09:01 — Éditeur de code (Hyperframes Editor/VS Code) avec l'interface de Claude Code ouverte, prête à recevoir une instruction d'implémentation.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -360,19 +283,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > said, hey, render this. Because when you think about what's actually going on with hyperframes, it's basically just creating HTML and Claude Design is really, really good at creating HTML. and apparently it's really good at animating that HTML as well. So cloud design is a very, very viable option to actually edit these videos. I'll show you guys another quick output I did earlier, which was this one. I did this one vertically just because I wanted to see how it would work and see what it did. And obviously I didn't prompt it too much, right? Like I didn't give it a ton of information and I didn't tell it like, Hey, when we're doing short form content,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de création/édition vidéo basée sur une plateforme IA (similaire à un éditeur de "Hyperframes" ou outil de montage automatisé).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : - Image 1 : Objets JSON contenant des horodatages ("start", "end") et du texte pour la synchronisation des mots.
-- Image 2 : Logs d'exécution de l'agent "Claude" concernant des corrections de mise en page (StatBig overflow, réduction de taille, auto-fit scaling) et menu de configuration des paramètres vidéo.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : - Image 1 : Visualisation de la structure de données sous-jacente à l'animation de la vidéo.
-- Image 2 : Interaction avec les paramètres de configuration ("Tweaks") pour ajuster visuellement la mise en page de la vidéo.
-
-![Interface de l'application montrant une structure de données JSON détaillée pour le timing des sous-titres, avec un aperçu vidéo du contenu édité sur la droite.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000918_seg19.jpg)
-*⏱️ 00:09:18 — Interface de l'application montrant une structure de données JSON détaillée pour le timing des sous-titres, avec un aperçu vidéo du contenu édité sur la droite.*
-
-![Interface de contrôle des "Tweaks" (paramètres) permettant d'ajuster le layout vidéo (Full, PiP, Split), les sous-titres et l'opacité, avec le journal d'activité de l'IA sur la gauche.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000935_seg19.jpg)
-*⏱️ 00:09:35 — Interface de contrôle des "Tweaks" (paramètres) permettant d'ajuster le layout vidéo (Full, PiP, Split), les sous-titres et l'opacité, avec le journal d'activité de l'IA sur la gauche.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -382,14 +297,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > it needs to do this, this, and this. But here's what we got. Let me just get rid of the tweaks. Let's see what we got here. I've built over 500 AI workflows. And most of them, businesses don't need, they don't need flashy automations or cool AI demos. They want simple things that save time or make money. That's it. The workflows that actually work are boring. Stuff that replaces real work.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Figma (avec plugin ou intégration IA type "Claude"), interface de chat conversationnel.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Historique de chat montrant des balises `<decision>` : "Fix the StatBig overflow", "Wrap up: verify the fix, hand off", et "Snip everything resolved and hand off".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur interagit avec l'interface pour consulter le rapport d'exécution d'une tâche d'agent IA ("A background task has completed").
-
-![Une interface de plateforme de design (probablement Figma) affichant une conversation avec un agent IA nommé "Claude" dans la colonne de gauche, et une zone de prévisualisation vidéo au centre.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_000948_seg20.jpg)
-*⏱️ 00:09:48 — Une interface de plateforme de design (probablement Figma) affichant une conversation avec un agent IA nommé "Claude" dans la colonne de gauche, et une zone de prévisualisation vidéo au centre.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -399,19 +311,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > That's what businesses pay for. Comment 500. Okay, so the animations look good and stuff, right? But it's obviously just covering my face. So I'd want to say, hey, maybe you should put my face on just the bottom half and then put animations up top and things like that. But I didn't even give it any information here. This one you can see actually timed out. So it filled in a bunch of information right here.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de travail type "AI Agent IDE" (type Cursor ou plateforme propriétaire) intégrant un chat interactif et un lecteur de prévisualisation vidéo.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : - Log de décisions de l'agent : "<decision> Fix the StatBig overflow. Reduce default size and add max-width constraint with auto-fit scaling. </decision>"
-- Explications techniques : "I'll make it a Stage.dinam page... use video.timeupdate and currentTime as the source of truth, build graphics that render based on video.time directly."
-- Prompt final : "Here is what I built - a 9:16 short with your MP4 as the background..."
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Analyse et exécution d'un agent IA pour générer des animations dynamiques superposées sur une vidéo, avec ajustement des contraintes d'affichage (StatBig overflow) et synchronisation temporelle entre la vidéo et les éléments graphiques.
-
-![Interface de développement avec un panneau de chat IA à gauche affichant des décisions ("Fix the StatBig overflow") et un lecteur vidéo à droite montrant le présentateur avec des éléments graphiques en superposition.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001007_seg21.jpg)
-*⏱️ 00:10:07 — Interface de développement avec un panneau de chat IA à gauche affichant des décisions ("Fix the StatBig overflow") et un lecteur vidéo à droite montrant le présentateur avec des éléments graphiques en superposition.*
-
-![Suite de la discussion dans le panneau de chat IA où l'IA détaille son approche technique ("Use video.timeupdate and currentTime as the source of truth"), avec le même lecteur vidéo visible à droite.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001016_seg21.jpg)
-*⏱️ 00:10:16 — Suite de la discussion dans le panneau de chat IA où l'IA détaille son approche technique ("Use video.timeupdate and currentTime as the source of truth"), avec le même lecteur vidéo visible à droite.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -421,14 +325,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > It said that the question's timed out on the user. So it just went with the default. So maybe that's another reason why it's not as good, but this is really impressive. Okay, so that's Cloud Design. You guys will be able to get in there, play around with it. And I think it'll be able to take you pretty far. But if you wanna go even farther and if you want more control, then you might wanna look at using Hyperframes, which is what I'm gonna be showing you guys now.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Cloud Design (interface de création assistée par IA)
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Historique de discussion montrant l'erreur "Questions timed out; go with defaults" et le message d'erreur technique de Claude sur l'incapacité à décoder le fichier MP4.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Démonstration d'une interaction utilisateur avec un assistant IA tentant de générer des graphiques animés pour une vidéo, illustrant une limitation technique lors du traitement de fichiers média.
-
-![Interface d'un environnement de design assisté par IA montrant un panneau de discussion (gauche) avec Claude et une prévisualisation vidéo en temps réel (droite).](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001025_seg22.jpg)
-*⏱️ 00:10:25 — Interface d'un environnement de design assisté par IA montrant un panneau de discussion (gauche) avec Claude et une prévisualisation vidéo en temps réel (droite).*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -438,14 +339,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > So before we hop into Hyperframes, let's real quick look at a few other examples that Hyperframes was able to create for me. So in this example, I basically said, hey, let's pretend that AI Automation Society is releasing a mobile app. And I gave it the URL of AI Automation Society. And here's what we got. That's pretty incredible.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Lecteur vidéo Windows (Media Player)
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Le titre du fichier vidéo "aisoc-app-release-v5.mp4" apparaît dans la barre supérieure ; la zone centrale est sombre, en attente de la lecture de la démo générée par Hyperframes.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur s'apprête à lancer la lecture d'une vidéo générée illustrant le concept de l'application mobile pour "AI Automation Society".
-
-![Une capture d'écran montrant l'interface d'un lecteur multimédia Windows natif affichant un fichier vidéo nommé "aisoc-app-release-v5.mp4" en attente de lecture.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001052_seg23.jpg)
-*⏱️ 00:10:52 — Une capture d'écran montrant l'interface d'un lecteur multimédia Windows natif affichant un fichier vidéo nommé "aisoc-app-release-v5.mp4" en attente de lecture.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -455,14 +353,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > I love this slide. I love this scene. And the tweet is pretty cool. The follow is awesome. And the reason it was able to do some of these things is because inside of Hyperframes, they're not inside, but they have this documentation of, you know, like how it works. And they also have some really cool catalog things. So you could pull in this exact animation and just fill in your own things.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Google Docs (pour l'image 2).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Dans le document Google Docs, on peut lire : "Method 2 — Hyperframes", avec des sous-rubriques comme "Setting it up", "Live edit", "Hyperframes vs. Remotion", et "Cost and speed".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur utilise le document comme script ou plan de structure pour expliquer les méthodes techniques (notamment Hyperframes) utilisées pour réaliser ses vidéos.
-
-![Une capture d'écran montrant un document Google Docs structurant le plan d'une vidéo YouTube, avec une section dédiée à "Method 2 — Hyperframes".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001136_seg24.jpg)
-*⏱️ 00:11:36 — Une capture d'écran montrant un document Google Docs structurant le plan d'une vidéo YouTube, avec une section dédiée à "Method 2 — Hyperframes".*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -472,17 +367,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > a macOS notification, a Reddit postcard. We've got all of these different transitions as well. We've got the app showcase right here, which is what you saw earlier in a different video. But it is just so cool. You can do a 3D UI reveal like this. There's lots of elements that you can already pull out and use. Okay, let me show you guys another example of one that is kind of a lesson 5.1 when and how to pitch an audit. At some point during a project, you're going to notice something. The client's business has more problems than the one you were hired to fix.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Plateforme de documentation technique / bibliothèque de composants UI (type bibliothèque d'animations pour développeurs).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Documentation sur les transitions UI, "App Showcase", "3D UI Reveal", et titres de modules de formation "AIS".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Navigation dans le catalogue de composants pour illustrer des exemples de transitions d'interface utilisateur (3D UI Reveal).
-
-![Interface de documentation montrant une démonstration de type "App Showcase" avec trois écrans de smartphone flottants.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001152_seg25.jpg)
-*⏱️ 00:11:52 — Interface de documentation montrant une démonstration de type "App Showcase" avec trois écrans de smartphone flottants.*
-
-![Interface de documentation montrant une démonstration de "3D UI Reveal" avec une animation de perspective appliquée à une fenêtre d'interface utilisateur.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001159_seg25.jpg)
-*⏱️ 00:11:59 — Interface de documentation montrant une démonstration de "3D UI Reveal" avec une animation de perspective appliquée à une fenêtre d'interface utilisateur.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -492,14 +381,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > You can see inefficiencies and workflows they haven't even asked about. You can tell the system needs more than a single automation. And you'll want to say something. But you won't be sure how. Bringing up a bigger engagement feels risky. You don't want to come across as the consultant who's always trying to expand the scope. So you might just finish the project, send the invoice, and move on.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation vidéo (type diaporama).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte affiché : "LESSON 5.1", "When and how to pitch an audit", "THE REAL SCOPE", "INEFFICIENCIES", "BROKEN WORKFLOWS", "THE PROJECT (What you were hired to fix)", "@AI Automation Society".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Présentation pédagogique des concepts théoriques de gestion de projet et d'audit pour les agences d'automatisation.
-
-![Une diapositive de présentation titrée "When and how to pitch an audit" illustrant visuellement la différence entre la mission initiale ("THE PROJECT") et la portée réelle identifiée par l'auditeur ("THE REAL SCOPE").](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001217_seg26.jpg)
-*⏱️ 00:12:17 — Une diapositive de présentation titrée "When and how to pitch an audit" illustrant visuellement la différence entre la mission initiale ("THE PROJECT") et la portée réelle identifiée par l'auditeur ("THE REAL SCOPE").*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -509,17 +395,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > That hesitation costs you. Not because pitching audits is hard. Okay, so I'm going to pause it there. You guys can see the styling is a little bit different, right? And for an educational style video, I don't even know. I might want to use that or I might want to play around more with what we saw back in hyperframes over here Because like I said, I thought that this output was really really cool So the important thing to understand here is there's so much customization Like obviously I tweaked this project so many times and i've rendered Probably over 60 videos in the past day just playing around with different methods And that's what's really important when you use a tool like hyperframes or cloud design is that you're putting in your own sort of like
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Hyperframes Editor (interface de développement/montage), VS Code (ou éditeur de code dérivé).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : "Scene map" listant des séquences temporelles pour un montage vidéo, arborescence de fichiers ("video-projects", "aisoc-app-release", "clickup-demo"), et une note sur "CLAUDE.md".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Navigation dans les fichiers du projet et démonstration de l'outil d'édition de contenu assisté par IA.
-
-![Interface de "Hyperframes Editor" montrant un panneau latéral avec une "Scene map" détaillée pour un montage vidéo et un aperçu du rendu final.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001249_seg27.jpg)
-*⏱️ 00:12:49 — Interface de "Hyperframes Editor" montrant un panneau latéral avec une "Scene map" détaillée pour un montage vidéo et un aperçu du rendu final.*
-
-![Interface de "Hyperframes Editor" (IDE style VS Code) affichant l'arborescence des dossiers de projets vidéo et le logo "Claude Code".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001258_seg27.jpg)
-*⏱️ 00:12:58 — Interface de "Hyperframes Editor" (IDE style VS Code) affichant l'arborescence des dossiers de projets vidéo et le logo "Claude Code".*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -529,14 +409,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > You know animation philosophy and your own design skills and your own things to make the outputs the way you want them. Now, before we get set up, I wanted to show you two other things that I tried to play with that didn't really work too well. So the first one was a ClickUp demo. I tried to make like a product SaaS demo and I could have made this work a lot better if I did some things a little bit more manually, but I was really trying to push this tool to see what it could do with CloudCode. So basically what I did is I said, hey, go to ClickUp.com and screen record and log in as me and take screenshots and just create me a demo. And this is what it ended up making. It's not
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Google Docs
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Plan de contenu : "The two methods", "A taste first", "Method 1 — Claude Design", "Method 2 — Hyperframes", "More examples: AIS App Release, AIS Hype, and Lesson 5.1. Plus a couple that still need work: ClickUp demo and the May shorts."
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur illustre le plan de sa présentation tout en expliquant les différentes méthodes de travail testées.
-
-![Capture d'écran montrant un document Google Docs structuré présentant le plan de la vidéo, incluant les sections "Method 1", "Method 2 — Hyperframes" et des notes sur des démonstrations comme "ClickUp demo".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001315_seg28.jpg)
-*⏱️ 00:13:15 — Capture d'écran montrant un document Google Docs structuré présentant le plan de la vidéo, incluant les sections "Method 1", "Method 2 — Hyperframes" et des notes sur des démonstrations comme "ClickUp demo".*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -546,14 +423,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > perfect. But if you think about the fact that I didn't record any of the screen thing, and I just said, I shot it off on a prompt and it came back, it's pretty cool. Now this is also version five. So I tried four different prompts and then I got to this one, iterated each time, but you can see it pulled the logo. It has this nice animation. The color scheme feels like ClickUp. We have sort of that 3D UI reveal, and this is where it loses me a little bit. It starts to just become a little bit static, even though you can see it went into the app and it was able to take pictures, but now it's losing a bit of that taste and it's kind of losing the energy that a human editor would have
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Lecteur vidéo (interface de visionnage de fichier média) affichant le contenu "clickup-demo-v5.mp4".
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte affiché à l'écran : "Every team juggles 12+ tools" accompagné de noms d'outils SaaS : Slack, Sheets, Asana, Drive, Linear, Notion, Jira, GitHub, Zoom, Figma, Loom, Trello.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Visionnage et démonstration de la vidéo générée par l'IA dans l'interface de lecture du logiciel.
-
-![Une capture d'écran montrant une vidéo en cours de lecture dans un lecteur multimédia, affichant une slide de présentation intitulée "Every team juggles 12+ tools" avec des logos de logiciels populaires (Slack, Sheets, Asana, etc.) flottant à l'écran.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001348_seg29.jpg)
-*⏱️ 00:13:48 — Une capture d'écran montrant une vidéo en cours de lecture dans un lecteur multimédia, affichant une slide de présentation intitulée "Every team juggles 12+ tools" avec des logos de logiciels populaires (Slack, Sheets, Asana, etc.) flottant à l'écran.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -563,14 +437,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > been able to put in. So what I think is really awesome about this is people who already know how to edit and people who have a nice creative like intuition are going to be able to use these tools to 10x their productivity. Because if someone has no taste, they might get outputs like this. But if someone has a really good understanding of what makes videos engaging and what, you know, scenes and transitions they should be looking at, they're going to be able to use these tools like crazy. So anyways, that's what we got when I just gave it ClickUp's URL and said, make me a product demo. And then the other thing I wanted to show you guys is I was playing around with making shorts
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Plateforme de gestion de projet ClickUp (avec module IA intégré).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Résumé de projet ("Q2 Product Launch") structuré avec des rubriques : Project Overview, Key Decisions and Updates, et une zone d'input textuelle "Ask anything about your workspace".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Démonstration de la capacité d'une IA à générer des rapports de synthèse textuels structurés à partir de données de tâches.
-
-![Interface de l'outil ClickUp Brain affichant une synthèse automatisée d'un projet intitulée "Ask in plain English".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001421_seg30.jpg)
-*⏱️ 00:14:21 — Interface de l'outil ClickUp Brain affichant une synthèse automatisée d'un projet intitulée "Ask in plain English".*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -580,17 +451,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > using Cloud Code and Hyperframes because it's a little bit more customizable. And this was my second version of this one. I think earlier I made five or six shorts just testing it out. But you can see, you know, shorts are different. They have to capture your attention. They have to be engaging. And I just don't think that this is there yet. Like I wouldn't post this, but I do think that if I keep iterating, it can definitely get there eventually. So let's give it a quick watch. Claude just killed chat GPT, not in hype, but in actual use, better outputs, more reliable, less babysitting. If you're building with AI, you've probably already felt it. And if you haven't,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Lecteur multimédia Windows (Photos/Films et TV).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte dynamique superposé : "NOT HYPE" et "ACTUAL USE", avec sous-titres : "Not in hype, but in actual use."
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Prévisualisation et relecture du montage vidéo d'un YouTube Short dans un lecteur local.
-
-![L'écran montre le présentateur en train de visualiser une vidéo courte (Short) au format vertical dans un lecteur multimédia, avec une zone noire en haut et la vidéo en bas.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001453_seg31.jpg)
-*⏱️ 00:14:53 — L'écran montre le présentateur en train de visualiser une vidéo courte (Short) au format vertical dans un lecteur multimédia, avec une zone noire en haut et la vidéo en bas.*
-
-![L'écran montre la lecture de la vidéo courte avec des superpositions de texte dynamique ("NOT HYPE", "ACTUAL USE") et des sous-titres, démontrant le rendu final.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001510_seg31.jpg)
-*⏱️ 00:15:10 — L'écran montre la lecture de la vidéo courte avec des superpositions de texte dynamique ("NOT HYPE", "ACTUAL USE") et des sous-titres, démontrant le rendu final.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -600,17 +465,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > then you need to switch before it's too late. Comment dead, and I'll send the video explaining why. Okay, so what I like about this is there's always something new going on. The subtitles are there automatically. Sometimes it's me on the bottom half and stuff on the top half, and sometimes it zooms into just me. And then sometimes it goes to just all motion graphics. So it definitely has this feeling like there's different vibes as you progress throughout the video. But like I said, it's not there yet. I wouldn't post this, but it's getting better and it's really cool.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Lecteur vidéo intégré à une interface système ou logiciel de montage/visionnage (type Windows Media Player ou interface de prévisualisation).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte dynamique dans la vidéo : "CLAUDE VS CHATGPT", "Claude just killed chatGPT", "NOT HYPE" et "ACTUAL USE".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur passe en revue une vidéo courte (Short/Reel) destinée à illustrer son argumentaire sur l'utilisation réelle des outils d'IA.
-
-![Le présentateur visionne une vidéo courte (format vertical) intitulée "CLAUDE VS CHATGPT" où il apparaît lui-même avec des sous-titres, illustrant un comparatif d'IA.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001526_seg32.jpg)
-*⏱️ 00:15:26 — Le présentateur visionne une vidéo courte (format vertical) intitulée "CLAUDE VS CHATGPT" où il apparaît lui-même avec des sous-titres, illustrant un comparatif d'IA.*
-
-![Le présentateur visionne une vidéo courte montrant un graphique textuel comparant "NOT HYPE" et "ACTUAL USE", avec des sous-titres dynamiques incrustés.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001532_seg32.jpg)
-*⏱️ 00:15:32 — Le présentateur visionne une vidéo courte montrant un graphique textuel comparant "NOT HYPE" et "ACTUAL USE", avec des sous-titres dynamiques incrustés.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -620,17 +479,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > So how do we actually go ahead and set up hyperframes? Well, you have to use Cloud Code for this. That's at least how I'm going to show you. And you can use this in VS Code, which is mainly what I'm going to show you guys. You could also use this in the Cloud Desktop app. So like what I've got pulled up right here. And what's cool about this is Cloud Desktop app has a preview function. So you can pull up an app you're working on or a local host, and you can preview your video right in here from the app as you're having a conversation, which I do like. But also I would like this to be just like full screen. And I don't know, for me, it's not too big of a deal to just switch over to my browser in order to see the local host and then just open VS Code back up.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Hyperframes Studio (application web/bureau).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Liste de compositions (01-hook, 02-text-on-screen, 03-karaoke-captions) et log système "editing.loop()".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Navigation dans l'interface de montage et exécution d'un script d'automatisation pour le traitement vidéo.
-
-![Interface de l'application "Hyperframes Studio" montrant le projet "claude-edit-intro" avec une barre latérale de gestion des compositions.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001603_seg33.jpg)
-*⏱️ 00:16:03 — Interface de l'application "Hyperframes Studio" montrant le projet "claude-edit-intro" avec une barre latérale de gestion des compositions.*
-
-![Interface "Hyperframes Studio" avec une superposition graphique ("editing.loop") affichant des processus comme "analyze_clip" et "sync_captions".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001611_seg33.jpg)
-*⏱️ 00:16:11 — Interface "Hyperframes Studio" avec une superposition graphique ("editing.loop") affichant des processus comme "analyze_clip" et "sync_captions".*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -640,14 +493,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > So that's really the main benefit of using the Cloud desktop app. For me, the main benefit of using VS Code is I can see all of my projects. I can see the different assets I've dropped in. I can move things around. I can look at all my different renders. I like to be able to see my files and that's why I'm going to be using VS Code for this video. Also, this entire project right here is going to be a free GitHub repository that you guys can access, like I said, for free. Just join my FreeSchool community. The link for that is down in the description and you'll be able to find all of my YouTube resources in there. And once you get that GitHub repo, literally just take the URL of it, sort of like I did with this, you know, the HeyGen Hyperframes one. You take the URL, you give it
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (éditeur de code).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Explorateur de fichiers affichant divers assets (images .jpg/.png, fichiers .css, scripts, dossiers .env, fichiers .md, et fichiers vidéo .mp4). Un onglet "Claude Code" est ouvert au centre de l'éditeur.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Navigation dans l'arborescence du projet pour visualiser et organiser les différents fichiers et assets utilisés dans le développement.
-
-![Interface de VS Code montrant l'arborescence des fichiers du projet "HYPERFRAMES EDITOR" avec le dossier "assets" développé.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001629_seg34.jpg)
-*⏱️ 00:16:29 — Interface de VS Code montrant l'arborescence des fichiers du projet "HYPERFRAMES EDITOR" avec le dossier "assets" développé.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -657,17 +507,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > to CloudCode and you say, hey, can you please like analyze this or can you clone it and pull it in and then just help me set up my own video editing studio right here in this project. So that leads me on to step one, which is you go to the official HeyGen, Hyperframes repo. If you scroll down, you can read about all of the different things in here. It's already got some built-in skills that you can use.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (éditeur de code), GitHub (dépôt de code).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Arborescence de fichiers (assets, node_modules, .env, CLAUDE.md), historique des commits sur GitHub, liste des dossiers du projet hyperframes.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Navigation dans un projet de développement et accès à la source du dépôt pour configuration initiale du studio de montage.
-
-![Interface de VS Code affichant le répertoire "HYPERFRAMES EDITOR" et une fenêtre de discussion "Claude Code" invitant à l'utilisation du fichier CLAUDE.md.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001701_seg35.jpg)
-*⏱️ 00:17:01 — Interface de VS Code affichant le répertoire "HYPERFRAMES EDITOR" et une fenêtre de discussion "Claude Code" invitant à l'utilisation du fichier CLAUDE.md.*
-
-![Page du répertoire GitHub officiel "heygen-com/hyperframes" montrant la structure des fichiers du projet et le bouton vert "Code" pour le clonage.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001710_seg35.jpg)
-*⏱️ 00:17:10 — Page du répertoire GitHub officiel "heygen-com/hyperframes" montrant la structure des fichiers du projet et le bouton vert "Code" pour le clonage.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -677,17 +521,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > But then basically it shows you how this works and the quick start. So you could just use this. You could just install it right here. But I think what's better is you copy the URL. Like I said, you grab the URL of this GitHub repo, come into your cloud code, paste it in. And then you just say something like, this is an open source video editing tool that I want to use. Analyze the repo, you know, start to build some skills and start to build some knowledge around how it works and then help me get it installed. And it will just in a matter of minutes, you'll have it up and running and then you just have to start iterating. And that's the thing about a tool like this is it really is all about iteration. So here's my project. Here is the actual like different ones I've worked on.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Navigateur web (documentation Hyperframes) et éditeur VS Code (interface Claude Code).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Commande `npx skills add heygen-com/hyperframes` et URL `https://github.com/heygen-com/hyperframes` saisie dans la console de l'agent.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Installation des compétences (skills) du framework dans l'agent et initialisation du projet dans l'espace de travail de l'éditeur de code.
-
-![Page de documentation GitHub présentant le framework "Hyperframes" et la commande d'installation rapide via un agent de codage.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001724_seg36.jpg)
-*⏱️ 00:17:24 — Page de documentation GitHub présentant le framework "Hyperframes" et la commande d'installation rapide via un agent de codage.*
-
-![Interface de l'éditeur de code (VS Code avec extension Claude Code) montrant l'utilisateur en train d'importer le projet via l'URL du dépôt GitHub.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001733_seg36.jpg)
-*⏱️ 00:17:33 — Interface de l'éditeur de code (VS Code avec extension Claude Code) montrant l'utilisateur en train d'importer le projet via l'URL du dépôt GitHub.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -697,14 +535,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > You can see that I've iterated a ton. If I open up this one and I go to my renders, there's different versions, right? And there's so many different frames that I've tried. If I go to like the May shorts 19, we have tried so many different versions because what happens is it gives you something and then you say, okay, here's what I like. Here's what I don't like. Go make changes. And then it renders it again. And then you say, okay, here's what I like.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (ou éditeur similaire) avec une fenêtre d'explorateur de fichiers intégrée.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Arborescence de dossiers contenant des versions de rendus vidéo (audit-frames, final-frames, v2-compare, etc.) et des fichiers multimédias nommés "context-session".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Navigation dans les dossiers de projet pour montrer l'historique des versions et les multiples itérations réalisées.
-
-![Une capture d'écran montrant l'explorateur de fichiers au sein d'une interface de développement (type VS Code), affichant le contenu du dossier "renders" avec de multiples sous-dossiers et fichiers vidéo illustrant les itérations du projet.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001757_seg37.jpg)
-*⏱️ 00:17:57 — Une capture d'écran montrant l'explorateur de fichiers au sein d'une interface de développement (type VS Code), affichant le contenu du dossier "renders" avec de multiples sous-dossiers et fichiers vidéo illustrant les itérations du projet.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -714,14 +549,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > Here's what I don't like. And you have to do that over time. And as you do that, tell it, build up a skill for this, build up a skill for this, build up a design doc for this. So every single iteration, every single video you make makes your entire video editing studio in Cloud Code better. So don't expect that you're going to be able to clone my repo, ask it to make a video and it's going to be perfect. You're going to have to put in a little bit of work, but you can iterate extremely fast.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (avec une extension de type explorateur de fichiers/gestionnaire de projets)
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Arborescence de fichiers système : "renders", "frames", "may-shorts-19-vertical-v4", etc.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Navigation dans le système de fichiers du projet pour visualiser les itérations de rendu d'une vidéo.
-
-![Capture d'écran montrant l'interface VS Code avec un explorateur de fichiers ouvert au sein d'un projet nommé "Hyperframes Editor", affichant les dossiers de rendus ("renders") et plusieurs versions de fichiers vidéo "may-shorts-19".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001816_seg38.jpg)
-*⏱️ 00:18:16 — Capture d'écran montrant l'interface VS Code avec un explorateur de fichiers ouvert au sein d'un projet nommé "Hyperframes Editor", affichant les dossiers de rendus ("renders") et plusieurs versions de fichiers vidéo "may-shorts-19".*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -731,17 +563,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > And I built a custom skill for this. So I'm going to show that off in a second when we do this live edit here. So let's go into VS Code and let's edit a video together. I'm going to go to my downloads real quick and drag in a video clip that we're going to edit. Okay, so I've got this video right here. It's going to be 37 seconds long and it's just me talking. I don't know why I can't see the preview right here, but this is now in our project.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (Visual Studio Code).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Arborescence de fichiers (assets, node_modules, .env, .gitignore, fichiers .md et .mp4), fenêtre d'aperçu média.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur navigue dans l'explorateur de fichiers de son projet VS Code, sélectionne un clip vidéo et l'ouvre dans l'éditeur pour commencer le montage.
-
-![Capture de l'interface VS Code intitulée "Hyperframes Editor" avec l'arborescence des fichiers du projet affichée.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001844_seg39.jpg)
-*⏱️ 00:18:44 — Capture de l'interface VS Code intitulée "Hyperframes Editor" avec l'arborescence des fichiers du projet affichée.*
-
-![L'interface VS Code affiche désormais un aperçu vidéo ("Golden Ratio Demo.mp4") en cours de lecture dans l'éditeur.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001849_seg39.jpg)
-*⏱️ 00:18:49 — L'interface VS Code affiche désormais un aperçu vidéo ("Golden Ratio Demo.mp4") en cours de lecture dans l'éditeur.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -751,14 +577,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > And what I'm going to do is I'm going to tell Cloud Code that we want to make a video using this video. So in my dot Claude, in my skills, you can see I've got some skills that you guys obviously will get access to all of them. And I have this one right here called make a video. And we've got some references in here and we've got the skill. So what I'm going to do is say, hey, Claude Code, I need you to use the make a video skill.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Hyperframes Editor (basé sur VS Code).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Arborescence de fichiers incluant un dossier ".claude" avec des scripts, des fichiers vidéo (.mp4), et un fichier de configuration "CLAUDE.md".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur s'apprête à interagir avec l'outil Claude Code via la zone de saisie pour lancer une commande de création vidéo.
-
-![Interface de l'éditeur Hyperframes (VS Code) affichant le panneau latéral des fichiers du projet et l'espace de travail central "Claude Code" avec une zone de saisie textuelle.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001858_seg40.jpg)
-*⏱️ 00:18:58 — Interface de l'éditeur Hyperframes (VS Code) affichant le panneau latéral des fichiers du projet et l'espace de travail central "Claude Code" avec une zone de saisie textuelle.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -768,17 +591,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > And I need you to help me create a video for the golden ratio demo dot MP4 that I've dropped into the root of this project. So that's the video. What I need you to do is help me figure out how to animate this. I'm also just going to shoot this off in plan mode and then we will get going. You can see it's invoked the make a video skill and it's going to start by basically interviewing us a little bit and understanding the video in order for it to understand what to build.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Hyperframes Editor (environnement de développement intégré).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Liste de fichiers incluant "Golden Ratio Demo.mp4", sélection du mode "Edit automatically" et invite de commande demandant de l'aide pour animer le fichier vidéo.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur configure les paramètres de l'agent IA (Claude Code) en sélectionnant le mode "Edit automatically" avant d'envoyer une requête pour l'analyse et l'animation de la vidéo.
-
-![Interface de l'éditeur Hyperframes avec le volet de fichiers ouvert à gauche, affichant le fichier "Golden Ratio Demo.mp4".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001919_seg41.jpg)
-*⏱️ 00:19:19 — Interface de l'éditeur Hyperframes avec le volet de fichiers ouvert à gauche, affichant le fichier "Golden Ratio Demo.mp4".*
-
-![Interface de l'éditeur Hyperframes affichant le menu des modes d'interaction de l'agent (Edit automatically, Plan mode, Auto mode) et le champ de saisie du prompt.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001924_seg41.jpg)
-*⏱️ 00:19:24 — Interface de l'éditeur Hyperframes affichant le menu des modes d'interaction de l'agent (Edit automatically, Plan mode, Auto mode) et le champ de saisie du prompt.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -788,18 +605,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > Oh, and by the way, just for reference, right now in my usage, I am 20% of the way through. So keep that in mind, 20% of the way through. Let's see where we are after we have our finished video back right here. Now, what I want you to do is think about what it's actually doing here. So right here, it tells us, okay, the video is landscape at 60 FPS, 37 seconds, 2259 frames.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Hyperframes Editor (basé sur une interface VS Code).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : - Image 1 : Tableaux de bord de consommation (Plan usage : 5-hour limit 20%, Weekly all models 40%).
-- Image 2 : Logs d'exécution d'agent : "ffprobe" pour extraire les métadonnées vidéo (codec, largeur), lecture du fichier "MOTION_PHILOSOPHY.md", et commande "ls" pour lister les assets du projet.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Analyse automatique de fichiers vidéo et de documents de référence par un agent IA pour préparer une séquence d'animation.
-
-![Interface de l'outil "Hyperframes Editor" affichant le statut de consommation du quota d'utilisation du modèle IA (20% pour la limite de 5h).](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001941_seg42.jpg)
-*⏱️ 00:19:41 — Interface de l'outil "Hyperframes Editor" affichant le statut de consommation du quota d'utilisation du modèle IA (20% pour la limite de 5h).*
-
-![Interface de "Hyperframes Editor" dans un environnement de type VS Code, montrant une interaction avec un agent IA en train d'exécuter des commandes Bash pour analyser les métadonnées d'une vidéo.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_001946_seg42.jpg)
-*⏱️ 00:19:46 — Interface de "Hyperframes Editor" dans un environnement de type VS Code, montrant une interaction avec un agent IA en train d'exécuter des commandes Bash pour analyser les métadonnées d'une vidéo.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -809,14 +619,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > Let me sample a few frames to see what this video actually contains. So it needs to analyze it a little bit It says got it. This video is just you at your desk in your ais quarter zip with your mic You're standing there just talking. So now it understands what it's looking at And you can see it starts to set up all of these different gates So the next thing we have to do is script and voice. So it's going to ask us some questions What is the golden ratio demo going to become?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Claude Code / Editeur de code (VS Code-like).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Historique de discussion montrant la lecture de fichiers images (`t0.jpg`, `t7.jpg`, etc.), une réflexion de 18 secondes, et la conclusion de l'IA décrivant le contenu visuel de la vidéo (Nate à son bureau, micro Shure, tenue AIS).
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : L'IA effectue une analyse de contenu vidéo (« sampling ») pour comprendre les éléments visuels avant de planifier une animation.
-
-![Une vue de l'interface de Claude Code au sein d'un éditeur (type VS Code), montrant l'agent en train d'analyser une série d'images extraites d'une vidéo.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002001_seg43.jpg)
-*⏱️ 00:20:01 — Une vue de l'interface de Claude Code au sein d'un éditeur (type VS Code), montrant l'agent en train d'analyser une série d'images extraites d'une vidéo.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -826,14 +633,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > A face plus motion graphic overlays. So that's kind of like what we saw in the Claude edit intro, the video that I showed you guys earlier, or do we want my face cam to be like on the bottom right corner and make it be more of like a core style video? I want to do sort of one of these. So we will click on this. You want to keep the full 37 seconds or trim it. I'm just going to keep the full 37 seconds. Should I transcribe the demo so we get word level timestamps? Absolutely. So that's what's really key here is it needs to transcribe the video so that not only, like I said, can it create the right motion graphics, but it also needs to have them come into the scene at the right time. So you can either have it do this locally by installing
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (Hyperframes Editor)
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Un menu déroulant d'options de projet : "AIS lesson (16:9, face + MG overlays)", "AIS short (9:16 vertical)", et "Promo / hype piece (16:9, MOTION_PHILOSOPHY-style)". Un prompt utilisateur est visible au-dessus demandant à "Claude Code" de l'aide pour animer un fichier vidéo.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le curseur de la souris survole l'option "AIS lesson (16:9, face + MG overlays)" dans l'interface de l'agent IA, illustrant la décision de format de production pour la vidéo en cours de création.
-
-![Une capture d'écran de l'éditeur VS Code montrant une interface de choix de format de vidéo générée par un agent IA, avec le présentateur en incrustation (face-cam) en bas à gauche.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002028_seg44.jpg)
-*⏱️ 00:20:28 — Une capture d'écran de l'éditeur VS Code montrant une interface de choix de format de vidéo générée par un agent IA, avec le présentateur en incrustation (face-cam) en bas à gauche.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -843,14 +647,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > like a Python whisper thing, and it will actually go do it on your machine. But if that's taking up too much of your RAM, then what you can do is just use like an API to do so. So if you give it an open AI API key, it can use open AI's whisper to go grab the transcript and the timestamps. And right on cue, you can see it says whisper.cpp isn't installed. So it's going to try alternatives, which will be the open AI API. I ended up uninstalling this because when I was running like eight different videos at the same time. It was just killing my RAM. So I just said, Hey, just uninstall that. Now the transcript is in and you can see that it starts to actually plan out what it's going to do for each kind of section of the video. So hero visual metaphor, what carries
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code / Éditeur de code intégré (Hyperframes Editor) avec interface de chat pour agent IA.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Commande shell affichée : `npx hyperframes transcribe "Golden Ratio Demo.mp4" --model sw`. On voit également l'agent répondre que la tâche s'exécute en arrière-plan avec l'ID `b71119uh0`.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : L'agent IA lance une transcription vidéo en arrière-plan (en utilisant potentiellement Whisper) pour obtenir les horodatages, suite à une demande utilisateur.
-
-![Interface de l'éditeur de code montrant une interaction avec un agent IA (Claude Code) qui exécute une commande de transcription vidéo en arrière-plan.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002104_seg45.jpg)
-*⏱️ 00:21:04 — Interface de l'éditeur de code montrant une interaction avec un agent IA (Claude Code) qui exécute une commande de transcription vidéo en arrière-plan.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -860,14 +661,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > the golden ratio idea visually across the whole piece? Yeah, we'll just go with this. I'm just going to take its recommendations. What about the captions? I don't actually want to do captions. We'll say no audio only and face cam treatment corner pip throughout full screen for intro and outro full screen with floating MG overlays. Yeah, I'm going to do this one. You guys may be confused about this whole golden ratio thing because I haven't shown you the raw footage yet, but just stick with me. You'll see at the end. It's going to keep chugging its way through all of these different gates. I'm going to check in with you guys if we get anything interesting or once it's done. Okay. So we got the plan ready for review. So this is where you definitely want to spend some
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (Hyperframes Editor)
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Plan de montage vidéo détaillé avec des timestamps (01:08-08:13, etc.), des recommandations de styles de sous-titres ("Karaoke word-by-word", "Phrase-level lower-third", "No captions") et une structure de projet visible dans l'explorateur de fichiers.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le curseur de la souris survole l'option "No captions" dans l'interface de l'éditeur pour sélectionner le mode audio uniquement, conformément au discours de l'intervenant.
-
-![Une interface de type éditeur de code VS Code affichant un outil nommé "Hyperframes Editor" avec un menu de configuration de sous-titres interactif.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002140_seg46.jpg)
-*⏱️ 00:21:40 — Une interface de type éditeur de code VS Code affichant un outil nommé "Hyperframes Editor" avec un menu de configuration de sous-titres interactif.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -877,14 +675,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > time making sure that you agree with what it's doing. So it's basically going to tell me here for each of these sections, what is the motion graphics or animations that it's going to create? because once you start creating them, that's where you're getting a lot of output tokens being used because it's writing a ton of HTML. So if you accept the plan, but then you end up like not liking what it's doing, that will cost you more tokens.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (Visual Studio Code)
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Tableau récapitulatif de production vidéo : colonnes "#", "t-start", "t-end", "Dur", "Beat", "Key MG moves". Les lignes détaillent la planification des animations (noms des polices, effets SVG, apparitions textuelles, transitions de cartes).
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur illustre le processus de planification automatisée où l'IA génère un script technique structuré pour les éléments visuels de la vidéo avant leur création effective.
-
-![Une capture d'écran de l'éditeur VS Code affichant un fichier Markdown nommé "Golden Ratio Demo — Animation Plan". Le document présente un tableau détaillé définissant la structure des sections vidéo, les timings, le contenu audio et les mouvements d'animation (Key MG moves) associés pour chaque segment.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002211_seg47.jpg)
-*⏱️ 00:22:11 — Une capture d'écran de l'éditeur VS Code affichant un fichier Markdown nommé "Golden Ratio Demo — Animation Plan". Le document présente un tableau détaillé définissant la structure des sections vidéo, les timings, le contenu audio et les mouvements d'animation (Key MG moves) associés pour chaque segment.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -894,14 +689,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > So take some time, read through the plan and then go ahead and approve it. In this case, I'm just gonna go ahead and approve it because I wanna see how good it does by default without me helping steer it a ton. And one other quick thing I wanted to mention while this is churning out its code is that if you wanted to take like a completely raw, unedited video and drop it into here, You would probably want to manually edit out some of the mistakes and the retakes or some of the blank space or like dead space Because it's not going to be great at interpreting When is the start of a new sentence and when did you mess up and what do you want to remove?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Éditeur de code Cursor (VS Code fork).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Un plan de travail structuré en étapes (Gate 6, 7, 8) pour une animation, pointant vers un fichier Markdown local (`hey-claude-code-i-shiny-alpaca.md`) et indiquant le statut "Concocting..." (en train de générer le code).
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : L'agent IA a terminé l'écriture du plan et est en phase d'exécution pour générer le code source suite à l'approbation de l'utilisateur.
-
-![Interface de l'éditeur Cursor affichant le processus de planification d'un projet d'animation "Golden Ratio".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002233_seg48.jpg)
-*⏱️ 00:22:33 — Interface de l'éditeur Cursor affichant le processus de planification d'un projet d'animation "Golden Ratio".*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -911,14 +703,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > So you could also try to use a tool like descript But it's the same sort of logic and even descript messes up a lot of times when I try to use it So I will usually just take the script I will cut out the mistakes because I know what's a mistake and what's not and then I take that file and drop it into here Now cloud code with something like f of mpeg and hyperframes, it certainly could but you would just have to steer it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Hyperframes Editor (basé sur VS Code).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Liste de fichiers/étapes de rendu vidéo (Gate 6 à 8), instruction de prompt : "use the open ai api for transcript. you have my api key in the .env", et statut de l'agent : "Building section 05...".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : L'agent IA est en cours d'exécution ("Marinating...") pour générer ou traiter des sections d'un projet vidéo via une interface de conversation intégrée à l'éditeur.
-
-![Une interface de type éditeur de code (VS Code ou outil personnalisé nommé "Hyperframes Editor") affichant un agent IA en train de traiter une liste de tâches pour une vidéo.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002301_seg49.jpg)
-*⏱️ 00:23:01 — Une interface de type éditeur de code (VS Code ou outil personnalisé nommé "Hyperframes Editor") affichant un agent IA en train de traiter une liste de tâches pour une vidéo.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -928,14 +717,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > And at that point, if you're saying, hey, cut from four seconds to seven seconds and then cut from 15 seconds to 22 seconds. At that point, you doing that and then having it render all that would just take longer than if you just did it yourself. So that's why I say that it's still capable, just gotta play around. Okay, so it pulls up a preview. And I do wanna say that I've been having a lot of issues with these previews on localhost.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Hyperframes Editor (basé sur VS Code)
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Liste de fichiers de projet (ex: "05-magic-trash-middle.html"), statut des tâches ("Thought for 17s", "Building section 05..."), et indicateur d'état "Brewing...".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : L'agent IA est en train de traiter une requête de construction de sections spécifiques pour un projet de montage vidéo.
-
-![Interface de l'éditeur "Hyperframes" montrant un processus de génération vidéo assisté par IA, avec une liste de tâches (Gates) en cours de validation.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002321_seg50.jpg)
-*⏱️ 00:23:21 — Interface de l'éditeur "Hyperframes" montrant un processus de génération vidéo assisté par IA, avec une liste de tâches (Gates) en cours de validation.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -945,17 +731,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > That's something that on Remotion, I've basically never had an issue with. But for some reason, hyperframes, maybe because it's HTML based or whatever it is, it has a problem sometimes. So like right here, what's happened is it's loaded in all of the different compositions, but at the bottom of the screen, you see it says zero seconds out of zero seconds. So there's nothing for me to actually look at, but here's the exact same scenario with the intro video and this one's working fine.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (avec extension ou intégration Hyperframes) et l'interface web de développement Hyperframes.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Liste de URLs locales (`http://localhost:3003/...`) pour différentes sections (intro, 60%, 30%, etc.) et avertissement sur le risque de blocage mémoire ("Known issue: master composition on face-cam-in-root projects stalls Studio").
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur explique les problèmes de chargement des compositions ("stalling") dans l'outil Hyperframes par rapport à Remotion, en montrant la structure de son projet et l'interface de prévisualisation.
-
-![Interface VS Code affichant un fichier Markdown de configuration pour le projet "Animate Golden Ratio", listant les URLs locales des sous-compositions.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002341_seg51.jpg)
-*⏱️ 00:23:41 — Interface VS Code affichant un fichier Markdown de configuration pour le projet "Animate Golden Ratio", listant les URLs locales des sous-compositions.*
-
-![Interface de l'éditeur Hyperframes montrant la barre latérale des compositions chargées et une zone de prévisualisation vidéo noire.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002346_seg51.jpg)
-*⏱️ 00:23:46 — Interface de l'éditeur Hyperframes montrant la barre latérale des compositions chargées et une zone de prévisualisation vidéo noire.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -965,18 +745,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > So sometimes it's been working. It's been a little bit here to miss. I can go back and forth to have it, you know, try to fix it. Or if it's doing the same thing to you and you're just getting frustrated with it, then just say, hey, you know what? Instead, just go ahead and give me the full render and then I'll give you feedback from there. The only time when that's really annoying is if the render is going to take a long time, if it's like a 15 minute video, and then you render everything just to see that you need to make a few changes. Okay. So what's really cool is when I told it to go ahead and render it, what it does is it does another final check and it looks at the frames. And before I even gave any feedback, it made another fix. So it made a V1 and then it came back and made a V2. It gave us another local host. Let's see if we can see it this time. Cool. Okay.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement de développement intégré (IDE) type VS Code / Hyperframes Editor.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : - Image 1 : Arborescence de fichiers (index.html, assets, compositions/03-thirty-ai-assisted.html).
-- Image 2 : Compte-rendu technique listant les correctifs appliqués ("v2 draft MP4"), les éléments réussis (checklists) et les avertissements de rendu (sparse keyframes, frame freezing) ainsi qu'une demande de validation utilisateur : "(a) ship as-is, (b) fix section 01, or (c) other notes".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Présentation du workflow de révision itérative d'une vidéo générée via un agent IA, incluant la vérification des rendus, la détection d'erreurs techniques d'encodage et le choix entre la validation finale ou la correction supplémentaire.
-
-![Interface d'édition de projet "golden-ratio-demo" avec une structure de fichiers sur la gauche et une zone de prévisualisation vidéo vide sur la droite.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002405_seg52.jpg)
-*⏱️ 00:24:05 — Interface d'édition de projet "golden-ratio-demo" avec une structure de fichiers sur la gauche et une zone de prévisualisation vidéo vide sur la droite.*
-
-![Interface de "Hyperframes Editor" (basée sur VS Code) affichant un rapport de statut de projet avec des options de révision (V1/V2) et des points de contrôle sur le rendu vidéo.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002423_seg52.jpg)
-*⏱️ 00:24:23 — Interface de "Hyperframes Editor" (basée sur VS Code) affichant un rapport de statut de projet avec des options de révision (V1/V2) et des points de contrôle sur le rendu vidéo.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -986,11 +759,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > We actually can see it in a local host. So let's give this a watch. Hey guys, my name is Nate. Today I wanted to talk to you about the golden ratio of AI automation, which basically means when you think of automating a process with AI, you think about the first 60% being automated with just deterministic logic, the next 30% being automated with AI, sort of AI assisted.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Aucune interface logicielle ou technique n'est affichée.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte affiché : "LESSON 01" et "NATE HERK - AIS AI AUTOMATION SOCIETY".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur parle face caméra, aucune manipulation d'outil ou d'agent IA n'est visible.
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1000,11 +773,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > And then that last 10% being kind of the human in the loop manual approval stage. And the reason why I think this is important is because some people think that AI is magic and it can do it all. Some people think that AI is trash and it can't do anything because they've only been using Copilot. And really, it's actually somewhere in the middle. So that's what I want to talk about in this video.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Aucune interface logicielle ou technique n'est affichée.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Aucun code, commande ou élément technique n'est présent.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur parle à la caméra sans manipuler d'outils de démonstration.
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1014,11 +787,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > Okay, so pretty good. There's obviously some issues, but if you think about the fact that we hardly prompted it and it added this overlay on the left-hand side so it can put text and we can see it. This was a big major issue. I think it put the blur on top of the text rather than behind. But there's a few things we need to fix here with spacing and with the blur.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : AUCUNE (Il s'agit d'un montage vidéo avec incrustation graphique, et non d'une interface logicielle ou d'un environnement de développement).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte affiché : "The Golden Ratio", "60% Deterministic", "30% AI Assisted", "10% Human", "Lesson 01 of AI Automation".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Présentation orale et visuelle de concepts théoriques sur l'automatisation via des superpositions graphiques.
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1028,14 +801,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > But this is pretty cool. The animations that it's making and the logic that it went through to make this stuff is pretty cool. Now, also the video in general is a little dark. And if I seem a little tired, I literally like had just woken up and I decided to film this, but let's actually talk about how do we give this thing feedback now? Okay, so real quick, before we start giving feedback, I wanna see how much context we're at, how many tokens this is eating up, because this does eat up a decent amount.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Hyperframes Editor (environnement de développement type VS Code avec intégration d'un agent IA type Claude).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Liste de contrôle des améliorations (v2), liens vers des fichiers vidéo locaux (localhost), avertissements de rendu (render warning), et champ de saisie de prompt "Ctrl esc to focus or unfocus Claude".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Revue de l'état d'un projet de montage vidéo automatisé, incluant la validation de modifications visuelles et la gestion d'avertissements techniques sur les keyframes.
-
-![Capture d'écran de l'interface "Hyperframes Editor" (basée sur VS Code) affichant un rapport de tâche généré par une IA concernant le rendu d'une vidéo sur le "Golden Ratio".](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002550_seg56.jpg)
-*⏱️ 00:25:50 — Capture d'écran de l'interface "Hyperframes Editor" (basée sur VS Code) affichant un rapport de tâche généré par une IA concernant le rendu d'une vidéo sur le "Golden Ratio".*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1045,14 +815,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > So right now in the conversation, we are at 263K out of our million. So what I would do here is I would basically just go ahead and give this a clear. So in this case, what I like to do is say, okay, give me a summary of everything that you've built and where the different files are so I can clear the session because I don't want to be making all of these changes on top of 263,000 tokens. We're going to reset and then I'm going to give it some more feedback. Okay. So here is the handoff message.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Éditeur de code (type Cursor/VS Code) avec une fenêtre de chat/IA intégrée.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : On aperçoit le nom du projet "Animate Golden Ratio Demo", une instruction utilisateur, et surtout le tableau de suivi : "Model: claude-opus-4-7", "Tokens: 263.4k / 1m (26%)" ainsi qu'une ventilation de l'usage par catégorie (System prompt, System tools).
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur illustre la limite de tokens atteinte dans la session de conversation avec l'IA et prépare une commande pour réinitialiser ou synthétiser le contexte actuel ("clear").
-
-![Interface de l'éditeur Cursor (ou VS Code avec extension IA) affichant les statistiques de consommation de tokens du modèle AI utilisé dans le projet.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002603_seg57.jpg)
-*⏱️ 00:26:03 — Interface de l'éditeur Cursor (ou VS Code avec extension IA) affichant les statistiques de consommation de tokens du modèle AI utilisé dans le projet.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1062,14 +829,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > I'm going to copy all of this. I'm going to clear this session and then I'm going to paste that in and then I'm just going to shoot that off and let it sort of like reorient itself. And then we're going to go ahead and give feedback. And don't overcomplicate the feedback. The way you're going to do this is the same exact way that you would give feedback to a human video editor. Basically saying, hey, at this timestamp, I don't like this and I like this. And at this timestamp, do this.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Hyperframes Editor (environnement de développement type VS Code avec intégration IA).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Arborescence de fichiers incluant des dossiers comme "video-projects", des fichiers comme "AGENTS.md", "CLAUDE.md", et divers assets vidéo (.mp4). Au centre, un champ de saisie texte "Queue another message..." avec un curseur actif après "Ge_".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Nate est en train de préparer l'envoi d'une commande ou d'un prompt dans l'interface de l'agent IA pour réorienter le projet.
-
-![L'interface de "Hyperframes Editor" (basée sur VS Code) affichant l'arborescence des fichiers du projet sur la gauche et une zone de chat/input pour l'IA au centre.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002628_seg58.jpg)
-*⏱️ 00:26:28 — L'interface de "Hyperframes Editor" (basée sur VS Code) affichant l'arborescence des fichiers du projet sur la gauche et une zone de chat/input pour l'IA au centre.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1079,11 +843,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > So let's just go ahead and start. Okay. So the feedback that I need you to incorporate and fix some of these issues is as follows. Overall, I like the vibe. I like the logic. I just need some aesthetic changes. So first of all, at about five seconds, four to five seconds, when the text starts to come in that I think it says the golden ratio, we can't actually see it because there's a blur effect on top of it. And I think that blur effect needs to be behind it rather than on top because that whole text is blurred out basically from like, you know, four seconds all the way till about seven seconds. The next scene where you have the 60% come in at about 12 seconds in,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Lecteur vidéo standard avec barre de progression.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte "LESSON 01" en haut à gauche et "NATE HERK" en bas à gauche.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Aucune manipulation technique ou démonstration logicielle n'est visible.
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1093,14 +857,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > this looks really good however kind of the right half of the percentage sign gets blurred and a little bit of the left part of the six is out of frame so if you can kind of just scale that down a little bit and make sure that none of that text is blurred out very similar feedback for the next section with the 30 this one all fits in frame but the right half of the percentage sign is also blurred out and same thing for the 10 the right half of the percentage sign is blurred out The next scene looks solid no feedback there. I think that's really good
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Logiciel de montage vidéo ou interface de visualisation de contenu multimédia (lecteur vidéo).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Affichage graphique "60%" stylisé avec des effets de flou cinétique, ainsi qu'une étiquette en haut à droite indiquant "01 - DETERMINISTIC".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur explique des ajustements de mise en page (redimensionnement) pour corriger le cadrage du texte "60%" et éviter le flou de bordure.
-
-![Une capture d'écran montrant le présentateur devant une interface graphique où le texte "60%" est affiché en grand, avec le bord gauche du chiffre "6" et la partie droite du signe "%" partiellement tronqués par le bord de l'écran.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002734_seg60.jpg)
-*⏱️ 00:27:34 — Une capture d'écran montrant le présentateur devant une interface graphique où le texte "60%" est affiché en grand, avec le bord gauche du chiffre "6" et la partie droite du signe "%" partiellement tronqués par le bord de l'écran.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1110,14 +871,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > And same thing with the final scene. So those are the changes that I have for you. Please go ahead and Figure out how to make those and then give us a new video And that's why it's so nice to be able to just speak Instead of having to type things out because you can just look at it and you can speak So if you guys want to check out the tool that I use just use the link in the description The good news is it basically told us. Yep. Everything you said is true. I see this. I need to make these changes So what you can do is in your prompting and the way that you set up your video editing flow Is you can try to have it make sure that before it ever renders or before it ever gives you any
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (avec extension Hyperframes Editor).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Résumé de l'état du projet "golden-ratio-demo", incluant le chemin d'accès local, le statut du rendu actuel (draft-v2.mp4), les tâches restantes pour le montage final, et le statut du serveur d'arrière-plan sur le port 55289.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : L'agent IA propose à l'utilisateur de procéder au "polish" de la section 01 et au rendu final ou de mettre en pause, en attente d'une commande vocale ou textuelle via le champ de saisie focalisé.
-
-![Interface de développement "Hyperframes Editor" intégrée à VS Code, affichant un résumé des tâches d'édition vidéo et un champ de saisie pour l'agent IA.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002810_seg61.jpg)
-*⏱️ 00:28:10 — Interface de développement "Hyperframes Editor" intégrée à VS Code, affichant un résumé des tâches d'édition vidéo et un champ de saisie pour l'agent IA.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1127,14 +885,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > Any output to review You're telling it to look at every single frame first and then it can extract all of them Fix the changes and then come back with a better version. So anyways, here's the plan It's suggested changes to fix all those things that we wanted I'm gonna go ahead and accept that and i'll let you know when we get our v2 Or technically I guess it would be our v3. All right, we've got a v3. Let's open this up and check it out Hey guys, my name is Nate. Today I wanted to talk to you about the golden ratio of AI automation, which basically means when you think of automating a process with AI, you think about the first 60%
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Éditeur de code Cursor (avec l'agent Claude activé dans le volet latéral).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Plan de correction listant des problèmes esthétiques (lisibilité du texte, contrastes, masquage) sur des segments vidéo spécifiques (4-7s, 12s) et options d'acceptation de modifications.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Validation du plan de correction (« Yes, and auto-accept ») pour appliquer les modifications suggérées par l'IA au projet de rendu vidéo.
-
-![Interface de l'éditeur Cursor affichant un plan de correction détaillé pour un projet vidéo (« Golden Ratio Demo - v3 Aesthetic Fixes ») avec une option d'approbation automatique.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002842_seg62.jpg)
-*⏱️ 00:28:42 — Interface de l'éditeur Cursor affichant un plan de correction détaillé pour un projet vidéo (« Golden Ratio Demo - v3 Aesthetic Fixes ») avec une option d'approbation automatique.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1158,14 +913,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > signs look better. The only issue still is that the 60%, a little chunk of the six is still out of frame. So if you can just scale this down or either just move it a little bit more to the right, That needs to be fixed a little bit, but the other ones look good. All right, V4 is here, fingers crossed. Hey guys, my name is Nate. Today I wanted to talk to you about the golden ratio of AI automation, which basically means when you think of automating a process with AI, you think about the first 60% being automated with just deterministic logic, the next 30% being automated with AI, sort of AI assisted.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Logiciel de montage vidéo ou interface de visualisation de projet graphique.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Affichage d'un compteur de progression "60%", une barre de progression horizontale en bas à gauche, et un indicateur "01 - DETERMINISTIC" en haut à droite.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Revue de qualité (QC) d'un élément visuel où l'on constate que le texte "60%" est partiellement hors champ, nécessitant un ajustement d'échelle ou de positionnement.
-
-![Une capture d'écran montrant l'interface graphique en cours de révision, avec le chiffre "60%" coupé sur le bord gauche, confirmant le problème de cadrage évoqué dans l'audio.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_002951_seg64.jpg)
-*⏱️ 00:29:51 — Une capture d'écran montrant l'interface graphique en cours de révision, avec le chiffre "60%" coupé sur le bord gauche, confirmant le problème de cadrage évoqué dans l'audio.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1175,14 +927,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > And then that last 10% being kind of the human in the loop manual approval stage. and the reason why I think this is important is some people think we've only been using Copa. Actually, that's what I want to talk about in this video. There we go. We have our final version. I also think that this is pretty interesting, this kind of spiral. I forget what this pattern is called, but we have basically the 10%, the 30% and the 60% of the golden ratio.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Infographie statique superposée à la vidéo (Overlay graphique).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Texte affiché : "60% DETERMINISTIC (Plain logic - code - API calls)", "30% AI ASSISTED (LLM calls in the pipeline)", "10% HUMAN (Manual approval - judgment)".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Présentation conceptuelle de la structure d'un pipeline d'automatisation.
-
-![Une infographie apparaît à gauche montrant la répartition d'un workflow : 60% déterministe, 30% assisté par IA, et 10% humain.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_003026_seg65.jpg)
-*⏱️ 00:30:26 — Une infographie apparaît à gauche montrant la répartition d'un workflow : 60% déterministe, 30% assisté par IA, et 10% humain.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1192,17 +941,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > So that's just showing you that Opus 4.7, Cloud Code, the logic that it's able to make and then using hyperframes and turning that into actual HTML that can be animated is very cool. So the final thing I wanted to talk about was just kind of the cost and speed stuff. So let's come back into here and let's do another quick slash context to see how many we took on that second run. So the first one was what, like $260k? This one is $125k. And if we remember our session limit, we started this project at 20%. So this one project took about 10% of my five hour limit, and I'm on the $200 a month max plan. So keep that in mind. Because we're writing so much output with our code, that is what's going to eat up the tokens.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (Hyperframes Editor), Hyperframes Studio (application web locale).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Logs de rendu, corrections de bugs visuels ("Hero title", "The Golden Ratio"), barres de progression d'utilisation des limites contextuelles du modèle Opus 4.7.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur explique le workflow de correction des artefacts visuels dans les rendus vidéo et analyse ensuite les limites d'utilisation de son modèle IA.
-
-![Interface de "Hyperframes Editor" (basée sur VS Code) montrant des logs de débogage pour un rendu vidéo, avec une liste de fichiers de projet sur la gauche et une discussion en cours avec l'IA.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_003057_seg66.jpg)
-*⏱️ 00:30:57 — Interface de "Hyperframes Editor" (basée sur VS Code) montrant des logs de débogage pour un rendu vidéo, avec une liste de fichiers de projet sur la gauche et une discussion en cours avec l'IA.*
-
-![Interface de "Hyperframes Studio" affichant les statistiques de limites d'utilisation du modèle Opus 4.7 et une liste de compositions vidéo dans une colonne latérale.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_003107_seg66.jpg)
-*⏱️ 00:31:07 — Interface de "Hyperframes Studio" affichant les statistiques de limites d'utilisation du modèle Opus 4.7 et une liste de compositions vidéo dans une colonne latérale.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1212,14 +955,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > But if you can follow some best practices and clear stuff, then you're going to be able to dramatically reduce that The other thing to note is that If you're rendering multiple videos your cpu your ram will feel it. So yesterday when I uploaded the video about cloud design My face cam was all glitchy and I realized I was like, okay That was so dumb because I was rendering like four videos as I was recording that one so If you're rendering multiple videos and your computer starts to feel slow, that's why so maybe just Only do one at a time or whatever you need to do there But anyways, that is going to do it for this one. I hope you guys enjoyed. I hope you learned something new
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : VS Code (avec une extension de type Claude/LLM intégrée)
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Le fichier ouvert affiche une interface de discussion avec un agent IA : "Polish golden ratio demo and render final...", des instructions de correction sur la lisibilité d'un titre, et un tableau de statistiques "Context Usage" détaillant l'utilisation des tokens pour "claude-opus-4-7".
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Le présentateur utilise l'environnement de développement pour interagir avec un modèle d'IA afin d'itérer sur un projet de montage vidéo ("Hyperframes Editor").
-
-![Une capture d'écran montrant l'interface de VS Code avec un éditeur de texte ouvert sur un fichier de projet, affichant des statistiques d'utilisation de jetons (tokens) pour le modèle Claude Opus, avec le présentateur en incrustation vidéo sur la droite.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_003125_seg67.jpg)
-*⏱️ 00:31:25 — Une capture d'écran montrant l'interface de VS Code avec un éditeur de texte ouvert sur un fichier de projet, affichant des statistiques d'utilisation de jetons (tokens) pour le modèle Claude Opus, avec le présentateur en incrustation vidéo sur la droite.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -1229,14 +969,11 @@ Dans cette vidéo intitulée **Claude Just Destroyed Every Video Editing Tool**,
 > Don't forget to go to the free school community to get all of the resources that you need But if you enjoyed give it a like helps me out a ton And I appreciate you guys making it to the end of the video and I will see you in the next one. Thanks everyone
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Outil de conception ou plateforme de montage vidéo (type Canva ou outil de design collaboratif).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Un "Scene map" détaillé avec des timings précis (0-2.7s, 2.7-4.6s, etc.) pour une vidéo animée, et un visuel de fin de vidéo incitant à commenter "500W" pour rejoindre une communauté.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Revue des étapes de montage et du rendu visuel final de la vidéo promotionnelle avant sa publication.
-
-![Interface de conception vidéo affichant une timeline avec des instructions de montage détaillées (script/scène map) sur la gauche et l'aperçu du rendu final de la vidéo promotionnelle à droite.](../screenshots/ZNbgOhxhzXg/ZNbgOhxhzXg_003152_seg68.jpg)
-*⏱️ 00:31:52 — Interface de conception vidéo affichant une timeline avec des instructions de montage détaillées (script/scène map) sur la gauche et l'aperçu du rendu final de la vidéo promotionnelle à droite.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
