@@ -1,0 +1,2851 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 I Tested GPT 5.5 vs Opus 4.7: What You Need to Know — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 I Tested GPT 5.5 vs Opus 4.7: What You Need to Know</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-23</span>
+                <span class="badge">⏱️ 00:19:33</span>
+                <span class="badge">🆔 <code>WX4rp-vP3zo</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=WX4rp-vP3zo" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **I Tested GPT 5.5 vs Opus 4.7: What You Need to Know**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So OpenAI just dropped GPT 5.5 and it is really solid. But the question is, how solid is it? And the other question is, is it more expensive? And how does it compare to Opus 4.7? Because obviously you can look at the benchmarks, which there are some pretty impressive things, especially when you are comparing it to Opus 4.7. But of course, what we wanna do is actually get in there and get our hands dirty.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme X (Twitter), site web officiel OpenAI.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte promotionnel décrivant les capacités &quot;agentiques&quot; de GPT-5.5 et courbe de performance comparant l&#x27;intelligence des modèles par rapport au coût/jetons (tokens).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation officielle des fonctionnalités du nouveau modèle et analyse comparative de ses performances de marché.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000005_seg1.jpg" alt="Une capture d&#x27;écran d&#x27;un post X (Twitter) officiel d&#x27;OpenAI annonçant le lancement de GPT-5.5, avec une interface de démonstration montrant une interaction agentique sur des documents." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Une capture d&#x27;écran d&#x27;un post X (Twitter) officiel d&#x27;OpenAI annonçant le lancement de GPT-5.5, avec une interface de démonstration montrant une interaction agentique sur des documents.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000015_seg1.jpg" alt="Une capture d&#x27;écran du site web d&#x27;OpenAI affichant le graphique &quot;Artificial Analysis Intelligence Index&quot;, comparant les performances de GPT-5.5, GPT-5.4, Claude Opus 4.7/4.6 et Gemini 1.5 Pro." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000015_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:15</span>
+                        <span class="caption-text">Une capture d&#x27;écran du site web d&#x27;OpenAI affichant le graphique &quot;Artificial Analysis Intelligence Index&quot;, comparant les performances de GPT-5.5, GPT-5.4, Claude Opus 4.7/4.6 et Gemini 1.5 Pro.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:20 - 00:00:39</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I ran a bunch of experiments and I&#x27;m gonna share with you guys what actually matters when you think about the cost and the speed of these different models. So we&#x27;ll come back here to the results and to the experiments that I ran in just a sec, but real quick, let&#x27;s just go over some of the release details. So GBT 5.5 is OpenAI&#x27;s newest model, the most recent version being GBT 5.4.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard analytique propriétaire / Interface de présentation (slides).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Métriques comparatives incluant &quot;Total Runtime&quot;, &quot;Total Input Tokens&quot;, &quot;Total Output Tokens&quot;, &quot;Total Cost&quot; et graphiques en barres par expérience.
+- Image 2 : Titre &quot;GPT-5.5&quot;, date &quot;2026-04-23&quot;, mots-clés &quot;LIVE TODAY&quot;, &quot;CODENAME - SPUD&quot;, &quot;CODEX&quot;, &quot;CHATGPT&quot;, &quot;API&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> - Image 1 : Visualisation de données comparatives pour illustrer l&#x27;efficacité et le coût des modèles.
+- Image 2 : Présentation visuelle annonçant le sujet de la vidéo (lancement/test de GPT-5.5).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000025_seg2.jpg" alt="Tableau de bord d&#x27;analyse comparative de modèles IA (&quot;AI Model Comparison&quot;) affichant des graphiques de temps d&#x27;exécution, de tokens et de coûts pour GPT-5.5 vs Opus 4.7." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000025_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:25</span>
+                        <span class="caption-text">Tableau de bord d&#x27;analyse comparative de modèles IA (&quot;AI Model Comparison&quot;) affichant des graphiques de temps d&#x27;exécution, de tokens et de coûts pour GPT-5.5 vs Opus 4.7.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000034_seg2.jpg" alt="Diapositive de présentation titrée &quot;GPT-5.5 - The Breakdown Before The Showdown&quot; avec des détails sur la version et les outils associés (Codex, API)." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000034_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:34</span>
+                        <span class="caption-text">Diapositive de présentation titrée &quot;GPT-5.5 - The Breakdown Before The Showdown&quot; avec des détails sur la version et les outils associés (Codex, API).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:39 - 00:00:58</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">This is OpenAI&#x27;s new flagship model. It was codenamed SPUD when people kind of saw the leaks and stuff. And it is being positioned as OpenAI&#x27;s smartest and most intuitive model to date. And it is a purpose-built step toward agentic and enterprise computing. Now, what&#x27;s really interesting is that the pitch isn&#x27;t that, hey, this model is just better at everything. The pitch was kind of that it does more with less.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de présentation (type diaporama).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;01 - WHAT IT IS&quot;, &quot;OpenAI&#x27;s new flagship. Codename: Spud.&quot;, et trois points clés détaillant le positionnement du modèle vers l&#x27;IA agentique, son efficacité (&quot;more with less&quot;) et sa disponibilité dans l&#x27;écosystème OpenAI.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle des points clés du nouveau modèle par le créateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000043_seg3.jpg" alt="Une diapositive de présentation sombre avec du texte blanc et bleu présentant le nouveau modèle phare d&#x27;OpenAI, nommé &quot;Spud&quot;, ainsi que ses caractéristiques principales et sa disponibilité." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000043_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:43</span>
+                        <span class="caption-text">Une diapositive de présentation sombre avec du texte blanc et bleu présentant le nouveau modèle phare d&#x27;OpenAI, nommé &quot;Spud&quot;, ainsi que ses caractéristiques principales et sa disponibilité.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:58 - 00:01:16</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So fewer tokens per task, less handholding, and more autonomy. And that&#x27;s what really got me thinking about, okay, how could I run some experiments to see if that&#x27;s actually true? Unfortunately, right now, we don&#x27;t have the API. It will be coming. It&#x27;s in Codex, it&#x27;s in ChatGPT. I&#x27;m sure by the time you&#x27;re watching this video, the API will probably be out, but I saw the announcement and I just jumped on it and wanted to play around.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diapositives de présentation (format présentation type Slides).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;OpenAI&#x27;s new flagship. Codename: Spud.&quot; suivi de points clés détaillant le positionnement du modèle (plus intuitif, agentique, efficace avec moins de tokens, intégration dans ChatGPT, Codex et API).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation informative des spécificités théoriques du modèle &quot;Spud&quot; par le présentateur en médaillon.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000103_seg4.jpg" alt="Une diapositive de présentation sombre présentant le nouveau modèle d&#x27;OpenAI nommé &quot;Spud&quot;, avec une liste de ses caractéristiques principales et de son intégration dans l&#x27;écosystème OpenAI." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000103_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:03</span>
+                        <span class="caption-text">Une diapositive de présentation sombre présentant le nouveau modèle d&#x27;OpenAI nommé &quot;Spud&quot;, avec une liste de ses caractéristiques principales et de son intégration dans l&#x27;écosystème OpenAI.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:16 - 00:01:53</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So a quick quote from the president of OpenAI, it&#x27;s faster, sharper, and it uses fewer tokens compared to something like GBT 5.4. Now let&#x27;s see where it pulls ahead a little bit. So the Terminal Bench 2.0, it scored a 82.7, whereas GPT 5.4 scored a 75.1 and OPUS 4.7 scored a 69.4. So it is beating OPUS here on the terminal bench and it&#x27;s also beating the previous model. They also ran an expert SWE bench internally and if I actually go to the actual site here you can see that they didn&#x27;t compare this to OPUS because it was internal but they did compare this to GPT 4 and you can see based on this chart once again it is</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation PowerPoint/Slide et site web officiel d&#x27;OpenAI (page &quot;Model capabilities&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Scores de benchmarks (Terminal-Bench 2.0, Expert-SWE) et graphiques d&#x27;efficacité des modèles IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation comparative des capacités techniques et des scores de performance des différents modèles d&#x27;IA par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000126_seg5.jpg" alt="Une diapositive de présentation montrant un graphique à barres comparant les performances du modèle GPT-5.5 par rapport à GPT-5.4, Opus 4.7 et Gemini 3.1 Pro sur le benchmark &quot;Terminal-Bench 2.0&quot;." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000126_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:26</span>
+                        <span class="caption-text">Une diapositive de présentation montrant un graphique à barres comparant les performances du modèle GPT-5.5 par rapport à GPT-5.4, Opus 4.7 et Gemini 3.1 Pro sur le benchmark &quot;Terminal-Bench 2.0&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000144_seg5.jpg" alt="Une capture d&#x27;écran du site officiel d&#x27;OpenAI présentant deux courbes de performance comparant GPT-5.5 et GPT-5.4 en fonction du nombre de &quot;Output tokens&quot;." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000144_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:44</span>
+                        <span class="caption-text">Une capture d&#x27;écran du site officiel d&#x27;OpenAI présentant deux courbes de performance comparant GPT-5.5 et GPT-5.4 en fonction du nombre de &quot;Output tokens&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:53 - 00:02:17</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">doing more and it is costing less output tokens. And the output tokens are the ones that really matter because they are more expensive than input tokens. So what else do we got here? Harder problems, better answers. So there&#x27;s a few other evaluations here. We&#x27;ve got the GDP Val, which is for knowledge work. We&#x27;ve got the Frontier Math and we&#x27;ve got the Cyber Gym. And you can see here GBT 5.5 is beating out Opus 4.7 and Gemini 3.1 Pro in all of these, except for this one down here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (page OpenAI) et présentation de type diapositive (logiciel de présentation).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphiques de performance montrant une supériorité de GPT-5.5, et scores chiffrés pour les benchmarks &quot;Knowledge Work&quot;, &quot;FrontierMath&quot; et &quot;CyberGym&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de données analytiques comparant l&#x27;efficacité et la puissance de différents modèles d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000159_seg6.jpg" alt="Page web affichant deux graphiques comparatifs de performance (Terminal-Bench 2.0 et Expert-SWE) entre GPT-5.5 et GPT-5.4 en fonction des &quot;output tokens&quot;." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000159_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:59</span>
+                        <span class="caption-text">Page web affichant deux graphiques comparatifs de performance (Terminal-Bench 2.0 et Expert-SWE) entre GPT-5.5 et GPT-5.4 en fonction des &quot;output tokens&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000205_seg6.jpg" alt="Diapositive de présentation titrée &quot;Harder problems, better answers&quot; montrant un tableau comparatif des scores de divers modèles (GPT-5.5, GPT-5.4, Opus 4.7, Gemini 3.1 Pro) sur trois benchmarks (GDPval, FrontierMath, CyberGym)." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000205_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:05</span>
+                        <span class="caption-text">Diapositive de présentation titrée &quot;Harder problems, better answers&quot; montrant un tableau comparatif des scores de divers modèles (GPT-5.5, GPT-5.4, Opus 4.7, Gemini 3.1 Pro) sur trois benchmarks (GDPval, FrontierMath, CyberGym).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:17 - 00:02:51</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We didn&#x27;t pull in Gemini 3.1 Pro, but right here, these benchmarks alone are very impressive, especially this one. There&#x27;s quite a big gap right here. Now it is important to note that the SWE Bench Pro still does belong to Claude Opus 4.7. And this was being able to pull in real GitHub issues and resolve those. And that&#x27;s why it&#x27;s all about actually putting these models to the test and seeing what you think. Now, the other important thing to notice is that the price has doubled compared to GPT 5.4. So it was 2.5 in and 15 out, and now it&#x27;s 5 in and 30 out, which is actually a little bit more expensive than Opus 4.7. Opus is the same on the input,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation graphique (type diaporama).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphique comparatif affichant un score de 64.3 pour Claude Opus 4.7 contre 58.6 pour GPT-5.5, accompagné du texte &quot;SWE-Bench Pro still belongs to Claude&quot; et une mention sur la résolution d&#x27;issues GitHub réelles.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des données de performance comparative des modèles d&#x27;IA pour le codage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000226_seg7.jpg" alt="Une diapositive de présentation illustrant les résultats du benchmark &quot;SWE-Bench Pro&quot; comparant Claude Opus 4.7 et GPT-5.5, avec le présentateur incrusté dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000226_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:26</span>
+                        <span class="caption-text">Une diapositive de présentation illustrant les résultats du benchmark &quot;SWE-Bench Pro&quot; comparant Claude Opus 4.7 et GPT-5.5, avec le présentateur incrusté dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:51 - 00:03:14</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">but it&#x27;s about $5 cheaper on the output tokens. But of course, apparently GBD 5.5 uses less output tokens, so it&#x27;s gonna be cheaper either way. And that&#x27;s what I wanted to show you guys in my experiment. All right, so four quick things that really do matter. The token efficiency, same quality output with fewer tokens, autonomous decomposition. So it&#x27;s taking vague prompts, identifying what&#x27;s unclear, and then taking the next steps and executing.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation de type diaporama (type Pitch deck ou Slide web).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparatif sur les tarifs des modèles IA et liste détaillée des innovations techniques liées à la mise à jour GPT-5.5.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre les arguments économiques et techniques de sa démonstration sur les performances des nouveaux modèles d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000257_seg8.jpg" alt="Une diapositive de présentation intitulée &quot;06 - PRICING&quot; montrant un tableau comparatif des coûts par jeton (Input/Output) pour différents modèles IA, dont GPT-5.5, GPT-5.4 et Claude Opus 4.7." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000257_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:57</span>
+                        <span class="caption-text">Une diapositive de présentation intitulée &quot;06 - PRICING&quot; montrant un tableau comparatif des coûts par jeton (Input/Output) pour différents modèles IA, dont GPT-5.5, GPT-5.4 et Claude Opus 4.7.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000303_seg8.jpg" alt="Une diapositive de présentation intitulée &quot;07 - WHAT&#x27;S ACTUALLY NEW&quot; listant quatre facteurs clés : Token Efficiency, Autonomous Decomposition, Codex Upgrades et Superapp Positioning." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000303_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:03</span>
+                        <span class="caption-text">Une diapositive de présentation intitulée &quot;07 - WHAT&#x27;S ACTUALLY NEW&quot; listant quatre facteurs clés : Token Efficiency, Autonomous Decomposition, Codex Upgrades et Superapp Positioning.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:14 - 00:03:32</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So when I ran this experiment with all four, I shot off one prompt and I didn&#x27;t let it ask me any questions. I just shot off a prompt and I wanted to see what its first iteration looked like. This also comes with some codex upgrades. So things like tool calling or multi-agent parallel execution, reusable workflows, stuff like that. They also talk a lot about security.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation de diapositives (type logiciel de diaporama ou interface web de présentation).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif pour chaque point : 1) Token Efficiency (Efficacité des tokens), 2) Autonomous Decomposition (Décomposition autonome des tâches), 3) Codex Upgrades (Mises à jour liées à l&#x27;exécution parallèle et aux workflows), 4) Superapp Positioning (Positionnement de GPT-5.5 comme couche d&#x27;intelligence).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique par l&#x27;orateur, détaillant les piliers stratégiques discutés dans la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000319_seg9.jpg" alt="Une diapositive de présentation titrée &quot;Four things that matter&quot;, détaillant quatre concepts clés de l&#x27;IA : Token Efficiency, Autonomous Decomposition, Codex Upgrades et Superapp Positioning." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000319_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:19</span>
+                        <span class="caption-text">Une diapositive de présentation titrée &quot;Four things that matter&quot;, détaillant quatre concepts clés de l&#x27;IA : Token Efficiency, Autonomous Decomposition, Codex Upgrades et Superapp Positioning.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:32 - 00:04:08</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So if I go back into the release blog real quick and I just go all the way down to the bottom, obviously we saw stuff with Claude dropping Mythos and talking about security. But right here, advancing cybersecurity for everyone&#x27;s safety. These frontier models are becoming increasingly more capable in cybersecurity and these capabilities will become broadly distributed. And we believe the best path forward is to make sure that they can be put to use for accelerating cyber defense and strengthening the ecosystem. And then finally, we have super app positioning. ChatGBT 5.5 is the intelligence layer for ChatGBT, Codex, and Atlas. So they&#x27;re trying to sort of obviously have this whole ecosystem. All right, so what is</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (OpenAI Blog), Logiciel de présentation (diapositive dédiée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte technique concernant les mesures de sécurité IA et liste des fonctionnalités clés de GPT-5.5.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur le blog officiel et passage à une diapositive récapitulative des capacités du modèle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000359_seg10.jpg" alt="Diapositive de présentation titrée &quot;Four things that matter&quot;, détaillant les nouveautés de GPT-5.5 (Token Efficiency, Autonomous Decomposition, Codex Upgrades, Superapp Positioning)." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000359_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:59</span>
+                        <span class="caption-text">Diapositive de présentation titrée &quot;Four things that matter&quot;, détaillant les nouveautés de GPT-5.5 (Token Efficiency, Autonomous Decomposition, Codex Upgrades, Superapp Positioning).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:08 - 00:04:40</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">no longer here in the lineup? Apparently we got these kinds of models cleared out. So no longer using these models. And if you&#x27;re using GBT 5.5 within Codex, you will be getting a 400,000 token context window compared to Opus 4.7&#x27;s 1 million token context window. All right. So before we get to the experiment, four quick takeaways for founders and creators. One, Agenda Coding got an upgrade, but Anthropix still leads real world suite. Two, the price doubled. So look at your unit economics if you want to make a switch, specifically if you wanted to make a switch from</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diapositives de présentation (format slide deck professionnel)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte informatif sur le retrait de modèles d&#x27;IA, capacités techniques (fenêtre de contexte de 400K pour Codex), et analyses stratégiques sur l&#x27;économie des tokens et le positionnement des plateformes (OpenAI, Anthropic).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de données analytiques et stratégiques par l&#x27;intervenant pour illustrer les changements dans l&#x27;écosystème IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000416_seg11.jpg" alt="Diapositive de présentation listant les modèles retirés de l&#x27;offre (GPT-5 Instant/Thinking, GPT-4o, GPT-4.1) et spécifiant la fenêtre de contexte de 400K tokens pour le modèle GPT-5.5 dans Codex." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000416_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:16</span>
+                        <span class="caption-text">Diapositive de présentation listant les modèles retirés de l&#x27;offre (GPT-5 Instant/Thinking, GPT-4o, GPT-4.1) et spécifiant la fenêtre de contexte de 400K tokens pour le modèle GPT-5.5 dans Codex.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000432_seg11.jpg" alt="Diapositive de présentation synthétisant les quatre points clés pour les fondateurs et créateurs concernant les évolutions récentes des modèles d&#x27;IA, des prix et des stratégies de plateforme." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000432_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:32</span>
+                        <span class="caption-text">Diapositive de présentation synthétisant les quatre points clés pour les fondateurs et créateurs concernant les évolutions récentes des modèles d&#x27;IA, des prix et des stratégies de plateforme.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:40 - 00:05:12</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">GBT 5.4 to GBT 5.5. Number three, OpenAI is a platform play. Number four, release cadence is a content liability. Six weeks from 5.5, anything model specific ages really fast. And that can make it really stressful, really overwhelming in this time where every company is shipping, every company wants to compete with each other. And with every new release, it&#x27;s apparently like changing the game or the benchmarks are skyrocketing. So that&#x27;s just why I think it&#x27;s important to not just think which model is the best, but think about, okay, for this use case, what are the benchmarks that</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation de diapositives de style minimaliste (type deck).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;01 Agentic coding got an upgrade&quot;, &quot;02 Price doubled - rerun your unit economics&quot;, &quot;03 OpenAI is a platform play now&quot;, &quot;04 Release cadence is a content liability&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur utilise ce support visuel pour illustrer et structurer les points clés de son analyse sur l&#x27;écosystème de l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000448_seg12.jpg" alt="Une diapositive de présentation sombre intitulée &quot;Four takeaways for founders &amp; creators&quot; détaillant quatre points stratégiques sur l&#x27;évolution de l&#x27;IA (Agentic coding, Pricing, Platform play, Release cadence)." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000448_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:48</span>
+                        <span class="caption-text">Une diapositive de présentation sombre intitulée &quot;Four takeaways for founders &amp; creators&quot; détaillant quatre points stratégiques sur l&#x27;évolution de l&#x27;IA (Agentic coding, Pricing, Platform play, Release cadence).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:12 - 00:05:46</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">might align here? And how do I actually run a quick experiment between two models to see which model fits me best here? So there&#x27;s a few quotes that people are saying. I&#x27;m actually not going to read these off because you can find them on the blog or you could pause the video and look real quick. Obviously it&#x27;s not the full thing, but let&#x27;s actually go into our showdown of Opus 4.7 versus GBD 5.5. We ran four different experiments. We did an AI model personal brand website. We did a solar system type of simulation. We did a space shooter game and we did the finale, which was just building like an actual ecosystem type of simulation game. I&#x27;ll show you guys what</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de présentation (type Slide/PowerPoint).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Trois citations textuelles concernant la qualité des réponses des modèles, la comparaison des lancements d&#x27;IA à des mises à jour logicielles, et l&#x27;impact de &quot;Kimi K2.6&quot; sur la concurrence avec OpenAI.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les retours de la communauté sans lire le contenu affiché à l&#x27;écran, invitant le spectateur à mettre la vidéo en pause pour les lire.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000521_seg13.jpg" alt="Une diapositive de présentation intitulée &quot;What the room is saying&quot; affichant trois citations sur l&#x27;IA, avec le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000521_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:21</span>
+                        <span class="caption-text">Une diapositive de présentation intitulée &quot;What the room is saying&quot; affichant trois citations sur l&#x27;IA, avec le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:46 - 00:06:22</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I mean by that, but let&#x27;s hop into these experiments. Okay. So the first one was building a personal brand site. So this was the prompt that I used and it didn&#x27;t ask me any questions. It basically just one shot at this. And then we were able to get an output. So let&#x27;s real quick, first look at GPT 5.5&#x27;s output. And one thing I do need to preface is I&#x27;m using GPT in Codex, and I&#x27;m using Opus in Cloud Code. So people might get mad and argue that this isn&#x27;t a model comparison. This is a agentic coding harness comparison. I mean, sort of, yes, but obviously the model is what is powering it. So I just wanted to clear that up. All right, so here&#x27;s Codex&#x27;s</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de chat (Web UI) type client LLM ou agent IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt détaillé demandant la création d&#x27;un site web &quot;single-page&quot; utilisant HTML, Tailwind CSS (via CDN) et des éléments SVG inline, ainsi que la réponse de l&#x27;IA confirmant la génération du fichier `index.html`.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation du prompt d&#x27;expérimentation et de la réponse de l&#x27;IA contenant le fichier généré prêt à être consulté via un aperçu web.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000555_seg14.jpg" alt="Capture d&#x27;écran de l&#x27;interface de discussion d&#x27;un modèle IA montrant le prompt utilisé pour créer un site de marque personnelle en un seul fichier HTML." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000555_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:55</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface de discussion d&#x27;un modèle IA montrant le prompt utilisé pour créer un site de marque personnelle en un seul fichier HTML.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:22 - 00:06:54</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">personal brand site. We&#x27;ve got Codex. We&#x27;ve got a really cool dynamic thing going on in the background. We&#x27;ve got a nice drop shadow behind this, a nice little interface. The model in the room, precise enough for code, curious enough for messy ideas, calm enough to keep going. Let&#x27;s click on how I think and see where it goes. Okay. So we&#x27;ve got another little context map visual. We&#x27;ve got this mode console that&#x27;s apparently interactive. Okay. I&#x27;m not exactly sure what that&#x27;s changing, but you can click on those buttons. We&#x27;ve got a verification loop and it says, I prefer evidence over vibes, run it, render it, read the diff, cite the source,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Site web de présentation pour le projet &quot;Codex&quot; (interface web interactive).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif : &quot;The model in the room&quot;, &quot;Context window: wide awake&quot;, &quot;3 modes: explore, build, verify&quot;, &quot;Mode Console&quot;, &quot;Context Map&quot;, &quot;Verification Loop&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur le site web pour illustrer le fonctionnement et la philosophie de l&#x27;agent IA &quot;Codex&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000630_seg15.jpg" alt="Page d&#x27;accueil du site &quot;Codex&quot; présentant une interface sombre, un texte descriptif sur le modèle, et une fenêtre interactive &quot;Live Stance&quot; affichant l&#x27;état du contexte et les modes de travail." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000630_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:30</span>
+                        <span class="caption-text">Page d&#x27;accueil du site &quot;Codex&quot; présentant une interface sombre, un texte descriptif sur le modèle, et une fenêtre interactive &quot;Live Stance&quot; affichant l&#x27;état du contexte et les modes de travail.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000638_seg15.jpg" alt="Section &quot;How I Think&quot; du site montrant trois cartes interactives : &quot;Context Map&quot; (visualisation), &quot;Mode Console&quot; (exploration/composition/inspection) et &quot;Verification Loop&quot;." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000638_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:38</span>
+                        <span class="caption-text">Section &quot;How I Think&quot; du site montrant trois cartes interactives : &quot;Context Map&quot; (visualisation), &quot;Mode Console&quot; (exploration/composition/inspection) et &quot;Verification Loop&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:54 - 00:07:13</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">or admit the uncertainty. Let&#x27;s see what we messed up here. A working partner for the whole arc. So clarify, build, verify, adapt. Very nice. If we come down, keep the goal visible. Okay, we can expand these or close these out. I&#x27;m not a search box with better manners. And then here&#x27;s the end. Bring the question. I will bring the shape.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Site web interactif (Codex).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif sur la philosophie de l&#x27;agent IA : &quot;A working partner for the whole arc&quot;, &quot;I am not a search box with better manners&quot;, &quot;I keep the goal visible&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et surbrillance du texte sur le site web pour souligner la nature collaborative de l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000659_seg16.jpg" alt="Interface web &quot;Codex&quot; présentant les capacités d&#x27;un agent : Clarify, Build, Verify, Adapt." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000659_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:59</span>
+                        <span class="caption-text">Interface web &quot;Codex&quot; présentant les capacités d&#x27;un agent : Clarify, Build, Verify, Adapt.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000703_seg16.jpg" alt="Interface web &quot;Codex&quot; affichant la section &quot;Operating Texture&quot; avec la phrase clé &quot;I am not a search box with better manners&quot;." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000703_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:03</span>
+                        <span class="caption-text">Interface web &quot;Codex&quot; affichant la section &quot;Operating Texture&quot; avec la phrase clé &quot;I am not a search box with better manners&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000708_seg16.jpg" alt="Interface web &quot;Codex&quot; mettant en surbrillance (sélection) le texte &quot;I am not a search box with better manners&quot;." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000708_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:08</span>
+                        <span class="caption-text">Interface web &quot;Codex&quot; mettant en surbrillance (sélection) le texte &quot;I am not a search box with better manners&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:13 - 00:07:32</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Design, coding, writing, reasoning. Okay, cool. So that is what the personal brand site looks like for Codex. And then here&#x27;s what I did for Cloud Code. Pretty much the exact same prompt. I did say don&#x27;t use superpowers because I wanted to see sort of as raw as we could get. It did use the frontend design skill, which I think is fine, but same prompt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, Éditeur de code (VS Code / Cursor).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Design UI de site web, prompt de création de site &quot;personal brand&quot;, logs de réflexion de l&#x27;IA (Thinking, Bash, Write).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du résultat final (UI) et démonstration du processus de développement via l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000718_seg17.jpg" alt="Interface web conceptuelle pour &quot;Codex&quot; présentant un design épuré avec des sections de capacités et de principes de fonctionnement." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000718_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:18</span>
+                        <span class="caption-text">Interface web conceptuelle pour &quot;Codex&quot; présentant un design épuré avec des sections de capacités et de principes de fonctionnement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000723_seg17.jpg" alt="Éditeur de code (probablement Cursor ou VS Code avec extension IA) montrant le processus de raisonnement de l&#x27;agent et la commande Bash pour créer le dossier du site." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000723_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:23</span>
+                        <span class="caption-text">Éditeur de code (probablement Cursor ou VS Code avec extension IA) montrant le processus de raisonnement de l&#x27;agent et la commande Bash pour créer le dossier du site.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:32 - 00:07:53</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, I know I could have done this in the Cloud Code desktop app because I use the Codex desktop app. I don&#x27;t know why I decided to do VS Code just because it&#x27;s so natural to me. But let me pull up this site. All right, so here we are with Cloud&#x27;s site. We&#x27;ve got a nice little scrolling banner up top. We&#x27;ve got another kind of animated visual element right here, a million context window and some latency stuff.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (éditeur de code), Navigateur Web (Site officiel de Claude).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts de développement frontend, instructions de structure de dossier, interface marketing de Claude, données contextuelles (1M tokens).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur présente l&#x27;environnement de développement sous VS Code, puis bascule vers la navigation du site web pour illustrer la transition.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000737_seg18.jpg" alt="Interface de VS Code affichant un projet intitulé &quot;Opus 4.7 testing&quot; avec une interaction en cours d&#x27;un agent IA (Claude) planifiant la création d&#x27;un site de marque personnelle." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000737_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:37</span>
+                        <span class="caption-text">Interface de VS Code affichant un projet intitulé &quot;Opus 4.7 testing&quot; avec une interaction en cours d&#x27;un agent IA (Claude) planifiant la création d&#x27;un site de marque personnelle.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000742_seg18.jpg" alt="Capture d&#x27;écran du site web de Claude présentant une interface éditoriale au design minimaliste avec le titre &quot;Claude&quot; et des éléments graphiques illustrant le modèle &quot;Opus 4.7&quot;." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000742_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:42</span>
+                        <span class="caption-text">Capture d&#x27;écran du site web de Claude présentant une interface éditoriale au design minimaliste avec le titre &quot;Claude&quot; et des éléments graphiques illustrant le modèle &quot;Opus 4.7&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000748_seg18.jpg" alt="Suite du défilement sur le site web de Claude montrant une animation graphique interactive d&#x27;un cercle (représentant Opus 4.7) et une typographie soignée." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000748_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:48</span>
+                        <span class="caption-text">Suite du défilement sur le site web de Claude montrant une animation graphique interactive d&#x27;un cercle (représentant Opus 4.7) et une typographie soignée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:53 - 00:08:28</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">a thinking machine in the margins of every idea you&#x27;re trying to finish. Something&#x27;s weird going on with those Fs, just the font, I guess. But this looks really nice. I think they both looked from a design perspective, pretty solid. So what can I do? Give me a messy brief and I&#x27;ll find the clean shape inside of it. I read whole code bases, argue with spreadsheets, rewrite paragraphs, blah, blah, blah. I can reason through hard problems. I can write like a person. I can write code. I can find the signal in your spreadsheet. I can build a thing end to end and explain it like I&#x27;ve seen you squint. So I don&#x27;t love the way that these kind of change font and like compress. Also,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une interface conceptuelle et moderne de type &quot;Claude&quot; (probablement une démonstration ou un prototype de design).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes descriptifs des fonctionnalités de l&#x27;IA (&quot;Reason through hard problems&quot;, &quot;Build a thing, end to end&quot;, &quot;Find the signal in your spreadsheet&quot;), ainsi que des indicateurs techniques comme &quot;OPUS 4.7&quot; et la capacité contextuelle.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration visuelle des capacités et de l&#x27;interface utilisateur d&#x27;un produit IA, le présentateur naviguant à travers les différentes sections explicatives du site pour illustrer les fonctionnalités de l&#x27;outil.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000802_seg19.jpg" alt="Page d&#x27;accueil du site web &quot;Claude&quot; présentant une interface minimaliste avec le slogan &quot;A thinking machine in the margins...&quot;. On y voit un graphique circulaire marqué &quot;OPUS 4.7&quot; et des informations sur le contexte (1 000 000 tokens)." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000802_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:02</span>
+                        <span class="caption-text">Page d&#x27;accueil du site web &quot;Claude&quot; présentant une interface minimaliste avec le slogan &quot;A thinking machine in the margins...&quot;. On y voit un graphique circulaire marqué &quot;OPUS 4.7&quot; et des informations sur le contexte (1 000 000 tokens).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000819_seg19.jpg" alt="Vue détaillée de la section &quot;What I can do&quot; sur le site Claude, listant les capacités de l&#x27;IA sous forme de grille interactive (raisonnement, écriture, code, analyse, construction et tutorat)." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000819_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:19</span>
+                        <span class="caption-text">Vue détaillée de la section &quot;What I can do&quot; sur le site Claude, listant les capacités de l&#x27;IA sous forme de grille interactive (raisonnement, écriture, code, analyse, construction et tutorat).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:28 - 00:08:59</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I noticed if you click on these, it just takes you back to the top of the site. Not exactly sure why that is, but how I think. So this is kind of a cool visual. It&#x27;s like a little sort of animated token thing. I think that&#x27;s a nice touch. I speak in tokens, not words. Okay. Thank you, Claude. Every word looks at every other one. I think this is cool. So inside the model, each token weighs its relationship to every other token. Thicker lines mean to pay more attention. So kind of like looking at the weights in here, I think that&#x27;s a nice little visual. A million tokens of memory.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Site web explicatif &quot;How I think&quot; de Claude (Anthropic).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Visualisation de flux de jetons, probabilités de prédiction de jetons, et diagramme de poids d&#x27;attention (Layer 32/88).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration interactive de la manière dont Claude traite les jetons et les relations d&#x27;attention entre les mots.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000836_seg20.jpg" alt="Interface web interactive illustrant la génération de texte par jetons (tokens) avec un curseur survolant des mots." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000836_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:36</span>
+                        <span class="caption-text">Interface web interactive illustrant la génération de texte par jetons (tokens) avec un curseur survolant des mots.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000844_seg20.jpg" alt="Suite de l&#x27;interface montrant les candidats pour le prochain jeton (Next-token candidates) et un graphique dynamique des poids d&#x27;attention (Attention-weights)." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000844_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:44</span>
+                        <span class="caption-text">Suite de l&#x27;interface montrant les candidats pour le prochain jeton (Next-token candidates) et un graphique dynamique des poids d&#x27;attention (Attention-weights).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000852_seg20.jpg" alt="Gros plan sur le schéma interactif &quot;Attention-weights&quot; expliquant comment les mots interagissent au sein du modèle." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000852_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:52</span>
+                        <span class="caption-text">Gros plan sur le schéma interactif &quot;Attention-weights&quot; expliquant comment les mots interagissent au sein du modèle.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:00 - 00:09:36</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it also shows us like system instructions, your code base, reference docs, working memory. I think this is a very nice illustration here. And then we have this little thing down here. I branch before I commit. So it&#x27;s got this nice visual here. I&#x27;m not exactly sure what&#x27;s going on. It&#x27;s showing us the chosen path and a literal and a lateral. And then we&#x27;ve got some other things going on down here. Just the way it gets to its best answer, I guess. So that is the difference between what Claude thought its personal brand was and what Codex thought that its personal brand was. They definitely have different feels. I mean, this very feels like OpenAI branded and this very feels</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de démonstration &quot;Claude&quot; (Claude Opus 3.5).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme décisionnel &quot;I branch before I commit&quot; avec les options : &quot;literal path&quot;, &quot;chosen path&quot;, et &quot;lateral path&quot;, menant à &quot;the best answer&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation d&#x27;un arbre de réflexion montrant comment l&#x27;IA explore plusieurs chemins de raisonnement en parallèle avant de valider une conclusion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000909_seg21.jpg" alt="Une interface web interactive illustrant le processus de &quot;réflexion&quot; (Thought Tree) de Claude, montrant une ramification logique avec un choix de chemin pour parvenir à la meilleure réponse." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000909_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:09</span>
+                        <span class="caption-text">Une interface web interactive illustrant le processus de &quot;réflexion&quot; (Thought Tree) de Claude, montrant une ramification logique avec un choix de chemin pour parvenir à la meilleure réponse.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:36 - 00:10:08</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anthropic branded. So pretty cool. Okay. So all of that stuff is pretty subjective. So let&#x27;s look at the actual statistics here for this experiment number one AI model site. So first of all, look at the speed. GBT 5.5 was about four minutes and Opus was about 14 minutes. Look at the difference between the input and the output tokens. I mean, this one was way more on both ends, also had more requests. And you can see that this costed GBT about a dollar if we were doing API billing, and it would have cost us almost $5 with Opus 4.7. And by the way, if you guys are curious how I was</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de reporting ou de suivi de projet type tableau de bord analytique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Données chiffrées incluant la durée (3m 55s vs 14m 14s pour la première expérience), le nombre de tokens en entrée/sortie, le nombre de requêtes et le coût financier associé.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation comparative des statistiques d&#x27;exécution des modèles d&#x27;IA pour illustrer les différences de vitesse et de coût.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000944_seg22.jpg" alt="Tableau comparatif des performances entre GPT-5.5 et Opus 4.7 pour deux expériences distinctes (AI Model Site et Solar System)." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_000944_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:44</span>
+                        <span class="caption-text">Tableau comparatif des performances entre GPT-5.5 et Opus 4.7 pour deux expériences distinctes (AI Model Site et Solar System).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:08 - 00:10:44</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">able to get those stats, I basically just asked it to look within its JSON-L files, and it was able to give me the time that it started, the time that we came back and all the tokens. And it worked pretty much the same way across using Claude. But also if you do the same thing in Codex, it can look at those logs and get that information for you as well. But anyways, number two was a solar system kind of simulation. So this was the prompt. Once again, gave the same prompt to Codex over here and to Claude Code. So let&#x27;s go ahead and pull up the results. We&#x27;ll start with Codex. All right. So here is Codex&#x27;s version. The first thing I noticed here is that this looks kind of squished. Like the</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec une extension d&#x27;assistance IA, probablement Claude Code/Opus).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affichant des statistiques de session : &quot;First prompt sent at&quot;, &quot;Final build response at&quot;, &quot;Total build time: 14 min 16.444 sec&quot;, &quot;User turns: 2&quot;, &quot;Assistant turns: 15&quot;, &quot;Tool uses: 7&quot;, ainsi que le chemin d&#x27;accès au fichier JSONL.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;IA présente les résultats de l&#x27;analyse automatisée des métadonnées de la session de développement dans l&#x27;éditeur de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001017_seg23.jpg" alt="Interface VS Code affichant les résultats d&#x27;une analyse de logs JSONL extraits par une IA (Opus) concernant les temps de build et l&#x27;utilisation des tokens." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001017_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:17</span>
+                        <span class="caption-text">Interface VS Code affichant les résultats d&#x27;une analyse de logs JSONL extraits par une IA (Opus) concernant les temps de build et l&#x27;utilisation des tokens.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:44 - 00:11:21</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">aspect ratio here doesn&#x27;t look great, but I like the rest of the design. You can click on these planets and you get sort of like, you know, some information over here and you can speed up the simulation. So if we go to a hundred X, we can see all of the things orbiting. The sun has a weird like box around it. So from a design perspective here, not the best, but as far as like functionality, this is what we were looking for now if we open up claude&#x27;s version we can see we have that slider down here we can go up to 100x visually this one looks better because the aspect ratio of everything looks okay the sun has a glow that makes more sense you can click on the planets and you get a</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de visualisation de mécanique orbitale (&quot;Orbital Mechanics Gallery&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau latéral affichant les caractéristiques d&#x27;Uranus (distance, masse, durée du jour, lunes) et contrôle &quot;SIMULATION RATE&quot; réglé sur 3.8x.</p>
+                        <p><strong>Action / Démonstration :</strong> Interaction avec l&#x27;interface pour consulter les données d&#x27;une planète et ajuster la vitesse de la simulation orbitale.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001053_seg24.jpg" alt="Interface interactive d&#x27;une simulation de système solaire montrant Uranus sélectionnée avec des données techniques détaillées et un curseur de vitesse de simulation." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001053_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:53</span>
+                        <span class="caption-text">Interface interactive d&#x27;une simulation de système solaire montrant Uranus sélectionnée avec des données techniques détaillées et un curseur de vitesse de simulation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:21 - 00:11:45</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">description over here i also like how when you click on the planet that orbit ring is like the only one that you can kind of see which is cool um so once again this is all subjective personally here. I like Cloud Code&#x27;s version more, but let&#x27;s take a look at the actual stats. Okay, so for the Solar System 1, this timing was a little bit more close. Opus finished about a minute later than GBT.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Web interactive &quot;The Solar System&quot; et tableau de bord d&#x27;analyse de données (Dashboard).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Fiche technique d&#x27;Uranus (distance, diamètre, période orbitale, température).
+- Image 2 : Tableau comparatif avec les colonnes : Modèle, Durée, Input Tokens, Output Tokens, Requêtes et Coût.</p>
+                        <p><strong>Action / Démonstration :</strong> - Image 1 : Navigation dans l&#x27;application interactive et visualisation de l&#x27;orbite.
+- Image 2 : Analyse comparative des coûts et de l&#x27;efficacité des modèles d&#x27;IA sur le projet &quot;Solar System&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001127_seg25.jpg" alt="Interface interactive d&#x27;un système solaire montrant Uranus sélectionnée avec une fiche d&#x27;information détaillée sur la droite." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001127_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:27</span>
+                        <span class="caption-text">Interface interactive d&#x27;un système solaire montrant Uranus sélectionnée avec une fiche d&#x27;information détaillée sur la droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001139_seg25.jpg" alt="Tableau de bord comparatif des statistiques de performance (durée, tokens, coût) entre les modèles GPT-5.5 et Opus 4.7 pour différents projets." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001139_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:39</span>
+                        <span class="caption-text">Tableau de bord comparatif des statistiques de performance (durée, tokens, coût) entre les modèles GPT-5.5 et Opus 4.7 pour différents projets.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:45 - 00:12:19</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We can see from an input token perspective, GBT took more, a little over double, but from an output token perspective, GBT took less. But this one still ended up being cheaper from Opus 4.7 by roughly a dollar. So in this case, Opus 4.7 definitely wins because it was cheaper and I liked the output better. Okay, let&#x27;s move on to number three. We have a 3D space shooter demo. This was the prompt that I shot off. Once again, no iteration, no back and forth, just a first one-shot prompt. And let&#x27;s take a look at what we got for both Codex and Cloud Code. All right,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface analytique de suivi de projets IA (Type dashboard de plateforme d&#x27;agents).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image #1 : Données chiffrées (Input/Output tokens, coûts, durée) comparant GPT-5.5 et Opus 4.7.
+- Image #2 : Prompt détaillé spécifiant les fonctionnalités techniques d&#x27;un jeu (Three.js, contrôles WASD, physique des collisions, WebAudio).</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse comparative des coûts des modèles et démonstration de la génération de code pour une application web 3D.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001154_seg26.jpg" alt="Tableau de bord comparatif des performances et des coûts entre les modèles GPT-5.5 et Opus 4.7 pour le projet &quot;Solar System&quot;." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001154_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:54</span>
+                        <span class="caption-text">Tableau de bord comparatif des performances et des coûts entre les modèles GPT-5.5 et Opus 4.7 pour le projet &quot;Solar System&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001211_seg26.jpg" alt="Interface de chat d&#x27;un agent IA affichant un prompt complexe pour la création d&#x27;un jeu &quot;3D space shooter&quot; avec Three.js." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001211_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:11</span>
+                        <span class="caption-text">Interface de chat d&#x27;un agent IA affichant un prompt complexe pour la création d&#x27;un jeu &quot;3D space shooter&quot; avec Three.js.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:19 - 00:12:38</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">so here is GBT&#x27;s version. We can use our mouse to look. We use WASD to move around. We can use shift to boost and we use space to shoot. So basically these games are shooters, right? So I&#x27;m able to shoot at these, what are they called, comets, asteroids, and I can move forward.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un jeu généré par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu interactif affichant le titre &quot;Voidbreaker&quot; avec les contrôles : &quot;Mouse aim/look&quot;, &quot;WASD thrusters&quot;, &quot;Space plasma&quot;, &quot;Shift boost&quot; et un bouton &quot;Launch&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole le bouton &quot;Launch&quot; pour démarrer la partie.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001224_seg27.jpg" alt="Écran de démarrage du jeu web &quot;Voidbreaker&quot; présentant les instructions de contrôle avant le lancement." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001224_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:24</span>
+                        <span class="caption-text">Écran de démarrage du jeu web &quot;Voidbreaker&quot; présentant les instructions de contrôle avant le lancement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:39 - 00:13:01</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I can use shift to boost. And the physics here feel very nice. Like the speed you can see at the bottom, my velocity. If I change directions, that goes down. This feels very smooth. The sound effects are a little weird, but as far as like playability, this feels pretty solid. You can see we have a whole integrity, so if I just crashed into one of these, I&#x27;m assuming that would go down.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Jeu vidéo 2D (moteur de jeu type Unity ou Godot).</p>
+                        <p><strong>Contenu textuel & Code :</strong> HUD de jeu : &quot;SCORE 4380&quot;, &quot;HULL INTEGRITY&quot; (barre de vie), &quot;VELOCITY 17&quot;. Visuels d&#x27;astéroïdes et réticule de visée au centre.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration du gameplay et de la physique de mouvement du vaisseau spatial par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001245_seg28.jpg" alt="Interface d&#x27;un jeu vidéo spatial en 2D où le joueur contrôle un vaisseau (vu depuis le cockpit) évoluant au milieu d&#x27;astéroïdes. L&#x27;écran affiche un score en haut à gauche, une barre d&#x27;intégrité de la coque en bas à gauche et une jauge de vélocité en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001245_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:45</span>
+                        <span class="caption-text">Interface d&#x27;un jeu vidéo spatial en 2D où le joueur contrôle un vaisseau (vu depuis le cockpit) évoluant au milieu d&#x27;astéroïdes. L&#x27;écran affiche un score en haut à gauche, une barre d&#x27;intégrité de la coque en bas à gauche et une jauge de vélocité en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:02 - 00:13:20</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Okay, yep, very nice. And our score goes up when we shoot these asteroids. Okay, now here we are in Claude Code&#x27;s version, where I can go ahead and initiate. It looks like the controls are pretty much the exact same. Now, right off the bat, this feels a bit clunky. It feels a little bit less smooth.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur de jeu (jeu en navigateur ou application locale).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Score (8940), barre de &quot;Hull Integrity&quot; (intégrité de la coque) et indicateur de &quot;Velocity&quot; (24).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur joue à une démonstration de jeu vidéo pour tester les contrôles du modèle d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001306_seg29.jpg" alt="Interface d&#x27;un jeu vidéo spatial de type arcade montrant un score de 8940 et des astéroïdes à l&#x27;écran." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001306_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:06</span>
+                        <span class="caption-text">Interface d&#x27;un jeu vidéo spatial de type arcade montrant un score de 8940 et des astéroïdes à l&#x27;écran.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:21 - 00:13:56</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">The sound effects are a little better, but I don&#x27;t like the feel of this one at all compared to the last one. It&#x27;s like hard to control. My mouse is snapping. It just feels buggy. But everything else, honestly, like it&#x27;s about the same. From a design perspective, it&#x27;s harder to see. So I definitely think that GBT 5.5 wins this one, like no doubt. And obviously that was all subjective. So let&#x27;s take a look at the stats that matter. GBT finished in more than half the time. It also used less input tokens and less output tokens. Had a few more tool requests, but that doesn&#x27;t really matter as</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de jeu vidéo (Space Shooter) et tableau de bord analytique des coûts/performances des modèles d&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Score (002523), Hull Integrity (100/100), Velocity (19 m/s).
+- Image 2 : Données chiffrées sur la consommation de jetons (input/output) et le coût financier ($2.7814, $4.5049) par modèle.</p>
+                        <p><strong>Action / Démonstration :</strong> - Image 1 : Démonstration visuelle en cours de jeu pour tester la maniabilité et le ressenti.
+- Image 2 : Présentation analytique comparant l&#x27;efficacité opérationnelle et budgétaire entre deux versions de modèles d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001330_seg30.jpg" alt="Interface d&#x27;un jeu vidéo de type &quot;Space Shooter&quot; avec des astéroïdes en arrière-plan, un réticule de visée et des indicateurs HUD (score, intégrité de la coque, vitesse)." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001330_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:30</span>
+                        <span class="caption-text">Interface d&#x27;un jeu vidéo de type &quot;Space Shooter&quot; avec des astéroïdes en arrière-plan, un réticule de visée et des indicateurs HUD (score, intégrité de la coque, vitesse).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001347_seg30.jpg" alt="Tableau comparatif des performances de différents modèles d&#x27;IA (GPT-5.5 vs Opus 4.7) pour deux projets nommés &quot;Space Shooter&quot; et &quot;Ecosystem&quot;, détaillant durée, jetons, requêtes et coûts." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001347_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:47</span>
+                        <span class="caption-text">Tableau comparatif des performances de différents modèles d&#x27;IA (GPT-5.5 vs Opus 4.7) pour deux projets nommés &quot;Space Shooter&quot; et &quot;Ecosystem&quot;, détaillant durée, jetons, requêtes et coûts.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:56 - 00:14:16</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">much. With GBT, this would have costed us under $3 and Opus 417, it would have costed us 4.5. And we would have had to keep making changes and iterate. GBT 5.5 definitely takes the cake here. All right. And now for the last one, this was a big boy prompt. I dropped in this entire thing. So much bigger, much more to think about. And let&#x27;s go ahead and take a look and see what we got.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard d&#x27;analyse de coûts d&#x27;API (type plateforme de monitoring IA) et interface de chat d&#x27;un assistant de développement IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques de performance (tokens, coûts en dollars, durée en minutes) ; prompt technique demandant la création d&#x27;un simulateur d&#x27;écosystème avec réseaux de neurones, rendu 2D et cycle jour/nuit.</p>
+                        <p><strong>Action / Démonstration :</strong> Comparaison des coûts d&#x27;exécution entre modèles IA et démonstration d&#x27;un prompt complexe pour la génération d&#x27;un projet de simulation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001401_seg31.jpg" alt="Tableau de bord comparatif affichant les coûts et les performances (durée, tokens, requêtes) de GPT-5.5 face à Opus 4.7 pour des projets nommés &quot;Space Shooter&quot; et &quot;Ecosystem&quot;." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001401_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:01</span>
+                        <span class="caption-text">Tableau de bord comparatif affichant les coûts et les performances (durée, tokens, requêtes) de GPT-5.5 face à Opus 4.7 pour des projets nommés &quot;Space Shooter&quot; et &quot;Ecosystem&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001406_seg31.jpg" alt="Interface d&#x27;une application de chat type IA montrant un prompt complexe et détaillé pour la création d&#x27;un &quot;Ecosystem simulator&quot; en un seul fichier index.html." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001406_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:06</span>
+                        <span class="caption-text">Interface d&#x27;une application de chat type IA montrant un prompt complexe et détaillé pour la création d&#x27;un &quot;Ecosystem simulator&quot; en un seul fichier index.html.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:17 - 00:14:44</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Okay. So here is our simulation of Codex. This is our living ecosystem. We can see we have population, generation, fitness, and some other stuff. And I can speed this up and I can watch this ecosystem evolve. Looks like right now it&#x27;s okay. It&#x27;s starting to drop. Let me actually slow this down. I can drop in some food, I think. So sprinkle food. Oh, the button&#x27;s up here. Okay. So nothing seems to be working when I&#x27;m trying to sprinkle food and I&#x27;m trying to spawn more.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de simulation &quot;Neural Biome&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques affichées : Population (43), Génération (2), Fitness (0.2), Temps (Day), FPS (60), Speed (1.0x). Commandes de contrôle : lecture, rafraîchissement, modes (Observe, Food, Spawn) et curseur de vitesse.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique le fonctionnement de la simulation et manipule les commandes pour observer l&#x27;évolution de l&#x27;écosystème.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001423_seg32.jpg" alt="Une interface de simulation nommée &quot;Neural Biome&quot; affichant un écosystème vivant avec des entités lumineuses et un tableau de bord de statistiques en temps réel." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001423_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:23</span>
+                        <span class="caption-text">Une interface de simulation nommée &quot;Neural Biome&quot; affichant un écosystème vivant avec des entités lumineuses et un tableau de bord de statistiques en temps réel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:44 - 00:15:18</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nothing seems to be working. And unfortunately the population is dying out. So I&#x27;m real quick going to go back into codex and i&#x27;m going to ask oh wait but that&#x27;s really interesting in this version the population looks like it&#x27;s making a bit of a comeback but i guess i just don&#x27;t really understand how i can control this so i&#x27;m just going to go ahead and ask real quick ah okay so food only works on grass or forest spawn only works on land i didn&#x27;t necessarily want it to make a fix because i wanted to see how good it is just by default but let&#x27;s see if i&#x27;m able to spawn some food in here or if i&#x27;m able to spawn some creatures okay so i&#x27;m able to spawn creatures but maybe it&#x27;s just not visually showing me that i&#x27;m sprinkling food when i&#x27;m</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de développement assisté par IA (probablement Cursor ou une interface similaire intégrée à un navigateur), simulateur WebGL &quot;Neural Biome&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif de l&#x27;agent sur les bugs de contrôle (&quot;click handler&quot;), statistiques en temps réel de la simulation (population, fitness, FPS), logs de tâches complétées.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent analyse les retours utilisateur, explique la logique de correction du code pour le &quot;click handler&quot;, et exécute la simulation du biome neural.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001453_seg33.jpg" alt="L&#x27;interface de l&#x27;agent IA affiche un simulateur d&#x27;écosystème avec un tableau de bord (population 92, génération 51) et une visualisation du biome neural." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001453_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:53</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;agent IA affiche un simulateur d&#x27;écosystème avec un tableau de bord (population 92, génération 51) et une visualisation du biome neural.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001501_seg33.jpg" alt="L&#x27;agent explique dans la fenêtre de chat les points de friction détectés (interactions nourriture/spawn) et propose des corrections logicielles." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001501_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:01</span>
+                        <span class="caption-text">L&#x27;agent explique dans la fenêtre de chat les points de friction détectés (interactions nourriture/spawn) et propose des corrections logicielles.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001509_seg33.jpg" alt="Le simulateur d&#x27;écosystème en mode plein écran montrant une baisse de la population (10 individus, génération 2) et un graphique de déclin." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001509_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:09</span>
+                        <span class="caption-text">Le simulateur d&#x27;écosystème en mode plein écran montrant une baisse de la population (10 individus, génération 2) et un graphique de déclin.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:18 - 00:15:39</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">trying to. Well, anyways, for a one-shot prompt, it&#x27;s not great, but let&#x27;s also go take a look at what Claude Code was able to do on one shot to compare. Oh, sorry. Also, one more thing you can do is we can click on a creature and we can see kind of like how it&#x27;s evolving. We can see the energy, the age, the size, the speed, radius. We can just look at them in different ways.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Web de simulation &quot;Neural Biome&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques de simulation : Population (16), Génération (2), Fitness (0.2), FPS (60), Vitesse (0.3x) ; boutons de contrôle &quot;Observe&quot;, &quot;Food&quot;, &quot;Spawn&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente l&#x27;interface de simulation où l&#x27;on peut observer les créatures évoluer en temps réel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001523_seg34.jpg" alt="Une interface de simulation biologique appelée &quot;Neural Biome&quot; avec un panneau d&#x27;état en haut à gauche affichant les statistiques (population, génération, fitness, vitesse) et des contrôles de simulation en bas au centre." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001523_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:23</span>
+                        <span class="caption-text">Une interface de simulation biologique appelée &quot;Neural Biome&quot; avec un panneau d&#x27;état en haut à gauche affichant les statistiques (population, génération, fitness, vitesse) et des contrôles de simulation en bas au centre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:40 - 00:16:14</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Kind of interesting. But anyways, here is Claude Code&#x27;s version. So it looks similar. I think honestly like aesthetically visually this one&#x27;s makes more sense to me I can kind of see the land and I can see what I can do sprinkle food let&#x27;s see if I can drop food in there nice I can spawn creature I can also spawn creatures in there as well I can save the top genome whatever that means okay that just downloaded some sort of JSON file but when I was playing around with this what I&#x27;ve noticed is I think that there&#x27;s something wrong with this code for example all of the creatures are just staying in one fixed location. I don&#x27;t even think they seem to be doing anything</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de simulation web / jeu de type &quot;Neural Ecosystem&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau &quot;Live Evolution&quot; avec statistiques (Population: 41, Génération: 2, Avg Fitness: 0.05, Time of day: 07:53). Barre d&#x27;outils avec boutons : &quot;Sprinkle Food&quot;, &quot;Spawn Creature&quot;, &quot;Reset&quot;, &quot;Save Top Genome&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur interagit avec la simulation en cliquant pour ajouter de la nourriture et faire apparaître des créatures sur la carte.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001549_seg35.jpg" alt="Une interface de simulation &quot;Neural Ecosystem&quot; montrant une carte en pixel art avec de petits organismes lumineux, un panneau d&#x27;informations en haut à gauche et une barre d&#x27;outils en bas." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001549_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:49</span>
+                        <span class="caption-text">Une interface de simulation &quot;Neural Ecosystem&quot; montrant une carte en pixel art avec de petits organismes lumineux, un panneau d&#x27;informations en haut à gauche et une barre d&#x27;outils en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:14 - 00:16:50</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">with the food. They just seem to die. And then they just die. And then the population hits 10. And then it just sticks at 10. So if I speed this up, you can see that this is going to hit 10 and then it just stays. So I don&#x27;t know exactly, you know, obviously there&#x27;s an issue with the code. Once again, this was a one shot prompt, but if I add more, it just goes back to 10. So there&#x27;s something in there that&#x27;s stuck. The logic isn&#x27;t working. And if I switch back over to Codex&#x27;s version. It&#x27;s kind of a similar thing. Like it just doesn&#x27;t actually work. The logic doesn&#x27;t work in order to make this like a legit simulation. It doesn&#x27;t seem like at least, or maybe I just need it to speed up faster where we actually see something. So let me speed this up and just see</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de simulation d&#x27;écosystème neuronal personnalisée (environnement de test pour IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques de performance de l&#x27;écosystème : Population, Génération, Fitness, Vitesse de simulation, FPS, Temps.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur observe la dynamique de population dans l&#x27;écosystème et ajuste la vitesse de simulation pour démontrer un bug où la population se stabilise à 10.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001623_seg36.jpg" alt="Interface de simulation &quot;Neural Ecosystem&quot; affichant une carte avec des créatures (points lumineux), des statistiques de population (10) et de génération, et une barre de contrôle de simulation (vitesse, nourriture)." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001623_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:23</span>
+                        <span class="caption-text">Interface de simulation &quot;Neural Ecosystem&quot; affichant une carte avec des créatures (points lumineux), des statistiques de population (10) et de génération, et une barre de contrôle de simulation (vitesse, nourriture).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001641_seg36.jpg" alt="Interface de simulation &quot;Neural Biome&quot; affichant un environnement simplifié avec des îlots, montrant une population de 11, une fitness de 0.2, et des contrôles de simulation en bas." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001641_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:41</span>
+                        <span class="caption-text">Interface de simulation &quot;Neural Biome&quot; affichant un environnement simplifié avec des îlots, montrant une population de 11, une fitness de 0.2, et des contrôles de simulation en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:50 - 00:17:22</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">if it can go past 10 at all. Yeah. I mean, I don&#x27;t know what&#x27;s going on. Look at this poor soul. He just died, but yeah, I don&#x27;t think I&#x27;m able to sprinkle food. So, so anyways, none of those are perfect. And what we would have to do obviously is we would iterate and we&#x27;d come back and we would give some feedback. But let&#x27;s take a look at the stats here. Kind of interesting. So GBT 5.5 took almost 10 minutes and Opus 4.7 took about 12 minutes. Now GBT 5 took way more input tokens here, like double. But also look at how many output tokens it used compared to Opus 4.7. Now it&#x27;s</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> - Image 1 : Simulateur web &quot;Neural Biome&quot; (Living Ecosystem).
+- Image 2 : Tableau de bord de suivi d&#x27;utilisation API / Coûts (probablement issu d&#x27;une plateforme de monitoring LLM type LangSmith ou outil propriétaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Métriques en temps réel (Population, Fitness, FPS).
+- Image 2 : Données chiffrées : GPT-5.5 (1,672,131 tokens, 9.20$) vs Opus 4.7 (822,213 tokens, 7.83$).</p>
+                        <p><strong>Action / Démonstration :</strong> - Image 1 : Observation de l&#x27;écosystème neural en cours d&#x27;exécution.
+- Image 2 : Analyse comparative des performances et de la rentabilité des différents modèles IA utilisés dans le projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001658_seg37.jpg" alt="Interface interactive d&#x27;un simulateur &quot;Neural Biome&quot; affichant les statistiques de population (10), génération (2) et vitesse de simulation (10.0x)." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001658_seg37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:58</span>
+                        <span class="caption-text">Interface interactive d&#x27;un simulateur &quot;Neural Biome&quot; affichant les statistiques de population (10), génération (2) et vitesse de simulation (10.0x).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001706_seg37.jpg" alt="Tableau de bord d&#x27;analyse de coûts et de performances par modèle IA (GPT-5.5 et Opus 4.7), détaillant le temps de traitement, les tokens consommés et les coûts financiers." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001706_seg37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:06</span>
+                        <span class="caption-text">Tableau de bord d&#x27;analyse de coûts et de performances par modèle IA (GPT-5.5 et Opus 4.7), détaillant le temps de traitement, les tokens consommés et les coûts financiers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:22 - 00:17:56</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">interesting because GBT 5.5 still costed us more here because of how many input tokens it took. But that is really interesting to me that it&#x27;s able to only output about 28,000 tokens and we&#x27;re still able to get an output that&#x27;s basically the same. Like this is basically the same as this, like pretty close, but it took a fraction of the output tokens, which is just really interesting to me. Okay. So if we zoom out and we look at all of these statistics as a whole, we did four total experiments. Total runtime between the two was about an hour and GBT total runtime was 20</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard d&#x27;analyse de données (web-based) et interface de simulation d&#x27;écosystème IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques chiffrées (tokens, coûts en USD, temps d&#x27;exécution, nombre de requêtes) et visualisation graphique comparative des modèles GPT-5.5 et Opus 4.7.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation comparative des coûts et des performances techniques des modèles IA à travers des simulations d&#x27;expérimentation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001731_seg38.jpg" alt="Tableau de bord d&#x27;analyse comparant les performances et coûts entre les modèles GPT-5.5 et Opus 4.7, mettant en évidence les métriques spécifiques à l&#x27;expérience &quot;#4 Ecosystem&quot;." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001731_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:31</span>
+                        <span class="caption-text">Tableau de bord d&#x27;analyse comparant les performances et coûts entre les modèles GPT-5.5 et Opus 4.7, mettant en évidence les métriques spécifiques à l&#x27;expérience &quot;#4 Ecosystem&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001739_seg38.jpg" alt="Interface de simulation &quot;Live Evolution&quot; montrant un écosystème pixélisé avec des créatures et des points de nourriture, illustrant l&#x27;application pratique des modèles IA." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001739_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:39</span>
+                        <span class="caption-text">Interface de simulation &quot;Live Evolution&quot; montrant un écosystème pixélisé avec des créatures et des points de nourriture, illustrant l&#x27;application pratique des modèles IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001747_seg38.jpg" alt="Tableau de bord global &quot;AI Model Comparison&quot; présentant des graphiques à barres comparant la durée, le coût et le nombre de jetons de sortie pour quatre expériences différentes." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001747_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:47</span>
+                        <span class="caption-text">Tableau de bord global &quot;AI Model Comparison&quot; présentant des graphiques à barres comparant la durée, le coût et le nombre de jetons de sortie pour quatre expériences différentes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:56 - 00:18:28</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">minutes, 49 seconds. Opus total runtime was 40 minutes and 43 seconds. So basically double the runtime. Input tokens, they were honestly pretty similar. 2.7 million over here with GBT and 2.5 million with Opus. But the output tokens tells a very interesting story. It&#x27;s about 70k compared to about a quarter million. And then total cost, it honestly came out to be pretty even, but GBT was about three bucks cheaper over these four experiments. But if every single time you do it, it&#x27;s a fraction of a bit cheaper with GBT 5.5, then in the long run, it&#x27;s going to get more and</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau de bord analytique web personnalisé (interface sombre avec graphiques et cartes de données).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Comparaisons chiffrées : Runtime (61m 32s total), Input Tokens (~5,18M total), Output Tokens (GPT-5.5: 68,049 vs Opus 4.7: 248,269), Total Cost ($34.18). Graphique à barres comparant les durées d&#x27;exécution.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation commentée de données de benchmark comparant l&#x27;efficacité opérationnelle, les coûts et le volume de génération de tokens entre les modèles GPT-5.5 et Opus 4.7.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001804_seg39.jpg" alt="Tableau de bord d&#x27;analyse comparative &quot;AI Model Comparison&quot; affichant les métriques de runtime, tokens d&#x27;entrée et coûts totaux entre GPT-5.5 et Opus 4.7." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001804_seg39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:04</span>
+                        <span class="caption-text">Tableau de bord d&#x27;analyse comparative &quot;AI Model Comparison&quot; affichant les métriques de runtime, tokens d&#x27;entrée et coûts totaux entre GPT-5.5 et Opus 4.7.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001812_seg39.jpg" alt="Suite du tableau de bord affichant les métriques &quot;Total Output Tokens&quot; (316,318 au total) et le début du graphique &quot;Duration by experiment&quot;." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001812_seg39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:12</span>
+                        <span class="caption-text">Suite du tableau de bord affichant les métriques &quot;Total Output Tokens&quot; (316,318 au total) et le début du graphique &quot;Duration by experiment&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001820_seg39.jpg" alt="Vue détaillée du graphique &quot;Duration by experiment&quot; comparant les temps d&#x27;exécution des deux modèles, avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001820_seg39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:20</span>
+                        <span class="caption-text">Vue détaillée du graphique &quot;Duration by experiment&quot; comparant les temps d&#x27;exécution des deux modèles, avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:28 - 00:19:02</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">more cheap. So I won&#x27;t dive into all of these other graphs because I think we&#x27;ve already kind of understood the differences here, but GBT5 is green. Opus 4.7 is blue. And for the majority of the time, GBT is in the position that we would rather be in, meaning it&#x27;s less and it&#x27;s less and it&#x27;s less and it is less. I could have just said all four that GBT was less. But anyways, that is going to do it for today. I hope you guys enjoy this little experiment. I really encourage you to just hop into ChatGPT or plug in GBT 5.5 in your automations via API, or maybe even hop on</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard d&#x27;analyse de données (type BI/Custom web interface).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphiques en barres et courbes comparatives montrant &quot;Duration by experiment&quot;, &quot;Cost by experiment&quot;, &quot;Output tokens&quot; et &quot;Cumulative cost&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle et analyse comparative des métriques de performance et de coûts entre deux modèles d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001837_seg40.jpg" alt="Tableau de bord d&#x27;analyse comparant les performances (durée, coût) de &quot;GPT-5.5&quot; (vert) et &quot;Opus 4.7&quot; (bleu) sur quatre expériences." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001837_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:37</span>
+                        <span class="caption-text">Tableau de bord d&#x27;analyse comparant les performances (durée, coût) de &quot;GPT-5.5&quot; (vert) et &quot;Opus 4.7&quot; (bleu) sur quatre expériences.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001845_seg40.jpg" alt="Suite du tableau de bord affichant les graphiques des &quot;Output tokens&quot; et du &quot;Cumulative cost&quot; pour les deux modèles." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001845_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:45</span>
+                        <span class="caption-text">Suite du tableau de bord affichant les graphiques des &quot;Output tokens&quot; et du &quot;Cumulative cost&quot; pour les deux modèles.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001854_seg40.jpg" alt="Vue d&#x27;ensemble du tableau de bord &quot;AI Model Comparison&quot; avec les totaux agrégés en haut de page." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001854_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:54</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du tableau de bord &quot;AI Model Comparison&quot; avec les totaux agrégés en haut de page.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:02 - 00:19:32</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Codex and play around with it a little bit. I&#x27;m a firm believer in not one tool being the best, but figuring out which tool to use for your use case. I&#x27;ve been playing around with Codex a lot. I just haven&#x27;t started making YouTube videos too much on it yet because I don&#x27;t really want to overwhelm you guys with too many things. And I know I&#x27;ve been uploading a lot lately, so maybe you are overwhelmed either way and there&#x27;s so many new features. But like I said, just try out new tools. So if you enjoyed the video or you learned something new, please give a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video and I&#x27;ll see you all in the next one. Thanks everyone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau de bord analytique personnalisé (UI de comparaison de modèles).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphiques en barres comparatifs (&quot;Duration by experiment&quot;, &quot;Cost by experiment&quot;) et indicateurs chiffrés agrégés (Total runtime: 61m 32s, Total cost: $34.18, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle des données de benchmarking comparatif des modèles d&#x27;IA pour illustrer l&#x27;efficacité opérationnelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001910_seg41.jpg" alt="Un tableau de bord analytique comparant les performances et les coûts entre deux modèles d&#x27;IA, GPT-5.5 et Opus 4.7, affichant des métriques de temps d&#x27;exécution, de jetons consommés et de coûts." loading="lazy" onclick="openLightbox('../screenshots/WX4rp-vP3zo/WX4rp-vP3zo_001910_seg41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:19:10</span>
+                        <span class="caption-text">Un tableau de bord analytique comparant les performances et les coûts entre deux modèles d&#x27;IA, GPT-5.5 et Opus 4.7, affichant des métriques de temps d&#x27;exécution, de jetons consommés et de coûts.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
