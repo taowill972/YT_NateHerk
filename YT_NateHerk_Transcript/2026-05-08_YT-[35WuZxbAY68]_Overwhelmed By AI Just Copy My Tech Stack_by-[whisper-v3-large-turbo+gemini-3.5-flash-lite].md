@@ -25,801 +25,688 @@ Dans cette vidéo intitulée **Overwhelmed By AI? Just Copy My Tech Stack**, Nat
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:28]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> If you've been feeling overwhelmed trying to keep up with the different AI tools and agents and different things that you should be using, then this video is for you. Because there's a lot and the space moves really quick. So I want to show you guys the tools that I'm actually using on the day to day and the tools that I use every once in a while and talk about why. I'm also going to talk about my mindset when I'm living in this environment, experimenting with new stuff, and what actually moves the needle so that you guys don't end up getting in the cycle where every single month you feel overwhelmed because there's so much new stuff to learn. All right, so let's just go ahead and get started. This is not a technical breakdown of all these tools.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de tableau blanc virtuel / outil de diagramme (type Excalidraw ou similaire).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Catégories : "Daily Driver" (S), "Constant Companions" (A), "Specialists" (B), "Experimenting" (C). Icônes visibles : ChatGPT, VS Code, et divers logos d'outils IA.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Préparation du classement des outils IA par le présentateur en vue de les glisser dans les catégories.
+
+![Une interface de type "Tier List" vide sur fond sombre, utilisée pour classer des outils d'IA, avec une série d'icônes d'applications en bas de l'écran.](../screenshots/35WuZxbAY68/35WuZxbAY68_000007_seg1.jpg)
+*⏱️ 00:00:07 — Une interface de type "Tier List" vide sur fond sombre, utilisée pour classer des outils d'IA, avec une série d'icônes d'applications en bas de l'écran.*
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:28 - 00:00:49]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> This is just my list and me personally telling you guys about the tech stack that I use and why. So we're going to start off up top with our S tier. These are our daily drivers. So you know I have to chuck CloudCode in there. This is probably my overall number one favorite AI tool ever. This is basically my operating system. I live inside of my CloudCode project and I try to do as much work as I can directly from inside of CloudCode.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de tableau blanc collaboratif (type FigJam ou Miro) affichant une Tier List.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le tableau est structuré avec les catégories "Daily Driver" (S), "Constant Companions" (A), "Specialists" (B) et "Experimenting" (C). On peut identifier diverses icônes de logiciels sous le tableau, notamment les logos de VS Code, OpenAI, Claude, Llama, etc.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle du classement des outils de son "tech stack" avant leur placement dans les différentes catégories du tableau.
+
+![Une capture d'écran montrant le présentateur devant une interface de type "Tier List" (tableau de classement) sur un tableau blanc numérique, avec une série d'icônes d'outils technologiques et d'IA disposées en bas de l'écran.](../screenshots/35WuZxbAY68/35WuZxbAY68_000033_seg2.jpg)
+*⏱️ 00:00:33 — Une capture d'écran montrant le présentateur devant une interface de type "Tier List" (tableau de classement) sur un tableau blanc numérique, avec une série d'icônes d'outils technologiques et d'IA disposées en bas de l'écran.*
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:49 - 00:01:23]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> Now up next on the S tier is VS Code, which is basically where I like to use my CloudCode. You could use it in the desktop app, straight into CLI. I like to use it inside of VS Code, which is just an IDE, meaning you could also use Cloud Code inside of different IDs like Cursor or, you know, Windsor for anti-gravity. So here's VS Code. I can see my files on the left. I can have Cloud Code in the terminal right here, or I can use the Cloud Code extension. And our third and actually our final S-tier AI tool is Glido. This is our speech to text startup, and I fully transitioned over from Whisper to Glido. It's the fastest one on the market. It's private, and we're going to make this thing super agentic. So if you want to check it
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code, terminal CLI.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Terminal affichant "Claude Code v2.1.132", "Opus 4.7 (1M context)" et le mode "auto mode on".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Utilisation de l'outil Claude Code au sein de l'environnement de développement VS Code.
+
+![Interface de Visual Studio Code affichant un terminal intégré exécutant Claude Code.](../screenshots/35WuZxbAY68/35WuZxbAY68_000106_seg3.jpg)
+*⏱️ 00:01:06 — Interface de Visual Studio Code affichant un terminal intégré exécutant Claude Code.*
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:23 - 00:01:58]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> out, link in the description. And Windows support is literally about to roll out. So stay tuned for that. Okay. So now let's move on to A tier. Now these are the ones that I'm using on a weekly basis, a hundred percent, but they're not really my daily drivers. So the first one we have is Codex. Codex is a similar type of agent hardest to CloudCode. And I've been using it a lot more lately because a lot of its strengths compliment CloudCode's weaknesses and vice versa. So they're really good to be able to use together, even though right now I still do the majority of my work inside of CloudCode. And by the way, if you guys are seeing some tools throughout and you're curious and you want to see more about how I use them or, you know, better breakdowns, then let me know in the comments what else you guys want to see. The next A tier is just Claude in general,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de tableau blanc collaboratif (type Miro ou FigJam) affichant une "AI Tool Ranking" tier list.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : La tier list présente quatre niveaux (Daily Driver, Constant Companions, Specialists, Experimenting). Au niveau S (Daily Driver), on distingue les logos de Cursor, VS Code et GitHub Copilot. En bas, une multitude d'icônes d'outils IA attendent d'être classées (incluant OpenAI, Claude, Replit, etc.).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique sa classification des outils d'automatisation IA tout en déplaçant ou en présentant les icônes sur le canevas.
+
+![Une capture d'écran montrant un tableau de classement (tier list) interactif sur une interface type tableau blanc, avec le présentateur incrusté en haut à droite.](../screenshots/35WuZxbAY68/35WuZxbAY68_000132_seg4.jpg)
+*⏱️ 00:01:32 — Une capture d'écran montrant un tableau de classement (tier list) interactif sur une interface type tableau blanc, avec le présentateur incrusté en haut à droite.*
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:58 - 00:02:32]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> Claude Chat. Now, typically I am using Claude Code for all of my chat-based stuff, but I still do have some times when I just go to chat really quick because I can just open it up and it's right there and I, you know, chat. Okay, the next one, which I have not talked about too much on this channel at all, is Hermes Agent. I've been using this a lot more lately and it's really nice for general knowledge work and being able to do stuff when I'm out and about because it wakes up on demand when you talk to it through telegram it has instant crons it has a lot of things that i really like about it that are just easier to set up sometimes than doing a whole cloud code infrastructure setup all right next we have perplexity now perplexity i feel like isn't as
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Tableau blanc interactif (type Excalidraw ou similaire) affichant une "AI Tool Ranking" tier list.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Classement par niveaux (S, A, B, C) avec des logos d'outils logiciels. Niveau S : Claude Code, VS Code, Cursor. Niveau A : Claude, Replit. Des dizaines d'autres icônes d'outils IA sont présentes en bas en attente de classement.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique son classement des outils d'IA tout en manipulant visuellement la tier list.
+
+![Une capture d'écran montrant un tableau de classement (tier list) d'outils d'IA, avec le présentateur en médaillon.](../screenshots/35WuZxbAY68/35WuZxbAY68_000207_seg5.jpg)
+*⏱️ 00:02:07 — Une capture d'écran montrant un tableau de classement (tier list) d'outils d'IA, avec le présentateur en médaillon.*
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:02:32 - 00:03:05]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> popular as you know it used to be i don't really use perplexity computer too much but when i am plugging in automations and i'm having my agents do research i really like to use perplexity for my research i'm also using grok a lot as far as research and you know using x's built-in grok right there when I need to, you know, maybe I want to search through a lot of Twitter threads or something and I want to find specific posts or find specific insights, I like to use Grok in X for that. And so that's honestly my core stack. That's all we have for S and A tiered. And the reason I wanted to show you guys this is because it's a pretty lean stack. When it comes to core AI tools, it's basically
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application web de tableau blanc/diagramme (type Whimsical ou Miro).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Logos d'outils d'IA variés (VS Code, Perplexity, Claude, etc.) classés dans des lignes nommées "S" (Daily Driver) et "A" (Constant Companions).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Organisation visuelle et hiérarchisation des outils logiciels préférés de l'utilisateur sur une plateforme de travail collaboratif.
+
+![Une vue d'ensemble d'un tableau de classement "Tier List" interactif sur une interface web, où le présentateur organise des outils d'IA en catégories (Daily Driver, Constant Companions, etc.).](../screenshots/35WuZxbAY68/35WuZxbAY68_000240_seg6.jpg)
+*⏱️ 00:02:40 — Une vue d'ensemble d'un tableau de classement "Tier List" interactif sur une interface web, où le présentateur organise des outils d'IA en catégories (Daily Driver, Constant Companions, etc.).*
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:03:05 - 00:03:23]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> Cloud Code, Glido, Codex, Hermes Agent, Perplexity, and Grok. And you can see how many tools there are still down here to be placed into different categories. Now, I don't want to get into a bunch of like different project management tools and like things like, you know, Hostinger obviously is my VPS provider for Cloud Code or for Hermes or for other things that I'm setting up.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc collaboratif ou application de mind-mapping (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le tableau affiche des catégories (Daily Driver, Constant Companions, Specialists, Experimenting) et une collection d'icônes d'outils technologiques (ChatGPT, Claude, VS Code, Cursor, Hostinger, etc.).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Organisation visuelle et catégorisation des outils IA sur un espace de travail canvas par le présentateur.
+
+![Un tableau de classement (Tier List) interactif utilisé pour catégoriser divers outils d'IA et de développement, avec une barre d'outils de dessin en haut et une réserve d'icônes d'outils en bas.](../screenshots/35WuZxbAY68/35WuZxbAY68_000309_seg7.jpg)
+*⏱️ 00:03:09 — Un tableau de classement (Tier List) interactif utilisé pour catégoriser divers outils d'IA et de développement, avec une barre d'outils de dessin en haut et une réserve d'icônes d'outils en bas.*
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:03:24 - 00:03:42]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> You know, ClickUp is where I live as far as project management and stuff like that and communication with my team. Fireflies is in all of my meetings. And, you know, I just wanted to chuck these in here to give them some love to show you where they fit in my AI stack. But these aren't really ones that are like my AI first tools that I'm using on the day-to-day for knowledge work. So the specialists are one where I use them for a very specific use case.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de création de diagrammes ou tableau blanc numérique (type FigJam ou équivalent).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le tableau affiche une hiérarchie "S, A, B, C" avec les logos de divers outils d'IA et de développement. On reconnaît notamment VS Code, Cursor, et d'autres outils technologiques répartis dans les catégories. En bas, une sélection d'icônes d'outils en attente de classement (incluant les logos de ChatGPT, Claude, Ollama, etc.).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur est en train de manipuler l'interface pour positionner ou présenter visuellement les outils de son "AI stack" au sein de la Tier List.
+
+![Une capture d'écran montrant un tableau de classement (Tier List) interactif utilisé par le présentateur pour organiser ses outils d'IA par catégories, de "Daily Driver" à "Experimenting".](../screenshots/35WuZxbAY68/35WuZxbAY68_000328_seg8.jpg)
+*⏱️ 00:03:28 — Une capture d'écran montrant un tableau de classement (Tier List) interactif utilisé par le présentateur pour organiser ses outils d'IA par catégories, de "Daily Driver" à "Experimenting".*
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:43 - 00:04:04]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> You know, like I have a certain process that I need or within processes I have a very specific task. And then I would go grab some of these specialists. So another example would be Appify. I don't live in Appify, but every once in a while I'll have an automation or every once in a while I'll want my Hermes agent to grab something and it has to use Appify and a certain actor with an Appify. We also have things like GBT Image 2, which I've been loving lately and Nano Banana 2.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de tableau blanc collaboratif (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Logos d'outils technologiques et d'IA classés par catégories. Dans la ligne "Specialists" (B), on distingue notamment les logos d'Hugging Face, Vercel (ou similaire) et Framer.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique sa méthodologie de sélection d'outils spécialisés ("Specialists") pour des tâches spécifiques au sein de ses processus d'automatisation.
+
+![Une vue d'ensemble d'un tableau de classement (tier list) interactif sur une plateforme de type tableau blanc, classant divers outils d'IA selon leur usage (Daily Driver, Constant Companions, Specialists, Experimenting).](../screenshots/35WuZxbAY68/35WuZxbAY68_000348_seg9.jpg)
+*⏱️ 00:03:48 — Une vue d'ensemble d'un tableau de classement (tier list) interactif sur une plateforme de type tableau blanc, classant divers outils d'IA selon leur usage (Daily Driver, Constant Companions, Specialists, Experimenting).*
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:04:04 - 00:04:26]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> They're really good at different things. I kind of use Nano Banana as like my Photoshop tool and I use GBT2 as like my creator tool, if that makes sense when it comes to images. And then usually when I'm plugging in like image generation or video generation into agents, I always use key.ai for that. It's kind of like the open router, but for image and video models. And that actually reminds me, I left open router out of this, but open router definitely deserves a spot in the B tier for specialists.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de création de diagramme/tableau de bord (type tableau blanc interactif).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Logos d'outils d'IA classés dans des catégories : 'Daily Driver' (S), 'Constant Companions' (A), 'Specialists' (B), et 'Experimenting' (C). On identifie notamment les logos de VS Code, GPT-2 et une icône de banane pour Nano Banana.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique sa hiérarchie personnelle d'outils d'IA en pointant ou en référençant les éléments du tableau.
+
+![Un tableau de classement (tier list) illustrant différents outils d'IA classés par catégories d'usage, avec le présentateur en médaillon dans le coin supérieur droit.](../screenshots/35WuZxbAY68/35WuZxbAY68_000410_seg10.jpg)
+*⏱️ 00:04:10 — Un tableau de classement (tier list) illustrant différents outils d'IA classés par catégories d'usage, avec le présentateur en médaillon dans le coin supérieur droit.*
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:04:27 - 00:05:00]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> I've got a few other specialists here and it's probably gonna shoot off the edge. So let me just expand this a little bit. But I also use HeyGen for whenever I need avatars. I don't avatar my YouTube channel. And I know you guys say that in the comments. I've never done that and I don't plan on it, but I will use this sometimes for certain videos, maybe for certain course material or whatever it is. sometimes I will use an avatar and I go to HeyGen for that. And then alongside that, I use 11 Labs to clone my voice or for specific voice agent builds. Okay. So it's really starting to slim down here. As you guys can see, we only have one actual row left, which is experimenting, but I'll tell you what, not all of these tools are going to fit into this row. So let's see
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de tableau blanc virtuel (type FigJam ou Miro).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Un graphique divisé en niveaux (S, A, B, C) contenant des icônes de logiciels : VS Code, Cursor, GPT-4, HeyGen, ainsi que divers logos d'outils d'automatisation et d'IA.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur manipule les éléments du graphique pour agrandir ou réorganiser les icônes des outils "Specialists" dans la liste.
+
+![Une interface de type "Tier List" (classement) affichée sur une application de tableau blanc collaboratif, organisant divers outils d'IA et de développement.](../screenshots/35WuZxbAY68/35WuZxbAY68_000435_seg11.jpg)
+*⏱️ 00:04:35 — Une interface de type "Tier List" (classement) affichée sur une application de tableau blanc collaboratif, organisant divers outils d'IA et de développement.*
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:05:00 - 00:05:34]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> what's going to happen. Okay. So for C tier, these are things that I'm kind of keeping my eye on and I'm playing with a little bit and I use very frequently and they're in my ecosystem, but I wouldn't really consider them a main tool I use. Actually, before we get to that, I did leave out Cloud Design. Cloud Design is definitely a specialist, and we've been adopting it more and more as a team because now everyone on the team can build landing pages using the exact same design system. I know you could have done it either way in Cloud Code before, but it just makes it so much easier to share designs, comments on things. We've been loving Cloud Design for specific use cases. Okay, so now let's get into the experimenting AI tools. So honestly, Gemini.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc collaboratif (type FigJam ou Miro).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le tableau présente des catégories : "Daily Driver" (S), "Constant Companions" (A), "Specialists" (B) et "Experimenting" (C). Des icônes d'outils (VS Code, Cursor, GPT-4, Llama, etc.) sont disposées dans les lignes correspondantes ou en attente en dessous.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique sa classification des outils d'IA au sein de son écosystème de travail, en se préparant à déplacer des éléments vers la catégorie "C" (Experimenting).
+
+![Une capture d'écran montrant un tableau de type "Tier List" (hiérarchisation) pour divers outils d'automatisation et d'IA, avec le présentateur en médaillon dans le coin inférieur gauche.](../screenshots/35WuZxbAY68/35WuZxbAY68_000509_seg12.jpg)
+*⏱️ 00:05:09 — Une capture d'écran montrant un tableau de type "Tier List" (hiérarchisation) pour divers outils d'automatisation et d'IA, avec le présentateur en médaillon dans le coin inférieur gauche.*
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:05:35 - 00:06:09]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> Gemini and anti-gravity, I just don't really use very often. It's not part of my core stack. I am using Nano Banana more than I would go talk to Gemini 3 Pro or something like that in the actual app. The next one would be Olama. I don't run on local models, but I do use Olama to download stuff or maybe to even use their cloud because I like to play around with the open source models and see what's happening. I like to keep up to date and experiment. And then the last one that I wanted to throw on this list was Manus. I really don't use it too much, but every once in a while, I'll just open it up and test out some things. I know you guys have been giving me some comments about Manus, but yeah, I mean, I think it's a great tool. And if you were maybe new to this AI world
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Tableau blanc collaboratif en ligne (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste classée par catégories : "Daily Driver", "Constant Companions", "Specialists", "Experimenting". On y reconnaît des logos comme VS Code, Claude, ChatGPT, Ollama (icône de lama), Nano Banana, etc.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur présente visuellement son organisation et ses préférences d'outils IA en pointant ou en montrant le classement actuel.
+
+![Une vue d'ensemble d'un tableau de classement "Tier List" (S à C) répertoriant divers outils et modèles d'IA, avec le présentateur visible en médaillon dans le coin inférieur gauche.](../screenshots/35WuZxbAY68/35WuZxbAY68_000543_seg13.jpg)
+*⏱️ 00:05:43 — Une vue d'ensemble d'un tableau de classement "Tier List" (S à C) répertoriant divers outils et modèles d'IA, avec le présentateur visible en médaillon dans le coin inférieur gauche.*
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:06:09 - 00:06:29]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> and you started with Manus, it could potentially be your main S tier daily driver. But for me, I just would prefer to use my cloud code. And now you may be wondering what's going on with all of these tools down here. These are in a separate category for me, which I would call graduated, which means they used to be somewhere in this top four tier list, but now I just don't really use them anymore.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de tableau blanc numérique ou outil de cartographie mentale (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Logos d'outils d'IA incluant : Manus, VS Code, Cursor, GPT-4, Claude, Perplexity, et divers autres agents et interfaces de développement.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique le classement des outils et déplace son curseur vers la section inférieure dédiée aux outils « gradués ».
+
+![Un tableau de classement (Tier List) interactif affichant diverses icônes d'outils d'IA, organisé par catégories (Daily Driver, Constant Companions, Specialists, Experimenting), avec une zone en bas pour les outils « gradués ».](../screenshots/35WuZxbAY68/35WuZxbAY68_000614_seg14.jpg)
+*⏱️ 00:06:14 — Un tableau de classement (Tier List) interactif affichant diverses icônes d'outils d'IA, organisé par catégories (Daily Driver, Constant Companions, Specialists, Experimenting), avec une zone en bas pour les outils « gradués ».*
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:06:29 - 00:07:05]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> So ChatGPT, regular chat, I've graduated. OpenClaw, I've graduated. I would say that Hermes has kind of replaced OpenClaw for me. Cursor, I've graduated from. notebook lm poppy ai nnn and then whisper flow and one thing i want to say about these graduated tools is that this doesn't mean that they're trash this just means that i no longer use them i feel like i've kind of moved above them and this could be for many different reasons maybe it means that they're a little bit outdated maybe it means that they were got replaced like in this case whisper flow 1 million percent has been replaced by glido so this one we can even just put off to the side but like nnn not a bad tool at all i just prefer now to build automations in cloud code
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de tableau blanc interactif ou outil de mind-mapping (type Miro ou FigJam) présentant une "AI Tool Ranking Tier List".
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste d'icônes d'outils d'IA organisée par paliers : ChatGPT, VS Code, Cursor, Claude, NotebookLM, Poppy AI, etc., classés selon leur utilisation quotidienne ou leur état de "diplômé" (graduated).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur commente le classement visuel et déplace le curseur pour illustrer les outils qu'il a "gradués" (c'est-à-dire ceux qu'il a dépassés ou pour lesquels il a trouvé des alternatives supérieures).
+
+![Une capture d'écran d'un tableau de type "Tier List" (niveaux S à Graduated) classant divers outils d'IA, avec une petite icône de curseur jaune en train de se déplacer au-dessus de l'icône de l'outil Poppy AI dans la catégorie "Graduated".](../screenshots/35WuZxbAY68/35WuZxbAY68_000638_seg15.jpg)
+*⏱️ 00:06:38 — Une capture d'écran d'un tableau de type "Tier List" (niveaux S à Graduated) classant divers outils d'IA, avec une petite icône de curseur jaune en train de se déplacer au-dessus de l'icône de l'outil Poppy AI dans la catégorie "Graduated".*
+
+![Une capture d'écran identique à la précédente, montrant le tableau complet avec les outils classés par catégories (Daily Driver, Constant Companions, Specialists, Experimenting, Graduated).](../screenshots/35WuZxbAY68/35WuZxbAY68_000647_seg15.jpg)
+*⏱️ 00:06:47 — Une capture d'écran identique à la précédente, montrant le tableau complet avec les outils classés par catégories (Daily Driver, Constant Companions, Specialists, Experimenting, Graduated).*
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:07:06 - 00:07:28]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
+> Poppy AI, not a bad tool at all. I just realized that if I wanna use Poppy's functionality, I could do that better in cloud code and it can be more customized to me and cheaper. So sometimes these tools, like Notebook LM, they're all very, very good tools, but what I've done is instead of paying for them now, I basically have extracted the features that I like from them and I've worked them into my own ecosystem because the idea really is to keep your tech stack lean.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface de tableau blanc collaboratif (probablement FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableau classant plusieurs icônes de logiciels IA, dont VS Code (S-tier), et diverses applications dans les niveaux A, B, C et "Graduated".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur présente une vue d'ensemble structurée de son écosystème d'outils d'IA, illustrant visuellement ses préférences d'utilisation.
+
+![Une "Tier List" interactive organisée sur une interface de tableau blanc collaboratif (type FigJam ou Miro) classant divers outils d'IA et logiciels selon des catégories allant de "Daily Driver" à "Graduated".](../screenshots/35WuZxbAY68/35WuZxbAY68_000711_seg16.jpg)
+*⏱️ 00:07:11 — Une "Tier List" interactive organisée sur une interface de tableau blanc collaboratif (type FigJam ou Miro) classant divers outils d'IA et logiciels selon des catégories allant de "Daily Driver" à "Graduated".*
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:07:28 - 00:07:54]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> And I know this looks like a lot, but really the daily drivers is the main ones that I use. I could use just my cloud code and my Glido and just work the whole day. and be fine. And I really wanted to make this video because I've been considering making more content on Codex and Hermes Agent and maybe a few other things, but I don't want to overwhelm you guys, which is why I've been only on Cloud Code for the past like three months. I was trying to stay consistent so that you guys could try to keep learning one tool consistently. And I really hope that I'm not contributing to your overwhelm and maybe your stress with all this AI stuff going on.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de tableau blanc interactif ou de création de diagrammes (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableau classant des logos d'outils d'IA : "Daily Driver" (S-Tier) incluant VS Code et Glido, "Constant Companions" (A-Tier), "Specialists" (B-Tier), "Experimenting" (C-Tier) et "Graduated".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique sa hiérarchie d'outils d'IA ("daily drivers") en s'appuyant sur les éléments visuels du classement.
+
+![Une vue d'ensemble d'un tableau de classement "Tier List" (type niveau S à C) présentant divers outils d'IA classés selon leur fréquence d'utilisation par le présentateur.](../screenshots/35WuZxbAY68/35WuZxbAY68_000735_seg17.jpg)
+*⏱️ 00:07:35 — Une vue d'ensemble d'un tableau de classement "Tier List" (type niveau S à C) présentant divers outils d'IA classés selon leur fréquence d'utilisation par le présentateur.*
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:07:55 - 00:08:29]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> I'm trying to keep you guys all educated, but I also am able to realize that when you see a new video for me every day, it does feel like you need to watch them all and drown and you feel a little bit overwhelmed. So I'm trying to help you guys out here. By the way, guys, I know we're about to cover a ton of information in this video. So I broke all of this down into a free resource guide, all these tools, all these different frameworks and rules to remember. And I put that inside of my free school community. The link for that is down in the description. Once again, completely free. You join here, you go to the classroom, you click on all YouTube resources, and you'll be able to download every resource that I've ever dropped on YouTube for completely free. So hop in the community and let's get back to the video. Thanks guys. So let's talk about some other
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Plateforme de gestion de workflows et de cours (Canvas, AI Automation Society Portal).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Schémas explicatifs sur la productivité, icônes d'outils IA (VS Code, n8n, Claude Code), et curriculum de formation.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation pédagogique visant à rationaliser l'apprentissage des outils IA pour éviter la surcharge cognitive.
+
+![Un tableau de classement (« Tier List ») classant divers outils d'IA par catégories, de « Daily Driver » à « Graduated ».](../screenshots/35WuZxbAY68/35WuZxbAY68_000803_seg18.jpg)
+*⏱️ 00:08:03 — Un tableau de classement (« Tier List ») classant divers outils d'IA par catégories, de « Daily Driver » à « Graduated ».*
+
+![Un graphique conceptuel illustrant la « Règle de la baisse de productivité de 20% » lors du changement d'outils de travail.](../screenshots/35WuZxbAY68/35WuZxbAY68_000812_seg18.jpg)
+*⏱️ 00:08:12 — Un graphique conceptuel illustrant la « Règle de la baisse de productivité de 20% » lors du changement d'outils de travail.*
+
+![Capture de l'interface de la plateforme « AI Automation Society » montrant des modules de cours comme « 7 Day AIS Challenge » et « Claude Code ».](../screenshots/35WuZxbAY68/35WuZxbAY68_000821_seg18.jpg)
+*⏱️ 00:08:21 — Capture de l'interface de la plateforme « AI Automation Society » montrant des modules de cours comme « 7 Day AIS Challenge » et « Claude Code ».*
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:08:29 - 00:08:52]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> mindset stuff. I've got a couple of different key points here that I wanted to hit on, which will hopefully clear up a lot of this stuff. So the first thing is that coding agents are just harnesses. These images are kind of funny. It just made this up. This was GBT image too, by the way, but they're all different on the surface, right? They've got different harnesses. They might use different models on the back end. They might have different ways that they use their skills, but they're all just harnesses. They're all just AI that work inside some sort of directory.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de tableau blanc numérique ou outil de mind-mapping (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image 1 : Icônes d'outils IA (VS Code, logos d'agents divers).
+- Image 2 : Schéma "Different on the surface, Same under the hood", listant des agents (Claude Code, Codex, Hermes, OpenClaw) connectés à un "Agent Harness" central, avec une structure de fichiers type (/your-project, CLAUDE.md, AGENTS.md, etc.).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur utilise une présentation visuelle pour expliquer la standardisation des workflows d'agents IA au sein des répertoires de projet.
+
+![Un schéma conceptuel expliquant que les agents de codage sont des « harnais » (harnesses) partageant une structure de répertoire commune, illustrant l'indépendance entre l'agent et le projet.](../screenshots/35WuZxbAY68/35WuZxbAY68_000841_seg19.jpg)
+*⏱️ 00:08:41 — Un schéma conceptuel expliquant que les agents de codage sont des « harnais » (harnesses) partageant une structure de répertoire commune, illustrant l'indépendance entre l'agent et le projet.*
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:08:53 - 00:09:13]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> So if you have your project with your claw.md file or your agents.md file and your scripts and your skills and whatever, all of your different agents can work on that directory. So I have my main operating system, right? Like my main project called Herk2. And I've had OpenClaw and Hermes and Codex and CloudCode all be able to work inside of that directory so they can all do things for me in there.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de tableau blanc virtuel / outil de diagramme (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Diagramme montrant quatre agents connectés à une instance centrale "Agent Harness" qui interagit avec une structure de répertoire contenant `CLAUDE.md`, `AGENTS.md`, `scripts/`, `references/`, `skills/` et `README.md`. Texte mis en avant : "THE KEY INSIGHT: CODING AGENTS ARE JUST HARNESSES".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur illustre la modularité des agents IA qui utilisent une structure de projet indépendante des outils utilisés (réutilisabilité du répertoire lors du changement d'agent).
+
+![Un schéma explicatif illustrant comment différents agents IA (Claude Code, Codex, Hermes, OpenClaw) peuvent interagir avec un répertoire de projet commun structuré via des fichiers de configuration partagés.](../screenshots/35WuZxbAY68/35WuZxbAY68_000858_seg20.jpg)
+*⏱️ 00:08:58 — Un schéma explicatif illustrant comment différents agents IA (Claude Code, Codex, Hermes, OpenClaw) peuvent interagir avec un répertoire de projet commun structuré via des fichiers de configuration partagés.*
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:09:14 - 00:09:37]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> And the lesson here is to build directories like they're going to outlive any tool because they will. We don't know if CloudCode is gonna be king in a few months. We don't know if Codex will be king in a few months. We don't know if some random startup is gonna just take over everything. But what we do know is that we're creating directories and we're creating our projects and we're keeping them clean and we're building in them that whatever AI is the new kid on the block will be able to plug into it and it will be just fine.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc numérique de type Excalidraw ou Miro.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le schéma montre que plusieurs outils d'IA se connectent à un "Agent Harness" commun agissant sur le même répertoire de fichiers (`/your-project`, `CLAUDE.md`, `AGENTS.md`, `scripts/`, `references/`, `skills/`, `README.md`). Le texte souligne : "THE KEY INSIGHT: CODING AGENTS ARE JUST HARNESSES" et "Build your directories like they'll outlive any tool".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle didactique expliquant l'architecture recommandée pour structurer des projets compatibles avec n'importe quel agent de codage IA.
+
+![Un schéma conceptuel illustrant l'indépendance des répertoires de projet vis-à-vis des outils d'IA (Claude Code, Codex, Hermes, OpenClaw).](../screenshots/35WuZxbAY68/35WuZxbAY68_000919_seg21.jpg)
+*⏱️ 00:09:19 — Un schéma conceptuel illustrant l'indépendance des répertoires de projet vis-à-vis des outils d'IA (Claude Code, Codex, Hermes, OpenClaw).*
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:09:37 - 00:09:56]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> The next thing I want you guys to think about is what is your North Star? Because it's probably very different from my North Star. You know, obviously I've got a bunch of business goals with what we're building out with AI Automation Society and our certifications and our events, but my North Star when it comes to YouTube is test out every tool, form my own opinions, and share with you guys what I think is interesting to know.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Tableau blanc numérique ou outil de design visuel (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Schéma illustrant une personne courant vers une "North Star", avec des "puits gravitationnels" représentant des distractions comme "New Model", "Trending Tool", "Hot Framework" et "Latest Feature". Texte : "Before you adopt ANY tool, you have to know what you're building toward."
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation conceptuelle et pédagogique pour aider à prioriser les outils technologiques par rapport aux objectifs commerciaux.
+
+![Une infographie illustrée intitulée "The North Star Test" montrant un chemin vers un objectif (North Star) avec des obstacles (distractions technologiques) et un cadre de décision pour l'adoption d'outils.](../screenshots/35WuZxbAY68/35WuZxbAY68_000942_seg22.jpg)
+*⏱️ 00:09:42 — Une infographie illustrée intitulée "The North Star Test" montrant un chemin vers un objectif (North Star) avec des obstacles (distractions technologiques) et un cadre de décision pour l'adoption d'outils.*
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:09:57 - 00:10:22]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> And so that North Star for me means I test out a lot of stuff. I jump on announcements. I have to experiment. And that doesn't mean that you have to, because if your North Star is building a business or a company that does X really good, like what is the mission? Then is every single new hot framework or every single new model or trending tool or latest feature, is that actually your path to the North Star? Or is that just a distraction? Like the number one mistake that entrepreneurs make is they get distracted and they try to do too much.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc numérique ou logiciel de présentation de type canevas (probablement Excalidraw ou un outil similaire).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le graphique montre un chemin menant à une "North Star Goal". Il liste des distractions ("New Model", "Trending Tool", "Hot Framework", "Latest Feature") représentées comme des puits de gravité, et inclut une section "THE TEST" avec la question : "Does this tool / feature get me MEASURABLY closer to the North Star?".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle et explicative du concept stratégique de focalisation pour éviter la distraction technologique.
+
+![Un schéma illustré présentant le concept du "North Star Test" pour évaluer l'adoption d'outils, avec un coureur essayant d'atteindre un objectif tout en évitant des distractions (nouveaux modèles, outils tendances, etc.).](../screenshots/35WuZxbAY68/35WuZxbAY68_001004_seg23.jpg)
+*⏱️ 00:10:04 — Un schéma illustré présentant le concept du "North Star Test" pour évaluer l'adoption d'outils, avec un coureur essayant d'atteindre un objectif tout en évitant des distractions (nouveaux modèles, outils tendances, etc.).*
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:10:22 - 00:10:55]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> So really the idea would be, okay, I'm just going to stay on this path. I'm going to save links to YouTube videos that Nate drops. I'm going to save these Twitter threads for later and just kind of remember that they're there, but I don't need to actually go learn all of these new features. Maybe I'll watch Nate's, you know, 10 minute video, but that doesn't mean I have to dedicate my whole next day to learning and building what he showed. There's a difference between knowing the what and knowing the how, and sometimes you only need to know all the what's. You don't need to know the how's. And I've got another point, which is kind of like the decision framework, and I'll touch on that in a bit, but hopefully this alone will make you guys think, wow, you know, there is a lot
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : FigJam (tableau blanc virtuel).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Schéma intitulé "The North Star Test" avec les étapes : "New Model", "Hot Framework", "Trending Tool", "Latest Feature" et la question décisionnelle : "Does this tool / feature get me MEASURABLY closer to the North Star?".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle et explication conceptuelle du maintien de la concentration sur les objectifs principaux face à la surabondance de nouveaux outils IA.
+
+![Une infographie illustrant le concept du "North Star Test", montrant une personne courant sur un chemin vers un objectif (étoile), évitant des distractions ("gravity wells") représentées par des outils ou frameworks tendances.](../screenshots/35WuZxbAY68/35WuZxbAY68_001031_seg24.jpg)
+*⏱️ 00:10:31 — Une infographie illustrant le concept du "North Star Test", montrant une personne courant sur un chemin vers un objectif (étoile), évitant des distractions ("gravity wells") représentées par des outils ou frameworks tendances.*
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:10:55 - 00:11:27]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. Okay. So we have like little sound bites. I can chat with people. The tool war panel settled a few debates for me. Nice. Good perspective there. We're outside again. We have these different banners, although they're all the same. They don't say like different people's names. So big AIS live logo. Workshop wing is over here. And let's go through the sliding glass doors and see what we've got. So we've got the AIS cafe. The map is in the bottom right, and it's not too descriptive.
+> of things that I've just experimented with and I don't know why. I don't even have a use case for that. This next one is the 20% productivity dip rule. So basically it's the idea that every single time you make a switch in your business, you are going to maybe lose about 20% of your efficiency or whatever metric you're thinking about. You're going to take a 20% dip because change is change and it can be hard sometimes. So what you have to figure out is if I'm going to make this change and I'm going to guarantee have some sort of dip in productivity, is that dip going to ultimately take me higher than where I would have been. As you can see, the blue line is worth it and the
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Tableau blanc numérique (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte : "Every switch is a bet.", graphique comparant la productivité avec ou sans changement d'outil, et une note d'avertissement concernant le passage de n8n à Claude Code.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique du concept de baisse de productivité liée à l'apprentissage de nouveaux outils.
+
+![Une présentation graphique illustrant la règle du "20% Productivity Dip", montrant l'impact d'un changement d'outil sur l'efficacité à travers un diagramme temporel.](../screenshots/35WuZxbAY68/35WuZxbAY68_001103_seg25.jpg)
+*⏱️ 00:11:03 — Une présentation graphique illustrant la règle du "20% Productivity Dip", montrant l'impact d'un changement d'outil sur l'efficacité à travers un diagramme temporel.*
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:11:27 - 00:11:47]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> red line is not worth it. If the dip only gets you back up to the same green line, then that's also not worth it. It wasn't worth the dip. So if you know that the dip will actually boost you above and take your business, you know, maybe break through a plateau or push to another level that you couldn't have reached before without that dip, then that's how you know it's something worth doing. Okay. Then we have productivity is needle moved per hour, not hours worked.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc numérique / Présentation (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Un graphique comparatif montrant deux trajectoires de productivité après le passage à un nouvel outil : l'une dépassant la ligne de base ("Worth it") et l'autre restant en dessous ("Not worth it"). Des points clés sont listés à gauche sur la règle des 20% de perte de productivité, et un encart en bas mentionne spécifiquement n8n et Claude Code.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur utilise le curseur pour souligner visuellement les différentes courbes du graphique afin d'expliquer pourquoi certains changements d'outils ne sont pas rentables.
+
+![Une diapositive explicative intitulée "Every switch is a bet" illustrant le concept du "20% Productivity Dip Rule" via un graphique montrant l'impact sur la productivité lors du changement d'un outil logiciel.](../screenshots/35WuZxbAY68/35WuZxbAY68_001132_seg26.jpg)
+*⏱️ 00:11:32 — Une diapositive explicative intitulée "Every switch is a bet" illustrant le concept du "20% Productivity Dip Rule" via un graphique montrant l'impact sur la productivité lors du changement d'un outil logiciel.*
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:11:48 - 00:12:13]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> I've fallen into this trap. I think a lot of you guys in my community have fallen into this trap as well, you work a 12 hour day. You think, damn, I was productive today. But what you don't realize is like, were you? Because I could maybe sit down for four hours and be more productive than you in 12 hours, because I'm actually doing everything that actually moves the needle rather than 12 hours of responding to a bunch of threads, reading through community posts, watching YouTube videos, just like planning out a bunch of stuff, but not actually doing anything.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : FigJam (tableau blanc collaboratif).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Schémas comparant deux approches : "Busy, not productive" (12h, notifications, onglets ouverts) vs "Focused, actually productive" (4h, déploiement de code, fonctionnalités terminées). Texte : "Hours worked is a vanity metric".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle d'un concept théorique sur la gestion du temps et la productivité pour illustrer le propos du narrateur.
+
+![Une infographie comparative sur un tableau blanc virtuel illustrant la différence entre être "occupé" (12 heures) et être "productif" (4 heures), avec le présentateur visible en incrustation à droite.](../screenshots/35WuZxbAY68/35WuZxbAY68_001154_seg27.jpg)
+*⏱️ 00:11:54 — Une infographie comparative sur un tableau blanc virtuel illustrant la différence entre être "occupé" (12 heures) et être "productif" (4 heures), avec le présentateur visible en incrustation à droite.*
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:12:14 - 00:12:48]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
+> So this kind of relates back to that North Star thing. Let's say every day you sit down in the morning and you say, okay, by the end of today, I want to achieve X. Every single thing that you want to do that day should be driving towards achieving X. And then maybe once you've achieved X, then you can spend some other time, like looking into some new features and experimenting with some stuff. But productivity means that you're actually doing things that are moving the needle for you. Not how long did you work today? Okay. So this one kind of goes back to that first point about the fact that all agents and agent harnesses are just different harnesses and they all work in your same stuff. Because the mindset here, which is something that I've been thinking a
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de tableau blanc virtuel (de type Miro ou FigJam) affichant des infographies de productivité et de workflow.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte explicatif sur les métriques de productivité et diagramme étape par étape ("Job: Make a YouTube Video") associant des outils spécifiques (Perplexity, Claude Code, DaVinci Resolve) à chaque étape du processus.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur utilise ces supports visuels comme base théorique pour expliquer la nécessité de se concentrer sur les tâches qui font avancer les objectifs réels ("North Star") plutôt que sur l'accumulation d'outils.
+
+![Infographie comparant "Busy, Not Productive" (12 heures de travail superficiel) et "Focused, Actually Productive" (4 heures de travail à fort impact sur le produit).](../screenshots/35WuZxbAY68/35WuZxbAY68_001222_seg28.jpg)
+*⏱️ 00:12:22 — Infographie comparant "Busy, Not Productive" (12 heures de travail superficiel) et "Focused, Actually Productive" (4 heures de travail à fort impact sur le produit).*
+
+![Schéma de workflow pour la réalisation d'une vidéo YouTube, illustrant l'approche "Tool-Agnostic" où chaque sous-tâche (recherche, script, montage) utilise un outil spécialisé.](../screenshots/35WuZxbAY68/35WuZxbAY68_001239_seg28.jpg)
+*⏱️ 00:12:39 — Schéma de workflow pour la réalisation d'une vidéo YouTube, illustrant l'approche "Tool-Agnostic" où chaque sous-tâche (recherche, script, montage) utilise un outil spécialisé.*
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:12:48 - 00:13:14]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> lot about, I've been building out frameworks, we're building a certification program, we're doing all this. And our thinking is basically what Jeff Bezos said, think about what will never change, not what will change. And so if you can become tool agnostic in the way that you work, that means, okay, let's say cloud code shut down tomorrow. Are you okay? Could you pick up codex? Could you pick up something else? Could you keep working? Could you be okay? And if the answer is no, you might want to think about things, right? Because like, if you're one of those people where, I mean, I've been there, Claude goes down.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc numérique de type FigJam ou Miro.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le diagramme décompose la création d'une vidéo YouTube en 6 étapes (Recherche, Outline, Script, Miniature, Montage) et associe des outils spécifiques à chaque sous-tâche (Perplexity, Claude Code, Claude Chat, GPT Image 2, Nano Banana, DaVinci Resolve). Le texte met en avant la distinction entre "The Wrong Question" et "The Right Question" ainsi que le principe "Right tool per task, not per job".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique d'un cadre de travail (framework) pour démontrer comment structurer ses processus métier indépendamment des outils utilisés.
+
+![Un schéma conceptuel affiché sur un tableau blanc virtuel illustrant la philosophie "Tool-Agnostic" (agnostique aux outils) appliquée à la création de vidéos YouTube.](../screenshots/35WuZxbAY68/35WuZxbAY68_001254_seg29.jpg)
+*⏱️ 00:12:54 — Un schéma conceptuel affiché sur un tableau blanc virtuel illustrant la philosophie "Tool-Agnostic" (agnostique aux outils) appliquée à la création de vidéos YouTube.*
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:13:14 - 00:13:35]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> Like the status page is down, the API is throttled, you can't use Claude. Are you just sitting there like, oh my God, I can't work anymore. I have to wait till it's back up. Because if that happens, then you're probably not in a great spot. You probably wanna be learning how to plug in a few other things into your main stack, into your main working directory. And what you'll realize is that you have overall job responsibilities or functions or processes.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Tableau blanc virtuel (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le diagramme décompose la création d'une vidéo YouTube en 6 étapes (Recherche, Outline, Script, Thumbnail, etc.) avec des exemples d'outils associés (Perplexity, Claude, GPT, DaVinci Resolve) et des principes de réflexion sur la sélection d'outils.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique d'un workflow structuré par tâches plutôt que par outils pour démontrer la flexibilité nécessaire face aux pannes potentielles de service.
+
+![Un schéma conceptuel affiché sur un tableau blanc virtuel illustrant une approche "Tool-Agnostic" (indépendante des outils) pour la création de contenu vidéo.](../screenshots/35WuZxbAY68/35WuZxbAY68_001319_seg30.jpg)
+*⏱️ 00:13:19 — Un schéma conceptuel affiché sur un tableau blanc virtuel illustrant une approche "Tool-Agnostic" (indépendante des outils) pour la création de contenu vidéo.*
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:13:35 - 00:14:12]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
+> And what happens in a process is that it's basically built up of a bunch of different mini tasks. And usually the right question isn't which tool is best? The right question is for this specific task in this specific context, which tool is best? So here's a quick example, right? Like let's say I'm making a YouTube video. Maybe I use perplexity for research. Maybe I use Cloud Code with a skill and with knowledge about me to help structure the video. And then maybe I use Cloud Chat for some reason to actually write the script. And then I use like GPT Image 2 to create me that thumbnail. And then I use Nano banana to, to add a glowing effect or to just make some stuff stand out. And then after I do all that,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Tableau blanc collaboratif (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Schéma "Job: Make a YouTube Video" divisé en 6 étapes (Recherche, Outline, Script, Thumbnail Copy, Thumbnail Effects, Edit), associant des outils spécifiques comme Perplexity, Claude Code, Claude chat, GPT Image 2, Nano Banana et DaVinci Resolve à chaque étape.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique illustrant la méthodologie "Tool-Agnostic, Not Tool-Loyal" pour optimiser les workflows.
+
+![Un schéma conceptuel sur un tableau blanc virtuel illustrant la décomposition de la création d'une vidéo YouTube en sous-tâches spécifiques avec des outils IA recommandés pour chacune.](../screenshots/35WuZxbAY68/35WuZxbAY68_001344_seg31.jpg)
+*⏱️ 00:13:44 — Un schéma conceptuel sur un tableau blanc virtuel illustrant la décomposition de la création d'une vidéo YouTube en sous-tâches spécifiques avec des outils IA recommandés pour chacune.*
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:14:12 - 00:14:45]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> maybe I drop it into DaVinci Resolve or Adobe Premiere Pro just to stamp it up and get it out the door. So not every single step in a process has to be AI. Not every single step in the process has to be the same AI. Break things down into baby steps and think about for this specific baby step, what tools do I have in my list? You know, all of these different tools that we looked at earlier, which one of these tools is going to be the best for this little output that I need. And the last thing here is basically the decision framework. So this is what I alluded to when I was talking about that North Star and finding the path that you're running on, which is directly leading
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc numérique de type Miro ou FigJam.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte détaillé présentant des méthodologies de travail : "Tool-Agnostic, Not Tool-Loyal", "Right tool per task, not per job" et les étapes logiques de validation d'un nouvel outil (Time-box, baseline, intégration).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle et explication didactique d'une stratégie de gestion de workflow et de sélection d'outils technologiques.
+
+![Un diagramme de flux illustrant le processus de création d'une vidéo YouTube décomposé en 6 sous-tâches, chacune associée à un outil spécifique (Perplexity, Claude Code, etc.).](../screenshots/35WuZxbAY68/35WuZxbAY68_001420_seg32.jpg)
+*⏱️ 00:14:20 — Un diagramme de flux illustrant le processus de création d'une vidéo YouTube décomposé en 6 sous-tâches, chacune associée à un outil spécifique (Perplexity, Claude Code, etc.).*
+
+![Un schéma décisionnel intitulé "The New Tool Decision Framework" permettant d'évaluer l'utilité d'adopter un nouvel outil d'IA via un arbre de décision.](../screenshots/35WuZxbAY68/35WuZxbAY68_001437_seg32.jpg)
+*⏱️ 00:14:37 — Un schéma décisionnel intitulé "The New Tool Decision Framework" permettant d'évaluer l'utilité d'adopter un nouvel outil d'IA via un arbre de décision.*
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:14:45 - 00:15:10]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
+> towards that North Star. When a new AI tool or feature drops or a YouTube video for me drops, look at the title, click on the video, understand what I'm talking about and ask yourself, does this video or does this new feature solve a pain point for me right now? Most of the time, the answer will probably be no. And if the answer is no, but you think the feature is cool or the agent framework is cool or whatever it is, then just save the link so that you know, okay, later if I do wanna watch this, I know where it is.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc collaboratif (type FigJam ou Miro).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le diagramme de flux contient les étapes suivantes : "Does it solve a real pain you have RIGHT NOW?", "Time-box a 1-week trial", "Above baseline after 1 week?" avec les issues possibles "Integrate" ou "Revert without guilt".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle et explication pédagogique du cadre décisionnel par le créateur pour aider à filtrer l'adoption de nouveaux outils IA.
+
+![Un schéma décisionnel nommé "The New Tool Decision Framework" présenté sur un canevas numérique, illustrant une méthode pour évaluer l'utilité des nouveaux outils IA.](../screenshots/35WuZxbAY68/35WuZxbAY68_001451_seg33.jpg)
+*⏱️ 00:14:51 — Un schéma décisionnel nommé "The New Tool Decision Framework" présenté sur un canevas numérique, illustrant une méthode pour évaluer l'utilité des nouveaux outils IA.*
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:15:10 - 00:15:34]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
+> If the answer is yes, then maybe it makes sense to actually test it out. But don't just spend like a month testing it out. Try to test it out in a real scenario. You know, like don't just test it out with mock data. Try to test it out with something that actually moves the needle for you. Not in a way where it would be risky, you know, like sending out emails or restructuring a whole database, but do something in your actual working environment so you have real proof of if you like it or if you don't, or if it actually solves a problem or not.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Canevas numérique collaboratif (probablement FigJam ou Miro).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Organigramme décisionnel détaillant les étapes : questionner le besoin réel ("Does it solve a real pain you have RIGHT NOW?"), limiter l'essai à une semaine, et évaluer la productivité à la fin de la semaine.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle d'une méthodologie de prise de décision pour l'adoption d'outils technologiques.
+
+![Un schéma décisionnel nommé "The New Tool Decision Framework" affiché sur un canevas numérique (type Miro/FigJam), structuré sous forme d'organigramme pour évaluer l'utilité d'un nouvel outil IA.](../screenshots/35WuZxbAY68/35WuZxbAY68_001516_seg34.jpg)
+*⏱️ 00:15:16 — Un schéma décisionnel nommé "The New Tool Decision Framework" affiché sur un canevas numérique (type Miro/FigJam), structuré sous forme d'organigramme pour évaluer l'utilité d'un nouvel outil IA.*
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:15:34 - 00:15:57]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
+> And then at the end of the week after you've used it, just ask yourself, did this make sense? Did this solve my pain point to the point where I'm going to put this into my main daily drivers or my main companions of tech tools? Or did it not? Because if it didn't, then get rid of it for now. And then only later, if you realize, okay, I'm working on my business and I'm hitting this pain point every single day.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Tableau blanc numérique (type FigJam ou Miro).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Un organigramme détaillant trois étapes : 1) Identifier si l'outil résout une douleur réelle, 2) Effectuer un test de temps d'une semaine, 3) Comparer la productivité après une semaine pour décider d'intégrer ou d'abandonner l'outil.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle et explication d'un cadre de réflexion structuré pour l'adoption technologique.
+
+![Un schéma décisionnel nommé "The New Tool Decision Framework" affiché sur un tableau blanc numérique, illustrant les étapes pour décider s'il faut adopter un nouvel outil IA.](../screenshots/35WuZxbAY68/35WuZxbAY68_001540_seg35.jpg)
+*⏱️ 00:15:40 — Un schéma décisionnel nommé "The New Tool Decision Framework" affiché sur un tableau blanc numérique, illustrant les étapes pour décider s'il faut adopter un nouvel outil IA.*
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:15:57 - 00:16:17]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
+> Do I have any features or agents in this list of like other things that I need to look at? Do any of these directly help me solve this pain point? If the answer is yes, then you reach for that tutorial and then you grab it and then you learn it. Does that make sense? Like sometimes as you're walking down this path, you don't wanna jump to the right or to the left to all these holes, but sometimes you might actually run into a roadblock.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de tableau blanc virtuel (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Diagrammes de flux : le premier détaille un processus décisionnel par étapes (questionnement sur la résolution de problèmes réels, essai de 1 semaine, intégration) ; le second illustre un coureur évitant des "puits" représentant les distractions (nouveaux modèles, frameworks, outils tendances).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur utilise ces supports visuels pour expliquer son processus de réflexion stratégique concernant l'adoption d'outils d'automatisation.
+
+![Un schéma décisionnel intitulé "The New Tool Decision Framework" illustrant les étapes pour évaluer l'adoption d'un nouvel outil IA.](../screenshots/35WuZxbAY68/35WuZxbAY68_001602_seg36.jpg)
+*⏱️ 00:16:02 — Un schéma décisionnel intitulé "The New Tool Decision Framework" illustrant les étapes pour évaluer l'adoption d'un nouvel outil IA.*
+
+![Un schéma intitulé "The North Star Test" représentant visuellement comment rester concentré sur ses objectifs malgré les distractions des nouveaux outils.](../screenshots/35WuZxbAY68/35WuZxbAY68_001612_seg36.jpg)
+*⏱️ 00:16:12 — Un schéma intitulé "The North Star Test" représentant visuellement comment rester concentré sur ses objectifs malgré les distractions des nouveaux outils.*
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:16:17 - 00:16:38]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
+> And the only thing that might get you over that roadblock is to jump into one of those holes, understand it. And then all of a sudden the roadblock is easy to just like walk through or jump over or whatever. Okay, let me take a breath. I was talking really fast in this video and I don't know, It's just something that I'm passionate about and something that I wanted to get off my chest because I feel like I've been answering these questions a lot in the comments and in my community.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc numérique (type FigJam ou Miro).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Diagramme conceptuel avec le texte "Before you adopt ANY tool, you have to know what you're building toward" et "The North Star Test" avec une grille d'évaluation pour valider l'utilité d'un outil.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation d'un cadre conceptuel pour aider l'audience à filtrer les outils IA superflus et rester concentré sur leurs objectifs business.
+
+![Un schéma visuel illustrant "The North Star Test" pour l'adoption d'outils, montrant un personnage courant vers un objectif (étoile) tout en évitant des distractions (trous représentant des outils ou fonctionnalités "tendance").](../screenshots/35WuZxbAY68/35WuZxbAY68_001622_seg37.jpg)
+*⏱️ 00:16:22 — Un schéma visuel illustrant "The North Star Test" pour l'adoption d'outils, montrant un personnage courant vers un objectif (étoile) tout en évitant des distractions (trous représentant des outils ou fonctionnalités "tendance").*
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:16:38 - 00:16:57]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
+> But I really, really hope that this one gave you some clarity. And once again, I use a bunch of tools and I've really, really tried to only bring you guys like cloud code content for the majority because I don't want to overwhelm. But please let me know, what other tools do you want to see me cover? Especially anything in here, especially some of these constant companions that I am using a lot. What do you want to see?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de tableau blanc interactif ou de création de diagrammes (type Miro ou FigJam) affichant une "Tier List" personnalisée.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableau organisé par catégories : S (Daily Driver), A (Constant Companions), B (Specialists), C (Experimenting) et Graduated. On y reconnaît des icônes comme VS Code, Cursor, GPT-4, Llama, et divers autres logos d'outils d'automatisation IA.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle et récapitulative des outils utilisés par le créateur pour aider son audience à hiérarchiser les solutions d'automatisation IA.
+
+![Une capture d'écran montrant un tableau de classement (Tier List) intitulé "AI Tool Ranking" classant divers outils d'IA par catégories, du "Daily Driver" (S) aux outils "Graduated". Le présentateur apparaît dans une fenêtre incrustée en bas à droite.](../screenshots/35WuZxbAY68/35WuZxbAY68_001643_seg38.jpg)
+*⏱️ 00:16:43 — Une capture d'écran montrant un tableau de classement (Tier List) intitulé "AI Tool Ranking" classant divers outils d'IA par catégories, du "Daily Driver" (S) aux outils "Graduated". Le présentateur apparaît dans une fenêtre incrustée en bas à droite.*
+
+![La même vue du tableau "AI Tool Ranking" avec une légère modification dans la rangée "Specialists" (B) où de nouvelles icônes d'outils apparaissent sur la droite, illustrant la revue continue des outils par le présentateur.](../screenshots/35WuZxbAY68/35WuZxbAY68_001648_seg38.jpg)
+*⏱️ 00:16:48 — La même vue du tableau "AI Tool Ranking" avec une légère modification dans la rangée "Specialists" (B) où de nouvelles icônes d'outils apparaissent sur la droite, illustrant la revue continue des outils par le présentateur.*
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:16:57 - 00:17:13]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
+> Just let me know in the comments. But anyways, that is going to do it for today. So if you guys enjoyed the video or you learned something new, please give it a like. It helps me out a ton. And don't forget to download that free resource guide. Join my free school community. All of my resources are in there. And yeah, I appreciate you guys making the end of the video and I'll see you in the next one. Thanks everyone.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Tableau blanc collaboratif (type FigJam ou Miro).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Icônes de logiciels et d'outils IA (VS Code, Cursor, ChatGPT, Llama, etc.) organisées par niveaux de priorité et d'utilisation.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle de synthèse des outils recommandés par le créateur.
 
----
-
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+![Un tableau de classement (tier list) interactif sur un tableau blanc virtuel, affichant divers outils IA classés par catégories (Daily Driver, Constant Companions, Specialists, Experimenting, Graduated).](../screenshots/35WuZxbAY68/35WuZxbAY68_001701_seg39.jpg)
+*⏱️ 00:17:01 — Un tableau de classement (tier list) interactif sur un tableau blanc virtuel, affichant divers outils IA classés par catégories (Daily Driver, Constant Companions, Specialists, Experimenting, Graduated).*
 
 ---
 
