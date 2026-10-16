@@ -1,0 +1,2639 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment créer des agents Claude 24h/24 et 7j/7. Facile. — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment créer des agents Claude 24h/24 et 7j/7. Facile.</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-14</span>
+                <span class="badge">⏱️ 00:16:27</span>
+                <span class="badge">🆔 <code>ehg4fhydTgs</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=ehg4fhydTgs" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>La vidéo de la chaîne *Nate Herk | AI Automation* explore l'une des évolutions les plus majeures de l'écosystème de développement autonome : l'introduction par Anthropic des « routines » dans Claude Code, annoncée le 14 avril. Cette fonctionnalité révolutionnaire permet d'exécuter des prompts et des agents IA 24h/24 et 7j/7 directement sur l'infrastructure cloud d'Anthropic, affranchissant ainsi les développeurs de la contrainte d'laisser leur ordinateur portable allumé. Ces routines peuvent être déclenchées par un calendrier (planifiées), un appel API ou un événement webhook (comme des actions GitHub), offrant une flexibilité inédite pour l'automatisation des flux de travail techniques.<br><br>À travers une démarche d'ingénierie empirique, l'auteur détaille sa migration d'automatisations locales vers des tâches distantes basées sur le web. Il partage les obstacles rencontrés et résolus lors de ses tests pratiques : la gestion des secrets d'API absents du dépôt GitHub public, l'ajustement des niveaux de sécurité réseau de l'environnement cloud (passage du mode « de confiance » au mode « complet »), et l'adaptation de prompts aux contextes sans état (*stateless*). L'analyste démontre ainsi comment connecter Claude Code à des services tiers (comme ClickUp ou l'API YouTube) de manière totalement autonome et sécurisée.<br><br>Enfin, la vidéo met en lumière les limites inhérentes à l'architecture cloud d'Anthropic, notamment l'impossibilité d'accéder à des sessions locales persistantes ou à des données authentifiées par des cookies locaux (comme pour l'automatisation de navigateurs via Playwright). L'intervenant conclut sur la méthodologie exacte à adopter pour concevoir des instructions uniques et infaillibles, garantissant que les agents autonomes exécutent leurs tâches complexes du premier coup sans nécessiter d'intervention humaine.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Claude Code** : L'environnement de développement et d'agent conversationnel d'Anthropic intégrant désormais des routines cloud pour exécuter des tâches automatisées à distance.<br>* **Anthropic Cloud Infrastructure** : L'infrastructure web managée sur laquelle s'exécutent les routines de manière isolée et planifiée 24h/24 et 7j/7.<br>* **GitHub** : Le système de contrôle de version utilisé pour synchroniser et cloner les dépôts de code (ex. le projet *Herc2*) nécessaires à l'exécution contextuelle des routines distantes.<br>* **ClickUp** : L'outil de gestion de projet et de communication utilisé dans les tests pour valider l'envoi automatisé de messages et de rapports via l'agent.<br>* **YouTube Data API** : L'API externe exploitée pour récupérer et analyser automatiquement les commentaires récents des utilisateurs sous forme de résumés structurés.<br>* **Playwright CLI** : Un outil d'automatisation de navigateur mentionné pour exécuter des actions web complexes, bien que limité dans un environnement cloud sans état (*stateless*).<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Affranchissement du matériel local** : Les routines cloud permettent d'exécuter des agents IA 24h/24 et 7j/7 sur les serveurs d'Anthropic, rendant l'utilisation d'un ordinateur portable allumé en continu totalement superflue.<br>* **Déclencheurs multimodaux** : Les routines ne se limitent pas à des planifications horaires (minimum d'une exécution par heure) ; elles peuvent également être déclenchées par des appels API ou des événements Webhooks GitHub.<br>* **Architecture sans état (*Stateless*)** : Chaque exécution distante clone temporairement le dépôt GitHub, réalise la tâche, puis détruit l'environnement, ce qui impose de concevoir des scripts autonomes et indépendants d'une session persistante.<br>* **Gestion sécurisée des variables d'environnement** : Puisque les fichiers `.env` contenant les clés secrètes sont exclus des dépôts GitHub via `.gitignore`, il est impératif de déclarer ces clés directement dans les paramètres de l'environnement cloud d'Anthropic.<br>* **Niveaux d'accès réseau ajustables** : Pour autoriser l'agent à interagir avec des bibliothèques externes ou des API non vérifiées par défaut, le niveau d'accès de l'environnement cloud doit être basculé du mode « de confiance » au mode « complet ».<br>* **Explicitation des sources de configuration** : Face à des agents qui peinent parfois à localiser automatiquement les clés d'API dans des structures de projets complexes, l'écriture du prompt doit explicitement leur ordonner d'utiliser les variables d'environnement distantes.<br>* **Conception de prompts auto-suffisants** : Les routines étant conçues pour un flux d'exécution unique sans intervention humaine, les instructions textuelles doivent être extrêmement précises et structurées pour empêcher l'agent de s'arrêter pour poser des questions.<br>* **Incompatibilité des sessions locales et des cookies** : Les automatisations basées sur des navigateurs (comme Playwright) nécessitant des sessions locales, des jetons de connexion ou des cookies pré-enregistrés échouent dans le cloud, requérant l'utilisation exclusive d'API ou de clés d'authentification.<br>* **Gestion des branches et des résultats** : Si une routine modifie activement une base de code ou effectue une revue de code, le système génère automatiquement une nouvelle branche ou restitue un livrable au lieu de supprimer l'ensemble des modifications.<br>* **Méthodologie de migration itérative** : Il est fortement recommandé de tester d'abord les routines sur des actions simples et sans conséquence (comme l'envoi de messages de test) avant d'y migrer des flux de production complexes.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude Code</span><span class="tool-tag">Anthropic Cloud Infrastructure</span><span class="tool-tag">GitHub</span><span class="tool-tag">ClickUp</span><span class="tool-tag">YouTube Data API</span><span class="tool-tag">Playwright CLI</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Affranchissement du matériel local** : Les routines cloud permettent d&#x27;exécuter des agents IA 24h/24 et 7j/7 sur les serveurs d&#x27;Anthropic, rendant l&#x27;utilisation d&#x27;un ordinateur portable allumé en continu totalement superflue.</span></li><li><span class="point-bullet">✦</span><span>Déclencheurs multimodaux** : Les routines ne se limitent pas à des planifications horaires (minimum d&#x27;une exécution par heure) ; elles peuvent également être déclenchées par des appels API ou des événements Webhooks GitHub.</span></li><li><span class="point-bullet">✦</span><span>Architecture sans état (*Stateless*)** : Chaque exécution distante clone temporairement le dépôt GitHub, réalise la tâche, puis détruit l&#x27;environnement, ce qui impose de concevoir des scripts autonomes et indépendants d&#x27;une session persistante.</span></li><li><span class="point-bullet">✦</span><span>Gestion sécurisée des variables d&#x27;environnement** : Puisque les fichiers `.env` contenant les clés secrètes sont exclus des dépôts GitHub via `.gitignore`, il est impératif de déclarer ces clés directement dans les paramètres de l&#x27;environnement cloud d&#x27;Anthropic.</span></li><li><span class="point-bullet">✦</span><span>Niveaux d&#x27;accès réseau ajustables** : Pour autoriser l&#x27;agent à interagir avec des bibliothèques externes ou des API non vérifiées par défaut, le niveau d&#x27;accès de l&#x27;environnement cloud doit être basculé du mode « de confiance » au mode « complet ».</span></li><li><span class="point-bullet">✦</span><span>Explicitation des sources de configuration** : Face à des agents qui peinent parfois à localiser automatiquement les clés d&#x27;API dans des structures de projets complexes, l&#x27;écriture du prompt doit explicitement leur ordonner d&#x27;utiliser les variables d&#x27;environnement distantes.</span></li><li><span class="point-bullet">✦</span><span>Conception de prompts auto-suffisants** : Les routines étant conçues pour un flux d&#x27;exécution unique sans intervention humaine, les instructions textuelles doivent être extrêmement précises et structurées pour empêcher l&#x27;agent de s&#x27;arrêter pour poser des questions.</span></li><li><span class="point-bullet">✦</span><span>Incompatibilité des sessions locales et des cookies** : Les automatisations basées sur des navigateurs (comme Playwright) nécessitant des sessions locales, des jetons de connexion ou des cookies pré-enregistrés échouent dans le cloud, requérant l&#x27;utilisation exclusive d&#x27;API ou de clés d&#x27;authentification.</span></li><li><span class="point-bullet">✦</span><span>Gestion des branches et des résultats** : Si une routine modifie activement une base de code ou effectue une revue de code, le système génère automatiquement une nouvelle branche ou restitue un livrable au lieu de supprimer l&#x27;ensemble des modifications.</span></li><li><span class="point-bullet">✦</span><span>Méthodologie de migration itérative** : Il est fortement recommandé de tester d&#x27;abord les routines sur des actions simples et sans conséquence (comme l&#x27;envoi de messages de test) avant d&#x27;y migrer des flux de production complexes.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:34</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cloud Code nous a enfin apporté des routines, ce qui signifie en gros que vous pouvez injecter un prompt dans Cloud Code, mais il peut s&#x27;exécuter sur le web, donc votre ordinateur portable n&#x27;a pas besoin de rester ouvert. Et je suis tellement enthousiaste à ce sujet. J&#x27;ai déjà commencé à l&#x27;essayer. J&#x27;ai migré mes automatisations là-bas, mais il y a beaucoup de petits pièges, alors je suis là pour vous expliquer exactement comment vous pouvez réellement configurer ces automatisations pour qu&#x27;elles fonctionnent. Donc aujourd&#x27;hui, le 14 avril, Cloud a tweeté, désormais en version préliminaire de recherche, les routines dans Cloud Code. Vous configurez une routine une seule fois, ce qui ressemble fondamentalement à un prompt, et elle peut s&#x27;exécuter selon un calendrier, à partir d&#x27;un appel API ou en réponse à un événement, et elle s&#x27;exécute sur l&#x27;infrastructure web d&#x27;Anthropic. Donc c&#x27;est génial. Vous pouvez donc appeler une routine à partir d&#x27;une API. Vous pouvez</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Twitter / X (interface web)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publication textuelle de Claude annonçant les routines dans Claude Code (&quot;Now in research preview: routines in Claude Code&quot;) avec une capture d&#x27;interface illustrant la configuration d&#x27;une routine et des déclencheurs (triggers).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente l&#x27;annonce des routines sur l&#x27;infrastructure web de Claude Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000009_seg1.jpg" alt="Capture d&#x27;écran montrant un tweet officiel de Claude (@claudeai) au sujet de la fonctionnalité &#x27;routines&#x27; dans Claude Code, avec le présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un tweet officiel de Claude (@claudeai) au sujet de la fonctionnalité &#x27;routines&#x27; dans Claude Code, avec le présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:34 - 00:01:07</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">faire en sorte que des événements GitHub le déclenchent, ou ils peuvent être planifiés, ce qui ressemble aux automatisations planifiées que nous avons déjà, mais maintenant ils s&#x27;exécutent sur le web. Donc vous pouvez vraiment les créer depuis n&#x27;importe où. Vous pouvez le faire ici même comme un déclencheur planifié pour exécuter des agents distants planifiés, ce qui se trouve dans le terminal. Vous pourriez aussi aller sur clawed AI slash code. Donc vous pourriez le faire sur le web. Et juste ici, vous voyez, j&#x27;ai trois routines basées sur le web juste ici. Ou ce que je vais vous montrer aujourd&#x27;hui, c&#x27;est simplement de le faire dans l&#x27;application de bureau. Parce que juste ici, si je vais dans mes tâches planifiées, vous pouvez voir que j&#x27;en ai quelques-unes comme ces quatre qui sont locales. Et ensuite j&#x27;ai ces quatre qui s&#x27;exécutent à l&#x27;intérieur d&#x27;un dépôt GitHub. Donc ce sont les distantes. Si je vais ici en haut et que je clique sur</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, terminal intégré (Claude Code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande &#x27;/sche&#x27; avec autocomplétion affichant les options : /schedule, /claude-api, /pulse-check, /n8n-workflow-patterns, /codex:rescue, /rewind.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie de la commande de planification d&#x27;agents distants dans l&#x27;interface de Claude Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000042_seg2.jpg" alt="Interface de VS Code montrant un terminal intégré exécutant Claude Code v2.1.107, avec la commande &#x27;/schedule&#x27; en cours de saisie et la liste des commandes disponibles." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000042_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:42</span>
+                        <span class="caption-text">Interface de VS Code montrant un terminal intégré exécutant Claude Code v2.1.107, avec la commande &#x27;/schedule&#x27; en cours de saisie et la liste des commandes disponibles.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:07 - 00:01:39</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">nouvelle tâche, c&#x27;est ici que nous pourrions configurer une nouvelle tâche locale ou une nouvelle tâche distante. C&#x27;est très similaire. Vous configurez le nom, vous configurez ce que Cloud doit faire, et voici le prompt réel. J&#x27;en parlerai donc plus en détail dans un instant, mais ensuite vous configureriez votre modèle, votre dépôt et votre environnement cloud. Vous définissez la cadence, toutes les heures, tous les jours, les jours de semaine. Je crois que le minimum est d&#x27;une fois par heure. Genre, vous ne pourriez pas le faire toutes les 10 minutes ou quelque chose comme ça, mais ce n&#x27;est quand même pas mal du tout. C&#x27;est ici que vous pourriez configurer tous vos connecteurs. Donc, si vous avez besoin de connecter Slack ou Gmail ou, vous savez, peu importe ce que c&#x27;est, vous pouvez les connecter juste ici, mais vous pouvez aussi tout simplement utiliser votre API classique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de gestion d&#x27;agents IA (Claude Code / Nate Herk Cloud)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Formulaire de création de tâche (&quot;New remote task&quot;, champ de nom, zone de texte pour le prompt, options de planification : Hourly, Daily, Weekdays, Weekly, Custom, sélection de dépôt GitHub et de modèle Opus 4.6).</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration d&#x27;une nouvelle tâche planifiée à distance en définissant son nom, son prompt et sa fréquence d&#x27;exécution.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000115_seg3.jpg" alt="Interface de configuration pour une nouvelle tâche à distance (&quot;New remote task&quot;) avec des champs de saisie pour le nom, la description du comportement de Claude, la sélection du dépôt Git, ainsi que des options de planification temporelle." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000115_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:15</span>
+                        <span class="caption-text">Interface de configuration pour une nouvelle tâche à distance (&quot;New remote task&quot;) avec des champs de saisie pour le nom, la description du comportement de Claude, la sélection du dépôt Git, ainsi que des options de planification temporelle.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:39 - 00:02:12</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">points de terminaison avec vos clés API. Et puis bien sûr, vous avez vos permissions. Vous pouvez donc choisir la manière dont Claude doit agir. Maintenant, une chose à propos de ceux-ci, c&#x27;est qu&#x27;ils sont conçus pour être un prompt unique. Vous n&#x27;êtes pas là. Vous voulez donc probablement vous assurer qu&#x27;il n&#x27;a jamais à s&#x27;arrêter et à vous poser des questions. Sinon, quel est l&#x27;intérêt de l&#x27;automatisation ? Donc, comme je l&#x27;ai dit, il y a des tonnes de choses à explorer ici et je ne vais pas essayer de vous ennuyer, mais certaines de ces choses sont vraiment importantes parce que lorsque j&#x27;ai fait la configuration pour la première fois, mes automatisations ne se sont pas contentées de migrer et de fonctionner. Je vais donc vous dire les problèmes que j&#x27;ai rencontrés et, espérons-le, répondre à tout ce que vous avez besoin de savoir pour n&#x27;avoir pas à aller dans les commentaires et poser ces questions courantes</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web d&#x27;automatisation et Google Docs</p>
+                        <p><strong>Contenu textuel & Code :</strong> Formulaire de configuration de tâche (Name, description, repository, sélection de la fréquence quotidienne à 09:00 AM, section Permissions) et plan de cours sur &quot;Claude Code Routines&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la configuration d&#x27;une tâche planifiée et des permissions associées, puis présente la feuille de route du sujet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000147_seg4.jpg" alt="Interface d&#x27;une application montrant une modale de création de tâche distante (&quot;New remote task&quot;) avec des options de planification (Hourly, Daily, Weekdays) et de permissions." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000147_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:47</span>
+                        <span class="caption-text">Interface d&#x27;une application montrant une modale de création de tâche distante (&quot;New remote task&quot;) avec des options de planification (Hourly, Daily, Weekdays) et de permissions.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000204_seg4.jpg" alt="Document de référence Google Docs intitulé &quot;Claude Code Routines&quot; listant les différents sujets abordés comme &quot;What It Is&quot;, &quot;How It Works&quot;, &quot;Environments&quot;, etc." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000204_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:04</span>
+                        <span class="caption-text">Document de référence Google Docs intitulé &quot;Claude Code Routines&quot; listant les différents sujets abordés comme &quot;What It Is&quot;, &quot;How It Works&quot;, &quot;Environments&quot;, etc.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:12 - 00:02:32</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">questions. Je peux simplement y répondre ici même pour vous. Laissez-moi donc d&#x27;abord, très rapidement, vous montrer ce que j&#x27;ai testé. La première chose que je voulais tester, c&#x27;est si je venais ici et que je créais une nouvelle routine pour simplement envoyer un message à mon ClickUp. Évidemment, cela n&#x27;a aucune valeur, mais je voulais juste voir comment cela fonctionnait. Parce que ce que je voulais faire, c&#x27;est voir si je pouvais le faire sans ajouter mon connecteur ClickUp.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation de tâches / gestion de routines par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des tâches planifiées (routines quotidiennes ou personnalisées) telles que &#x27;Skool wins engagement&#x27;, &#x27;Notification responses&#x27;, &#x27;AI news roundup&#x27;, &#x27;Youtube comment replies&#x27;, &#x27;Testing Skool Wins&#x27;, &#x27;Testing YT Comments&#x27;, &#x27;Testing ClickUp API&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;écran de planification des routines et survole ou sélectionne l&#x27;une d&#x27;elles, en expliquant ses tests de routines pour l&#x27;intégration avec ClickUp.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000217_seg5.jpg" alt="Capture d&#x27;écran montrant une interface de gestion de tâches automatisées ou d&#x27;agent IA avec plusieurs routines programmées (&#x27;Skool wins engagement&#x27;, &#x27;Notification responses&#x27;, &#x27;Testing ClickUp API&#x27;, etc.), et la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000217_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:17</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de gestion de tâches automatisées ou d&#x27;agent IA avec plusieurs routines programmées (&#x27;Skool wins engagement&#x27;, &#x27;Notification responses&#x27;, &#x27;Testing ClickUp API&#x27;, etc.), et la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:32 - 00:02:54</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et j&#x27;ai réussi à le déclencher, mais ça n&#x27;a pas fonctionné tout de suite. Laissez-moi donc vous montrer ce sur quoi je suis tombé. La façon dont cela fonctionne, c&#x27;est que vous avez besoin d&#x27;un dépôt GitHub avec lequel le synchroniser pour que cela puisse réellement s&#x27;exécuter. Il va donc cloner mon projet Herc2 ici même sur le Web. Il va pouvoir lire mon fichier cloud.md. Il va pouvoir lire mes scripts et mes compétences. Et puis, une fois qu&#x27;il a terminé le travail, il détruit simplement ce petit clone GitHub dans le cloud.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web d&#x27;automatisation / gestion de tâches (style interface SaaS d&#x27;agent IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nom de la tâche « Testing ClickUp API », état actif (« Active »), dépôt GitHub « nateherkai/Herk-2.0 », instructions pour envoyer un message dans ClickUp, et l&#x27;historique des exécutions manuelles (« Runs »).</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage des paramètres d&#x27;une tâche planifiée connectée à un dépôt GitHub et configuration des instructions d&#x27;exécution.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000238_seg6.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application d&#x27;automatisation avec une tâche planifiée intitulée « Testing ClickUp API » et un dépôt GitHub associé « nateherkai/Herk-2.0 », ainsi que la vidéo incrustée du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000238_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:38</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application d&#x27;automatisation avec une tâche planifiée intitulée « Testing ClickUp API » et un dépôt GitHub associé « nateherkai/Herk-2.0 », ainsi que la vidéo incrustée du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:54 - 00:03:13</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais comme vous le savez, vous ne poussez pas vos secrets sur GitHub. Parce que si vous regardez ici, mon projet Herc2, c&#x27;est mon fichier .env avec toutes mes clés d&#x27;API. Et il est répertorié dans le gitignore, ce qui signifie fondamentalement, hé, lorsque vous poussez vers GitHub, vous n&#x27;incluez pas ces fichiers. Donc ce que cela signifie, c&#x27;est qu&#x27;ici, si cela regarde seulement votre dépôt GitHub, il n&#x27;y a pas de .env.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, terminal intégré avec l&#x27;interface CLI de Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explorateur de fichiers montrant l&#x27;arborescence du projet Herk-2 (dossiers .claude, archives, scripts, .env, .gitignore, etc.) et le terminal affichant la commande `/schedule` avec des options d&#x27;autocomplétion.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur navigue dans l&#x27;explorateur de fichiers de VS Code tandis que Claude Code est ouvert dans le terminal intégré.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000259_seg7.jpg" alt="Vue de l&#x27;interface de VS Code avec un panneau de terminal intégré affichant Claude Code et l&#x27;explorateur de fichiers du projet Herk-2 sur la gauche." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000259_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:59</span>
+                        <span class="caption-text">Vue de l&#x27;interface de VS Code avec un panneau de terminal intégré affichant Claude Code et l&#x27;explorateur de fichiers du projet Herk-2 sur la gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:14 - 00:03:33</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors, comment obtenez-vous vos clés API dans cette routine qui s&#x27;exécute sur le web ? Eh bien, ce que vous faites, c&#x27;est qu&#x27;à l&#x27;intérieur de cette tâche planifiée, vous avez un environnement cloud. Donc si je clique sur celui-ci, vous pouvez voir que celui-ci s&#x27;appelle NateHurt Cloud. Donc si j&#x27;ouvre les paramètres, qu&#x27;est-ce que vous voyez ? Vous avez le nom de cet environnement cloud, vous avez l&#x27;accès réseau, et vous avez des variables d&#x27;environnement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation et de gestion de tâches planifiées (type agent IA cloud).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de tâches planifiées : nom du repository GitHub, instructions textuelles pour l&#x27;IA, fréquence d&#x27;exécution et sélection de l&#x27;environnement cloud.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et configuration des paramètres d&#x27;une tâche planifiée avec sélection d&#x27;un environnement cloud dédié.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000318_seg8.jpg" alt="Vue d&#x27;ensemble d&#x27;une tâche planifiée nommée &#x27;Testing ClickUp API&#x27; dans une interface web d&#x27;automatisation." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000318_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:18</span>
+                        <span class="caption-text">Vue d&#x27;ensemble d&#x27;une tâche planifiée nommée &#x27;Testing ClickUp API&#x27; dans une interface web d&#x27;automatisation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000323_seg8.jpg" alt="Modale d&#x27;édition de la tâche planifiée montrant l&#x27;environnement cloud &#x27;Nate Herk Cloud&#x27; sélectionné." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000323_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:23</span>
+                        <span class="caption-text">Modale d&#x27;édition de la tâche planifiée montrant l&#x27;environnement cloud &#x27;Nate Herk Cloud&#x27; sélectionné.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:33 - 00:03:54</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc juste ici, c&#x27;est là que je mets ma clé API YouTube, ma clé API ClickUp, toutes les autres clés API auxquelles je dois donner accès à cet environnement cloud. Et puis l&#x27;autre chose que vous devez faire, c&#x27;est de regarder les niveaux d&#x27;accès, car juste ici, vous pouvez voir que celui-ci est sur complet, mais par défaut, celui-ci sera sur de confiance, je crois. Et cela signifie que vous pouvez uniquement télécharger des paquets provenant de sources vérifiées d&#x27;Anthropic.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de configuration de l&#x27;environnement cloud.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nom de l&#x27;environnement (&quot;Nate Herk Cloud&quot;), niveau d&#x27;accès réseau (&quot;Full&quot;), section des variables d&#x27;environnement au format .env (floutée) et script d&#x27;installation bash.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment configurer les clés API et les niveaux d&#x27;accès dans l&#x27;environnement cloud.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000338_seg9.jpg" alt="Une fenêtre modale de configuration &quot;Update cloud environment&quot; montrant les options du nom, de l&#x27;accès réseau et des variables d&#x27;environnement masquées." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000338_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:38</span>
+                        <span class="caption-text">Une fenêtre modale de configuration &quot;Update cloud environment&quot; montrant les options du nom, de l&#x27;accès réseau et des variables d&#x27;environnement masquées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:55 - 00:04:15</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et quand nous en parlerons plus tard, j&#x27;aurai un lien où vous pourrez tous les voir. Vous pouvez même en faire un personnalisé si vous vouliez autoriser des domaines spécifiques qui ne sont pas sur cette liste. Mais pour que ClickUp fonctionne dans ce cas, j&#x27;ai dû passer en mode complet parce que quand je suis passé en mode de confiance, ça a dit, hé, nous ne pouvons pas vraiment faire ça. Mais quand j&#x27;ai changé cela en complet, ça m&#x27;a laissé envoyer un message à mon ClickUp. Et c&#x27;est comme ça que j&#x27;ai eu ce message juste ici qui dit simplement test que les tâches distantes fonctionnent et que les identifiants fonctionnent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de configuration de l&#x27;environnement cloud (paramètres réseau).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Options d&#x27;accès réseau : None, Trusted, Full (sélectionné), et Custom.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur survole l&#x27;option &#x27;Custom&#x27; dans le menu déroulant de configuration réseau.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000400_seg10.jpg" alt="Une fenêtre modale de configuration &#x27;Update cloud environment&#x27; avec un menu déroulant ouvert affichant les options d&#x27;accès réseau (None, Trusted, Full, Custom), tandis que le présentateur apparaît en incrustation vidéo dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000400_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:00</span>
+                        <span class="caption-text">Une fenêtre modale de configuration &#x27;Update cloud environment&#x27; avec un menu déroulant ouvert affichant les options d&#x27;accès réseau (None, Trusted, Full, Custom), tandis que le présentateur apparaît en incrustation vidéo dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:15 - 00:04:40</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc en gros, quand ceux-ci s&#x27;exécutent, tout ce que vous avez ici comme instructions est ce qui sert de prompt. Et c&#x27;est exactement de la même manière que fonctionnent les tâches planifiées localement. Donc juste ici, vous pouvez voir que je dis, envoyer un message dans le canal ClickUp interne. Et juste ici, la chose exacte qu&#x27;il est dit était d&#x27;envoyer un message dans le canal ClickUp interne. Pensez donc à une tâche planifiée ou à une routine comme si vous tapiez essentiellement un prompt et que quelqu&#x27;un venait ensuite sur votre ordinateur portable et le tapait pour vous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de gestion de tâches planifiées (interface web sombre) et incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre &#x27;Testing ClickUp API&#x27;, instruction &#x27;Send a message in the Internal automations channel in my ClickUp...&#x27;, et liste des exécutions (&#x27;Runs&#x27;) avec horodatage.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur survole l&#x27;historique des exécutions manuelles de la tâche pendant que le présentateur explique le fonctionnement des instructions de prompt.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000421_seg11.jpg" alt="Interface d&#x27;une application montrant les détails d&#x27;une tâche planifiée nommée &#x27;Testing ClickUp API&#x27; avec ses instructions et l&#x27;historique des exécutions." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000421_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:21</span>
+                        <span class="caption-text">Interface d&#x27;une application montrant les détails d&#x27;une tâche planifiée nommée &#x27;Testing ClickUp API&#x27; avec ses instructions et l&#x27;historique des exécutions.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:40 - 00:05:00</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc c&#x27;est exactement le même type d&#x27;interaction que lorsque vous discutez avec Claude Code. Mais c&#x27;est pourquoi, encore une fois, vous voulez vous assurer que c&#x27;est assez précis pour qu&#x27;il puisse essentiellement le faire du premier coup. D&#x27;accord, alors allons un peu plus en profondeur maintenant. Ce que j&#x27;ai essayé de faire, c&#x27;est que j&#x27;en ai fait un autre, pour lequel je voulais qu&#x27;il soit capable d&#x27;utiliser l&#x27;API de données YouTube afin de récupérer des commentaires YouTube pour moi et de me donner une petite analyse dans, vous savez, ClickUp ou autre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;agent IA avec panneau latéral de gestion des projets et zone de chat/code centrale.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur demandant d&#x27;envoyer un message de test sur ClickUp, suivi des étapes d&#x27;exécution de l&#x27;agent (&quot;Searched 2 patterns&quot;, &quot;Found it&quot;, &quot;Send test message&quot;) et du résultat final (&quot;Done. Message sent&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse la requête, recherche les outils ClickUp, identifie le canal cible et exécute l&#x27;envoi du message de test.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000445_seg12.jpg" alt="Interface d&#x27;une application d&#x27;agent IA montrant l&#x27;exécution d&#x27;une tâche textuelle liée à l&#x27;API ClickUp et les étapes de raisonnement de l&#x27;agent." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000445_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:45</span>
+                        <span class="caption-text">Interface d&#x27;une application d&#x27;agent IA montrant l&#x27;exécution d&#x27;une tâche textuelle liée à l&#x27;API ClickUp et les étapes de raisonnement de l&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:01 - 00:05:22</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc c&#x27;est ça le prompt que j&#x27;ai dit, n&#x27;est-ce pas ? Analyse 50 de mes commentaires les plus récents sur YouTube et donne-moi un rapide résumé en points. Ma clé API YouTube est disponible en tant que variable d&#x27;environnement. Utilise-la directement depuis l&#x27;environnement. Ne cherche pas de fichier .env. Parce que ce qui se passe dans ton dépôt, n&#x27;est-ce pas ? Donc dans ce projet Herc2, quand je lance normalement ceci, ça récupère toutes mes clés API depuis le .env.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web d&#x27;automatisation / tableau de bord d&#x27;agent IA</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt complet : &quot;Analyze 50 of my most recent comments from YouTube and give me a quick three to five bullet point rundown. My YouTube API key is available as the environment variable YOUTUBE_API_KEY (use it directly from the environment, do not look for a .env file).&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage et configuration d&#x27;une tâche planifiée utilisant une clé API en variable d&#x27;environnement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000506_seg13.jpg" alt="Interface d&#x27;une application d&#x27;automatisation montrant la configuration d&#x27;une tâche planifiée nommée &quot;Testing YT Comments&quot; avec les instructions textuelles pour l&#x27;analyse des commentaires YouTube." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000506_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:06</span>
+                        <span class="caption-text">Interface d&#x27;une application d&#x27;automatisation montrant la configuration d&#x27;une tâche planifiée nommée &quot;Testing YT Comments&quot; avec les instructions textuelles pour l&#x27;analyse des commentaires YouTube.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:22 - 00:05:40</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et peut-être qu&#x27;il lit le cloud.md et réalise que c&#x27;est là que beaucoup d&#x27;entre eux résident. Donc par défaut, il va peut-être essayer de regarder dans le .env et il ne sera pas assez intelligent pour le comprendre. Et donc pour ClickUp, c&#x27;était bien, il l&#x27;a compris. Mais pour une raison quelconque avec celui de YouTube, il ne l&#x27;a pas fait. J&#x27;ai donc dû lui dire explicitement, hé, regarde dans la variable d&#x27;environnement plutôt que dans le .env.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Claude Code CLI (terminal intégré)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes affichées dans le terminal : /schedule, /claude-api, /pulse-check, /n8n-workflow-patterns, /codex:rescue, /rewind. Dans l&#x27;explorateur de fichiers : .env, CLAUDE.md, etc.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie d&#x27;une commande dans l&#x27;interface de Claude Code au sein de VS Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000527_seg14.jpg" alt="Vue de l&#x27;interface de Visual Studio Code avec un terminal intégré exécutant Claude Code v2.1.107, affichant la liste des commandes disponibles et l&#x27;explorateur de fichiers sur la gauche." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000527_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:27</span>
+                        <span class="caption-text">Vue de l&#x27;interface de Visual Studio Code avec un terminal intégré exécutant Claude Code v2.1.107, affichant la liste des commandes disponibles et l&#x27;explorateur de fichiers sur la gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:40 - 00:06:00</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc vous pouvez voir que la première fois que je l&#x27;ai exécuté, à 12 h 41, je n&#x27;ai pas dit cela et il n&#x27;a pas pu le faire. Il a dit du genre, hé, je ne peux pas trouver ça, j&#x27;obtiens une erreur. Et j&#x27;ai même essayé de le lui dire ici et cela n&#x27;a toujours pas fonctionné. Mais ensuite, lors de cette exécution la plus récente, lorsque j&#x27;ai un peu mis à jour le prompt, il a pu le récupérer tout de suite en utilisant la clé API. Et maintenant, j&#x27;ai une routine à distance qui fonctionnerait.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;agent IA (type application de chat/code), incluant un panneau de discussion et une barre latérale de gestion des projets.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Messages de l&#x27;agent signalant &quot;API is returning 403 errors&quot; et &quot;No YouTube API key in .env&quot;, suivis d&#x27;un message utilisateur indiquant qu&#x27;il a placé les clés dans les variables d&#x27;environnement.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent analyse les erreurs de l&#x27;API YouTube, détecte l&#x27;absence de clé dans le fichier .env, puis bascule sur l&#x27;utilisation de commentaires en cache suite aux instructions de l&#x27;utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000545_seg15.jpg" alt="Interface d&#x27;une application d&#x27;agent IA montrant l&#x27;historique des exécutions, les messages de débogage concernant une clé API YouTube manquante, et un encadré vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000545_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:45</span>
+                        <span class="caption-text">Interface d&#x27;une application d&#x27;agent IA montrant l&#x27;historique des exécutions, les messages de débogage concernant une clé API YouTube manquante, et un encadré vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:00 - 00:06:34</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Évidemment, je dois mettre ça à jour. Je vais migrer mes autres automatisations, mais c&#x27;était juste à des fins de test. Et puis une autre que je fais, c&#x27;est que j&#x27;ai quelques automatisations ici, qui ouvrent essentiellement un navigateur en utilisant Playwright CLI, et ça fait des trucs dans ma communauté School parce qu&#x27;il n&#x27;y a pas d&#x27;API accessible publiquement. On a en quelque sorte trouvé un moyen de l&#x27;automatiser sans utiliser de navigateur. Je ne vais pas vraiment approfondir ça maintenant. Mais ce que je voulais vous dire à ce sujet, c&#x27;est que j&#x27;ai essayé de transférer cette automatisation de publication d&#x27;engagement pour les victoires sur School, ou désolé, cette automatisation, dans une session distante. J&#x27;ai donc copié exactement les mêmes prompts qui étaient dans ma tâche planifiée habituelle.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation / tableau de bord de tâches planifiées (avec un encadré vidéo du présentateur en bas à droite).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des tâches planifiées (&#x27;Skool wins engagement&#x27;, &#x27;AI news roundup&#x27;, &#x27;Notification responses&#x27;, &#x27;Youtube comment replies&#x27;, &#x27;Testing Skool Wins&#x27;, &#x27;Testing YT Comments&#x27;, &#x27;Testing ClickUp API&#x27;).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et navigation dans le tableau de bord des tâches planifiées et des automatisations locales.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000608_seg16.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application d&#x27;automatisation avec un panneau latéral de planification et des cartes de tâches planifiées." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000608_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:08</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application d&#x27;automatisation avec un panneau latéral de planification et des cartes de tâches planifiées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:34 - 00:07:06</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et puis j&#x27;ai juste ajouté ce petit bout de code à la fin. Mais ce qui s&#x27;est passé, c&#x27;est que ça ne fonctionnait pas parce que ça disait en gros : « Hé, tu sais, comme quand tu fais ça, ça lance un navigateur, mais il n&#x27;y a pas de cookies parce que tout cela s&#x27;exécute à distance. » Et tout ce que j&#x27;ai à regarder, c&#x27;est le dépôt GitHub. Je ne peux pas regarder les cookies locaux, tu sais, que nous avons utilisés lors des dernières sessions de cette automatisation. Et donc, il ne semble pas que cela fonctionnerait parce qu&#x27;encore une fois, cela n&#x27;a accès à rien de tout cela. Donc, si je voulais faire une automatisation comme celle-ci, je devrais utiliser un point de terminaison qui accepte l&#x27;authentification sous la forme, par exemple, de vrais cookies, d&#x27;un en-tête ou, tu sais, d&#x27;une clé API.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de plateforme d&#x27;automatisation (type interface d&#x27;agent Claude ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Log d&#x27;exécution : « The scraper returned a session error — no auth/skool_state.json found. Let me check if there&#x27;s a session state file available. »</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA tente d&#x27;exécuter un workflow de scraping, rencontre une erreur d&#x27;authentification (absence du fichier de session) et analyse le problème dans le terminal intégré.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000642_seg17.jpg" alt="Interface d&#x27;une application d&#x27;automatisation IA affichant un journal d&#x27;exécution (log) montrant une erreur lors d&#x27;une tentative de scraping sur Skool." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000642_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:42</span>
+                        <span class="caption-text">Interface d&#x27;une application d&#x27;automatisation IA affichant un journal d&#x27;exécution (log) montrant une erreur lors d&#x27;une tentative de scraping sur Skool.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:06 - 00:07:42</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">parce que chacune de ces exécutions va être sans état. Et après l&#x27;exécution, le clone GitHub est tout simplement supprimé. Maintenant, l&#x27;exception à cela, c&#x27;est si l&#x27;automatisation modifie quelque chose dans votre base de code ou effectue une révision. Si elle fait cela, elle créera une nouvelle branche pour vous, ou elle vous donnera une sorte de résultat et ne se contentera pas de supprimer tout ce qu&#x27;elle vient de faire. Mais pour une automatisation comme celle-ci, elle le supprimerait tout simplement. Mais j&#x27;espère qu&#x27;après avoir vu ces exemples, vous avez maintenant la capacité d&#x27;intervenir et, vous savez, d&#x27;apporter quelques modifications si nécessaire afin de vous assurer que vos automatisations s&#x27;exécutent. Et ce que je veux dire par là, c&#x27;est que vous comprenez que ce devrait être une instruction très spécifique. C&#x27;est ainsi que vous changez le modèle. Vous devez avoir un dépôt GitHub. Vous pouvez changer le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;agent d&#x27;automatisation IA (type plateforme de gestion de code/agents).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Instructions détaillées pour exécuter le script de scraping des publications (&quot;Run the /wins-engagement skill... cd to project directory... python scripts/scrape_wins.py&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Initialisation d&#x27;une session et exécution de commandes par l&#x27;agent pour récupérer et analyser des données de la base de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000715_seg18.jpg" alt="Interface d&#x27;une application d&#x27;agent IA montrant l&#x27;exécution d&#x27;une tâche de scraping pour des publications &quot;Skool&quot;, avec un bloc de code et la vidéo du présentateur en incrustation." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000715_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:15</span>
+                        <span class="caption-text">Interface d&#x27;une application d&#x27;agent IA montrant l&#x27;exécution d&#x27;une tâche de scraping pour des publications &quot;Skool&quot;, avec un bloc de code et la vidéo du présentateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:42 - 00:08:11</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">paramètres pour vos environnements cloud juste ici. Vous définissez le calendrier, vous ajoutez tous les connecteurs dont vous pourriez avoir besoin, ce qui serait honnêtement un peu plus facile si vous ajoutiez juste un connecteur Slack, et ensuite vous pouvez définir vos permissions ici. Maintenant, l&#x27;autre chose à garder à l&#x27;esprit est que vous avez des limites. Donc si je viens ici dans mes paramètres, vous pouvez voir que si je vais dans mon utilisation, nous avons nos limites de session régulières, nos limites de modèle, mais pour des fonctionnalités supplémentaires, nous avons des exécutions de routines quotidiennes incluses. Et je n&#x27;en ai encore exécuté aucune sur le calendrier réel. Je les ai juste testées, mais nous sommes à zéro sur 15.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude Code (Research preview)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Formulaire de planification de tâche avec options de calendrier (Daily à 09:00 AM), sélection du dépôt GitHub, et paramètres de connecteurs et permissions.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration d&#x27;une routine planifiée pour un environnement cloud, avec ajout de connecteurs et définition des paramètres temporels.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000749_seg19.jpg" alt="Fenêtre modale de configuration d&#x27;une tâche planifiée dans l&#x27;interface de Claude Code, avec les options de fréquence (Hourly, Daily, etc.), l&#x27;heure d&#x27;exécution (09:00 AM) et la section de gestion des connecteurs (Add connector)." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000749_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:49</span>
+                        <span class="caption-text">Fenêtre modale de configuration d&#x27;une tâche planifiée dans l&#x27;interface de Claude Code, avec les options de fréquence (Hourly, Daily, etc.), l&#x27;heure d&#x27;exécution (09:00 AM) et la section de gestion des connecteurs (Add connector).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:11 - 00:08:29</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je ne pouvais avoir que 15 automatisations en cours d&#x27;exécution avec des routines par jour parce que je suis sur le forfait maximum à 200 dollars par mois. Vos limites seraient inférieures si vous êtes sur le plan pro, je pense peut-être trois ou peut-être cinq. J&#x27;ai, j&#x27;ai cette information un peu plus tard, mais c&#x27;est juste quelque chose à garder à l&#x27;esprit. Très bien, alors plongeons un peu plus dans les détails ici qui pourraient répondre à certaines questions que vous vous posez.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de paramètres (compte Claude)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Barres de progression pour les limites d&#x27;utilisation (« All models », « Sonnet only » et « Daily included routine runs » affichant 0/15).</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation des limites d&#x27;utilisation et des quotas du compte.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000816_seg20.jpg" alt="Capture d&#x27;écran montrant les paramètres d&#x27;utilisation de Claude, affichant les limites hebdomadaires et la limite quotidienne de routines (0/15)." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000816_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:16</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant les paramètres d&#x27;utilisation de Claude, affichant les limites hebdomadaires et la limite quotidienne de routines (0/15).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:30 - 00:09:02</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je pense qu&#x27;il est assez clair à ce stade de quoi il s&#x27;agit. Je vais vous donner tout ce document ainsi que tout le reste dont j&#x27;ai parlé dans ma communauté School gratuite. Le lien pour cela se trouve dans la description. Donc, certaines choses que je ne couvrirai peut-être pas, si vous voulez en lire davantage, alors allez-y et récupérez cette ressource gratuite. Donc, nous savons ce que c&#x27;est. Je pense que nous savons comment ça fonctionne, n&#x27;est-ce pas ? Comme vous définissez une routine qui est un prompt, vous connectez un dépôt GitHub, vous pouvez aussi le déclencher par des API ou par une action GitHub, et ensuite vous pouvez connecter vos connecteurs, et en gros, cela agit comme si vous parliez à votre propre code cloud en raison du fait que cela fonctionne à partir d&#x27;un dépôt cloné.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document texte (type Google Docs ou page web de documentation).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur les Claude Code Routines, listant &quot;What It Is&quot;, &quot;Status&quot;, &quot;How It Works&quot;, &quot;CLAUDE.md Makes Routines Smart&quot;, &quot;Three Trigger Types&quot;, et &quot;How This Compares to What Already Existed&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du document partagé avec la communauté.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000838_seg21.jpg" alt="Document textuel présentant le sujet &quot;Claude Code Routines&quot; avec ses définitions, statuts, et sections de sommaire." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000838_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:38</span>
+                        <span class="caption-text">Document textuel présentant le sujet &quot;Claude Code Routines&quot; avec ses définitions, statuts, et sections de sommaire.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:02 - 00:09:23</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il va lire le fichier cloud.md automatiquement à chaque fois. Donc si vous avez un projet massif, comme un projet Herc2, par exemple, avec énormément de contexte et énormément de choses, peut-être que vous ne voulez pas mettre ce dépôt dans le cloud pour en faire une exécution de routine, parce qu&#x27;il y a beaucoup de contexte dans ce fichier Cloud.md et dans tout ce dépôt GitHub qui pourrait n&#x27;avoir aucune importance pour cette automatisation.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une page de documentation ou de notes.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif : &#x27;Routines clone your repo fresh every run. That means they read your CLAUDE.md file automatically.&#x27; et &#x27;Tip: If a routine covers a specific subfolder, you can also put a CLAUDE.md inside that subfolder...&#x27;</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les fonctionnalités de CLAUDE.md pendant que la documentation défile à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000907_seg22.jpg" alt="Une page de documentation affichant le titre &#x27;CLAUDE.md Makes Routines Smart&#x27; avec des explications sur le fonctionnement du fichier de contexte et un encart vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000907_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:07</span>
+                        <span class="caption-text">Une page de documentation affichant le titre &#x27;CLAUDE.md Makes Routines Smart&#x27; avec des explications sur le fonctionnement du fichier de contexte et un encart vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:23 - 00:09:42</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc peut-être qu&#x27;il vaut mieux configurer un dépôt GitHub spécifique par routine planifiée. Mais bien sûr, les bonnes pratiques de Cloud.md, en y mettant les informations importantes, parce que tout cela va épuiser vos limites de session Cloud Code exactement de la même manière que si vous l&#x27;ouvriez dans Cloud Code, en discutant simplement avec lui.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Page web ou document de documentation (type Markdown ou Notion).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte expliquant le rôle de CLAUDE.md (&quot;CLAUDE.md Makes Routines Smart&quot;), les standards de codage, les instructions et une astuce concernant les sous-dossiers.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des bonnes pratiques pour structurer le fichier CLAUDE.md afin d&#x27;améliorer les performances des routines automatisées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000928_seg23.jpg" alt="Page de documentation détaillant comment le fichier CLAUDE.md rend les routines intelligentes, avec le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000928_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:28</span>
+                        <span class="caption-text">Page de documentation détaillant comment le fichier CLAUDE.md rend les routines intelligentes, avec le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:42 - 00:10:01</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc encore une fois, trois types de déclencheurs : planifié, API, ce que je trouve vraiment génial. Vous pouvez avoir une autre automatisation qui fait une requête POST vers une sorte de routine. Et puis bien sûr, GitHub. Vous pouvez donc faire en sorte que cela se déclenche automatiquement en quelque sorte sur un webhook basé sur de nouvelles pull requests, de nouveaux pushs, de nouveaux problèmes, de nouvelles versions, des choses comme ça. Alors, comment cela se compare-t-il à ce qui existe déjà ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une documentation ou un article technique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte détaillant les types de déclencheurs : &quot;Schedule - Cron-based...&quot;, &quot;API - POST to a dedicated endpoint...&quot;, &quot;GitHub - Reacts to repo events...&quot; ainsi que des puces explicatives sur les fonctionnalités associées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente et commente les différents types de déclencheurs affichés à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_000947_seg24.jpg" alt="Une page de documentation listant les trois types de déclencheurs (Schedule, API, GitHub) avec leurs descriptions et exemples, tandis que le présentateur apparaît en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_000947_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:47</span>
+                        <span class="caption-text">Une page de documentation listant les trois types de déclencheurs (Schedule, API, GitHub) avec leurs descriptions et exemples, tandis que le présentateur apparaît en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:01 - 00:10:21</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avons les routines, qui constituent la nouvelle fonctionnalité. Nous avons des tâches planifiées sur le bureau, et ensuite nous avons quelque chose comme simplement une commande slash loop. Donc les routines s&#x27;exécutent sur le cloud d&#x27;Anthropic et ces deux autres s&#x27;exécutent sur votre machine. Avez-vous besoin que la machine soit allumée ? Non pour les routines, c&#x27;est énorme. Mais pour les tâches planifiées sur le bureau et pour loop, vous avez besoin que votre machine soit allumée. Avez-vous besoin d&#x27;une session ouverte ? Non, c&#x27;est la même chose pour les trois.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document de présentation ou page web comparative.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau avec des lignes telles que &#x27;Runs on&#x27;, &#x27;Needs machine on&#x27;, &#x27;Needs open session&#x27;, &#x27;Survives restarts&#x27;, &#x27;Local file access&#x27;, &#x27;Permission prompts&#x27;, et &#x27;Min interval&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et compare les trois types de déclencheurs d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001006_seg25.jpg" alt="Un tableau comparatif montrant les différences entre les &#x27;Routines (NEW)&#x27;, les &#x27;Desktop Scheduled Tasks&#x27; et la commande &#x27;/loop&#x27;." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001006_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:06</span>
+                        <span class="caption-text">Un tableau comparatif montrant les différences entre les &#x27;Routines (NEW)&#x27;, les &#x27;Desktop Scheduled Tasks&#x27; et la commande &#x27;/loop&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:22 - 00:10:41</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Est-ce qu&#x27;ils survivent aux redémarrages ? Les deux premiers oui, mais pas la boucle. Celle-ci doit vivre au sein d&#x27;une session spécifique. L&#x27;accès aux fichiers locaux, non pour les routines parce que cela fonctionne à partir du dépôt GitHub. Et pour les deux suivants, oui, vous avez un accès aux fichiers locaux. Les invites d&#x27;autorisation avec les routines, c&#x27;est entièrement autonome. Et pour ces deux-là, ils sont configurables. Et enfin, l&#x27;intervalle minimum des routines est d&#x27;une heure.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document de présentation ou page web avec un tableau comparatif et une incrustation vidéo du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif détaillant les critères : Runs on, Needs machine on, Needs open session, Survives restarts, Local file access, Permission prompts, Min interval.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les différences entre les types de déclencheurs, la ligne &#x27;Survives restarts&#x27; étant mise en surbrillance.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001026_seg26.jpg" alt="Un tableau comparatif montrant les différences entre &#x27;Routines (NEW)&#x27;, &#x27;Desktop Scheduled Tasks&#x27; et &#x27;/loop&#x27;." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001026_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:26</span>
+                        <span class="caption-text">Un tableau comparatif montrant les différences entre &#x27;Routines (NEW)&#x27;, &#x27;Desktop Scheduled Tasks&#x27; et &#x27;/loop&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:41 - 00:11:02</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ces deux-là peuvent tous les deux, pourraient tourner à chaque minute si vous voulez. Bon, alors parlons des environnements. Évidemment, votre fichier .env est ignoré par git à moins que vous ne le poussiez dans le dépôt GitHub. Vous savez, en fin de compte, si vous le poussez dans un dépôt privé, ça va probablement, mais vous voulez faire très, très attention parce qu&#x27;ensuite, vous savez, il y a l&#x27;historique. Et si d&#x27;autres personnes, vous savez, finissent par y collaborer, vous ne voulez tout simplement pas faire ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document texte ou page de notes (type Notion ou éditeur markdown).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte abordant les rubriques &quot;Environnements&quot;, l&#x27;utilisation des variables d&#x27;environnement, l&#x27;accès réseau et la gestion des scripts, avec mention de &quot;The .env Gotcha&quot; et une solution suggérant d&#x27;utiliser `os.environ[&quot;KEY_NAME&quot;]`.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les concepts liés aux variables d&#x27;environnement et aux configurations de routines affichés à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001046_seg27.jpg" alt="Une page de documentation textuelle expliquant le fonctionnement des environnements et du fichier .env, avec le présentateur visible en incrustation vidéo dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001046_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:46</span>
+                        <span class="caption-text">Une page de documentation textuelle expliquant le fonctionnement des environnements et du fichier .env, avec le présentateur visible en incrustation vidéo dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:02 - 00:11:21</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, vous voulez mettre vos clés d&#x27;API dans la variable d&#x27;environnement, comme je vous l&#x27;ai montré tout à l&#x27;heure. Vous voulez regarder l&#x27;accès au réseau, qu&#x27;il soit complet, ou de confiance, ou aucun, ou personnalisé, et potentiellement quelques scripts de configuration. Ce n&#x27;est donc pas quelque chose que je vous ai montré encore. Si vous créez une nouvelle tâche distante, vous pouvez faire un script de configuration, qui est fondamentalement juste un script qui s&#x27;exécutera lorsque cette nouvelle session se lancera avant que Cloud Code ne démarre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Page de documentation et interface web de configuration d&#x27;agent (Claude Code / claude.ai)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur les environnements, les clés d&#x27;API, l&#x27;accès réseau et script bash (#!/bin/bash, npm install)</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment configurer les variables d&#x27;environnement, l&#x27;accès réseau et les scripts de configuration pour les routines d&#x27;agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001107_seg28.jpg" alt="Présentation textuelle détaillant la gestion des environnements, des variables .env, de l&#x27;accès réseau et des scripts de configuration, avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001107_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:07</span>
+                        <span class="caption-text">Présentation textuelle détaillant la gestion des environnements, des variables .env, de l&#x27;accès réseau et des scripts de configuration, avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001117_seg28.jpg" alt="Interface de configuration affichant une boîte de dialogue pour un script de configuration Bash avec la commande npm install, et le présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001117_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:17</span>
+                        <span class="caption-text">Interface de configuration affichant une boîte de dialogue pour un script de configuration Bash avec la commande npm install, et le présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:21 - 00:11:40</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc si vous avez besoin d&#x27;installer des paquets ou quoi que ce soit de ce genre. D&#x27;accord, alors quelle est la différence entre &quot;trusted&quot; et &quot;full&quot; ? &quot;Trusted&quot; accède uniquement aux services connus et validés d&#x27;Anthropic, que je pensais avoir liés juste ici, mais je viens juste de le lier là. Cela vous montre essentiellement tous les différents domaines qui sont autorisés. Donc juste ici, vous pouvez voir que nous avons les services d&#x27;Anthropic, nous avons le contrôle de version.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une documentation technique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur &#x27;Network Access: Trusted vs Full&#x27; et &#x27;Security proxy&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les différences de sécurité et d&#x27;accès réseau entre les modes &#x27;Trusted&#x27; et &#x27;Full&#x27;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001126_seg29.jpg" alt="Page de documentation détaillant la différence d&#x27;accès réseau entre &#x27;Trusted&#x27; et &#x27;Full&#x27; avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001126_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:26</span>
+                        <span class="caption-text">Page de documentation détaillant la différence d&#x27;accès réseau entre &#x27;Trusted&#x27; et &#x27;Full&#x27; avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001136_seg29.jpg" alt="Suite de la page de documentation sur le proxy de sécurité et les domaines autorisés par défaut." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001136_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:36</span>
+                        <span class="caption-text">Suite de la page de documentation sur le proxy de sécurité et les domaines autorisés par défaut.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:41 - 00:11:59</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avons aussi quelques plateformes cloud comme Google, des trucs comme ça juste ici. Ce sont celles qui sont en quelque sorte déjà vérifiées. Quel est donc le risque de passer au niveau supérieur ? Eh bien, si Claude lit du contenu malveillant lors d&#x27;une exécution, il pourrait théoriquement être piégé pour envoyer des données à un serveur externe. Et avec Trusted, cette requête sortante serait bloquée.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Documentation web (navigateur)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation technique sur &quot;Network Access: Trusted vs Full&quot; et la liste des catégories de configuration.
+[DESC_ACTION] Le présentateur fait défiler la documentation et met en surbrillance les sections importantes relatives aux niveaux de sécurité et aux risques d&#x27;accès réseau.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001145_seg30.jpg" alt="Capture montrant la navigation dans la documentation technique listant les différentes catégories de services (JVM package managers, Cloud services and monitoring, Schema and configuration, etc.)." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001145_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:45</span>
+                        <span class="caption-text">Capture montrant la navigation dans la documentation technique listant les différentes catégories de services (JVM package managers, Cloud services and monitoring, Schema and configuration, etc.).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001150_seg30.jpg" alt="Capture montrant la documentation sur l&#x27;accès réseau (Trusted vs Full) avec du texte en surbrillance expliquant les risques liés à la lecture de contenu malveillant par Claude." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001150_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:50</span>
+                        <span class="caption-text">Capture montrant la documentation sur l&#x27;accès réseau (Trusted vs Full) avec du texte en surbrillance expliquant les risques liés à la lecture de contenu malveillant par Claude.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:59 - 00:12:18</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, le risque pratique pour les dépôts privés où vous contrôlez les entrées est très faible, mais je voulais vraiment au moins le reconnaître. Donc, les connecteurs, c&#x27;est différent du simple fait d&#x27;ajouter votre clé API. C&#x27;est plutôt du genre des connecteurs que vous ajouteriez à votre chat Claude actuel ou à Claude Cowork, où vous vous connectez via OAuth à Slack, ClickUp ou ce genre de choses. Voici quelques détails de sécurité.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document texte / Notes de présentation</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur &#x27;Network Access: Trusted vs Full&#x27;, expliquant les restrictions d&#x27;accès sortant et les risques de sécurité.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les concepts de sécurité réseau et de gestion des connecteurs.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001204_seg31.jpg" alt="Capture d&#x27;écran montrant une page de notes textuelles sur l&#x27;accès réseau (Trusted vs Full) et les connecteurs, avec la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001204_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:04</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une page de notes textuelles sur l&#x27;accès réseau (Trusted vs Full) et les connecteurs, avec la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:18 - 00:12:40</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je ne vais pas entrer trop en profondeur là-dedans. Vous pourriez aussi faire un peu plus de recherches et télécharger ce document. Mais bien sûr, il y a certaines choses à garder à l&#x27;esprit, comme vos déclencheurs d&#x27;API ou ce qui se passe avec vos dépôts GitHub et les branches. Car encore une fois, tout va s&#x27;exécuter en tant que vous. Donc si vous ne testez pas ces routines avant de simplement les lancer toutes les heures ou quelque chose comme ça, vous devez juste réfléchir à ce qui pourrait se passer sans les autorisations et ce genre de choses.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document texte ou page web de documentation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Section &#x27;Security Details&#x27; avec des puces sur la sécurité des branches (claude/prefix), la protection par jeton d&#x27;API, les limites d&#x27;exécution quotidienne et la responsabilité des actions automatisées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les considérations de sécurité et les bonnes pratiques documentées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001223_seg32.jpg" alt="Document technique montrant les détails de sécurité, les limites, les quotas et la persistance des données." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001223_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:23</span>
+                        <span class="caption-text">Document technique montrant les détails de sécurité, les limites, les quotas et la persistance des données.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:40 - 00:13:15</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Limites et quotas. Donc il semble que sur la version Pro, vous pouvez avoir cinq exécutions par jour, sur la version Max vous pouvez en avoir 15 par jour, et sur les versions Team et Enterprise vous pouvez avoir 25 routines par jour. Si vous atteignez la limite, les organisations avec l&#x27;utilisation supplémentaire activée peuvent la dépasser avec un dépassement facturé à l&#x27;usage. Ensuite, nous avons l&#x27;intervalle de planification minimum qui est d&#x27;une heure, et il y a aussi des limites de ressources, donc chacune de ces routines dans le cloud s&#x27;exécute sur 4 vCPU, 16 gigaoctets de RAM et 30 gigaoctets d&#x27;espace disque. Donc encore une fois, réfléchissez bien à ceci : est-ce que vous envoyez un dépôt GitHub absolument massif dans le cloud en ce moment pour l&#x27;exécuter ? Cela pourrait simplement gaspiller des ressources sans aucune raison. Alors, qu&#x27;est-ce qui persiste par rapport à</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation de diapositives / documentation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte listant les limites d&#x27;exécution (Pro: 5, Max: 15, Team/Enterprise: 25) et les spécifications techniques (4 vCPUs, 16 GB RAM).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les quotas et limites de ressources par plan.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001249_seg33.jpg" alt="Diapositive listant les limites et quotas par forfait ainsi que les détails de sécurité." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001249_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:49</span>
+                        <span class="caption-text">Diapositive listant les limites et quotas par forfait ainsi que les détails de sécurité.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:15 - 00:13:41</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">qu&#x27;est-ce qui est détruit ? Les branches cloud sont poussées vers votre dépôt GitHub et la session reste également. Donc comme vous l&#x27;avez vu, si je venais ici et que je regardais toutes ces tâches, je pourrais voir toutes les exécutions passées et je pourrais aller les voir pour voir si quelque chose ne va pas. Mais l&#x27;environnement cloud réel qui est cloné sera détruit. Fondamentalement, la règle générale ici est que si quelque chose est local ou si le code cloud ne peut pas l&#x27;atteindre dans votre dépôt GitHub ou via une API, alors cela ne fonctionnera pas.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation et de gestion de tâches.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des exécutions passées de la tâche « Testing Skool Wins » avec des horodatages (Today at 12:53 PM, 12:51 PM, 12:49 PM).</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation de l&#x27;historique des exécutions d&#x27;une tâche planifiée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001328_seg34.jpg" alt="Interface de gestion de tâches et de routines affichant les exécutions passées (« Runs ») avec leurs statuts." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001328_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:28</span>
+                        <span class="caption-text">Interface de gestion de tâches et de routines affichant les exécutions passées (« Runs ») avec leurs statuts.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:41 - 00:14:00</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avons déjà parlé un peu de la rédaction de bons prompts, mais vous voulez absolument qu&#x27;ils soient plus précis. Par exemple, avec mon automatisation planifiée ici, c&#x27;est beaucoup plus précis, n&#x27;est-ce pas ? J&#x27;ai une compétence que je veux qu&#x27;il exécute. Je lui donne l&#x27;ordre des opérations, mais quelque chose de plus semblable à celui des commentaires YouTube, ce n&#x27;est pas ce que vous voudriez y mettre à moins que vous ne définissiez une compétence pour simplement le laisser s&#x27;exécuter.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web d&#x27;automatisation (type interface de configuration d&#x27;agent ou de tâches planifiées)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Instructions textuelles détaillées incluant des commandes de scripts Python (ex: `python scripts/post_comment.py` et `notify_clickup.py`) et la fréquence d&#x27;exécution quotidienne.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et montre les instructions étape par étape d&#x27;une automatisation planifiée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001346_seg35.jpg" alt="Interface d&#x27;une application d&#x27;automatisation planifiée montrant des instructions détaillées par étapes avec des scripts Python et une webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001346_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:46</span>
+                        <span class="caption-text">Interface d&#x27;une application d&#x27;automatisation planifiée montrant des instructions détaillées par étapes avec des scripts Python et une webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:00 - 00:14:24</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parce que, encore une fois, c&#x27;est censé être un prompt unique. Vous voulez donc vous assurer qu&#x27;il réussit du premier coup. D&#x27;accord, alors pourquoi est-ce si excitant ? Et pourquoi est-ce que ça surpasse l&#x27;automatisation normale ? Parce que nous conservons en fait le cadre agentique. Vous savez, quand je parle du cadre WAT, où nous avons des flux de travail, des agents et des outils, lorsque nous poussons réellement ces automatisations vers le cloud et que ce n&#x27;est en quelque sorte qu&#x27;un script Python, nous perdons la partie agentique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document texte / éditeur de notes montrant des explications sur les routines et l&#x27;automatisation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparant l&#x27;automatisation classique (n8n, Zapier) et les routines avec Claude Code, incluant des points sur la correction automatique et la résolution de problèmes.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des avantages des routines basées sur des agents par rapport aux flux d&#x27;automatisation traditionnels rigides.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001406_seg36.jpg" alt="Une page de notes de cours ou de documentation intitulée &#x27;Why This Benefits Normal Automation&#x27; avec une vidéo incrustée du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001406_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:06</span>
+                        <span class="caption-text">Une page de notes de cours ou de documentation intitulée &#x27;Why This Benefits Normal Automation&#x27; avec une vidéo incrustée du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:24 - 00:14:45</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous envoyons seulement les outils et le flux de travail. Mais dans ce cas, nous gardons le WA et le T tous les deux en cours d&#x27;exécution parce que l&#x27;agent regarde le CloudMD, il regarde ses scripts et il détermine quoi faire. Et s&#x27;il rencontre des erreurs en cours d&#x27;exécution, il s&#x27;autoporrige. Et si vous le configurez de la bonne manière, il sera capable de laisser pour ainsi dire une trace mémorielle et il peut laisser, vous savez, des mises à jour.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Page web de notes ou éditeur de texte (style Notion/Markdown)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titres et listes à puces expliquant pourquoi les routines surpassent l&#x27;automatisation classique : &#x27;Why This Beats Normal Automation&#x27;, &#x27;Self-correction&#x27;, &#x27;Context-aware problem solving&#x27;, et les consignes &#x27;The catch: test everything first&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique à l&#x27;écran la logique d&#x27;auto-correction et de résolution de problèmes contextuelle des agents par rapport aux flux rigides.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001429_seg37.jpg" alt="Une page de notes structurée présentant les avantages des routines comparées aux automatisations traditionnelles (n8n, Zapier), avec le présentateur en médaillon vidéo dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001429_seg37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:29</span>
+                        <span class="caption-text">Une page de notes structurée présentant les avantages des routines comparées aux automatisations traditionnelles (n8n, Zapier), avec le présentateur en médaillon vidéo dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:46 - 00:15:05</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Même si chaque exécution est sans état, vous pouvez tout de même faire en sorte qu&#x27;elles s&#x27;améliorent continuellement. Et très rapidement, passons en vitesse éclair ces questions fréquentes. Ai-je besoin de connaître la syntaxe cron ? Non. Vous pouvez simplement planifier en langage naturel, c&#x27;est super facile. Peut-il accéder à mes fichiers locaux ? Non. Il obtient seulement ce qui se trouve dans votre dépôt GitHub ou vos API. Quel modèle utilise-t-il ? Vous pouvez choisir n&#x27;importe quel modèle, comme vous l&#x27;avez vu.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de documents/Prise de notes (interface web).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif comparant les automatisations classiques (n8n, Zapier) aux &quot;Routines&quot; avec Claude Code. Points clés abordés : auto-correction, résolution de problèmes basée sur le contexte, et conseils pour le test des automatisations.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage informatif de bonnes pratiques et concepts théoriques pour la mise en place d&#x27;automatisations agentiques.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001450_seg38.jpg" alt="Une page de documentation technique (type Notion ou Obsidian) détaillant les avantages des &quot;Routines&quot; basées sur Claude Code par rapport aux automatisations traditionnelles." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001450_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:50</span>
+                        <span class="caption-text">Une page de documentation technique (type Notion ou Obsidian) détaillant les avantages des &quot;Routines&quot; basées sur Claude Code par rapport aux automatisations traditionnelles.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:06 - 00:15:24</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Peut-on le voir travailler en temps réel ? Oui, vous pouvez cliquer sur Exécuter maintenant, puis vous pouvez évidemment le voir s&#x27;exécuter juste là. De la même manière que vous le feriez dans Claude. Vous pouvez même lui parler une fois que c&#x27;est terminé ou l&#x27;interrompre, puis continuer. Peut-il utiliser mon service MCP ? Oui, c&#x27;est ce que sont les connecteurs. Des coéquipiers peuvent-ils utiliser mes routines ? Non, celles-ci appartiennent à votre compte personnel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Page web de documentation ou de FAQ, navigateur web, webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de foire aux questions (FAQ) abordant notamment : &quot;Can I watch it work in real time?&quot;, &quot;Can it use my MCP servers?&quot;, &quot;What&#x27;s the cost?&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et commente les différentes questions/réponses de la FAQ affichées à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001510_seg39.jpg" alt="Une page de FAQ textuelle listant des questions sur Claude, avec en bas à droite une incrustation vidéo du présentateur s&#x27;exprimant face caméra." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001510_seg39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:10</span>
+                        <span class="caption-text">Une page de FAQ textuelle listant des questions sur Claude, avec en bas à droite une incrustation vidéo du présentateur s&#x27;exprimant face caméra.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:24 - 00:15:57</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pourriez peut-être les partager si vous êtes sur un forfait d&#x27;équipe, mais je n&#x27;ai pas encore testé cela moi-même. Quel est le coût ? C&#x27;est juste votre utilisation d&#x27;abonnement normale. Donc, gardez cela à l&#x27;esprit. Que se passe-t-il lorsqu&#x27;une exécution échoue ? Chacune d&#x27;entre elles sera stockée dans votre historique. Vous pouvez donc aller voir pourquoi elles ont échoué. Vous pourriez peut-être même faire en sorte qu&#x27;à la fin de chaque routine, il soit dit : &quot;Hé, si cela échoue, envoie-moi simplement un message Slack pour me le faire savoir&quot;, des choses comme ça. Et puis-je tester une exécution avant de la lancer en direct ? Oui. En fait, vous devriez la tester plusieurs fois avant qu&#x27;elle ne soit en direct. Vous allez simplement dans la routine, vous cliquez sur &quot;exécuter maintenant&quot;, et ensuite elle apparaîtra comme étant en cours d&#x27;exécution. Et puis vous la regardez, vous savez, vous la regardez suivre son ordre d&#x27;opérations et vous pouvez intervenir et vous pouvez</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une foire aux questions (FAQ) en anglais, avec incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de la FAQ abordant l&#x27;utilisation des serveurs MCP, le coût (« Draws down your normal subscription usage ») et ce qui se passe en cas d&#x27;échec d&#x27;une exécution (« Q: What happens when a run fails? A: Every run creates a session on claude.ai... »).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les questions fréquemment posées sur le fonctionnement et la gestion des erreurs des routines automatisées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001532_seg40.jpg" alt="Une page de FAQ textuelle affichée à l&#x27;écran, avec une question mise en surbrillance concernant l&#x27;échec des exécutions, tandis que le présentateur apparaît en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001532_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:32</span>
+                        <span class="caption-text">Une page de FAQ textuelle affichée à l&#x27;écran, avec une question mise en surbrillance concernant l&#x27;échec des exécutions, tandis que le présentateur apparaît en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:57 - 00:16:18</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;aider à se corriger pour que vous ayez l&#x27;assurance que, lorsqu&#x27;il enverra le prompt la prochaine fois, vous n&#x27;aurez plus du tout à intervenir. Mais bref, c&#x27;est tout pour celui-ci. J&#x27;espère que ces conseils et certains des exemples que je vous ai montrés vous ont été utiles. Et maintenant, vous pouvez aller essayer de migrer vos tâches planifiées ou toute autre automatisation que vous aviez l&#x27;intention de créer vers ces routines basées sur le Web, sans avoir à garder votre matériel allumé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web d&#x27;automatisation IA (type agentique) et réseau social X (Twitter)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt d&#x27;analyse de commentaires YouTube (&quot;Analyze 50 of my most recent comments from YouTube...&quot;) et post officiel de Claude sur les routines</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation des résultats d&#x27;exécution d&#x27;un agent IA et présentation d&#x27;une annonce produit sur X</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001602_seg41.jpg" alt="Interface sombre d&#x27;une application d&#x27;automatisation IA affichant les résultats d&#x27;un prompt d&#x27;analyse de commentaires YouTube et le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001602_seg41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:02</span>
+                        <span class="caption-text">Interface sombre d&#x27;une application d&#x27;automatisation IA affichant les résultats d&#x27;un prompt d&#x27;analyse de commentaires YouTube et le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001608_seg41.jpg" alt="Capture d&#x27;écran du réseau social X (Twitter) montrant une publication de @claudeai sur les routines dans Claude Code, avec le présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001608_seg41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:08</span>
+                        <span class="caption-text">Capture d&#x27;écran du réseau social X (Twitter) montrant une publication de @claudeai sur les routines dans Claude Code, avec le présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-42">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:19 - 00:16:27</span>
+                <span class="segment-idx">Segment #42</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc si vous avez apprécié la vidéo ou si vous avez appris quelque chose de nouveau, veuillez s&#x27;il vous plaît mettre un pouce bleu. Ça m&#x27;aide énormément. Et comme toujours, je vous remercie d&#x27;être arrivés jusqu&#x27;à la fin de la vidéo. Je vous vois sur la prochaine. Merci tout le monde.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web / Application X (Twitter)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publication officielle de Claude annonçant les routines dans Claude Code avec capture d&#x27;interface intégrée.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;un tweet illustrant les fonctionnalités futures de l&#x27;outil pendant la conclusion de la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ehg4fhydTgs/ehg4fhydTgs_001621_seg42.jpg" alt="Capture d&#x27;écran montrant un fil d&#x27;actualité X (Twitter) avec un post de Claude (@claudeai) présentant une prévision de recherche sur les routines dans Claude Code, ainsi que le présentateur en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/ehg4fhydTgs/ehg4fhydTgs_001621_seg42.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:21</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un fil d&#x27;actualité X (Twitter) avec un post de Claude (@claudeai) présentant une prévision de recherche sur les routines dans Claude Code, ainsi que le présentateur en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
