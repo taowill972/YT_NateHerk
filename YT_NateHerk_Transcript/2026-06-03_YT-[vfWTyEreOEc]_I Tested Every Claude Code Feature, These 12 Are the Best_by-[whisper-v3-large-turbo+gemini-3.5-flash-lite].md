@@ -25,10 +25,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:34]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> So I've spent well over 500 hours inside of Claude's ecosystem, chat, co-work, Claude code. So what I wanted to do today is break down all of these features, rank them from D all the way up to S tier, and walking you guys through my top 12 in order and telling you why. So let's not waste any time and just get straight into the video. All right, so here we go. Every Claude feature ranked, not literally every single one, but there's a lot of them in here. So real quick, I wanted to preface how I actually ranked these. These aren't ranked by globally which features get used the most or how cool I think they are. These are ranked by how much it changes my actual day-to-day when I'm doing my work. And keep in mind, I am doing a lot of knowledge work and
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -39,10 +39,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:34 - 00:01:09]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> automation. I'm not as much building software or SaaS products. So if you are, you might disagree with some of these. And look how sassy my Cloud Code was because my Cloud Code obviously helped me build these slides. You will disagree with some. Good. The point being, you value features differently based on the way that you use Cloud Code, right? So take my ranking with a grain of salt, but hopefully I can surface some of these features that you may not have known about or may not be using correctly. So let's just jump right in. Okay. So starting with our D tier, I'm not going to read every single one. You guys can screenshot this or pause this if you want, but I wanted to call out a few that I think are kind of the standouts of this tier. So these features are
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -53,10 +53,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:01:09 - 00:01:27]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> all very real and very useful, but it's just like nobody's favorite feature, right? Like clawed.md. Obviously we need that. It's super important to set up. And if you don't have that in your project, it's not going to feel very good, but it's just not a very, very like cool feature. So like I said, very useful, but I put this in the D tier. It's kind of just like the groundwork. It's like the bare minimum. Context lifecycle.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -67,10 +67,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:28 - 00:01:47]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> So doing things like slash clear, slash compact, resuming a conversation, all useful. Web search, you know, Cloud Code obviously has its native web search, and then you can do your web fetches, which is cool because it will spin off research for you right away. So once again, just like a very basic feature, but it is still useful. And then we've got some other things in here, like file uploads, fast mode, permissions, custom themes is something that you can do.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -81,10 +81,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:47 - 00:02:09]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> And I actually didn't even know about this until this video. You can see here, I just tried out themes. You come in here, you do slash theme, and you can change like auto dark mode. you can do colorblind friendly, and you can even set up your own custom themes. I threw the IDE extension in here because in Cloud Code, in VS Code, where I like to use it, I typically like to work in the terminal, but you can also use the extension, which is where I started off when I was first learning Cloud Code.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -95,10 +95,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:02:09 - 00:02:30]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> So anyways, that is my tier D. Let's move on to tier C. These are other functionalities or features of Cloud that, once again, I think are great. I just don't use them a ton. So starting off here with voice mode, you can come into Cloud and you can do a slash voice, and this lets you basically just talk. And now as you see, Claude is hearing what I'm saying and it is basically dictating for me, which is obviously awesome.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -109,10 +109,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:30 - 00:02:50]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> Or if you wanna do it the much cooler way, you just use a tool like Glido and now you're doing it even faster and better. As you can see, boom. Then we also have Cowork. And don't get me wrong, I think Cowork is an amazing product, but for me, I just went straight to Claude Code and I feel like pretty much anything you can do in Cowork, you can do in code. So why not work in a tool that has more capability and just learn that tool really well?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -123,10 +123,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:02:50 - 00:03:11]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> Just because it's called Claude Code doesn't mean you have to be writing software and like heavy engineering, heavy coding. You guys have seen me talk about this kind of stuff a lot. The way I use Cloud Code is my executive assistant and I've kind of turned it into my AI operating system. So that is why Cowork is a C tier for me. But hey, if you are completely non-technical and you're overwhelmed getting into this whole Cloud thing, and if you want to start with Cowork, that's absolutely fine.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -137,10 +137,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:12 - 00:03:32]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> I also threw in here interactive connectors. When you're in Cloud and you're doing things like, you know, in your chat or Cowork or wherever you are, and you want to just throw in connectors, it's really easy to just be able to log into something and automatically have all of the tool calls available rather than having to maybe try to play with setting them up in the terminal. So that's why this is a C tier. It's still very useful, but I just don't use that as much.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -151,10 +151,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:03:32 - 00:03:53]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> The other one I wanted to highlight here was local file access. Obviously that is a huge benefit of these kind of local terminal coding agents. All right, so now let's move on to our B tier, which are the ones that I think are super, super useful, but didn't make my top 30. So dynamic workflows. So far, I've actually been loving this feature. It definitely uses a lot of tokens, but it processes things in parallel really, really well.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -165,10 +165,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:03:53 - 00:04:11]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> And I just made a full video breaking this down. If you wanna see, I'll tag that right up here. But the reason I gave it a B tier is also because at the time of making this video, it's very new. So I've been experimenting and I like it, but I haven't yet found out how exactly it works into my day-to-day. Alongside of these dynamic workflows, we also saw deep research, which is a workflow function.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -179,10 +179,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:04:11 - 00:04:44]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> So if you do slash deep research and you say what you wanna research, it automatically will invoke one of those dynamic workflows, which is pretty cool. We also have get work trees, which is a super important feature, especially if you are working on code bases with other people, or you're working on a bunch of different features within your app or your product or whatever code base you're working in. Basically lets you run isolated copies so that they never collide. And then you can merge it all back together at the end. And then we also have ultra review, which is another slash command you can do, where you come in here, you type ultra review, as you can see, which will spin up sort of like a code review in the cloud. I do wish though, you could type it in and it would give you that sort
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -193,10 +193,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:04:44 - 00:05:10]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> of like color thing, the way that you do with like ultra think or some of these other things, even if like you do workflows, it does the whole rainbow color. But either way, it's still a great feature. Some of the other things I threw in here was like the interactive charts. If you're on Cloud Chat and you ask for diagrams or interactive elements, it creates those right inside, which is awesome. I also love the whole recap feature where if we're in Cloud Code, you can see if you've been idle for a while, it basically shows you what this session has been working on.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -207,10 +207,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:05:10 - 00:05:30]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> So if you've got a bunch of tabs open, like I do a lot, you get a recap down to the bottom, which shows you exactly what was taking place in that terminal. So for example, here, I can see that we were building a slide deck for Cloud Code Hooks, which is a video that I'll be working on and coming soon. Threw in some other stuff here too, like Cloud for Microsoft 365, Cloud and Chrome, computer use, other stuff like that.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -221,10 +221,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:05:30 - 00:06:04]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> But let's go ahead and move on to the A tier. These are all pretty much honorable mentions that I had a little bit of a hard time deciding what actually made it into the top 12. But starting with number one honorable mention, which really is in my top 12, but it's not actually like a Cloud feature. So anyways, I just had to throw it on. And that's the Google Workspace CLI. So like everything that i'm doing pretty much either lives in like click up or My google environment. So sheets docs drive gmail calendar So the fact that my agent can use the cli to navigate through everything here And I can build skills around the cli. It can just touch things way easier
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -235,10 +235,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:06:04 - 00:06:24]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
+> And it's just very easy to maintain. So I love that cli. We've also got dispatch Which is kind of like the whole channels thing and it was one of the things that claud dropped when Open claw was just going nuts And so dispatch allows you to just continue the conversation and talk to your Claude from your phone, specifically when you need to run your coworker or your Claude code.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -249,10 +249,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:06:24 - 00:06:46]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> I also threw in here the Claude desktop app, which I do use a lot. And it's nice to be able to be in the desktop app specifically for routines because I can manage my cloud and my local routines right from this app, which is pretty nice. And I really like the ability to be able to work in a bunch of different projects and a bunch of different sessions and visually see that on this left-hand side a little bit better than the way that I typically work in VS Code.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -263,10 +263,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:06:47 - 00:07:05]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> So when I'm working, I usually have VS Code open here with a couple of different tabs open or windows open. And then I usually have my Cloud Desktop app open on this other side. Because also when you're having a conversation with Cloud Code in something like the desktop app or even the VS Code extension, you can copy and paste the text way better because it doesn't wrap weird in the terminal.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -277,10 +277,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:07:06 - 00:07:26]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> Whereas if I'm in the terminal and I try to like copy this, it just has weird spacing. So sometimes for those use cases, it's better to just open up the extension like this or to use the Cloud desktop app. I also had to throw Cloud Design in here because as a team, we do use Cloud Design quite a bit because we have our different design systems for different types of landing pages or different types of offers.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -291,10 +291,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:07:26 - 00:07:46]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> And it's just a really nice place. We can all leave comments. We can all look at things and it spins up POCs really quick. Auto mode. I like using auto mode as a permission level in my Cloud code. Ultra code, hooks, effort levels, agent view. I really like, which is kind of like that dashboard to manage and see all the different terminals you've got running inside of the Cloud Code terminal, which is great.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -305,10 +305,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:07:46 - 00:08:08]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> Slash, by the way, you're able to ask questions while you're not interrupting whatever your main terminal is actually doing. Slash context. I had to throw prompt caching in here because it saves us a lot of tokens, but it's just something that runs on the background that you don't even really notice. So anyways, that is what I had for the A tier. So now let's get into my top 12. These are the features that I actually use all the time and that I really love.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -319,10 +319,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:08:08 - 00:08:28]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> Let's start with number 12, which is slash goal. So slash goal basically lets you tell Claude, hey, I want you to do this and you're not going to stop until you hit that condition. So a really, really simple example. Hey, Claude, go ahead and do some research on the best riddles and don't stop until you can pull back three riddles that you would consider very hard to solve.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -333,10 +333,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:08:30 - 00:08:48]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> So in this case, the objective that it's going for is finding those three riddles. The only thing you've noticed here is that very hard to solve is kind of subjective. So typically when you're using a slash goal, you want to have as much of an objective definition of done as you can. But this is really nice.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -347,10 +347,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:08:48 - 00:09:06]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> And the thing about this slash goal is when this came out, I think a lot of people were trying to do the demos where it's like, wow, my agent's been doing slash goal for 24 hours or 48 hours. And yes, that's very cool. But I've never done that. And I don't really need to. What I like about slash goal is I can shoot off a goal. I can give it a very clear definition of done.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -361,10 +361,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:09:06 - 00:09:26]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. Okay. So we have like little sound bites. I can chat with people. The tool war panel settled a few debates for me. Nice. Good perspective there. We're outside again. We have these different banners, although they're all the same. They don't say like different people's names. So big AIS live logo. Workshop wing is over here. And let's go through the sliding glass doors and see what we've got. So we've got the AIS cafe. The map is in the bottom right, and it's not too descriptive.
+> And I can go to bed. Or I can go make lunch. And I can have pretty high confidence that when I come back, it actually will be done because it has verification in there. You can see this goal took 43 seconds and the output isn't anything phenomenal, but it just gives me a little bit of confidence. I can say slash goal, execute these skills for me and don't stop until X, Y, and Z. So just because you're doing slash goal doesn't mean you have to have it be hours and hours of running.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -375,10 +375,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:09:26 - 00:10:00]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> It just means that you have to be clear with your prompt and set an objective criteria. And if that's a metric that you want to optimize for, that's great. For example, on our website, AI Automation Society, when I refresh this, the globe is basically an instant load. But when I first built this, the globe took like a second every time to load in. So I said, hey, slash goal, look at the globe element and don't stop optimizing this page until the user would refresh and the globe appears instantly. And now it's basically instant. And that honestly took, I think it was like an hour and a half of running and trying different things until it was able to get it to this point. So that's just a good example of something that you can use slash goal for.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -389,10 +389,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:10:00 - 00:10:32]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> Okay. Moving on to number 11, we have ultra plan. So this offloads planning to the cloud with a bunch of different planning agents. And I love using this ultra plan thing when I need to really, really put some effort into a big task. And I want to plan first. And this one's cool because you can just type ultra plan and it does the whole little rainbow color. But let's say I want to ultra plan, help me figure out how I can make five times the monthly recurring revenue compared to the previous month. And at this point, that's a super, super ambiguous thing, right? And it says, do you want to run it in the cloud? I say, yes, it's going to give me a link and it will take it to the cloud.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -403,10 +403,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:10:32 - 00:10:53]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
+> so I can click on this link right here, open this up. And then what happens is after it clones the repo and it does all of this, you know, the compute in the cloud, we're able to just basically bring that back into the terminal or we could start executing upon the plan right here in Cloud on the web. You can see back in the terminal, it's showing me that there are five background tasks that are running. And right here, we're able to actually keep working while the cloud version is still planning.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -417,10 +417,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:10:53 - 00:11:12]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> Okay, so number 10, we have slash insights. So what I'm able to do is come into here, I can type a slash insights and it generates a report on the past 30 days of how we've been using Cloud Code. And it gives you insights on, hey, here's what you've done a lot. Here's what you're doing bad. Here's maybe some features that you should utilize more. Here's maybe some skills you should build. So when it gives you that HTML report, this is what it looks like.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -431,10 +431,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:11:12 - 00:11:31]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> You can see it went over 1,500 messages across 153 sessions. And these are the dates that it ran it from. This would be a month, but I got a new PC here. So it only was able to look through the past two to three weeks-ish of local data. But anyways, we get to see what's working, what's hindering you, quick wins to try, and ambitious workflows.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -445,10 +445,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:11:31 - 00:11:53]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
+> And we have this kind of like table of contents where you can jump around to where things go wrong or, you know, different features and things like that. So it's really cool to just check in on this every once in a while and see how the way that you use Cloud Code evolves. Okay, so number nine, we have auto memory. So I think when this released, it was called auto dream. But basically, this is just the idea that Cloud is auto improving the memory without you prompting to do stuff.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -459,10 +459,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:11:53 - 00:12:13]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> So every, you know, interval of this many sessions or this many conversations or this much time, it basically just searches through what you guys did and it updates itself. It basically just dreams and makes it smarter. And yeah, by the way, I canceled all of the ultra plan. Anyways, if you come in here and you do memory, you can see auto memory is turned on. So if that's not turned on for you and you want it, go turn it on.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -473,10 +473,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:12:13 - 00:12:32]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
+> And if you want to read more about how that works, you can go to the docs and read up about auto memory. All right, so number eight, we have agent teams. This is one of my favorite features ever. It is token intensive, but whenever I realize, okay, my session's going to end, my five hour window is going to end in 30 minutes and I have 50% of my session left. Let me spin up some agent teams and just do some fun stuff.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -487,10 +487,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:12:32 - 00:12:51]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
+> So what I love to do, and what you can actually see right down here with these agents that are just sitting and waiting is I love to create panels. I love to create debate boards. I love to say, hey, create me an agent team and have one persona be a complete beginner, have one persona be a CEO. And I just list out all these different personas and I have them analyze something or brainstorm something and debate.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -501,10 +501,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:12:51 - 00:13:13]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
+> And then they basically just have rounds of debates until they all agree on something. And sometimes it's just really helpful for me to hear these different perspectives and analyze it myself. And the way that you have to do this is in your .cloud inside of your settings, you have to enable the Cloud Code agent teams because right now it is an experimental feature. So if you put this into your settings, then you will be able to actually use it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -515,10 +515,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:13:13 - 00:13:47]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
+> And you can pretty much invoke the agent team creation with completely natural language. Okay, number seven, we have slash rewind, which lets you roll back code and your conversation to an earlier checkpoint. And when we talk about how do you save context and the idea that like everything gets cached and they get reloaded, it's actually better for you to rewind if it gets something wrong, rather than saying, hey, no, that was wrong. Do it this way instead. And you literally can just do a slash rewind, and then you can choose the exact prompt, the exact point in this conversation on where you need to actually do it. So that is a super nifty feature. All right. So number
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -529,10 +529,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:13:47 - 00:14:23]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
+> six, we have sub-agents. Background sub-agents, they can get invoked automatically. You can ask it to create sub-agents. The difference between the agent teams and the sub-agents are that agent teams, they can talk to each other. They can debate. The sub agents all work in parallel. So they can't talk to each other. They only talk to the main terminal session that invoked them. And what else is cool about the sub agents is right in here in my dot Claude, not only do we have like skills and rules and workflows, but we also have agents. So you can create these markdown files of agents that get invoked the same way a skill does pretty much. And you're customizing what that agent does and what tools it may use and any skills that live inside of an agent. So I
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -543,10 +543,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:14:23 - 00:14:57]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
+> use subagents a lot and it's one of my favorite features. Number five, we have slash loop. This is basically the ability to just have a prompt in your terminal repeat. So I could come in here and I could do a slash loop and say, every minute, just remind me to use the restroom. And then when I kick that off, it basically will use a cron create tool and it will set up that local cron to remind me to use the restroom. And the cool thing about the loop, you can see there, it uses the cron create tool is that they're basically bound by that session. So if I opened up a different terminal, I could have different crons over there. And if I close out of this one,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -557,10 +557,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:14:57 - 00:15:34]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
+> it would kill that cron. But you also don't have to do slash loop to invoke it. You can just say, hey, set up a recurring loop to do this every 10 minutes, every 20 minutes, every hour. And they should run for like seven days. And then they'll automatically shut down if the terminal has been open for longer than seven days. So there you go. It just got kicked off again. And now I got two reminders. All right. So number four, we have remote control, the ability to drive your local cloud code session from your phone or the web. And I love this one. So I come in here and I can just like, let's say I'm working on this project and I want to go take a walk or go down to the gym or whatever it is. I can just go ahead and do a remote control command and I can say enable remote
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -571,10 +571,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
+### ⏱️ `[00:15:34 - 00:16:08]` | Segment #40
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
+> control. And then it gives me this link, which if I open that up from my phone, or I even just go into the cloud app on my phone, go to code, and then I hit it up top, I can control it. So I'm not sure if you guys will be able to see this, but on my phone, you can basically see that it gives me those bathroom reminders, right? Like, Hey, um, time to use the restroom. And I can say, thank you on my phone after it's running another one of those loops. But if I shoot off, thank you, it comes off in my computer as well. So this is basically completely synced locally from my phone to what's going on there. So I love doing this. Like I said, when I just want to go take a quick walk, but I want to keep that session going and keep brainstorming or keep building things.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -585,10 +585,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
+### ⏱️ `[00:16:08 - 00:16:29]` | Segment #41
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
+> All right. So number three, we have routines. This is the ability to schedule things and not just scheduling like a deterministic Python script. You're scheduling an actual agent. You're scheduling your cloud code terminal the exact same way that you would talk to it right here. And you can literally just do like a slash schedule in order to create some sort of routine. But that's why I like to use the desktop app is because I just like to create them in here.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -599,10 +599,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
+### ⏱️ `[00:16:30 - 00:16:52]` | Segment #42
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
+> And this is where I can view them. I can view it on a calendar. I can view it based on a list. I can set up a local routine or I can set up a cloud routine. And it's just really cool because you get like an actual agent on a routine rather than just getting sort of like AI calls or API calls. All right. So number two, we have the status line. This is probably one of the most slept on things ever. And it's what you guys noticed down here at the bottom of my screen.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -613,10 +613,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
+### ⏱️ `[00:16:52 - 00:17:12]` | Segment #43
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
+> I have Opus 4.8 X high. I can visually see how much of my context windows been eaten up. I can then see 27%, 274,000 tokens out of a million tokens. This is one of the most important things that you need when you're working with cloud code. And it's the main reason I switched from the VS Code extension to the terminal. But now I like the terminal for more than just that reason.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -627,10 +627,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
+### ⏱️ `[00:17:12 - 00:17:33]` | Segment #44
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
+> But it's the easiest fix ever. You literally can just do slash status line, as you see, and you can just say exactly what you want. You could give your Cloud Code a screenshot of this and say, hey, I want this to be shown on my status line. It's so nice to be able to see the model, the effort level, and obviously the context so I know when I need to run my session handoff skill and when I need to clear and when I need to compact and stuff like that.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -641,10 +641,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
+### ⏱️ `[00:17:33 - 00:17:52]` | Segment #45
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
+> And two of the features we talked about earlier, one of them was slash context. so we can visualize what's actually gone into this window and what might be silently eating up tokens. And then the other one was slash usage, which lets us actually see our session and our week and some other stats like what models we use and how many tokens and just gives us some visibility into some of this stuff.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -655,10 +655,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
+### ⏱️ `[00:17:52 - 00:18:14]` | Segment #46
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
+> And then last but not least, number one, a lot of you guys will probably guess exactly what this is. And this is skills. Like this has just been the thing that has given me so much more leverage when I'm using my cloud code. I have obviously so many skills. I refine them every day. I keep building more out and they are just the best thing ever. And the cool thing about skills is not only can you build your own, but you can pull in a bunch of skills from other people.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -669,10 +669,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
+### ⏱️ `[00:18:14 - 00:18:36]` | Segment #47
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
+> You can get plugins that have skills and hooks and MCP servers and tons of things in them already. Or you can just grab skills because all the skills are, are markdown files. They live in your .cloud. Here are the skills. You can see I've got a ton of them in here and I can share them with my team and I can continue to build these and make them better over time. A skill is basically just a recipe. It's basically when you open up your cookbook, if you want to make a lasagna, you don't always just do that off of memory.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -683,10 +683,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
+### ⏱️ `[00:18:36 - 00:18:55]` | Segment #48
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
+> You just open up the lasagna recipe and you just follow the instructions. And so now that we've given our agent a bunch of these recipes, it knows exactly how I like to do Excalijar presentations or to make thumbnails or to trim videos or whatever it is. It just has to read the skill and it does it way more consistently than if you had to give it the same prompt every time. Skills can be big. They can have a bunch of steps.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -697,10 +697,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
+### ⏱️ `[00:18:55 - 00:19:14]` | Segment #49
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
+> They can have a bunch of tools. They can even route to other skills. So you chain them together. Or they can be really simple. It could be as simple as the session handoff skill, which is literally, it just invokes a prompt. It's like a four sentence prompt that I found myself saying a lot. And now I have just turned that into one quick slash command and it's just super easy. So they're very versatile. They don't have to be complex, but they can be.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -711,10 +711,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
+### ⏱️ `[00:19:14 - 00:19:33]` | Segment #50
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
+> And it is, like I said, just the number one feature that I'm using on the day to day inside of Claude, because it's not only Claude code, but you can also use them in Claude chat or Claude cowork. And that is going to do it for this one. That is our whole board of all of these top 12 features, as well as my A tier, B tier, C tier, and D tier of Claude features.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -725,10 +725,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
+### ⏱️ `[00:19:33 - 00:19:52]` | Segment #51
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
+> Like I said at the beginning, you guys are not gonna agree with this, but hopefully you enjoyed seeing the way that I was thinking about it. And hopefully you maybe learned a few new features that you might not have known existed, or maybe I've inspired you to use some of these top 12 more if you're not utilizing them too much. So if you guys want to review the slide deck, I will attach this whole thing in my FreeSchool community.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -739,80 +739,10 @@ Dans cette vidéo intitulée **I Tested Every Claude Code Feature, These 12 Are 
 
 ---
 
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
+### ⏱️ `[00:19:52 - 00:20:14]` | Segment #52
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
+> The link for that is down in the description. All you have to do is join this community. You'll come in here, click on classroom, hit all YouTube resources, and then you'll be able to see all of the resource guides, skills, GitHub repos, anything that I've ever dropped in here. completely free. But that is going to do it for today. So if you guys enjoyed or you learned something new, please give a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video and I will see you all in the next one. Thanks guys.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
