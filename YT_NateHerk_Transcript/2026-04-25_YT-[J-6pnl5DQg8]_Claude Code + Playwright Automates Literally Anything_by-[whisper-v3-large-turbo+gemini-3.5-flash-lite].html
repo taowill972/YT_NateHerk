@@ -1,0 +1,2666 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Claude Code + Playwright Automates Literally Anything — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Claude Code + Playwright Automates Literally Anything</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-25</span>
+                <span class="badge">⏱️ 00:18:50</span>
+                <span class="badge">🆔 <code>J-6pnl5DQg8</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=J-6pnl5DQg8" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Claude Code + Playwright Automates Literally Anything**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:35</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So when you give a tool as powerful as Claude Code, access to literally control a browser, if you think about it, you can actually automate anything, whether that&#x27;s stress testing an app, downloading reports, or even playing a game like you guys saw in my other video. So today I walk through three use cases that you can use when you connect Playwright CLI to Claude Code to control your browser. The first one is having it actually QA a web app and finding bugs and then fixing them. The second one is searching for dentists and finding their contact information. And then the third one, a question that everyone&#x27;s asking is, can browser use actually control sessions where you need to be logged in? So I show off what I&#x27;m able to do in my</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, VS Code / Cursor (avec terminal intégré Opus/Claude Code), plateforme communautaire Skool.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes de commentaires (&quot;As long as you don&#x27;t pull a &#x27;claude mythos&#x27;...&quot;), formulaires de contact web, logs de terminaux IA (&quot;Opus 4.6 1M&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Automatisation de la navigation web, saisie automatisée de commentaires et interaction avec des formulaires de contact via des agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000009_seg1.jpg" alt="Capture d&#x27;écran montrant le site Best Buy avec une fenêtre contextuelle de demande de géolocalisation." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le site Best Buy avec une fenêtre contextuelle de demande de géolocalisation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000017_seg1.jpg" alt="Capture d&#x27;écran montrant une interface de communauté Skool avec un agent IA répondant automatiquement aux commentaires." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000017_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:17</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de communauté Skool avec un agent IA répondant automatiquement aux commentaires.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000026_seg1.jpg" alt="Capture d&#x27;écran montrant le site web &quot;Vision Dental&quot; intégré dans une interface de développement (type VS Code/Cursor)." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000026_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:26</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le site web &quot;Vision Dental&quot; intégré dans une interface de développement (type VS Code/Cursor).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:35 - 00:01:07</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">school account. So I don&#x27;t want to waste any time. Let&#x27;s get straight into the video. All right. So I am in a fresh Cloud Code project, as you can see. I&#x27;m in a folder called Browser Automation Demo, but there&#x27;s nothing in here just so you guys can follow along with exactly what I&#x27;m doing. So the first thing to do is install Playwright CLI so that we can actually do some browser automation. So I&#x27;m just going to go into plan mode and I&#x27;m going to say, hey, Cloud Code, I want to use Playwright CLI in order to do some browser automation stuff, whether that means testing out web apps or taking screenshots of things, whatever the case, I just need you to figure out how you can install this for me and then go ahead and build a plan and let&#x27;s do it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Zone de saisie de prompt &quot;Ctrl esc to focus or unfocus Claude&quot; et logo de Claude Code au centre.</p>
+                        <p><strong>Action / Démonstration :</strong> Préparation de l&#x27;environnement de travail dans VS Code pour lancer une session d&#x27;automatisation avec l&#x27;agent Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000043_seg2.jpg" alt="Interface de Visual Studio Code affichant l&#x27;extension Claude Code dans un projet vide nommé &quot;Browser Automation Demo&quot;." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000043_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:43</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant l&#x27;extension Claude Code dans un projet vide nommé &quot;Browser Automation Demo&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:07 - 00:01:33</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I know I&#x27;m telling you guys to use Playwright CLI, but this is literally what I did when I decided I wanted to try out some browser automations, except for I said, Hey, I need you to research the different tools and the different pros and cons and help me figure out what I should do. I played on with Chrome dev tools for a little bit, but now I&#x27;m using Playwright CLI. And one reason for that while we&#x27;re letting this load is that if I do slash context in here, you can see that the Chrome Dev Tools MCP takes up so many tokens because there&#x27;s so many different tools and each tool has a description.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension/terminal Claude Code intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes Bash visibles : &quot;ls -la&quot; pour lister le répertoire et vérification des versions de &quot;node&quot;, &quot;npm&quot; et &quot;npx&quot;. Le prompt affiche : &quot;hey Claude Code! I want to use Playwright...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent est en phase de réflexion (&quot;Thinking&quot;) et d&#x27;exploration de l&#x27;état actuel du projet avant d&#x27;exécuter des commandes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000114_seg3.jpg" alt="Une capture d&#x27;écran de l&#x27;interface VS Code montrant l&#x27;agent Claude Code en train d&#x27;analyser un projet d&#x27;automatisation de navigateur." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000114_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:14</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface VS Code montrant l&#x27;agent Claude Code en train d&#x27;analyser un projet d&#x27;automatisation de navigateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:34 - 00:02:01</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So that sounds like, hmm, maybe I don&#x27;t wanna use the MCP server. Let me just go ahead and try this Playwright CLI. And it works really well. All right, so the plan is done. We have an empty project. We&#x27;re going to initialize the project, install Playwright, create a demo script, test things out. I&#x27;m gonna go ahead and accept this plan. And now I&#x27;ll check with you guys when that&#x27;s done. All right, so you can see that it is done. it&#x27;s been installed and then it also tried it out already. So it ran a script to open up this page and then screenshot it. And that got saved right here. So as you can see, it was able to do that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur de code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Document Markdown : &quot;Plan: Set Up Playwright for Browser Automation&quot;. On y voit le contexte (&quot;Empty project directory...&quot;) et l&#x27;étape 1 : &quot;Initialize the project - Run npm init -y to create a package.json&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du plan d&#x27;action généré par l&#x27;IA pour automatiser la configuration d&#x27;un projet Playwright.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000140_seg4.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code affichant un fichier Markdown nommé &quot;Claude&#x27;s Plan&quot; détaillant les étapes pour configurer Playwright dans un projet vide." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000140_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:40</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code affichant un fichier Markdown nommé &quot;Claude&#x27;s Plan&quot; détaillant les étapes pour configurer Playwright dans un projet vide.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:01 - 00:02:37</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It was able to take a screenshot, which means that everything is working. So now that we have this initial stuff set up, I&#x27;m just going to go ahead and do a slash init to basically just initialize the environment and give us a claw.md file. All right. So there are tons of great use cases when it comes to using a browser automation, whether that is looking through Amazon or applying to a ton of positions or, you know, downloading reports from websites that don&#x27;t have an API. And what&#x27;s awesome about this is it will build out these scripts that run the browser automation, right? And when you pair those custom scripts with a skill, it gets really powerful because then that process of opening up the browser and doing certain things becomes consistent and</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension/terminal Claude Code intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion confirmant l&#x27;installation de Playwright et la création d&#x27;un script de démo (demo.js), suivi de la commande saisie par l&#x27;utilisateur &quot;/init&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur a saisi la commande &quot;/init&quot; dans l&#x27;interface de l&#x27;agent IA pour configurer l&#x27;environnement du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000210_seg5.jpg" alt="Une capture d&#x27;écran de l&#x27;interface VS Code montrant l&#x27;interaction avec Claude Code confirmant la réussite de l&#x27;automatisation Playwright et l&#x27;initialisation du projet." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000210_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:10</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface VS Code montrant l&#x27;interaction avec Claude Code confirmant la réussite de l&#x27;automatisation Playwright et l&#x27;initialisation du projet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:37 - 00:02:56</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">repeatable. But one thing that I think is really cool about browser automations is the ability to basically test things and automate QA. So an example I wanted to walk through with you guys is I&#x27;m going to use Cloud Code in here to build us a quick web app that&#x27;s gonna be like a multi-page form. And I don&#x27;t wanna test it myself. I wanna have it test it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension Claude Code active.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de fichiers du projet &quot;BROWSER AUTOMATION DEMO&quot; incluant des dossiers comme .claude et node_modules, ainsi que le champ de saisie de l&#x27;assistant &quot;ctrl esc to focus or unfocus Claude&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Initialisation de l&#x27;environnement de développement pour entamer la création d&#x27;une application web multi-pages via l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000242_seg6.jpg" alt="Interface de Visual Studio Code affichant l&#x27;extension Claude Code dans un volet latéral, avec le présentateur en médaillon dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000242_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:42</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant l&#x27;extension Claude Code dans un volet latéral, avec le présentateur en médaillon dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:56 - 00:03:14</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then it has to find the bugs, find suggestions and then fix itself. So it&#x27;s gonna be us building a web app or a form and it&#x27;s gonna be like completely hands-off. That&#x27;s the goal at least. So let&#x27;s hop into plan mode and let&#x27;s get started. I need you to build me a form submission website. Now I want this to basically be one page per question.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension Claude Code active.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Zone de saisie de texte &quot;Ctrl esc to focus or unfocus Claude&quot; et structure de fichiers du projet &quot;BROWSER AUTOMATION DEMO&quot; visible dans la barre latérale.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;apprête à interagir avec l&#x27;agent Claude Code pour lancer la création du site web demandé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000301_seg7.jpg" alt="Interface de Visual Studio Code affichant l&#x27;extension Claude Code en mode conversationnel, avec le présentateur en médaillon dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000301_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:01</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant l&#x27;extension Claude Code en mode conversationnel, avec le présentateur en médaillon dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:14 - 00:03:47</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So as soon as I open up the page, it should ask me for my first name. And then there should be a button that prompts me to hit enter. When I hit enter, I go to the next page and then I have my last name and then I have my phone number and then I have my business and I have maybe, let&#x27;s just say eight questions about me and kind of getting me onboarded into this, you know, fake business or whatever. I just want to do this to see and test the functionality of what you&#x27;re able to build me here. Okay. So that is phase one, phase one, we&#x27;re going to get an initial version of the website. And then before I even open it up and test it, we&#x27;re going to go into plan mode again</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de Claude Code avec un champ de saisie textuel indiquant &quot;ctrl esc to focus or unfocus Claude&quot; et des options de configuration (&quot;Plan mode&quot;, &quot;settings.local.json&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;apprête à interagir avec l&#x27;agent Claude Code pour automatiser la création du formulaire décrit vocalement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000323_seg8.jpg" alt="Une capture d&#x27;écran de l&#x27;interface de VS Code montrant l&#x27;extension Claude Code en cours d&#x27;exécution dans un panneau latéral, avec une zone de saisie pour interagir avec l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000323_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:23</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface de VS Code montrant l&#x27;extension Claude Code en cours d&#x27;exécution dans un panneau latéral, avec une zone de saisie pour interagir avec l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:47 - 00:04:08</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and see if just Cloud Code with the browser automation can test it, iterate, test it, iterate. Okay, here is our plan. Multi-page onboarding form. The user wants a polished multi-page onboarding form. We have the architecture. There&#x27;s 12 total questions, which look good to me. We&#x27;ve got some files that&#x27;s gonna make, some implementation details here, and all of this looks good to me.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec l&#x27;extension Claude (Claude Dev/Cline).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence du projet &quot;Browser Automation Demo&quot; et logs de l&#x27;agent IA : &quot;Explore the project at...&quot;, &quot;Read package.json&quot;, état &quot;Simmering...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA est en train d&#x27;explorer la structure du répertoire pour comprendre les fichiers existants avant de commencer le développement du formulaire.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000352_seg9.jpg" alt="Interface de VS Code montrant l&#x27;extension Claude en pleine action, avec une arborescence de fichiers à gauche et une fenêtre de chat d&#x27;agent IA à droite analysant le projet." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000352_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:52</span>
+                        <span class="caption-text">Interface de VS Code montrant l&#x27;extension Claude en pleine action, avec une arborescence de fichiers à gauche et une fenêtre de chat d&#x27;agent IA à droite analysant le projet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:08 - 00:04:29</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So we&#x27;re gonna go back into the main session and accept those changes. Okay, so that just finished up. We have the files have been created. we&#x27;ve got a server that this is running on. It&#x27;s gonna be on a local host. We also have 12 one per page questions. And what I noticed it doing is it was taking screenshots and I didn&#x27;t even tell it to. So if I open up screenshots, you can see we now have these pictures.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec l&#x27;extension Claude intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des fichiers générés (index.html, serve.js, test-onboarding.js), instructions d&#x27;exécution (npm run serve, npm run test:onboarding) et description du flux de travail de l&#x27;automatisation (12 questions).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur visualise le rapport final de l&#x27;agent IA après la génération du code et des scripts d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000413_seg10.jpg" alt="Une capture d&#x27;écran de l&#x27;interface VS Code montrant une interaction avec l&#x27;agent Claude, détaillant les fichiers créés pour une automatisation de navigateur et les commandes terminal pour lancer le serveur et les tests." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000413_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:13</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface VS Code montrant une interaction avec l&#x27;agent Claude, détaillant les fichiers créés pour une automatisation de navigateur et les commandes terminal pour lancer le serveur et les tests.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:29 - 00:04:50</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So let me just look at these. We&#x27;ve got number one, which is what is your first name? Number two, last name, best phone number to reach you at. There&#x27;s even, if you can see, there&#x27;s like one of those scroll bars at the top where it&#x27;s like showing how many questions in they are. So for a one-shot prompt and the fact that it&#x27;s already flipping through and taking screenshots, I&#x27;m pretty impressed. But we have to see how it&#x27;s able to actually test it out.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension Claude/Cursor).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de fichiers (&quot;onboarding/screenshots/&quot;), instructions textuelles sur l&#x27;exécution d&#x27;un script Node.js et de Playwright (&quot;npm run test:onboarding&quot;), et aperçu visuel d&#x27;une question de formulaire (&quot;Best phone number to reach you?&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur passe en revue les étapes du processus d&#x27;automatisation de formulaire via l&#x27;interface de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000434_seg11.jpg" alt="L&#x27;éditeur Visual Studio Code affiche une structure de projet contenant des captures d&#x27;écran de formulaire d&#x27;onboarding, avec une fenêtre de chat Claude active présentant des instructions pour tester une automatisation Playwright." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000434_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:34</span>
+                        <span class="caption-text">L&#x27;éditeur Visual Studio Code affiche une structure de projet contenant des captures d&#x27;écran de formulaire d&#x27;onboarding, avec une fenêtre de chat Claude active présentant des instructions pour tester une automatisation Playwright.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:50 - 00:05:11</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So now I&#x27;m gonna go back into plan mode and I&#x27;m gonna say, yep, absolutely. Spin up a server so that you can actually run this. And then what I want you to do is use your browser use and test it out. So fill in the fields, click through, and if there&#x27;s any bugs or if there&#x27;s anything wrong with the functionality of the site, make note so that you can go ahead and fix the actual site itself.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec l&#x27;extension Claude intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation du projet &quot;Browser Automation Demo&quot; incluant les commandes `npm run serve`, `npm run test:onboarding`, et l&#x27;URL `http://localhost:3000`. Liste des étapes de l&#x27;automatisation (12 questions) visible dans le panneau de chat.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur est en &quot;Plan mode&quot; dans l&#x27;interface de l&#x27;agent, préparant le lancement du serveur pour permettre le test de l&#x27;automatisation du formulaire via le navigateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000456_seg12.jpg" alt="Une capture d&#x27;écran de l&#x27;éditeur VS Code montrant une interaction avec l&#x27;interface de chat de l&#x27;agent Claude, détaillant les instructions pour lancer un serveur local et exécuter des tests d&#x27;automatisation Playwright." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000456_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:56</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;éditeur VS Code montrant une interaction avec l&#x27;interface de chat de l&#x27;agent Claude, détaillant les instructions pour lancer un serveur local et exécuter des tests d&#x27;automatisation Playwright.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:11 - 00:05:44</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And I also want you to do this in a headed browser so that I can watch what&#x27;s going on So I&#x27;m gonna shoot that off. It&#x27;s gonna make a plan, but that is one important distinction By default you could say hey I always want you to run playwright in a headed browser But there is headed or headless meaning it could be running this headless where it wouldn&#x27;t show us on screen But it is still running on its own tab and clicking through things. Okay Here is the QA pass the headed browser testing. I&#x27;m not gonna read this I think that this is pretty clear of what we want. I&#x27;m gonna go ahead and accept it So what happens is for every kind of like bot that we want to run, it has to write its own script.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec une extension d&#x27;assistant IA intégrée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt de l&#x27;utilisateur demande à l&#x27;IA de lancer un serveur (`npm run serve`), de tester le flux du formulaire via un navigateur &quot;headed&quot; (avec interface graphique) pour observer le processus, et de noter les éventuels bugs.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;assistant IA est en cours de traitement de la requête, comme l&#x27;indique l&#x27;indicateur &quot;Shimmying...&quot; dans la console de discussion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000520_seg13.jpg" alt="Une capture d&#x27;écran de l&#x27;interface VS Code avec une fenêtre de chat de l&#x27;assistant IA active au centre, détaillant les instructions pour tester un formulaire web." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000520_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:20</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface VS Code avec une fenêtre de chat de l&#x27;assistant IA active au centre, détaillant les instructions pour tester un formulaire web.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:44 - 00:06:16</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I believe that this is this one that it&#x27;s writing, which is the test onboarding.js. And this is basically what instructs the bot on what to do. And then when we wanted to turn this into a skill, which is basically like QAing our website, we would say, okay, when you want to QA, then you run the bot and then you take the feedback from the bot and then you make changes and then you run the bot again. And so that&#x27;s how we can turn kind of like all of these different pieces into an actual process. Okay. Also that wasn&#x27;t even the script, the script that it&#x27;s writing for this is QA dash test. So now you see what I mean. Okay. So the window just popped up.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec intégration d&#x27;agent IA, probablement Claude Code/Cursor).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de fichiers (dont `test-onboarding.js`) et historique de chat montrant la commande : `cd &quot;c:/Users/nateh/OneDrive/Desktop/Browser Automation Demo&quot; &amp;&amp; node serve.js &amp;`.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent exécute un serveur HTTP en arrière-plan et s&#x27;apprête à générer/exécuter un script de test QA (&quot;headed browser test&quot;).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000552_seg14.jpg" alt="Interface de l&#x27;éditeur Visual Studio Code avec un panneau de discussion Claude actif, montrant l&#x27;exécution d&#x27;une commande Bash pour démarrer un serveur local et la préparation d&#x27;un test QA." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000552_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:52</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur Visual Studio Code avec un panneau de discussion Claude actif, montrant l&#x27;exécution d&#x27;une commande Bash pour démarrer un serveur local et la préparation d&#x27;un test QA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:16 - 00:06:48</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I&#x27;m going to move it into view and we should be able to watch it fill in. It&#x27;s did, it did Nathan. Okay. It went backwards. Now it&#x27;s on the second one, Nathan Harrison, filling in a phone number. It&#x27;s continuing to click through Harrison tech. We&#x27;ve got a email. We&#x27;ve got founder and CEO. it shows a company size look from a drop down okay technology referral primary goal website continue and anything else okay it looks like it&#x27;s having a little bit of trouble here now it keeps kind of glitching out but once again I&#x27;m not going to stop it I&#x27;m going to let it figure out</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec fenêtre de navigateur intégrée localhost:3000).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Formulaire web &quot;Best phone number to reach you?&quot;, champ de saisie rempli avec &quot;(555) 234-5678&quot;, bouton &quot;Continue&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Automatisation de la saisie de formulaire par un agent IA dans l&#x27;interface de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000624_seg15.jpg" alt="Une interface de formulaire web interactive intégrée dans VS Code, affichant une demande de numéro de téléphone avec des données saisies automatiquement par un agent." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000624_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:24</span>
+                        <span class="caption-text">Une interface de formulaire web interactive intégrée dans VS Code, affichant une demande de numéro de téléphone avec des données saisies automatiquement par un agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:48 - 00:07:08</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">what it needs to do okay so it just shut down and now it said okay found some issues let me review the screenshots to understand what happened so what you guys didn&#x27;t notice is that in there it took more screenshots. So we can see now we have QA and we have all of these screenshots that it took during that test. So it says, okay, the UI looks polished. That&#x27;s great. It did look really good.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de code Cursor (fork de VS Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de tâches &quot;Update Todos&quot;, messages système de l&#x27;agent : &quot;Found some issues! Let me review the screenshots...&quot;, et chemins d&#x27;accès aux fichiers image (qa-16-after-textarea-enter.png, qa-17-review-page.png).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse automatiquement des captures d&#x27;écran après avoir rencontré des problèmes lors de l&#x27;exécution d&#x27;un test QA automatisé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000653_seg16.jpg" alt="L&#x27;interface de Cursor (éditeur de code) affichant le flux d&#x27;exécution d&#x27;un agent IA en pleine analyse de bugs via des captures d&#x27;écran." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000653_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:53</span>
+                        <span class="caption-text">L&#x27;interface de Cursor (éditeur de code) affichant le flux d&#x27;exécution d&#x27;un agent IA en pleine analyse de bugs via des captures d&#x27;écran.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:08 - 00:07:40</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But the first bug is that enter on text area didn&#x27;t advance to review. It stayed on the notes page. The second bug is that the review page never loaded. The test found zero review items and the edit button was intercepted by a stale page overlay. And now it was able to use that feedback to fix the actual bugs in the site itself. And this is just really cool because if you&#x27;ve ever built software or websites or apps or whatever, there are so many bugs and you don&#x27;t always find them until it&#x27;s maybe too late or maybe a customer found it. So the fact that you can automate QA by having multiple different headed browsers or even headless browsers spin up and you can say, hey,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension d&#x27;agent IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion détaillant les bugs : &quot;Bug 1: Enter on textarea didn&#x27;t advance to review&quot; et &quot;Bug 2: The review page never loaded&quot;. Chemins de fichiers (screenshots, index.html) et accès à settings.local.json.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse les retours des tests automatisés et s&#x27;apprête à lire le code source pour corriger les problèmes de navigation identifiés dans le formulaire.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000716_seg17.jpg" alt="Interface de l&#x27;éditeur VS Code montrant une interaction avec un agent IA (Claude Code) qui analyse deux bugs identifiés lors d&#x27;un test d&#x27;automatisation de navigateur." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000716_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:16</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur VS Code montrant une interaction avec un agent IA (Claude Code) qui analyse deux bugs identifiés lors d&#x27;un test d&#x27;automatisation de navigateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:40 - 00:08:17</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">you test for X, you test for Y, you test for Z and just have them running and fixing and running and fixing is a complete game changer. And now without me even asking, it says, okay, I&#x27;m going to start the server and I&#x27;m going to rerun the test. So we&#x27;re basically getting it stuck in this loop of testing, validating, testing, validating. And, you know, it&#x27;s really, really cool. So I think it&#x27;s doing another quick test just to see if it truly is good, but okay, nice. So second test went all the way through and now it should be shutting down and telling us what it learned. As you can</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, environnement de développement avec agent IA intégré (probablement Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes terminal `node serve.js &amp;` et `node qa-test.js`, interface web de formulaire de saisie de données.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution automatisée de tests QA par l&#x27;agent : lancement du serveur, puis déclenchement du script de test pour vérifier le fonctionnement du formulaire.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000749_seg18.jpg" alt="Interface de l&#x27;éditeur VS Code montrant l&#x27;agent IA en train d&#x27;exécuter des commandes Bash pour démarrer un serveur en arrière-plan et relancer les tests QA." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000749_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:49</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur VS Code montrant l&#x27;agent IA en train d&#x27;exécuter des commandes Bash pour démarrer un serveur en arrière-plan et relancer les tests QA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000759_seg18.jpg" alt="Interface de VS Code affichant un navigateur intégré (localhost:3000) montrant un formulaire interactif (question sur le nom de famille) en cours de test automatisé." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000759_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:59</span>
+                        <span class="caption-text">Interface de VS Code affichant un navigateur intégré (localhost:3000) montrant un formulaire interactif (question sur le nom de famille) en cours de test automatisé.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:17 - 00:08:49</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">see, it just shut down. So now you can see it has finally passed the tests and it goes ahead and ends the process because now the server is good. So like I said, the next step from there would be to turn that into a skill. But what else can we do with browser automations? Because they&#x27;re definitely not perfect, right? So let&#x27;s say we wanted to do something on the web. Let&#x27;s say we wanted it to just be able to go to Google search for, I don&#x27;t know, let&#x27;s just say dentists and maybe capture like some phone numbers. All right, here is our plan. Build a playwright script that automates Google search to find dentist offices in California. We will basically launch the browser,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec l&#x27;extension Claude ou Cursor).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le chat affiche des corrections de bugs spécifiques : &quot;Bug 1 - textarea Enter key logic was inverted&quot; et &quot;Bug 2 - Page stacking caused click interception&quot;. Il mentionne également que le serveur en arrière-plan a été arrêté après la validation des tests.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA confirme la résolution des bugs et propose de lancer le serveur avec la commande `npm run serve`.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000825_seg19.jpg" alt="Une capture d&#x27;écran de l&#x27;interface VS Code montrant une conversation avec l&#x27;assistant IA Claude, détaillant la résolution de bugs dans un projet d&#x27;automatisation de navigateur." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000825_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:25</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface VS Code montrant une conversation avec l&#x27;assistant IA Claude, détaillant la résolution de bugs dans un projet d&#x27;automatisation de navigateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:49 - 00:09:26</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">do the Google search, collect the links, visit each site and print a summary. So that looks good to me. We&#x27;re going to go ahead and shoot this off. And hopefully it&#x27;s going to be decent on the first try. I&#x27;m going to tell you guys right now, it&#x27;s probably not, but what&#x27;s going to happen is we&#x27;re going to have it learn. So it&#x27;s going to open up the browser. It&#x27;s going to fail. And we&#x27;re going to say, okay, keep learning, keep updating the script and don&#x27;t stop until you&#x27;re done. I literally stepped away to go get water and it actually, I came back and I saw a browser open with some dentist offices up. Wow. So it visited all five sites and it was able to find some phone numbers.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Cursor (éditeur de code basé sur VS Code) avec l&#x27;agent IA actif dans le panneau latéral.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Plan d&#x27;exécution : 1. Créer &#x27;find-dentists.js&#x27;, 2. Référencer &#x27;ga-test.js&#x27; et &#x27;demo.js&#x27;, 3. Exécuter &#x27;node find-dentists.js&#x27;, 4. Vérifier la sortie console et les captures d&#x27;écran dans le dossier &#x27;screenshots/&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA est en phase de &quot;Vibing...&quot; (préparation/réflexion) après approbation du plan par l&#x27;utilisateur, prêt à exécuter le script d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000858_seg20.jpg" alt="Interface de l&#x27;éditeur Cursor affichant un plan d&#x27;action d&#x27;un agent IA pour automatiser une recherche Google et la collecte de données sur des sites de dentistes." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000858_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:58</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur Cursor affichant un plan d&#x27;action d&#x27;un agent IA pour automatiser une recherche Google et la collecte de données sur des sites de dentistes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:26 - 00:09:47</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now that&#x27;s really cool because it actually learned while it was going and it said that Google blocked the automation. So it switched to DuckDuckGo. So I told it this time, don&#x27;t stop until it actually finds five phone numbers. So it&#x27;s going to be a little bit more aggressive. And this time I&#x27;m actually here to watch it. Okay. So here we are. It just searched for dentist office LA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec l&#x27;extension Claude (interface de chat intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image #1 : Rapport d&#x27;exécution de l&#x27;agent mentionnant &quot;Google blocked the automation (CAPTCHA), so I switched to DuckDuckGo&quot;.
+- Image #2 : Invite de commande (&quot;prompt&quot;) demandant à l&#x27;agent d&#x27;être plus agressif et de ne pas s&#x27;arrêter avant d&#x27;avoir trouvé 5 numéros de téléphone, suivi de l&#x27;exécution du fichier `find-dentists.js`.</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse d&#x27;un échec d&#x27;automatisation (CAPTCHA), adaptation de la stratégie (changement de moteur de recherche) et relance de l&#x27;agent avec des instructions plus strictes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000931_seg21.jpg" alt="Interface de VS Code montrant l&#x27;historique de discussion avec Claude AI où l&#x27;agent explique avoir basculé sur DuckDuckGo suite à un blocage Google." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000931_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:31</span>
+                        <span class="caption-text">Interface de VS Code montrant l&#x27;historique de discussion avec Claude AI où l&#x27;agent explique avoir basculé sur DuckDuckGo suite à un blocage Google.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000942_seg21.jpg" alt="Interface de VS Code montrant Claude AI en train de recevoir une nouvelle instruction pour relancer le script de recherche de numéros de téléphone." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000942_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:42</span>
+                        <span class="caption-text">Interface de VS Code montrant Claude AI en train de recevoir une nouvelle instruction pour relancer le script de recherche de numéros de téléphone.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:47 - 00:10:06</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You can see there&#x27;s a phone number. I just saw one on screen, so it probably grabbed that screenshot. I see another one on this page, so it&#x27;s getting pretty lucky here. It&#x27;s finding the phone numbers pretty quick. But what I just noticed is it&#x27;s still going to the site and it&#x27;s still clicking on the contact button. Even though the phone number was up in the top right, visible, it still clicked on the contact button, which I thought is pretty cool.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Navigateur web (via automatisation).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code Node.js (require Playwright/fs/path), commande Bash : &quot;node find-dentists.js&quot;, logs d&#x27;exécution (&quot;Dentist Contact Info Finder&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent automatise la navigation sur des sites de dentistes pour extraire des numéros de téléphone et des informations de contact.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000952_seg22.jpg" alt="Une page web de cabinet dentaire &quot;Beverly Hills Prestige Dental Group&quot; affichée dans un navigateur automatisé par l&#x27;agent." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000952_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:52</span>
+                        <span class="caption-text">Une page web de cabinet dentaire &quot;Beverly Hills Prestige Dental Group&quot; affichée dans un navigateur automatisé par l&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000957_seg22.jpg" alt="Une page web de contact d&#x27;un autre cabinet dentaire &quot;Vision Dental&quot; montrant des coordonnées et un formulaire." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_000957_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:57</span>
+                        <span class="caption-text">Une page web de contact d&#x27;un autre cabinet dentaire &quot;Vision Dental&quot; montrant des coordonnées et un formulaire.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001002_seg22.jpg" alt="L&#x27;interface de l&#x27;éditeur VS Code montrant l&#x27;exécution d&#x27;un script Bash pour automatiser le scraping de coordonnées de dentistes." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001002_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:02</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;éditeur VS Code montrant l&#x27;exécution d&#x27;un script Bash pour automatiser le scraping de coordonnées de dentistes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:06 - 00:10:30</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So this time it got all these phone numbers for these dental offices. So naturally the next question that I&#x27;m sure you guys have is how could it work on things that I&#x27;m already logged into? So let&#x27;s just find out. So I&#x27;m gonna go to plan mode and just ask it what would happen. So there are a couple of approaches. We could do persistent browser profile, meaning it can launch a browser using my existing Chrome user data, which already has me logged into school.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension d&#x27;automatisation IA / Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de données : &quot;Personal Dental Office (LA)&quot; et &quot;West Coast Dental (LA)&quot; avec numéros de téléphone et emails. Champ de saisie prompt en bas avec la commande &quot;/c&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur interagit avec l&#x27;interface de l&#x27;IA pour planifier l&#x27;automatisation de sites nécessitant une authentification utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001012_seg23.jpg" alt="Interface de l&#x27;éditeur Visual Studio Code affichant un assistant IA (Claude Code) dans un volet latéral, avec une liste de cabinets dentaires et leurs coordonnées." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001012_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:12</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur Visual Studio Code affichant un assistant IA (Claude Code) dans un volet latéral, avec une liste de cabinets dentaires et leurs coordonnées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:30 - 00:11:03</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We can do manual login and handoff in headed mode, or we could connect to a running browser. Okay, so that&#x27;s pretty cool. It could open up the browser, I could sign in, and then I could just basically keep that signed in and have it do whatever it needs to do. But I do wanna try option one, which it recommended in the first place. Okay, so we have the plan, which is going to go into my school community. It&#x27;s going to go to the win channel and it&#x27;s going to like those posts. So we&#x27;ve got the context, the approach. Obviously, you guys know what these plans look like. Let&#x27;s just see what it did on this first try. And I&#x27;m going to go ahead and accept. Okay, so apparently when it runs this, I&#x27;m going to have to log in</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension Claude.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte expliquant l&#x27;option 3 (&quot;Connect to Running Browser&quot;) et proposant un plan pour automatiser des tâches sur la plateforme Skool (ouverture de navigateur, connexion manuelle, automatisation des réponses).</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation du plan d&#x27;exécution suggéré par l&#x27;IA pour l&#x27;automatisation du navigateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001038_seg24.jpg" alt="Interface de VS Code montrant une discussion avec Claude AI détaillant les options d&#x27;automatisation de navigateur via Playwright." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001038_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:38</span>
+                        <span class="caption-text">Interface de VS Code montrant une discussion avec Claude AI détaillant les options d&#x27;automatisation de navigateur via Playwright.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:03 - 00:11:35</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">manually the first time, but then in the future, it will basically save that session. So let&#x27;s see how that works. All right, it opened up school.com. Okay, it opened up school.com. Okay, so what just happened is it opened it up and then it closed it and then it opened it up and it went to my community and closed it And now I think it&#x27;s actually gonna let me log in. So let me try that real quick Okay, so I logged in and then the browser shut down. So now I said, okay, cool I logged in hopefully now when it launches up this browser, it already has me logged in. Okay, so there it is nice You can see that I am already logged in which is great. Okay, so it&#x27;s trying to find the wins channel</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code, Navigateur web (Skool), Assistant IA intégré (type Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL &quot;skool.com&quot;, logs de terminal : &quot;Skool Auto-Liker&quot;, &quot;Community: ai-automation-society-plus&quot;, prompt : &quot;The browser should be open on your screen now...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration d&#x27;automatisation de navigation web : l&#x27;agent ouvre Skool, navigue vers une communauté spécifique, et attend une interaction utilisateur pour continuer le processus.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001111_seg25.jpg" alt="Une fenêtre de navigateur web affichant la page de la communauté &quot;AI Automation Society Plus&quot; sur la plateforme Skool." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001111_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:11</span>
+                        <span class="caption-text">Une fenêtre de navigateur web affichant la page de la communauté &quot;AI Automation Society Plus&quot; sur la plateforme Skool.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001119_seg25.jpg" alt="Une fenêtre de navigateur web affichant la page d&#x27;accueil &quot;Discover communities&quot; de Skool, montrant plusieurs communautés disponibles." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001119_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:19</span>
+                        <span class="caption-text">Une fenêtre de navigateur web affichant la page d&#x27;accueil &quot;Discover communities&quot; de Skool, montrant plusieurs communautés disponibles.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001127_seg25.jpg" alt="L&#x27;interface de l&#x27;éditeur VS Code avec une conversation active dans l&#x27;assistant IA, indiquant que le script &quot;skool-like-wins.js&quot; est en cours d&#x27;exécution." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001127_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:27</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;éditeur VS Code avec une conversation active dans l&#x27;assistant IA, indiquant que le script &quot;skool-like-wins.js&quot; est en cours d&#x27;exécution.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:35 - 00:12:11</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It looks like it found it all of these look like they are wins now. Let&#x27;s see what it&#x27;s able to do here If it&#x27;s oh, I just saw it try to like the post. Okay it just liked that one interesting so it&#x27;s like liking them and unliking them so that&#x27;s one thing we&#x27;re gonna have to fix but it is scrolling down it got to the wins channel and it is now trying to like post but as you guys can see it&#x27;s not perfect so i hope that it&#x27;s able to realize that it&#x27;s not really liking them yeah it&#x27;s basically going like unlike like unlike and it also just said liking too fast so let&#x27;s see if it&#x27;s able to learn okay there we go all right so what i&#x27;m</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec une fenêtre de navigation active).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface de la plateforme Skool avec un flux de publications, des commentaires, et un classement (Leaderboard) sur la droite.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA est en train de naviguer et de scroller automatiquement sur la page web pour interagir avec les publications de la communauté.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001144_seg26.jpg" alt="Une capture d&#x27;écran montrant l&#x27;éditeur VS Code avec une fenêtre de navigateur intégrée (Skool) affichant le flux de la communauté &quot;AI Automation Society Plus&quot;." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001144_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:44</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;éditeur VS Code avec une fenêtre de navigateur intégrée (Skool) affichant le flux de la communauté &quot;AI Automation Society Plus&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:11 - 00:12:48</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">to do at this point is, you know, I&#x27;ve seen enough. I&#x27;m going to shut this down and hopefully it&#x27;s able to use that feedback to get better. So the login persisted. It found the wins channel. It even found the heart shaped SVG buttons, but it crashed during the page evaluate for liking. So it&#x27;s seen all that and now it&#x27;s going to make the script even better. So I will say with browser automations, I think that this is completely normal, which is why I had a little bit of doubt earlier in the dentist example, but literally every time that you use the script, it&#x27;s going to get better. So it&#x27;s about to run it again. Let&#x27;s see how it does this time. It was able to just find the wins channel. Now, one thing I might want to tell it is I might want to sort it from newest posts rather</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension d&#x27;agent IA intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande Bash de lancement de script (node skool-like-wins.js), logs d&#x27;erreur &quot;Exit code 1&quot;, et analyse textuelle de l&#x27;agent sur l&#x27;échec de la fonction &#x27;page.evaluate&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent rapporte un crash lors de l&#x27;exécution de l&#x27;automatisation &quot;Skool Auto-Liker&quot; et analyse une capture d&#x27;écran de débogage (skool-02-channel-selected.png).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001221_seg27.jpg" alt="Interface de VS Code montrant une interaction avec un agent IA dans un panneau latéral, incluant l&#x27;historique d&#x27;exécution d&#x27;un script d&#x27;automatisation." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001221_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:21</span>
+                        <span class="caption-text">Interface de VS Code montrant une interaction avec un agent IA dans un panneau latéral, incluant l&#x27;historique d&#x27;exécution d&#x27;un script d&#x27;automatisation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:48 - 00:13:16</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">than just going straight to the wins channel. And it went ahead and shut down again. So it&#x27;s continuously trying to learn and get better at this script. I&#x27;m actually going to stop this and I&#x27;m going to try to course correct it a little bit. So I&#x27;m going to go into plan mode. I&#x27;m going to say, so a couple of issues from the first couple of runs. The first thing is that it was hitting the like button like four times. So it ended up not even liking the post. The second thing is once you switch to the wins channel, try to filter the posts by newest.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec l&#x27;extension Claude Code active).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Journal d&#x27;exécution de l&#x27;agent : &quot;It worked! But it only found 1 like button...&quot;, lecture du fichier &quot;skool-03-final.png&quot;, et réflexion sur l&#x27;ajustement du sélecteur SVG.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA réalise un diagnostic autonome pour identifier les bons sélecteurs suite à l&#x27;échec de détection des boutons &quot;Like&quot; sur la plateforme Skool.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001255_seg28.jpg" alt="Interface VS Code affichant l&#x27;exécution de Claude Code en train d&#x27;analyser une capture d&#x27;écran pour corriger une erreur de sélection de bouton &quot;Like&quot;." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001255_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:55</span>
+                        <span class="caption-text">Interface VS Code affichant l&#x27;exécution de Claude Code en train d&#x27;analyser une capture d&#x27;écran pour corriger une erreur de sélection de bouton &quot;Like&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:16 - 00:13:36</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So there&#x27;s a little kind of sandwich bar menu option near the channel filter, and that will allow you to change the view to newest. And then you can go through and make sure that all of the posts are liked. You can tell that they are liked because the thumbs up icon on the post will be yellow rather than gray.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec extension IA intégrée)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code JavaScript utilisant la bibliothèque Playwright pour automatiser un navigateur, avec un message d&#x27;erreur d&#x27;exécution (&quot;Exit code 1&quot;) et un diagnostic sur la recherche de boutons &quot;like&quot; dans une page.</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse et débogage par l&#x27;IA d&#x27;un script d&#x27;automatisation de navigateur (Playwright) pour corriger un sélecteur CSS/SVG défaillant.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001321_seg29.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code montrant l&#x27;interface de l&#x27;agent IA &quot;Claude&quot; en cours d&#x27;exécution dans le projet &quot;Browser Automation Demo&quot;, avec un diagnostic d&#x27;erreur sur un sélecteur SVG." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001321_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:21</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code montrant l&#x27;interface de l&#x27;agent IA &quot;Claude&quot; en cours d&#x27;exécution dans le projet &quot;Browser Automation Demo&quot;, avec un diagnostic d&#x27;erreur sur un sélecteur SVG.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:36 - 00:13:57</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right, so we got the browser open. Nice, it was just able to switch to newest. And now it&#x27;s going through and liking. It skipped over that one because it already liked it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google Chrome) ouvert dans VS Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de la page Skool (triée par &quot;newest&quot;), flux de publications communautaires, barre latérale d&#x27;exploration des fichiers de VS Code.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent automatise la navigation sur la plateforme pour interagir avec les publications (liker) et filtrer les nouveaux contenus.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001341_seg30.jpg" alt="Une capture d&#x27;écran montrant le navigateur Chrome intégré au sein de l&#x27;éditeur VS Code, affichant la plateforme communautaire Skool &quot;AI Automation Society Plus&quot;." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001341_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:41</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant le navigateur Chrome intégré au sein de l&#x27;éditeur VS Code, affichant la plateforme communautaire Skool &quot;AI Automation Society Plus&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:57 - 00:14:17</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Yeah, this is awesome. This seems to be doing the trick. It&#x27;s liking my own posts, which is a little bit eh, but besides that, it&#x27;s actually working. And it&#x27;s skipping over the ones that are already yellow, which is great. It even just went to the next page and it&#x27;s still liking. So this would go through and like every single post in the wins channel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec navigateur intégré), plateforme Skool.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de posts communautaires avec des métadonnées (noms des auteurs, titres, horodatages) et des icônes d&#x27;interaction visibles dans une interface web sombre.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un script d&#x27;automatisation (agent) qui navigue dans le flux de la communauté et interagit automatiquement avec les publications.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001402_seg31.jpg" alt="Une capture d&#x27;écran montrant une fenêtre de navigateur ouverte au sein de l&#x27;éditeur VS Code, affichant la plateforme communautaire Skool &quot;AI Automation Society Plus&quot; où un agent IA semble parcourir et interagir avec les publications." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001402_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:02</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant une fenêtre de navigateur ouverte au sein de l&#x27;éditeur VS Code, affichant la plateforme communautaire Skool &quot;AI Automation Society Plus&quot; où un agent IA semble parcourir et interagir avec les publications.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:17 - 00:14:37</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m gonna shut that down now, just because I don&#x27;t want it to go ahead and do all that right now. But that worked and it took what? Maybe four or five iterations. And now what I would do is I would build a skill out of that. So I could just say, hey, run the school-like skill. So anyways, I know that that was kind of a simple use case, but the point I was trying to prove is that, yes, you can automate stuff in areas where you need to be logged in.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension Claude (interface de chat intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande Bash affichée : `cd &quot;c:\Users\nateh\OneDrive\Desktop\Browser Automation Demo&quot; &amp;&amp; node skool-like-wins.js 2&gt;&amp;1`. Le journal de l&#x27;agent indique : &quot;Exit code 1&quot;, &quot;Skool Auto-Liker&quot;, et un retour sur l&#x27;exécution précédente (liker 30 posts sur 2 pages).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent affiche le résultat d&#x27;une exécution de script Node.js et propose une zone de saisie pour soumettre un nouveau message ou instruction.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001422_seg32.jpg" alt="Interface de l&#x27;éditeur VS Code affichant un agent conversationnel en cours d&#x27;exécution d&#x27;un script d&#x27;automatisation." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001422_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:22</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur VS Code affichant un agent conversationnel en cours d&#x27;exécution d&#x27;un script d&#x27;automatisation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:37 - 00:15:11</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And also, like, school is one of the least automation-friendly platforms ever. So, okay, so I was going to just post the video there, but I decided that I wanted to keep this going a little bit to show you guys what&#x27;s actually possible with this. So what&#x27;s really cool is now that you have these Playwright CLI automations that can do things in your browser, and it can save your cookies. So basically you stay logged in. You can actually start to automate things when you use the desktop app. Now you could also use something like, um, you know, modal or trigger and just deploy those automations there. But I like to use the desktop app for my scheduled</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Play.ai (application web d&#x27;automatisation basée sur l&#x27;IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de projets : &quot;Skool wins engagement&quot;, &quot;AI news roundup&quot;, &quot;Notification responses&quot;, &quot;Youtube comment replies&quot;. La zone de texte indique &quot;Reply...&quot; avec une option &quot;Ask permissions&quot; et un chemin de répertoire local.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre l&#x27;interface de travail de l&#x27;outil d&#x27;automatisation où il prépare une nouvelle session de codage ou d&#x27;interaction avec l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001445_seg33.jpg" alt="L&#x27;interface de l&#x27;application Play (Play.ai) affichant le mode &quot;Code&quot; avec une barre latérale listant des projets d&#x27;automatisation planifiés (Skool, YouTube, etc.) et une fenêtre de saisie pour l&#x27;assistant IA." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001445_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:45</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;application Play (Play.ai) affichant le mode &quot;Code&quot; avec une barre latérale listant des projets d&#x27;automatisation planifiés (Skool, YouTube, etc.) et une fenêtre de saisie pour l&#x27;assistant IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:11 - 00:15:45</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">tasks because I get the more agentic ability because when these scheduled runs actually run, it&#x27;s an agent literally like you see in cloud code walking through what&#x27;s going on. So for example, I have basically created this bot in my school community. So his name is AIS Agent and as you can see it&#x27;s posting things like daily news roundups And it&#x27;s responding to all of its notifications And it even today made a happy birthday post for me, which I didn&#x27;t tell to do It just knew information about me and it did this completely autonomously So I&#x27;ve got it doing things like everyday engaging with school wins So if I click on today&#x27;s run you can see that it shows me what it engaged with and it ran all these commands</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Cloud Code (éditeur/plateforme d&#x27;automatisation) et Skool (plateforme communautaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de tâches automatisées planifiées (Daily/Custom) dans Cloud Code ; texte de publication automatique humoristique sur Skool par &quot;Ais Agent&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans les projets automatisés de Cloud Code et démonstration visuelle d&#x27;une interaction générée par un agent IA au sein d&#x27;une communauté.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001519_seg34.jpg" alt="Interface de l&#x27;application de développement Cloud Code affichant une barre latérale avec une liste de projets automatisés (Scheduled) comme &quot;Skool wins engagement&quot; et &quot;AI news roundup&quot;." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001519_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:19</span>
+                        <span class="caption-text">Interface de l&#x27;application de développement Cloud Code affichant une barre latérale avec une liste de projets automatisés (Scheduled) comme &quot;Skool wins engagement&quot; et &quot;AI news roundup&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001536_seg34.jpg" alt="Interface de la plateforme communautaire Skool montrant une publication automatique faite par le bot &quot;Ais Agent&quot; souhaitant un joyeux anniversaire à Nate Herk, avec les interactions des membres en dessous." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001536_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:36</span>
+                        <span class="caption-text">Interface de la plateforme communautaire Skool montrant une publication automatique faite par le bot &quot;Ais Agent&quot; souhaitant un joyeux anniversaire à Nate Herk, avec les interactions des membres en dessous.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:45 - 00:16:18</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And it basically just shoots over this prompt and it invokes the skill to do this every time I&#x27;ve also got it doing the AI news roundup and I&#x27;ve also got it responding to all of the notifications in school It looks like there&#x27;s actually one running right now We&#x27;ve hit some sort of error But because this is a Gentic It&#x27;s going to keep trying different things in order to make sure that we&#x27;re actually able to get this to go through And remember how I talked about with playwrights CLI You have to use the skill more and more or run the script more and more in order for it to understand What to click on and where to submit things and it has to learn how the actual ui of in this case school works</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Outil d&#x27;automatisation (type interface propriétaire d&#x27;agent IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow détaillé : &quot;1. Change to the project directory: cd...&quot;, &quot;2. Run the scraper...&quot;, &quot;3. Parse the JSON output...&quot;. Liste de résultats identifiant des posts d&#x27;utilisateurs sur Skool et mentionnant une exécution de commandes en cours.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA exécute une séquence de commandes pour scraper des posts &quot;wins&quot; sur Skool, filtrer les commentaires manquants, et préparer une réponse personnalisée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001553_seg35.jpg" alt="Interface d&#x27;un outil d&#x27;automatisation IA affichant le workflow &quot;Skool wins engagement&quot; en cours d&#x27;exécution, avec la liste des posts identifiés et les commandes associées." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001553_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:53</span>
+                        <span class="caption-text">Interface d&#x27;un outil d&#x27;automatisation IA affichant le workflow &quot;Skool wins engagement&quot; en cours d&#x27;exécution, avec la liste des posts identifiés et les commandes associées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:18 - 00:16:40</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and all of these automations I have running in a headless browser, meaning when I have my computer open, I don&#x27;t see the tab pop up and I don&#x27;t see it happen. But right now I told it to go into that happy birthday post and respond to all the comments on that post. And so now it is pulling up this browser. It needs to figure out how do I actually navigate to that post that I made. So it&#x27;s going to its notifications and it&#x27;s just going to look through the notifications and click on those and respond to them.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de gestion d&#x27;agents IA (probablement une plateforme d&#x27;automatisation type Windsurf ou similaire), navigateur web intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt : &quot;I want you to go into the Skool community and look at the post you made today... and I want you to respond to all of the comments on that post.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA est en train de &quot;réfléchir&quot; (Thinking...) pour exécuter l&#x27;automatisation, puis ouvre le navigateur pour accéder à la plateforme Skool et interagir avec les commentaires.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001623_seg36.jpg" alt="Interface d&#x27;une application d&#x27;automatisation IA affichant une session de codage en cours avec un prompt utilisateur demandant de répondre aux commentaires d&#x27;un post spécifique sur Skool." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001623_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:23</span>
+                        <span class="caption-text">Interface d&#x27;une application d&#x27;automatisation IA affichant une session de codage en cours avec un prompt utilisateur demandant de répondre aux commentaires d&#x27;un post spécifique sur Skool.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001635_seg36.jpg" alt="La même interface avec une fenêtre de navigateur ouverte par-dessus, montrant la communauté Skool &quot;AI Automation Society Plus&quot; en train de charger les notifications." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001635_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:35</span>
+                        <span class="caption-text">La même interface avec une fenêtre de navigateur ouverte par-dessus, montrant la communauté Skool &quot;AI Automation Society Plus&quot; en train de charger les notifications.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:41 - 00:17:15</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And as it goes through this agentic loop, it starts creating new tools. Because one time someone said, hey, AIS agent, can you please vote on my poll? But the agent couldn&#x27;t figure it out. So what it had to do is it had to figure out What does it actually mean to vote and where do I click and once it did that it turned that into another script? And then it was able to make sure that its skill was updated so that in the future It was a bit more autonomous and could actually vote on polls Cool, so what it did here is it made a to-do list of all of the different comments that it needs to respond to So here&#x27;s the comment and then here&#x27;s the actual reply that it&#x27;s going to make And now it&#x27;s launching up this browser and it&#x27;s going to individually go through and respond to these</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de type &quot;Agentic IDE&quot; (probablement Windsurf ou un outil similaire d&#x27;automatisation d&#x27;agents).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur demandant de répondre à des commentaires sur un post Skool, suivi d&#x27;une commande Bash exécutant un script Python nommé &quot;scrape_notification&quot; et d&#x27;un état de réflexion (&quot;Thinking...&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent est en phase d&#x27;exécution d&#x27;un script d&#x27;automatisation pour naviguer dans les notifications Skool et identifier les commentaires cibles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001649_seg37.jpg" alt="Interface d&#x27;un agent IA traitant une requête utilisateur pour automatiser une réponse sur la plateforme Skool via un script Python." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001649_seg37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:49</span>
+                        <span class="caption-text">Interface d&#x27;un agent IA traitant une requête utilisateur pour automatiser une réponse sur la plateforme Skool via un script Python.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:15 - 00:17:47</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And because it&#x27;s been doing this so many times it knows that it needs to hit reply under each comment Type it out maybe even tag people and then hit the submit button So obviously this isn&#x27;t perfect, right? Like there&#x27;s still things that I&#x27;m working through I&#x27;m sometimes it responds to people twice because it forgot to mark the notification as read But I basically just told my community. Hey, I&#x27;m experimenting with some browser automations And if you see AIS agent just kind of like doing some random weird things just ignore it So the other thing that I want you guys to keep in mind is that we are using playwright CLI There are other CLIs out there that do browser automations and I&#x27;ve been having great success with Playwright.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme communautaire Skool (navigateur web) intégrée dans un environnement de développement ou de gestion d&#x27;agents.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commentaires de la communauté, mentions @Nate Herk, zone de saisie de texte &quot;REPLY&quot;, interface de l&#x27;agent &quot;Ais Agent&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration du comportement automatisé d&#x27;un agent IA qui lit, rédige et publie des réponses aux commentaires des membres de la communauté Skool.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001723_seg38.jpg" alt="Interface de la plateforme communautaire Skool affichant un fil de discussion où un agent IA nommé &quot;Ais Agent&quot; interagit avec les utilisateurs." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001723_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:23</span>
+                        <span class="caption-text">Interface de la plateforme communautaire Skool affichant un fil de discussion où un agent IA nommé &quot;Ais Agent&quot; interagit avec les utilisateurs.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001731_seg38.jpg" alt="Gros plan sur l&#x27;interface de Skool montrant une zone de texte active où l&#x27;agent IA est en train de rédiger une réponse à un commentaire, avec les options de soumission visibles." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001731_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:31</span>
+                        <span class="caption-text">Gros plan sur l&#x27;interface de Skool montrant une zone de texte active où l&#x27;agent IA est en train de rédiger une réponse à un commentaire, avec les options de soumission visibles.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001739_seg38.jpg" alt="Vue du fil de discussion Skool montrant l&#x27;agent IA ayant posté plusieurs réponses consécutives, illustrant le processus automatisé de réponse aux commentaires." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001739_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:39</span>
+                        <span class="caption-text">Vue du fil de discussion Skool montrant l&#x27;agent IA ayant posté plusieurs réponses consécutives, illustrant le processus automatisé de réponse aux commentaires.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:47 - 00:18:09</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But I also have been seeing people talk about other CLIs to do this. And the reason why we&#x27;re using a CLI compared to the MCP, like I said, is we&#x27;re just going to save a lot of tokens. But here&#x27;s a little comparison you can see. There&#x27;s also something like for cell agent browser or open CLI, or, you know, there&#x27;s multiple other CLIs that do computer automations. And I think what you&#x27;d be looking for is finding the one that has the best balance of token efficiency as well as performance.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation de type tableau comparatif (UI web/document).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau détaillant les aspects suivants pour trois outils CLI : Token Efficiency, Speed/Performance, Best For, Claude Integration et Community Buzz. Inclut une recommandation textuelle sous le tableau.</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse comparative et recommandation d&#x27;outils CLI pour l&#x27;automatisation avec Claude Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001752_seg39.jpg" alt="Un tableau comparatif intitulé &quot;Quick Comparison for Claude Code Users&quot; présentant les caractéristiques de Playwright CLI, Vercel agent-browser et OpenCLI." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001752_seg39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:52</span>
+                        <span class="caption-text">Un tableau comparatif intitulé &quot;Quick Comparison for Claude Code Users&quot; présentant les caractéristiques de Playwright CLI, Vercel agent-browser et OpenCLI.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:09 - 00:18:42</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I don&#x27;t care so much about speed, but I meant more like the performance of how actually good is it at clicking around and learning how to improve the script so that next time it doesn&#x27;t make the same mistakes. I&#x27;m going to be testing out other options and seeing which ones I think are the best, but at the moment I&#x27;ve mainly been using Playwright CLI. But that is going to do it for the video. Now the next step would be once you understand how to create all these browser automations, how do you actually make them fire automatically all the time, kind of like what I&#x27;ve got set up here. So if you want to learn how to do that, then check out my video about scheduled tasks, which you can watch right up here. Hopefully</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau comparatif (web) ; Interface de travail Claude Code (session de codage).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Comparaison technique des outils CLI ; Journal de logs de tâches (réponses aux commentaires) et commande Bash `python scripts/post_comment.py` sur un répertoire local.</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse comparative des performances des outils d&#x27;automatisation ; Exécution en temps réel d&#x27;un script d&#x27;automatisation des réponses aux commentaires par l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001817_seg40.jpg" alt="Un tableau comparatif détaillé présentant trois outils d&#x27;automatisation (Playwright CLI, Vercel agent-browser, OpenCLI) selon plusieurs critères techniques (efficacité des tokens, vitesse, intégration, etc.)." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001817_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:17</span>
+                        <span class="caption-text">Un tableau comparatif détaillé présentant trois outils d&#x27;automatisation (Playwright CLI, Vercel agent-browser, OpenCLI) selon plusieurs critères techniques (efficacité des tokens, vitesse, intégration, etc.).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001834_seg40.jpg" alt="Interface de l&#x27;agent IA (Claude Code) affichant une session de codage en cours, avec une liste de tâches, une exécution de commande Bash et l&#x27;état &quot;Finagling...&quot; indiquant un processus d&#x27;ajustement." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001834_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:34</span>
+                        <span class="caption-text">Interface de l&#x27;agent IA (Claude Code) affichant une session de codage en cours, avec une liste de tâches, une exécution de commande Bash et l&#x27;état &quot;Finagling...&quot; indiquant un processus d&#x27;ajustement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:42 - 00:18:50</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I see you guys over there, but if you enjoyed the video, you learned something new, please give a like. It definitely helps me out a ton. And as always, I appreciate you guys making it to the end of the video. I&#x27;ll see you on the next one. Thanks everyone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Skool) au sein d&#x27;un environnement de travail (possiblement Cursor ou VS Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fil de discussion contenant des messages d&#x27;utilisateurs et une réponse automatisée d&#x27;un &quot;Ais Agent&quot; souhaitant un bon anniversaire à Nate.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;interaction automatisée d&#x27;un agent IA répondant en temps réel sur une plateforme communautaire.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001844_seg41.jpg" alt="Interface web de la plateforme Skool affichant un fil de discussion communautaire &quot;AI Automation Society Plus&quot; où un agent IA répond aux commentaires des membres." loading="lazy" onclick="openLightbox('../screenshots/J-6pnl5DQg8/J-6pnl5DQg8_001844_seg41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:44</span>
+                        <span class="caption-text">Interface web de la plateforme Skool affichant un fil de discussion communautaire &quot;AI Automation Society Plus&quot; où un agent IA répond aux commentaires des membres.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
