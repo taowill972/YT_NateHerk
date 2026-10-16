@@ -25,10 +25,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:19]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> All right, so if I was starting an AI business from zero today, I wouldn't pitch project work or retainers. I would just sell ours. These are one-on-one with a business owner, let's just say for a hundred bucks, helping them set up their own AI operating system. And honestly, I think that that one offer would dissolve the imposter syndrome that has like half of my community frozen right now.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -39,10 +39,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:19 - 00:00:46]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> So today I'm going to give you guys three things. The exact offer I'd lead with if I was starting from zero, what the offer actually looks like so you could literally run it tomorrow morning, and a plan to land your first 10 clients. So let's get into it. All right, so if you have been hanging around the AI space for the past, I don't know, six months to a year, you've probably been told the same thing, which is to start an AI business, you should be pitching audits that turn into projects and then like $5,000 a month or $10,000 a month retainers.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -53,10 +53,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:46 - 00:01:11]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> And these are directionally right. Like, obviously I agree with that. You know, having a few clients on large retainers is the end goal. That's where you want to go. But all of those plays, I think, are kind of higher up on this ladder that I'm going to talk about today. And almost nobody's talking about rung zero of that ladder, like what that actually looks like, which is why I think that so many people just kind of sit there a bit frozen because they can't picture themselves doing what's on rung three or four yet.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -67,10 +67,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:11 - 00:01:36]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> So I want to fix that today by telling you guys, don't start by selling projects or retainers, just start by selling hours. So let me tell you what I mean by that. Specifically, selling hours, helping business owners, setting up their own AI operating system, or helping them get comfortable with something like Cloud Code, and just doing that one piece at a time. And if you've never heard of an AI operating system, just stick with me. I've got you guys covered. And if you don't know who I am, my name's Nate. I built an AI agency to over $100,000 a month, and then I exited it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -81,10 +81,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:36 - 00:01:55]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> And now I run a free school community of over 375,000 people who are learning AI. So the reason I tell you that is because I kind of get to see this market from two sides. I see what business owners are actually asking for. And I also can see exactly where the people are trying to sell them and where they're getting stuck. All right. So I want you to think about your business model like a ladder.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -95,10 +95,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:01:55 - 00:02:20]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> Rung zero at the bottom is selling hours. So consulting work. Maybe this could be $100 to $500 a session, one-on-one, kind of just like helping a business owner, like I said earlier, with their Claude code setup. So from there, rung one would be like an audit, maybe 500 to 2,500 bucks for paid scoping, where you go in for like an hour or two, or maybe even multiple hours, and you map their workflows, you find what is automatable, you put together a proposal for the first real build.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -109,10 +109,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:20 - 00:02:38]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> Rung two is your first project. That is, you know, obviously, maybe 2,500 to 10 grand for one focused scope of work, where you ship a single workflow end to end, and you let the numbers there prove the ROI. And then rung three, which is where you want to be is retainers. These can be maybe $3,000 to $10,000 a month ongoing.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -123,10 +123,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:02:39 - 00:03:00]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> And that's a really cool opportunity because you could just work with a few clients and have them on some pretty large retainers and make a lot of income. Now, the last two rungs are where almost everyone in the agency space, I'd say, is trying to start. And eventually, yeah, that's where you end up, but it's really hard to just start there. You've kind of got to crawl before you walk, meaning you have to earn each rung by standing on the one below it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -137,10 +137,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:00 - 00:03:32]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> And the reason why I think that a lot of people are freezing is because they're entering into this AI space. They've maybe built some really cool stuff, but they've never worked with a client before and they try to jump to rung two or rung three without having proof or Relationships and they still have that sense of imposter syndrome internally So sell hours that's rung zero. That's where you start and i've got three reasons that I want to tell you guys about Why I believe in this but first let me quickly tell you how I started crawling before walking in my ai journey With a message from today's sponsor. All right So real quick thanks to gen spark for sponsoring this section of the video
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -151,10 +151,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:03:32 - 00:03:51]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> If you guys haven't heard of GenSpark, you will, because they went from zero to $250 million in ARR in just a year. GenSpark is a really cool, basically just like an all-in-one platform. If I hover over new, what do we have? We have the ability to build custom agents. We can do super agents, slides, sheets, docs, developer.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -165,10 +165,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:03:51 - 00:04:16]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> There's basically anything you might want to do with AI you can find inside of GenSpark, which also means you have access to all of the different models. So if I click on AI chat and this opens up a new chat for me where I could obviously just say like, you know, hello, I can start to do my back and forth. It can do research. I can search the web. I can look through all of these different models you can see here. So if I click on new chat, now I have access to choose between all the GBT models, all the cloud models, Gemini, all of this.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -179,10 +179,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:04:16 - 00:04:34]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> But what's really cool is you can turn on mixture of agents. So if I say, hey, what does artificial intelligence mean? And what's a voice agent? When I shoot this off, not only is it going to go do research and give me an answer, it's going to use a mixture of agents. It's going to use GPT 5.1 Instant here. It chose to also use Sonnet 4.6.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -193,10 +193,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:04:34 - 00:04:55]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> It also chose to use Gemini 3.1 Pro. And there we go. Now, you also have access to some of the image models and stuff too. So practical example here, I want to use GenSpark AI Slides. I'm going to click on Creative. And now I can choose between GPT Image 2, which I've been loving lately, or Nano Banana Pro. So I'm going to do GPT Image 2. I'm going to upload a brand guideline doc real quick.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -207,10 +207,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:04:55 - 00:05:15]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> So I'm asking it to create me a launch announcement for this live event that we're running, which actually is real. And I'm gonna shoot this off and let me show you what we get back from Genspark. And just a few minutes later, I got this four page slide deck back. Now, this obviously would take some iteration because I don't love all the wordiness, but it got the brand colors perfect.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -221,10 +221,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:05:15 - 00:05:35]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> It got the brand guidelines perfect. It made all of this information as you can see, and they look pretty solid. And like I said, I would iterate on this And it's just as easy now as just typing my iterations right in here. Then when I'm ready to go, all I have to do is export it and it's done. Right now, they're also running a get started bonus where new users can try some of the premium features. So definitely check it out while you can.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -235,10 +235,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:05:35 - 00:06:07]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
+> The link is down in the description. And what's really crazy is GenSpark is offering unlimited usage of their AI chat and their AI image for all paid users in 2026. So if you want to check out those details, come to the documentation here. Now let's get back to the video. All right. So the first reason is that consulting or teaching hours are basically a mini sales call and kind of like a mini audit because the hardest part of any sale is, you know, especially if you're new to sales and you don't come from a sales background is building trust over a call, you know, or a couple of calls. But by the time that you've spent 60 minutes inside of someone's
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -249,10 +249,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:06:07 - 00:06:38]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> business, it could still be on a call, but helping them set up their own AIOS, they're not a cold lead anymore. You know, it feels way more like a working relationship because your guys' relationship kicked off from a place of collaboration. You know, you guys were literally working together, figuring out things together rather than sort of this weird dance of a negotiation, right? Like who might throw out a number first and how do we like, you know, almost like you feel like you're playing mind games on each other, trying to bring prices down or up. And when you're doing that, they're just not ready to drop five grand on a project, right?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -263,10 +263,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:06:38 - 00:07:13]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> Like they're not ready to commit to a monthly retainer. Um, but they are going to be more willing to commit to like a couple of hundred bucks to spend an hour with someone who can show them what AI can actually do in their business, help them avoid the troubleshooting headaches and answer questions that they have in real time. So the proof requirement on your side is much smaller because you don't need a portfolio or a bunch of testimonials to sell a one hour session. So the next conversation isn't, you know, will you pay for this project for $5,000? It's basically, okay, great. We've set all this up. We've worked together a little bit. Now what's next? Okay. So reason number two is that you're basically getting paid to scope. You know,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -277,10 +277,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:07:13 - 00:07:46]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> a lot of agencies will charge for these discovery calls or for these scoping sessions. But this hour or the couple hours that you're sitting on there learning about their business and their context and their workflows is basically a discovery call, but you're actually getting paid for it. So instead of a one hour zoom where they describe their business to you, you nod and you take notes, you're actually like inside and you're helping them build stuff out already. You're seeing things like where their data lives. You're seeing things like what their team complains about, what's automatable, what's political and what their kind of like main priorities are. And it's funny because those are exactly the things that you're looking for when you're running a discovery call.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -291,10 +291,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:07:46 - 00:08:19]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> And then reason number three is the longer that you work with them, the harder it gets for them to switch away from you. Because let's say you've done two or three sessions with someone, you know their business better than any other AI consultant that they could hire because now you know the team, you know, you spent a few hours with them, you know, the data sources, you know, the workflows, you've helped them configure this sort of AI operating system that they already have set up. So if they did want to, for some reason, work with someone else, it would have, you know, just that pain of switching vendors because they would have to re-explain all of that and get familiarized with someone else. And most business owners just don't want to do that. So you become
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -305,10 +305,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:08:19 - 00:08:48]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> the obvious choice for the next engagement. And trust me, once they start building stuff and seeing the power, they're going to want to do more. And you're the next choice. Like you're the first person that pops into their brain. And this part's really important because I lived this and I actually did offer consulting calls in the early days of me starting up my agency. You know, people could just book in, I'd help them out for an hour. And some of these people I'd never met before actually went on to become some of our longest running clients, which was obviously awesome. But the problem there was that I wasn't really thinking about it in that way at the time.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -319,10 +319,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:08:48 - 00:09:25]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> And I really wish that I was, you know, I was sort of treating those consulting calls as just another way to make some side income, honestly. And I was thinking about it just as like practice and getting more data. I was thinking about it like tech support, really like troubleshooting, you know, people would hop on, I'd help them fix the thing, I'd get paid, and then the engagement would be over. And I just kind of had it like siloed in my head as like, you know, consulting calls over here and my real, like my real project agency work over there, two separate, like totally separate things. But there, it really is one where like the first piece feeds it directly into the next. The first one is the step in the relationship that turns that, you know, consulting call into
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -333,10 +333,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:09:25 - 00:09:55]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> a project, which gets turned into a retainer. So anyways, I'm just trying to say, if I had the mindset of going in like that, of educating them, building alongside them and earning the right to the next conversation, then I think it would have been way more lucrative because I probably would have gotten so much more business out of those consulting calls. I had run a lot of those, but even though a few of them turned into long-term clients, most of them didn't. And it's probably because I just wasn't looking at it the right way. So think about it like this. The hour is not tech support. It is the first deposit into that long-term partnership that you're trying to build.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -347,10 +347,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:09:55 - 00:10:30]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> Okay. Now I want to give you guys some macro proof for why this offer works right now in 2026 more than it ever has. And then we're going to get into exactly what happens inside that hour. So you know exactly what to do, because honestly, if you don't run the hour the right way, then none of the stuff is going to matter. So I've mentioned this study a few times. It's really interesting, but IBM ran their 2026 CEO study on 2000 CEOs at major companies and two stats from it kind of tell you everything. So the first one is that only 25% of employees are using AI regularly. And the second one, which kind of goes right with it, is that 85% of CEOs say that their employees have the skills
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -361,10 +361,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:10:30 - 00:11:04]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. Okay. So we have like little sound bites. I can chat with people. The tool war panel settled a few debates for me. Nice. Good perspective there. We're outside again. We have these different banners, although they're all the same. They don't say like different people's names. So big AIS live logo. Workshop wing is over here. And let's go through the sliding glass doors and see what we've got. So we've got the AIS cafe. The map is in the bottom right, and it's not too descriptive.
+> to use AI. So there's a 61 point gap between the people who could be using it and the people who actually are. And every CEO is basically just staring at that gap. And they're asking themselves, how do we close it? And it's not just the operators, the employees. The same study basically says that managers and leaders who aren't AI fluent are not going to be leaders much longer. Like if you can't lead an AI native team, you can't lead in 2026 and beyond. So now you've got CEOs staring at a workforce that isn't using AI, and you have a layer of managers on top who are about to be
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -375,10 +375,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:11:04 - 00:11:27]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> replaced if they don't catch up. So this is kind of a panic moment at every level of the org chart. And the answer is not a $30,000 strategy deck from a big firm like McKinsey. The answer is one company at a time, automating one workflow at a time and upskilling essentially one manager and one employee at a time. And that is what you are here to do with selling your hours to start.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -389,10 +389,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:11:27 - 00:11:57]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> So let me kind of just like reframe this for you. The hour isn't, I'm going to come in and teach you guys ChatGPT. Like people had actually printed with that business model. I know some people that have done huge workshops, just teaching ChatGPT and it worked really well, but I think that the market's evolving a little bit more now. And I think that's a bit too small. So now your hour is so much more than that. It's setting up the AI operating system. Now I should probably pause here real quick, because I keep saying this whole AI operating system thing, and I haven't even told you guys what that actually is yet. So if you've never heard of it, you might be confused.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -403,10 +403,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:11:58 - 00:12:32]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
+> I'm not going to teach the entire framework right now in this video, but here's a short version of it. So an AI operating system is basically a system that you operate in, right? Like think Mac, you operate in your Mac book or windows, whatever it is. And it captures your business data. It captures your subject matter expertise. It runs your workflow. It helps you operate day to day, kind of like just all in one place. And that whole point is that your business stops being bottlenecked by you because you now have the system that has all your data and your context, and you can build automations and agents inside of that AI operating system. And you can build that in cloud code or codex or whatever it is. But I have mine right now that I typically am using in
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -417,10 +417,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:12:32 - 00:13:06]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> cloud code. And obviously you don't need to be a developer or an engineer to build one of these or to use one of these. So I just launched a completely free two hour course inside of my free school community that walks you through the exact framework and just exactly how I built mine and how you can build yours. I even gave you a free GitHub repo to get started with. So the link for that is down in the description below. The move here is go take that course, learn the framework yourself. And then once you have your own AI operating system, just turn around and use that exact same framework that I'm teaching you guys with your clients and just teach them that. And that way, instead of staring at a blank screen, wondering what you even teach in the hour, you
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -431,10 +431,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:13:06 - 00:13:41]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> literally have a playbook already. So now that that's out of the way, let me give you basically the exact pitch that I would lead with. I would say something like, what I want to do here is I want to help you set up your AI operating system. We're going to connect your business data, your information, everything that's important about the way that you think day to day. And we're going to extract your subject matter expertise into this AI system so that your business isn't bottlenecked by you anymore. And you can focus on strategy. You can start working on your business rather than in it. This is going to give you more room to grow. It reduces your key man risk if you ever want to sell. And that's what I think we should set up for you. We're offering an operating system.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -445,10 +445,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:13:41 - 00:14:16]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
+> We're not offering an AI tutorial. So the reframe right there is everything. I think that the part that I really want you guys to like stick in your head is that the business owner is the only person who can actually build the right system. Like you're going to help them, but you couldn't build it for them because they have their own subject matter expertise. They know the workflows and the customers and their IP better than anyone else does. So your job is to make their existing expertise dangerous with the tool. You're basically selling them leverage. So the hour that you're going to be with them is basically transferring tool fluency to where their domain fluency already lives. So if you walk into the session with that framing,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -459,10 +459,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:14:16 - 00:14:40]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> Every consultant suddenly has a product to sell. All of you guys that want to call yourself an AI consultant, you now have something tangible to give them. And then practically, here's kind of how the flow looks like inside of that actual session. So you're going to start to gather their background data, right? You're going to walk them through the difference between, you know, using Claude in the desktop app versus Claude in something like the VS Code extension and explain what all that means if they've ever used something like that.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -473,10 +473,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:14:40 - 00:14:59]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
+> You make them tool fluent at a high level so that they feel less overwhelmed. Because as you start extracting their context and their knowledge into a project folder, they're probably gonna feel a little bit overwhelmed. And so you are there to help them out. You're gonna need to connect their data sources. They might be curious about like, oh, what's MCP or what's an API? And you're just, you wanna be able to explain that in a very simple way.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -487,10 +487,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:14:59 - 00:15:28]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
+> And then after you're doing all this like onboarding and setup, it'll break at a natural point, somewhere after about an hour, and then you're gonna schedule your next session so you guys can keep the momentum and keep building this system. Now, most people might think that the hour is about showing off AI knowledge, but it's not. It's really about, like I said, managing overwhelm because every business owner is probably going to walk in and be super, super excited, but also completely overwhelmed at the same time, right? Like I think we've all been there. So your job is to keep that overwhelm low enough that they want to book in another session with you.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -501,10 +501,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:15:29 - 00:15:59]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
+> And you have to make sure that you're not making them feel behind or feel stupid. So slow it down when you sense them losing the thread and keep them engaged, you know, constantly asking them, does this all make sense? Do you have any questions? You know, you can always ask me any questions as many as you want. I'm here to be a resource for you because if you lose them and they feel overwhelmed, then they're probably not going to book in that second or third sessions, and then definitely not going to want to book in a project. So if you respect their pace and you treat them with patience, they're going to want to keep working with you. And now some of you might be thinking, but Nate, what if they asked me something that I actually don't know the answer to?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -515,10 +515,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:15:59 - 00:16:30]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
+> And that's a great question. And it might happen. And that's fine. You know, you don't just, you basically would just say, honestly, I don't know, like, let's figure it out together. And I don't think that that's actually a weakness. That's actually just part of the job. You know, I think that it gives you an opportunity to show that you're confident in your abilities and that you can take that extra step. You know, I remember a few times on my first couple of consulting calls where people would ask me about certain types of like maybe a database structure that I hadn't worked with before. And I would tell them, you know, honestly, I don't know. I've never had a use case where I had to deal with that. But what I'll do after this session is I'll do some research.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -529,10 +529,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:16:30 - 00:17:00]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
+> I'll test it out. And the next time we meet, I'll make sure that I understand if this is something that you actually need in the system or if we can take a different approach. And yeah, they're really going to respect that because you're not supposed to be Google, right? Like you don't need to know everything on demand, but you're just supposed to be their problem solver and you're supposed to be their barrier between really complex stuff and what they want to do. And so the fact that it's going to take more than just one hour for the business owner to set up their AOS is obviously great, but it's great for you and great for them because they get to spread out the cost.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -543,10 +543,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:17:00 - 00:17:22]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
+> You get to spread out the work. You get to deepen the relationship every single session. And I want to hammer this home as well. Right now, especially when you're starting out, it's not about the cash. Like, trust me, the cash will come. But right now you're prioritizing for reps and for experience. You need confidence. You need to have more conversations with business owners. You need to get good at explaining things. So you go above and beyond on every single one of these hours.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -557,10 +557,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:17:22 - 00:17:57]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
+> You over deliver. You stay on an extra 10 minutes if you need to. You send a follow-up email afterwards with two or three things that they could try that week. And maybe that means you don't start off the bat charging $2.50 an hour. Maybe you just start at $50 an hour or, you know, 99. Because once again, you're not optimizing for cash today. You're optimizing for the cash six months from now. And all of that has to start with reps and experience upfront. Where do you find these people in the first place, right? Because nobody is going to sell anything if they can't even get a single conversation booked. So this is a layered plan, seven steps. Each one kind of builds off the next step one, before you ever pitch a business owner, just teach your friends,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -571,10 +571,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
+### ⏱️ `[00:17:57 - 00:18:30]` | Segment #40
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
+> like seriously, just your buddies, people that you are very comfortable with people in your network who don't even own a business. Text three of them right now and say, hey, I've been getting really into this AI stuff. Can I come over and show you how CloudCode works or help you set up these AI tools for whatever you're into? And that's it. Just no pitch, obviously no payment. You're just teaching your friends something real. And that's going to be like real raw practice, which is going to be huge because you're in a low stakes environment. You're with people, you're already comfortable around, and you're literally just showing someone a tool that you're passionate about. And after you've got through that a few times, you're going to realize like,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -585,10 +585,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
+### ⏱️ `[00:18:30 - 00:19:04]` | Segment #41
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
+> wow, I explained this horribly. And all three of them asked me the same questions about this. So I know now next time I teach someone this stuff, what I probably need to do a little bit better. Because if you went from never teaching someone to trying to teach a business owner, when the pressure is like the pressure is on for real, you're probably going to mess up and you're going to feel very intimidated. And so now you can hop into an actual sort of like a high pressure situation with a real business owner feeling a lot more confident. So then step two is to text the business owners in your network that you know, or ask people if they know any business owners or people who may be interested in learning more about AI. So I would basically send a text that
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -599,10 +599,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
+### ⏱️ `[00:19:04 - 00:19:32]` | Segment #42
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
+> kind of reads like this. I'd say, Hey, I've been getting really good at this AI stuff and it's been giving me, you know, superhuman productivity. So would you be open to letting me come over for an hour and walk you through setting up your own AI operating system? You know, completely on me. I just want to get the reps in. Then step three, after you do a few of those sessions, every one of them gets the same question at the end, which is, Hey, if you've got any friends or business owner buddies who'd also want to learn this kind of stuff, let them know that I would love to help them out. So now you're kind of even expanding more on your own warm network.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -613,10 +613,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
+### ⏱️ `[00:19:32 - 00:20:06]` | Segment #43
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
+> And step four, you can also join communities. There are so many different like AI or business focused communities. Mine has over, you know, 370,000 people right now. And that means that there are a lot of support issues being posted every day. So you can help people out. You can offer to jump on a call. Just, you know, some of these people will also pay you or maybe want to collaborate with you. Some of them might introduce you to other people. And I've literally watched so many people in my community just partner up or land clients or even get full-time jobs just because they were being active and helpful in whatever communities. Step five is to build in public. Once you start doing these education sessions and you're building these workflows
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -627,10 +627,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
+### ⏱️ `[00:20:06 - 00:20:28]` | Segment #44
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
+> and setting up things, just post them. Like it doesn't have to be like you're an influencer or you're posting your face or whatever, but post a case study on LinkedIn or write an article about this and just put them somewhere on your personal website, like make a portfolio. Just have some sort of virtual resume somewhere so that later when people look you up or, you know, when you're reaching out to people, you can send them something to give you a little bit more, you know, trust.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -641,10 +641,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
+### ⏱️ `[00:20:28 - 00:20:47]` | Segment #45
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
+> Step six, once you've got a handful of people who have booked in some sessions with you for consulting hours, you can just start winning more business with them. Like I talked about earlier. And the part that I wanted to stress here is don't be pushy and don't pressure them. Just keep delivering, keep being helpful. And at some point in the conversation just naturally becomes like, Hey, you know, we can build this out together. So here's what I charge for that.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -655,10 +655,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
+### ⏱️ `[00:20:47 - 00:21:05]` | Segment #46
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
+> And at that point, it feels so much less like you're pitching them, just more like you're recommending something to someone who already has some trust in you. So then step seven, and only once you've got your proof, then you can start like walking into local businesses. You can go to local tech meetups. You could go to local marketing events. You could walk into actual local businesses as well, telling people that you want to help.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -669,10 +669,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
+### ⏱️ `[00:21:05 - 00:21:26]` | Segment #47
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
+> And that is the latter. Every single one of those steps is something that you could literally start doing this week. And once you run a few of these kind of like consulting sessions, something kind of awesome happens, which is the hour doesn't pay for just, you know, the 250 or however much you marked it up as it pays for something a lot more valuable, which obviously is basically just getting your foot in the door for real conversations.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -683,10 +683,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
+### ⏱️ `[00:21:26 - 00:21:56]` | Segment #48
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
+> So let me give you guys a quick example. I was running some consulting calls with this client and we were basically like just building out an automation together because he kind of wanted to learn and and and I was helping him out with that. So he would literally just screen share We would talk about the automation We'd build it together And as he was showing me what he was doing And I was helping him build it I would explain what are the different nodes And how to think about prompting And we would, you know, how to think about evals And AI models and stuff And we were working on this together And during the third call I remember he paused and he goes Wow, this is actually going to take a lot longer than I thought, isn't it?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -697,10 +697,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
+### ⏱️ `[00:21:56 - 00:22:18]` | Segment #49
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
+> And I was like, yeah, I mean, it's a pretty big lift But just probably a few weeks of focused work But it's going to add a lot of value And right after I said that, he was like You know what, are you available for project work? Like, could I just have you build this for me instead? And I was like, yeah And so like in that case, I didn't have to pitch him on anything. You know, all I did was I was just showing up and I was helping him and I was making sure he wasn't overwhelmed. And once he had that trust in me and he kind of knew that I wasn't an expert, right?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -711,10 +711,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
+### ⏱️ `[00:22:18 - 00:22:52]` | Segment #50
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
+> But I knew more than he did. And that's all he needed to basically pitch me. But of course, not everyone's going to come out and say, hey, can I just pay you to do this for me? You can still drive that conversation yourself once you've actually seen enough about their operations to have some ideas of workflows that would actually provide value. You know, you don't just want to throw out random agents and workflows. workflows, you want to say, Hey, I realized you have this problem and I know a good workflow that we could build together that would actually solve that problem. Exactly. So if you don't mind, I'd love to, you know, in our next session, just dive into that one a little bit more and talk a little bit more about it. And then I can come back with a full proposal on how I think we
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -725,10 +725,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
+### ⏱️ `[00:22:52 - 00:23:12]` | Segment #51
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
+> should build it and why I think it's going to impact your business so much, because I want to be honest with you guys. Obviously you're not going to build like a multimillion dollar business. If you're just trading hours for money, I mean, the math doesn't work. It's really hard to scale. You just need a bigger and bigger team if you're going to do that. So like I said, selling those hours is the on-ramp. You have to earn your way up the ladder. Audit, the consulting hours is rung zero.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -739,10 +739,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
+### ⏱️ `[00:23:12 - 00:23:34]` | Segment #52
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
+> And then you've got audit, project, retainer. So there is something else I want you guys to keep in mind, which is basically like, what do you really want to do and what do you enjoy doing? Because if the idea of texting three friends or random business owners sounds scary, or the idea of hopping on like a consulting call and teaching someone how to do something is also scary, then maybe being a business owner, like isn't what you actually want.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -753,10 +753,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
+### ⏱️ `[00:23:34 - 00:23:54]` | Segment #53
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
+> And that's completely fine because there are other paths. Like I do think that it's really good to get out of your comfort zone and push yourself a little bit, but there still are other paths. And it's important to at least acknowledge that because you could also partner up with someone who loves that like sales part, you know, and you could just be the AI builder or the AI educator. I've seen tons of these sorts of partnerships form just by getting involved in communities.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -767,10 +767,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
+### ⏱️ `[00:23:54 - 00:24:13]` | Segment #54
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
+> You could also land a job somewhere as like an internal AI consultant inside a company. or maybe you already work at a company, you can start educating people on your team and educating managers and stuff like that, leading these internal AI workshops. And in that way, get noticed and maybe get a promotion. There was this IBM study that I mentioned earlier, but this one was a different one from IBM.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -781,10 +781,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
+### ⏱️ `[00:24:13 - 00:24:41]` | Segment #55
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
+> And it basically said that 57% of chief AI officers right now were actually promoted from inside the company. So the path doesn't always have to be entrepreneurship. And you always have to think about like, how do I make a safe pivot, right? Like I'm not saying that you should just quit your day job and go start selling these hours. like be safe about what you're doing here. And the final thing that I wanted to talk about is what happens if you're doing these consulting sessions and you're struggling to sort of like make that pivot into like the next step, the audit or the project.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -795,10 +795,10 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
+### ⏱️ `[00:24:41 - 00:25:07]` | Segment #56
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
+> Don't push, just say something like, you know what, I hear you. You know, I'm just a text away. Whenever you need this, I'd love to come back and help you out. And then just leave it clean. You know, there was no pressure there. There was no bad taste in their mouth. And this is really the mindset shift you have to have because some business owners are just not ready yet. And it's not your fault. If they haven't felt that ROI, if they haven't fully believed in AI yet, then it's really hard to convince them, especially if you don't have like really, really strong, specific targeted case studies.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -809,10 +809,52 @@ Dans cette vidéo intitulée **The AI Offer You Can Sell Tomorrow Morning**, Nat
 
 ---
 
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
+### ⏱️ `[00:25:08 - 00:25:27]` | Segment #57
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
+> You know, you're not going to convince an unconvinced buyer to suddenly just be bought in. So that's a much tougher ask than people realize. And the other thing is, if you're talking to someone that's not very excited about this stuff and you have to like, you know, really pull them in, that's probably not even a partnership that you want to be. You want to work with someone who's excited about it and is also willing to meet you halfway.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:25:27 - 00:26:03]` | Segment #58
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> way. So just do the whole, yeah, no worries, no pressure, but I'm your guy whenever you need me. All right. So to bring this whole thing home, I made this video for really one core reason. And I started to go off on these tangents here, but it was basically about the imposter syndrome because that's like one of the main patterns and issues I see in these communities, you know, really smart people, really capable people just sitting on the sidelines or struggling because they feel like frauds when they try to pitch these projects and they don't know how to price them and all this kind of stuff. So what I want you to take away from this is that imposter syndrome really isn't a confidence problem. It's more of a rungs problem. You know, if you feel like a fraud,
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:26:03 - 00:26:36]` | Segment #59
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> it's probably because you're trying to sell something that you've just never done before, which, you know, you're probably going to feel like a fraud. But if you just kind of step down the rungs a little bit and you start with rung zero and you're navigating in an environment that you feel a little bit more comfortable in, then you're going to be able to slowly dissolve that imposter syndrome. And I will say the other brutal truth is that it doesn't fully ever go away. Like I still have imposter syndrome almost every single day. So I don't know. Hopefully that makes you guys feel a little bit more comfortable. And that's why I really think it's important to optimize for reps and experience, because even if you don't directly feel it or notice it, if you're talking to a business owner and you've had 20 hours of consulting calls, you know,
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:26:36 - 00:27:03]` | Segment #60
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> under your belt already, they will notice that like they will be able to tell even if you can't tell. So just remember everything that I walked you guys through assumes the fact that you've already built your own AI operating system, because if you haven't, then how do you expect to teach someone else to do it. So that free course that I dropped in my free school community is linked down in the description, but that's going to do it for today. So if you guys enjoyed the video or you learned something new, then please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video and I'll see you in the next one. Thanks guys.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
