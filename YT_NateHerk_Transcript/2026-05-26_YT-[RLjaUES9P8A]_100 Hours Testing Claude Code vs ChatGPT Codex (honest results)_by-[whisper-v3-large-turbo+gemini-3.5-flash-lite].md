@@ -25,10 +25,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:19]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> This could be one of the biggest comebacks in the AI space. Over the past years, OpenAI went from being the biggest AI company to becoming something kind of mid, and people who used AI to code basically forgot OpenAI existed, thanks to tools like CloudCode. But over the past few weeks, I've seen a lot of videos saying that OpenAI Codex is actually better than CloudCode. So I've been trying Codex for the past month, and honestly, the results have been really impressive.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -42,7 +42,7 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 ### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> But is Codex actually better than CloudCode? Today we're going to answer that question by comparing them on features, price, and three specific use cases to see which one is better. And at the end, I'm going to give you my honest opinion on which tool you should be using right now. So let's get into it. So real quick, if you've never used CloudCode before, here's the gist. CloudCode is Anthropic's coding agent. Anthropic being the company behind Cloud. The way it works is pretty simple.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -53,10 +53,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:38 - 00:01:00]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> You give it a task, like fix this bug or build me a new feature or review this pull request. CloudCode goes off, it plans to work, it opens up your project, it edits your files, runs the commands, and it asks you for permission along the way based on your settings. And you can use it pretty much anywhere. There's a terminal version, there's a VS Code extension, and there's a full desktop app for Mac and Windows. And they've also got a web version and research preview where you can just run sessions from any browser or even your phone.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -67,10 +67,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:00 - 00:01:20]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> Under the hood, it's running Opus, which is Anthropics' currently smartest model. Or it can run Sonnet or Haiku as well. Opus and Sonnet are top tier for coding work. Now, the part I really like about Cloud Code is how customizable it is. It's less of a tool and it's more of a workflow system that you can shape into your own engineering rituals and automations. You've got skills that you can drop in. There's hooks, which are basically automated triggers that fire whenever something happens in your session.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -81,10 +81,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:20 - 00:01:40]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> And then you've got things like sub-agents, which are specialist agents that cloud can spin up on its own to handle specific kinds of work. And we're going to dive deeper on all of this in just a sec. And now Codex is OpenAI's coding agent. And quick clarification, this is not the old Codex model from 2021 that retired. The new Codex is a full agentic system, very similar shape to Cloud Code, but with a few different opinions on how the work should flow.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -95,10 +95,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:01:41 - 00:01:59]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> You can use Codex in, once again, Terminal, Desktop App for Mac and Windows, in a VS Code extension that works also with other IDEs like Cursor and in their cloud version at chatgbt.com slash Codex. The models behind Codex are the GPT family of models and a GPT-Codex for coding-specific work, and a faster, smaller one called GPT-Codex-Spark.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -109,10 +109,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:01:59 - 00:02:23]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> And that one is still in research preview for pro users at the moment. And the thing that stands out about Codex is sort of like the unified shipping vibe, where Cloud Code feels like a workflow system that you're building out. Codex feels more like an opinionated machine designed to take you from agent is done all the way to the code is shipped to production. A good example here is the built-in Git work trees. Those are basically just like separate working copies of your project so that multiple tasks can run in parallel without overwriting each other.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -123,10 +123,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:02:23 - 00:02:46]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> So the whole shape is tighter and more end-to-end out of the box. So we'll get into the specifics of what each tool actually does best in just a minute. And by the way, Codex is also included in every paid and free ChatGPT plan right now. So free plus pro business enterprise. If you're using ChatGPT, you've also got access to Codex, whereas Cloud Code, you wouldn't be able to use for free. Now, before we get into where they're different, I want to plant the thesis of this video early because it's very important.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -137,10 +137,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:02:46 - 00:03:07]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> It's which tool is best for the specific use case that is currently sitting in front of you. So that's what I'm going to be discussing today. And one more thing I want to plant on top of that. After spending a lot of time with both of these tools, I've noticed that they each have kind of a different feel. So Cloud Code to me feels more creative. It feels like it's better at brainstorming. It's better at like pushing back when I'm going down the wrong path. Whereas Codex feels really good at just like following my instructions and doing what I want.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -151,10 +151,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:03:07 - 00:03:29]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> And honestly, it's also been sharper at like reviewing code and reviewing my plan and like finding bugs or gaps. So none of that is backed by like hard specific metrics or KPIs. It's just like the gut feeling that I get after spending lots of hours in both tools. But I do think it matters, and I'm going to come back to that at the end. With that out of the way, let's talk about how much these two have in common. Because honestly, after using them both heavily, the overlap is way bigger than most comparison videos admit.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -165,10 +165,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:03:30 - 00:03:50]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> Both of them edit code on your local machine. Both have desktop apps. Both have VS Code extensions. They both run the command line. They both support MCP, which is the open protocol for hooking up external tools to your AI. They both support CLIs as well. They've got the same skills format where you drop a markdown file with a YAML front matter into a folder and agents can read through those, pick them up and invoke them. Both tools have a plugin marketplace where you can browse and install community tools.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -179,10 +179,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:03:50 - 00:04:23]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> They both have a cloud delegation option where you can fire off a task and walk away. And they also both have hooks and sub agents. So the question stops being, does my tool have feature X? The real question becomes, which one gives me the better workflow for the way that I actually want to work? And that's where they start to diverge, which is what we're going to break down next. Let's talk about what each of these tools is uniquely better at. We'll start with Cloud Code. The thing that sets it apart, in my opinion, is the depth of the customization. Cloud Code right now has 30 different hook events. Hooks, again, are automated triggers that fire when something happens, like when you submit a prompt, or when a tool runs, or when a session starts, or when a task gets created. Codex right now has about six hook
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -193,10 +193,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:04:23 - 00:04:56]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> events. So if you want to fire automated behavior into every part of the agent's workflow, Cloud Code gives you about 5x granularity there. The next one is auto-delegating sub-agents. Both tools have sub-agents, but Cloud Code can spawn them on its own when a task needs it. Codex's docs specifically say that codecs won't spawn subagents unless you explicitly ask. So with Claude, you can just give it a complex task and it'll decide on its own to spin up a planner agent and maybe an explorer agent and a code reviewer agent, whatever's needed for that task. And that's really powerful by default. And then there's two of my favorite slash commands, both still in research preview, but we have slash ultra plan and slash ultra review slash ultra plan takes the
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -207,10 +207,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:04:56 - 00:05:29]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> planning phase and it ships it to a cloud Claude code session. And it lets you review the plan in your browser with inline comments. And then you can send it back to your terminal for the actual execution. UltraReview spins up, once again, kind of like a cloud instance with multiple reviewer agents, and it gives you a deep multi-agent code review with reproduced findings. You get three free runs of that on Pro and Max, and then after that, it's build by run. And they're both insanely powerful for higher stakes work. Slash loop is another big one that I love. You can give Cloud Code a recurring prompt that runs on a schedule, or you can run it without a prompt, and Cloud will go into maintenance mode and just keep your project tidy. So you could set up a loop to run
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -221,10 +221,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:05:29 - 00:06:04]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> a certain skill every single, like, 20 minutes, and it will just loop through. It handles unfinished tasks, addresses comments on your PRs, fixes merge conflicts, stuff like that. It's super, super useful. A couple more that don't get talked about enough. The first one is channels. That's an MCP server that pushes external events from Telegram or Discord or even iMessage into a running CloudCode session. So you can literally text your agent from your phone. And then you've also got like dispatch or remote control. Then we have the CloudAgent SDK, which is the same engine that powers CloudCode exposed as a Python and TypeScript SDK. So you can build your own agents on top of And we have Enterprise Auth, which probably doesn't matter to you if you're solo, but it is a big deal for teams.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -235,10 +235,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:06:04 - 00:06:24]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
+> CloudCode supports Bedrock, Vertex AI, and Microsoft Foundry, which are the enterprise cloud platforms that big companies use to host their AI. Codex just doesn't have that level of auth flexibility at the moment. So if you want a customizable coding system that you can shape into your own workflow, CloudCode is in a class of its own right now. Okay, so flipping the script, what does Codex actually do better than CloudCode? The first thing is the whole unified workflow shape.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -249,10 +249,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:06:24 - 00:06:43]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> Codex is built around word trees from the ground up. Every thread you spin up can run in its own work tree without bumping into the main version of your project. Combine that with the fact that you can review, stage, commit, and push from the same desktop app, and you basically got a full shipping pipeline in one tool. Obviously, Cloud Code allows you to work with work trees as well. Codex just does a really good job of making that feel more native. The second thing is in the in-app browser.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -263,10 +263,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:06:43 - 00:07:01]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> So Codex, inside the desktop app, has a built-in browser that you can use to actually, like, look at the work that your agent just shipped. You can leave visual comments right on the page. If you've ever finished a feature and then you had to switch over to Chrome to check it out, this is just a much cleaner universal experience. Now, to be fair, it also has a feature called Cloud in Chrome that gives you another type of functionality, but it just works differently.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -277,10 +277,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:07:01 - 00:07:24]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> And Cloud in Chrome is a browser extension that runs inside of Chrome itself, whereas Codex put the browser right inside the desktop app. So the capability is there on both sides. Codex just keeps everything in one clean window. And it just does it a little bit better when you use the desktop app than the way that Cloud Code does it. But I think both of these platforms are every day improving their desktop app experience. Now, the other one that's pretty big is computer use, which both tools once again have, but Codex's is really sharp.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -291,10 +291,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:07:24 - 00:07:42]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> They've got this whole product QA use case where you tell Codex, QA the app I just built, and Codex will open it up in the app. It will click around, it will find bugs, and it will log them with like, you know, severity ratings, expected versus actual behavior, the steps to reproduce, and a triage summary. And that's a really polished way to use computer use. And it's something that I haven't seen CloudCode build out as a first party flow yet.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -305,10 +305,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:07:42 - 00:08:04]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> But especially when you realize that you can connect Codex and CloudCode to any of these like external tools, you can do a lot of the same functionality with both tools. Codex also has a GitHub integration, which is pretty interesting. I mean, obviously both tools can review pull requests and stuff, but Codex has like an at Codex mention model, and it's pretty smooth. You tag at Codex in a PR comment or an issue, and Codex spins up a cloud sandbox to handle that. There's basically zero setup involved. You just tag it and it runs.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -319,10 +319,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:08:04 - 00:08:22]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> Now, this fifth thing in codex is called slash goal, which is experimental and gated behind a feature flag. But anyone can actually go turn on that flag and use slash goal. This is for the work that's too big for a single prompt, but smaller than an open ended backlog. You define a goal with a verifiable stopping condition and codex will just grind away until it's actually finished. And this could be like multiple, multiple hours.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -333,10 +333,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:08:23 - 00:08:42]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> And of course, as pretty much all these features I'm talking about, you can do the same thing in cloud code. You could maybe use the slash loop or you could use something like the Ralph Wiggum loop or maybe like Karpathy's auto research. So the capability is there on both sides, but Codex has just packaged this into one clean native slash command, where in Cloud Code, you're stitching together a few different tools. All right, so you literally can't make this stuff up.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -347,10 +347,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:08:42 - 00:09:01]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> As soon as I finished recording that video, Cloud Code just released slash goal. So now we have slash goal natively within Codex and Cloud Code. So just want to give you guys a quick update back to the video. And then the last one, because Codex is built by OpenAI, you get access right inside of Codex to GPT Image 2. And GPT Image 2 is one of the strongest image generation models out there right now.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -361,10 +361,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:09:01 - 00:09:25]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. Okay. So we have like little sound bites. I can chat with people. The tool war panel settled a few debates for me. Nice. Good perspective there. We're outside again. We have these different banners, although they're all the same. They don't say like different people's names. So big AIS live logo. Workshop wing is over here. And let's go through the sliding glass doors and see what we've got. So we've got the AIS cafe. The map is in the bottom right, and it's not too descriptive.
+> So if you're building a project that needs image generation, whether that's a game or a product markup or maybe even a website, Codex can actually just generate those images for you right inside the app. Whereas Anthropic doesn't actually have an image generation model at all. So you would have to hook it up into some sort of third party tool. OK, this next one is interesting because it's where the two companies really diverge philosophically. So a lot of you have probably seen third party tools popping up like OpenClaw or Hermes Agent, which is the open source agent that lets you rep coding agents.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -375,10 +375,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:09:25 - 00:09:48]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> They kind of blew up because they felt proactive. They have native crons. They have heartbeats. They can still use skills and stuff like that. The cool thing about OpenClaw is that you can actually sign in with your ChatGPT subscription and just route your codex usage through it. So you don't have to pay separately for an OpenAPI key, which would be way more expensive. You can also do this with a Hermes agent. Sam Allman himself put out a tweet on May 2nd saying that you can now sign into OpenClaw with your ChatGPT account and use your subscription there.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -389,10 +389,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:09:48 - 00:10:08]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> So OpenAI's CEO is publicly endorsing this. And that's a really permissive stance from OpenAI. And I bet they saw a massive spike in ChatGPT subscriptions after that announcement. And Doopik's stance is basically the opposite. The Claude agent SDK page on their docs literally says, unless previously approved, Anthropic does not allow third-party developers to offer Claude.ai login or rate limits for their products, including agents built on top of the agent SDK.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -403,10 +403,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:10:08 - 00:10:27]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
+> So in plain English, using your Claude subscription inside of a third-party tool like OpenClaw or Hermes isn't allowed unless Anthropic specifically approves you. And that's one important thing to keep in mind because it changes the economics of your decision. So if you live inside of these third-party agent tools a lot, then you're probably going to want to go with ChatGPT Codex. All right, so let's talk about pricing real quick because this is actually a big part of the decision.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -417,10 +417,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:10:27 - 00:10:49]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> Both tools are included with their parent subscription, which means you don't need to mess with a separate API key to start using either one. So for Claude, you've got Claude Pro at $20 a month, which includes Claude Code and the rest of Claude. Then you've got Claude Max 5x at $100 a month, which gives you $5x the Pro usage, and then Claude Max 20x at $200 a month for $20x usage. Pro is definitely enough to play around with Claude Code, but if you're using it seriously every day, you're going to want at least one of the Max plans.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -431,10 +431,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:10:49 - 00:11:10]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> For Codex, it's included with ChatGPT free, and then also Plus at $20 a month, all the way up to ChatGPT Pro at $200 a month for basically unlimited use. Not really, but it feels like it. But right now, OpenAI has a promo running where the $100 tier on OpenAI side gets you 2x codex usage through May 31st. So if you're going to test out codex heavily, that $100 tier is one of the best values in AI coding agent market right now.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -445,10 +445,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:11:11 - 00:11:31]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
+> Now on context windows, Opus and Sonic can run in cloud code with 1 million tokens of context window. The latest GBT model in codex runs at about 256,000 as the token context window. Now the part that I want to flag that's more important than like just the raw price of your subscription is that a lot of people right now are complaining that they're hitting their Cloud Code limits, whether that be session or weekly, way faster than they used to.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -459,10 +459,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:11:31 - 00:11:50]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> And I've been hearing this from my community for weeks and on X for weeks. So one of the things I tracked in the live test coming up is the actual token usage on each side. And honestly, the results didn't surprise me because as I've been playing around with these two tools, I have noticed that it seems like I'm able to do a lot more work in Codex before I'm hitting that limit compared to Cloud Code. So we're going to go through those numbers together live after we run some of those experiments.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -473,10 +473,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:11:51 - 00:12:10]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
+> So the takeaway is if you're already paying for one of them, you've already got a top tier coding agent, but I do think there's a lot of value in subscribing to both, playing around with them, and seeing which one you like better, or if you like having both subscriptions for different types of work. To quickly recap what we've covered, CloudCode is a more customizable shape. Deeper hooks, auto-delegating subagents, UltraPlan, UltraReview, SlashLoop, Agent SDK.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -487,10 +487,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:12:10 - 00:12:30]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
+> Codex is a more unified shipping shape. WorkTrees, in-app browser, it seems to follow directions better, sharper computer use, GBT image to access. Both tools have subscriptions, both tools have kind of different context windows, and third-party harnesses currently favor OpenAI, JGBT. But this is where most comparison videos stop, just listing features and calling it a day. So here's what we're gonna do. I'm gonna give CloudCode and Codex the exact same three prompts.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -501,10 +501,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:12:31 - 00:12:49]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
+> A research report PDF with branding, a full landing page, and an interactive dashboard with real feeling data. Same prompt, I'm gonna put both tools side by side, so let's see what happens. All right, so here are the final results of Codex versus Cloud, and we're gonna come back to this and look at all of the actual breakdown in just a sec here. So let's actually look at the outputs of all of these three different prompts.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -515,10 +515,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:12:49 - 00:13:11]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
+> So in this experiment, I did both of these, or I used CloudCode and Codex in their respective desktop apps. So the first thing that we did was the research report. This was something that we could turn into a skill and it would give us a automation report for SMBs on like different automation tools. So this is the prompt that I shut off to both Codex and CloudCode. As you can see, this is the prompt inside of Codex with the logo, and this was the one inside of CloudCode.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -529,10 +529,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:13:11 - 00:13:29]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
+> So let's take a look at the outputs. If I scroll down a little bit here, we should be able to see PDF. And if I click on that, we get to open this up in CloudCode's desktop app, sort of like browser viewer. So I'll just do it in here for now. You can see right off the bat, you know, the logo is up top, but this is a major issue. Like that is hard to read. And then the spacing right here is not great either, but this one's 15 pages. And as you scroll down, it gets better.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -543,10 +543,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:13:29 - 00:13:49]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
+> I think the header looks really clean. The table of contents looks nice. I'm not going to read and verify all of these facts. I just don't really feel like doing that right now. They're both pretty solid when it comes to doing research. And by the way, I didn't give it any API keys. So they're doing research using their native like web fetch and web search tools, whatever those are. So it goes through executive summary. It goes through market overview. And you can see that this one is very like wordy.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -557,10 +557,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:13:49 - 00:14:11]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
+> It's structured almost like it's trying to sort of like tell a story and it's going over these different tools. We have a side-by-side comparison here. Top three picks, Zapier, Lindy, make.com. And then at the end, we have where the market is heading in the next 12 months with all the sources at the bottom here. And all of these are clickable links that I could go to, but not when I'm in the local host here. If I was to open this up in my browser, like you can see right here in my browser, I could actually then go ahead and click on these links and it would take me to that actual source.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -571,10 +571,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
+### ⏱️ `[00:14:12 - 00:14:30]` | Segment #40
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
+> Now here is Codex in the desktop app. Interesting enough, you can't actually open PDFs right in here in the preview. So we have to open this up on our browser. And this is Codex's version. So right off the bat, it already looks better because we don't have some weird spacing on the title. The logo is there, but it kind of has this weird, like you can tell it's a square image. So the header, nice. I thought the header was better with Cloud Code.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -585,10 +585,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
+### ⏱️ `[00:14:30 - 00:14:53]` | Segment #41
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
+> Table of contents looks perfectly fine. We've got an executive snapshot and some of this spacing feels a little bit almost rushed. Like it feels a bit squished together. Market overview. And then as we go into the platforms here, we basically just get a table for each tool. Also the footer on this version isn't as cool either. So Cloud Code went for more of like a, I'm going to tell you a story and I'm going to break it down with bullets. OpenAI Codex went for more of like a, I'm just going to give you a table, like a consistent table breakdown for each of these different tools.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -599,10 +599,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
+### ⏱️ `[00:14:53 - 00:15:12]` | Segment #42
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
+> You also notice that this research report is nine pages, whereas the other one was 15. We get our side-by-side comparison. We have our top three picks, which are Zapier, Lindy, and Relay. And Claude Code's top three picks were Zapier, Lindy, and Make.com. So kind of similar. And then we have where the market is heading over the next 12 months and a practical buying guide. And then we have all of our sources at the bottom, which once again, these are clickable links that work. Okay.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -613,10 +613,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
+### ⏱️ `[00:15:12 - 00:15:33]` | Segment #43
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
+> So number two was our website and we gave it the same exact prompt here with the Glido logo and we told it to build us a landing page. We gave it the actual Glido site so it could go and look at it and maybe get some like, you know, inspiration. And then it comes back with an actual landing page here. And then, of course, in Codex, we gave it the exact same prompt with the same logo. Now, here is the actual two landing pages.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -627,10 +627,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
+### ⏱️ `[00:15:33 - 00:15:52]` | Segment #44
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
+> Which one do you think was which? This one on the left was Claude Code. So right off the bat, they have similar feels, right? They have similar colors. you'll notice that OpenAI was able to put the logo up here. Whereas for some reason, I don't know why, CloudCode didn't. That would be a very easy fix. But as we scroll down, we can see that we've got sort of like an animation right here, which we have like the kind of like dictation looking thing.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -641,10 +641,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
+### ⏱️ `[00:15:52 - 00:16:27]` | Segment #45
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
+> I like how this is a microphone that's pulsing rather than just this being like a G. I also like how this kind of like text cursor thing is blinking as well. And overall, as we start to scroll down here, I genuinely like CloudCode's version better. Like even the font, it just feels a little bit less vibe coded. These logos are obviously wrong, except for GitHub looks correct. Gmail looks sort of correct, but not really. That would be an easy fix. But I like the sliding banner compared to just having these six boxes here. This next section, I once again think that this looks better. We have some glow. We have some icons rather than just like these random letters. So overall, I am liking Cloud Code's version here pretty much a lot better. Here's the pricing page. The differences here.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -655,10 +655,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
+### ⏱️ `[00:16:27 - 00:17:03]` | Segment #46
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
+> So I think that Cloud takes the cake here. The logo thing would be a very, very easy fix. And as far as like a base, I think Cloud Code wins here. Okay. And the final one was a marketing analytics dashboard. I told it to make up all the data, but I pretty much gave it the same like acquired elements. So let me pull up both of these side by side. And just for proof, here is the same exact prompt inside of Codex. All right, so here are the two dashboards. Once again, I put Cloud Code on the left. And right off the bat, I already think that the Cloud Code version just looks a lot better from a design perspective. Both of them are still functional. If I click on the different buttons, you can see the data will shift. And as the data moves and the numbers move and the charts move, we can still use our mouse to see the actual like numbers. So that is all working well. You'll
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -669,10 +669,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
+### ⏱️ `[00:17:03 - 00:17:27]` | Segment #47
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
+> notice here that we have orders and average order value, but here we just have revenue. We can come down here to channel breakdown and we can hover over the different elements and we get the data there. And even here, like the conversion funnel, right? The purchase funnel, this just looks way more generic and bland, but this one has almost like sort of a gradient that goes across. And I just think in general, the font and the vibe, everything about CloudCode's version just looks better, even though from like a functional perspective, I think that they're the exact same.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -683,10 +683,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
+### ⏱️ `[00:17:27 - 00:18:03]` | Segment #48
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
+> All right. And now the part that you guys probably care more about, which is like the actual metrics of cost, speed, tokens, stuff like that. So we were using codex with GBT 5.5 on high, and we're using Cloud Code with Opus 4.7 on high. So yes, this was like a codex versus Cloud Code video, but keep in mind that a lot of the actual performance is going to be determined by the underlying model that is powering the harness. So when Opus 4.8 or 5 drops and GBT 6 drops, these numbers would obviously look a little bit different. So let's look at some of the totals and the numbers. Kind of surprising. So codex, total time across three runs was almost 26 minutes. And Claude, total time across three runs, was about 15 minutes. Total tokens were
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -697,10 +697,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
+### ⏱️ `[00:18:03 - 00:18:36]` | Segment #49
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
+> very similar. We had about 6 million, and you can see the breakdown. We're going to break it down by experiment just a sec, but about 6 million tokens. What was interesting is that costed more with Claude Code. And we'll break down why once we look at the experiment level breakdown, but keep that in mind. And then the average run, once again, Claude Code was faster here. And keep in mind, we had one Claude Code experiment that was like two minutes, and the Codex one was like eight. So that was like an outlier, which kind of skewed the data. But typically, I will say that I found that Codex is actually faster. And keep in mind with the token thing here, if you look at these two models side by side, GBT 5.5, Opus 4.7, they have similar input pricing, $5 for a million
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -711,10 +711,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
+### ⏱️ `[00:18:36 - 00:19:10]` | Segment #50
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
+> input tokens, but their output tokens, GBT 5.5 is $5 more expensive. But GBT 5.5 seems to be super efficient with output tokens, which is why in this experiment, Cloud Code cost us more. Now this is API billing. I'm on a subscription for both of these, so I'm not actually getting charged $11 and $7, but this would actually factor in basically to like how fast your session limit is hit. So let's keep scrolling down here. With the speed thing, we can obviously see that this was the main outlier where CloudCode finished really quick, almost, you know, two minutes. And then this one took Codex eight minutes. But I guess I stand corrected. I mean, in all of the results here, CloudCode was pretty much faster in all of them. For the input versus output tokens,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -725,10 +725,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
+### ⏱️ `[00:19:10 - 00:19:46]` | Segment #51
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
+> we can see these charts might be a little bit hard to read because we have like input, we have cash, we have all this kind of stuff. But basically what happened was CloudCode was spending more output tokens than Codex in all of them, which is like the little highlighted sliver at the top. you can see Claude Code's output here was 83K, almost 84, and Codex's output was 18K. Over here, Codex's output was 20K, and Claude's output was 80K. And over here, Codex's output was 16K, and Claude's output was 41K. So Claude's output tokens is always higher than Codex's, at least in these three examples and based on other testing I've done. That's not like a definitive every single time rule, but it is a consistent pattern. So I think that, you know, we could look
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -739,10 +739,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
+### ⏱️ `[00:19:46 - 00:20:18]` | Segment #52
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
+> at the cost, obviously, but I think that this one chart is very interesting. If I can somehow make this one like full screen, this chart. This is efficiency and time. So the best place to be here would be bottom left. That means you're very fast and you're very lean. And the worst place to be would be top right because you're slow and heavy. So on the x-axis, we have total tokens. So more expensive as you go this way. And on the y-axis, we have seconds. So slower as you go up. And it's really interesting because you can see here that we have two really great data points from Cloud Code, which were experiments two and three. And then we also have this one, which is a clear outlier in the good direction, which was experiment one, which was our research report from Cloud
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -753,10 +753,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
+### ⏱️ `[00:20:18 - 00:20:38]` | Segment #53
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
+> code. And then we have kind of this like accurate little bundle of codecs, which it's pretty consistent. Like they're all kind of in this general area. They're all kind of in the middle of this scatter plot. So I thought that this was an interesting one to look at. And I would love to see what would happen if we would have ran like a hundred experiments where we would see like sort of the standard deviation and where we'd see the lines start to form for each of these tools.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -767,10 +767,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
+### ⏱️ `[00:20:38 - 00:21:13]` | Segment #54
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
+> And I'm not going to read these out because I think that it would be boring, but here are the raw numbers. If you want to pause and take a look, you can certainly take a look through that. So the way that we were actually able to get this data is we just ask either CloudCode or Codex to read its JSON-L, which is like a session log, and it can pull the time, the tokens, the cache reads, all that kind of stuff. So that's how I pulled the data. If you guys are ever curious about a session, just ask it to read the JSON-L and pull that data for you. All right, so we just ran CloudCode and Codex through these three live builds. Same prompt, both tools, three completely different kinds of work. And the honest takeaway before I dig into specifics is that this was not a clean sweep in either direction. I feel like Codex won at certain things and Cloud won at
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -781,10 +781,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
+### ⏱️ `[00:21:13 - 00:21:39]` | Segment #55
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
+> others. So starting with Cloud Code, the biggest standout for me was the dashboard test. Cloud finished that build in just under two minutes. Codex took almost eight minutes for the same exact prompt. So Cloud was roughly four times faster on the most complex of the three tasks. The token side was even more surprising. On that same dashboard build, Cloud used about 283,000 tokens total, where Codex used about 1.64 million. So almost six times more tokens on the Codex side for one build. On the visual side, Cloud also won the dashboard, in my opinion, and the landing page.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -795,10 +795,10 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
+### ⏱️ `[00:21:39 - 00:22:12]` | Segment #56
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
+> The dashboard came back in dark mode and all the date filters worked, the hover statuses and the revenue chart just felt cleaner and more polished. Whereas Codex's dashboard was functionally the same, but it just felt cheaper to look at. And the landing page was the same story. Yes, Claude actually did forget to drop in the logo on that landing page, and the scrolling banner had like wrong logos and icons, but those are just mistakes that we could fix with one prompt. But the underlying design, the base that I wanted to start from, I think I liked Claude codes better. The pattern I noticed is that Claude has this way of planning the task tightly before it executes. And Codex tends to just grind through more iterations, which is why the input tokens stack up on its side for the more
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -809,10 +809,150 @@ Dans cette vidéo intitulée **100 Hours Testing Claude Code vs ChatGPT Codex (h
 
 ---
 
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
+### ⏱️ `[00:22:12 - 00:22:48]` | Segment #57
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
+> you know, complex builds. So for front end work, especially anything with real interactivity and design polish, I think that Claude was the clear winner in that metric. Now flipping over to Codex, the research report that it built was kind of a standout in my opinion. So Codex finished in about eight minutes and Claude took eight minutes and 15 seconds and Codex used about 2.8 million tokens versus Claude's 4.7 million. So on the most research heavy task of the three, Codex was both faster and more efficient on tokens. Codex was also significantly faster on the landing page build. 3 minutes flat versus Claude's 4 minutes and 39 seconds. So if you're looking at pure speed, Codex typically tends to be faster. The other thing I noticed across all three tests is that
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:22:48 - 00:23:21]` | Segment #58
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Codex's output tokens are way leaner, and output tokens cost more than input tokens, so that is important to keep in mind. And that's probably why on Codex I'm not hitting my session limit as quick as with Claude code. On every single build, Codex wrote about 2 to 5x fewer output tokens than Claude, so Codex tends to just be more concise in what it writes back. It seems to be more efficient. On the visual side for the PDF, I liked Codex's a little bit better. It felt like it had better spacing, even though I thought that CloudCode had a better header and a footer. It was honestly just a toss-up, but if I had to send one to a client, I probably would have went with Codex's version by a small margin here. And obviously, I didn't read through every single sentence of the actual
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:23:21 - 00:23:57]` | Segment #59
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> data in the research report, but that was my quick analysis. All right, so given all that, let me give you my honest take on when to use each. I would say reach for CloudCode when you're working on complex front-end, when visual design quality matters, when the task requires deep planning, when you want auto-delegation, when you're building custom workflows with hooks and skills and channels, and when you need the Cloud Agent SDK to embed agents in your own product, or when you're in an enterprise environment that needs bedrock or vertex auth. And then I'd say to reach for codecs when the task is research heavy and pulling from the web, when you're producing structured documents like PDFs or reports, when you want a single desktop app that handles work trees and review and shipping, when you need to use slash goal for like long running objectives,
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:23:57 - 00:24:15]` | Segment #60
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> when you want to use ad codecs on GitHub PRs, or when your project needs image generation built into the workflow. And on top of those buckets, I want to come back to my observation from earlier, because this is where it actually shapes my decision in practice. Like I said at the beginning of the video, Cloud Code, in my experience, just feels more creative. It pushes back. I prefer it as my brainstorming partner. It catches things that I might not have thought of.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:24:15 - 00:24:34]` | Segment #61
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So when I'm in a planning phase or wrestling with a hard problem, that's usually when I will reach for Cloud Code. But Codex now just feels really good at executing. It just feels like it obeys me better. It follows instructions, especially as you're working on a project that starts to run a little bit longer. You tell it what to do, and it feels like it just does it. And of course, it's been sharper on, like, catching things in the code and reviewing it and plugging holes.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:24:34 - 00:24:56]` | Segment #62
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And that's why I say it's never like which tool is better. It's a matter of which tool is better for this specific task. A lot of people have been finding a ton of success with doing planning and brainstorming and strategy with CloudCode and then bringing in codecs to actually like just review the code or maybe even execute on that plan. And one more mindset piece I want to leave you with on top of all of this. Because you're working with coding agents, all you're really doing is you're making files that live inside of folders that live inside of more folders.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:24:57 - 00:25:32]` | Segment #63
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> You know, Markdown files or JSON files or Python scripts or whatever it is. Which means you're going to be pushing all of this stuff to GitHub. you can pull that exact same project into CloudCode or Codex or OpenClaw or Hermes or whatever the next new tool is. You know, you're not locked into one environment just because you've been building on CloudCode for the past six months. And if you ever want to move between tools, it's really not that hard. You know, you open the project in another agent and you say, hey, I built this project in CloudCode and you are Codex. Just walk through it, understand it, and just update anything that needs to change. Or, you know, you could clone it and then have like a CloudCode version of your project and a Codex version of your project or whatever it is. There's just a few small things you're going to have to swap, like the Cloud.md will now be an Agents.md.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:25:32 - 00:25:51]` | Segment #64
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> But the agent will figure out pretty much all of that for you. So the real mindset is just to keep an open mind. You're building portable skills inside portable folders. So whatever tool gives you the best workflow right now, just use that one. And that brings me back to the thesis I started this video with, which is it's not a matter of which tool is best. It's a matter of which tool is best for the specific use case in front of you. And some people also might disagree with that.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:25:51 - 00:26:12]` | Segment #65
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> It's just kind of like, how do you like to work and what features do you need? And one last thing before I wrap, everything that I just walked through is accurate as of right now, mid-May, 2026. Both of these tools have been shipping at really incredible speeds. You know, new models will drop. Pricing tiers will shift. Features that are in research preview will graduate or they will be, you know, redacted. So if you're watching this video three months from now, just double check some of the specifics on the actual docs that I mentioned today.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:26:12 - 00:26:33]` | Segment #66
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> You know, the architectural differences that I walked through are likely to hold up, but some of those exact numbers or stats might not. And I know that we just covered a ton of information in this video. So I broke all of this down into a resource guide that you can access for completely free. And you can find that in my free school community. The link for that is down in the description. But that is going to do it for today. So if you enjoyed the video or you learned something new, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video and I'll see you on the next one.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:26:33 - 00:26:34]` | Segment #67
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Thanks everyone.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
