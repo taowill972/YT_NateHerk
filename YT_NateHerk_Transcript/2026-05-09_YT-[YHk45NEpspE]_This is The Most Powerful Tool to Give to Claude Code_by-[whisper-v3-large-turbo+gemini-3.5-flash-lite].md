@@ -25,801 +25,661 @@ Dans cette vidéo intitulée **This is The Most Powerful Tool to Give to Claude 
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:19]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> All right, so what would you think if I told you that I just said to CloudCode, hey, go to my school community and grab me some posts. And keep in mind, school does not have an API. And it was able to use the CLI, it was able to find nine wins, and it made sure that they were in the wins category. And then it gave me the three strongest ones. And I got a link to all of them so we can see if they actually exist. As you can see, here is Michael's win.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code (avec l'extension Claude Code intégrée).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Prompt utilisateur : "Use the Skool CLI to grab three recent wins in my community, AI Automation Society Plus, and return the links and a summary." Commandes Bash visibles : `python scripts/skool_api.py --help` et `python scripts/skool_api.py posts --help`.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA analyse le CLI "Skool" pour comprendre comment récupérer les posts de la communauté avant de procéder à l'extraction des données.
+
+![Une capture d'écran de l'interface VS Code montrant l'agent Claude en train d'exécuter des commandes pour interagir avec une communauté via un script Python.](../screenshots/YHk45NEpspE/YHk45NEpspE_000005_seg1.jpg)
+*⏱️ 00:00:05 — Une capture d'écran de l'interface VS Code montrant l'agent Claude en train d'exécuter des commandes pour interagir avec une communauté via un script Python.*
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:20 - 00:00:41]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> And quick shout out to my community members, Michael, Chris, and Fernando. But anyways, the way that we're doing this is we're using a CLI. And the tool I'm going to show you guys today actually helped me build the school CLI. So if you've never heard of the term CLI before, don't worry. I'm going to explain it. I'm going to compare it to APIs and compare it to MCPs. But before we get into all that, let me show you one more example. So here I said, hey, can you just go pull 10 of the most recent posts in my community?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code (avec une extension de chat IA, probablement Claude Code).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte structuré listant des études de cas ("Fetch recent wins from AI Automation Society"), mentionnant l'utilisation de l'API, de n8n, et de Claude Code pour des automatisations. Une barre de saisie d'IA est visible en bas ("Ctrl esc to focus or unfocus Claude").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur illustre son propos sur la construction de son "Skool CLI" en montrant son environnement de développement où l'IA interagit avec ses projets.
+
+![Capture d'écran de l'éditeur Visual Studio Code affichant un document texte contenant des retours d'expérience de la communauté et une fenêtre de chat Claude active.](../screenshots/YHk45NEpspE/YHk45NEpspE_000025_seg2.jpg)
+*⏱️ 00:00:25 — Capture d'écran de l'éditeur Visual Studio Code affichant un document texte contenant des retours d'expérience de la communauté et une fenêtre de chat Claude active.*
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:41 - 00:01:14]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> It goes ahead and it uses the school PP, CLI. PP stands for printing press, which is the tool I'm going to show you guys today. It comes back. It grabs all of these 10 posts. And then I also asked like, how many tokens did you actually consume to make the CLI request? And it said, okay, here's what happened. I sent about 260 tokens to school. It sent me back about 132,000 tokens. But what's important is that none of that hit my context window because we were basically able to point all of that routing through the CLI so that none of it actually pollutes your session or your context. So that is super cool. And I built the school CLI and it literally took me about 10
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (Terminal intégré), Claude Code / CLI environnement.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image 1 : Liste de posts extraits (ex: "Can't find n8n api key"), commande `skool-pp-cli posts list --agent...`, et calcul de consommation de tokens (529388 octets).
+- Image 2 : Analyse "Rough estimate of the wire roundtrip", explication sur la gestion du contexte (529 KB JSON stockés sur disque), récapitulatif final de l'opération, et barre d'état "Opus 4.7 (1M context)".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Exécution d'un script CLI pour récupérer des données communautaires, analyse des logs d'utilisation des tokens par l'agent IA, et démonstration de la gestion efficace du contexte via stockage sur disque.
+
+![Interface VS Code affichant une liste de publications extraites d'une plateforme communautaire dans un terminal intégré, avec le présentateur en médaillon.](../screenshots/YHk45NEpspE/YHk45NEpspE_000050_seg3.jpg)
+*⏱️ 00:00:50 — Interface VS Code affichant une liste de publications extraites d'une plateforme communautaire dans un terminal intégré, avec le présentateur en médaillon.*
+
+![Terminal affichant une analyse technique détaillée de la consommation de jetons (tokens) lors de la requête API, avec le présentateur en médaillon.](../screenshots/YHk45NEpspE/YHk45NEpspE_000106_seg3.jpg)
+*⏱️ 00:01:06 — Terminal affichant une analyse technique détaillée de la consommation de jetons (tokens) lors de la requête API, avec le présentateur en médaillon.*
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:14 - 00:01:37]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> minutes. All right. So here is the tool that we are using. Introducing PrintingPress, a CLI factory and a CLI library. The whole idea is that APIs suck for agents. MCPs also suck for agents. And a lot of times, official CLIs suck for agents because they waste tokens or they're not efficient. So Printing Press has a library of like 50 pre-built CLIs that you can use right away, and it also gives you a factory so that you can turn anything into a CLI.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (X/Twitter, site printingpress.dev).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte descriptif sur PrintingPress, liste de modules CLI (pp-cloud-run-admin, pp-amazon-seller, pp-shopify, etc.), et catégories de services (Commerce, Developer Tools).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation et démonstration du catalogue d'outils disponibles sur la plateforme PrintingPress pour expliquer leur utilité dans l'automatisation par les agents.
+
+![Une capture d'écran de l'interface de X (Twitter) affichant un tweet de Matt Van Horn présentant "PrintingPress", un outil CLI conçu pour résoudre les problèmes d'inefficacité des API et MCP pour les agents IA.](../screenshots/YHk45NEpspE/YHk45NEpspE_000120_seg4.jpg)
+*⏱️ 00:01:20 — Une capture d'écran de l'interface de X (Twitter) affichant un tweet de Matt Van Horn présentant "PrintingPress", un outil CLI conçu pour résoudre les problèmes d'inefficacité des API et MCP pour les agents IA.*
+
+![La page web officielle "printingpress.dev" présentant un catalogue de bibliothèques CLI disponibles pour divers services comme Shopify, FedEx, eBay et Amazon, optimisées pour les agents.](../screenshots/YHk45NEpspE/YHk45NEpspE_000131_seg4.jpg)
+*⏱️ 00:01:31 — La page web officielle "printingpress.dev" présentant un catalogue de bibliothèques CLI disponibles pour divers services comme Shopify, FedEx, eBay et Amazon, optimisées pour les agents.*
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:37 - 00:02:07]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> So let's just start off with the basics real quick. Why CLIs beat MCPs and APIs, and what even is a CLI? So CLI stands for Command Line Interface, and it's a way to use a tool by typing a command instead of clicking buttons. So it's not a new concept. It's been around for a long time. You know, like Gemini's got a CLI, Cloud CLI, Codex CLI. And you might have been seeing a lot of tools recently create CLIs, like Google have their official GWS CLI, which is probably the most used thing in my Cloud Code. GitHub has a CLI. Playwright has a CLI. Higgsfield just created a CLI.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de présentation (type PowerPoint ou Google Slides) intégré à la vidéo.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Titre : "Why CLIs Beat MCPs and APIs". Définitions textuelles : "CLI = Command Line Interface", "A way to use a tool by typing a command instead of clicking buttons". Liste des points abordés : "Your AI Agent Has 3 Ways to Talk to Tools", "Why APIs Lose", "Why MCP Loses Too", "Why CLIs Win", "The Bottom Line". Note complémentaire : "btw, this whole video applies to any agent. Codex, Claude Code, Hermes, OpenClaw, etc."
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique des arguments structurels de la vidéo par le présentateur.
+
+![Une diapositive de présentation structure le contenu du segment, définissant ce qu'est une CLI et listant les points clés de la comparaison entre CLI, MCP et API.](../screenshots/YHk45NEpspE/YHk45NEpspE_000145_seg5.jpg)
+*⏱️ 00:01:45 — Une diapositive de présentation structure le contenu du segment, définissant ce qu'est une CLI et listant les points clés de la comparaison entre CLI, MCP et API.*
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:02:07 - 00:02:27]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> HeyGen just dropped a CLI. It's really just the best and most efficient way to have agents talk to other tools. Now, what are the other ways? API, MCP. And when MCP came out and it kind of broke the internet, everyone just assumed that MCPs were the answer. And we're just going to shove MCPs and all of our agent setups. And they all just have different pros and cons. APIs are very raw.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Présentation PowerPoint ou Google Slides.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte structuré sous forme de liste : "Your AI Agent Has 3 Ways to Talk to Tools", "Why APIs Lose", "Why MCP Loses Too", "Why CLIs Win".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique et argumentative par l'orateur sans démonstration technique directe de code ou de terminal.
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:27 - 00:02:45]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> You're gonna get back a huge JSON snippet from the API endpoint. And sometimes you need all that information and it's really, really nice. They're also more token efficient than an MCP server because MCP servers have to have all the different tools and descriptions and the ability for the agent to look through everything, which is cool because they're way more flexible than an API endpoint.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Présentation de type diapositives (Slide deck).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte explicatif comparant les API, les MCP (Model Context Protocol) et les CLI (Command Line Interface), détaillant pourquoi les CLI sont jugées plus efficaces en termes de tokens et de performance.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation pédagogique par le narrateur, sans démonstration technique ni manipulation logicielle active.
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:02:45 - 00:03:08]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> But as you can see, they add overhead, extra context bloat, and you have to keep a server running. So if you go into Cloud Code right now, brand new session, and do slash context, if you've got a bunch of MCP servers loaded in, you'll see how many tokens they're using every single time. And you may not even be invoking that MCP server, so it might just be a waste of tokens. And then we have CLIs, which are local, they're fast, they're composable, they have a SQLite backend, they're agent native.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de présentation (type diaporama).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte comparatif détaillé sur les avantages et inconvénients des approches APIs, MCP et CLI pour les agents IA, incluant des sections "Why APIs Lose", "Why MCP Loses Too", "Why CLIs Win" et "The Bottom Line".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique des concepts fondamentaux de l'automatisation IA avant la démonstration technique.
+
+![Une présentation didactique sous forme de liste à puces expliquant les trois méthodes de communication des agents IA avec les outils : APIs, MCP et CLI, avec une fenêtre incrustée montrant le présentateur.](../screenshots/YHk45NEpspE/YHk45NEpspE_000251_seg8.jpg)
+*⏱️ 00:02:51 — Une présentation didactique sous forme de liste à puces expliquant les trois méthodes de communication des agents IA avec les outils : APIs, MCP et CLI, avec une fenêtre incrustée montrant le présentateur.*
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:08 - 00:03:45]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> And you can start to build some skills around these CLIs, just like you can with APIs and MCPs as well, to chain them together and make some really cool, fast workflows. And the cool thing is the output you get is super short and super clean So basically the cli response to the agent is super short And that's what we just saw in that school example where our agent was like, yeah, you know that took about 132 000 tokens, but right here it said into my cloud context though I only pulled about 2 000 tokens of summary not the full 132 000 Okay, so real quick to hit on each of those individually Why do apis lose because they were built for code not for all these autonomous agents that pay per token
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Terminal (ligne de commande), VS Code (barre de tâches visible en bas).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Commandes Bash pour interroger Skool, statistiques de consommation de tokens (260 envoyés, 132k reçus, 2k dans le contexte), explication du routage des données via CLI pour éviter de saturer la fenêtre de contexte.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Démonstration technique de l'optimisation de l'utilisation des tokens en traitant les sorties JSON lourdes via CLI au lieu d'un appel API direct vers un LLM.
+
+![Capture d'écran d'un terminal affichant les résultats d'une exécution de script Bash, détaillant la consommation de tokens et le traitement des données via CLI.](../screenshots/YHk45NEpspE/YHk45NEpspE_000327_seg9.jpg)
+*⏱️ 00:03:27 — Capture d'écran d'un terminal affichant les résultats d'une exécution de script Bash, détaillant la consommation de tokens et le traitement des données via CLI.*
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:03:45 - 00:04:19]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> because when you get back an API response, you just get this massive JSON body. Those of you who came with me all the way from NNN, you know what it used to look like when you would hit a server and get that massive API structure back. You also might run into issues with pagination or auth and it just can get a little bit funky sometimes. And what about MCP? MCP solved discovery because like I said, you could quickly glance at 50 tools that are available from a certain server, but because you're loading all 50 tools, now you have tokens and sort of like, you know, descriptions for all of those 50 tools. Here's a real benchmark. MCP used 35 times more tokens
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : n8n (outil d'automatisation de workflow)
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Structure de données JSON complexe incluant des objets "attributes", "metrics", "dataPoints" et des informations de pagination.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur illustre visuellement la "lourdeur" d'une réponse API brute (JSON massif) reçue par un agent IA dans un workflow n8n.
+
+![Une capture d'écran de l'interface n8n montrant un nœud "HTTP Request" et une fenêtre latérale affichant une réponse JSON volumineuse et complexe.](../screenshots/YHk45NEpspE/YHk45NEpspE_000354_seg10.jpg)
+*⏱️ 00:03:54 — Une capture d'écran de l'interface n8n montrant un nœud "HTTP Request" et une fenêtre latérale affichant une réponse JSON volumineuse et complexe.*
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:04:19 - 00:04:44]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> than the CLI on the same task and reliability drops from 100% with the CLI to 72% with MCP as tasks get harder. So really, if you can just shift to every single time you want CloudCode to talk to something, just try to find a CLI or build your own CLI now. Because they were built for exactly how agents actually think. They have lazy discovery. They have pre-formatted outputs where you're basically just getting 200 tokens of clean text rather than raw JSON.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Présentation (diapositives)
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte comparatif sur le MCP (Model Context Protocol) soulignant les problèmes de "schema bloat", la consommation excessive de tokens (30 000+ pour GitHub MCP) et la baisse de fiabilité (100% pour CLI vs 72% pour MCP).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Analyse comparative des performances entre MCP et CLI illustrée par des points clés textuels.
+
+![Une diapositive de présentation listant les inconvénients techniques de l'utilisation du protocole MCP pour les agents IA par rapport aux interfaces en ligne de commande (CLI).](../screenshots/YHk45NEpspE/YHk45NEpspE_000425_seg11.jpg)
+*⏱️ 00:04:25 — Une diapositive de présentation listant les inconvénients techniques de l'utilisation du protocole MCP pour les agents IA par rapport aux interfaces en ligne de commande (CLI).*
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:04:44 - 00:05:05]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> You can compound commands together. You have a local SQLite mirror, which means no round trips and it means no rate limits. It's obviously native to the agent and the auth is pretty much solved one time because the CLI holds the token and then you are all set. So the bottom line, APIs are built for code, MCBs built for tools, and CLIs are built for agents, especially when you're paying per token or managing your session limit.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de présentation (type diapositives/slides).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte structuré : "Why CLIs Win", "A CLI is built for how agents actually think", incluant les points clés : "Lazy discovery", "Pre-formatted output", "Compound commands", "Local SQLite mirror", "Native to the agent", "Auth solved once".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur illustre ses propos théoriques sur l'efficacité des CLI via un support visuel pédagogique pendant qu'il explique le fonctionnement des agents.
+
+![Une présentation sous forme de liste à puces expliquant les avantages techniques des CLI pour les agents IA par rapport aux API, avec une mise en évidence du texte sur l'absence de limites de débit.](../screenshots/YHk45NEpspE/YHk45NEpspE_000449_seg12.jpg)
+*⏱️ 00:04:49 — Une présentation sous forme de liste à puces expliquant les avantages techniques des CLI pour les agents IA par rapport aux API, avec une mise en évidence du texte sur l'absence de limites de débit.*
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:05:05 - 00:05:27]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> Okay, so what is PrintingPress? What are we looking at today? So if you go to printingpress.dev, this is what it will look like. It's a very new tool, just dropped like yesterday and I've been playing with it all day today. And I've already built a few cool CLIs, which I'll show you guys when we hop over to Cloud Code. But Printing Press, it's funny. So this kind of was inspired by Peter Steinberger, the creator of OpenClaw, needing to make his own CLIs because the official ones were bad.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Site web (printingpress.dev).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Commande d'installation : « npx -y @mvanhorn/printing-press ir » ; texte expliquant la génération d'outils CLI et de compétences pour agents IA.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle de l'outil Printing Press et de son interface de déploiement d'outils pour agents via le site officiel.
+
+![Capture d'écran du site web « printingpress.dev », présentant la page d'accueil avec le slogan « Welcome to the Printing Press » et un encart permettant d'installer un pack de démarrage via une commande terminal.](../screenshots/YHk45NEpspE/YHk45NEpspE_000511_seg13.jpg)
+*⏱️ 00:05:11 — Capture d'écran du site web « printingpress.dev », présentant la page d'accueil avec le slogan « Welcome to the Printing Press » et un encart permettant d'installer un pack de démarrage via une commande terminal.*
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:05:27 - 00:05:49]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> So he built like GOG CLI, which is for Google. And people are saying that it's even better than the GWS CLI that is, you know, Google's official CLI. So that's the whole idea. You have a factory. so basically a skill and a tool to help you build CLIs, but also if you come down here, there's a library. So you've got a flight goat CLI. You've got ESPN, you've got movie goats, you've got recipe stuff, you've got linear.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur Web (printingpress.dev).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte descriptif sur les CLI "agent-native", mention de "Claude Code skill", "OpenClaw skill", "MCP server" et commande d'installation : `npx -y @mvanhorn/printing-press ir`.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle de la plateforme de génération de CLI par l'IA, illustrant la facilité d'installation via une commande unique dans le terminal.
+
+![Vue rapprochée du texte de présentation sur le site printingpress.dev, expliquant le concept de création de CLI avec des outils comme Claude Code.](../screenshots/YHk45NEpspE/YHk45NEpspE_000533_seg14.jpg)
+*⏱️ 00:05:33 — Vue rapprochée du texte de présentation sur le site printingpress.dev, expliquant le concept de création de CLI avec des outils comme Claude Code.*
+
+![Capture complète de la page d'accueil de printingpress.dev montrant le titre, la description du projet et l'encart d'installation avec la commande `npx`.](../screenshots/YHk45NEpspE/YHk45NEpspE_000538_seg14.jpg)
+*⏱️ 00:05:38 — Capture complète de la page d'accueil de printingpress.dev montrant le titre, la description du projet et l'encart d'installation avec la commande `npx`.*
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:05:49 - 00:06:09]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> And if we keep scrolling down, you can see there's different ones, Amazon, Craigslist, eBay, TikTok shops, Shopify. There's so many different CLIs on here that you can use. And now you guys can see where I got the PP from. Anyways, what I would recommend if you wanna get in here and get started is just start off with a starter pack, which is exactly what I did. This has like four or five CLIs. It's got ESPN, Flight Goat, Movie Goat, and Recipe Goat.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web affichant le site documentation/catalogue 'printingpress.dev'.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Liste de CLI : pp-food52, pp-pagliacci, pp-ahrefs, pp-dub, pp-google-ads, pp-klaviyo, pp-producthunt.
+- Commandes d'installation visibles :
+  - `npx -y @mvanhorn/printing-press ir`
+  - `go install github.com/mvanhorn/cli`
+  - `git clone https://github.com/mvanh...`
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation sur le catalogue de bibliothèques d'outils (CLI) suivies de l'affichage des instructions d'installation pour les utilisateurs souhaitant démarrer avec l'outil.
+
+![Interface web du site 'printingpress.dev' présentant une grille de cartes listant diverses interfaces en ligne de commande (CLI) comme 'pp-ahrefs', 'pp-google-ads', et 'pp-producthunt'.](../screenshots/YHk45NEpspE/YHk45NEpspE_000554_seg15.jpg)
+*⏱️ 00:05:54 — Interface web du site 'printingpress.dev' présentant une grille de cartes listant diverses interfaces en ligne de commande (CLI) comme 'pp-ahrefs', 'pp-google-ads', et 'pp-producthunt'.*
+
+![Interface web du site 'printingpress.dev' affichant la section 'INSTALL' avec des commandes pour installer le binaire de Printing Press et ses compétences (CLI).](../screenshots/YHk45NEpspE/YHk45NEpspE_000559_seg15.jpg)
+*⏱️ 00:05:59 — Interface web du site 'printingpress.dev' affichant la section 'INSTALL' avec des commandes pour installer le binaire de Printing Press et ses compétences (CLI).*
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:06:09 - 00:06:28]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
+> And then you can obviously clone other skills and you can install more stuff. And when you install the factory, that's what helps you actually build your own CLIs. So I will leave links to this in the description. I will also leave a link to the library of different CLIs, which is the GitHub. And I will leave this printing press one, which is what you need to help build other ones.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur Web (printingpress.dev) et GitHub.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Commande d'installation `npx -y @mvanhorn/printing-press ir` et liste des commits récents du dépôt GitHub (ex: "fix(flight-goat)", "feat(cloud-run-admin)").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation des ressources (site web et bibliothèque GitHub) permettant aux utilisateurs d'installer et de cloner des compétences pour construire leurs propres CLI.
+
+![Page d'accueil du site web "printingpress.dev" présentant le concept de création de CLI assistée par IA avec une commande d'installation rapide.](../screenshots/YHk45NEpspE/YHk45NEpspE_000614_seg16.jpg)
+*⏱️ 00:06:14 — Page d'accueil du site web "printingpress.dev" présentant le concept de création de CLI assistée par IA avec une commande d'installation rapide.*
+
+![Interface du dépôt GitHub "printing-press-library" montrant la liste des fichiers et la structure du projet communautaire associé.](../screenshots/YHk45NEpspE/YHk45NEpspE_000623_seg16.jpg)
+*⏱️ 00:06:23 — Interface du dépôt GitHub "printing-press-library" montrant la liste des fichiers et la structure du projet communautaire associé.*
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:06:28 - 00:07:01]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> So basically what I did is I took all three of those URLs and I went into my cloud code and I said, hey, read all three of these. this is a new tool I'm seeing that has a bunch of preloaded CLIs and it also helps you build CLIs and just install everything I need. So like I said, this is the main command if you want to run the starter pack and then you need the factory as well in order to build your own. And it's super, super easy. You basically install it and then you can do natural language requests to use all this stuff. The one prereq is that you're going to need to get go. And it's basically as simple as asking Cloud Code to do it. So if you drop in those three links and you say, hey, help me get
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (avec extension Claude Code), Navigateur web.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte explicatif sur la génération de CLI : "The Factory: Print Your Own CLI", mention de Go CLI, serveurs MCP et compétences Claude.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Initialisation de Claude Code dans l'éditeur ; présentation conceptuelle du workflow de création automatique d'outils CLI.
+
+![Interface de VS Code montrant l'extension Claude Code en attente d'interaction utilisateur avec le logo caractéristique au centre.](../screenshots/YHk45NEpspE/YHk45NEpspE_000636_seg17.jpg)
+*⏱️ 00:06:36 — Interface de VS Code montrant l'extension Claude Code en attente d'interaction utilisateur avec le logo caractéristique au centre.*
+
+![Page web présentant les fonctionnalités de "Printing Press", expliquant la création automatisée de CLI à partir d'URLs ou de spécifications OpenAPI.](../screenshots/YHk45NEpspE/YHk45NEpspE_000644_seg17.jpg)
+*⏱️ 00:06:44 — Page web présentant les fonctionnalités de "Printing Press", expliquant la création automatisée de CLI à partir d'URLs ou de spécifications OpenAPI.*
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:07:01 - 00:07:34]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> this set up, it's going to come back and say, okay, I figured it out, but you need to install this first, which is Go. And it's a free open source programming language made by Google. It's designed to be simple, fast, and it's great for building command line tools. So CLI tools, web servers, cloud apps, and other AI related stuff. It's a very popular language. And it's like I said, completely free to download. So that'll take you maybe one minute. You tell Cloud Code, okay, download that for me. And then you just follow the prompts. Cloud might ask you to do a few other things, but you'll be able to get set up super, super easy. Why is this a big deal? Because most websites your agents want don't have a clean API, but printing press just lets you basically build
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de présentation (type diapositives Notion ou Google Slides).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte structuré expliquant la facilité d'utilisation de "Printing Press" pour générer des CLI, mentionnant l'installation, l'utilisation de Claude Code/Cursor, et une définition concise du langage Go (simple, rapide, idéal pour outils CLI, serveurs web, cloud).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique et informative sur l'utilisation de l'IA pour générer des outils de développement en Go.
+
+![Une diapositive de présentation illustrant les avantages du langage Go et le flux de travail pour créer un outil CLI via des agents IA, avec le présentateur en médaillon.](../screenshots/YHk45NEpspE/YHk45NEpspE_000709_seg18.jpg)
+*⏱️ 00:07:09 — Une diapositive de présentation illustrant les avantages du langage Go et le flux de travail pour créer un outil CLI via des agents IA, avec le présentateur en médaillon.*
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:07:34 - 00:08:07]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> your own with the CLI. So ESPN, for example, no public API. Craigslist, no public API. All recipes has anti-scrape protection, but the CLI uses a real Chrome session. Domino's has no public API. School, as you guys saw, no public API. So if I come into Cloud Code, now that I've got this all installed, I can ask, can you take a look at our printing press library of CLIs and tell me what we have access to? Here you can see it's using the printing press catalog skill. And what it's going to do is it's going to list the ones that we've already installed. And it's also going to list the available CLIs in the catalog that we could install. Okay. So here is what we have. These
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code (VS Code), Claude Code.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Interface utilisateur de Claude Code avec icône pixel art, invite de commande, options pour ajouter des fichiers (.env) et mode "Auto mode".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Ouverture et préparation de l'environnement de développement "Claude Code" pour effectuer des tâches d'automatisation.
+
+![Interface de l'éditeur VS Code affichant l'extension ou le terminal "Claude Code" avec une zone de saisie pour interagir avec l'agent IA.](../screenshots/YHk45NEpspE/YHk45NEpspE_000750_seg19.jpg)
+*⏱️ 00:07:50 — Interface de l'éditeur VS Code affichant l'extension ou le terminal "Claude Code" avec une zone de saisie pour interagir avec l'agent IA.*
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:08:07 - 00:08:28]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> are the three local ones that I just built. We have school, we have Tally and we have YouTube. And I basically just transformed my, you know, YouTube data API as well as the Tally API was connected to and said, Hey, can you just turn this into a CLI? So now it'll be faster and more efficient. And then of course, school, it had to reverse engineer. So it did some deep discovery, looked at school and it figured out how to basically create these endpoints through a CLI.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code avec une fenêtre de chat/assistant IA intégrée.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le prompt "can you take a look at our printing press library of CLIs and tell me what we have access to?" ainsi qu'un tableau récapitulatif des CLI développées localement (skool, tally, youtube) incluant leurs binaires respectifs et leurs objectifs fonctionnels.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'utilisateur consulte l'inventaire des outils CLI générés par l'IA dans l'éditeur de code pour vérifier l'accès aux API connectées.
+
+![Une capture d'écran de l'interface VS Code montrant une interaction avec un assistant IA (type Claude Code) détaillant une bibliothèque de CLI personnalisées appelées "printing press".](../screenshots/YHk45NEpspE/YHk45NEpspE_000812_seg20.jpg)
+*⏱️ 00:08:12 — Une capture d'écran de l'interface VS Code montrant une interaction avec un assistant IA (type Claude Code) détaillant une bibliothèque de CLI personnalisées appelées "printing press".*
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:08:28 - 00:09:01]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> So that's just really cool. Do you think that I could have done that myself? Absolutely not. but this just figured it out for me in, like I said, 10 minutes. And then we've got some other ones that are installed as skills. We've got ESPN, Flight Goat, Movie Goat, and the Recipe Goat. I also built a skill around the Tally one, which I'm going to do for YouTube and school as well. But those are the five you can see here. It didn't actually pull the catalog stuff yet. It said, do you want me to check what's available in the catalog? I don't really care because I could just go here. And like I said earlier, we can look through all of this. And like, let's say we wanted this Airbnb one. This just takes you to the GitHub repo, which I showed you guys earlier, which is the library of all the different CLIs
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code (Image 1), Navigateur Web / printingpress.dev (Image 2).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste des compétences (skills) : /pp-espn, /pp-flight-goat, /pp-movie-goat, /pp-recipe-goat, /pp-tally. Liste de modules CLI : pp-food52, pp-pagliacci, pp-ahrefs, pp-customer-io, pp-google-ads, pp-klaviyo, pp-producthunt.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation des capacités d'automatisation via des outils CLI intégrés et démonstration de la bibliothèque d'outils disponibles sur le site web du projet.
+
+![Interface VS Code affichant une documentation technique sur la bibliothèque CLI "Printing Press", détaillant les "Skills" installés (ESPN, Flight Goat, etc.) accessibles via des commandes slash.](../screenshots/YHk45NEpspE/YHk45NEpspE_000836_seg21.jpg)
+*⏱️ 00:08:36 — Interface VS Code affichant une documentation technique sur la bibliothèque CLI "Printing Press", détaillant les "Skills" installés (ESPN, Flight Goat, etc.) accessibles via des commandes slash.*
+
+![Interface web du site "printingpress.dev" montrant une galerie de cartes organisées par catégories (Food and Dining, Marketing), listant divers outils CLI comme "pp-food52", "pp-ahrefs" ou "pp-klaviyo".](../screenshots/YHk45NEpspE/YHk45NEpspE_000853_seg21.jpg)
+*⏱️ 00:08:53 — Interface web du site "printingpress.dev" montrant une galerie de cartes organisées par catégories (Food and Dining, Marketing), listant divers outils CLI comme "pp-food52", "pp-ahrefs" ou "pp-klaviyo".*
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:09:01 - 00:09:20]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> that you could install. So now if I just say what NBA games are on tonight, what we're gonna see is it's going to use the ESPN skill right there, PPESPN, and it's going to pull back that data for us. So it says, okay, there are two NBA games on tonight, Eastern time, Knicks and Sixers at seven, and Spurs and Timberwolves at 9.30.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code (avec une extension de chat IA intégrée).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le prompt utilisateur « what NBA games are on tonight? » est saisi dans la zone de chat. L'écran affiche également des notes techniques sur les outils "pp-recipe-goat" et "pp-tally" ainsi que des instructions pour installer de nouveaux outils via `npx`.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'utilisateur soumet une requête en langage naturel à l'agent IA pour obtenir des informations sportives en temps réel.
+
+![Interface VS Code affichant une conversation avec un assistant IA posant une question sur les matchs de la NBA.](../screenshots/YHk45NEpspE/YHk45NEpspE_000906_seg22.jpg)
+*⏱️ 00:09:06 — Interface VS Code affichant une conversation avec un assistant IA posant une question sur les matchs de la NBA.*
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:09:21 - 00:09:43]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> And you can see right here, that is exactly correct. This is in Central time, so Eastern time would be one hour ahead. So what I would recommend is you go in here, you take a look at which of these might be useful to you, and then you just pull them in and you test them out. They showed a cool example here with one called Contact Goat. Find a verified email for a person you've never met. It looks them up on LinkedIn, it cross-checks them on happenstance, and then it does a deep line verified email check.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : 1 : Moteur de recherche Google. 2 : Site web printingpress.dev (bibliothèque de scripts CLI).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : 1 : Requête "nba games on tonight" et informations de diffusion. 2 : Commande `$ pp-contact-goat 'Jane Doe' company:Acme -u` avec un workflow de prospection automatisé.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : 1 : Visualisation de données en temps réel via Google. 2 : Présentation d'un outil d'automatisation pour la recherche de contacts.
+
+![Une page de résultats Google Search affichant le programme des matchs de la NBA (Knicks vs 76ers, Spurs vs Timberwolves).](../screenshots/YHk45NEpspE/YHk45NEpspE_000926_seg23.jpg)
+*⏱️ 00:09:26 — Une page de résultats Google Search affichant le programme des matchs de la NBA (Knicks vs 76ers, Spurs vs Timberwolves).*
+
+![Interface du site printingpress.dev présentant un outil de ligne de commande (CLI) nommé "contact-goat" pour trouver des emails professionnels.](../screenshots/YHk45NEpspE/YHk45NEpspE_000932_seg23.jpg)
+*⏱️ 00:09:32 — Interface du site printingpress.dev présentant un outil de ligne de commande (CLI) nommé "contact-goat" pour trouver des emails professionnels.*
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:09:43 - 00:10:05]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> So I haven't personally tried this one, but the ability to maybe do things on LinkedIn through a CLI is pretty cool. So hopefully you guys understand the value here and how easy it really is to get set up. The last thing I wanna do now is just show you what it actually looks like to build your own. So I'm pretty sure there is a Hacker News one that already exists on the website, on the catalog. But let's say I did wanna build my own and we're gonna take Hacker News as just an example.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Commande Bash : `~/go/bin/espn-pp-cli.exe scores basketball nba --agent --select 'events.shortName,events.status.type.detail,events.status.type.shortDetail'`, suivie du résultat JSON et d'un tableau récapitulatif des matchs NBA (Knicks vs 76ers, Spurs vs Timberwolves).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Exécution d'une commande CLI via l'assistant IA intégré pour extraire et formater des données sportives en temps réel.
+
+![Interface de Visual Studio Code affichant un flux d'interaction avec une IA (Claude) sous forme de Markdown, détaillant l'exécution d'une commande CLI pour récupérer des scores NBA.](../screenshots/YHk45NEpspE/YHk45NEpspE_000949_seg24.jpg)
+*⏱️ 00:09:49 — Interface de Visual Studio Code affichant un flux d'interaction avec une IA (Claude) sous forme de Markdown, détaillant l'exécution d'une commande CLI pour récupérer des scores NBA.*
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:10:06 - 00:10:24]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. Okay. So we have like little sound bites. I can chat with people. The tool war panel settled a few debates for me. Nice. Good perspective there. We're outside again. We have these different banners, although they're all the same. They don't say like different people's names. So big AIS live logo. Workshop wing is over here. And let's go through the sliding glass doors and see what we've got. So we've got the AIS cafe. The map is in the bottom right, and it's not too descriptive.
+> I would basically just say, hey, can you please use Printing Press? Can you use the CLI factory to help me create my own CLI? I wanna be able to pull in articles from Hacker News and just get insights every day from that site. And then I also just gave it a link right there to the page that I was just on. It's using the Printing Press skill once again.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code avec l'extension/agent Claude Code intégré.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : La barre de saisie affiche le placeholder "Ctrl esc to focus or unfocus Claude" et le titre de l'onglet actif est "Review printing press CLI library".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur est en train de configurer ou d'interagir avec l'agent Claude pour initialiser la revue de la librairie CLI "Printing Press" dans son environnement de développement.
+
+![Interface de VS Code montrant l'éditeur avec la barre de saisie d'un agent IA (Claude Code) active en bas de l'écran, avec le présentateur incrusté en bas à gauche.](../screenshots/YHk45NEpspE/YHk45NEpspE_001010_seg25.jpg)
+*⏱️ 00:10:10 — Interface de VS Code montrant l'éditeur avec la barre de saisie d'un agent IA (Claude Code) active en bas de l'écran, avec le présentateur incrusté en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:10:24 - 00:10:49]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> Now, Hacker News doesn't actually take any authentication. like we should be able to just pull it in. And so this isn't like the most impressive demo. So that's not what I want you to take away from here. The point is that you can just ask a natural language and it will start doing all the research and investigating and like reverse engineering things and then help you build it out. But if it does take like authentication cookies or OAuth or an API key, then you still basically treat it the same way you would like an API.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code (avec une extension de chat d'IA intégrée type Claude Code ou outil similaire).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Prompt utilisateur : "hey, can you please use Printing Press? Can you use the CLI factory to help me create my own CLI? I want to be able to pull in articles from Hacker News and just get insights every day from that site." + commandes Bash de vérification de version (printing-press --version).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA analyse la requête, exécute une commande Bash pour vérifier la version de "printing-press" et affiche le résultat en sortie (printing-press 4.0.6).
+
+![Une interface VS Code avec une fenêtre de chat d'IA active où l'utilisateur interagit en langage naturel pour automatiser la récupération de données depuis Hacker News.](../screenshots/YHk45NEpspE/YHk45NEpspE_001030_seg26.jpg)
+*⏱️ 00:10:30 — Une interface VS Code avec une fenêtre de chat d'IA active où l'utilisateur interagit en langage naturel pour automatiser la récupération de données depuis Hacker News.*
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:10:49 - 00:11:17]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> You would be putting those in your .env and storing them in there. And then when you build the skill around the CLI, it will understand that it needs to pull from that. And the other thing to keep in mind is let's say you have some sort of quota. So let's take YouTube, for example. I can only post a certain amount of comments per day through the API. And if you got a rate limit there, you know, just because you're using a CLI doesn't mean you're jumping over those quotas. You're still going to have those limits. So anyways, this comes back and it says, I'm going to research hacker news. I'm going to catalog every feature that exists in any tool.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code avec interface d'agent IA intégrée.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Prompt utilisateur : "hey, can you please use Printing Press? Can you use the CLI factory to help me create my own CLI? I want to be able to pull in articles from Hacker News...". Commandes Bash visibles pour lister le contenu du répertoire `printing-press/library/`.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA analyse les fichiers locaux et exécute des commandes Bash pour vérifier la structure du projet avant de construire la CLI demandée.
+
+![Une capture d'écran de l'interface VS Code montrant une interaction avec un agent IA dans un terminal intégré, où l'utilisateur demande de l'aide pour créer une CLI utilisant "Printing Press" pour extraire des articles de Hacker News.](../screenshots/YHk45NEpspE/YHk45NEpspE_001056_seg27.jpg)
+*⏱️ 00:10:56 — Une capture d'écran de l'interface VS Code montrant une interaction avec un agent IA dans un terminal intégré, où l'utilisateur demande de l'aide pour créer une CLI utilisant "Printing Press" pour extraire des articles de Hacker News.*
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:11:17 - 00:11:38]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
+> I'm going to present what I found, and then I will generate you a go CLI, build every feature, and then we will verify quality through dog food, runtime verification, and scoring. So at the end, we will have a fully functional CLI for Hacker News. It says that it's gonna take 30 minutes to 60 minutes, but it's not. It's always bad at those estimations. I don't know if you guys have noticed that, but sometimes it'll say like, hey, this is gonna take 30 minutes and then it takes like two.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code avec une fenêtre contextuelle de chat/agent IA intégrée.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte affichant : « I shall generate a Go CLI, build every feature, then verify quality through dogfood, runtime verification, and scoring. » ainsi que des options de soumission d'instructions pour l'agent (Let's go, I have context to share).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'utilisateur visualise le plan d'action proposé par l'agent IA au sein de l'IDE avant de lancer le processus de développement du CLI Hacker News.
+
+![L'écran montre VS Code avec une interface de dialogue d'IA nommée « Briefing » ouverte au centre. Le texte affiché détaille le plan de travail pour créer un outil en ligne de commande (CLI) pour Hacker News, incluant les étapes de recherche, de génération et de vérification.](../screenshots/YHk45NEpspE/YHk45NEpspE_001123_seg28.jpg)
+*⏱️ 00:11:23 — L'écran montre VS Code avec une interface de dialogue d'IA nommée « Briefing » ouverte au centre. Le texte affiché détaille le plan de travail pour créer un outil en ligne de commande (CLI) pour Hacker News, incluant les étapes de recherche, de génération et de vérification.*
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:11:39 - 00:12:00]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> But anyways, I'm just gonna say, yep, go ahead and build that out for me. And so while this is doing that research and building it out, I'll talk about something else real quick, which is what can you do with those CLIs? Because you could publish them back to the library and then other people could like publicly pull them in and use those CLIs as well. And you can also just share them with your team internally. So for example, this Tally one that I just built, I have been able to push this to a private repo.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (éditeur) et le site web printingpress.dev.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Image 1 : Requête utilisateur ("pull in articles from Hacker News"), bloc de commande Bash et chemins de répertoires. Image 2 : Titre "The Library" et liste des "six magic moments" de CLIs.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA est en phase de "recherche" (Spelunking) pour construire une nouvelle CLI, tandis que l'image 2 montre la plateforme de partage des outils créés.
+
+![Interface VS Code affichant l'exécution d'un agent IA (Printing Press CLI) qui traite une requête de recherche sur Hacker News.](../screenshots/YHk45NEpspE/YHk45NEpspE_001144_seg29.jpg)
+*⏱️ 00:11:44 — Interface VS Code affichant l'exécution d'un agent IA (Printing Press CLI) qui traite une requête de recherche sur Hacker News.*
+
+![Vue de l'interface web "The Library" de Printing Press montrant le catalogue des CLIs disponibles.](../screenshots/YHk45NEpspE/YHk45NEpspE_001155_seg29.jpg)
+*⏱️ 00:11:55 — Vue de l'interface web "The Library" de Printing Press montrant le catalogue des CLIs disponibles.*
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:12:00 - 00:12:19]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> And now I can just invite some of my team to actually like be a contributor to this so they can clone it. And then they can use the Tally CLI as well. And maybe just swap out their own API key in their .env file or whatever. And all I did was I said, okay, cool. So you built me this Tally CLI and you built me this skill. Can you just package just that into a GitHub repo so I can share that across my team?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (GitHub).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Structure de fichiers d'un projet CLI (dossier 'internal', fichiers '.gitignore', 'golangci.yml', 'goreleaser.yaml') et description du projet : "Typed CLI for Tally (tally.so) — manage forms, pull submissions, configure webhooks, sync to local SQLite. Generated via Printing Press."
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation dans le dépôt GitHub pour démontrer le partage du projet avec l'équipe et la structure du code source généré.
+
+![Interface GitHub affichant le dépôt privé 'tally-pp-cli' appartenant à nateherkai, contenant les fichiers initiaux du projet.](../screenshots/YHk45NEpspE/YHk45NEpspE_001205_seg30.jpg)
+*⏱️ 00:12:05 — Interface GitHub affichant le dépôt privé 'tally-pp-cli' appartenant à nateherkai, contenant les fichiers initiaux du projet.*
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:12:20 - 00:12:41]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
+> And then, you know, a couple seconds later, I had this new GitHub repo. So of course, what that means is you don't want to be putting any of your API keys or your authentication stuff inside of the CLI scripts or anything like that. That would still be treated the same way as you treat like your API endpoints and stuff like that. So this actually just came back with a huge list. So you can see that there's different phases. It has to do all of this stuff.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code (éditeur de code) intégrant une interface de conversation avec un agent IA.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Prompt utilisateur : "hey, can you please use Printing Press? Can you use the CLI factory to help me create my own CLI? I want to be able to pull in articles from Hacker News...". L'agent effectue des opérations de type "Write" et "Read" sur des fichiers de configuration.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA analyse les instructions pour configurer un outil CLI et affiche ses étapes de réflexion et d'exécution dans le panneau de chat.
+
+![Interface de VS Code montrant l'utilisation d'un agent IA (probablement Claude Code) en train de traiter une requête de création de CLI.](../screenshots/YHk45NEpspE/YHk45NEpspE_001225_seg31.jpg)
+*⏱️ 00:12:25 — Interface de VS Code montrant l'utilisation d'un agent IA (probablement Claude Code) en train de traiter une requête de création de CLI.*
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:12:41 - 00:12:59]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> And then hopefully by the end, it's going to be able to actually have a working CLI for us. So once again, it's not exactly that like, hey, this CLI is going to give you so much more functionality than if you just use the API, but it's the ability to, first of all, be able to turn anything into a CLI and start natively working through just CLIs rather than APIs and MCPs.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code avec une extension d'agent conversationnel IA (probablement Claude Code ou similaire).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste des phases du projet (de la Phase 1.5 à la Phase 6) incluant "Resolve spec and generate CLI", "Build all absorbed + transcendence commands", et "Live dogfood testing". Le prompt de l'utilisateur demande de l'aide pour créer une CLI capable de récupérer des articles depuis Hacker News.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA est en train de traiter ou de planifier les étapes de création de la bibliothèque CLI "Printing Press" suite à une requête utilisateur.
+
+![Interface VS Code affichant une discussion avec un agent IA détaillant les phases de développement d'une CLI ("Printing Press").](../screenshots/YHk45NEpspE/YHk45NEpspE_001246_seg32.jpg)
+*⏱️ 00:12:46 — Interface VS Code affichant une discussion avec un agent IA détaillant les phases de développement d'une CLI ("Printing Press").*
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:13:00 - 00:13:18]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
+> So maybe think of an example of something that you use a lot that doesn't have a great API or, you know, it only has an MCP server or whatever it might be. And just think about the fact that you could now tell CloudCode, hey, I use this software for X, Y, and Z. Do you think you could help me build a CLI around that right here in CloudCode? And hopefully it will give you research and it will build you a list like this.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code avec l'extension/chat Claude Code intégré.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Un prompt utilisateur demandant de l'aide pour utiliser "Printing Press" et "CLI factory" afin de créer une CLI pour extraire des articles de Hacker News, suivi d'une liste de phases de développement (Phase 1.5 à 6).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'utilisateur visualise la planification des étapes générées par l'agent IA pour automatiser la création d'un outil CLI personnalisé.
+
+![Une capture d'écran de l'interface VS Code montrant un échange avec l'agent Claude Code où un plan de projet structuré en phases pour créer une interface CLI est affiché.](../screenshots/YHk45NEpspE/YHk45NEpspE_001304_seg33.jpg)
+*⏱️ 00:13:04 — Une capture d'écran de l'interface VS Code montrant un échange avec l'agent Claude Code où un plan de projet structuré en phases pour créer une interface CLI est affiché.*
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:13:18 - 00:13:38]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
+> And then you'll finish up with a CLI. So it's kind of just like the checklist of thinking about how you talk to tools. I would say like CLI would be tier one. If there's no CLI option or you just can't do it, then the API would be next. If there's an API, you're pretty much like 100% gonna be able to make CLI. But then if there's no API and you can only use an MCP, then that would be the final option.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code (avec une extension de type chat/agent IA intégrée).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Prompt utilisateur demandant l'utilisation de "Printing Press" pour créer une CLI capable d'extraire des articles de Hacker News, suivi d'une exécution de commande Bash et d'un indicateur "Creating...".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA traite la requête utilisateur pour configurer et générer une interface de ligne de commande (CLI) via des scripts Bash.
+
+![Une capture d'écran de l'interface VS Code montrant une interaction avec un agent IA nommé "Printing Press CLI", affichant l'exécution de commandes Bash et un processus de création en cours.](../screenshots/YHk45NEpspE/YHk45NEpspE_001323_seg34.jpg)
+*⏱️ 00:13:23 — Une capture d'écran de l'interface VS Code montrant une interaction avec un agent IA nommé "Printing Press CLI", affichant l'exécution de commandes Bash et un processus de création en cours.*
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:13:39 - 00:14:14]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
+> All right, so all of that has finished up now. We can see this is exactly where the binary actually lives. It's giving some examples here where you could actually like invoke this command basically in the CLI, or as you guys know, it should have built kind of like a skill around this and we're able to just invoke it with natural language. So I'm just going to go ahead and see what happens if I say, can you test this out using the actual skill and just go ahead and see which sites are dominating Hacker News today. That came back super fast. It said, okay, last 24 hours, stories with 100 plus points ranked by total score. And we get these 10 stories right here.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code (VS Code).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le fichier affiche le chemin d'accès au binaire `hacker-news-pp-cli.exe` et liste six commandes CLI (`--help`, `digest`, `domains`, `since`, `interests`, `sync`) accompagnées d'explications sur leurs fonctionnalités respectives, ainsi qu'une section dédiée à la démonstration MCP.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique comment localiser le binaire généré et présente les commandes disponibles pour tester l'outil en ligne de commande (CLI) ou via un agent.
+
+![Une capture d'écran de l'éditeur VS Code affichant un fichier Markdown détaillant l'emplacement d'un binaire CLI et une liste de commandes de démonstration pour interagir avec une bibliothèque "printing press".](../screenshots/YHk45NEpspE/YHk45NEpspE_001347_seg35.jpg)
+*⏱️ 00:13:47 — Une capture d'écran de l'éditeur VS Code affichant un fichier Markdown détaillant l'emplacement d'un binaire CLI et une liste de commandes de démonstration pour interagir avec une bibliothèque "printing press".*
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:14:14 - 00:14:34]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
+> So anyways, this demo wasn't about the fact that we're doing this with Hacker News. It was just to show you guys how easy it is to set up these CLIs. And from here, you can build skills around them and you can chain them together. And from here, you can build skills around them. You can chain them together. And of course, you can access the catalog on printingpress.dev. And I'm assuming that this is just gonna continue and continue to grow. And I'm assuming this is just going to continue to grow and grow.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code (avec plugin Claude), Navigateur Web (printingpress.dev).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableau récapitulatif des sites dominants sur Hacker News (Reuters, The Verge, etc.) et liste de bibliothèques CLI (pp-open-meteo, pp-cal-com, pp-slack, etc.).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Démonstration de l'utilisation d'un CLI pour extraire et analyser des données en temps réel via l'API Algolia et présentation du catalogue d'outils disponibles.
+
+![Interface VS Code affichant une analyse générée par IA sur les tendances de Hacker News via le CLI "printing press".](../screenshots/YHk45NEpspE/YHk45NEpspE_001419_seg36.jpg)
+*⏱️ 00:14:19 — Interface VS Code affichant une analyse générée par IA sur les tendances de Hacker News via le CLI "printing press".*
+
+![Site web "printingpress.dev" présentant une bibliothèque de différentes intégrations CLI (API) classées par catégories.](../screenshots/YHk45NEpspE/YHk45NEpspE_001429_seg36.jpg)
+*⏱️ 00:14:29 — Site web "printingpress.dev" présentant une bibliothèque de différentes intégrations CLI (API) classées par catégories.*
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:14:34 - 00:14:45]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
+> So anyways, wanted to keep this one quick, but I hope that you guys learned something new or enjoyed the video. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video. and I will see you all in the next one. Thanks everyone.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code avec l'extension Claude intégrée.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste classée des sites web dominants sur Hacker News (Reuters, The Verge, etc.) et une synthèse textuelle générée par l'IA expliquant les tendances observées à partir de l'API Algolia.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Affichage des résultats d'une requête d'analyse de données effectuée par l'agent IA dans l'éditeur de code.
 
----
-
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+![Capture d'écran de l'interface VS Code affichant les résultats d'une analyse automatisée des données de Hacker News via un outil CLI, avec le présentateur en médaillon dans le coin inférieur gauche.](../screenshots/YHk45NEpspE/YHk45NEpspE_001437_seg37.jpg)
+*⏱️ 00:14:37 — Capture d'écran de l'interface VS Code affichant les résultats d'une analyse automatisée des données de Hacker News via un outil CLI, avec le présentateur en médaillon dans le coin inférieur gauche.*
 
 ---
 
