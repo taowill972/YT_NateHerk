@@ -12,34 +12,14 @@
 ## 📌 Synthèse Exécutive & Outils
 
 ### 💡 Résumé
-
-Dans cette vidéo de la chaîne *Nate Herk | AI Automation*, l'analyste explore en profondeur les capacités du modèle de pointe **Opus 5.5** et de son écosystème en le soumettant à un test rigoureux d'ingénierie et d'automatisation. Le défi technique posé à l'agent IA consiste à ingérer un dossier Frame.io de 105 gigaoctets contenant les enregistrements vidéo bruts d'un événement virtuel (« AIS Live ») pour concevoir, de zéro, un monde 3D interactif et explorable à la troisième personne, simulant une conférence technologique physique avec ses différentes salles, scènes et pistes de formation. 
-
-La démonstration compare méthodiquement l'impact des différents niveaux d'effort proposés par le modèle (de faible à ultra code) sur un prompt unique d'objectif global. Les résultats révèlent des variations spectaculaires : le niveau d'effort « faible » génère un prototype basique, truffé de bugs visuels (éléments fantômes, images fixes au lieu de flux vidéo) en 16 minutes pour environ 3,91 $, tandis que le niveau « moyen » élève considérablement la qualité du rendu avec des couleurs de marque respectées, des PNJ animés, des intégrations vidéo dynamiques et une navigation fluide, nécessitant 1 heure 13 minutes et 12,44 $. 
-
-Cette analyse met en lumière l'importance cruciale du paramétrage de l'effort dans l'utilisation des agents de codage modernes comme **Claude Code**. Elle démontre comment l'IA est désormais capable d'orchestrer des architectures web complexes, d'exploiter des bases documentaires multimédias massives et de générer des expériences immersives quasi-autonomes, tout en soulignant la nécessité de combler le fossé entre le développement local et le déploiement en production grâce à des outils de publication intégrés.
+Dans cette vidéo intitulée **Claude Design crée de superbes sites web 3D en un instant (tutoriel complet)**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.
 
 ### 🛠️ Outils, Modèles & Logiciels Présentés
-
-* **Opus 5.5** : Modèle de pointe d'Anthropic, salué pour son intelligence, son efficacité économique et sa finesse de rendu, servant de moteur principal pour la génération du monde 3D.
-* **Claude Code / Claude Design** : Environnement de développement et assistant agentique utilisé pour coder, structurer et déployer l'application web 3D interactive à partir d'un prompt d'objectif.
-* **Frame.io** : Plateforme cloud de gestion multimédia utilisée ici comme source de données lourdes (105 Go d'enregistrements vidéo de l'événement).
-* **Herc 2** : Système d'exploitation IA personnel de l'auteur, intégré comme ressource de référence contextuelle par l'agent.
-* **Hostinger Connector** : Extension gratuite pour éditeurs de code (VS Code, Cursor, Claude Code, etc.) permettant de lier l'environnement de développement local à un compte d'hébergement pour une mise en ligne instantanée.
+- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.
 
 ### 🔑 Points Clés & Enseignements Stratégiques
-
-* **L'impact critique du paramétrage de l'effort** : Le choix du niveau d'effort (faible, moyen, élevé, etc.) modifie radicalement la profondeur de traitement, la logique architecturale et la qualité esthétique du code produit par un même prompt.
-* **Gestion autonome de gros volumes de données** : Capacité démontrée d'un agent IA à naviguer, indexer et exploiter un dossier de 105 Go de vidéos pour structurer l'architecture thématique d'un événement (scènes, pistes, salles VIP).
-* **Évolution de la fidélité visuelle selon l'effort** : Le passage d'un effort faible à moyen transforme un prototype grossier (images fixes, bugs d'affichage, personnages évanescents) en une expérience fluide intégrant des PNJ animés et des flux vidéo fonctionnels.
-* **Respect des chartes graphiques et du branding** : Les niveaux d'effort supérieurs interprètent avec beaucoup plus de précision les directives de marque (palettes de couleurs, logos, bages nominatifs personnalisés).
-* **Analyse comparative des coûts et du temps d'exécution** : 
-  * *Effort faible* : ~16 minutes, 191 000 tokens, 22 vérifications, 3,91 $ (coût API estimé).
-  * *Effort moyen* : ~1 heure 13 minutes, 490 000 tokens, 23 vérifications, 12,44 $ (coût API estimé).
-* **Autonomie décisionnelle des agents** : Dans les deux configurations testées, l'agent a exécuté l'intégralité du développement complexe sans poser la moindre question de clarification à l'utilisateur (« zéro question »).
-* **Boucles de vérification automatisées** : L'utilisation intensive de l'ouverture automatisée du navigateur par l'agent (plus de 20 vérifications par run) permet un auto-ajustement visuel et fonctionnel en cours de génération.
-* **La transition du prototype local au déploiement** : Le goulot d'étranglement classique du développeur — disposer d'une application finie en local sans moyen rapide de la publier — nécessite des extensions d'intégration directe (comme le connecteur Hostinger) pour fluidifier le workflow.
-* **Recommandation méthodologique officielle** : Selon les directives d'Anthropic, il est optimal de démarrer les tâches complexes au niveau d'effort « moyen », puis d'ajuster le curseur à la hausse ou à la baisse en fonction de la complexité requise et des résultats intermédiaires.
+- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.
+- Automatiser les cycles de création logicielle de bout en bout.
 
 ---
 
@@ -48,1077 +28,1511 @@ Cette analyse met en lumière l'importance cruciale du paramétrage de l'effort 
 ### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. Ce modèle est littéralement partout et pour de très bonnes raisons. Il est intelligent, il est bon marché, il a un goût incroyable, c'est un modèle d'IA incroyable. Mais avec chaque modèle d'IA, vous avez le choix de l'effort, que ce soit faible, moyen, élevé, extra, max ou code ultra.
+> Donc en seulement 20 minutes, j'ai pu transformer le site web de mon AI Automation Society de ça à ça, où maintenant, quand je commence à faire défiler, nous partons dans ce voyage. Nous traversons cette scène où nous avons ces différentes cartes qui apparaissent, et vous pouvez voir qu'elles sont en quelque sorte 3D, elles sont interactives. Et tandis que nous continuons à faire défiler, nous avançons davantage dans le voyage. Nous avons cette diapositive suivante, nous continuons ici, nous avons celle-ci, tout ce dont vous avez besoin pour maîtriser l'automatisation par IA.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface du réseau social X (Twitter).
+**Interface & Outils** : Navigateur web affichant le site internet de l'AI Automation Society.
 
-**Contenu textuel & Code** : Un tweet contenant une vidéo de rendu 3D/environnement généré montrant un paysage tropical côtier, avec des statistiques d'engagement.
-
-**Action / Démonstration** : Affichage d'un post et d'une vidéo virale sur l'impact des modèles d'IA pour illustrer le sujet.
-
-![Capture d'écran d'un post sur le réseau social X montrant une vidéo de paysage généré par IA et un texte sur l'impact de l'IA.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000005_seg1.jpg)
-*⏱️ 00:00:05 — Capture d'écran d'un post sur le réseau social X montrant une vidéo de paysage généré par IA et un texte sur l'impact de l'IA.*
-
----
-
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc, dans cette vidéo, j'ai donné exactement le même prompt à Opus 5.5 et je l'ai exécuté sur chaque niveau d'effort, et nous allons comparer les résultats. Nous examinerons la qualité de tous les différents résultats réels, mais nous examinerons également combien de temps chacun d'eux a pris pour s'exécuter, combien cela nous a coûté si c'était facturé par API, le nombre total de tokens, combien de vérifications ils ont exécutées et combien de questions ils m'ont réellement posées tout au long du processus.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de tableau de bord / application de comparaison de modèles.
-
-**Contenu textuel & Code** : Tableau avec les colonnes Low, Medium, High, Extra, Max, Ultracode et les lignes Run time, API cost, Total tokens, Checks, Questions asked.
-
-**Action / Démonstration** : Présentation du tableau comparatif des différents niveaux d'effort pour l'analyse des résultats.
-
-![Tableau de comparaison des niveaux d'effort d'Opus 5.5 montrant des métriques (Run time, API cost, Total tokens, etc.).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000029_seg2.jpg)
-*⏱️ 00:00:29 — Tableau de comparaison des niveaux d'effort d'Opus 5.5 montrant des métriques (Run time, API cost, Total tokens, etc.).*
-
----
-
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et les résultats que nous avons obtenus ne sont pas du tout ce à quoi je m'attends, donc j'ai hâte de partager cela avec vous les gars. Ne perdons pas de temps et allons directement à celui-ci. D'accord, alors plongeons directement dans celui-ci. Je veux commencer juste en vous montrant le prompt réel que nous avons utilisé, que nous avons donné à chacun de ces différents agents. Je vais aller dans les fichiers ici, et nous allons ouvrir ce fichier markdown de prompt, et je vais vous montrer ce que nous avons obtenu. Voici donc le slash objectif que j'ai fourni.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface logicielle de développement/assistant IA avec panneau latéral de navigation et zone de discussion.
-
-**Contenu textuel & Code** : Texte du prompt affiché à l'écran : "Hi Nate. This worktree has the effort-test task queued in PROMPT.md : build a walkable third-person 3D world of the AIS Live conference..."
-
-**Action / Démonstration** : Affichage et lecture du prompt initial dans l'interface de l'outil de développement.
-
-![Interface d'un outil de développement avec le présentateur en incrustation vidéo sur la gauche, affichant un prompt textuel lié à la création d'un monde 3D.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000048_seg3.jpg)
-*⏱️ 00:00:48 — Interface d'un outil de développement avec le présentateur en incrustation vidéo sur la gauche, affichant un prompt textuel lié à la création d'un monde 3D.*
-
----
-
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> J'ai dit : tu dois me créer un monde 3D qui est une conférence technologique réaliste dans laquelle je peux me déplacer en vue à la troisième personne. Tu vas regarder ce dossier, qui contient mes ressources d'enregistrement d'événements provenant d'AIS Live. Et ce dossier est un dossier Frame.io de 105 gigaoctets d'enregistrements vidéo. C'était un événement entièrement virtuel. Tout a été enregistré et tous les enregistrements sont juste ici. J'ai dit, ton objectif est de prendre cet événement et de le transformer en un monde 3D explorable qui me donne l'impression d'avoir réellement assisté à une vraie conférence en personne avec différentes salles, différentes pistes, différentes scènes, bla, bla, bla. N'hésite pas à utiliser key.ai si tu as besoin de générer des images ou des vidéos. Et tu peux aussi utiliser tout ce qui se trouve dans mon projet Herc 2, qui est comme mon système d'exploitation IA. J'ai dit,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Éditeur de code (VS Code / Cursor) et interface web Frame.io
-
-**Contenu textuel & Code** : Texte du prompt demandant de convertir des enregistrements d'événements virtuels en un monde 3D explorable en vue à la troisième personne, avec lien Frame.io.
-
-**Action / Démonstration** : Présentation du prompt initial et navigation vers le dossier des ressources d'enregistrement.
-
-![Un éditeur de texte affichant le fichier PROMPTS.md avec les instructions pour créer un monde 3D interactif.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000107_seg4.jpg)
-*⏱️ 00:01:07 — Un éditeur de texte affichant le fichier PROMPTS.md avec les instructions pour créer un monde 3D interactif.*
-
-![Une interface cloud Frame.io montrant un dossier d'enregistrements d'événements de la conférence AIS Live.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000116_seg4.jpg)
-*⏱️ 00:01:16 — Une interface cloud Frame.io montrant un dossier d'enregistrements d'événements de la conférence AIS Live.*
-
-![Vue de l'éditeur de code retournant sur le fichier de prompt détaillant les consignes du projet.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000125_seg4.jpg)
-*⏱️ 00:01:25 — Vue de l'éditeur de code retournant sur le fichier de prompt détaillant les consignes du projet.*
-
----
-
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> tu seras jugé sur la créativité, le design, la physique et la sensation générale lorsque j'explorerai le monde en 3D que tu as construit. Et c'était fondamentalement la fin des instructions. Donc comme tu peux le voir sur ce côté gauche, j'ai fait passer cela par tous les différents niveaux d'effort. Commençons par le niveau bas et progressons jusqu'à ultra code. Très bien. Donc ici nous avons le résultat du niveau bas. Ouvrons ceci et jetons un coup d'œil. Nous avons donc AIS Live, le sommet des services IA enfin en personne, et nous avons pu cliquer partout. Tout d'abord, cela ne fait pas très personnalisé. Genre, ce n'habille pas le logo d'IS Live. Ce n'est même pas nos couleurs. Donc je n'aime pas trop ça, mais entrons ici. D'accord. C'est bien trop lumineux. Hum, nous avons une carte en haut à droite. Nous avons une ville par ici. Je ne peux pas dire quelle ville c'est
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web ou application de bureau avec panneau latéral de navigation et zone de chat (mention de Opus 5.5 et Ultracode).
-
-**Contenu textuel & Code** : Texte du prompt demandant de construire un monde 3D en vue à la troisième personne avec des salles, pistes et scènes distinctes basées sur des enregistrements f.io, et un message de réponse de l'IA demandant si elle doit commencer.
-
-**Action / Démonstration** : Le curseur de la souris survole le niveau d'effort « Low » dans la liste des sessions à gauche, illustrant les différents niveaux d'effort testés.
-
-![Interface d'une application de type assistant IA (style éditeur ou chat avancé) montrant les différents niveaux d'effort (« Hello », « Extra », « High », « Max », « Ultracode », « Medium », « Low ») dans le panneau latéral gauche et une conversation active dans la fenêtre principale.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000142_seg5.jpg)
-*⏱️ 00:01:42 — Interface d'une application de type assistant IA (style éditeur ou chat avancé) montrant les différents niveaux d'effort (« Hello », « Extra », « High », « Max », « Ultracode », « Medium », « Low ») dans le panneau latéral gauche et une conversation active dans la fenêtre principale.*
-
----
-
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> c'est. D'accord. C'est Chicago, ce qui est plutôt cool parce que tu sais, j'habite à Chicago, mais bref, en haut, à droite, nous pouvons voir une carte. Nous avons un lobby. Nous avons un hall d'exposition. Nous avons le salon VIP, la scène principale. De plus, la carte montre où se trouve chaque autre personne et cela se synchronise en direct. Nous pouvons donc voir l'enregistrement. Nous pouvons voir le premier jour, la keynote de l'hyper agent, le débriefing en direct. Cool. Donc ça connaît réellement l'agenda et ensuite il y a le deuxième jour. Donc il a trouvé ça, c'est bien. Nous avons ces petites boules ici que je peux espérer botter. D'accord. Le visage, Oh, regarde ça. Si je vais par ici, toutes les personnes disparaissent tout simplement. Très mauvais. Très mauvais. D'accord. Alors voyons voir. Est-ce que je peux sprinter ? D'accord.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application virtuelle 3D (type metavers ou plateforme d'événement virtuel) avec mini-carte de navigation.
-
-**Contenu textuel & Code** : Menus d'événements, programmes de conférences, indicateurs de position sur une mini-carte.
-
-**Action / Démonstration** : Navigation et exploration des différentes zones d'un événement virtuel (Lobby, Expo Hall).
-
-![Vue d'un monde virtuel interactif montrant un espace d'événement avec des avatars et une mini-carte en haut à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000216_seg6.jpg)
-*⏱️ 00:02:16 — Vue d'un monde virtuel interactif montrant un espace d'événement avec des avatars et une mini-carte en haut à droite.*
-
-![Vue du lobby dans l'application virtuelle affichant le programme du premier jour et la carte de navigation.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000224_seg6.jpg)
-*⏱️ 00:02:24 — Vue du lobby dans l'application virtuelle affichant le programme du premier jour et la carte de navigation.*
-
-![Vue de l'Expo Hall dans le monde virtuel avec des avatars et des zones d'interaction lumineuses.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000232_seg6.jpg)
-*⏱️ 00:02:32 — Vue de l'Expo Hall dans le monde virtuel avec des avatars et des zones d'interaction lumineuses.*
-
----
-
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je peux aller un peu plus vite. Je vais d'abord aller par ici. Il y a des goodies, euh, certifiés AIS plus glido. D'accord. Donc il y a les stands réels qu'on avait dans l'événement virtuel. On avait des stands. Donc c'est plutôt cool. Un petit endroit pour prendre des photos. Salle C. En ce moment, nous avons Tangy Frederick qui anime un atelier. D'accord. Mais ce n'est pas une vidéo. Comme vous pouvez le voir, c'est juste une image. Elle ne bouge pas. Donc c'est juste une image. Ces gens sont en train de disparaître. Ce doivent être des fantômes. Allons par ici vers la salle A.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif (plateforme type metaverse/événement en ligne) avec mini-carte en haut à droite.
-
-**Contenu textuel & Code** : Texte et instructions sur grand écran virtuel : 'Step 1: Go To Settings', 'Step 2: API Integrations', 'Step 3: Create A New Token'.
-
-**Action / Démonstration** : Exploration et visite guidée de l'espace virtuel par le présentateur à travers les différents stands et salles d'ateliers.
-
-![Vue d'un espace virtuel 3D de type salon professionnel, montrant un avatar se déplaçant devant un stand sponsorisé 'GlaiDo' avec des boîtes étiquetées 'AIS' au sol.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000246_seg7.jpg)
-*⏱️ 00:02:46 — Vue d'un espace virtuel 3D de type salon professionnel, montrant un avatar se déplaçant devant un stand sponsorisé 'GlaiDo' avec des boîtes étiquetées 'AIS' au sol.*
-
-![Navigation dans la salle d'atelier C (Workshop Room C) de l'événement virtuel, présentant un espace vert lumineux avec des tables rondes et des écrans d'information.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000252_seg7.jpg)
-*⏱️ 00:02:52 — Navigation dans la salle d'atelier C (Workshop Room C) de l'événement virtuel, présentant un espace vert lumineux avec des tables rondes et des écrans d'information.*
-
-![Gros plan sur l'intérieur de la salle d'atelier affichant une grande présentation à l'écran détaillée sur les étapes de configuration d'une clé API et des services IA d'entreprise.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000258_seg7.jpg)
-*⏱️ 00:02:58 — Gros plan sur l'intérieur de la salle d'atelier affichant une grande présentation à l'écran détaillée sur les étapes de configuration d'une clé API et des services IA d'entreprise.*
-
----
-
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons Liberty White. D'accord. Très cool. Vos 30 premiers jours en automatisation. Encore une fois, c'est juste une image fixe et les gens ont des bugs d'affichage. Donc ce n'est pas très bien ici. Je vais aller sur la scène principale et voir ce que nous avons. D'accord, cool. Donc nous avons une scène d'apparence principale. Les gens ont des bugs d'affichage. Vraiment mauvais. Ce n'est vraiment pas terrible. Notre vidéo est en fait en train de bouger. Genre, j'ai vu mon visage ici et j'ai vu celui de Devin, mais maintenant ils ont disparu. Donc je ne sais pas ce qui s'est passé. D'accord. Ça ressemble plutôt à un diaporama. Rien n'est en fait encore diffusé. Bref, entrons ici.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif de type metaverse (plateforme événementielle).
-
-**Contenu textuel & Code** : Éléments graphiques textuels de l'événement et affichage d'écrans virtuels de présentation.
-
-**Action / Démonstration** : Navigation et déplacement d'un avatar dans l'espace virtuel pour explorer les différentes salles.
-
----
-
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons d'autres stands. Nous avons hyper agent. Nous avons Claude Code. Nous avons plus de gadgets publicitaires. La salle B, c'est Dave Ebelor. Je suppose que c'est exactement la même chose. Nous avons du café. Et ensuite, je suppose, le salon VIP, accès VIP uniquement. C'est plutôt sympa, mais il n'y a vraiment rien de spécial qui se passe ici. Cet écran est beaucoup trop lumineux. D'accord. Donc je pense que vous comprenez l'ambiance que nous obtenons ici avec Opus 5.5 en effort faible. Et c'est là que les choses deviennent intéressantes. Combien de temps pensez-vous que cela a duré ? Combien de temps ? Celui-ci a duré 16 minutes et 43 secondes. Combien pensez-vous que cela a coûté ?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de tableau blanc / tableau de bord de métriques.
-
-**Contenu textuel & Code** : Tableau comparatif évaluant les niveaux d'effort selon plusieurs critères : Run time, API cost, Total tokens, Checks, Questions asked.
-
-**Action / Démonstration** : Présentation et analyse des différents niveaux d'effort et coûts associés aux modèles IA.
-
-![Tableau comparatif des niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec des métriques comme Run time, API cost, Total tokens.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000351_seg9.jpg)
-*⏱️ 00:03:51 — Tableau comparatif des niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec des métriques comme Run time, API cost, Total tokens.*
-
----
-
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> 3,91 dollars si c'était une facturation par API. J'utilise évidemment mon abonnement ici, mais nous allons simplement calculer cela en facturation API. Le total des jetons était de 191 000. Il a fait 22 vérifications. Donc la vérification, 22 fois il a ouvert le navigateur et a exécuté différentes sortes de vérifications. Donc 22 catégories de vérifications. Et combien de questions m'a-t-il posées ? Il m'a posé un total de zéro question tout au long de cette invite de commande d'objectif. D'accord. Alors ouvrons l'effort moyen et voyons ce que nous avons. D'accord, c'est parti. Effort moyen. Nous avons Nate Herc. Nous avons mon badge. C'est marqué AI's life.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc / diagramme (type Excalidraw) avec un tableau structuré.
-
-**Contenu textuel & Code** : Tableau avec les lignes : Run time (16m 43s), API cost ($3.91), Total tokens (191.3K), Checks, Questions asked, et les colonnes Low, Medium, High, Ex.
-
-**Action / Démonstration** : Le présentateur explique les métriques affichées dans le tableau (coût API et nombre de jetons).
-
-![Un tableau comparatif affichant les métriques d'exécution d'un agent IA, incluant le temps d'exécution (16m 43s), le coût API ($3.91), le nombre total de jetons (191.3K) et les vérifications, avec le présentateur visible dans une vignette à gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000405_seg10.jpg)
-*⏱️ 00:04:05 — Un tableau comparatif affichant les métriques d'exécution d'un agent IA, incluant le temps d'exécution (16m 43s), le coût API ($3.91), le nombre total de jetons (191.3K) et les vérifications, avec le présentateur visible dans une vignette à gauche.*
-
----
-
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc ça a déjà l'air un tout petit peu mieux. Ça ressemble à nos palettes de couleurs qui utilisaient nos directives de marque. Premier jour, construction, deuxième jour, gain, VIP. Cool. D'accord. Je vais entrer dans le lieu. D'accord. Waouh. Donc une ambiance un peu similaire. C'est en arrière-plan. Ça ne ressemble pas à Chicago pourtant, si ? Non, ça ressemble à, honnêtement, ça ressemble à une ville inventée. Quoi qu'il en soit, c'est marrant qu'ils aient décidé de faire ça. Voyons si je peux me déplacer un peu plus vite. Oh, waouh.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web d'application virtuelle / 3D interactive.
-
-**Contenu textuel & Code** : Écran d'accueil avec badge de participant ('Nate Herk', 'Host - All Access') et instructions de déplacement, suivi d'un rendu 3D d'un espace de réunion virtuel.
-
-**Action / Démonstration** : Navigation et entrée dans l'espace virtuel interactif de l'événement en ligne.
-
-![Interface web 'Welcome to AIS Live' montrant un badge nominatif avec les options de navigation et de sessions (Day 1, Build, Day 2, Earn, VIP).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000431_seg11.jpg)
-*⏱️ 00:04:31 — Interface web 'Welcome to AIS Live' montrant un badge nominatif avec les options de navigation et de sessions (Day 1, Build, Day 2, Earn, VIP).*
-
-![Vue à la première ou troisième personne dans un espace virtuel 3D de type métavers avec des avatars et un panorama urbain en arrière-plan.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000441_seg11.jpg)
-*⏱️ 00:04:41 — Vue à la première ou troisième personne dans un espace virtuel 3D de type métavers avec des avatars et un panorama urbain en arrière-plan.*
-
----
-
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Les gens interagissent avec moi. Regardez. Si je m'approche de ce type, il vient de lever le bras. Bon, maintenant il ne veut plus du tout avoir affaire à moi. Mais tous ces petits robots ici doivent prendre des décisions. Je ne sais pas s'ils utilisent Jev. C'est sûr que non. Je ne le lui ai pas dit. En fait, ma clé Jev est à l'arrière. Je ne sais pas. Peut-être qu'il l'a utilisée. Quoi qu'il en soit, nous pouvons voir ici que nous avons la salle d'atelier C, le laboratoire des agents. Sympa. Donc celui-ci est réellement en train de tourner. Vous pouvez voir qu'il s'agit d'une vraie vidéo diffusée par Tangy. Tout le monde ici est en train de travailler sur un ordinateur portable. Ils ne buguent pas. C'est plutôt cool. De plus, mon badge est sur ma poitrine, ce qui est plutôt cool. Je peux venir par ici. Nous avons une carte en haut à droite, comme vous pouvez le voir, mais je peux venir par ici. Nous avons un
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de métavers / espace virtuel 3D interactif.
-
-**Contenu textuel & Code** : Environnement 3D avec des avatars virtuels, une carte miniature et des informations de session de workshop.
-
-**Action / Démonstration** : Navigation et exploration d'un environnement virtuel 3D multi-utilisateurs.
-
----
-
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> hall d'exposition. C'est là que nous avons le stand Glido. Et ça diffuse en ce moment. Oui, ça diffuse la vidéo de nous parlant de Glido. Ça diffuse la vidéo d'Ed et moi parlant de notre programme de certification. Nous avons le logo AIS Plus juste ici, qui est un peu mal placé. Ce sont les diapositives des conférenciers et les points clés. Alors wow, ce sont toutes les ressources que nous avons distribuées après l'événement. Elles sont toutes là aussi. Nous pouvons voir que nous avons un coup de projecteur sur la communauté. C'est donc Aiden qui parle de son contrat qu'il a décroché et c'est diffusé en direct. Ces gens regardent.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D / plateforme de type metaverse ou salon virtuel interactif.
-
-**Contenu textuel & Code** : Affiches textuelles, diapositives de présentation, bannières 'AIS+ Certified' et interface utilisateur de navigation virtuelle.
-[DESC_IMAGE_3] Navigation et exploration d'un hall d'exposition virtuel par des avatars.
+**Contenu textuel & Code** : Pages web contenant du texte marketing, des boutons d'appel à l'action ('Join Free') et un design sombre avec des accents bleus.
+[DESC_IMAGE_2] Navigation et défilement sur le site web pour présenter la refonte de l'interface utilisateur.
 
 **Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
----
+![Page d'accueil du site web 'AI Automation Society' avec le titre 'Unleash the AI Society' et une incrustation vidéo du présentateur en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000005_seg1.jpg)
+*⏱️ 00:00:05 — Page d'accueil du site web 'AI Automation Society' avec le titre 'Unleash the AI Society' et une incrustation vidéo du présentateur en bas à droite.*
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Ils sont plutôt engagés. On a un hyper agent. C'était, c'est ce que je voulais dire. Si vous avez vu ces gens lever les mains pour dire bonjour, c'était plutôt drôle. Regardez, regardez, le voilà qui recommence. Bref. Bon. Où est-ce que je suis maintenant ? Maintenant, je suis dans le hall principal. On a un bar à café. On a un grand logo, qui est le vrai logo. C'est trop lumineux, mais on a le logo. On peut voir si on peut entrer ici dans le parcours des fondations. On a Sabrina Romanov et Liberty White. Donc différentes formations juste là. On peut entrer dans cette pièce. C'est le parcours avancé. Alors qu'est-ce qui se passe ici ? On a Dave Ebelar et Saman qui parlent de différentes choses là-dedans. Et maintenant, allons jeter un œil à la scène principale. Oh, attendez, il y a une vidéo de moi là-haut. C'est genre un VIP
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif (plateforme de conférence en ligne).
-
-**Contenu textuel & Code** : Interface utilisateur virtuelle avec mini-carte et indications textuelles ("Main Lobby").
-
-**Action / Démonstration** : Exploration et déplacement de l'avatar dans le hall virtuel de la plateforme.
-
-![Vue principale dans le hall virtuel avec le présentateur en incrustation à gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000555_seg14.jpg)
-*⏱️ 00:05:55 — Vue principale dans le hall virtuel avec le présentateur en incrustation à gauche.*
-
-![Navigation vers la salle de conférence virtuelle depuis le hall principal.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000604_seg14.jpg)
-*⏱️ 00:06:04 — Navigation vers la salle de conférence virtuelle depuis le hall principal.*
-
-![Vue en mouvement montrant plusieurs avatars de participants réunis dans l'espace virtuel.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000612_seg14.jpg)
-*⏱️ 00:06:12 — Vue en mouvement montrant plusieurs avatars de participants réunis dans l'espace virtuel.*
+![Section 'About Us' du site web avec le texte 'Making AI Automation Accessible', des statistiques de membres et l'incrustation vidéo du présentateur.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000010_seg1.jpg)
+*⏱️ 00:00:10 — Section 'About Us' du site web avec le texte 'Making AI Automation Accessible', des statistiques de membres et l'incrustation vidéo du présentateur.*
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:00:21 - 00:00:52]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section ? Ouais, on ira voir ça dans une minute. Mais bref, voici la scène principale. Ça a l'air vraiment, vraiment bien. On a une grande scène. On a genre quatre personnes assises ici. On a les trois écrans d'Alex là-haut avec Hyper Agent. Est-ce que j'ai le droit de monter sur scène ? Oh, et il me laisse monter sur scène. D'accord. C'est plutôt sympa. Bon les gars, prenons un selfie. Laissez-moi mettre tout le monde en arrière-plan. Venez par ici. Bref, c'est vraiment, vraiment cool. Par contre, toutes les places ne sont pas occupées. Donc il faut qu'on travaille là-dessus. Mais bref, je vais y retourner en courant pour voir ce qu'était cette section VIP. D'accord. Salon VIP. J'ai l'impression que c'est comme un aéroport ou un truc du genre.
+> Et vous pouvez voir que c'est une sensation beaucoup plus interactive et soignée qu'avant. Nous avons l'appel à l'action final pour rejoindre le mouvement, et vous pouvez voir que nous avons en quelque sorte traversé le parcours d'une évolution technologique, ce que je trouve juste super, super cool. Et ce que vous remarquerez, c'est que j'ai pu reprendre l'esprit de la marque, l'ambiance, les couleurs et tout le texte, et j'ai pu tout transférer très facilement. Il contient donc toutes les mêmes informations importantes, mais avec un côté beaucoup plus interactif. Et puis 20 minutes plus tard, j'ai pu faire exactement la même chose avec mon site web personnel. Ici, vous pouvez voir qu'il a des ambiances plutôt sombres.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D de conférence / plateforme de type métavers ou événement virtuel.
+**Interface & Outils** : Navigateur web affichant le site internet de la communauté AI Automation Society (AIS).
 
-**Contenu textuel & Code** : Interface utilisateur avec encadré d'information 'Hyperagent Keynote' par Alex McDonnell et mini-carte de navigation en haut à droite.
+**Contenu textuel & Code** : Textes promotionnels de la communauté, statistiques (300K+ membres) et boutons d'appel à l'action.
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel de conférence avec un avatar numérique.
+**Action / Démonstration** : Présentation et défilement de la page web du site de la communauté par le créateur.
+
+![Vue d'une section du site web AIS montrant un graphique futuriste en arrière-plan et un appel à l'action 'JOIN THE MOVEMENT'.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000029_seg2.jpg)
+*⏱️ 00:00:29 — Vue d'une section du site web AIS montrant un graphique futuriste en arrière-plan et un appel à l'action 'JOIN THE MOVEMENT'.*
+
+![Page d'accueil principale du site 'AI Automation Society' avec le titre principal en grand et les boutons d'inscription.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000036_seg2.jpg)
+*⏱️ 00:00:36 — Page d'accueil principale du site 'AI Automation Society' avec le titre principal en grand et les boutons d'inscription.*
+
+![Section du site web présentant les offres de niveau supérieur 'PLUS MEMBERSHIP' avec des descriptions de fonctionnalités.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000044_seg2.jpg)
+*⏱️ 00:00:44 — Section du site web présentant les offres de niveau supérieur 'PLUS MEMBERSHIP' avec des descriptions de fonctionnalités.*
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:00:52 - 00:01:25]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> D'accord, super. Donc maintenant nous avons les sessions VIP ici. Une foire aux questions VIP avec la lecture vidéo en direct de Nate juste ici. Très, très cool. Et nous avons comme un bar ou quelque chose. Génial. Je dirais que c'est un assez bon résultat. Maintenant, en ce qui concerne les statistiques ici, celle-ci a pris une heure et 13 minutes à s'exécuter. Cela nous aurait coûté 12 dollars et 44 cents. Elle a utilisé 490 000 jetons et elle a fait 23 vérifications.
+> Il y a plein de statistiques. Il y a différentes choses sur lesquelles je travaille. Et je l'ai simplement transformé pour qu'il soit un peu plus dynamique. Vous pouvez voir que c'est moi assis sur une île flottante au milieu de l'espace et je travaille sur un ordinateur. Mais en faisant défiler vers le bas, nous avons les mêmes éléments. Nous avons le même texte. Nous avons la même ambiance. Mais maintenant, il y a beaucoup plus de profondeur et ça fait beaucoup plus professionnel. Donc ce que je vais vous montrer aujourd'hui, c'est comment nous créons des sites Web comme celui-ci en utilisant Claude Design. Nous pouvons avoir différents éléments. Nous pouvons avoir différentes ambiances et tout est conçu d'une manière qui est tout simplement beaucoup plus captivante et professionnelle. Et j'ai essayé beaucoup de choses différentes ici. Vous pouvez voir que j'ai déjà épuisé mon quota de design et j'ai déjà
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de salon virtuel 3D et tableau de bord de statistiques Opus 5.5 Efforts.
+**Interface & Outils** : Navigateur web, interface de design/développement web.
 
-**Contenu textuel & Code** : Statistiques de performance affichées : Run time (16m 43s), API cost ($3.91), Total tokens (191.3K), Checks (22), Questions asked (0).
+**Contenu textuel & Code** : Textes de présentation, statistiques (abonnés YouTube, membres de la communauté), et maquette de site web.
 
-**Action / Démonstration** : Présentation des sessions VIP virtuelles puis transition vers l'analyse des statistiques d'exécution du projet.
+**Action / Démonstration** : Présentation du site web personnel et d'un projet de design en cours.
 
-![Capture montrant l'espace virtuel VIP avec des avatars et un grand écran diffusant une vidéo de Nate Herk.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000656_seg16.jpg)
-*⏱️ 00:06:56 — Capture montrant l'espace virtuel VIP avec des avatars et un grand écran diffusant une vidéo de Nate Herk.*
+![Page web de présentation "AI Automation Made Easy" avec le créateur en encadré vidéo.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000100_seg3.jpg)
+*⏱️ 00:01:00 — Page web de présentation "AI Automation Made Easy" avec le créateur en encadré vidéo.*
 
-![Capture montrant un tableau de statistiques comparatives (Run time, API cost, Total tokens, etc.) avec la colonne 'Low' remplie.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000702_seg16.jpg)
-*⏱️ 00:07:02 — Capture montrant un tableau de statistiques comparatives (Run time, API cost, Total tokens, etc.) avec la colonne 'Low' remplie.*
+![Interface de design ou de prévisualisation d'un site web nommé "Lull" avec un panneau de chat à gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000117_seg3.jpg)
+*⏱️ 00:01:17 — Interface de design ou de prévisualisation d'un site web nommé "Lull" avec un panneau de chat à gauche.*
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:01:25 - 00:01:58]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et il ne nous a posé absolument aucune question une fois de plus. Très bien, passons au niveau élevé. C'était déjà un résultat plutôt correct, et Anthropic eux-mêmes dans leur vidéo sur comment prompter Opus 5.5, ou désolé, pas une vidéo, un article. Ils ont dit de simplement commencer au niveau moyen et de l'ajuster à la hausse ou à la baisse si nécessaire. C'était donc un résultat moyen. Passons au niveau élevé et voyons ce que nous avons obtenu. Très rapidement, les gars, je dois prendre une seconde pour vous parler du sponsor de la vidéo d'aujourd'hui, Hostinger. Donc ces deux modèles viennent de me construire une version fonctionnelle de la même chose. Et maintenant je suis exactement là où je finis toujours, avec un projet terminé sur mon ordinateur portable et aucun moyen rapide de le mettre en ligne. Et c'est le fossé que comble le connecteur d'Hostinger. C'est une extension gratuite.
+> J'ai dépensé plus de 200 dollars en utilisation supplémentaire juste en jouant avec ces trucs. Donc non seulement je vais vous montrer, les gars, les astuces et les trucs que j'ai appris, mais je vais aussi aborder des choses importantes comme comment faire pour ne pas épuiser votre limite plus rapidement et comment tirer le meilleur parti de ce que vous faites ici ? Je ne veux pas perdre de temps aujourd'hui. Allons-y directement et passons tout de suite à la vidéo. Très bien, donc je m'apprête à vous montrer, les gars, tout ce que vous devez faire étape par étape pour faire passer une idée de votre cerveau à un site web réel et la déployer afin que d'autres personnes puissent réellement la voir et y accéder. D'accord, donc disons que vous voulez transformer un site web. Tout ce que vous voudriez vraiment faire, c'est si celui-ci a une sorte de base de code dans GitHub ou CloudCode ou peu importe où
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau comparatif sur canevas numérique et éditeur de code/interface de développement avec l'assistant Codex.
+**Interface & Outils** : Google Docs, navigateur web (page de présentation de produit "lull")
 
-**Contenu textuel & Code** : Tableaux de métriques (Run time, API cost, Total tokens, Checks, Questions asked) et prompt pour un calculateur ROI en HTML autonome.
+**Contenu textuel & Code** : Plan de la vidéo listant les sujets abordés (What It Is, The Two-Meter System, What Drains Your Limit Fastest, Best Practices to Stretch Limits, File Upload + Extra Usage Rates, Limitations to Flag) et page web promotionnelle.
+[DESC_IMAGE_1] Présentation du plan de la vidéo par le créateur.
+[DESC_IMAGE_2] Illustration visuelle d'un exemple de design web sur le thème du sommeil.
 
-**Action / Démonstration** : Présentation des résultats comparatifs des différents niveaux d'effort et démonstration en cours d'un agent de génération de code.
+**Action / Démonstration** : Le présentateur introduit le plan de sa vidéo et montre un exemple concret de design généré ou analysé.
 
-![Un tableau comparatif des performances et des coûts selon les niveaux d'effort (Low, Medium, High, Extra) pour Opus 5.5, avec le présentateur incrusté à gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000722_seg17.jpg)
-*⏱️ 00:07:22 — Un tableau comparatif des performances et des coûts selon les niveaux d'effort (Low, Medium, High, Extra) pour Opus 5.5, avec le présentateur incrusté à gauche.*
+![Un document Google Docs affichant le plan de la vidéo intitulé "Claude Design" avec 6 points clés, incluant "What Drains Your Limit Fastest" et "Best Practices to Stretch Limits", avec le présentateur en médaillon.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000133_seg4.jpg)
+*⏱️ 00:01:33 — Un document Google Docs affichant le plan de la vidéo intitulé "Claude Design" avec 6 points clés, incluant "What Drains Your Limit Fastest" et "Best Practices to Stretch Limits", avec le présentateur en médaillon.*
 
-![Une interface de développement avec deux fenêtres affichant l'exécution d'un agent IA pour construire un calculateur de ROI Northwind, avec le présentateur en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000739_seg17.jpg)
-*⏱️ 00:07:39 — Une interface de développement avec deux fenêtres affichant l'exécution d'un agent IA pour construire un calculateur de ROI Northwind, avec le présentateur en bas à droite.*
+![Une page web au design épuré sur fond noir avec le titre "You're not bad at sleeping. You're bad at stopping." (site "lull"), avec le présentateur incrusté en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000141_seg4.jpg)
+*⏱️ 00:01:41 — Une page web au design épuré sur fond noir avec le titre "You're not bad at sleeping. You're bad at stopping." (site "lull"), avec le présentateur incrusté en bas à droite.*
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:01:58 - 00:02:34]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> pour votre éditeur qui intègre votre compte Hostinger dans l'environnement où vous codez déjà. Que ce soit VS Code, Cursor, Cloud Code, Codex, peu importe. Vous vous connectez une seule fois en un clic, et à partir de là, votre agent peut déployer le site, y pointer un domaine, configurer les enregistrements DNS et vérifier votre VPS sans que vous n'ayez jamais à quitter l'éditeur. Ainsi, peu importe celui de ces outils que vous finirez par préférer, ce qu'il a construit se trouve à quelques minutes d'une vraie URL sur un hébergement géré. Connector est gratuit avec chaque formule d'hébergement, donc si vous avez toujours besoin de l'hébergement sous-jacent, profitez de la formule illimitée grâce au lien dans la description et utilisez le code NATEHERK pour obtenir 10 % de réduction. Cela inclut également un nom de domaine gratuit et un e-mail professionnel pour l'année. Et c'est toujours le moyen le moins cher que j'ai trouvé pour obtenir quelque chose
+> en fait vit, vous pouvez fondamentalement juste récupérer ce dépôt GitHub ou vous pouvez récupérer le dossier avec tout son contenu et le donner simplement à CloudDesign. C'est donc un peu comme la première méthode. L'autre méthode consiste à se demander : et si vous avez juste une idée et si vous avez juste besoin de créer un site web à partir de zéro ? Eh bien, laissez-moi vous montrer ce que je fais ici à l'intérieur de CloudChat proprement dit afin de nous donner un exemple à construire ensemble aujourd'hui. J'ai donc dit : je veux créer un site web en utilisant CloudDesign et je cherche un peu d'inspiration sur le type de site web que je devrais construire. Quel est le produit ou le service que nous proposons ? Et à quoi devrait ressembler la section héroïque et le texte réel ? Aidez-moi fondamentalement à créer une marque et donnez-moi les spécifications pour cela. Il a donc eu l'idée de proposer une boisson de détente pour la nuit,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de gestion Hostinger pour IDE et terminal Claude Code.
+**Interface & Outils** : Interface web de type assistant conversationnel / LLM.
 
-**Contenu textuel & Code** : Statut "Connected" via OAuth, Node.js 24.13.0, liste des outils disponibles (Websites, Domains, Subscriptions & Payments, Email Marketing) avec options d'accès activées.
+**Contenu textuel & Code** : Prompt utilisateur demandant l'inspiration pour un site web et spécifications textuelles générées pour la marque 'Lull'.
 
-**Action / Démonstration** : Affichage de la configuration et des autorisations accordées à l'assistant pour gérer Hostinger directement depuis l'environnement de développement.
+**Action / Démonstration** : Présentation de la méthode de conception basée sur une simple idée et des spécifications textuelles générées par l'IA.
 
-![Interface montrant l'intégration de Hostinger dans un IDE avec le statut de connexion et les outils disponibles, ainsi qu'une vue de Claude Code sur le panneau droit.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000757_seg18.jpg)
-*⏱️ 00:07:57 — Interface montrant l'intégration de Hostinger dans un IDE avec le statut de connexion et les outils disponibles, ainsi qu'une vue de Claude Code sur le panneau droit.*
+![Interface d'une application web montrant un prompt demandant de l'inspiration pour créer un site web, avec la réponse générée détaillant la marque 'Lull'.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000207_seg5.jpg)
+*⏱️ 00:02:07 — Interface d'une application web montrant un prompt demandant de l'inspiration pour créer un site web, avec la réponse générée détaillant la marque 'Lull'.*
+
+![Vue similaire de l'interface montrant le détail de la spécification de la marque de boisson relaxante 'Lull' générée par l'IA.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000225_seg5.jpg)
+*⏱️ 00:02:25 — Vue similaire de l'interface montrant le détail de la spécification de la marque de boisson relaxante 'Lull' générée par l'IA.*
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:02:35 - 00:03:08]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> tu as construit sur une vraie URL. Donc revenons à la vidéo. D'accord. Encore une fois, très, très marqué par la marque. C'est un écran de chargement encore meilleur que le précédent. Nous avons ce petit effet sympa en arrière-plan. Nous avons le logo. Nous allons entrer dans le lieu. D'accord. Nous y voilà. Ça a l'air plutôt bien. Nous commençons à l'extérieur et vous pouvez voir que nous avons ces drapeaux pour tous les intervenants, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. C'est plutôt cool. Nous avons des blocs en direct ici.
+> une cuillère de glycinate de magnésium, bla, bla, bla. Mais la marque s'appelle Lull et elle me donne le positionnement et la voix, l'identité visuelle, et à quoi le site devrait ressembler. Donc c'est génial. Et ensuite je reviens et je dis, super, je veux créer une vidéo qui jouera en arrière-plan de la section principale et elle sera juste en boucle infinie. J'ai besoin que la vidéo corresponde à l'ambiance et je veux qu'elle ait un effet "waouh" pour que quand les gens vont sur le site web, ils se disent oh waouh, c'est, tu sais, professionnel. Il ne devrait y avoir aucun texte, mais il devrait aussi y avoir de la place où nous pourrions insérer un bloc pour le texte principal et le sous-texte. Donc ce que je lui demande, c'est un prompt d'image pour l'arrière-plan et ensuite un prompt vidéo pour l'animer. Donc il crache un prompt d'image
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Navigateur web / Application web 3D interactive (environnement virtuel type métavers / plateforme d'événement virtuel)
+**Interface & Outils** : Interface web de type assistant IA (ChatGPT ou similaire).
 
-**Contenu textuel & Code** : Interface utilisateur de la plateforme 'AIS LIVE', menus d'aide aux contrôles (WASD, Mouse, Space, Tab), bannières de noms de speakers (Alex McDonnell, Wyatt Lyonsmith), et indicateur de position.
-[DESC_IMAGE_3]
+**Contenu textuel & Code** : Texte du prompt utilisateur demandant une idée de vidéo d'arrière-plan avec effet 'wow' et boucle infinie pour la section héroïque d'un site web.
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel 3D après avoir cliqué sur 'Enter the Venue', déplacement dans la place principale de l'événement.
+**Action / Démonstration** : Défilement ou affichage progressif du texte du prompt de l'utilisateur dans l'interface de l'assistant.
 
-![Écran de chargement et d'accueil de la plateforme 'AIS LIVE' avec le titre 'Real Projects, Real Revenue - July 11-12, 2026', un résumé textuel, les commandes clavier/souris et un bouton 'ENTER THE VENUE'.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000829_seg19.jpg)
-*⏱️ 00:08:29 — Écran de chargement et d'accueil de la plateforme 'AIS LIVE' avec le titre 'Real Projects, Real Revenue - July 11-12, 2026', un résumé textuel, les commandes clavier/souris et un bouton 'ENTER THE VENUE'.*
+![Interface d'une application affichant un prompt textuel concernant la création d'une vidéo en arrière-plan, avec le présentateur incrusté en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000243_seg6.jpg)
+*⏱️ 00:02:43 — Interface d'une application affichant un prompt textuel concernant la création d'une vidéo en arrière-plan, avec le présentateur incrusté en bas à droite.*
 
-![Vue dans le monde virtuel 3D de type jeu vidéo montrant un avatar sur une place publique pavée ('AIS Live Plaza') avec des gratte-ciels en arrière-plan, des arbres, et une indication de bienvenue textuelle en haut.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000835_seg19.jpg)
-*⏱️ 00:08:35 — Vue dans le monde virtuel 3D de type jeu vidéo montrant un avatar sur une place publique pavée ('AIS Live Plaza') avec des gratte-ciels en arrière-plan, des arbres, et une indication de bienvenue textuelle en haut.*
-
-![Vue de la place virtuelle 3D montrant l'avatar du présentateur au milieu de bannières verticales affichant des noms de conférenciers, ainsi qu'une petite sphère robotique au premier plan.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000841_seg19.jpg)
-*⏱️ 00:08:41 — Vue de la place virtuelle 3D montrant l'avatar du présentateur au milieu de bannières verticales affichant des noms de conférenciers, ainsi qu'une petite sphère robotique au premier plan.*
+![Suite du message de prompt détaillé concernant l'animation en boucle sans mouvement de caméra, avec le présentateur en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000251_seg6.jpg)
+*⏱️ 00:02:51 — Suite du message de prompt détaillé concernant l'animation en boucle sans mouvement de caméra, avec le présentateur en bas à droite.*
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:03:08 - 00:03:27]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> il a pris cette photo de moi, votre hôte, Nate Herc, John, Dave, Nate Herc. Voilà. D'accord. Les portes. C'est génial. Ce sont des portes coulissantes automatiques en verre. J'adore ça. On peut voir l'enregistrement VIP. On peut voir l'admission générale. On peut venir par ici et on peut découvrir l'expo avec différents stands, le coin de la communauté. Vous pouvez aussi voir qu'en haut à gauche, j'ai un passeport. Donc c'est comme si, ça va montrer combien d'endroits j'ai visités. Tout cela est une vraie lecture. Nous avons un mur de ressources avec tous les différents conférenciers. Ils ont aussi une session de réseautage par ici. Donc je vais venir très vite et voir de quoi il s'agit. Donc nous avons le bar à cold brew AIS. Nous avons différents membres de la communauté qui ont été mis en avant ou mis en lumière.
+> juste ici. Donc en gros le thème le concept est une tasse en céramique noire avec un liquide chaud à l'intérieur et ensuite d'avoir juste en quelque sorte, tu sais, de la vapeur en arrière-plan, ce qui lui donnerait une belle sensation et ça correspondra à l'ambiance du genre, tu sais, de tisane pour dormir ou quoi que ce soit censé être. Donc ça me donne l'invite d'image et je vais aller sur key.ai. J'utilise nano banana two.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de monde virtuel 3D / plateforme d'événement virtuel.
+**Interface & Outils** : Interface web de type LLM ou éditeur de texte en ligne (ChatGPT / Claude) et webcam du présentateur.
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant des zones de conférence, des bannières 'Registration' et 'Expo Hall'.
+**Contenu textuel & Code** : Texte descriptif d'un concept visuel de tasse en céramique noire avec du liquide chaud et de la vapeur, et un prompt de génération d'image ('Cinematic still-life photograph...').
 
-**Action / Démonstration** : Exploration interactive d'un espace événementiel virtuel en 3D avec un avatar.
+**Action / Démonstration** : Le présentateur présente et commente le texte du concept affiché à l'écran concernant la tasse en céramique.
 
-![Vue d'un monde virtuel 3D montrant l'entrée d'une conférence avec la mention 'LIVE - REGISTRATION' et des comptoirs VIP.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000856_seg20.jpg)
-*⏱️ 00:08:56 — Vue d'un monde virtuel 3D montrant l'entrée d'une conférence avec la mention 'LIVE - REGISTRATION' et des comptoirs VIP.*
-
-![Navigation dans un hall d'exposition virtuel 3D avec des stands et des avatars interactifs.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000905_seg20.jpg)
-*⏱️ 00:09:05 — Navigation dans un hall d'exposition virtuel 3D avec des stands et des avatars interactifs.*
-
-![Vue à la troisième personne dans un hall virtuel fréquenté par des avatars de participants.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000914_seg20.jpg)
-*⏱️ 00:09:14 — Vue à la troisième personne dans un hall virtuel fréquenté par des avatars de participants.*
+![Capture d'écran montrant une interface web textuelle avec un concept de vidéo (The concept : A dark ceramic mug of warm amber liquid...) et des prompts de génération d'image, avec la vidéo du présentateur en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000312_seg7.jpg)
+*⏱️ 00:03:12 — Capture d'écran montrant une interface web textuelle avec un concept de vidéo (The concept : A dark ceramic mug of warm amber liquid...) et des prompts de génération d'image, avec la vidéo du présentateur en bas à droite.*
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:03:27 - 00:04:01]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons l'aile VIP. Attends, quoi ? Prends un bracelet. Oh, je dois vraiment aller chercher le bracelet. D'accord. Laisse-moi m'enregistrer rapidement. Le bracelet est déjà mis. Attends, quoi ? D'accord. Oh, d'accord. Maintenant, les portes se sont ouvertes pour moi. Cool. Je peux entrer ici. Oh, ça mène juste à la scène principale. Salon VIP. Il y a une séance de questions-réponses en cours. Ça a l'air très cool. Je veux dire, je suis très impressionné par la façon dont il est capable de faire ça. Waouh. D'accord. Donc c'est vraiment bien. Ce qu'on a fait, c'est qu'on a eu des salles de réunion VIP avec différentes personnes. Tu peux voir qu'il y a différentes salles, différents membres de l'équipe AIS qui participent à des trucs. C'est vraiment cool. C'est très cool. C'est un bien meilleur VIP
+> Donc, je dépose les invites d'images ici même. Je m'assure que c'est un format 16 par 9. Et ensuite j'obtiens cette image, qui, comme vous pouvez le voir, est fondamentalement juste une tasse avec une sorte de liquide. C'est là que nous mettenons le texte principal et le sous-texte, ce qui est bien. Et puis ça fume. Et ensuite je prends cette image et je retourne dans un autre onglet et clé et je vais sur C dance 2.0. Et je mets cette image comme première et dernière image, et je vais chercher ces invites en bas pour les invites vidéo afin d'animer l'image. La chose essentielle ici, c'est que la caméra ne bouge pas. C'est fondamentalement juste un plan fixe.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle 3D interactive (metaverse / événement virtuel)
+**Interface & Outils** : KIE API (génération d'images) et interface Web de Claude (Anthropic).
 
-**Contenu textuel & Code** : Éléments d'interface utilisateur virtuels, textes de guidage ("Wristband is already on. The VIP wing is through the east corridor"), et affichages de salles.
+**Contenu textuel & Code** : Prompt détaillé pour une photographie "cinematic still-life" d'une tasse sur un support en noyer avec des instructions de mise en page (headline, subhead, CTA).
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par l'avatar du présentateur.
+**Action / Démonstration** : Présentation du flux de travail pour générer des assets visuels (image) via un prompt textuel complexe destiné à un design web.
 
-![Vue d'un espace virtuel 3D avec un avatar se déplaçant dans la zone d'enregistrement et affichant des informations textuelles.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000932_seg21.jpg)
-*⏱️ 00:09:32 — Vue d'un espace virtuel 3D avec un avatar se déplaçant dans la zone d'enregistrement et affichant des informations textuelles.*
+![Interface de "KIE API" affichant un champ de prompt détaillé à gauche et l'image générée résultante à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000344_seg8.jpg)
+*⏱️ 00:03:44 — Interface de "KIE API" affichant un champ de prompt détaillé à gauche et l'image générée résultante à droite.*
 
-![L'avatar dans le salon VIP virtuel, assistant à une session de questions-réponses avec une diffusion vidéo sur un grand écran.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000940_seg21.jpg)
-*⏱️ 00:09:40 — L'avatar dans le salon VIP virtuel, assistant à une session de questions-réponses avec une diffusion vidéo sur un grand écran.*
-
-![L'avatar explorant la section des sessions de travail VIP avec différentes tables thématiques ("Price It Right", "Turn Your Expertise into a Service", etc.).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000948_seg21.jpg)
-*⏱️ 00:09:48 — L'avatar explorant la section des sessions de travail VIP avec différentes tables thématiques ("Price It Right", "Turn Your Expertise into a Service", etc.).*
+![Interface de Claude (chatbot) présentant des spécifications de design textuelles incluant un prompt d'image très détaillé.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000352_seg8.jpg)
+*⏱️ 00:03:52 — Interface de Claude (chatbot) présentant des spécifications de design textuelles incluant un prompt d'image très détaillé.*
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:04:01 - 00:04:35]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expérience que ce qui a été montré dans la première partie. D'accord. After party VIP. Regardez ça. On a une piste de danse. On a tous ces éléments ici. On a la lecture de l'after party VIP juste ici. Et il y a une estrade de DJ. C'est trop marrant. Il y a un petit bug ici, un petit glitch ici, mais c'est génial. Oh, cool. Donc quand je suis ici sur la scène principale, on a des sous-titres. Vous pouvez voir juste ici en bas de mon écran, on a ces sous-titres de Wyatt qui est en train de parler ici. On a des lumières. On a le panel. Très cool. Belle scène principale. Je vais aller par ici. On peut aller à la fondation,
+> Une image fixe de ce café ou quoi que ce soit qui est en train d'être animé. Donc voici à quoi cela ressemble. Comme vous pouvez le voir, ça fume juste et ça a l'air vraiment bien. Maintenant, imaginez que c'est l'arrière-plan d'un site web lorsque vous avez du texte par ici, ça pourrait être plutôt sympa. D'accord, donc maintenant que nous avons ces éléments initiaux, je vais ouvrir v0 par Vercel (ou : claw design) et je vais créer un nouveau prototype, et nous allons commencer par un prototype haute fidélité. Je ne vais pas utiliser de système de design parce que dans ce cas, nous créons en quelque sorte notre propre nouvelle marque et peut-être pourrons-nous construire un système de design autour de cela plus tard, mais pour l'instant, je vais simplement dire aucun et nous allons appeler cela le site web lol parce que c'est le nom de la marque. Donc je vais cliquer sur créer.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web virtuelle en 3D (type Gather Town ou salon virtuel)
+**Interface & Outils** : Claude Design (Research Preview)
 
-**Contenu textuel & Code** : Environnements virtuels interactifs avec avatars, écrans vidéo et éléments de conférence en ligne
+**Contenu textuel & Code** : Liste de projets (ex: "AI Automation Society Design System", "AIS Website"), options de création (Wireframe, High fidelity) et paramètres de projet.
 
-**Action / Démonstration** : Navigation et présentation des différentes salles de l'événement virtuel (after party et scène principale)
+**Action / Démonstration** : Navigation au sein du tableau de bord de l'application de design pour sélectionner ou créer un nouveau projet.
 
-![Vue d'un espace virtuel interactif représentant un after party VIP avec piste de danse et avatars numériques.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001004_seg22.jpg)
-*⏱️ 00:10:04 — Vue d'un espace virtuel interactif représentant un after party VIP avec piste de danse et avatars numériques.*
-
-![Élargissement de la vue de l'after party VIP avec les avatars, l'écran vidéo et la signalétique.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001013_seg22.jpg)
-*⏱️ 00:10:13 — Élargissement de la vue de l'after party VIP avec les avatars, l'écran vidéo et la signalétique.*
-
-![Vue d'une autre zone virtuelle principale (Main Stage) avec un auditoire assis et un grand écran de présentation.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001021_seg22.jpg)
-*⏱️ 00:10:21 — Vue d'une autre zone virtuelle principale (Main Stage) avec un auditoire assis et un grand écran de présentation.*
+![Interface de "Claude Design" affichant une galerie de projets de design récents avec une fenêtre contextuelle pour créer un nouveau prototype.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000418_seg9.jpg)
+*⏱️ 00:04:18 — Interface de "Claude Design" affichant une galerie de projets de design récents avec une fenêtre contextuelle pour créer un nouveau prototype.*
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:04:35 - 00:04:54]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> avancé, et les parcours d'entreprise par ici. Alors voyons voir. Nous avons l'anatomie de trois vraies transactions. Nous avons hyper agent. Nous avons les évals avec Nate et Ed ici. Nous avons Dave qui intervient dans les trucs avancés. C'est vraiment bien. Je veux dire, évidemment, chacun, chacun de ces résultats jusqu'à présent, faible était correct. Moyen était meilleur. Élevé a été encore meilleur. Voyons si cette tendance se poursuit et allons voir ce que cela nous a coûté. Donc, élevé a tourné pendant une heure et sept minutes. Donc un peu plus rapide que moyen, cela nous aurait coûté 16 dollars et 31 cents. Il a utilisé un demi-million de tokens, 509 000. Il a fait 22 vérifications. Et il nous a aussi demandé, enfin, non, je me suis trompé. Ce
+> Et ce que ça va faire, c'est que ça va lancer cette petite interface adorable, si on veut, on peut commencer avec un croquis ici. Donc on pourrait littéralement venir ici et dire, bon, tu sais, voilà à quoi va ressembler notre site web. C'est ici que, oh, je voulais un autre carré. C'est ici qu'on va avoir, genre, la vidéo principale. Donc ce sera l'arrière-plan de la section principale.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc / outil de visualisation et outil de comparaison (Opus 5.5 Efforts).
+**Interface & Outils** : Interface web de design et prototypage (style interface de type Lull Website ou outil de conception assisté par IA)
+[DESC_IMAGE_1] Panneau 'Start with context' avec options (Design System, Add screenshot, Attach codebase, Drag in a Figma file) et zone de chat
+[DESC_IMAGE_2] Outil de croquis interactif avec barre d'outils de dessin et rectangle tracé sur une grille pointillée
 
-**Contenu textuel & Code** : Tableau comparatif des performances et coûts : Run time (16m 43s à 1h 13m), API cost ($3.91 à $16.31), Total tokens (191.3K à 419.2K), Checks et Questions asked.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Analyse et présentation des métriques de coût et de performance d'un modèle d'IA selon différents niveaux d'effort.
+**Action / Démonstration** : Le présentateur montre l'interface de croquis et commence à dessiner un rectangle pour définir la structure d'une page web
 
-![Un tableau comparatif montrant les coûts et performances d'Opus 5.5 selon différents niveaux d'effort (Low, Medium, High, Extra) avec les temps d'exécution, coûts API et nombre de tokens.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001057_seg23.jpg)
-*⏱️ 00:10:57 — Un tableau comparatif montrant les coûts et performances d'Opus 5.5 selon différents niveaux d'effort (Low, Medium, High, Extra) avec les temps d'exécution, coûts API et nombre de tokens.*
+![Interface web de conception montrant un panneau de chat à gauche et une zone de design à droite avec un bouton 'Start with a sketch', ainsi que la webcam du présentateur en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000440_seg10.jpg)
+*⏱️ 00:04:40 — Interface web de conception montrant un panneau de chat à gauche et une zone de design à droite avec un bouton 'Start with a sketch', ainsi que la webcam du présentateur en bas à droite.*
+
+![Interface web avec la zone de dessin active montrant un rectangle rouge tracé à l'écran et la barre d'outils de croquis, avec la webcam du présentateur déplacée en bas à gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000445_seg10.jpg)
+*⏱️ 00:04:45 — Interface web avec la zone de dessin active montrant un rectangle rouge tracé à l'écran et la barre d'outils de croquis, avec la webcam du présentateur déplacée en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:04:56 - 00:05:23]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> l'un m'a posé une question et, divulgâcheur, c'était le seul qui nous a posé une question tout au long de tout cela. Voyons voir, il nous en reste trois : extra, max et ultra code. Laissez-moi ouvrir extra et nous verrons ce que nous avons. D'accord. Donc celui-ci a l'air plutôt bien. Je dirais honnêtement que jusqu'à présent, l'écran de chargement haut était le meilleur. Celui que nous venons de voir, mais de toute façon, entrons dans le direct d'AIS.
+> Et je pourrais venir ici et dire genre, ceci est la vidéo d'arrière-plan principale. Et puis nous voulons une autre boîte par ici, qui sera comme le texte principal et le sous-texte, le texte principal. Et puis je vais descendre ici et dire simplement sous-texte principal. Nous pourrions aussi probablement vouloir une sorte de barre de navigation en haut. Donc c'est comme, tu sais, le logo pourrait être par ici. Oups, ce n'est pas comme ça qu'on écrit logo.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de tableau de bord ou canevas de données (type outil de mindmapping/notes visuelles).
+**Interface & Outils** : Interface web de conception (type outil de wireframing/design)
 
-**Contenu textuel & Code** : Tableau comparatif de performances d'IA avec colonnes Low, Medium, High et Extra, et lignes Run time, API cost, Total tokens, Checks, et Questions asked.
+**Contenu textuel & Code** : Un cadre rectangulaire avec le texte "Hero Background Video" à l'intérieur, et une barre d'outils contextuelle en haut.
 
-**Action / Démonstration** : Le présentateur commente le tableau et s'apprête à ouvrir la section « Extra ».
+**Action / Démonstration** : Le présentateur explique la disposition des éléments de design sur l'interface.
 
-![Capture d'écran montrant le présentateur à gauche et un tableau comparatif détaillé sur interface web à droite, listant les métriques (Run time, API cost, Total tokens, Checks, Questions asked) pour différentes configurations (Low, Medium, High, Extra).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001111_seg24.jpg)
-*⏱️ 00:11:11 — Capture d'écran montrant le présentateur à gauche et un tableau comparatif détaillé sur interface web à droite, listant les métriques (Run time, API cost, Total tokens, Checks, Questions asked) pour différentes configurations (Low, Medium, High, Extra).*
+![Interface web montrant un espace de travail de design avec une zone de brouillon et une barre d'outils, ainsi qu'une incrustation vidéo du présentateur en bas à gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000502_seg11.jpg)
+*⏱️ 00:05:02 — Interface web montrant un espace de travail de design avec une zone de brouillon et une barre d'outils, ainsi qu'une incrustation vidéo du présentateur en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:05:23 - 00:05:54]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. D'accord. Donc on a comme de petits extraits sonores. Je peux discuter avec des gens. Le panneau sur la guerre des outils a réglé quelques débats pour moi. Sympa. Bonne perspective là-bas. On est dehors à nouveau. On a ces différentes bannières, bien qu'elles soient toutes les mêmes. Elles n'indiquent pas du genre les noms de différentes personnes. Donc grand logo de AIS live. L'aile des ateliers est par ici. Et passons par les portes coulissantes en verre et voyons ce qu'on a. Donc on a le café AIS. La carte est en bas à droite, et elle n'est pas très descriptive.
+> Et ensuite, nous pourrions aussi avoir du genre, vous savez, une boutique ou quelque chose comme ça. Et donc, c'est juste une façon pour nous de nous mettre en quelque sorte visuellement sur la même longueur d'onde que Claude. Et puis, bien sûr, vous pouvez voir ici en bas, il serait en train de regarder le croquis. Alors, allons-y et gardons ceci pour l'instant. Évidemment, si vous avez une meilleure vision, vous pouvez y consacrer un peu plus de temps et d'attention. Vous pourriez aussi agencer le reste de votre site ici en bas également. Et puis, vous pouvez ajouter des notes et des trucs. Mais pour l'instant, laissons ça comme ça. Et ce que je vais faire maintenant, c'est que je vais glisser ce fichier MP4 réel que nous avons obtenu de CDance. Vous pouvez voir qu'il télécharge le fichier et il est juste ici.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D de type métavers / plateforme événementielle en ligne
+**Interface & Outils** : Interface web de design (type Figma ou outil de maquettage collaboratif)
 
-**Contenu textuel & Code** : Interface utilisateur de monde virtuel 3D avec mini-carte en bas à droite et bannières textuelles
+**Contenu textuel & Code** : Maquette de site web filaire (wireframe) avec des blocs textuels "logo", "shop", "Hero Text", "Hero subtext" et "Hero Background Video"
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel 3D avec un avatar personnage
+**Action / Démonstration** : Présentation et explication d'un wireframe de site web pour aligner la vision avec l'assistant IA Claude
 
-![Le présentateur apparaît dans un encadré à gauche, tandis que l'écran principal montre un monde virtuel 3D (convention plaza) avec des avatars et des bannières publicitaires.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001132_seg25.jpg)
-*⏱️ 00:11:32 — Le présentateur apparaît dans un encadré à gauche, tandis que l'écran principal montre un monde virtuel 3D (convention plaza) avec des avatars et des bannières publicitaires.*
+![Interface web montrant un panneau de design avec des wireframes et le présentateur en médaillon en bas à gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000531_seg12.jpg)
+*⏱️ 00:05:31 — Interface web montrant un panneau de design avec des wireframes et le présentateur en médaillon en bas à gauche.*
 
-![Le présentateur est visible à gauche, l'écran principal affichant la suite de la navigation de l'avatar dans l'espace virtuel nocturne.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001138_seg25.jpg)
-*⏱️ 00:11:38 — Le présentateur est visible à gauche, l'écran principal affichant la suite de la navigation de l'avatar dans l'espace virtuel nocturne.*
-
-![Le présentateur est à gauche, l'écran principal montrant l'avatar s'approchant de l'entrée d'un bâtiment dans l'environnement virtuel.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001145_seg25.jpg)
-*⏱️ 00:11:45 — Le présentateur est à gauche, l'écran principal montrant l'avatar s'approchant de l'entrée d'un bâtiment dans l'environnement virtuel.*
+![Interface web similaire avec le présentateur cette fois déplacé en médaillon dans le coin inférieur droit, montrant l'édition d'un wireframe.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000539_seg12.jpg)
+*⏱️ 00:05:39 — Interface web similaire avec le présentateur cette fois déplacé en médaillon dans le coin inférieur droit, montrant l'édition d'un wireframe.*
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:05:55 - 00:06:30]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> Maintenant, c'était une vidéo de huit secondes. Ça ne va pas vous laisser télécharger des vidéos qui font genre 30 secondes de long. Il y a une limite et je crois qu'elle est autour de 30 ou 40 mégaoctets. Donc gardez juste ça à l'esprit. J'ai réussi à télécharger des vidéos de 15 secondes. J'ai essayé une vidéo de 20 secondes et ça a fonctionné, mais gardez juste ça à l'esprit. Donc maintenant, ce que je veux faire, c'est que Claude a déjà fait tout le travail difficile et ardu pour nous. Vous savez, si je remonte tout en haut, ça nous a fondamentalement donné la marque et tout ça avec une identité visuelle, les différentes sections, le pied de page. Et vous pouvez voir que ça a aussi genre, vous savez, des couleurs et tout. Donc je vais prendre ça. Je vais retourner dans Claude Design et je vais juste coller ça dedans. Et c'est collé dedans comme genre
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D interactive (environnement virtuel type metaverse / événement en ligne).
+**Interface & Outils** : Interface web de conception de site et interface de chat LLM (Claude).
 
-**Contenu textuel & Code** : Environnement virtuel 3D, avatars, panneaux "Main Stage", "Workshops", "Enterprise AI Services", mini-carte en bas à droite.
+**Contenu textuel & Code** : Texte du prompt vidéo détaillant les mouvements de caméra fixes et les effets de vapeur, avec une limite hebdomadaire d'utilisation atteinte à 75%.
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel 3D lors d'une démonstration d'événement en ligne.
+**Action / Démonstration** : Le présentateur explique les contraintes de taille et de durée pour l'importation de fichiers vidéo dans l'application.
 
-![Vue d'une scène virtuelle 3D (Main Stage) avec un avatar présentateur et des spectateurs assis, commentée par le présentateur à gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001200_seg26.jpg)
-*⏱️ 00:12:00 — Vue d'une scène virtuelle 3D (Main Stage) avec un avatar présentateur et des spectateurs assis, commentée par le présentateur à gauche.*
+![Interface web de conception montrant une zone de chat contextuelle avec un fichier vidéo importé ("Sleep Background.mp4") et le présentateur en incrustation.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000603_seg13.jpg)
+*⏱️ 00:06:03 — Interface web de conception montrant une zone de chat contextuelle avec un fichier vidéo importé ("Sleep Background.mp4") et le présentateur en incrustation.*
 
-![Navigation dans un hall d'exposition virtuel 3D (Grand Lobby) avec des avatars et des panneaux de signalétique.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001209_seg26.jpg)
-*⏱️ 00:12:09 — Navigation dans un hall d'exposition virtuel 3D (Grand Lobby) avec des avatars et des panneaux de signalétique.*
-
-![Exploration d'un couloir virtuel 3D avec des avatars interactifs et des bulles de discussion.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001217_seg26.jpg)
-*⏱️ 00:12:17 — Exploration d'un couloir virtuel 3D avec des avatars interactifs et des bulles de discussion.*
+![Interface sombre affichant un prompt détaillé pour la génération d'une vidéo (animation d'image) avec Claude, et le présentateur en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000612_seg13.jpg)
+*⏱️ 00:06:12 — Interface sombre affichant un prompt détaillé pour la génération d'une vidéo (animation d'image) avec Claude, et le présentateur en bas à droite.*
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:06:30 - 00:07:02]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> a little bit of an artifact because it was a long bit of text. So now I just explain what I wanted to do. Hey, Claude Design. I've given you a couple things. I've got a sketch, which is just my basically idea for the hero section. There's going to be a lot of little sections beneath, which you will be on your own to figure out what that should look like. I've given you the sleep background.mp4. This is a video that I want you to be playing on an endless loop in the background. And you should see that the hero text will be on the left side compared to that. And then I pasted in 23 lines of text, which is kind of the brand identity, the feel for
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D / plateforme de réunion virtuelle interactive.
+**Interface & Outils** : Interface web de design (Claude Design / outil de prototypage)
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant une salle de classe 3D, un écran de présentation géant et des avatars de participants.
+**Contenu textuel & Code** : Panneau de chat avec divers fichiers joints et options contextuelles (Hi-fi design, Interactive prototype, croquis, texte collé de 23 lignes).
 
-**Action / Démonstration** : Navigation et exploration d'un espace de réunion virtuel 3D interactif.
+**Action / Démonstration** : Le présentateur explique l'utilisation de l'outil en fournissant un croquis et du contexte pour concevoir la section principale du site web.
+
+![Interface divisée montrant à gauche un panneau de chat avec des options de contexte (Design System, Add screenshot, Attach codebase, etc.) et des fichiers joints, au centre un gestionnaire de fichiers de design avec les dossiers scraps et uploads, et en bas à droite le présentateur qui parle.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000638_seg14.jpg)
+*⏱️ 00:06:38 — Interface divisée montrant à gauche un panneau de chat avec des options de contexte (Design System, Add screenshot, Attach codebase, etc.) et des fichiers joints, au centre un gestionnaire de fichiers de design avec les dossiers scraps et uploads, et en bas à droite le présentateur qui parle.*
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:07:02 - 00:07:30]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> programme. Il y a un petit tapis rouge ici pour prendre des photos. On peut prendre la pose. Oh, waouh. C'est plutôt cool. Bibliothèque de ressources, devenir certifié AIS Plus, Glido, Hyper Agent, AIS Plus, trois vraies offres. Génial. Je veux dire, je dirais vraiment que jusqu'à présent, chacune est meilleure. Et on n'a même pas encore vu la section VIP, le salon VIP. Montons ici rapidement. J'espère que je pourrai entrer. Sympa. On a le réinitialisation des outils. Ce sont les différentes salles où l'on peut aller. Donc encore une fois, je pourrais prendre la feuille de calcul et essayer de comprendre comment tarifer mes trucs. C'est tellement cool. C'est vraiment mieux que le précédent où on a juste en quelque sorte
+> the website and how you should write the copy. And just go ahead and write all the copy for now. We can make tweaks later. Okay. So I'm going to paste that in and go ahead and shoot that off. If you guys are curious about how I'm doing voice to text, check the description for the tool. I'm using extra usage, by the way, but it's going to start to build this out. And if it has any specific questions for us, it will come back and it will ask those questions. But right now it looks like it's just going to run. And also keep in mind, this is right now using Claude Opus 4.7.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Plateforme d'événement virtuel 3D/Metaverse (environnement de conférence).
+**Interface & Outils** : Interface web de génération de site web (Lull Website)
 
-**Contenu textuel & Code** : Texte affiché à l'écran incluant des titres de stands ("Hyperagent", "Glido") et des questions de réflexion sur le pricing ("What's your gut floor number?", "Price It Right worksheet").
+**Contenu textuel & Code** : Champ de saisie 'Describe what you want to create.' avec des balises de contexte jointes en haut et le bouton 'Send'.
 
-**Action / Démonstration** : Navigation et exploration au sein d'un espace de conférence virtuel immersif.
+**Action / Démonstration** : Le présentateur s'apprête à envoyer le prompt textuel pour générer le contenu du site web.
+
+![Interface de l'outil de génération de site web montrant un panneau de chat à gauche avec des options de contexte (Design System, Add screenshot, etc.) et le présentateur incrusté en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000709_seg15.jpg)
+*⏱️ 00:07:09 — Interface de l'outil de génération de site web montrant un panneau de chat à gauche avec des options de contexte (Design System, Add screenshot, etc.) et le présentateur incrusté en bas à droite.*
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:07:30 - 00:08:05]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> genre regardé des trucs. Génial. Je peux passer derrière le bar et venir ici. C'est très bien. Bon. Alors, en ce qui concerne les statistiques, celui-ci a tourné pendant une heure et demie. Il a coûté 25,92 dollars. Je ne sais pas pourquoi je dis point 25,92 cents. Il y a eu 733 000 jetons et 34 vérifications. Il a donc eu le plus grand nombre de vérifications de loin jusqu'à présent. Et il ne nous a posé aucune question. J'ai hâte de voir ce qu'on a là de max et ultra code. Bon. Voici les écrans de chargement de max, ennuyeux, mais c'est dans l'esprit de la marque et il y a notre logo.
+> Donc honnêtement, genre pour la phase de planification, j'aime bien utiliser Opus 4.7. Si on voulait plus tard faire quelques modifications et qu'on voulait faire d'autres choses, on pourrait baisser le modèle. Mais gardez à l'esprit que ça va utiliser Opus 4.7, qui est le modèle le plus cher qui nous est publiquement accessible en ce moment. Mais j'adore comment on a toujours cette sensation de Claude ici parce qu'il nous dit ce qu'il pense. On peut voir ce qu'il fait. Il fait une liste de tâches. C'est donc très facile pour nous de simplement vérifier comment ça se passe et où nous en sommes. Il est en train de créer un système de design ici. Donc on a une sorte de palette de couleurs. On a du texte juste ici. Et c'est honnêtement la meilleure pratique, surtout quand vous vous habituez au design avec le cloud, de simplement regarder ce qu'il fait et d'aller l'arrêter s'il est en train de
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Logiciel de dessin/diagramme de type "Excalidraw" (intitulé "Opus 5.5 Efforts").
+**Interface & Outils** : Interface web de développement ou de design, panneau de chat textuel.
 
-**Contenu textuel & Code** : Colonne "Extra" : 1h 31m, $25.92 (non visible mais mentionné à l'oral), 733k jetons, 34 vérifications. Le tableau présente des métriques de performance et de coût pour chaque catégorie.
+**Contenu textuel & Code** : Texte de planification du design et choix typographiques pour un site web nommé 'Lull Website'.
 
-**Action / Démonstration** : Le présentateur analyse visuellement les données de performance et de coûts associés aux différents niveaux de modèles IA, avec le curseur positionné sur la colonne "Extra".
+**Action / Démonstration** : Le modèle discute et planifie la structure et le design typographique d'un site web.
 
-![Tableau comparatif des performances de différents modèles IA (Medium, High, Extra, Max, Ultracode) affichant la durée, le coût en dollars, le nombre de jetons et le nombre de vérifications.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001338_seg29.jpg)
-*⏱️ 00:13:38 — Tableau comparatif des performances de différents modèles IA (Medium, High, Extra, Max, Ultracode) affichant la durée, le coût en dollars, le nombre de jetons et le nombre de vérifications.*
+![Interface web montrant un panneau de chat avec des instructions de design (choix de polices comme Newsreader et DM Serif Display) sur la gauche, un explorateur de fichiers au centre, et le présentateur en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000738_seg16.jpg)
+*⏱️ 00:07:38 — Interface web montrant un panneau de chat avec des instructions de design (choix de polices comme Newsreader et DM Serif Display) sur la gauche, un explorateur de fichiers au centre, et le présentateur en bas à droite.*
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:08:05 - 00:08:27]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> dans la mauvaise direction, parce que s'il va dans la mauvaise direction, il va construire des choses. Et cela va utiliser une grande partie de votre limite de session. Autant donc l'arrêter et en quelque sorte rafraîchir ou corriger le tir avant qu'il ne gaspille tout ce temps. Maintenant, pendant que cela s'exécute, je veux vous montrer la façon dont j'ai pu trouver d'autres inspirations. Il y un site vraiment cool appelé motionsites.ai et un salut à mon pote Aiden. Il m'a montré ce site et je me suis dit, c'est génial.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D (plateforme de métavers/conférence en ligne AIS Live).
+**Interface & Outils** : Navigateur web, interface de projet de site web et plateforme "motionsites"
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant une mini-carte, des panneaux d'information sur les sessions en direct et des commandes de navigation.
+**Contenu textuel & Code** : Texte de discussion dans l'interface de développement concernant le choix des polices typographiques (serif/sans-serif) et grille de miniatures vidéo animées sur motionsites.
 
-**Action / Démonstration** : Navigation et déplacement d'un avatar 3D dans un monde virtuel interactif.
+**Action / Démonstration** : Navigation et démonstration d'outils de génération et de conception de sites web par le présentateur.
+
+![Interface d'un outil de développement web avec un panneau de chat à gauche et l'explorateur de fichiers/projet au centre, tandis que le présentateur apparaît en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000810_seg17.jpg)
+*⏱️ 00:08:10 — Interface d'un outil de développement web avec un panneau de chat à gauche et l'explorateur de fichiers/projet au centre, tandis que le présentateur apparaît en bas à droite.*
+
+![Page d'accueil du site web "motionsites" présentant une galerie de fonds animés avec le présentateur visible en incrustation dans le coin inférieur droit.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000822_seg17.jpg)
+*⏱️ 00:08:22 — Page d'accueil du site web "motionsites" présentant une galerie de fonds animés avec le présentateur visible en incrustation dans le coin inférieur droit.*
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:08:28 - 00:08:54]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Mais bref, on peut discuter avec des gens ici aussi. Le stand Hyperagent est juste là où l'on entre dans l'exposition. Tout va bien. D'accord, super. Je peux continuer à appuyer sur E pour faire changer ce qu'ils disent. Nous avons les conférenciers juste ici. Ça a l'air plutôt bien. Même si nous avions vraiment la photo de profil de tout le monde. Je ne sais donc pas trop pourquoi ce n'est pas inclus là. On voit des gens prendre des photos juste ici. J'adore ça. Et ça enregistre une petite photo. D'accord. La carte n'est pas non plus super, genre elle ne donne pas une super explication de ce qui se passe, mais j'aime ces stands. Ils sont cool. Je pense que ces stands sont les meilleurs que j'aie vus jusqu'à présent. Genre, ils ont juste l'air bien. Ils ont des représentants. Il y a de superbes diapositives derrière eux. Ouais. Ces stands sont cool. D'accord. Nous avons un petit théâtre mis en avant
+> Donc la façon dont cela fonctionne, c'est que vous pouvez essentiellement regarder des arrière-plans et vous pouvez regarder d'autres sites réels pour trouver de l'inspiration. Donc ce que vous remarquerez ici, si vous vous souvenez de ma version de AI Automation Society, donc ce site web où nous avons ce genre de scène en arrière-plan et au fur et à mesure que nous faisons défiler, nous avons ces cartes visuelles. C'est comme un voyage du point de vue de l'utilisateur final réel. J'ai été inspiré par celui-ci. Donc si j'ouvre ceci, vous pouvez voir que c'est un voyage de défilement. Il a ces éléments dynamiques 3D dans les cartes. Et j'ai pu littéralement copier ce prompt.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D (environnement virtuel de type événement en ligne)
+**Interface & Outils** : Navigateur web affichant une plateforme d'inspiration de design (type UI Gallery ou archive de sites web).
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle 3D avec mini-carte, commandes de navigation, listes de conférenciers et stands d'exposition.
+**Contenu textuel & Code** : Interface utilisateur de templates web avec titres, catégories, logos, statistiques de membres (300 000+), et noms de technologies/outils (Zapier, Make, OpenAI, Claude Code).
 
-**Action / Démonstration** : Navigation et déplacement d'un avatar dans l'espace virtuel de l'exposition.
+**Action / Démonstration** : Navigation et sélection visuelle au sein d'une bibliothèque de templates pour démontrer des inspirations de design pour des sites web d'automatisation.
 
-![Le présentateur navigue dans une application web virtuelle 3D représentant une réception d'événement avec des avatars et des écrans d'information.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001444_seg31.jpg)
-*⏱️ 00:14:44 — Le présentateur navigue dans une application web virtuelle 3D représentant une réception d'événement avec des avatars et des écrans d'information.*
+![Une bibliothèque d'inspiration présentant des designs de landing pages et portfolios (ex: "Nike Premium", "Liquid Glass Agency", "Urban Jungle").](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000834_seg18.jpg)
+*⏱️ 00:08:34 — Une bibliothèque d'inspiration présentant des designs de landing pages et portfolios (ex: "Nike Premium", "Liquid Glass Agency", "Urban Jungle").*
 
-![L'avatar s'approche de groupes de discussion dans le monde virtuel avec des bulles de texte interactives.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001453_seg31.jpg)
-*⏱️ 00:14:53 — L'avatar s'approche de groupes de discussion dans le monde virtuel avec des bulles de texte interactives.*
+![Vue détaillée du site web "AI Automation Society" avec le titre "Making AI Automation Accessible" et des statistiques communautaires.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000841_seg18.jpg)
+*⏱️ 00:08:41 — Vue détaillée du site web "AI Automation Society" avec le titre "Making AI Automation Accessible" et des statistiques communautaires.*
 
-![L'avatar entre dans le hall d'exposition virtuel montrant différents stands (Evals Lab, Enterprise AI).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001502_seg31.jpg)
-*⏱️ 00:15:02 — L'avatar entre dans le hall d'exposition virtuel montrant différents stands (Evals Lab, Enterprise AI).*
+![Aperçu agrandi et interactif du design "Urban Jungle" sélectionné dans la bibliothèque, affichant une image immersive de métro végétalisé.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000848_seg18.jpg)
+*⏱️ 00:08:48 — Aperçu agrandi et interactif du design "Urban Jungle" sélectionné dans la bibliothèque, affichant une image immersive de métro végétalisé.*
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:08:55 - 00:09:18]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> Et j'ai donné ça à Claude Design. Et j'ai dit, Hé, c'est un concept sympa. Je veux que tu remplaces l'image d'arrière-plan par, ou désolé, pas l'image d'arrière-plan. Je veux que tu remplaces la vidéo d'arrière-plan par cette vidéo d'arrière-plan. Et j'ai glissé la mienne. Et j'ai dit, Je veux que tu mettes à jour tous les textes, les couleurs de la marque et l'ambiance pour les adapter à ma marque. Et ensuite je lui ai donné comme un système de design. Donc c'est fondamentalement tout ce que j'ai eu à faire pour transformer mon AI Automation Society en ceci.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D de type métavers / plateforme événementielle en ligne
+**Interface & Outils** : Interface web de génération de design ou de landing page (type Claude Design / v0) et webcam du présentateur.
 
-**Contenu textuel & Code** : Interface utilisateur avec mini-carte, contrôles de navigation (WASD, Shift) et affichage d'événements en direct (Featured Theater / Main Stage)
+**Contenu textuel & Code** : Texte affiché : "We transform sterile concrete into thriving urban jungles..." avec des boutons de navigation et des logos de partenaires en bas.
 
-**Action / Démonstration** : Exploration et navigation dans une plateforme d'événement virtuel en 3D
+**Action / Démonstration** : Présentation du design généré par l'IA et explication de la modification de la vidéo d'arrière-plan.
 
-![Vue d'un espace d'exposition virtuel en 3D avec un avatar et des statistiques financières affichées sur un mur.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001517_seg32.jpg)
-*⏱️ 00:15:17 — Vue d'un espace d'exposition virtuel en 3D avec un avatar et des statistiques financières affichées sur un mur.*
-
-![Navigation d'un avatar dans un salon de réseautage virtuel interactif.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001523_seg32.jpg)
-*⏱️ 00:15:23 — Navigation d'un avatar dans un salon de réseautage virtuel interactif.*
-
-![Entrée dans la salle principale (Main Stage) d'un événement virtuel en 3D avec des écrans montrant des intervenants en direct.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001529_seg32.jpg)
-*⏱️ 00:15:29 — Entrée dans la salle principale (Main Stage) d'un événement virtuel en 3D avec des écrans montrant des intervenants en direct.*
+![Aperçu d'une landing page générée intitulée "Urban Jungle" avec un texte de présentation et une vidéo en arrière-plan, tandis que le présentateur apparaît dans une incrustation vidéo en bas à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000901_seg19.jpg)
+*⏱️ 00:09:01 — Aperçu d'une landing page générée intitulée "Urban Jungle" avec un texte de présentation et une vidéo en arrière-plan, tandis que le présentateur apparaît dans une incrustation vidéo en bas à droite.*
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:09:18 - 00:09:48]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Basculons la scène principale sur ce qui compte vraiment en ce moment. Je peux donc changer de sujet. Cool. Je viens donc de passer à moi et Matt. Nous pouvons passer à l'anatomie de trois vraies transactions. C'est plutôt cool. La scène a l'air bien. Nous avons un petit panneau sympa ici. Je peux monter sur la scène ? Sympa. Sympa. Bon, je ne peux pas aller trop loin, en fait. Très bien tout le monde, laissez-moi prendre le selfie. Tout le monde vient là-dedans. Je peux aussi m'asseoir dans ce public par ici et juste profiter de la session.
+> et il y en a tellement d'autres. La plupart de ceux-ci sont gratuits. Je suis sur le forfait payant, qui coûte littéralement seulement 99 dollars à vie. Donc c'est plutôt cool. Mais certains d'entre eux vont être payants. Certains d'entre eux vont être gratuits. Mais comme je l'ai dit, vous trouvez fondamentalement ceux que vous aimez, vous trouvez ceux qui correspondent à votre marque, vous cliquez sur copier, vous donnez ça à Claude Design et il va le recréer. Et ensuite, vous pouvez simplement faire des ajustements à partir de là. Et puis si je vais dans les arrière-plans, vous pouvez voir qu'il y a juste un tas d'arrière-plans que nous pouvons regarder. Donc pour une raison quelconque, il ne détecte pas que je suis un membre payant, mais de toute façon, disons que nous aimons vraiment cet arrière-plan. Je pourrais le copier.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D (metaverse / plateforme de conférence virtuelle)
+**Interface & Outils** : Navigateur web affichant une plateforme de design et de modèles de sites web.
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant des indications textuelles (« AV desk - switch the Main Stage... »), des mini-cartes et des flux vidéo de conférence.
+**Contenu textuel & Code** : Vignettes de prévisualisation de sites web, landing pages, sections héro, et fonds d'écran avec options de copie.
 
-**Action / Démonstration** : Navigation et déplacement d'un avatar dans l'espace virtuel pour changer de scène.
+**Action / Démonstration** : Navigation et défilement dans la galerie de ressources de design.
+
+![Grille de modèles de sites web et d'éléments de design avec des vignettes (ex: Velorah, Liquid Glass Agency, 3D Portfolio) et une vue du présentateur en incrustation.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000925_seg20.jpg)
+*⏱️ 00:09:25 — Grille de modèles de sites web et d'éléments de design avec des vignettes (ex: Velorah, Liquid Glass Agency, 3D Portfolio) et une vue du présentateur en incrustation.*
+
+![Navigation dans une galerie de templates web et de sections de landing pages (ex: Prisma, Securify Data Security) avec des boutons de copie.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000933_seg20.jpg)
+*⏱️ 00:09:33 — Navigation dans une galerie de templates web et de sections de landing pages (ex: Prisma, Securify Data Security) avec des boutons de copie.*
+
+![Galerie d'arrière-plans et d'éléments visuels avec des badges 'Premium' et 'Copy URL' sur les vignettes.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_000940_seg20.jpg)
+*⏱️ 00:09:40 — Galerie d'arrière-plans et d'éléments visuels avec des badges 'Premium' et 'Copy URL' sur les vignettes.*
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:09:48 - 00:10:20]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Très cool, très cool. OK, allons par ici. Je vois une section à l'étage. C'est marrant comme ils choisissent tous de mettre la section VIP à l'étage. Je veux dire, je ne déteste pas ça. Oh la la, ils ont un escalator. Pas possible. Je vais discuter avec ce type sur l'escalator. Glenn a 15 ans d'expérience en agence. Ses trucs de "land and expand" étaient en or. Du bon boulot, Glenn. Cool, donc je vais, je n'arrive même pas à passer devant ce type par contre.
+> Si j'ouvre un nouvel onglet et que je colle ça dedans, ça me donne essentiellement cette animation que je pourrais évidemment télécharger et ensuite afficher derrière le texte sur mon site web, derrière les différentes sections de mon site web. Étant donné que la plupart des trucs ici sont gratuits, allez sur Motion Sites et amusez-vous un peu. Ça va vous donner de l'inspiration et il y a beaucoup d'éléments sympas ici que vous pouvez intégrer. Donc aussi, si vous vous souvenez de mon truc Nate Herk, je suis assis ici sur une île flottante et je travaille sur je ne sais quoi, et j'ai été inspiré par certains de ceux-là, vous savez, celui-ci ressemblait un peu à un abîme, celui-ci représentait quelqu'un qui travaille. Donc je ne vous recommande pas nécessairement de simplement copier ces éléments et de les mettre sur votre site.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou plateforme virtuelle 3D interactive (espace de conférence virtuel)
+**Interface & Outils** : Navigateur web affichant une application ou un site de fonds d'écran animés.
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant des indications de navigation, une mini-carte, des informations de session en direct et des bulles de discussion textuelles au-dessus des avatars.
+**Contenu textuel & Code** : Galerie de vignettes visuelles avec des titres tels que Crystal Wave, Solar Drift, Abstract Flow, Digital Pulse et des boutons « Copy URL ».
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel 3D par l'utilisateur, déplacement vers l'étage VIP et interaction avec un autre avatar.
+**Action / Démonstration** : Navigation et défilement dans la galerie de vignettes d'animations pour copier l'URL d'un fond d'écran.
 
-![Vue d'un espace virtuel en 3D avec des avatars de participants et un grand hall d'accueil lumineux.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001600_seg34.jpg)
-*⏱️ 00:16:00 — Vue d'un espace virtuel en 3D avec des avatars de participants et un grand hall d'accueil lumineux.*
+![Interface web présentant une galerie de vignettes d'animations avec des boutons de copie d'URL.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001004_seg21.jpg)
+*⏱️ 00:10:04 — Interface web présentant une galerie de vignettes d'animations avec des boutons de copie d'URL.*
 
-![Gros plan sur un escalier mécanique menant au niveau VIP dans l'environnement virtuel 3D.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001604_seg34.jpg)
-*⏱️ 00:16:04 — Gros plan sur un escalier mécanique menant au niveau VIP dans l'environnement virtuel 3D.*
-
-![L'avatar discute avec un autre participant sur l'escalator, avec une bulle de dialogue affichant du texte descriptif.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001609_seg34.jpg)
-*⏱️ 00:16:09 — L'avatar discute avec un autre participant sur l'escalator, avec une bulle de dialogue affichant du texte descriptif.*
+![Suite de la grille de vignettes d'animations montrant différents thèmes visuels de fonds d'écran animés.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001012_seg21.jpg)
+*⏱️ 00:10:12 — Suite de la grille de vignettes d'animations montrant différents thèmes visuels de fonds d'écran animés.*
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:10:20 - 00:10:44]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, j'ai dû sauter par-dessus lui. D'accord, niveau VIP, badge requis. Oh la vache. Tu te moques de moi ? Je dois aller chercher mon badge. Bon, super. Maintenant ça montre que je suis un vrai VIP et je peux monter ici dans la section VIP. On a de super petites sessions de travail là-derrière, auxquelles on peut se greffer. Je me demande si ça va me laisser genre m'asseoir ici. Je peux juste discuter. Je peux participer ? Ça ne me laisse pas m'asseoir et participer. C'est pas grave. On a la salle de crise des prix. Oh, c'est peut-être l'after-party. Allons voir ce qui se passe par ici. Ou peut-être que je dois juste entrer par ici. D'accord. C'est bizarre. Je devais juste entrer par ici. Cet after-party n'est pas aussi cool que l'autre. Mais bref, allons voir ce qui se passe par là.
+> Vous le pouvez certainement, mais c'est juste une bonne façon de faire preuve d'un peu de créativité et de trouver de l'inspiration. Bon, mais nous sommes de retour dans le design sur le cloud maintenant et ce que nous avons, c'est notre première version, ce qui, je veux dire, a l'air génial. Comme ce texte, ce texte juste ici. Tout cela semble très fidèle à la marque. Nous pouvons voir ici qu'en faisant défiler vers le bas, l'image est un peu dynamique, ou désolé, pas l'image, je n arrête pas de dire image, la vidéo est un peu dynamique. Je pense que tout cela a l'air, je veux dire, tout simplement incroyable.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de salon ou monde virtuel en 3D (type événement virtuel en ligne)
+**Interface & Outils** : Interface web de conception et de génération de sites web (type outil de design cloud/IA) avec panneau de chat et aperçu en temps réel.
 
-**Contenu textuel & Code** : Interface utilisateur avec mini-carte, badges VIP, informations de l'événement et options de chat interactif.
+**Contenu textuel & Code** : Texte de spécifications de design dans le panneau de chat (choix des polices Newsreader, IBM Plex Sans) et aperçu d'un site e-commerce minimaliste pour un produit de rituel de sommeil ('Lull').
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par le présentateur avec son avatar.
+**Action / Démonstration** : Présentation du premier prototype visuel généré d'un site web de design moderne.
 
-![Vue d'un monde virtuel interactif (style métavers) montrant un avatar s'approchant d'un escalier dans une réception.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001623_seg35.jpg)
-*⏱️ 00:16:23 — Vue d'un monde virtuel interactif (style métavers) montrant un avatar s'approchant d'un escalier dans une réception.*
+![Interface de conception web montrant le panneau de chat de l'assistant IA à gauche, la première version du site 'Lull Website' avec un design sombre et une image de tasse de thé à droite, et la webcam du présentateur en médaillon.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001026_seg22.jpg)
+*⏱️ 00:10:26 — Interface de conception web montrant le panneau de chat de l'assistant IA à gauche, la première version du site 'Lull Website' avec un design sombre et une image de tasse de thé à droite, et la webcam du présentateur en médaillon.*
 
-![L'avatar se trouve dans une section VIP avec un écran affichant des sessions de travail et des participants autour d'une table.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001631_seg35.jpg)
-*⏱️ 00:16:31 — L'avatar se trouve dans une section VIP avec un écran affichant des sessions de travail et des participants autour d'une table.*
-
-![L'avatar explore une autre zone VIP de l'événement virtuel avec des panneaux d'affichage et d'autres utilisateurs.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001639_seg35.jpg)
-*⏱️ 00:16:39 — L'avatar explore une autre zone VIP de l'événement virtuel avec des panneaux d'affichage et d'autres utilisateurs.*
+![Vue similaire montrant le rendu du site web 'Lull Website' avec le curseur de la souris positionné sur l'image de la tasse de thé, le chat IA à gauche et la webcam du présentateur.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001038_seg22.jpg)
+*⏱️ 00:10:38 — Vue similaire montrant le rendu du site web 'Lull Website' avec le curseur de la souris positionné sur l'image de la tasse de thé, le chat IA à gauche et la webcam du présentateur.*
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:10:44 - 00:11:04]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> dans les ateliers. D'accord. Ce n'était pas bien. Regardez ça. On peut tout voir et je viens de bugger et maintenant boum. Donc ce n'est pas bon. Je dirais qu'globalement, je veux dire, vous captez l'ambiance de comment ça fonctionne, mais je dirais que celui d'avant, qui était, je crois, élevé, celui-là, je l'aimais mieux. Je ne peux pas m'asseoir dans ces chaises non plus. Ouais. Donc je n'aime pas la marche dans celui-ci.
+> On a vraiment l'impression que c'est tout à fait dans le ton. On continue de descendre et on peut voir, on obtient un peu d'arrière-plan, on obtient un peu de contexte quant à ce qu'est le produit, le problème qu'il résout. Et c'est incroyable. Encore une fois, tout cela a été généré par Claude. L'idée, le design, les prompts, pas les images et vidéos réelles, mais les prompts. Et j'adore ça.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D de conférence virtuelle / monde virtuel interactif (type événement en ligne 3D)
+**Interface & Outils** : Interface web d'un outil de conception/génération de site web avec panneau de chat et prévisualisation.
 
-**Contenu textuel & Code** : Environnement virtuel 3D avec affichage de bannières d'événements, profils des intervenants et interfaces de discussion.
+**Contenu textuel & Code** : Texte du site web 'lull' : 'You\'re not bad at sleeping. You\'re bad at stopping.' et explications sur le produit dans des colonnes avec typographie soignée.
 
-**Action / Démonstration** : Navigation et exploration d'un espace de conférence virtuel 3D avec un avatar.
+**Action / Démonstration** : Présentation du rendu final et de la mise en page générée par l'IA pour le produit Lull.
 
-![Vue d'un avatar virtuel naviguant dans un couloir moderne 3D d'une plateforme virtuelle de conférence.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001653_seg36.jpg)
-*⏱️ 00:16:53 — Vue d'un avatar virtuel naviguant dans un couloir moderne 3D d'une plateforme virtuelle de conférence.*
-
-![L'avatar s'approche de l'entrée d'une salle de conférence virtuelle (Room C).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001657_seg36.jpg)
-*⏱️ 00:16:57 — L'avatar s'approche de l'entrée d'une salle de conférence virtuelle (Room C).*
-
-![L'avatar entre dans la salle "Room C - HyperAgent Lab" où se déroule une présentation virtuelle avec des participants assis.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001702_seg36.jpg)
-*⏱️ 00:17:02 — L'avatar entre dans la salle "Room C - HyperAgent Lab" où se déroule une présentation virtuelle avec des participants assis.*
+![Aperçu du site web généré 'Lull' avec le panneau de discussion de l'outil d'IA sur la gauche et le présentateur en médaillon.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001049_seg23.jpg)
+*⏱️ 00:10:49 — Aperçu du site web généré 'Lull' avec le panneau de discussion de l'outil d'IA sur la gauche et le présentateur en médaillon.*
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:11:04 - 00:11:38]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je n'aime pas trop l'ambiance et il y a quelques bugs. Donc, jusqu'à présent, si on veut regarder notre liste, j'aime bien Extra Extra, c'est celui que j'ai le plus aimé jusqu'à présent. Mais bon, celui-ci était au maximum. Celui-ci était au maximum juste ici. Alors voyons combien de temps cela a duré : deux heures et 28 minutes. Donc ça a tourné pendant longtemps, 50 dollars et 38 cents, 1,18 million de jetons. Donc il a en fait atteint une compaction et a dû faire une auto-compaction. Et puis il a fait 51 vérifications. Est-ce qu'il l'a vraiment fait ? Parce qu'il y avait beaucoup de bugs là-dedans. Et de toute façon, celui-ci ne nous a posé zéro question. Donc, jusqu'à présent, à chaque fois, ça a presque été plus cher et ça a pris plus de temps, à part ici. Mais ceux-ci fondamentalement
+> Maintenant, ce qui est vraiment génial avec ça et qui est une excellente façon d'économiser des jetons, c'est que vous pouvez simplement faire des itérations directement ici. Vous savez, si vous intégriez ce prompt dans Claude Code, vous obtiendriez peut-être quelque chose qui ressemble visuellement à ça, mais pour faire des allers-retours et apporter des modifications, vous devriez prendre des captures d'écran un peu maladroites ou être très précis. Mais ici, ce qu'on peut faire, c'est ajouter des commentaires, je pourrais en gros juste cliquer sur quelque chose et on peut changer son fonctionnement. Donc par exemple, le bouton "comment ça marche", disons que je voulais qu'il ait une couleur différente, peut-être comme la couleur dorée, allez-y et faites de ce bouton la couleur de la virgule dans le texte principal, faites-en un accent doré.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau de bord ou interface web de présentation de données.
+**Interface & Outils** : Outil de prototypage web / Environnement de design collaboratif.
 
-**Contenu textuel & Code** : Tableau avec les colonnes Medium (1h 13m, $12.44, 419.2K, 23, 0), High (1h 7m, $16.31, 509.3K, 22, 1), Extra (1h 31m, $25.92, 733.7K, 34, 0), Max et Ultracode.
+**Contenu textuel & Code** : Spécifications techniques du site (The formula, The morning after, Subscribe) et zone de saisie pour feedback textuel ("Describe the issue or suggestion...").
 
-**Action / Démonstration** : Le présentateur commente et analyse les résultats chiffrés affichés dans le tableau comparatif.
+**Action / Démonstration** : Démonstration de l'intégration d'un flux de travail où l'utilisateur commente directement la maquette pour itérer avec l'IA.
 
-![Un tableau comparatif montrant différentes métriques (temps, coût, jetons) pour des niveaux de performance nommés Medium, High, Extra, Max et Ultracode, avec le présentateur incrusté à gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001716_seg37.jpg)
-*⏱️ 00:17:16 — Un tableau comparatif montrant différentes métriques (temps, coût, jetons) pour des niveaux de performance nommés Medium, High, Extra, Max et Ultracode, avec le présentateur incrusté à gauche.*
+![Interface de conception web montrant une maquette de site pour "Lull", avec une colonne latérale de notes de design et le présentateur en médaillon.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001112_seg24.jpg)
+*⏱️ 00:11:12 — Interface de conception web montrant une maquette de site pour "Lull", avec une colonne latérale de notes de design et le présentateur en médaillon.*
+
+![Même interface de conception web, mais avec une fenêtre de commentaire ouverte permettant d'envoyer des instructions directement à Claude.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001129_seg24.jpg)
+*⏱️ 00:11:29 — Même interface de conception web, mais avec une fenêtre de commentaire ouverte permettant d'envoyer des instructions directement à Claude.*
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:11:38 - 00:12:11]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> a pris à peu près le même temps, mais à chaque fois il a utilisé plus de tokens parce qu'ils ont plus réfléchi. Et puis, vous savez, ces tokens vont coûter plus cher. Mais bref, passons au dernier, qui est ultra code. Donc on espérerait vraiment que celui-ci soit le meilleur. Alors allons sur ce localhost et voyons ce qu'on a. Ok, super. Regardez ce badge. C'est un joli badge host all access. On a un petit visuel sympa juste ici. On va continuer et entrer AIS Live. Cool. Ok. Bienvenue, Nate. J'aime bien la marche. Ça a l'air réaliste. J'aime le logo, même s'il manque le petit point rouge qui donne l'impression que c'est en direct. La carte en haut à droite
+> And so now I can just say hey send this to claude and it gets the exact comment about the exact element that I was referring to So it's not going to get confused. You can also do edits straight in line So if I came here and I was like, okay, I don't want this m dash that looks very ai I could just delete it And then I could just close that out and it's going to make that change for us because I was just able to edit it right there So I can change the text. I could even you guys noticed change the size So if I wanted this all to be a little bit smaller I could just come in here and I could just go. Okay, make that 15 or make that 10 and it's going to change it right in real time. And then Claude just makes the change for us. You
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau de données comparatives (probablement dans un outil de gestion de projet ou tableur) et interface de simulation/jeu 3D.
+**Interface & Outils** : Outil de conception web collaboratif avec IA intégrée (type éditeur de design visuel).
 
-**Contenu textuel & Code** : Dans le tableau : colonnes de modèles (High à Ultracode), lignes de mesures (temps, dollars, nombre de tokens : 509.3K à 1.18M). Dans le jeu : hall d'accueil "AIS LIVE", texte "Registration & Lobby", avatars.
+**Contenu textuel & Code** : Spécifications du design système (palette de couleurs, typographie), panneau de configuration CSS (police, taille, poids, couleur, marges) pour l'élément sélectionné.
 
-**Action / Démonstration** : Le présentateur compare les coûts et performances des modèles IA (Image 1) puis montre le résultat visuel final généré dans un environnement virtuel (Image 2).
+**Action / Démonstration** : Interaction directe avec l'IA via le chat pour demander des modifications, suivie d'une manipulation manuelle des propriétés visuelles (typographie) d'un élément sélectionné dans l'éditeur.
 
-![Tableau comparatif des performances de différents modèles (High, Extra, Max, Ultracode) affichant le temps, le coût, le nombre de tokens et d'autres métriques.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001752_seg38.jpg)
-*⏱️ 00:17:52 — Tableau comparatif des performances de différents modèles (High, Extra, Max, Ultracode) affichant le temps, le coût, le nombre de tokens et d'autres métriques.*
+![Interface de conception web montrant un panneau latéral de chat avec l'IA "Claude" en train de traiter une édition sur le fichier "Lull Website.html".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001146_seg25.jpg)
+*⏱️ 00:11:46 — Interface de conception web montrant un panneau latéral de chat avec l'IA "Claude" en train de traiter une édition sur le fichier "Lull Website.html".*
 
-![Capture d'écran d'un environnement virtuel 3D de type métavers ou simulateur événementiel intitulé "AIS LIVE" avec des avatars.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001809_seg38.jpg)
-*⏱️ 00:18:09 — Capture d'écran d'un environnement virtuel 3D de type métavers ou simulateur événementiel intitulé "AIS LIVE" avec des avatars.*
+![Interface de design montrant un panneau de propriétés typographiques à droite, avec un bloc de texte sélectionné sur la maquette du site web "Lull".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001202_seg25.jpg)
+*⏱️ 00:12:02 — Interface de design montrant un panneau de propriétés typographiques à droite, avec un bloc de texte sélectionné sur la maquette du site web "Lull".*
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:12:11 - 00:12:46]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> est un petit peu mieux étiqueté, donc je peux voir ce qui se passe. Je vais venir ici et récupérer mon bracelet VIP très rapidement. D'accord, super. Ça me dit aussi quoi faire. Donc en haut à gauche, il est écrit de scanner au portail VIP sur le mur est du hall. Je crois donc que l'est serait par ici, non ? Ne mange jamais de gaufres détrempées. Ouais. Ailes VIP, scanner le bracelet. D'accord, cool. Maintenant je suis dans la section VIP. Je peux voir ces différentes salles. La réinitialisation des outils. Une vidéo en direct est diffusée. Je suis capable de voir les sous-titres juste là de ce dont on est en train de parler. Ça diffuse aussi les sons, mais je ne diffuse tout simplement pas l'audio pour vous les gars parce que je ne veux pas submerger.
+> can also draw. So like right here, let's say I don't love the way that the video just kind of ends so abruptly. I can just kind of make a circle around this and then I can type and just say, I don't like how this ends. So abruptly add a transition overlay or gradient. So it feels smoother. And I shoot that off by hitting send. Now, when I do the drawing thing, the little comments get stuck down there. So sometimes it's hard to see. That's just kind of a UI bug. Once again, this is a research preview. So little kinks will get ironed out,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle 3D (Metaverse / environnement virtuel interactif).
+**Interface & Outils** : Interface de développement et de prévisualisation web (type Cursor/Claude artifact).
 
-**Contenu textuel & Code** : Éléments textuels de guidage à l'écran ("Registration & Lobby", "VIP Wing", "VIP Room 5").
+**Contenu textuel & Code** : Interface de chat latéral avec historique de modifications et prévisualisation du site "Lull" à droite.
 
-**Action / Démonstration** : Navigation et exploration dans l'espace virtuel par le présentateur.
+**Action / Démonstration** : Annotation directe sur l'interface de prévisualisation pour demander une correction de design.
 
-![Image montrant l'avatar du présentateur dans un hall virtuel d'enregistrement avec le texte "Registration & Lobby".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001825_seg39.jpg)
-*⏱️ 00:18:25 — Image montrant l'avatar du présentateur dans un hall virtuel d'enregistrement avec le texte "Registration & Lobby".*
+![Le présentateur utilise l'outil de dessin pour entourer une zone spécifique sur la prévisualisation d'un site web.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001220_seg26.jpg)
+*⏱️ 00:12:20 — Le présentateur utilise l'outil de dessin pour entourer une zone spécifique sur la prévisualisation d'un site web.*
 
-![Image montrant l'avatar entrant dans l'espace "VIP Wing" du monde virtuel.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001833_seg39.jpg)
-*⏱️ 00:18:33 — Image montrant l'avatar entrant dans l'espace "VIP Wing" du monde virtuel.*
-
-![Image montrant l'avatar dans la "VIP Room 5 - Tooling Reset / Solo to Real Business" autour d'une table avec d'autres avatars.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001841_seg39.jpg)
-*⏱️ 00:18:41 — Image montrant l'avatar dans la "VIP Room 5 - Tooling Reset / Solo to Real Business" autour d'une table avec d'autres avatars.*
+![Le présentateur a ajouté une note textuelle sous la zone entourée pour demander une amélioration de la transition visuelle.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001237_seg26.jpg)
+*⏱️ 00:12:37 — Le présentateur a ajouté une note textuelle sous la zone entourée pour demander une amélioration de la transition visuelle.*
 
 ---
 
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
+### ⏱️ `[00:12:46 - 00:13:06]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Encore une fois, celui-ci fonctionne avec Cody et Mustafa là-dedans. C'est génial. Vidéo en direct. La vidéo ne se lance pas tant qu'on n'entre pas, par contre. Donc, honnêtement, je pense que c'est un bon choix. Dès que j'entre, par contre, la vidéo démarre. Sympa. Belle attention. Toutes ces salles. Génial. Ouais. Je veux dire, ça fait très haut de gamme. Voici une salle de guerre des prix. Allons voir ça. Moi et John là-dedans.
+> but that's a really nice feature to be able to just draw. Okay. So you can see that that button changed colors. I like that. Everything else that we have changed has been changed. And it, hopefully you can see it added a little line here. So that's not exactly what I wanted. I would iterate a little bit. I was kind of hoping for sort of like a gradient transition, but either way, at least it knew exactly what I was referring to.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou plateforme virtuelle 3D interactive (type metaverse).
+**Interface & Outils** : Navigateur web avec outil de prévisualisation et d'édition de site (probablement Cursor ou un environnement similaire de développement assisté par IA).
 
-**Contenu textuel & Code** : Interface d'un espace virtuel interactif affichant "VIP Wing", des indications de salles ("Price It Right - First 10 Clients Plan") et un avatar en mouvement.
+**Contenu textuel & Code** : Historique de chat IA traitant de la modification du style des boutons et de l'ajout d'éléments structurels ("bridging element") sur la page Lull.
 
-**Action / Démonstration** : Exploration de l'environnement virtuel 3D et déplacement d'un avatar vers une salle de réunion.
+**Action / Démonstration** : Itération sur le design du site web : l'agent IA ajuste la mise en page en insérant du texte et des éléments visuels pour fluidifier la transition entre les sections.
 
-![Un utilisateur navigue dans un environnement virtuel 3D (metaverse / espace virtuel) montrant une aile VIP avec des salles de réunion et des écrans vidéo.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001854_seg40.jpg)
-*⏱️ 00:18:54 — Un utilisateur navigue dans un environnement virtuel 3D (metaverse / espace virtuel) montrant une aile VIP avec des salles de réunion et des écrans vidéo.*
+![Interface de développement web montrant une page de renvoi "Lull" avec un volet de chat IA à gauche et un rendu visuel du site à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001251_seg27.jpg)
+*⏱️ 00:12:51 — Interface de développement web montrant une page de renvoi "Lull" avec un volet de chat IA à gauche et un rendu visuel du site à droite.*
+
+![Mise à jour de la page affichant une nouvelle section textuelle "Thirty minutes" ajoutée sous la bannière principale après une itération de l'agent.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001256_seg27.jpg)
+*⏱️ 00:12:56 — Mise à jour de la page affichant une nouvelle section textuelle "Thirty minutes" ajoutée sous la bannière principale après une itération de l'agent.*
+
+![Vue détaillée de l'interface montrant une fine ligne ajoutée graphiquement sous la section texte, correspondant au commentaire audio sur l'itération.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001301_seg27.jpg)
+*⏱️ 00:13:01 — Vue détaillée de l'interface montrant une fine ligne ajoutée graphiquement sous la section texte, correspondant au commentaire audio sur l'itération.*
 
 ---
 
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
+### ⏱️ `[00:13:06 - 00:13:27]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et ensuite, nous avons l'after-party sympa. Cet after-party n'est pas encore aussi animé. Et nous avons plus de ballons de plage pour une raison quelconque, mais cet after-party est cool. Je veux dire, ça nous donne une bonne ambiance et il y a la rediffusion juste ici de notre séance de questions-réponses de l'after-party, tout cela est en direct aussi. Génial. Bon. Allons sur la scène principale. Cela m'invite aussi à prendre un siège côté allée sur la scène principale, qui est tout droit à travers l'expo. Donc en fait, traversons d'abord l'expo. Qu'est-ce que vous construisez. Il y a beaucoup de gens qui parlent de différentes choses par ici. Waouh. Il y a aussi genre un petit truc de basket. Est-ce que je peux le lancer ? Je peux. Est-ce que je dois regarder en haut pour le lancer vers le haut ? D'accord.
+> Okay, so anyways, at this point, we would read through all the copy and we would iterate. And like I said, I think that this looks pretty solid. But now, if you are not someone who's creative, you might be like, okay, what do I even add? If you are someone who's creative, you're probably gonna have a lot of features that you wanna add. And at that point, you'll iterate, make some changes, make some prompts. But let's say you just wanna know what else is possible and you wanna see what Claude can come up with.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D en ligne (type metaverse / plateforme de conférence virtuelle)
+**Interface & Outils** : Navigateur web (outil de design/collaboration type Figma ou plateforme de développement IA).
 
-**Contenu textuel & Code** : Interface de navigation 3D avec mini-carte et affichage textuel contextuel.
+**Contenu textuel & Code** : Interface utilisateur du site web avec texte promotionnel sur des ingrédients (Glycine, Tart Cherry) et logs textuels de l'IA (mentionnant "grep", "hero-meta", et des retours sur le design).
 
-**Action / Démonstration** : Exploration d'un monde virtuel 3D lors d'une visite guidée.
+**Action / Démonstration** : Revue de conception web et interaction avec un agent IA pour itérer sur le contenu et la mise en page.
+
+![Interface de conception web montrant un aperçu du site "Lull" avec un volet de chat interactif à gauche contenant des commentaires et des logs de recherche technique.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001311_seg28.jpg)
+*⏱️ 00:13:11 — Interface de conception web montrant un aperçu du site "Lull" avec un volet de chat interactif à gauche contenant des commentaires et des logs de recherche technique.*
 
 ---
 
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
+### ⏱️ `[00:13:27 - 00:14:00]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Eh bien, pas terrible. Mais bref, nous avons un stand AIS plus. Nous avons le stand Glido. Est-ce que ça diffuse en direct ? Ouais, ça diffuse définitivement en direct. Sympa. Nous avons le stand de l'hyper agent. Nous avons d'autres trucs par ici. OK, super. Je vais aller dans la salle principale et voir si on peut trouver une place côté allée. Dès qu'on entre, tout se met à jouer. On a une très bonne ambiance de scène. Comment faire pour trouver une place côté allée par contre. Voilà. Il a fallu que je trouve la bonne. Je prends la place côté allée. Il n'y a personne sur scène, ce qui est bizarre. J'aimais bien quand il y avait du monde sur scène dans les versions précédentes.
+> Watch this, you come into here. This is a really great iteration one. I want to see what else is possible I want to see how this website could be improved So just add a bunch of things that I can tweak and put those on there for me different colors different sliders different Panels and just give me a bunch of things to play with And this is one of the biggest benefits and things that I love about cloud design even compared to other You know website builders is that we have this tweaks panel right here Right now we have none But it's going to add a bunch of tweaks that we can just play with in real time and that way we're able to see, okay, I love this, don't like this so much
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Plateforme événementielle virtuelle interactive "AIS LIVE".
+**Interface & Outils** : Interface de développement web orientée IA (semblable à V0 ou Cursor).
 
-**Contenu textuel & Code** : Interface utilisateur de type jeu vidéo avec mini-carte (top-right), texte d'orientation (ex: "Grab a seat", "New space unlocked"), et sous-titres des dialogues.
+**Contenu textuel & Code** : Historique de modifications textuel détaillant l'ajout d'un élément de transition ("interstitial band") et l'ajustement du contenu textuel sur la page d'accueil de "Lull".
 
-**Action / Démonstration** : Navigation et déplacement de l'avatar dans l'espace virtuel pour rejoindre la zone de conférence principale.
+**Action / Démonstration** : L'utilisateur interagit avec l'IA pour itérer sur le design du site web en utilisant le panneau de chat pour donner des instructions de modification.
 
-![Vue d'un environnement virtuel immersif représentant une salle d'exposition (Expo Hall) avec des avatars d'utilisateurs.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001948_seg42.jpg)
-*⏱️ 00:19:48 — Vue d'un environnement virtuel immersif représentant une salle d'exposition (Expo Hall) avec des avatars d'utilisateurs.*
-
-![Transition vers la "Main Stage" dans l'environnement virtuel, montrant une scène avec des écrans de diffusion en direct.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001955_seg42.jpg)
-*⏱️ 00:19:55 — Transition vers la "Main Stage" dans l'environnement virtuel, montrant une scène avec des écrans de diffusion en direct.*
-
-![Gros plan sur la salle principale (Main Stage) où l'avatar est assis parmi d'autres participants virtuels pour assister à une présentation.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002001_seg42.jpg)
-*⏱️ 00:20:01 — Gros plan sur la salle principale (Main Stage) où l'avatar est assis parmi d'autres participants virtuels pour assister à une présentation.*
+![Une plateforme de design et développement assistée par IA (type V0.dev) affichant à gauche un journal de modifications et un chat, et à droite l'aperçu du site web "Lull".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001336_seg29.jpg)
+*⏱️ 00:13:36 — Une plateforme de design et développement assistée par IA (type V0.dev) affichant à gauche un journal de modifications et un chat, et à droite l'aperçu du site web "Lull".*
 
 ---
 
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
+### ⏱️ `[00:14:00 - 00:14:19]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Prenons un petit selfie. Bref, il y a moi et Pat là-haut. Pat est habillé comme un ouvrier du bâtiment. Comme vous pouvez le voir, nous faisions un petit appel de découverte simulé dans cet exemple. Je vais revenir par l'expo et nous allons aller ici vers l'aile des ateliers et simplement vérifier si ces salles sont fondamentalement exactement telles qu'elles devraient être. Maintenant, je ne peux pas vraiment discuter avec les gens. Avant, je le pouvais, dans les versions précédentes, discuter avec les gens, ce que je trouvais être une très belle touche. Et nous avons l'atelier d'une piste de base. Est-ce que je peux m'asseoir ?
+> and it has helped me feel a lot more creative in times when I'm kind of sitting there lacking inspiration. Real quick, guys, I know we're gonna be going over a lot of information today so I'm gonna throw in everything that we're talking about here, all of the different things to keep in mind into a free resource guide that you can access for completely free by joining my free school community. As you can see, join the free community.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Plateforme de conférence virtuelle interactive / Metaverse type événementiel (AIS LIVE).
+**Interface & Outils** : Artifacts (interface de prévisualisation web de Claude.ai) pour l'image 1 ; Site web public pour l'image 2.
 
-**Contenu textuel & Code** : Superposition d'éléments d'interface (HUD) incluant une mini-map en haut à droite, des objectifs de navigation ("Explore every space") et des noms d'utilisateurs.
+**Contenu textuel & Code** : - Image 1 : Prompts utilisateur demandant des ajustements de design ("different colors, different sliders, different panels") et réponses de l'IA ("Invoking skill", "Reading", "Searching, Reading, Editing").
+- Image 2 : Titre "UNLEASH THE AI SOCIETY" et mention de "n8n, Claude Code".
 
-**Action / Démonstration** : Déplacement et exploration au sein d'un espace de réunion virtuel simulant une conférence réelle.
+**Action / Démonstration** : L'agent IA est en train d'analyser la structure de fichier et d'injecter une logique de "Tweaks panel" pour permettre des modifications dynamiques sur le site.
 
-![Vue d'un environnement virtuel immersif type conférence en ligne ("Main Stage") avec avatars et interface de navigation.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002014_seg43.jpg)
-*⏱️ 00:20:14 — Vue d'un environnement virtuel immersif type conférence en ligne ("Main Stage") avec avatars et interface de navigation.*
-
-![Navigation dans le hall d'exposition virtuel ("Expo Hall") avec indications de zones et avatars des participants.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002020_seg43.jpg)
-*⏱️ 00:20:20 — Navigation dans le hall d'exposition virtuel ("Expo Hall") avec indications de zones et avatars des participants.*
-
-![Entrée dans le couloir "Workshop Wing" de la plateforme virtuelle avec signalétique informative sur les murs.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002025_seg43.jpg)
-*⏱️ 00:20:25 — Entrée dans le couloir "Workshop Wing" de la plateforme virtuelle avec signalétique informative sur les murs.*
+![Interface de développement web interactive montrant une prévisualisation de site "Lull" et une barre latérale de discussion avec une IA (Claude) qui traite des demandes de modification de design.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001405_seg30.jpg)
+*⏱️ 00:14:05 — Interface de développement web interactive montrant une prévisualisation de site "Lull" et une barre latérale de discussion avec une IA (Claude) qui traite des demandes de modification de design.*
 
 ---
 
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
+### ⏱️ `[00:14:19 - 00:14:38]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je ne peux pas m'asseoir. Je ne sais pas. Nous avons Liberty qui parle en ce moment et elle est en train de parler et nous pouvons l'entendre. Donc c'est bien, mais ça ne me laisse pas m'asseoir. Et regardez ça. Je deviens assez instable juste ici. Ça buguait de la façon dont je marchais. Ça ne voulait pas me laisser marcher pour ainsi dire. Ce n'est pas bon. Même chose. Nous avons cette piste avancée là-dedans. Super. Donc dans l'ensemble, ils ont une ambiance très similaire. Je dirai que je suis impressionné par la façon dont ils ont été capables de raconter une histoire à partir de ce que nous faisaient. Bibliothèque de points clés des intervenants. D'accord. C'est cool. Je ne pense pas que nous ayons vu cela à partir de différents endroits, mais ce sont comme les ressources et qui montrent des choses sympas. Oh, ouah. Je
+> This will take you to AI Automation Society. You will go into the classroom and inside of all YouTube resources, you will be able to find everything. The document that I'm referring to And I'm also going to include basically the zip file of this website. If you guys want to extract it and understand how it works and how the scrolling animations work, you can dive into it and you can let Claude Code or Claude Design dive into it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement de métavers éducatif (type plateforme de conférence virtuelle).
+**Interface & Outils** : Plateforme communautaire web "AI Automation Society" (Skilljar ou plateforme similaire).
 
-**Contenu textuel & Code** : Textes informatifs sur les ateliers ("Foundation Track", "Advanced Track", "Speaker Takeaways Library") et sous-titres interactifs en temps réel.
+**Contenu textuel & Code** : Menu de navigation : Community, Classroom, Calendar, Members, etc. Vignettes : "Start Here", "7 Day AIS Challenge", "All YouTube Resources", "Claude Code", "FREE n8n Templates".
 
-**Action / Démonstration** : Navigation et déplacement de l'avatar dans les différentes sections du hall virtuel lors de la présentation.
+**Action / Démonstration** : Navigation dans la bibliothèque de ressources éducatives de la plateforme pour localiser les documents et fichiers zip mentionnés.
 
-![Vue d'un environnement virtuel 3D avec un avatar se tenant devant une porte, sous-titré "Workshop A - Foundation Track".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002040_seg44.jpg)
-*⏱️ 00:20:40 — Vue d'un environnement virtuel 3D avec un avatar se tenant devant une porte, sous-titré "Workshop A - Foundation Track".*
-
-![L'avatar se déplace dans une salle de conférence virtuelle intitulée "Workshop B - Advanced Track", avec des sièges et des écrans.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002048_seg44.jpg)
-*⏱️ 00:20:48 — L'avatar se déplace dans une salle de conférence virtuelle intitulée "Workshop B - Advanced Track", avec des sièges et des écrans.*
-
-![Vue intérieure d'une salle nommée "Speaker Takeaways Library" avec des avatars et des panneaux d'information muraux.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002056_seg44.jpg)
-*⏱️ 00:20:56 — Vue intérieure d'une salle nommée "Speaker Takeaways Library" avec des avatars et des panneaux d'information muraux.*
+![Interface du "Classroom" de la plateforme AI Automation Society présentant des vignettes de modules de formation, dont "All YouTube Resources".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001424_seg31.jpg)
+*⏱️ 00:14:24 — Interface du "Classroom" de la plateforme AI Automation Society présentant des vignettes de modules de formation, dont "All YouTube Resources".*
 
 ---
 
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
+### ⏱️ `[00:14:38 - 00:15:12]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> peut réellement ouvrir toutes ces choses et nous pouvons prendre des photos ici même aussi. Sympathique. Prendre une photo. Je peux aussi l'enregistrer. Genre, je peux vraiment télécharger ceci. Et maintenant nous avons cette photo que nous venons de prendre à cet événement en direct de l'AIS. Très bien. Eh bien, je pense qu'il est temps pour moi de tirer quelques conclusions, mais d'abord voyons ce que cette exécution nous a coûté. Cela a pris une heure et 35 minutes. C'était donc beaucoup plus rapide que max. Cela n'a coûté que 18 dollars et 69 cents. Waouh. C'était donc un peu plus cher que high, moins cher que extra et beaucoup moins cher que max. Cela a également consommé 606 000 jetons et 42 vérifications avec zéro question. Maintenant, une autre chose intéressante à noter est que tout
+> But it's really quite simple. Like I said, I basically just said, hey, here's the video. But instead of just playing it, I want you to only associate each frame with like a scroll position so that as I scroll down or up, the video goes forward or reverses. So anyways, let's get back to the video. Okay, so our tweaks are here. And you can see on this right hand side, we have a ton of things that we could play with, which is just going to be so cool. So let's start up at the top. We have a palette. So this was the default. We could also go to more of a blue or more of a brown and more of a green or whatever these is. I'm sure you guys can't tell a ton, but the colors here are changing. Now you can see more. The background is changing. We can get sort of like a green. We can get more of a brown.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Visionneuse d'images Windows (Image 1) ; Interface de design/diagramme "Opus 5.5 Efforts" (Image 2).
+**Interface & Outils** : Navigateur web, interface de design prototype de site web (type outil de personnalisation en temps réel).
 
-**Contenu textuel & Code** : Photo de l'événement "AIS LIVE" (Image 1) ; Tableau de données comparatives incluant des durées, des montants en dollars et des valeurs numériques (Image 2).
+**Contenu textuel & Code** : Panneaux de réglages : "Tweaks", "Hero Layout", "Video Dim", "Grain Overlay", "Palette", "Display Serif", "Accent Hue".
 
-**Action / Démonstration** : Affichage et visualisation d'une photo capturée automatiquement lors de l'événement virtuel (Image 1) ; Manipulation de données dans une interface de travail (Image 2).
+**Action / Démonstration** : Ajustement des paramètres visuels du site web (layout, filtres, couleurs) via des curseurs et des sélecteurs dans le panneau de configuration latéral.
 
-![Une visionneuse d'images Windows affichant une photo prise lors d'un événement virtuel "AIS LIVE", montrant deux avatars sur un tapis rouge devant un mur de sponsors.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002113_seg45.jpg)
-*⏱️ 00:21:13 — Une visionneuse d'images Windows affichant une photo prise lors d'un événement virtuel "AIS LIVE", montrant deux avatars sur un tapis rouge devant un mur de sponsors.*
+![Interface de design web "Lull" montrant un panneau latéral de configuration "Tweaks" avec des curseurs pour ajuster la mise en page, la vidéo et le grain.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001455_seg32.jpg)
+*⏱️ 00:14:55 — Interface de design web "Lull" montrant un panneau latéral de configuration "Tweaks" avec des curseurs pour ajuster la mise en page, la vidéo et le grain.*
+
+![Interface de design web "Lull" avec le panneau "Tweaks" affichant des options de sélection de palette de couleurs, typographie (serif) et réglages de police.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001504_seg32.jpg)
+*⏱️ 00:15:04 — Interface de design web "Lull" avec le panneau "Tweaks" affichant des options de sélection de palette de couleurs, typographie (serif) et réglages de police.*
 
 ---
 
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
+### ⏱️ `[00:15:13 - 00:15:47]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> ces exécutions, aucune d'entre elles n'a utilisé de sous-agent. J'ai vérifié et je me suis assuré qu'aucune d'elles n'avait utilisé de sous-agents. Elles ne voulaient déléguer aucun travail, ce qui était intéressant. Donc ces jetons sont ce qui a été reflété à l'intérieur de cette session. Évidemment, comme je l'ai dit, celle-ci a dépassé, vous savez, 950 000, donc, ou peu importe quelle est la fenêtre de compaction. Je ne la laisse généralement jamais monter aussi haut, mais comme c'était un objectif global et que je n'étais pas impliqué, celle-ci a dû se compacter, mais le reste d'entre elles a simplement tourné dans cette seule session. Et voici les statistiques globales. Et aussi, très rapidement, à propos des trucs d'UltraCode, les gars, je ne sais pas si vous l'avez remarqué, mais quand j'ai fait tourner UltraCode ces derniers temps, ça a juste fait bizarre. Ça a semblé un peu buggé. Moi, à quelques reprises, je l'ai fait tourner
+> We have more of a light mode here. So this would let you play around with what you think fits the brand the best. And obviously I don't like this because the hero looks weird. So we could tweak that. I kind of like the brown, but anyways, what else? We have the accent hue. So we can change this. You see how the hue was kind of like a gold. We can change this to see what other colors might look good with our main color scheme. For now, I really liked the default, which was kind of over here more of like a golden bronze. So we'll keep it there. We have the text as well. So I can switch this around or sorry, not the text, the font. And I can play with different fonts to see what I actually like. And we can see where else it changes. So it looks like this is changing kind
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou tableau de bord avec une interface sombre présentant un tableau de données analytiques.
+**Interface & Outils** : Navigateur web / Éditeur de design visuel propriétaire.
 
-**Contenu textuel & Code** : Tableau avec les colonnes Low, Medium, High, Extra, Max, Ultracode et les lignes : Run time, API cost, Total tokens, Checks, Questions asked.
+**Contenu textuel & Code** : Panneau "Tweaks" affichant des sélecteurs de couleurs, une roue de teinte (accent hue), des options de polices (Cormorant, DM Serif, etc.) et des curseurs de réglage pour la taille des titres.
 
-**Action / Démonstration** : Le présentateur commente les résultats chiffrés et l'utilisation des jetons affichés dans le tableau comparatif.
+**Action / Démonstration** : Démonstration de la personnalisation dynamique de l'interface du site web en modifiant les paramètres visuels via le panneau de contrôle latéral.
 
-![Tableau comparatif affichant les performances de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec le temps d'exécution, le coût API, le nombre total de jetons, les vérifications et les questions posées.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002149_seg46.jpg)
-*⏱️ 00:21:49 — Tableau comparatif affichant les performances de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec le temps d'exécution, le coût API, le nombre total de jetons, les vérifications et les questions posées.*
+![Interface d'édition web "Lull" montrant un panneau latéral de personnalisation stylistique (Tweaks) avec des options de palette, de teinte d'accentuation (accent hue) et de typographie.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001521_seg33.jpg)
+*⏱️ 00:15:21 — Interface d'édition web "Lull" montrant un panneau latéral de personnalisation stylistique (Tweaks) avec des options de palette, de teinte d'accentuation (accent hue) et de typographie.*
 
 ---
 
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
+### ⏱️ `[00:15:47 - 00:16:21]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> et je me suis dit, est-ce que ça tourne vraiment sous UltraCode ? Ça a fait pas mal de vérifications de plus que ces autres-là, mais pour une raison quelconque, ça ne me semblait pas correct, parce qu'essentiellement, ce qu'est UltraCode, c'est un effort supplémentaire, et ensuite c'est juste comme utiliser des flux de travail plus dynamiques afin de faire les choses. Et donc, à force de fouiller dans les journaux de session et même quand je regardais ce truc se construire dans UltraCode, ça ne lançait aucun de ces flux de travail dynamiques et j'ai essayé plusieurs fois.
+> of the primary font everywhere. This is kind of more of a secondary, but this is changing the main text everywhere. We could also see the headline slider. So this can make it bigger or smaller, and we can play around with the way that it wraps and everything. So that's nice. The headline could be right in all uppercase. It could be lowercase, which actually I like. I'm going to keep it all lowercase. And then we can change the actual text right here. Of course, the hero layout we could play around with. Obviously, I don't want it centered. We want it left aligned because we made the video that way. So we're going to keep that. But hopefully you guys are starting to understand what I'm talking about. Now we have sort of like this overlay we can play around with. We have the video dim that we can play around with. I'm sure you guys, unfortunately,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou tableau de bord avec une interface sombre.
+**Interface & Outils** : Interface de design web interactive (type Vercel v0 ou outil similaire de prototypage en temps réel).
 
-**Contenu textuel & Code** : Tableau de données comparatives avec les lignes : Run time, API cost, Total tokens, Checks, Questions asked, et les colonnes de Low à Ultracode.
+**Contenu textuel & Code** : Panneau "Tweaks" : réglages Palette, Accent hue, Display serif, Headline size (slider), Headline case (As written, Uppercase), Hero headline copy, Hero layout.
 
-**Action / Démonstration** : Le présentateur commente et analyse les résultats affichés dans le tableau comparatif des différents niveaux d'effort.
+**Action / Démonstration** : Manipulation interactive des styles CSS (taille de police, casse, alignement) via le panneau de contrôle "Tweaks" pour modifier le rendu visuel de la page d'accueil en temps réel.
 
-![Un tableau comparatif montrant les métriques de performance de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) comprenant le temps d'exécution, le coût de l'API, les tokens totaux, les vérifications et les questions posées.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002218_seg47.jpg)
-*⏱️ 00:22:18 — Un tableau comparatif montrant les métriques de performance de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) comprenant le temps d'exécution, le coût de l'API, les tokens totaux, les vérifications et les questions posées.*
+![Interface de personnalisation de site web "Lull" montrant un panneau latéral "Tweaks" avec des réglages de palette, de teinte, de police et un curseur de taille de titre (112px).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001556_seg34.jpg)
+*⏱️ 00:15:56 — Interface de personnalisation de site web "Lull" montrant un panneau latéral "Tweaks" avec des réglages de palette, de teinte, de police et un curseur de taille de titre (112px).*
+
+![Interface de personnalisation de site web "Lull" où le titre est passé en minuscules, avec le panneau "Tweaks" affichant des options pour la casse du titre et la mise en page (Left, Centered, Right).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001604_seg34.jpg)
+*⏱️ 00:16:04 — Interface de personnalisation de site web "Lull" où le titre est passé en minuscules, avec le panneau "Tweaks" affichant des options pour la casse du titre et la mise en page (Left, Centered, Right).*
 
 ---
 
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
+### ⏱️ `[00:16:21 - 00:16:43]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc je ne sais pas si c'est un bug actuellement dans l'environnement de test de CloudCode ou si c'est juste avec Opus 5.5, c'est un tout petit peu pire avec UltraCode en ce moment ou quelque chose comme ça, mais dans les deux cas, ce sont les niveaux d'effort globaux réels et tout cela semble tout à fait logique quand on regarde comment ils progressent. Alors jetons un œil à ceci. Coût maximal par rapport au coût minimal, nous avions un facteur de 12,9 fois sur l'exécution la moins chère par rapport à l'exécution la plus chère, ce qui, je crois, allait de 3,98 $ à 50,38 $.
+> you can't really see. I wish that they could move. Like I wish you could drag this tweak slider anywhere, but I'm sure that'll come. We have something called section rhythm, which I probably have to scroll down to see what that is. Okay. So this is basically just like the gaps between the sections. So we could make that smaller or larger. We have the ritual card style. I'm not sure where the rituals are. Here they are. So flat, bordered, or big numerals. I think I like the big numerals.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de prise de notes ou tableau blanc virtuel (type Miro ou Obsidian).
+**Interface & Outils** : Interface de développement ou de prévisualisation web (type outil de design/prototypage).
 
-**Contenu textuel & Code** : Tableau de données chiffrées incluant : Run time (temps d'exécution), API cost (coût), Total tokens, Checks (vérifications), et Questions asked (questions posées).
+**Contenu textuel & Code** : Panneau de contrôle "TWEAKS" affichant des sliders pour : Video Dim (12%), Grain Overlay (6%), Section Rhythm (96px) et des options de style (Ritual Card Style, Interstitial Band).
 
-**Action / Démonstration** : Analyse visuelle des performances comparatives entre les modèles d'IA lors d'un test de charge.
+**Action / Démonstration** : Manipulation des curseurs de réglage (sliders) pour ajuster le design de la page en temps réel.
 
-![Tableau comparatif des performances et coûts des différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) pour Opus 5.5.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002241_seg48.jpg)
-*⏱️ 00:22:41 — Tableau comparatif des performances et coûts des différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) pour Opus 5.5.*
+![Une interface de site web avec un panneau latéral "TWEAKS" ouvert à droite, permettant d'ajuster des paramètres de design comme le "Section Rhythm", le "Video Dim" et le "Grain Overlay".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001627_seg35.jpg)
+*⏱️ 00:16:27 — Une interface de site web avec un panneau latéral "TWEAKS" ouvert à droite, permettant d'ajuster des paramètres de design comme le "Section Rhythm", le "Video Dim" et le "Grain Overlay".*
 
 ---
 
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
+### ⏱️ `[00:16:43 - 00:17:14]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc c'était bas et maximum. En ce qui concerne les vérifications maximales par rapport aux minimales, nous avons eu un multiplicateur de 2,3 fois. Le total pour les six était de 127 dollars et ultra code était de 18,69 dollars. Examinons la vitesse par rapport au coût ici. Laissez-moi donc dézoomer un peu pour que nous puissions voir tout cela. Sur l'axe des X, nous avons le temps d'exécution. Sur l'axe des Y, nous avons le coût.
+> So yeah, I'm sure you guys get the point by now. We're able to just play around with the tweaks. And of course we could just hit reset, which would reset everything. So there's really nothing to lose here. Actually making tweaks and then saving those changes is going to save you more time and also more of your session limit than if you're just having a conversation back and forth with Claude because we all know how that can go if you just shoot off prompt after prompt after prompt after prompt. Because also think about the fact that if you were doing this in Claude code and you had all these tweaks that you wanted to play with, this is basically like, hey, I wonder what it would look like if the background was blue. And then you would have to go submit the prompt.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web propriétaire (Opus Effort Test).
+**Interface & Outils** : Environnement de développement web interactif ou éditeur de site basé sur l'IA (type V0 ou plateforme de prototypage similaire).
 
-**Contenu textuel & Code** : Données chiffrées : "12.9x Max cost vs Low", "2.3x Max checks vs Low", "$18.69 Ultracode cost, 42 checks", "$127.65 Total across all six". Texte descriptif sur le test des sessions avec différents paramètres d'effort.
+**Contenu textuel & Code** : Panneau de configuration "TWEAKS" avec des curseurs (Video dim, Grain overlay, Section rhythm) et des options de sélection de style (Hero layout, Ritual card style).
 
-**Action / Démonstration** : Le présentateur explique les résultats des tests de performance et de coût de l'agent en comparant les différents niveaux d'effort (Low vs Max).
+**Action / Démonstration** : Démonstration interactive de modification des paramètres de design en temps réel ("tweaking") et présentation de l'historique des modifications apportées par l'agent IA dans la barre latérale.
 
-![Interface web "Opus Effort Test" affichant des statistiques comparatives sur les coûts et le nombre de vérifications pour différents réglages d'effort d'un agent IA.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002305_seg49.jpg)
-*⏱️ 00:23:05 — Interface web "Opus Effort Test" affichant des statistiques comparatives sur les coûts et le nombre de vérifications pour différents réglages d'effort d'un agent IA.*
+![Interface web affichant un panneau de contrôle "TWEAKS" superposé sur une page de destination design, permettant de modifier en temps réel la mise en page, la luminosité vidéo et les styles de cartes.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001651_seg36.jpg)
+*⏱️ 00:16:51 — Interface web affichant un panneau de contrôle "TWEAKS" superposé sur une page de destination design, permettant de modifier en temps réel la mise en page, la luminosité vidéo et les styles de cartes.*
+
+![Interface de développement ou d'édition web avec une barre latérale de chat "Fork verifier agent" détaillant les actions effectuées sur le code et les options de personnalisation disponibles.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001706_seg36.jpg)
+*⏱️ 00:17:06 — Interface de développement ou d'édition web avec une barre latérale de chat "Fork verifier agent" détaillant les actions effectuées sur le code et les options de personnalisation disponibles.*
 
 ---
 
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
+### ⏱️ `[00:17:14 - 00:17:47]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
+> Claude code would change the background. It would put it on a local host. And then you'd look at it be like, I actually don't like that. So then you would have to like revert back to the old version. And so that could potentially be two prompts. Whereas here we can see so much stuff and test it out in a way that doesn't actually make us send more prompts and send more prompts. Now, one thing I noticed is I don't think there's like a revert button in lovable. You can just like revert back to previous prompts, which is nice. I don't see that here, but once again, this ability to do tweaks saves us from having to do a lot of reverts because we can say, Hmm, I wonder what it might look like if the font was changed, or I wonder what it might look like
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de test/analyse de performance (tableau de bord avec graphique en nuage de points).
+**Interface & Outils** : Application web de prévisualisation et de design interactif avec panneau de contrôle latéral (type "Tweaks").
 
-**Contenu textuel & Code** : Graphique montrant les métriques de différentes sessions (Low, Medium, High, Extra, Ultracode, Max) avec des infobulles détaillant le temps d'exécution, le coût en dollars et le nombre de tokens.
+**Contenu textuel & Code** : Panneau de configuration avec options de palette (swatches), réglage de teinte (Accent hue), choix de polices (Display serif) et curseurs de taille (Headline).
 
-**Action / Démonstration** : Le présentateur commente le graphique et survole le point "Low" pour afficher les détails de la session.
+**Action / Démonstration** : Démonstration de modifications visuelles en temps réel sur le site, illustrant la capacité de tester instantanément des changements de design sans avoir besoin de recoder.
 
-![Un graphique comparant la vitesse et le coût ("Speed vs cost") intitulé "Opus Effort Test", montrant différents niveaux d'effort (Low, Medium, High, Extra, Ultracode, Max) en fonction du temps d'exécution et du coût de l'API.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002325_seg50.jpg)
-*⏱️ 00:23:25 — Un graphique comparant la vitesse et le coût ("Speed vs cost") intitulé "Opus Effort Test", montrant différents niveaux d'effort (Low, Medium, High, Extra, Ultracode, Max) en fonction du temps d'exécution et du coût de l'API.*
+![Interface web montrant la personnalisation en temps réel d'un site (Lull Website) avec un panneau "TWEAKS" à droite permettant de modifier la palette de couleurs et la typographie.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001722_seg37.jpg)
+*⏱️ 00:17:22 — Interface web montrant la personnalisation en temps réel d'un site (Lull Website) avec un panneau "TWEAKS" à droite permettant de modifier la palette de couleurs et la typographie.*
+
+![Même interface web où le site bascule instantanément vers une palette de couleurs plus claire (fond blanc/crème) via le panneau de contrôle latéral.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001731_seg37.jpg)
+*⏱️ 00:17:31 — Même interface web où le site bascule instantanément vers une palette de couleurs plus claire (fond blanc/crème) via le panneau de contrôle latéral.*
 
 ---
 
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
+### ⏱️ `[00:17:47 - 00:18:10]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et d'ailleurs, la raison pour laquelle UltraCode apparaît comme ça, c'est parce qu'il utilise réellement un niveau d'effort supplémentaire. Il est simplement incité et il utilise plutôt des flux de travail dynamiques et des choses comme ça, ce qui fait que ça, vous savez, ça a du sens parce qu'il utilisait essentiellement un effort supplémentaire sous le capot. C'est aussi pour cela que Claude l'a étiqueté ici en orange. Quoi qu'il en soit, si nous continuons plus bas ici, cela a généralement du sens, n'est-ce pas ?
+> if the spacing between sections was smaller. And then if you don't like it, it's as simple as just not doing it. So once you're good with the tweaks, you just turn that off. If you made any changes, it would just go ahead and start making those changes for you. And now what's awesome is you have this project set up, whether you're doing this in Cloud Design or in Cloud Code, you can keep iterating because you understand the idea of how do you get a dynamic element like this?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web d'analyse de données ou de tableau de bord de test de performance IA.
+**Interface & Outils** : Application web propriétaire de design/édition avec assistant IA intégré (type interface de prototypage).
 
-**Contenu textuel & Code** : Courbes de performance croisées sur un axe X allant de "Low" à "Ultracode" ; valeurs de croissance affichées pour "API cost" (12.9x), "Run time" (8.9x), "Tokens" (6.2x) et "Checks" (2.3x).
+**Contenu textuel & Code** : Liste de commandes d'édition (Hero layout, Video dim, Section rhythm, etc.) et panneau de paramètres visuels (Palette, Accent hue, Display serif).
 
-**Action / Démonstration** : Survol (tooltip) par la souris du point de donnée "Extra" sur la courbe jaune "Checks", affichant "Extra - Checks: 1.5x Low".
+**Action / Démonstration** : Démonstration de la personnalisation dynamique d'un design de site web via l'ajustement de curseurs et de paramètres dans le panneau "Tweaks".
 
-![Un graphique comparatif intitulé "Opus Effort Test" illustrant la croissance relative de plusieurs métriques (temps d'exécution, coût API, tokens, vérifications) par rapport à un niveau d'effort "Low", avec une mise en évidence du point "Extra" pour les "Checks".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002347_seg51.jpg)
-*⏱️ 00:23:47 — Un graphique comparatif intitulé "Opus Effort Test" illustrant la croissance relative de plusieurs métriques (temps d'exécution, coût API, tokens, vérifications) par rapport à un niveau d'effort "Low", avec une mise en évidence du point "Extra" pour les "Checks".*
+![Interface de prévisualisation de site web avec un panneau latéral "TWEAKS" ouvert, permettant de modifier la palette de couleurs, la typographie et la taille des titres en temps réel.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001753_seg38.jpg)
+*⏱️ 00:17:53 — Interface de prévisualisation de site web avec un panneau latéral "TWEAKS" ouvert, permettant de modifier la palette de couleurs, la typographie et la taille des titres en temps réel.*
+
+![Vue de l'interface de design web montrant le héros du site "Lull" et le panneau de chat latéral gauche détaillant les options de personnalisation disponibles via l'agent.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001759_seg38.jpg)
+*⏱️ 00:17:59 — Vue de l'interface de design web montrant le héros du site "Lull" et le panneau de chat latéral gauche détaillant les options de personnalisation disponibles via l'agent.*
+
+![Vue identique à l'image précédente, illustrant la navigation sur le site web "Lull" tout en conservant le panneau de contrôle de l'agent IA à gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001804_seg38.jpg)
+*⏱️ 00:18:04 — Vue identique à l'image précédente, illustrant la navigation sur le site web "Lull" tout en conservant le panneau de contrôle de l'agent IA à gauche.*
 
 ---
 
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
+### ⏱️ `[00:18:10 - 00:18:29]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> À mesure que le niveau d'effort augmente, encore une fois, ces métriques vont augmenter. Le temps d'exécution, les coûts d'API, les jetons et les vérifications. C'est la même chose ici avec le temps d'exécution. Cela nous donne simplement des graphiques linéaires individuels maintenant pour chacune de ces différentes métriques, comme le coût d'API, les vérifications, le total des jetons, le coût par vérification, et tous les chiffres au même endroit. Des données plutôt cool donc.
+> Or how do you do one of those scroll things where you just tell it that as you're scrolling, you want it to play the frames backwards or forwards? So let's say we have this that we love and maybe down here we want to have like maybe a video of someone sleeping. That would be really creepy. But now if you basically just break the website into sections. So the hero section.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de tableau de bord ou d'application de test.
+**Interface & Outils** : Navigateur web (image 1), outil de design/prototypage type Figma ou environnement de développement web (image 2).
 
-**Contenu textuel & Code** : Graphique linéaire comparant l'évolution des métriques (Run time, API cost, Tokens, Checks) en fonction du niveau d'effort (Low, Medium, High, Extra, Max, Ultracode).
+**Contenu textuel & Code** : Image 1 : "4X SKOOL GAMES WINNER", "Top 5", "100K+". Image 2 : Panneau de réglages avec options ("Hero layout", "Video dim", "Section rhythm", "Ritual card style", "Interstitial band").
 
-**Action / Démonstration** : Le présentateur commente l'augmentation des métriques avec le niveau d'effort.
+**Action / Démonstration** : Le présentateur explique et manipule les interfaces de conception de sites web, illustrant le processus de développement et de personnalisation visuelle.
 
-![Capture d'écran montrant un graphique de résultats d'un test d'effort ("Opus Effort Test") avec le présentateur visible à gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002406_seg52.jpg)
-*⏱️ 00:24:06 — Capture d'écran montrant un graphique de résultats d'un test d'effort ("Opus Effort Test") avec le présentateur visible à gauche.*
+![Interface web d'un site présentant des statistiques de succès ("4X SKOOL GAMES WINNER") avec des blocs de données chiffrées sur fond sombre.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001815_seg39.jpg)
+*⏱️ 00:18:15 — Interface web d'un site présentant des statistiques de succès ("4X SKOOL GAMES WINNER") avec des blocs de données chiffrées sur fond sombre.*
+
+![Interface de design/prototypage web nommée "Lull Website" affichant un panneau de contrôle latéral avec des paramètres de style et une prévisualisation de site web au centre.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001820_seg39.jpg)
+*⏱️ 00:18:20 — Interface de design/prototypage web nommée "Lull Website" affichant un panneau de contrôle latéral avec des paramètres de style et une prévisualisation de site web au centre.*
 
 ---
 
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
+### ⏱️ `[00:18:29 - 00:18:48]` | Segment #40
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je dirais que rien ici n'est trop choquant. Ce qui m'a le plus choqué, ce sont ces résultats. Mes deux principaux candidats étaient "high", qui est celui-ci, et "extra", qui est celui-ci. Je dois donc retourner ici et me souvenir de ce que j'en pensais. J'ai vraiment aimé cette sensation. Celui-ci donne aussi simplement l'impression d'être le plus fluide. La physique était agréable. La porte coulissante en verre était agréable. Je n'ai pas vraiment remarqué beaucoup de bugs dans celui-ci, ce qui est ce que j'ai vraiment aimé.
+> Okay, cool. Section one. What can we do to section one to make this cool? Maybe we just add like a dynamic background where there's like shooting stars or something like that. And then section three. Maybe we have like a little dynamic video of someone stirring coffee, you know? We can just kind of keep taking it section by section. and that way it's not so overwhelming of, oh my gosh, I have to build a whole website.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web d'application 3D interactive (environnement virtuel type metaverse).
+**Interface & Outils** : Éditeur de design/prototypage web (type Framer ou outil similaire).
 
-**Contenu textuel & Code** : Éléments textuels et graphiques de la plateforme 'AIS LIVE', indicateurs de déplacement et bannières.
-[DESC_IMAGE_3] Navigation de l'avatar dans l'environnement virtuel.
+**Contenu textuel & Code** : Panneau de configuration affichant des options de personnalisation : "Hero layout", "Video dim and grain overlay", "Section rhythm", "Ritual card style", "Interstitial band and scroll hint", "Price slider" et "CTA label".
 
-**Action / Démonstration** : Exploration et navigation dans le monde virtuel 3D de la conférence.
+**Action / Démonstration** : Modification des paramètres visuels de la section du site web (titre "02 / THE PROBLEM").
 
-![Écran d'accueil de l'application 'AIS LIVE' avec un bouton pour entrer dans la salle virtuelle.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002426_seg53.jpg)
-*⏱️ 00:24:26 — Écran d'accueil de l'application 'AIS LIVE' avec un bouton pour entrer dans la salle virtuelle.*
-
-![Vue de la place virtuelle 'AIS Live Plaza' montrant un avatar de joueur et d'autres avatars en 3D.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002431_seg53.jpg)
-*⏱️ 00:24:31 — Vue de la place virtuelle 'AIS Live Plaza' montrant un avatar de joueur et d'autres avatars en 3D.*
-
-![Navigation de l'avatar dans la place virtuelle 'AIS Live Plaza' en direction des bâtiments.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002435_seg53.jpg)
-*⏱️ 00:24:35 — Navigation de l'avatar dans la place virtuelle 'AIS Live Plaza' en direction des bâtiments.*
+![Interface de conception web montrant une page "Lull" avec un panneau latéral de contrôle des réglages du site.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001834_seg40.jpg)
+*⏱️ 00:18:34 — Interface de conception web montrant une page "Lull" avec un panneau latéral de contrôle des réglages du site.*
 
 ---
 
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
+### ⏱️ `[00:18:49 - 00:19:08]` | Segment #41
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je ne me rappelle pas si celui-ci était un de ceux où, oh, je ne pouvais pas parler aux gens par contre. Je pouvais juste passer à travers eux. Je ne pouvais pas m'asseoir dans celui-là non plus. Voici un autre petit truc visuel où je passe fondamentalement juste à travers ce mur. Donc je n'aime pas trop ça. Mais je pense, est-ce que c'était celui où je pouvais m'asseoir dans ces sessions ? Non. D'accord. Donc je ne pense pas que c'était mon gagnant alors. Celui-ci est extra haut. Je pense que c'est le gagnant. Ouais. Je pense que c'était celui que j'aimais le plus. J'adorais toute cette ambiance. J'adorais le fait que je pouvais discuter avec les gens. C'était définitivement celui où nous pouvions venir ici et nous pouvions nous asseoir où nous voulions, prendre une place, nous lever. Je pouvais lire ces trois offres et je pouvais discuter avec eux. J'ai aussi réalisé qu'il y avait de petites sections pour simuler des appels de découverte ici aussi.
+> Just take it section by section and just use these principles. Use Claude to help you think of, okay, for section two, help me figure out like right here, what type of video should I have or what type of elements should I have? And then, okay, cool, make me the prompts. And then I'll go into Key and I'll make the images, I'll make the videos and then I'll bring them back into Claude.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D "AIS Live" (environnement virtuel interactif de conférence).
+**Interface & Outils** : Interface web de Claude.ai.
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle, avatars 3D, panneau de contrôle des mouvements, mini-carte et informations sur la session en cours ("Anatomy of Three Real Deals").
+**Contenu textuel & Code** : Un prompt demandant de l'aide pour définir le concept d'un site web, suivi d'une réponse détaillée de l'IA décrivant le branding du produit "Lull" (une boisson pour le sommeil à base de magnésium).
 
-**Action / Démonstration** : Navigation et exploration d'un monde virtuel interactif en 3D lors d'une démonstration de plateforme en ligne.
+**Action / Démonstration** : Le présentateur illustre l'utilisation de Claude comme partenaire stratégique pour définir l'identité visuelle et textuelle d'un projet avant de passer à la phase de conception technique.
 
-![Vue d'un espace virtuel 3D (AIS Live) montrant un avatar circulant près de la scène principale.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002448_seg54.jpg)
-*⏱️ 00:24:48 — Vue d'un espace virtuel 3D (AIS Live) montrant un avatar circulant près de la scène principale.*
-
-![Vue à la troisième personne dans un environnement 3D virtuel représentant un hall d'événement avec affichage de la scène principale.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002505_seg54.jpg)
-*⏱️ 00:25:05 — Vue à la troisième personne dans un environnement 3D virtuel représentant un hall d'événement avec affichage de la scène principale.*
+![Une capture d'écran de l'interface de conversation Claude montrant un échange sur la création d'une marque fictive appelée « Lull ». Le présentateur est visible en médaillon dans le coin inférieur gauche.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001854_seg41.jpg)
+*⏱️ 00:18:54 — Une capture d'écran de l'interface de conversation Claude montrant un échange sur la création d'une marque fictive appelée « Lull ». Le présentateur est visible en médaillon dans le coin inférieur gauche.*
 
 ---
 
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
+### ⏱️ `[00:19:08 - 00:19:34]` | Segment #42
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons des goodies et des sacs en tissu, ce qui est de la vraie physique. J'aime bien ça. C'était celui où nous pouvions nous asseoir partout. Oui, j'ai vraiment, vraiment aimé celui-ci. Bien que je pense que le seul inconvénient de celui-ci était qu'il n'y avait pas vraiment d'after-party VIP parce que je pense que c'était le salon. Et je pense que c'était la seule partie de la section VIP, c'était que c'étaient les différentes pièces dans lesquelles on pouvait entrer et s'asseoir. Mais à part ça, il n'avait pas une super expérience VIP par rapport à certains des autres que nous avons vus. Donc mon gagnant ici va définitivement être Extra. Extra a fait un travail phénoménal. C'était environ la moitié de la durée et la moitié du coût de Max. Donc Max, je pense, était tout simplement beaucoup trop pour pas assez de bien. Je pense que le niveau était correct. Il pouvait,
+> And you'll just keep iterating. And I think you'll find that it's really, really fun. You have the fundamentals, you understand how the tool works and now you keep going. But now you're at the point where, let's say you're good with this website. You know, you could also click on present. You could open it up. You could make sure it feels good. You could make sure the buttons are linking to the right spots. And then what do you do next? Well, what we want to do is we want to get this into Cloud Code so we can push it into a GitHub repository and so that we can push that GitHub repository to Vercel.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de tableau de bord / diagramme de données (« Opus 5.5 Efforts »)
+**Interface & Outils** : Éditeur web de type CMS ou outil de prototypage interactif.
 
-**Contenu textuel & Code** : Tableau comparatif des coûts et performances d'exécution (Run time, API cost, Total tokens, Checks, Questions asked).
+**Contenu textuel & Code** : Texte du site "Lull" (produit de sommeil), paramètres de mise en page (Hero layout, section rhythm, etc.), menus de navigation.
 
-**Action / Démonstration** : Sélection d'une colonne de données dans le tableau comparatif à l'aide de la souris.
+**Action / Démonstration** : Navigation et démonstration du rendu visuel en mode présentation ("Present").
 
-![Un tableau de comparaison de performances pour différents modes d'effort (Low, Medium, High, Extra, Max, Ultracode) affichant le temps d'exécution, le coût API, le nombre de jetons, de vérifications et de questions.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002542_seg55.jpg)
-*⏱️ 00:25:42 — Un tableau de comparaison de performances pour différents modes d'effort (Low, Medium, High, Extra, Max, Ultracode) affichant le temps d'exécution, le coût API, le nombre de jetons, de vérifications et de questions.*
+![Interface de conception web montrant un site intitulé "Lull" avec un panneau de contrôle latéral pour ajuster les mises en page et les paramètres visuels.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001914_seg42.jpg)
+*⏱️ 00:19:14 — Interface de conception web montrant un site intitulé "Lull" avec un panneau de contrôle latéral pour ajuster les mises en page et les paramètres visuels.*
+
+![Aperçu du site web "Lull" en mode plein écran, montrant une typographie élégante sur fond sombre avec un indicateur de défilement.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001921_seg42.jpg)
+*⏱️ 00:19:21 — Aperçu du site web "Lull" en mode plein écran, montrant une typographie élégante sur fond sombre avec un indicateur de défilement.*
+
+![Aperçu de la page d'accueil du site "Lull" avec une image d'illustration d'une tasse de thé et du texte promotionnel.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001927_seg42.jpg)
+*⏱️ 00:19:27 — Aperçu de la page d'accueil du site "Lull" avec une image d'illustration d'une tasse de thé et du texte promotionnel.*
 
 ---
 
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
+### ⏱️ `[00:19:34 - 00:20:10]` | Segment #43
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> avec peut-être un ou deux prompts de plus, arrivé là où je l'aimais vraiment. Mais pour un objectif de slash, Extra a fourni un résultat incroyable ici. Je n'ai pas adoré Medium. Et pour une grande partie de mon travail de réflexion et de ce que je fais, Medium fonctionne très bien. Mais pour cette tâche précisément, j'avais besoin de beaucoup de raisonnement. Il devait passer par des tonnes de trucs. Il devait passer par des tonnes de vidéos. Il devait trouver beaucoup de choses à l'intérieur de mes projets. Il devait créer une expérience et raconter une histoire à partir de tout. Je pense qu'Extra a fait un travail phénoménale. En général, cependant, j'ai aimé beaucoup de ces résultats, mais Extra est celui avec lequel je voudrais commencer dès maintenant. Si je voulais vraiment en faire une application et un monde super, super polis et cool, je commencerais par le résultat d'Extra et probablement
+> So if that makes no sense to you at all, I'm going to explain it all. So don't worry. What we're going to do first is we're going to click on share and we're just going to go ahead and download this product as a zip file or a zip folder. So i'm going to download as zip you could also just hit hand off the cloud code Which would give you a command you would copy this give it to cloud code and then it would be able to pull everything in Today this morning i've been having issues with this command. It's been getting a 404 error So it's worked in the past. This will probably work by the time you see this video But that's also an option. But the other option is you just grab the zip file. All right. So here's that zip file I'm going to go ahead and extract all and I actually want to place this into a folder
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou tableau de bord de performance (Opus 5.5 Efforts) avec une incrustation vidéo du présentateur en bas à gauche.
+**Interface & Outils** : Interface de design web (type outil de prototypage/génération d'UI) et fenêtre modale de Claude Code.
 
-**Contenu textuel & Code** : Tableau de données comparatif avec les colonnes Low, Medium, High, Extra, Max et Ultracode, et les lignes Run time, API cost, Total tokens, Checks et Questions asked.
+**Contenu textuel & Code** : Commande affichée dans la fenêtre Claude Code : "Fetch this design file, read its readme, and implement the relevant aspects of the design...".
 
-**Action / Démonstration** : Le présentateur commente et analyse les résultats chiffrés des différents niveaux de performance affichés à l'écran.
+**Action / Démonstration** : Sélection de l'option de téléchargement du projet en format .zip, suivie de la génération d'une commande de transfert vers un agent de codage local.
 
-![Un tableau comparatif montrant les performances de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec des métriques comme le temps d'exécution, le coût API, les jetons totaux, les vérifications et les questions posées.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002600_seg56.jpg)
-*⏱️ 00:26:00 — Un tableau comparatif montrant les performances de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec des métriques comme le temps d'exécution, le coût API, les jetons totaux, les vérifications et les questions posées.*
+![Interface d'édition de design web affichant un menu déroulant "Share" avec l'option "Download project as zip" sélectionnée.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001943_seg43.jpg)
+*⏱️ 00:19:43 — Interface d'édition de design web affichant un menu déroulant "Share" avec l'option "Download project as zip" sélectionnée.*
+
+![Fenêtre contextuelle "Claude Code" affichant une commande de transfert de projet prête à être copiée pour un agent de codage.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_001952_seg43.jpg)
+*⏱️ 00:19:52 — Fenêtre contextuelle "Claude Code" affichant une commande de transfert de projet prête à être copiée pour un agent de codage.*
 
 ---
 
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
+### ⏱️ `[00:20:10 - 00:20:42]` | Segment #44
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> continuez à itérer avec Extra. Donc de toute façon, les gars, c'était l'expérience. J'espère que vous avez trouvé cela instructif. J'espère que vous avez appris quelque chose de nouveau. Et si c'est le cas, veuillez mettre un pouce bleu. Ça m'aide énormément. Et comme toujours, je vous remercie d'être arrivés jusqu'à la fin de la vidéo, et je vous dis à la prochaine. Merci à tous.
+> So i've already created a folder on my desktop and it is called lull website So i'm going to click into lull website and i'm going to select that folder to extract it into It kind of sounded like I was saying lull website as if website was a wrapper like lull website But now we have lull website and this is the folder that we want to open up inside of cloud code So here I am i'm using it in the vs code IDE and i'm going to go ahead and open up that project Okay, so now that we are in here, we're going to open up cloud code and we're going to get started You can see basically over here what we have is we have the background video
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Aucune interface logicielle ou technique affichée.
+**Interface & Outils** : Explorateur de fichiers Windows, Visual Studio Code.
 
-**Contenu textuel & Code** : Aucun code, terminal ou données visibles.
+**Contenu textuel & Code** : Arborescence de fichiers ("assets", "scraps", "uploads", "Lull Website.html"), commandes de menu VS Code ("Open Folder").
 
-**Action / Démonstration** : Le présentateur s'adresse directement aux spectateurs pour conclure la vidéo.
+**Action / Démonstration** : Sélection d'un répertoire de destination pour l'extraction de fichiers, puis ouverture dudit dossier dans Visual Studio Code.
+
+![Fenêtre de l'explorateur de fichiers Windows affichant le contenu du dossier "Downloads" pour sélectionner une destination d'extraction.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002018_seg44.jpg)
+*⏱️ 00:20:18 — Fenêtre de l'explorateur de fichiers Windows affichant le contenu du dossier "Downloads" pour sélectionner une destination d'extraction.*
+
+![Explorateur de fichiers Windows montrant le contenu du dossier "Lull Website", incluant les sous-dossiers "assets", "scraps", "uploads" et le fichier HTML.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002026_seg44.jpg)
+*⏱️ 00:20:26 — Explorateur de fichiers Windows montrant le contenu du dossier "Lull Website", incluant les sous-dossiers "assets", "scraps", "uploads" et le fichier HTML.*
+
+![Interface de Visual Studio Code avec le menu "File" ouvert, mettant en évidence l'option "Open Folder".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002034_seg44.jpg)
+*⏱️ 00:20:34 — Interface de Visual Studio Code avec le menu "File" ouvert, mettant en évidence l'option "Open Folder".*
+
+---
+
+### ⏱️ `[00:20:42 - 00:21:17]` | Segment #45
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> We have scraps which was our sketch and we have the uploads and we have the html So this is basically our full project from cloud design, but now it's inside of cloud code and i'm literally just going to say Hey, this is a website project for our brand called lull All I want you to do is push this to a github repository Push it to a private repository and call it whatever you want and because i've already used github with my cloud code It's going to be able to just push it and it's gonna be able to create that repo But if you've never done this before all you want to do is go to github.com It's free to create an account. You're going to log in and then basically
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Visual Studio Code (VS Code) intégrant l'extension Claude Code.
+
+**Contenu textuel & Code** : Arborescence de fichiers : "assets", "scraps", "uploads", et "Lull Website.html". Interface de chat Claude Code avec l'invite : "Type /model to pick the right tool for the job."
+
+**Action / Démonstration** : Le présentateur s'apprête à interagir avec l'agent Claude Code pour traiter le projet de site web "Lull" importé dans l'environnement de développement.
+
+![Capture d'écran montrant l'interface de VS Code avec le plugin/extension "Claude Code" ouvert, affichant la structure de fichiers d'un projet intitulé "LULL WEBSITE".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002051_seg45.jpg)
+*⏱️ 00:20:51 — Capture d'écran montrant l'interface de VS Code avec le plugin/extension "Claude Code" ouvert, affichant la structure de fichiers d'un projet intitulé "LULL WEBSITE".*
+
+---
+
+### ⏱️ `[00:21:17 - 00:21:39]` | Segment #46
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> You just need to connect this to your cloud code So if you ask cloud code to connect it, it'll say sure just let me pull up the authorization page You'll have to sign in and now cloud code can talk to your github push changes create repositories Things like that And then the second piece of this is you're going to need to create an account At verse sell so verse sell is basically just a place for you to host and deploy your web apps and your website.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : GitHub (interface utilisateur web)
+
+**Contenu textuel & Code** : Barre de recherche contextuelle GitHub : "Ask anything or type @ to add context" ; Boutons d'action : "Agent", "Create issue", "Write code", "Git", "Pull requests".
+
+**Action / Démonstration** : Présentation de l'intégration de capacités d'IA directement dans le tableau de bord GitHub pour permettre l'interaction et la gestion de code.
+
+![Interface GitHub personnalisée affichant un tableau de bord avec une barre de recherche centrale "Ask anything or type @ to add context" et des options d'IA intégrées.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002123_seg46.jpg)
+*⏱️ 00:21:23 — Interface GitHub personnalisée affichant un tableau de bord avec une barre de recherche centrale "Ask anything or type @ to add context" et des options d'IA intégrées.*
+
+---
+
+### ⏱️ `[00:21:39 - 00:21:58]` | Segment #47
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So it should look like this. And when you sign up for Vercel, you can sign up with your GitHub account, which makes it super easy because then you can just sync a GitHub repo to Vercel. Because if you think about it, when you have a GitHub repository, all this is basically is, is its folders and its files and its code. And GitHub stores them. So what you need to do is you need to get that code somewhere on the web.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Vercel Dashboard, GitHub Repositories.
+
+**Contenu textuel & Code** : Noms des dépôts comme "seedance-demo", "nateherk-com", "token-dashboard", "claude-workflow-builder".
+
+**Action / Démonstration** : Navigation et présentation visuelle de l'écosystème de déploiement (Vercel) et de stockage de code source (GitHub) pour illustrer la synchronisation.
+
+![Tableau de bord Vercel affichant la liste des projets actifs et les statistiques d'utilisation (Edge Requests, Image Optimization).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002144_seg47.jpg)
+*⏱️ 00:21:44 — Tableau de bord Vercel affichant la liste des projets actifs et les statistiques d'utilisation (Edge Requests, Image Optimization).*
+
+![Interface GitHub montrant la liste des dépôts (repositories) de l'utilisateur, notamment ceux liés à l'automatisation et à l'IA.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002149_seg47.jpg)
+*⏱️ 00:21:49 — Interface GitHub montrant la liste des dépôts (repositories) de l'utilisateur, notamment ceux liés à l'automatisation et à l'IA.*
+
+---
+
+### ⏱️ `[00:21:58 - 00:22:19]` | Segment #48
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And that's what Vercel does. And there you go. Super easy. I didn't have to do anything. It says your website is now a GitHub repo. I can follow this link to open it up. and this is the actual repository that we just pulled in from Cloud Design. Now, honestly, before we push this, we probably should have made sure that it worked. So make sure that the website actually works as expected and open it up in a local host for me to view.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Visual Studio Code (avec extension de chat IA), GitHub (navigateur web).
+
+**Contenu textuel & Code** : Commandes Git (`git commit`, `gh repo create`), lien vers le dépôt GitHub `nateherkai/lull-website`.
+
+**Action / Démonstration** : Automatisation de la création d'un dépôt GitHub à partir d'un dossier local via des commandes terminal exécutées par un agent IA.
+
+![Interface de VS Code montrant l'exécution d'une commande par un agent (Claude) pour créer et pousser un dépôt GitHub privé.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002204_seg48.jpg)
+*⏱️ 00:22:04 — Interface de VS Code montrant l'exécution d'une commande par un agent (Claude) pour créer et pousser un dépôt GitHub privé.*
+
+![Interface web du dépôt GitHub nouvellement créé nommé "lull-website", affichant la structure des dossiers du projet.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002209_seg48.jpg)
+*⏱️ 00:22:09 — Interface web du dépôt GitHub nouvellement créé nommé "lull-website", affichant la structure des dossiers du projet.*
+
+---
+
+### ⏱️ `[00:22:19 - 00:22:40]` | Segment #49
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Now, I'm actually glad that I had to do this because you'll notice I said local host. So what does that mean? Local host is just a local host that will basically display our website. And so if this comes back with something like local host 3000, if you tried to give someone that URL, it wouldn't open up for them. It would open up whatever they have running on their own localhost 3000, which could be nothing.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Visual Studio Code avec extension d'assistant IA.
+
+**Contenu textuel & Code** : Historique de discussion montrant : "Done. Your Lull website is live as a private repo: https://github.com/nateherkai/lull-website", ainsi que l'action en cours : "Read c:\Users\nateh\OneDrive\Desktop\Lull Website\Lull Website.html" et "Incubating...".
+
+**Action / Démonstration** : L'agent IA termine la poussée du code vers GitHub et commence l'analyse du fichier HTML pour servir le site localement.
+
+![Interface de VS Code montrant une interaction avec un assistant IA, confirmant le déploiement sur un dépôt GitHub privé et l'initialisation de l'exécution en local du site web.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002225_seg49.jpg)
+*⏱️ 00:22:25 — Interface de VS Code montrant une interaction avec un assistant IA, confirmant le déploiement sur un dépôt GitHub privé et l'initialisation de l'exécution en local du site web.*
+
+---
+
+### ⏱️ `[00:22:41 - 00:23:04]` | Segment #50
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> I actually saw some funny tweets where it was like a beginner getting into Cloud Code saying, look at this awesome web app I built. And they sent out the localhost URL and everyone was, obviously they couldn't open it. So here is the localhost. It opened up our website. You can see we have the video playing. We have all of the text coming in dynamically. So everything is basically being transferred over from Cloud Design over to Cloud Code seamlessly, no issues.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : VS Code (avec terminal intégré) et navigateur web affichant le site "Lull".
+
+**Contenu textuel & Code** : Commandes bash : `python -m http.server 8765 --bind 127.0.0.1` et `curl` pour vérifier l'accès au HTML et à la vidéo.
+
+**Action / Démonstration** : Le présentateur démontre le processus de mise en ligne locale d'un projet web via un serveur de développement, puis navigue sur le résultat final.
+
+![L'interface de VS Code montrant l'exécution d'un serveur HTTP local via un terminal intégré pour tester un site web.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002247_seg50.jpg)
+*⏱️ 00:22:47 — L'interface de VS Code montrant l'exécution d'un serveur HTTP local via un terminal intégré pour tester un site web.*
+
+![Capture du site web "Lull" affiché en plein écran, présentant une interface moderne avec une image de tasse et du texte stylisé.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002253_seg50.jpg)
+*⏱️ 00:22:53 — Capture du site web "Lull" affiché en plein écran, présentant une interface moderne avec une image de tasse et du texte stylisé.*
+
+![Suite du défilement sur le site web "Lull", mettant en avant la section "The Formula" et les détails des ingrédients.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002258_seg50.jpg)
+*⏱️ 00:22:58 — Suite du défilement sur le site web "Lull", mettant en avant la section "The Formula" et les détails des ingrédients.*
+
+---
+
+### ⏱️ `[00:23:05 - 00:23:25]` | Segment #51
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And now that this is actually a GitHub repo, let's connect this to Vercel to put it on the web so that I could actually give you a URL and you could view my website. So back in Vercel, you guys are gonna be shocked at how easy this is. You click on add new, you click on add new project. And then right here, because I'm signed in with my GitHub repo or my GitHub account, I basically just click on this website and I say import.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : GitHub, Vercel (Dashboard et Import flow).
+
+**Contenu textuel & Code** : Noms des dépôts GitHub (lull-website, token-dashboard, trading-routine), statistiques d'utilisation Vercel et options de déploiement.
+
+**Action / Démonstration** : Transition de la phase de création de code sur GitHub vers la configuration du déploiement sur la plateforme Vercel pour rendre le site accessible via une URL.
+
+![Interface GitHub affichant le dépôt "lull-website" nouvellement créé par l'utilisateur.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002310_seg51.jpg)
+*⏱️ 00:23:10 — Interface GitHub affichant le dépôt "lull-website" nouvellement créé par l'utilisateur.*
+
+![Tableau de bord Vercel montrant la liste des projets actifs de l'utilisateur.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002315_seg51.jpg)
+*⏱️ 00:23:15 — Tableau de bord Vercel montrant la liste des projets actifs de l'utilisateur.*
+
+![Interface de déploiement Vercel montrant la section "Import Git Repository" avec la liste des dépôts GitHub disponibles.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002320_seg51.jpg)
+*⏱️ 00:23:20 — Interface de déploiement Vercel montrant la section "Import Git Repository" avec la liste des dépôts GitHub disponibles.*
+
+---
+
+### ⏱️ `[00:23:25 - 00:23:58]` | Segment #52
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> It's looking through my projects. It's gonna pull in this project. And then I basically just say deploy. This will take maybe 60 seconds and then it'll give us an actual URL for our website. Now, the cool part about this is if you ever make changes to your site, you basically now have a practice environment and a real environment. So if I'm on my local host here, you know, and I'm working inside of Cloud Code and I'm doing things, basically what happens is I can make changes and I can iterate, but only I will see these changes. So if I wanted to change the copy or if I wanted to change the background video, but then once we're good with
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Vercel (plateforme de déploiement), Navigateur web, Visual Studio Code (avec Claude AI).
+
+**Contenu textuel & Code** : URL locale (127.0.0.1:8765), logs de serveur Python, configuration de projet Git sur Vercel.
+
+**Action / Démonstration** : Déploiement automatisé d'un projet web via Vercel, vérification du serveur local dans VS Code, et démonstration du site en ligne.
+
+![Interface de configuration Vercel pour le déploiement d'un nouveau projet nommé "lull-website" importé depuis GitHub.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002334_seg52.jpg)
+*⏱️ 00:23:34 — Interface de configuration Vercel pour le déploiement d'un nouveau projet nommé "lull-website" importé depuis GitHub.*
+
+![Visualisation du rendu final du site web "lull" une fois déployé, avec son interface utilisateur élégante.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002342_seg52.jpg)
+*⏱️ 00:23:42 — Visualisation du rendu final du site web "lull" une fois déployé, avec son interface utilisateur élégante.*
+
+![Éditeur VS Code avec l'extension Claude, montrant les logs d'exécution du serveur local et la confirmation de la mise en ligne du site.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002350_seg52.jpg)
+*⏱️ 00:23:50 — Éditeur VS Code avec l'extension Claude, montrant les logs d'exécution du serveur local et la confirmation de la mise en ligne du site.*
+
+---
+
+### ⏱️ `[00:23:58 - 00:24:17]` | Segment #53
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> those changes, I come back into here and I say, hey, Cloud Code, push all of these changes to GitHub. And then when the changes come to GitHub and they come over here, Vercel automatically grabs that and deploys it to the live site. So you have a very clean separation between what you're practicing with and changes that you might want to make. And then saying, hey, cool. We love this.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : - Image #1 : Visual Studio Code avec extension Claude.
+- Image #2 : Interface web GitHub (dépôt privé).
+
+**Contenu textuel & Code** : - Image #1 : Logs de l'agent confirmant le lancement du serveur Python sur le port 8765 et l'ouverture automatique dans le navigateur.
+- Image #2 : Liste des dossiers (assets, scraps, uploads) et du fichier HTML principal poussés sur GitHub.
+
+**Action / Démonstration** : - Image #1 : Exécution locale du serveur pour prévisualisation du site web.
+- Image #2 : Confirmation visuelle de la synchronisation des fichiers de travail vers le dépôt distant GitHub.
+
+![Interface de VS Code montrant l'agent Claude traitant une requête pour lancer un serveur local et ouvrir le site web.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002403_seg53.jpg)
+*⏱️ 00:24:03 — Interface de VS Code montrant l'agent Claude traitant une requête pour lancer un serveur local et ouvrir le site web.*
+
+![Interface du dépôt GitHub privé "lull-website" montrant les fichiers du projet après le push initial.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002408_seg53.jpg)
+*⏱️ 00:24:08 — Interface du dépôt GitHub privé "lull-website" montrant les fichiers du projet après le push initial.*
+
+---
+
+### ⏱️ `[00:24:18 - 00:24:50]` | Segment #54
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Push that public. And then Vercel will grab it. And then it will be live in like 30 seconds later. So anyways, congratulations. You just deployed a new project on Vercel. I'm going to go ahead and click on continue to the dashboard. And now we have an actual domain. So this is a, you know, lol-website.versell.app. And if I open this up, aha. Okay. So when I opened this up, it says 404 not found. So what do we do here? You go back into Cloud Code and you say, so I just pushed that to GitHub and then I synced that to Vercel to host it on the web. And when I opened it up, it gave me
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Vercel Dashboard, Visual Studio Code (avec plugin d'agent IA).
+
+**Contenu textuel & Code** : Commande `npx plugins add vercel/vercel-plugin`, logs de serveur local Python sur le port 8765, structure de fichiers (assets, scraps, uploads, Lull Website.html).
+
+**Action / Démonstration** : Installation d'un plugin Vercel pour agent IA et visualisation de l'état d'un serveur web local en cours d'exécution.
+
+![Interface Vercel affichant un message d'erreur 404 suivi d'une section pour installer un plugin d'agent de codage via une commande terminal.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002426_seg54.jpg)
+*⏱️ 00:24:26 — Interface Vercel affichant un message d'erreur 404 suivi d'une section pour installer un plugin d'agent de codage via une commande terminal.*
+
+![Éditeur Visual Studio Code (VS Code) affichant une conversation avec un agent IA détaillant le déploiement local d'un site web via un serveur Python sur le port 8765.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002442_seg54.jpg)
+*⏱️ 00:24:42 — Éditeur Visual Studio Code (VS Code) affichant une conversation avec un agent IA détaillant le déploiement local d'un site web via un serveur Python sur le port 8765.*
+
+---
+
+### ⏱️ `[00:24:50 - 00:25:09]` | Segment #55
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> this error message. What does this mean? How do I fix this? Do you need any more info from me in order to actually help me fix this? It was able to find the cause right away. Vercel serves this from the root of your repo by default, but the repo has a different path instead. So that's why I can't find anything. So the fix is it needs to rename the whole website to index.html.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : VS Code (avec extension de chat IA intégrée, probablement Cursor ou un outil similaire).
+
+**Contenu textuel & Code** : - Erreur : "404: NOT_FOUND"
+- Explication IA : "Vercel serves index.html from the root of your repo by default. Your repo has Lull Website.html instead."
+- Commande Bash : `cd "..." && git mv "Lull Website.html" "index.html" && git status --short`
+
+**Action / Démonstration** : Diagnostic d'un problème de déploiement Vercel et résolution par renommage du fichier principal via une commande Git dans le terminal de l'éditeur.
+
+![Vue de l'interface VS Code avec une discussion active avec une IA. Le message d'erreur "404: NOT_FOUND" retourné par Vercel est affiché.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002455_seg55.jpg)
+*⏱️ 00:24:55 — Vue de l'interface VS Code avec une discussion active avec une IA. Le message d'erreur "404: NOT_FOUND" retourné par Vercel est affiché.*
+
+![L'IA explique la cause de l'erreur (Vercel attend "index.html" mais trouve "Lull Website.html") et propose une commande Bash pour renommer le fichier.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002500_seg55.jpg)
+*⏱️ 00:25:00 — L'IA explique la cause de l'erreur (Vercel attend "index.html" mais trouve "Lull Website.html") et propose une commande Bash pour renommer le fichier.*
+
+---
+
+### ⏱️ `[00:25:10 - 00:25:34]` | Segment #56
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And then look, it pushed those changes to GitHub. So if I now go to the GitHub repo, which was this one, and I give this a refresh, we should see here that we have two commits, which means that we've made two different pushes. So we've made a change. And then what happens if I go back to Vercel, so back here, you can already see the website is now rendering properly. And if I also click on deployments, we can see once again that we have a change that was made one minute ago, which was renaming to index.html.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : GitHub (Dépôt) et Vercel (Tableau de bord des déploiements).
+
+**Contenu textuel & Code** : - Image 1 : Structure de fichiers (assets, scraps) et métadonnées du dépôt.
+- Image 2 : Liste des déploiements avec leurs IDs (GwlxBsran, 52T4ICsA4), statuts "Ready" et messages de commit associés (ex: "Rename to index.html").
+
+**Action / Démonstration** : Vérification de la synchronisation entre les modifications poussées sur GitHub et le déploiement automatique correspondant sur Vercel.
+
+![Vue du dépôt GitHub "lull-website" montrant les fichiers du projet et l'historique des commits.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002516_seg56.jpg)
+*⏱️ 00:25:16 — Vue du dépôt GitHub "lull-website" montrant les fichiers du projet et l'historique des commits.*
+
+![Interface Vercel affichant la liste des "Deployments" du projet, avec deux déploiements listés comme "Ready".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002528_seg56.jpg)
+*⏱️ 00:25:28 — Interface Vercel affichant la liste des "Deployments" du projet, avec deux déploiements listés comme "Ready".*
+
+---
+
+### ⏱️ `[00:25:34 - 00:25:55]` | Segment #57
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So now I could click on this domain and I could see that we actually have our real site just the way that we saw it on our local host. And everything should be coming through properly because we've made that fix. Now, one other quick thing I wanted to talk about when it comes to actually deploying your site is that you built this to be optimized for a laptop or for a computer.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Navigateur web (Google Chrome ou similaire) affichant le site web e-commerce de la marque "lull".
+
+**Contenu textuel & Code** : Textes marketing, interface utilisateur de boutique en ligne (UI), sélecteurs de produits et tarification.
+
+**Action / Démonstration** : Navigation et démonstration du rendu final du site web déployé en ligne pour valider que le design correspond au développement local.
+
+![Page d'accueil du site web "lull" avec un design sombre et minimaliste, montrant le haut de page avec le titre et un bouton "Start the ritual".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002539_seg57.jpg)
+*⏱️ 00:25:39 — Page d'accueil du site web "lull" avec un design sombre et minimaliste, montrant le haut de page avec le titre et un bouton "Start the ritual".*
+
+![Section intermédiaire du site web "lull" détaillant les options d'achat du produit (abonnement ou achat unique) avec une interface de sélection de prix.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002544_seg57.jpg)
+*⏱️ 00:25:44 — Section intermédiaire du site web "lull" détaillant les options d'achat du produit (abonnement ou achat unique) avec une interface de sélection de prix.*
+
+![Vue globale de la section "Hero" du site web "lull" avec le titre "The end of the day, properly" et le produit mis en avant.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002549_seg57.jpg)
+*⏱️ 00:25:49 — Vue globale de la section "Hero" du site web "lull" avec le titre "The end of the day, properly" et le produit mis en avant.*
+
+---
+
+### ⏱️ `[00:25:55 - 00:26:23]` | Segment #58
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So if you come into your site on the local host before you deploy it and you hit F12 or you just open up your developer console, you can click this button right here to switch to mobile view. So this is actually what we'd be seeing if I open up the site on mobile, which obviously is not good. So you would need to go back and iterate a little bit and tell Cloud Code to optimize this for mobile. Maybe we want the image to be, or I keep saying image, maybe we want the video to be kind of down here instead, or maybe we just want the font to be displayed in one line and then have more stuff down here.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Chrome Developer Tools (mode responsive design).
+
+**Contenu textuel & Code** : Rendu visuel d'une page produit mobile avec texte "The end of the day, properly." et bouton "Start the ritual".
+
+**Action / Démonstration** : Utilisation du simulateur d'appareil mobile au sein des outils de développement pour inspecter le rendu responsive d'un site local.
+
+![Vue scindée montrant à gauche un aperçu mobile non optimisé d'un site web ("lull") dans les outils de développement, et à droite la console Chrome DevTools avec une fenêtre incrustée du présentateur.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002602_seg58.jpg)
+*⏱️ 00:26:02 — Vue scindée montrant à gauche un aperçu mobile non optimisé d'un site web ("lull") dans les outils de développement, et à droite la console Chrome DevTools avec une fenêtre incrustée du présentateur.*
+
+---
+
+### ⏱️ `[00:26:24 - 00:26:44]` | Segment #59
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So that is something to think about. You need to be thinking about how will this actually look if I'm on a mobile device compared to if I am on my computer or even like a tablet and stuff like that. So the point being, Claude design and Claude code don't automatically optimize for mobile, but if you tell it you need to optimize for mobile, it will certainly help you figure out the way to restructure it.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Chrome DevTools (mode responsive), Navigateur web.
+
+**Contenu textuel & Code** : Prévisualisation d'une page web mobile (dimensions 590px de large) affichant le texte "lull" et "of the day, properly", avec les panneaux "Elements" et "Console" des outils de développement ouverts à droite.
+
+**Action / Démonstration** : Le créateur illustre l'importance de tester l'affichage et la réactivité d'un site web sur différents formats d'appareils (mobile vs ordinateur).
+
+![Une capture d'écran montrant les outils de développement (Chrome DevTools) avec un simulateur d'appareil mobile actif pour tester la réactivité (responsive design) d'une page web "Lull".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002629_seg59.jpg)
+*⏱️ 00:26:29 — Une capture d'écran montrant les outils de développement (Chrome DevTools) avec un simulateur d'appareil mobile actif pour tester la réactivité (responsive design) d'une page web "Lull".*
+
+---
+
+### ⏱️ `[00:26:44 - 00:27:20]` | Segment #60
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And you can do all that without having it actually impact the way that it appears on the web, on your computer version. So just something else I wanted to make sure you guys were aware of. And you can see right here that we're using a .forcell.app domain. So if you wanted to change this, you would just have to bring in your own custom domain It takes maybe five minutes and you can just talk to claude to figure out how to do that It's super simple But let's hop into some of this other stuff now And dive a little bit deeper into how to get the most out of claude design So claude design is its own product It it kind of feels like what they did with claude co-work How they basically packaged up different workflows and different functionality into something that's a little bit more
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Navigateur web (site Lull), Plateforme de déploiement cloud (Vercel), Interface de présentation (Google Slides/PowerPoint).
+
+**Contenu textuel & Code** : URL de domaine "lull-website.vercel.app", informations techniques sur "Claude Design" (version Opus 4.7, résolution d'image).
+
+**Action / Démonstration** : Démonstration du rendu final d'un site web et visualisation de son hébergement sur la plateforme Vercel.
+
+![Aperçu du site web "Lull" généré, affichant une landing page élégante avec un titre accrocheur sur fond sombre.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002653_seg60.jpg)
+*⏱️ 00:26:53 — Aperçu du site web "Lull" généré, affichant une landing page élégante avec un titre accrocheur sur fond sombre.*
+
+![Tableau de bord Vercel montrant les détails d'un déploiement de projet, incluant l'URL de domaine en .vercel.app.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002702_seg60.jpg)
+*⏱️ 00:27:02 — Tableau de bord Vercel montrant les détails d'un déploiement de projet, incluant l'URL de domaine en .vercel.app.*
+
+---
+
+### ⏱️ `[00:27:20 - 00:27:39]` | Segment #61
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Accessible, you know, because everything that claude design does you could easily do in claude code but not everyone wants to. And they're keeping all of this in the same environment. It's built on top of Claude Opus 4.7, which has much more advanced vision capabilities than the previous models did. But of course the Opus 4.7 model does come at a bit of a cost. So keep that in mind.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation (diapositive pédagogique)
+
+**Contenu textuel & Code** : Détails sur Claude Design : date de lancement (17 avril 2026), URL (claude.ai/design), capacités du modèle Opus 4.7 (résolution d'image, génération de prototypes/slides/wireframes), et informations sur la tarification et l'activation en entreprise.
+
+**Action / Démonstration** : Présentation des points clés théoriques par le narrateur à l'appui du sujet traité.
+
+![Une présentation sous forme de liste à puces décrivant les fonctionnalités et spécifications techniques de "Claude Design", incluant la mention du modèle Claude Opus 4.7.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002725_seg61.jpg)
+*⏱️ 00:27:25 — Une présentation sous forme de liste à puces décrivant les fonctionnalités et spécifications techniques de "Claude Design", incluant la mention du modèle Claude Opus 4.7.*
+
+---
+
+### ⏱️ `[00:27:40 - 00:28:14]` | Segment #62
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> You can build prototypes, you can build slides, you can build landing pages, animated promos, so much stuff with design. Obviously today we mainly looked at websites, but there's a lot you can do. And in order to use it, you have to be on a paid plan. You cannot be on a free plan. So let's talk about the two meter system. First of all, Claude Design has its own weekly quota. So if I go back into my usage, you can see you have a current session for your plan. You have all models, you have Sonnet only, and you have your own Claude Design usage. And this is what I flew through pretty quick. And so what do the burn rates look like? People have been complaining that they're getting their session eaten up really quick. So if you're on 20 bucks a month,
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Paramètres de compte Anthropic / Claude (page Usage).
+
+**Contenu textuel & Code** : Détails de consommation des ressources : « Claude Design » (100% used), « All models » (83% used), « Sonnet only » (15% used), ainsi que les temps de réinitialisation associés.
+
+**Action / Démonstration** : Consultation des quotas d'utilisation de l'API ou des outils avancés pour démontrer la limitation des services.
+
+![Une vue des paramètres de compte montrant les limites d'utilisation (usage limits) pour différents modèles, notamment la barre de progression « Claude Design » atteinte à 100%.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002757_seg62.jpg)
+*⏱️ 00:27:57 — Une vue des paramètres de compte montrant les limites d'utilisation (usage limits) pour différents modèles, notamment la barre de progression « Claude Design » atteinte à 100%.*
+
+---
+
+### ⏱️ `[00:28:15 - 00:28:51]` | Segment #63
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> after one big website and one big design system, you might already be almost done. If you're on the max five times plan, then you're going to have, you know, maybe four to five series prompts and you might be able to You know hit the limit pretty quick. And then if you're on the 20x plan, which i'm on I was able to build probably A few different video projects and a few different websites And then I started to get really close to the end of my limit So what actually drains your limits the fastest? Well, there are a few things first of all If you do every single thing with 4.7 Then you're obviously going to be eating more tokens than if you were on sonnet or even haiku for some very minor changes. I personally haven't done this myself. I haven't really jumped into the wireframes. I
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Document textuel (probablement Notion ou un éditeur de notes markdown) affiché à l'écran.
+
+**Contenu textuel & Code** : Texte détaillé sur la stratégie d'utilisation de Claude Design, comparatifs de coûts (20$/mo, 100$/mo, 200$/mo), et recommandations techniques pour la gestion des limites d'usage et des modèles (Opus 4.7 vs Sonnet 4.6).
+
+**Action / Démonstration** : Le présentateur illustre ses propos en faisant défiler les points clés d'une liste de recommandations stratégiques pour ne pas atteindre les limites d'utilisation de l'outil.
+
+![Une capture d'écran d'un document structuré expliquant le système de quotas "Claude Design", incluant une ventilation des tarifs (Pro, Max 5x, Max 20x) et leur impact sur la consommation des limites.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002824_seg63.jpg)
+*⏱️ 00:28:24 — Une capture d'écran d'un document structuré expliquant le système de quotas "Claude Design", incluant une ventilation des tarifs (Pro, Max 5x, Max 20x) et leur impact sur la consommation des limites.*
+
+![Une capture d'écran du même document, se concentrant sur la section "3. What Drains Your Limit Fastest", détaillant des conseils pour optimiser l'utilisation de Claude (ex: passer de Opus à Sonnet, éviter les longs threads, utiliser les outils d'édition inline).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002842_seg63.jpg)
+*⏱️ 00:28:42 — Une capture d'écran du même document, se concentrant sur la section "3. What Drains Your Limit Fastest", détaillant des conseils pour optimiser l'utilisation de Claude (ex: passer de Opus à Sonnet, éviter les longs threads, utiliser les outils d'édition inline).*
+
+---
+
+### ⏱️ `[00:28:51 - 00:29:24]` | Segment #64
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> always just started with a high fidelity, but I have seen some people on X talking about that if you do the wireframe first, you're able to basically convert it better to high fidelity with less iteration. And obviously that makes sense. I mean, if you're in cloud code, I always talk about how the planning phase is so important. So get clear on your idea, give as much context up front as far as like a sketch and, you know, maybe like that cloud spec that we saw earlier in the live example. This information was able to make it so much easier for Cloud Design to build what we wanted on the first try rather than having to iterate so much because that's where you're
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface de présentation de type document (probablement un éditeur de texte ou une application de prise de notes).
+
+**Contenu textuel & Code** : Texte détaillé sur le "Two-Meter System", les stratégies pour éviter d'épuiser les limites d'utilisation (choix des modèles Sonnet vs Opus, usage des wireframes, outils Canvas) et spécifications de design (codes hexadécimaux, recommandations typographiques).
+
+**Action / Démonstration** : Le présentateur illustre ses conseils théoriques via ces supports visuels textuels pour guider l'audience sur l'optimisation des flux de travail avec Claude.
+
+![Une présentation sous forme de liste structurée intitulée "Claude Design", détaillant des bonnes pratiques pour optimiser l'utilisation des limites d'utilisation de l'IA (Claude).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002859_seg64.jpg)
+*⏱️ 00:28:59 — Une présentation sous forme de liste structurée intitulée "Claude Design", détaillant des bonnes pratiques pour optimiser l'utilisation des limites d'utilisation de l'IA (Claude).*
+
+![Une section de documentation technique décrivant une identité visuelle (palette de couleurs, typographie, imagerie) et des directives de conception pour un site web, avec une notification de limite d'utilisation en bas d'écran.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002916_seg64.jpg)
+*⏱️ 00:29:16 — Une section de documentation technique décrivant une identité visuelle (palette de couleurs, typographie, imagerie) et des directives de conception pour un site web, avec une notification de limite d'utilisation en bas d'écran.*
+
+---
+
+### ⏱️ `[00:29:24 - 00:29:57]` | Segment #65
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> going to burn a lot of tokens. Also setting up a design system without a URL. In general though, design systems will eat a lot. So if I go back to the app and I go into like creating a design system, which if I went right here, what this does is it lets you set up a system for your brand. So your name, you can put in a GitHub repo, you can put in other folders, other files and other logos and assets, and it will create you basically a template so that if you ever want to make anything, videos, slides, websites, you can create it with that brand. So for example, I made one with AI
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Claude Design (Research Preview).
+
+**Contenu textuel & Code** : Interface utilisateur avec options de création "New prototype", sélection de design system ("AI Automation Society Design System") et choix entre "Wireframe" ou "High fidelity". Liste de projets : "AIS Website", "Nate Herk Website", "Lull Website", "AI Automation Society Design System", "Design System", "AIS Website (Remix)", "Context Management", "May Short Demo", "May Short 6", "First Agent Release".
+
+**Action / Démonstration** : Navigation dans l'interface de gestion de projets et configuration d'un nouveau prototype basé sur un système de design existant.
+
+![Interface de l'application Claude Design montrant le tableau de bord de création de prototypes et la liste des projets récents.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_002932_seg65.jpg)
+*⏱️ 00:29:32 — Interface de l'application Claude Design montrant le tableau de bord de création de prototypes et la liste des projets récents.*
+
+---
+
+### ⏱️ `[00:29:57 - 00:30:27]` | Segment #66
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Automation Society, which is what you see right here. So every time I use this design system, it's going to make everything with that typography, with those colors, with that background, the color scheme, all that kind of stuff. Now, when you create a design system, once you put in all this information, it has to ingest it and it has to create that actual spec. And this can eat a decent amount of tokens because it's going to take like 10 to 15 minutes. Now, what's interesting is if you actually export this, you can put that into cloud code and you can get all of that value already. If you come into your design system, you can see the type of information that's in here.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Claude Design (interface web d'Anthropic).
+
+**Contenu textuel & Code** : Liste de projets incluant : "AI Automation Society Design System", "AIS Website", "Nate Herk Website", "Lull Website", et options de création de prototypes.
+
+**Action / Démonstration** : Sélection et démonstration de la gestion des systèmes de design au sein de l'interface Claude Design.
+
+![Interface de l'outil "Claude Design" affichant le tableau de bord avec une fenêtre modale "New prototype" ouverte, permettant de sélectionner un "Design system".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003004_seg66.jpg)
+*⏱️ 00:30:04 — Interface de l'outil "Claude Design" affichant le tableau de bord avec une fenêtre modale "New prototype" ouverte, permettant de sélectionner un "Design system".*
+
+![Même interface que la précédente, avec une vue globale des projets récents ("Design System", "AIS Website", etc.) organisés sous forme de cartes.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003019_seg66.jpg)
+*⏱️ 00:30:19 — Même interface que la précédente, avec une vue globale des projets récents ("Design System", "AIS Website", etc.) organisés sous forme de cartes.*
+
+---
+
+### ⏱️ `[00:30:27 - 00:30:46]` | Segment #67
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> You can iterate on it, but you can actually go ahead and share this with your team, but you could also just download this as a zip. And then you could give that zip to cloud code, sort of like we did earlier. And now you can say, Hey, this is the design system for AI Automation Society. Help me build some other stuff. And you could do that then in Cloud Code as well. It's really nothing new. The whole concept of having like a design system or a design MD, it's not a new concept.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de génération de Design System (probablement Claude Artifacts ou outil similaire).
+
+**Contenu textuel & Code** : Détails du système de design : "UI Kit", "Body & Meta", "Heading Scale", "Colors - Accents & Gradients", "Spacing". Menu d'options d'exportation : "Download project as .zip", "Export as PDF", "Handoff to Claude Code...".
+
+**Action / Démonstration** : Le curseur de la souris survole l'option "Download project as .zip" pour montrer comment récupérer les fichiers du système de design pour une utilisation ultérieure avec Claude Code.
+
+![L'écran montre une interface de système de design généré ("AI Automation Society Design System") avec un menu contextuel ouvert sur la droite permettant l'exportation du projet.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003031_seg67.jpg)
+*⏱️ 00:30:31 — L'écran montre une interface de système de design généré ("AI Automation Society Design System") avec un menu contextuel ouvert sur la droite permettant l'exportation du projet.*
+
+---
+
+### ⏱️ `[00:30:46 - 00:31:12]` | Segment #68
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> It's just kind of the way that it's packaged up here in Cloud Design makes it a lot easier. And then of course, like I showed you guys, the ability to tweak stuff in the canvas. We talked about this, right? Being inside of a project and using tweaks and using, you know, the comments and the edits, that's going to be more precise. And it's going to give Cloud a better idea of what you actually want to change. So then it doesn't go down the wrong path and waste your time and your session. And then just think about the fact that you might get into some really, really long threads.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface de design web (type "Canvas" ou outil de prototypage IA).
+
+**Contenu textuel & Code** : Panneau de configuration "TWEAKS" avec options pour Palette, Accent hue (curseur), Display serif, et réglages de mise en page. Liste d'instructions contextuelles dans la colonne de gauche.
+
+**Action / Démonstration** : Démonstration de la manipulation en temps réel des paramètres visuels d'un site web via les outils d'ajustement intégrés (tweaks) sans avoir à réécrire les prompts.
+
+![Interface de "Cloud Design" montrant une prévisualisation de site web avec un panneau latéral actif nommé "TWEAKS" permettant de modifier dynamiquement la palette de couleurs, les polices et la mise en page.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003059_seg68.jpg)
+*⏱️ 00:30:59 — Interface de "Cloud Design" montrant une prévisualisation de site web avec un panneau latéral actif nommé "TWEAKS" permettant de modifier dynamiquement la palette de couleurs, les polices et la mise en page.*
+
+![Même interface de prévisualisation web, mais avec le panneau "TWEAKS" fermé, affichant le rendu final du design "Lull".](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003106_seg68.jpg)
+*⏱️ 00:31:06 — Même interface de prévisualisation web, mais avec le panneau "TWEAKS" fermé, affichant le rendu final du design "Lull".*
+
+---
+
+### ⏱️ `[00:31:13 - 00:31:49]` | Segment #69
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> I haven't proven this for a fact, but just based on the way that Claude uses tokens, what I found is that if you are in a project, right, and it's getting really, really long, and you're still not getting where you want, maybe you want to export this and then open up a fresh session. And you're kind of not really starting at square one again. You're iterating upon something that's already been built and you're making some changes, but now you have fresh context because this is likely all starting to pollute the context window and it might be leading to some rot and it might be leading to tokens becoming uncashed. And then you're basically just processing them again. So that's something to keep in mind. Now you could also come in here and do a slash
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de développement (probablement Claude.ai avec la fonctionnalité Artifacts ou un éditeur similaire).
+
+**Contenu textuel & Code** : Panneau latéral listant des paramètres de design : Palette, Accent hue, Display serif, Headline size, Hero layout, etc. Prévisualisation textuelle "The end of the day, properly." sur la partie droite.
+
+**Action / Démonstration** : Le présentateur illustre le résultat visuel d'un projet de développement web généré par IA, mettant en avant la personnalisation des styles via une interface de chat.
+
+![Interface de développement web (probablement un environnement de type "Canvas" ou "Artifacts" intégré) affichant la prévisualisation d'un site nommé "Lull" avec un panneau latéral de configuration.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003122_seg69.jpg)
+*⏱️ 00:31:22 — Interface de développement web (probablement un environnement de type "Canvas" ou "Artifacts" intégré) affichant la prévisualisation d'un site nommé "Lull" avec un panneau latéral de configuration.*
+
+---
+
+### ⏱️ `[00:31:49 - 00:32:07]` | Segment #70
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> clear and it says, Hey, cleared, we're ready for the next instruction. So that's something else to also play around with, but I can't say with certainty that that actually clears all of this from the context window. I haven't seen for sure yet. So, okay. So best practices to stretch limits. We kind of already talked a lot about that. I just showed you guys the zip export when you're zipping either your actual project or a design system.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface de développement/génération d'UI (type v0 ou outil similaire) et logiciel de présentation (type Notion ou Google Slides).
+
+**Contenu textuel & Code** : - Image 1 : Liste de paramètres (Hero layout, Section rhythm, etc.) et commande "/clear" dans la zone de prompt.
+- Image 2 : Texte structuré sur le "ZIP export hack" (SKILL.md, Claude Code), le choix des modèles (Opus 4.7, Sonnet 4.6) et des conseils pour économiser les jetons (tokens).
+
+**Action / Démonstration** : - Image 1 : Illustration de l'utilisation d'une commande de réinitialisation contextuelle ("/clear") pour nettoyer la mémoire de l'agent.
+- Image 2 : Présentation théorique d'une stratégie pour contourner les limitations d'usage d'un outil en utilisant des fichiers de compétence (SKILL.md) avec Claude Code.
+
+![Interface d'un outil de génération d'UI avec une liste de commandes de personnalisation à gauche et un aperçu du site web généré à droite.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003153_seg70.jpg)
+*⏱️ 00:31:53 — Interface d'un outil de génération d'UI avec une liste de commandes de personnalisation à gauche et un aperçu du site web généré à droite.*
+
+![Diapositive présentant des bonnes pratiques techniques pour optimiser l'utilisation des limites d'usage des modèles d'IA (le "ZIP export hack" et la gestion des modèles).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003202_seg70.jpg)
+*⏱️ 00:32:02 — Diapositive présentant des bonnes pratiques techniques pour optimiser l'utilisation des limites d'usage des modèles d'IA (le "ZIP export hack" et la gestion des modèles).*
+
+---
+
+### ⏱️ `[00:32:07 - 00:32:28]` | Segment #71
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> We talked about model by stage. So maybe you can use Opus 4.7 at the beginning to plan a little bit or when you need some really legit changes. But switch over to Sonic 4.6. I was on Sonic 4.6 for a lot of a different build and it was able to generate the video and it was able to create the animations and create the slide decks. And it was working just fine. I think at the end of the day, like Sonic 4.6 is really good.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Logiciel de présentation (type Notion ou Google Slides).
+
+**Contenu textuel & Code** : Texte détaillé incluant : "The ZIP export hack", "Model by stage" (Opus 4.7 vs Sonnet 4.6), et une liste de conseils "Workflow that saves the most tokens" (ex: One visual dimension per prompt, Ban the default AI look, etc.).
+
+**Action / Démonstration** : Présentation pédagogique des bonnes pratiques pour optimiser les performances et réduire les coûts lors de l'utilisation de modèles IA dans un flux de travail de conception.
+
+![Une diapositive de présentation listant les "Best Practices to Stretch Limits" pour l'utilisation de modèles d'IA, avec des conseils sur l'exportation ZIP et l'optimisation des tokens.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003212_seg71.jpg)
+*⏱️ 00:32:12 — Une diapositive de présentation listant les "Best Practices to Stretch Limits" pour l'utilisation de modèles d'IA, avec des conseils sur l'exportation ZIP et l'optimisation des tokens.*
+
+---
+
+### ⏱️ `[00:32:28 - 00:32:47]` | Segment #72
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And if you are super clear and super specific about what you want, then you could probably get a lot of the way done with Sonic 4.6. So it's definitely worth testing out. And then some other real quick tips, one visual dimension per prompt. So don't try to throw in a mega prompt with, hey, change X, Y, Z, A, B, C, D, E, F, and G.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Logiciel de présentation (type Notion ou Google Slides).
+
+**Contenu textuel & Code** : Texte structuré avec trois sections principales : "The ZIP export hack", "Model by stage" (comparaison Opus 4.7 vs Sonnet 4.6), et "Workflow that saves the most tokens" (liste de conseils pratiques comme "One visual dimension per prompt").
+
+**Action / Démonstration** : Présentation de bonnes pratiques stratégiques pour maximiser l'efficacité et réduire les coûts lors de l'utilisation d'outils d'IA générative pour le design.
+
+![Une diapositive de présentation listant les "Best Practices to Stretch Limits" pour l'utilisation de modèles IA dans le design, incluant le hack d'export ZIP, la sélection de modèles par étape et des conseils pour l'optimisation des tokens.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003233_seg72.jpg)
+*⏱️ 00:32:33 — Une diapositive de présentation listant les "Best Practices to Stretch Limits" pour l'utilisation de modèles IA dans le design, incluant le hack d'export ZIP, la sélection de modèles par étape et des conseils pour l'optimisation des tokens.*
+
+---
+
+### ⏱️ `[00:32:47 - 00:33:06]` | Segment #73
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Now I know that some people might disagree with this because sometimes in Cloud Code, you wanna send off one big prompt so that it can create its to-do list and it can start to iterate. But what I've found here is that when I ask for multiple different big changes in one prompt, it only actually does like one or two of them well, and the rest of them just kind of get disregarded. So I've found more success.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Logiciel de présentation (type PowerPoint ou Google Slides).
+
+**Contenu textuel & Code** : Texte structuré en points : "The ZIP export hack", "Model by stage" (Opus 4.7, Sonnet 4.6), "Workflow that saves the most tokens" (contenant des conseils comme "One visual dimension per prompt" et "Reference real products").
+
+**Action / Démonstration** : Le présentateur explique et développe les points de bonnes pratiques affichés sur la diapositive, illustrant sa méthodologie de travail avec l'IA.
+
+![Une diapositive de présentation listant les "Best Practices to Stretch Limits" pour l'utilisation de modèles IA, incluant des conseils sur l'export ZIP pour Claude Code, la sélection de modèles par étape, et des stratégies d'économie de jetons (tokens).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003252_seg73.jpg)
+*⏱️ 00:32:52 — Une diapositive de présentation listant les "Best Practices to Stretch Limits" pour l'utilisation de modèles IA, incluant des conseils sur l'export ZIP pour Claude Code, la sélection de modèles par étape, et des stratégies d'économie de jetons (tokens).*
+
+---
+
+### ⏱️ `[00:33:06 - 00:33:28]` | Segment #74
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And when I talk about being efficient with my prompting, I found more success doing one main big change per prompt. It's also good to do negatives. So tell it what you don't want. Tell it if you don't want these fonts or if you don't want these color schemes, that way you don't have to correct it later. You can also reference real things. So saying something like linear 2023 with higher density, rather than just saying, hey, make this clean or make this minimalistic.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Diapositives de présentation (format texte).
+
+**Contenu textuel & Code** : Conseils sur le "ZIP export hack", le choix des modèles (Opus 4.7 vs Sonnet 4.6), et les meilleures pratiques de prompting ("One visual dimension per prompt", "Reference real products").
+
+**Action / Démonstration** : Explication théorique des bonnes pratiques de workflow pour l'automatisation avec IA.
+
+![Présentation sous forme de liste à puces intitulée "4. Best Practices to Stretch Limits" détaillant des stratégies d'optimisation de tokens et d'utilisation de Claude Code.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003312_seg74.jpg)
+*⏱️ 00:33:12 — Présentation sous forme de liste à puces intitulée "4. Best Practices to Stretch Limits" détaillant des stratégies d'optimisation de tokens et d'utilisation de Claude Code.*
+
+![Même présentation textuelle que l'image 1, avec un curseur visible soulignant la ligne sur le bannissement du style IA par défaut.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003317_seg74.jpg)
+*⏱️ 00:33:17 — Même présentation textuelle que l'image 1, avec un curseur visible soulignant la ligne sur le bannissement du style IA par défaut.*
+
+---
+
+### ⏱️ `[00:33:28 - 00:34:00]` | Segment #75
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Obviously pointing and commenting on things and drawing on things, and then asking for prototypes, flows, demos. And then of course, you can go ahead and export that entire HTML. You could export it to Figma. You could export it to Canva. You could export the PowerPoint. You can get it out of there and then make the tweaks you need to if you don't actually need to use Cloud Design for things that you could do pretty easily and pretty quickly by hand. So some other things to keep in mind, file uploads. So I have been able to upload MP4s like you guys have seen. I've been able to edit some videos, but there is a cap and I think it might be 30 megabytes, it might be 40, it might be a little more,
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation type diaporama ou document structuré (format texte sur fond blanc).
+
+**Contenu textuel & Code** : Texte structuré sous forme de listes à puces : "The ZIP export hack", "Model by stage", "Workflow that saves the most tokens", et "Accepts as input".
+
+**Action / Démonstration** : Le présentateur illustre les meilleures pratiques pour maximiser l'efficacité des agents IA et décrit les capacités d'importation de données pour les flux de travail automatisés.
+
+![Une diapositive technique détaillée présentant des stratégies d'optimisation de jetons (tokens) pour l'utilisation d'IA, incluant le "ZIP export hack" et des conseils sur le choix des modèles (Opus 4.7 vs Sonnet 4.6).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003336_seg75.jpg)
+*⏱️ 00:33:36 — Une diapositive technique détaillée présentant des stratégies d'optimisation de jetons (tokens) pour l'utilisation d'IA, incluant le "ZIP export hack" et des conseils sur le choix des modèles (Opus 4.7 vs Sonnet 4.6).*
+
+![Une diapositive listant les types de fichiers acceptés en entrée par l'outil présenté, tels que les URLs, dépôts GitHub, fichiers Figma, documents bureautiques et médias.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003352_seg75.jpg)
+*⏱️ 00:33:52 — Une diapositive listant les types de fichiers acceptés en entrée par l'outil présenté, tels que les URLs, dépôts GitHub, fichiers Figma, documents bureautiques et médias.*
+
+---
+
+### ⏱️ `[00:34:01 - 00:34:20]` | Segment #76
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> but if you try to go and upload like a five minute video, it's probably not gonna let you. There also might've just been a bug because this is in research preview and because everyone's using it, but for the most part, you can upload lots of different assets and the more things that you're able to upload right away, the more context it's gonna have and the less you're gonna have to repeat yourself and fix things.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Logiciel de présentation (type Notion ou Google Slides).
+
+**Contenu textuel & Code** : Liste des entrées acceptées : "Website URL, public GitHub repo, local folder", "Figma .fig exports, custom fonts (.woff, .ttf), logos (PNG, SVG)", "DOCX, PPTX, XLSX", et "Images and videos up to 30 MB". Titres de section : "5. File Upload + Extra Usage Rates" et "6. Limitations to Flag".
+
+**Action / Démonstration** : Présentation informative des capacités et des contraintes techniques d'importation de fichiers dans l'outil discuté.
+
+![Une diapositive de présentation listant les types de fichiers supportés en entrée par l'outil IA, incluant des URLs, des dépôts GitHub, des dossiers locaux, des fichiers Figma, des polices, des images/logos et des documents bureautiques, avec une limite de taille spécifique pour les médias.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003405_seg76.jpg)
+*⏱️ 00:34:05 — Une diapositive de présentation listant les types de fichiers supportés en entrée par l'outil IA, incluant des URLs, des dépôts GitHub, des dossiers locaux, des fichiers Figma, des polices, des images/logos et des documents bureautiques, avec une limite de taille spécifique pour les médias.*
+
+---
+
+### ⏱️ `[00:34:20 - 00:34:49]` | Segment #77
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And then here are just some other quick limitations to flag. Not gonna read all these off because I feel like I've hit on a lot of these already, but take a quick pause if you want to look at this. And like I said, that free doc that I drop in the community will have a lot more of this kind of stuff as well. All right, so that is going to do it for today. Now, what you can do next is watch this video right up here where I talk about other website hacks and specifically in Cloud Code because what might happen is if you burn through your limit in Cloud Design, but you want to keep iterating, you want to keep building, just do what I showed you.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation de type diapositives (probablement PowerPoint ou Google Slides) affichant des données textuelles.
+
+**Contenu textuel & Code** : Liste de limitations : "Research preview", "No drag-and-drop", "Browser only", "Multi-screen consistency", "Not a Figma replacement", et "Opus 4.7 tokenization speed".
+
+**Action / Démonstration** : Le présentateur passe en revue une liste de limitations techniques pour informer les utilisateurs avant de conclure sur la disponibilité d'un document récapitulatif dans sa communauté.
+
+![Une liste à puces présentant des limitations techniques spécifiques concernant un outil IA (mentionnant Opus 4.7, les restrictions de navigateur et les limites de conception type Figma).](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003427_seg77.jpg)
+*⏱️ 00:34:27 — Une liste à puces présentant des limitations techniques spécifiques concernant un outil IA (mentionnant Opus 4.7, les restrictions de navigateur et les limites de conception type Figma).*
+
+---
+
+### ⏱️ `[00:34:50 - 00:35:04]` | Segment #78
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Export your Cloud Design project, get it into Cloud Code. And now you can just keep working on Cloud Code because you have more usage. and then just wait till your usage resets on design, and then take it back into design. So like I said, watch that video on screen. I'll see you guys over there, and thanks for watching. Give it a like if it helps.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Navigateur web (site communautaire AIS).
+
+**Contenu textuel & Code** : Texte affiché : "READY WHEN YOU ARE", "JOIN THE MOVEMENT", "300,000+ innovators are building real businesses with n8n, Claude Code, and cutting-edge AI. Your seat is free.", et un bouton "JOIN FREE COMMUNITY".
+
+**Action / Démonstration** : Affichage de la page de destination (landing page) incitant à rejoindre la communauté associée aux outils mentionnés dans la vidéo.
+
+![Interface web d'une plateforme communautaire nommée "AIS" avec une fenêtre modale centrale invitant les utilisateurs à rejoindre le mouvement.](../screenshots/TcFeSjwTo7g/TcFeSjwTo7g_003453_seg78.jpg)
+*⏱️ 00:34:53 — Interface web d'une plateforme communautaire nommée "AIS" avec une fenêtre modale centrale invitant les utilisateurs à rejoindre le mouvement.*
 
 ---
 
