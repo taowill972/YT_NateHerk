@@ -13,1106 +13,1385 @@
 
 ### 💡 Résumé
 
-Cette vidéo de la chaîne *Nate Herk | AI Automation* explore l'impact des différents niveaux d'effort (de « faible » à « ultra code ») sur les performances du modèle d'IA **Opus 5.5**. L'expérimentation repose sur un prompt complexe et global : transformer un dossier brut de 105 gigaoctets de ressources vidéo (provenant de l'événement virtuel *AIS Live* via Frame.io) en un monde 3D interactif, explorable en vue à la troisième personne, simulant une conférence technologique physique réaliste. 
+La vidéo de Nate Herk illustre l'efficacité du paradigme « le code l'emporte sur les clics » pour concevoir des agents vocaux réalistes en combinant des outils de pointe comme **Claude Code** et **ElevenLabs**. Plutôt que de configurer manuellement des tableaux de bord, de paramétrer des invites système ou de lier laborieusement des bases de connaissances via des interfaces graphiques sujettes aux erreurs, l'auteur démontre qu'il est possible de créer un agent vocal sur mesure en seulement 15 minutes en utilisant simplement le langage naturel. 
 
-Les résultats comparatifs révèlent des contrastes saisissants en matière de qualité visuelle, de respect de la charte graphique, de fluidité et de fidélité fonctionnelle. Alors que le niveau « faible » génère un environnement sommaire truffé de bugs d'affichage, de textures figées et d'erreurs de branding, le niveau « moyen » produit une application 3D nettement plus aboutie, intégrant des PNJ réactifs, des flux vidéo en direct fonctionnels, une mini-carte synchronisée et un respect rigoureux de l'identité visuelle de la marque, le tout sans nécessiter la moindre intervention ou question de la part de l'utilisateur.
+La démonstration centrale met en scène un cas d'usage concret : l'entraînement d'un agent vocal sur 400 transcriptions de vidéos YouTube de la chaîne. Cet agent est capable de répondre aux questions des utilisateurs, de restituer des informations complexes sur des outils comme **Firecrawl**, et d'être intégré de manière transparente sur un site web sous forme de widget conversationnel. Le processus de développement s'appuie sur la capacité de l'IA à interroger la documentation des services tiers, à structurer les bases de connaissances et à automatiser le déploiement technique complet.
 
-L'analyse minutieuse des métriques d'exécution (temps de traitement, coûts API simulés, volume de jetons, nombre de vérifications et de questions posées) offre aux ingénieurs et développeurs un cadre d'évaluation précieux pour calibrer l'effort des agents IA selon la complexité des livrables logiciels attendus. La démonstration s'inscrit dans une démarche pratique d'ingénierie logicielle assistée par IA, illustrant la transition fluide entre le prototypage conceptuel et le déploiement opérationnel.
+Enfin, ce tutoriel met en lumière l'accessibilité accrue du développement agentique grâce aux environnements de développement intégrés (IDE) et aux assistants de codage avancés. En structurant les composants fondamentaux d'un agent vocal — à savoir la persona, la voix, les connaissances et les outils — et en déléguant leur orchestration à Claude Code, les développeurs et créateurs de contenu peuvent considérablement accélérer leur flux de travail, qu'il s'agisse d'intégrations web, d'applications téléphoniques via Twilio ou de wikis interactifs.
 
 ### 🛠️ Outils, Modèles & Logiciels Présentés
 
-* **Opus 5.5** : Modèle d'intelligence artificielle ultra-performant et économique, utilisé au cœur de l'expérimentation pour exécuter le prompt de génération 3D sous différents niveaux d'effort.
-* **Claude Code** : Outil de programmation et d'assistance au développement utilisé pour piloter l'exécution et structurer le code du projet.
-* **Frame.io** : Plateforme cloud de gestion et de stockage vidéo, hébergeant les 105 gigaoctets d'enregistrements bruts de l'événement *AIS Live*.
-* **Hostinger Connector** : Extension gratuite pour éditeur de code, sponsor de la vidéo, permettant d'intégrer directement un compte d'hébergement web dans l'environnement de développement pour faciliter le déploiement en ligne.
-* **Key.ai** : Service externe d'intelligence artificielle mentionné dans le prompt pour la génération dynamique d'images et de vidéos contextuelles.
-* **Herc 2** : Système d'exploitation IA propriétaire de Nate Herk, mobilisable par l'agent pour orchestrer les ressources et automatiser les tâches complexes.
+* **Claude Code** : Assistant de développement propulsé par l'IA d'Anthropic, utilisé directement dans l'EDI pour concevoir, prompter et intégrer l'agent vocal en langage naturel.
+* **ElevenLabs** : Plateforme de synthèse vocale et de création d'agents conversationnels, exploitée pour configurer la voix, la persona, les connaissances et les outils de l'agent.
+* **Visual Studio Code (VS Code)** : Environnement de développement intégré (EDI) gratuit servant de base pour l'édition de code et l'hébergement de l'extension Claude Code.
+* **Firecrawl** : Outil de scraping et d'exploration web puissant mentionné dans la base de connaissances et manipulé via des serveurs MCP pour structurer des données issues du web.
+* **Supabase / Pinecone** : Magasins vectoriels potentiellement utilisables pour l'indexation et la recherche sémantique au sein de la base de connaissances de l'agent.
+* **NotebookLM** : Outil de gestion et d'analyse de documents évoqué comme alternative potentielle pour structurer les données sources.
+* **Twilio** : Solution de téléphonie cloud permettant de connecter l'agent vocal à un numéro de téléphone pour gérer des appels entrants et sortants.
+* **Make (anciennement Integromat) / Zapier** : Plateformes d'automatisation et de flux de travail pouvant être déclenchées par les outils de l'agent vocal.
 
 ### 🔑 Points Clés & Enseignements Stratégiques
 
-* **Impact direct du niveau d'effort sur la qualité** : La variation des paramètres d'effort d'Opus 5.5 modifie fondamentalement la profondeur du rendu, transformant un prototype grossier et bogué en une application 3D riche et fonctionnelle.
-* **Maîtrise du branding et de la personnalisation** : Les niveaux d'effort supérieurs démontrent une capacité accrue à intégrer fidèlement les directives de marque, les palettes de couleurs et les logos officiels (comme celui d'*AIS Live*).
-* **Gestion des flux multimédias en direct** : Un agent configuré avec un effort suffisant est capable d'associer des éléments spatiaux 3D à des flux vidéo réels, transformant des images fixes en ateliers et scènes dynamiques.
-* **Autonomie décisionnelle des agents** : Sur l'ensemble des tests menés avec les niveaux faible et moyen, l'agent a fonctionné de manière totalement autonome sans poser la moindre question de clarification à l'utilisateur.
-* **Analyse coût-bénéfice des ressources API** : Le passage du niveau faible au niveau moyen multiplie le temps d'exécution par plus de quatre (de ~16 minutes à 1 heure 13) et le coût API estimé par trois (de 3,91 $ à 12,44 $), soulignant un arbitrage nécessaire entre investissement calculé et exigence de finition.
-* **Consommation de jetons et complexité vérificationnelle** : Le niveau moyen a nécessité près de 490 000 jetons et 23 cycles de vérification automatisée dans le navigateur, illustrant la charge de travail computationnelle requise pour stabiliser le code.
-* **Recommandation méthodologique d'Anthropic** : Il est recommandé de débuter les flux de travail par un niveau d'effort « moyen » pour valider la structure globale avant d'ajuster (à la hausse ou à la baisse) selon les besoins spécifiques du projet.
-* **Intelligence artificielle comportementale (PNJ)** : L'intégration d'entités non-joueuses (PNJ) capables de réagir contextuellement à la présence de l'utilisateur enrichit considérablement l'immersion dans les environnements virtuels générés par IA.
-* **Combler le fossé entre code et déploiement** : L'utilisation d'intégrations directes comme l'extension Hostinger résout le problème classique du développeur qui se retrouve avec un code fonctionnel en local sans solution rapide de mise en ligne.
-* **Efficacité des prompts contextuels globaux** : Fournir un objectif unifié incluant des références à des répertoires massifs (105 Go) permet à l'IA d'extraire de manière autonome la structure narrative et l'agenda d'un événement pour structurer son architecture logicielle.
+* **Le paradigme « Le code l'emporte sur les clics »** : Privilégier les interactions en langage naturel et l'automatisation par le code plutôt que la configuration manuelle sur des interfaces graphiques permet de gagner un temps précieux et d'éliminer les erreurs de paramétrage.
+* **Développement en 15 minutes** : Il est aujourd'hui possible de concevoir, d'entraîner et d'intégrer un agent vocal doté d'une base de connaissances complexe en un quart d'heure grâce à l'assistance contextuelle des modèles récents.
+* **Valorisation des actifs de contenu** : Transformer des archives textuelles (telles que 400 transcriptions YouTube) en une base de connaissances interactive permet de créer des expériences utilisateur ultra-personnalisées et engageantes.
+* **Anatomie quadripartite d'un agent vocal** : Tout agent conversationnel performant repose sur quatre piliers indispensables : la persona (prompt système), la voix (clone ou voix prédéfinie), les connaissances (données contextuelles) et les outils (capacités d'action).
+* **Personnalisation vocale avancée** : L'utilisation de clones vocaux professionnels entraînés sur plusieurs heures d'audio renforce le réalisme et l'immersion lors des interactions avec l'audience.
+* **Architecture technique en boucle fermée** : Un agent vocal fonctionne comme un système récursif où la voix de l'utilisateur est captée, convertie, interprétée par un LLM, enrichie par des requêtes de base de données ou des appels d'outils, puis restituée sous forme vocale.
+* **Polyvalence des canaux de déploiement** : Un même agent vocal configuré sur ElevenLabs peut être déployé sous forme de widget web interactif, connecté à un flux téléphonique via Twilio, ou testé directement depuis les tableaux de bord de développement.
+* **Intégration transparente via les widgets** : L'ajout d'un agent sur une page web se résume généralement à l'intégration d'un simple extrait de script HTML/JavaScript que des assistants comme Claude Code peuvent injecter automatiquement.
+* **Synergie entre IDE et agents de codage** : L'utilisation conjointe de VS Code et de l'extension Claude Code offre un espace de travail unifié où le prototypage de pages web et la configuration d'APIs tierces se font de manière fluide.
+* **Abstraction de la complexité documentaire** : Les agents de codage modernes possèdent la capacité de lire, d'interpréter la documentation technique d'APIs complexes (comme celles d'ElevenLabs) et de configurer l'infrastructure technique sans intervention manuelle de l'utilisateur.
 
 ---
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:21]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. Ce modèle est littéralement partout et pour de très bonnes raisons. Il est intelligent, il est bon marché, il a un goût incroyable, c'est un modèle d'IA incroyable. Mais avec chaque modèle d'IA, vous avez le choix de l'effort, que ce soit faible, moyen, élevé, extra, max ou code ultra.
+> Il n'a jamais été aussi facile de construire tout ce que vous voulez. Et donc dans la vidéo d'aujourd'hui, je vais vous montrer, les gars, à quel point il est facile de construire un agent vocal en utilisant simplement votre langage naturel avec Cloud Code avec ElevenLabs. Laissez-moi donc vous montrer un rapide exemple. J'ai eu cette idée folle où je me disais, bon, j'ai une tonne de vidéos YouTube, exactement 400 en fait. Et toutes ces vidéos YouTube, il y a beaucoup d'outils différents.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface du réseau social X (Twitter).
+**Interface & Outils** : Présentation vidéo / Interface web (YouTube)
 
-**Contenu textuel & Code** : Publication de réseau social avec une vidéo intégrée représentant un environnement 3D côtier.
+**Contenu textuel & Code** : Texte de présentation de la vidéo : 'VOICE AGENTS - Build with Claude Code - Ship with ElevenLabs'.
 
-**Action / Démonstration** : Affichage d'un exemple de contenu généré par IA pour illustrer le propos sur l'impact de l'IA.
+**Action / Démonstration** : Introduction au sujet de la vidéo sur la création d'agents vocaux.
 
-![Capture d'écran d'un tweet sur X montrant une vidéo de paysage tropical généré par IA et un commentaire sur l'impact sur les créatifs techniques.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000005_seg1.jpg)
-*⏱️ 00:00:05 — Capture d'écran d'un tweet sur X montrant une vidéo de paysage tropical généré par IA et un commentaire sur l'impact sur les créatifs techniques.*
+![Diapositive de présentation affichant 'VOICE AGENTS : Build with Claude Code • Ship with ElevenLabs' avec le présentateur en incrustation vidéo.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000005_seg1.jpg)
+*⏱️ 00:00:05 — Diapositive de présentation affichant 'VOICE AGENTS : Build with Claude Code • Ship with ElevenLabs' avec le présentateur en incrustation vidéo.*
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:21 - 00:00:40]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc dans cette vidéo, j'ai donné exactement le même prompt à Opus 5.5 et je l'ai exécuté sur tous les niveaux d'effort, et nous allons comparer les résultats. Nous examinerons la qualité de toutes les différentes sorties réelles, mais nous allons également examiner combien de temps chacun d'eux a fonctionné, combien cela nous a coûté si c'était une facturation par API, le total des jetons, combien de vérifications ils ont exécutées, et combien de questions ils m'ont réellement posées tout au long du processus.
+> Il y a beaucoup de choses différentes que j'ai mentionnées. Et certaines personnes dans mon audience pourraient être confuses et souhaiter simplement avoir une bonne façon de discuter avec ces vidéos YouTube. Donc mon idée folle était, d'accord, et si je construisais simplement un agent vocal avec lequel les gens pourraient parler et qui aurait été entraîné sur toutes mes transcriptions YouTube ? Et c'est donc exactement ce que j'ai pu construire en environ 15 minutes.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc / interface de comparaison de données (type Miro ou tableau de bord).
+**Interface & Outils** : Navigateur web affichant une diapositive de présentation.
 
-**Contenu textuel & Code** : Tableau avec les colonnes Low, Medium, High, Extra, Max, Ultracode et les lignes Run time, API cost, Total tokens, Checks, Questions asked.
+**Contenu textuel & Code** : Texte principal 'VOICE AGENTS' et sous-titre 'Build with Claude Code - Ship with ElevenLabs'.
 
-**Action / Démonstration** : Présentation du tableau comparatif des différents niveaux d'effort d'Opus 5.5.
+**Action / Démonstration** : Présentation du sujet du tutoriel sur la construction d'agents vocaux.
 
-![Capture d'écran d'un tableau comparatif avec les niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) et des métriques (Run time, API cost, Total tokens, Checks, Questions asked).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000029_seg2.jpg)
-*⏱️ 00:00:29 — Capture d'écran d'un tableau comparatif avec les niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) et des métriques (Run time, API cost, Total tokens, Checks, Questions asked).*
+![Diapositive de présentation affichant le titre 'VOICE AGENTS' avec le sous-titre 'Build with Claude Code - Ship with ElevenLabs'.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000030_seg2.jpg)
+*⏱️ 00:00:30 — Diapositive de présentation affichant le titre 'VOICE AGENTS' avec le sous-titre 'Build with Claude Code - Ship with ElevenLabs'.*
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:40 - 00:00:59]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et les résultats que nous avons obtenus ne sont pas du tout ce à quoi je m'attends, donc j'ai hâte de partager cela avec vous les gars. Ne perdons pas de temps et entrons directement dans celui-ci. D'accord, alors plongeons directement dans celui-ci. Je veux commencer juste en vous montrant le prompt réel que nous avons utilisé, que nous avons donné à chacun de ces différents agents. Je vais aller dans les fichiers ici, et nous allons ouvrir ce fichier markdown de prompt, et je vais vous montrer ce que nous avons obtenu. Voici donc le slash objectif que j'ai fourni.
+> J'ai présenté l'idée à Claude Code et il a compris comment tout faire. Récupérer les transcriptions, se connecter à ElevenLabs, mettre cela sur mon site web, et simplement prompter tout et construire les outils dont il avait besoin. Laissez-moi donc vous montrer une petite démo. Je vais cliquer sur démarrer l'appel sur ce site web, puis lancer l'appel. Hé, je suis l'IA de Nate, entraînée sur son contenu YouTube. Posez-moi des questions sur Claude Code, les agents, ou ce qu'il a construit.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Éditeur de code avec interface d'agent IA (Opus 5.5 / Ultracode)
+**Interface & Outils** : Navigateur web affichant le site personnel de Nate Herk intégrant le widget d'appel vocal ElevenLabs.
 
-**Contenu textuel & Code** : Un message de l'IA demandant si elle doit commencer la tâche définie dans 'PROMPT.md' pour construire un monde 3D en vue à la troisième personne de la conférence AIS Live.
+**Contenu textuel & Code** : Interface web du site "Nate Herk - AI Automation Made Easy" avec un widget de conversation vocale IA.
 
-**Action / Démonstration** : Le présentateur présente l'interface et le prompt initial de l'agent IA dans l'éditeur.
+**Action / Démonstration** : Le présentateur clique sur le widget d'appel pour lancer l'assistant vocal interactif intégré sur son site web.
 
-![Interface de l'éditeur de code montrant une discussion avec un assistant IA (Opus 5.5 / Ultracode) et une webcam du présentateur à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000048_seg3.jpg)
-*⏱️ 00:00:48 — Interface de l'éditeur de code montrant une discussion avec un assistant IA (Opus 5.5 / Ultracode) et une webcam du présentateur à gauche.*
+![Capture montrant le site web personnel de Nate Herk avec un widget d'appel vocal en bas à droite proposant de démarrer un appel.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000045_seg3.jpg)
+*⏱️ 00:00:45 — Capture montrant le site web personnel de Nate Herk avec un widget d'appel vocal en bas à droite proposant de démarrer un appel.*
+
+![Capture montrant le site web avec l'interface vocale interactive active et ouverte en grand en bas à droite pour discuter avec l'assistant.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000054_seg3.jpg)
+*⏱️ 00:00:54 — Capture montrant le site web avec l'interface vocale interactive active et ouverte en grand en bas à droite pour discuter avec l'assistant.*
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:01 - 00:01:24]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> J'ai dit, tu dois me créer un monde en 3D qui est une conférence tech réaliste dans laquelle je peux me promener en vue à la troisième personne. Tu vas regarder ce dossier, qui contient mes ressources d'enregistrement d'événements provenant d'AIS Live. Et ce dossier est un dossier Frame.io de 105 gigaoctets d'enregistrements vidéo. C'était un événement entièrement virtuel. Tout a été enregistré et tous les enregistrements sont juste ici. J'ai dit, ton objectif est de prendre cet événement et de le transformer en un monde 3D explorable qui me donne l'impression d'être réellement allé à une vraie conférence en personne avec différentes salles, différentes pistes, différentes scènes, bla, bla, bla. N'hésite pas à utiliser key.ai si tu as besoin de générer des images ou des vidéos. Et tu peux aussi utiliser tout ce qui se trouve dans mon projet Herc 2, qui est comme mon système d'exploitation IA. J'ai dit,
+> Hé, je suis curieux, quels sont probablement les meilleurs outils de scraping dont Nate a pu parler sur sa chaîne ? Laisse-moi une petite seconde pendant que je cherche ça. Nate parle beaucoup de FireCrawl comme d'un outil de scraping puissant. Il est super polyvalent et peut faire des choses comme scraper des pages Web entières, cartographier l'architecture d'un site, explorer différentes pages, et même chercher sur le Web pour transformer des pages en données structurées.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Éditeur de code (VS Code / Cursor) et interface web Frame.io
+**Interface & Outils** : Navigateur web (site Nate Herk avec widget de chat vocal/textuel)
 
-**Contenu textuel & Code** : Fichier markdown PROMP.md contenant les directives du projet de monde 3D et lien Frame.io (https://f.io/sPdlo-Si)
-[CONSULTATION] Présentation du prompt détaillé et des dossiers de ressources vidéo de l'événement AIS Live d'une taille de 105 Go
+**Contenu textuel & Code** : Texte du site "AI Automation Made Easy" et interface d'assistant virtuel en cours d'écoute ("Listening")
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
-![Un éditeur de code affichant un fichier PROMP.md avec les instructions pour créer un monde 3D interactif d'une conférence tech.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000107_seg4.jpg)
-*⏱️ 00:01:07 — Un éditeur de code affichant un fichier PROMP.md avec les instructions pour créer un monde 3D interactif d'une conférence tech.*
-
-![Une interface Frame.io affichant un dossier de ressources d'événements de 105,69 Go nommé 'Sep 22, 2026' avec des sous-dossiers.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000116_seg4.jpg)
-*⏱️ 00:01:16 — Une interface Frame.io affichant un dossier de ressources d'événements de 105,69 Go nommé 'Sep 22, 2026' avec des sous-dossiers.*
-
-![L'éditeur de code montrant le contenu détaillé du prompt demandant de transformer des enregistrements virtuels en un monde 3D explorable.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000125_seg4.jpg)
-*⏱️ 00:01:25 — L'éditeur de code montrant le contenu détaillé du prompt demandant de transformer des enregistrements virtuels en un monde 3D explorable.*
+**Action / Démonstration** : Le présentateur parle pendant que l'interface interactive simule une recherche ou une interaction vocale.
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:24 - 00:01:48]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> tu seras jugé sur la créativité, le design, la physique et la sensation générale lorsque j'explorerai le monde en 3D que tu as construit. Et c'était fondamentalement la fin des instructions. Donc, comme vous pouvez le voir sur ce côté gauche, j'ai exécuté cela à travers tous les différents niveaux d'effort. Commençons par le niveau bas et remontons jusqu'à ultra code. Très bien. Donc ici, nous avons le résultat du niveau bas. Ouvrons ceci et jetons un coup d'œil. Nous avons donc AIS Live, le sommet des services IA en personne enfin, et nous avons pu cliquer autour. Tout d'abord, cela ne fait pas très personnalisé. Genre, ce n'ce n'est pas le logo d'AIS Live. Ce n'est même pas nos couleurs. Donc je n'aime pas trop ça, mais entrons ici. D'accord. C'est beaucoup trop lumineux. Euh, nous avons une carte en haut à droite. Nous avons une ville par ici. Je ne peux pas dire quelle ville c'est.
+> Il l'utilise souvent avec CloudCode via un serveur MCP pour automatiser ces tâches. Bon, alors disons que je voulais créer mon tout premier flux de travail dans CloudCode. Quel serait peut-être un bon cas d'utilisation pour lequel je pourrais utiliser Firecrawl afin de créer une sorte d'automatisation ? C'Une excellente question. Un premier flux de travail fantastique consisterait à extraire des offres d'emploi d'un site Web et à les placer dans un format structuré comme une feuille Excel.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de type éditeur ou interface web d'agent IA (style Claude/Opus).
+**Interface & Outils** : Navigateur web affichant la page d'accueil de Nate Herk.
 
-**Contenu textuel & Code** : Texte de prompt concernant la création d'un monde 3D en vue à la troisième personne ("build a walkable third-person 3D world...") et réponse de l'agent demandant si il doit commencer.
+**Contenu textuel & Code** : Texte de présentation "AI Automation Made Easy", boutons de redirection et interface de chat vocal.
 
-**Action / Démonstration** : Navigation et sélection des différents niveaux de test (effort-test) dans le panneau de gauche pour exécuter la tâche.
-
-![Interface d'un assistant IA montrant différents niveaux de test (Hello, Extra, High, Max, Ultracode, Medium, Low) dans la barre latérale et une discussion en cours sur le panneau principal.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000142_seg5.jpg)
-*⏱️ 00:01:42 — Interface d'un assistant IA montrant différents niveaux de test (Hello, Extra, High, Max, Ultracode, Medium, Low) dans la barre latérale et une discussion en cours sur le panneau principal.*
+**Action / Démonstration** : Le présentateur s'exprime face caméra pendant la présentation de sa chaîne.
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:01:48 - 00:02:10]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> c'est. D'accord. C'est Chicago, ce qui est plutôt cool parce que tu sais, j'habite à Chicago, mais bref, en haut à droite, on peut voir une carte. Nous avons un hall d'accueil. Nous avons un hall d'exposition. Nous avons un salon VIP sur la scène principale. La carte montre également où se trouve chaque autre personne et cela se synchronise en direct. Donc nous pouvons voir l'enregistrement. Nous pouvons voir le premier jour, la keynote de l'agent hyper, le débriefing en direct. Cool. Donc il connaît réellement l'agenda et ensuite il y a le deuxième jour. Donc il a trouvé ça, c'est bien. Nous avons ces petites boules ici que je peux espérer botter. D'accord. Le visage, Oh, regarde ça. Si je vais par ici, tous les gens disparaissent tout simplement. Très mauvais. Très mauvais. D'accord. Alors voyons voir. Est-ce que je peux sprinter ? D'accord.
+> Nate a montré comment Firecrawl peut facilement récupérer tous les détails d'emploi à partir de plusieurs pages, et CloudCode peut ensuite organiser ces données pour vous. C'est une façon pratique de voir la puissance de Firecrawl et des flux de travail agentiques en action. Très bien. Donc, je vais aller de l'avant et terminer cette conversation. Mais ce que vous venez fondamentalement de voir là, c'est que j'ai pu intégrer toutes les connaissances des transcriptions YouTube dans cet agent vocal, et ensuite je peux simplement lui parler. Et il s'intègre parfaitement ici même sur mon site Web.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif (plateforme de conférence en ligne type metaverse).
+**Interface & Outils** : Navigateur web (site Nate Herk) et widget d'assistant vocal IA.
 
-**Contenu textuel & Code** : Menus de navigation, listes de sessions (Day 1 agenda) et mini-carte de l'événement virtuel.
+**Contenu textuel & Code** : Texte « AI Automation Made Easy », boutons « Watch on YouTube » et « Join the Community », ainsi qu'une interface de discussion vocale avec la mention « Talk to interrupt ».
 
-**Action / Démonstration** : Exploration et navigation du présentateur dans les différentes zones de l'espace virtuel (badge pickup, lobby, expo hall).
+**Action / Démonstration** : Le présentateur apparaît dans un encadré incrusté par-dessus son site web pendant qu'il explique le fonctionnement des flux de travail agentiques.
 
-![Vue d'un monde virtuel interactif montrant un personnage de joueur devant un panneau de retrait de badges et une mini-carte en haut à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000216_seg6.jpg)
-*⏱️ 00:02:16 — Vue d'un monde virtuel interactif montrant un personnage de joueur devant un panneau de retrait de badges et une mini-carte en haut à droite.*
-
-![Vue du lobby virtuel avec un panneau affichant le programme du premier jour ("Day 1") et la mini-carte de navigation.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000224_seg6.jpg)
-*⏱️ 00:02:24 — Vue du lobby virtuel avec un panneau affichant le programme du premier jour ("Day 1") et la mini-carte de navigation.*
-
-![Vue de l'hall d'exposition virtuel (Expo Hall) montrant des avatars et une installation lumineuse centrale.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000232_seg6.jpg)
-*⏱️ 00:02:32 — Vue de l'hall d'exposition virtuel (Expo Hall) montrant des avatars et une installation lumineuse centrale.*
+![Capture d'écran montrant le site web personnel de Nate Herk avec un encadré vidéo du présentateur et un widget de chat vocal interactif sur le côté droit.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000154_seg6.jpg)
+*⏱️ 00:01:54 — Capture d'écran montrant le site web personnel de Nate Herk avec un encadré vidéo du présentateur et un widget de chat vocal interactif sur le côté droit.*
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:11 - 00:02:29]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je peux avancer un peu plus vite. Je vais d'abord aller par ici. Il y a des produits dérivés, euh, un sweat glido certifié AIS plus. D'accord. Donc il y a les stands réels qu'on avait dans l'événement virtuel. On avait des stands. Donc c'est plutôt cool. Un petit endroit pour prendre des photos. La salle C. En ce moment, nous avons Tangy Frederick qui anime un atelier. D'accord. Mais ce n'est pas une vidéo. Comme vous pouvez le voir, c'est juste une image. Elle ne bouge pas. Donc c'est juste une image. Ces gens sont en train de disparaître. Ce doivent être des fantômes. Allons par ici vers la salle A.
+> Donc, si quelqu'un vient ici, il serait en mesure de lancer réellement un appel et de lui parler. Ce ne sera pas vraiment en ligne. Je vais retirer ceci, mais c'était juste pour la démo. Parce que si vous avez déjà construit un agent vocal auparavant sans utiliser Cloud Code, c'est beaucoup de configuration manuelle, car vous allez sur la plateforme ElevenLabs, vous avez votre agent ici, et vous devez configurer manuellement l'invite système.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D de type métavers / plateforme événementielle en ligne
+**Interface & Outils** : Interface web de la plateforme ElevenLabs (ElevenAgents).
 
-**Contenu textuel & Code** : Aucun code source ni terminal de commande ; affichage d'un espace virtuel 3D avec des bannières d'exposition et des écrans explicatifs.
+**Contenu textuel & Code** : Configuration des "Agent Tools" avec l'outil d'API GitHub `https://api.github.com/users/nateherk/repos` et divers outils système comme "End conversation", "Detect language", etc.
 
-**Action / Démonstration** : Navigation et déplacement d'un avatar dans l'espace virtuel pour présenter les différents stands et salles de l'événement.
+**Action / Démonstration** : Navigation et présentation des outils configurés pour l'agent vocal intelligent dans ElevenLabs.
+
+![Interface de configuration de la plateforme ElevenLabs montrant les outils d'un agent vocal, notamment "list_github_repos" et les outils système.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000224_seg7.jpg)
+*⏱️ 00:02:24 — Interface de configuration de la plateforme ElevenLabs montrant les outils d'un agent vocal, notamment "list_github_repos" et les outils système.*
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:02:29 - 00:02:53]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons Liberty White. D'accord. Très cool. Vos 30 premiers jours en automatisation. Encore une fois, c'est juste une image fixe et les gens ont des bugs d'affichage. Donc ce n'est pas très bien ici. Je vais aller sur la scène principale et voir ce que nous avons. D'accord, cool. Donc nous avons une scène d'apparence principale. Les gens ont des bugs d'affichage. Vraiment mauvais. Ce n'est pas très bien du tout. Notre vidéo est en train de bouger. Genre, j'ai vu mon visage ici et j'ai vu celui de Devin, mais maintenant ils ont disparu. Donc je ne sais pas ce qui s'est passé. D'accord. C'est, on dirait que c'est plutôt un diaporama. Rien n'est vraiment diffusé pour l'instant. Quoi qu'il en soit, entrons ici.
+> Vous devez créer le premier message. Pour la base de connaissances, voulez-vous l'intégrer simplement sous forme de document ou voulez-vous lui donner différents outils et voulez-vous qu'elle soit capable d'interroger comme un magasin vectoriel Supabase ou un magasin vectoriel Pinecone, ou peut-être même NotebookLM ? Comment voulez-vous que toutes les données soient rassemblées à la fin de la journée ? Mais maintenant, rien qu'en faisant du brainstorming avec CloudCode et en lui donnant une sorte d'idée générale, il ira de l'avant et fera les recherches et trouvera la meilleure méthode pour vous.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D de type metavers / plateforme événementielle en ligne
+**Interface & Outils** : Interface web d'ElevenLabs (ElevenAgents).
 
-**Contenu textuel & Code** : Aucun code ni terminal affiché, uniquement des affichages textuels d'interface virtuelle ('Workshop Room A', 'AIS LIVE AI Services Summit').
+**Contenu textuel & Code** : Liste des outils de l'agent incluant l'outil personnalisé list_github_repos avec sa description et son URL d'API GitHub, ainsi qu'une barre de recherche d'outils.
 
-**Action / Démonstration** : Navigation et déplacement d'un avatar dans un espace virtuel 3D.
+**Action / Démonstration** : Le présentateur présente l'onglet "Tools" et les différents outils configurables pour l'assistant vocal IA.
+
+![Interface web d'ElevenLabs affichant la configuration des outils (Agent Tools) pour un assistant IA nommé Nate's AI Assistant, avec un outil list_github_repos visible.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000235_seg8.jpg)
+*⏱️ 00:02:35 — Interface web d'ElevenLabs affichant la configuration des outils (Agent Tools) pour un assistant IA nommé Nate's AI Assistant, avec un outil list_github_repos visible.*
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:02:53 - 00:03:13]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons plus de stands. Nous avons hyper agent. Nous avons Claude Code. Nous avons plus de goodies. La salle B, c'est Dave Ebelor. Je suppose que c'est exactement la même chose. Nous avons du café. Et ensuite, je suppose que le salon VIP, accès VIP seulement. C'est plutôt cool, mais il n'y a vraiment rien qui se passe ici. Cet écran est beaucoup trop lumineux. D'accord. Donc je pense que vous comprenez l'ambiance que nous obtenons ici avec Opus 5.5 en effort faible. Et c'est là que les choses deviennent intéressantes. À combien est-ce que vous pensez que cela a tourné ? Pendant combien de temps ? Celui-ci a tourné pendant 16 minutes et 43 secondes. Combien est-ce que vous pensez que cela a coûté ?
+> Et ensuite, il va créer un agent vocal dans 11labs et tout configurer. C'est donc exactement ce que nous allons faire aujourd'hui lors d'une démonstration en direct avec CloudCode et 11labs. Donc, avant de passer à la démonstration en direct, parlons un peu de ce qui se passe avec un agent vocal. C'est une boucle, ce n'est pas magique. Un visiteur, disons, arrive sur un site Web, appelle l'agent IA, et l'agent écoute à travers votre microphone.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web interactive / Tableau blanc virtuel (Opus 5.5 Efforts)
+**Interface & Outils** : ElevenLabs (interface de gestion d'agents) et diapositive de présentation personnalisée (AIS).
 
-**Contenu textuel & Code** : Tableau comparatif listant 'Run time', 'API cost', 'Total tokens', 'Checks' et 'Questions asked' selon différents niveaux d'effort (Low à Ultracode).
+**Contenu textuel & Code** : Le prompt système de l'agent "Nate's AI Assistant" sur ElevenLabs et des explications textuelles sur le fonctionnement d'une boucle conversationnelle IA.
 
-**Action / Démonstration** : Présentation des différents niveaux de performance et d'effort d'un modèle d'IA.
+**Action / Démonstration** : Présentation de la configuration d'un agent vocal et explication théorique de son fonctionnement en boucle.
 
-![Tableau de comparaison des efforts et performances avec des colonnes Low, Medium, High, Extra, Max et Ultracode.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000351_seg9.jpg)
-*⏱️ 00:03:51 — Tableau de comparaison des efforts et performances avec des colonnes Low, Medium, High, Extra, Max et Ultracode.*
+![Interface web de configuration d'un agent vocal sur ElevenLabs, montrant le prompt système et les paramètres.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000258_seg9.jpg)
+*⏱️ 00:02:58 — Interface web de configuration d'un agent vocal sur ElevenLabs, montrant le prompt système et les paramètres.*
+
+![Diapositive de présentation affichant le titre "A loop, not magic." avec trois points explicatifs sur le fonctionnement d'un agent vocal.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000303_seg9.jpg)
+*⏱️ 00:03:03 — Diapositive de présentation affichant le titre "A loop, not magic." avec trois points explicatifs sur le fonctionnement d'un agent vocal.*
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:03:14 - 00:03:47]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> 3,91 dollars si c'était facturé par l'API. J'utilise évidemment mon abonnement ici, mais nous allons simplement calculer cela avec la facturation de l'API. Le nombre total de jetons était de 191 000. Il a effectué 22 vérifications. Donc pour la vérification, 22 fois il a ouvert le navigateur et a exécuté différentes sortes de vérifications. Donc 22 catégories de vérifications. Et combien de questions m'a-t-il posées ? Il m'a posé un total de zéro question tout au long de cette invite de commande globale. D'accord. Alors ouvrons l'effort moyen et voyons ce que nous avons. D'accord, c'est parti. Effort moyen. Nous avons Nate Herc. Nous avons mon badge. C'est la marque de commerce AI's life.
+> Le LLM en arrière-plan est capable de recevoir ce message, de le transcrire en texte, de le lire, puis soit de revenir avec le message suivant, soit de lire la base de données, soit de déclencher une sorte d'appel d'outil, et enfin de revenir vers l'utilisateur final avec une sorte de réponse. Et ensuite, la boucle se répète tout simplement. Maintenant, il y a en gros quatre éléments principaux dans chaque agent vocal. Nous avons la persona, qui est fondamentalement le prompt système. Donc, si je retourne dans mon tableau de bord ElevenLabs, ce prompt système ici même où nous disons, hé, tu es l'assistant IA de Nate. Tu es sur son site web. Tu as des informations sur tout cela. C'est la persona. Nous pourrions lui dire d'être impoli. Nous pourrions lui dire d'être,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc (ex: Excalidraw) avec le présentateur incrusté en médaillon à gauche.
+**Interface & Outils** : Interface web de configuration d'agent vocal (ElevenLabs Agents)
 
-**Contenu textuel & Code** : Tableau avec les lignes : Run time (16m 43s), API cost ($3.91), Total tokens (191.3K), Checks, Questions asked, sous des colonnes Low, Medium, High, Ex.
+**Contenu textuel & Code** : System prompt de l'agent configuré pour aider les visiteurs sur le contenu YouTube de Nate, avec des règles de style conversationnel.
 
-**Action / Démonstration** : Le présentateur présente et commente les données statistiques d'exécution affichées dans le tableau.
+**Action / Démonstration** : Navigation et présentation de l'interface de configuration de l'assistant IA vocal.
 
-![Tableau comparatif sur une application de tableau blanc affichant les métriques d'exécution pour un niveau d'effort bas, incluant le temps d'exécution, le coût API, le nombre total de jetons et les vérifications.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000405_seg10.jpg)
-*⏱️ 00:04:05 — Tableau comparatif sur une application de tableau blanc affichant les métriques d'exécution pour un niveau d'effort bas, incluant le temps d'exécution, le coût API, le nombre total de jetons et les vérifications.*
+![Interface de configuration d'ElevenLabs affichant les paramètres d'un agent vocal, notamment le System Prompt et la sélection des voix.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000339_seg10.jpg)
+*⏱️ 00:03:39 — Interface de configuration d'ElevenLabs affichant les paramètres d'un agent vocal, notamment le System Prompt et la sélection des voix.*
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:03:47 - 00:04:20]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc ça a déjà l'air un petit peu mieux. Ça ressemble à nos palettes de couleurs qui ont utilisé nos directives de marque. Premier jour de construction, deuxième jour de gain, VIP. Cool. D'accord. Je vais entrer dans le lieu. D'accord. Waouh. Une ambiance similaire, en somme. C'est en arrière-plan. Ça ne ressemble pas à Chicago, hein ? Non, ça ressemble à, honnêtement, ça ressemble à une ville imaginaire. Quoi qu'il en soit, c'est marrant qu'ils aient décidé de faire ça. Voyons si je peux avancer un peu plus vite. Oh, waouh.
+> vous savez, conversationnel comme Nate lui-même. Nous pourrions lui dire de raconter des blagues après chaque phrase et il le ferait. Et c'est essentiellement nous qui définissons la personnalité de notre agent vocal. Ensuite, nous avons aussi la voix. Vous pouvez donc choisir parmi toutes les différentes voix. Si je vais ici dans créatif et que je vais dans, je suppose qu'on aurait pu le faire de l'autre côté, mais les voix, vous pouvez voir qu'il y a un tas de voix. Il y a des voix tendances. Il y en a différentes, comme des voix iconiques. Et vous avez peut-être remarqué que celle-là me ressemblait. Ce que j'ai fait, c'est que j'ai utilisé mon propre clone vocal professionnel, qui est entraîné sur environ quatre heures de ma voix. Et puis nous avons les connaissances. Donc
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web interactive et espace virtuel 3D (type Gather.town ou métavers).
+**Interface & Outils** : Interface web d'ElevenLabs
 
-**Contenu textuel & Code** : Écran d'accueil de l'événement virtuel, instructions de contrôle (WASD walk, Shift sprint, Space jump) et affichage du badge "AIS Live".
+**Contenu textuel & Code** : Menus et options de la bibliothèque vocale (Voices, Explore, Trending voices, Voice Design)
 
-**Action / Démonstration** : Le présentateur examine l'interface de connexion puis entre dans le lieu virtuel de l'événement.
+**Action / Démonstration** : Navigation dans l'interface d'ElevenLabs pour présenter la sélection et la personnalisation des voix d'agents conversationnels.
 
-![Interface web "Welcome to AIS Live" avec un badge d'accès virtuel au nom de Nate Herk et des options de navigation.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000431_seg11.jpg)
-*⏱️ 00:04:31 — Interface web "Welcome to AIS Live" avec un badge d'accès virtuel au nom de Nate Herk et des options de navigation.*
+![Interface d'accueil de la plateforme ElevenLabs affichant le tableau de bord et les options de création vocale.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000404_seg11.jpg)
+*⏱️ 00:04:04 — Interface d'accueil de la plateforme ElevenLabs affichant le tableau de bord et les options de création vocale.*
 
-![Vue à la première personne dans l'environnement virtuel 3D avec des avatars et un panorama urbain de nuit en arrière-plan.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000441_seg11.jpg)
-*⏱️ 00:04:41 — Vue à la première personne dans l'environnement virtuel 3D avec des avatars et un panorama urbain de nuit en arrière-plan.*
+![Bibliothèque de voix (Voice Library) sur ElevenLabs permettant d'explorer et de choisir des profils vocaux (Trending voices).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000412_seg11.jpg)
+*⏱️ 00:04:12 — Bibliothèque de voix (Voice Library) sur ElevenLabs permettant d'explorer et de choisir des profils vocaux (Trending voices).*
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:04:20 - 00:04:44]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Les gens interagissent avec moi. Regardez. Si je m'approche de ce type, il vient de lever le bras. Bon, maintenant il ne veut plus du tout avoir affaire à moi. Mais tous ces petits robots ici doivent prendre des décisions. Je ne sais pas s'ils utilisent Jev. C'est sûr que non. Je ne le lui ai pas dit. En fait, ma clé Jev est à l'arrière. Je ne sais pas. Peut-être qu'il l'a utilisée. Quoi qu'il en soit, nous pouvons voir ici que nous avons la salle d'atelier C, le laboratoire des agents. Sympa. Donc celui-ci est en fait en train d'être exécuté. Vous pouvez voir qu'il s'agit d'une vraie vidéo lue par Tangy. Tout le monde ici est en train de travailler sur un ordinateur portable. Ils ne buguent pas. C'est plutôt cool. De plus, mon badge est sur ma poitrine, ce qui est plutôt cool. Je peux venir par ici. Nous avons une carte en haut à droite, comme vous pouvez le voir, mais je peux venir par ici. Nous avons un
+> c’est là que vous donneriez à votre agent des informations sur votre entreprise ou des informations sur la base de données clients ou tout ce dont il a besoin, que ce soit quelque chose qu’il peut communiquer au client. Donc pour mon exemple, des données de transcription YouTube, ou peut-être que cet agent est un agent de support client et qu’il doit être capable de consulter la commande de quelqu’un puis de lui en donner le statut. Il y a donc différentes façons de lui donner des connaissances, mais c’est une partie essentielle d’un agent vocal.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de monde virtuel 3D (type Gather.town ou environnement similaire).
+**Interface & Outils** : Logiciel de présentation ou diapositive web.
 
-**Contenu textuel & Code** : Environnement virtuel peuplé d'avatars interactifs.
+**Contenu textuel & Code** : Texte de présentation : 01 Persona (The system prompt), 02 Voice (ElevenLabs), 03 Knowledge (Documents and URLs), 04 Tools (Webhooks and functions).
 
-**Action / Démonstration** : Navigation et exploration d'un monde virtuel interactif en 3D.
+**Action / Démonstration** : Le présentateur explique les quatre éléments fondamentaux qui constituent un agent conversationnel IA, en mettant l'accent sur le composant Knowledge.
+
+![Une diapositive de présentation intitulée "Four pieces inside every agent" détaillant quatre composants clés : Persona, Voice, Knowledge et Tools.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000426_seg12.jpg)
+*⏱️ 00:04:26 — Une diapositive de présentation intitulée "Four pieces inside every agent" détaillant quatre composants clés : Persona, Voice, Knowledge et Tools.*
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:04:44 - 00:05:08]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> hall d'exposition. C'est là que nous avons le stand Glido. Et ça diffuse en ce moment. Oui, ça diffuse la vidéo de nous en train de parler de Glido. Ça diffuse la vidéo d'Ed et moi parlant de notre programme de certification. Nous avons le logo AIS Plus juste ici, qui est un peu mal placé. Ce sont les diapositives des conférenciers et les points clés. Alors wow, ce sont toutes les ressources que nous avons distribuées après l'événement. Elles sont toutes affichées là également. Nous pouvons voir que nous avons un projecteur de communauté. Donc ça, c'est Aiden qui parle de son contrat qu'il a décroché et ça joue en direct. Ces gens sont en train de regarder.
+> Et ensuite vous avez aussi des outils, que nous allons configurer dans vos agents vocaux 11 Labs. Donc par exemple, avec cet assistant que nous venions de regarder, si je vais dans outils, vous pouvez voir qu'il y a un outil ici même qui s'appelle lister les dépôts GitHub, mais il y a des tonnes d'outils différents que vous pouvez ajouter. Vous pourriez ajouter un serveur MCP. Vous pourriez lui faire faire un appel API direct, fondamentalement. Vous pourriez même faire en sorte que votre agent 11labs appelle, vous savez, un outil que vous avez déjà construit dans NNN ou un script Python ou une automatisation Zapier.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D de type salon ou exposition en ligne (Gather town ou similaire).
+**Interface & Outils** : ElevenLabs (interface web de configuration d'agent vocal)
 
-**Contenu textuel & Code** : Éléments visuels de salon virtuel, avatars, panneaux d'affichage et diaporamas de présentation.
-[DESC_IMAGE_1] Navigation et visite guidée d'un espace d'exposition virtuel par le présentateur.
+**Contenu textuel & Code** : System prompt définissant l'assistant de Nate (rôle, objectifs, style, règles), premier message de l'agent ("Hey, I'm Nate's AI..."), et menu de navigation supérieur (Agent, Workflow, Knowledge Base, Analysis, Tools, Tests).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation de la configuration d'un agent vocal personnalisé dans ElevenLabs et de son prompt système.
+
+![Interface d'administration d'un agent conversationnel sur ElevenLabs, montrant la configuration du prompt système, du premier message et des paramètres de l'agent.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000450_seg13.jpg)
+*⏱️ 00:04:50 — Interface d'administration d'un agent conversationnel sur ElevenLabs, montrant la configuration du prompt système, du premier message et des paramètres de l'agent.*
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:05:08 - 00:05:27]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Ils sont plutôt engagés. On a un hyper agent. C'était, c'est ce que je voulais dire. Si vous avez vu ces gens lever les bras en disant bonjour, c'était plutôt drôle. Regardez, regardez, le voilà qui recommence. Bref. D'accord. Où suis-je maintenant ? Maintenant, je suis dans le hall principal. On a un bar à café. On a un grand logo, qui est le vrai logo. C'est trop lumineux, mais on a le logo. On peut voir si on peut entrer ici dans le parcours fondation. On a Sabrina Romanov et Liberty White. Donc différentes formations juste là. On peut entrer dans cette salle. C'est le parcours avancé. Alors qu'est-ce qui se passe ici. On a Dave Ebelar et Saman qui parlent de différentes choses là-dedans. Et maintenant, allons jeter un œil à la scène principale. Oh, attendez, il y a une vidéo de moi là-haut. C'est genre un VIP
+> Quoi que ce soit, votre agent doit pouvoir réellement l'appeler. Et vous n'avez pas besoin de configurer cela manuellement. Vous savez, normalement, vous viendriez ici et vous ajouteriez un outil et vous devriez tout configurer. Mais Cloud Code lit la documentation d'ElevenLabs, comprend tout sur les agents d'ElevenLabs, et fait ensuite tout cela pour vous. Ce sont donc les quatre éléments. Le code l'emporte sur les clics.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Monde virtuel 3D / plateforme de métavers de conférence.
+**Interface & Outils** : Interface web d'ElevenLabs (ElevenAgents) avec une vue sur la configuration des outils de l'agent.
 
-**Contenu textuel & Code** : Environnement virtuel 3D représentant un hall de réception et des espaces de conférence avec des avatars d'utilisateurs.
+**Contenu textuel & Code** : Liste des outils de l'agent incluant l'outil `list_github_repos` connectant à l'API GitHub (`https://api.github.com/users/nate...`), ainsi que les outils système sur le panneau latéral droit (End conversation, Detect language, etc.).
 
-**Action / Démonstration** : Navigation et déplacement d'un avatar à l'intérieur du monde virtuel 3D.
+**Action / Démonstration** : Visualisation de la configuration des outils de l'agent vocal au sein de la plateforme ElevenLabs.
+
+![L'interface d'ElevenLabs affichant l'onglet "Tools" avec un outil configuré (`list_github_repos`) pour l'agent "Nate's AI Assistant".](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000513_seg14.jpg)
+*⏱️ 00:05:13 — L'interface d'ElevenLabs affichant l'onglet "Tools" avec un outil configuré (`list_github_repos`) pour l'agent "Nate's AI Assistant".*
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:05:28 - 00:05:46]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section ? Ouais, on va aller voir ça dans une minute. Mais bref, voici la scène principale. Ça a l'air vraiment, vraiment super. On a une grande scène. On a genre quatre personnes assises ici. On a les trois écrans d'Alex là-haut avec hyper agent. Est-ce que j'ai le droit de monter sur scène ? Oh, et me laisse monter sur scène. D'accord. C'est plutôt sympa. Bon les gars, faisons un selfie. Laissez-moi prendre tout le monde en arrière-plan. Venez par ici. Bref, c'est vraiment, vraiment cool. Par contre, toutes les places ne sont pas prises. Donc il faut qu'on travaille là-dessus. Mais bref, je vais retourner en courant voir ce que c'était que cette section VIP. D'accord. Le salon VIP. J'ai l'impression que c'est comme un aéroport ou un truc comme ça.
+> Fondamentalement, je valide simplement que c'est tellement mieux de construire un agent vocal en parlant dans votre ordinateur plutôt que d'aller sur le tableau de bord et de cliquer, de cliquer, d'enregistrer, et peut-être d'oublier d'enregistrer des choses, et peut-être de faire une erreur avec les points de terminaison ou quelque chose comme ça. Mais tout ce que nous avons à faire maintenant, c'est simplement de parler à Claude. Il y a donc généralement trois façons différentes de concevoir un agent vocal.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D / Metavers de conférence (Hyperagent)
+**Interface & Outils** : Diapositive de présentation (Slide deck) avec des blocs de texte et de code simulés.
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant les détails de la keynote (Alex McDonnell, Hyperagent) et mini-carte de navigation.
+**Contenu textuel & Code** : Commandes CLI affichées : `elevenlabs agents push`, `elevenlabs agents pull`, `agent_configs/*.json - versioned in git`, et la comparaison avec le tableau de bord (`click · click · save`, `no history, no diff, no review`).
 
-**Action / Démonstration** : Navigation et déplacement de l'avatar dans l'espace virtuel de la conférence.
+**Action / Démonstration** : Présentation conceptuelle illustrant pourquoi l'utilisation du code et du terminal est supérieure à l'utilisation d'une interface graphique de tableau de bord pour configurer des agents.
+
+![Une diapositive de présentation comparant l'approche par code ('Code beats clicks') à celle par tableau de bord graphique, avec des exemples de commandes CLI ElevenLabs et le présentateur visible en incrustation vidéo en haut à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000532_seg15.jpg)
+*⏱️ 00:05:32 — Une diapositive de présentation comparant l'approche par code ('Code beats clicks') à celle par tableau de bord graphique, avec des exemples de commandes CLI ElevenLabs et le présentateur visible en incrustation vidéo en haut à droite.*
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:05:46 - 00:06:18]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> D'accord, super. Donc maintenant nous avons les sessions VIP ici. Une foire aux questions VIP avec la lecture vidéo en direct de Nate juste ici. Très, très cool. Et nous avons comme un bar ou quelque chose. Génial. Je dirais que c'est un assez bon résultat. Maintenant, en ce qui concerne les statistiques ici, celle-ci a pris une heure et 13 minutes à s'exécuter. Cela nous aurait coûté 12 dollars et 44 cents. Elle a utilisé 490 000 jetons et elle a effectué 23 vérifications.
+> Vous pouvez soit le faire dans le tableau de bord. Donc si je viens ici et que je construisais cet agent, je pourrais le tester. Donc si je dé zoome un petit peu, nous pourrions tester l'agent et lui parler directement ici. L'autre façon est de l'intégrer dans un site web. Donc comme vous l'avez vu ici, il y a un petit bouton pour démarrer un appel et cela déclencherait notre agent IA. C'est donc ce qu'on appelle un widget de site web. Et ensuite, vous pouvez aussi le connecter à un téléphone. Vous pouvez donc connecter votre Twilio. Vous pouvez associer cet agent vocal que nous construisons à un numéro de téléphone. Et ensuite, vous pouvez faire en sorte que cet agent vocal appelle des gens à partir de ce numéro, ou si quelqu'un appelle ce numéro, l'agent vocal
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de salon virtuel 3D et tableau de bord analytique (Opus 5.5 Efforts).
+**Interface & Outils** : ElevenLabs Dashboard, Site web personnel (Framer/HTML), Présentation diapositive (Slides).
 
-**Contenu textuel & Code** : Statistiques de performance d'exécution : 16m 43s de temps d'exécution, coût API de 3,91 $, 191,3K tokens au total, 22 vérifications.
+**Contenu textuel & Code** : Prompt système de l'agent (« You are Nate's AI assistant »), options de voix, et les trois méthodes de diffusion (Test, Embed, Phone).
 
-**Action / Démonstration** : Le présentateur commente l'agencement de l'espace virtuel VIP puis présente les statistiques de performance affichées sur le tableau de bord.
+**Action / Démonstration** : Démonstration de la configuration de l'agent dans le tableau de bord, visualisation de son intégration sur un site web et explication des méthodes de déploiement.
 
-![Vue d'un espace virtuel 3D (salon VIP) montrant une session de questions/réponses en direct avec Nate.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000656_seg16.jpg)
-*⏱️ 00:06:56 — Vue d'un espace virtuel 3D (salon VIP) montrant une session de questions/réponses en direct avec Nate.*
+![Interface du tableau de bord ElevenLabs affichant la configuration d'un agent vocal avec un prompt système et les options de test interactif.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000554_seg16.jpg)
+*⏱️ 00:05:54 — Interface du tableau de bord ElevenLabs affichant la configuration d'un agent vocal avec un prompt système et les options de test interactif.*
 
-![Tableau de bord d'analyse montrant les métriques de performance et de coût (Run time : 16m 43s, API cost : $3.91, Total tokens : 191.3K, Checks : 22, Questions asked : 0).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000702_seg16.jpg)
-*⏱️ 00:07:02 — Tableau de bord d'analyse montrant les métriques de performance et de coût (Run time : 16m 43s, API cost : $3.91, Total tokens : 191.3K, Checks : 22, Questions asked : 0).*
+![Page web personnelle de Nate Herk montrant le widget d'appel vocal intégré dans le coin inférieur droit.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000602_seg16.jpg)
+*⏱️ 00:06:02 — Page web personnelle de Nate Herk montrant le widget d'appel vocal intégré dans le coin inférieur droit.*
+
+![Diapositive de présentation listant les trois méthodes pour accéder ou intégrer l'agent (Test, Embed, Phone).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000610_seg16.jpg)
+*⏱️ 00:06:10 — Diapositive de présentation listant les trois méthodes pour accéder ou intégrer l'agent (Test, Embed, Phone).*
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:06:18 - 00:06:51]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et il nous a posé un total de zéro question une fois de plus. Très bien, passons à élevé. C'était déjà un résultat plutôt correct et Anthropic eux-mêmes dans leur vidéo « comment prompter Opus 5.5 », ou désolé, pas une vidéo, un article. Ils ont dit de commencer simplement par moyen et de l'augmenter ou de le réduire si nécessaire. C'était donc un résultat moyen. Passons à élevé et voyons ce que nous avons obtenu. Très rapidement, les gars, je dois prendre un moment pour vous parler du sponsor de la vidéo d'aujourd'hui, Hostinger. Donc, ces deux modèles viennent de me construire une version fonctionnelle de la même chose. Et maintenant, je suis exactement là où je finis toujours, avec quelque chose de terminé sur mon ordinateur portable et aucun moyen rapide de le mettre en ligne. Et c'est le fossé que comble le connecteur d'Hostinger. C'est une extension gratuite
+> décrocher. Ce sont donc les trois principales façons de faire. Aujourd'hui, nous allons nous intéresser spécifiquement à l'intégration, mais il existe de multiples façons de créer et de connecter des agents vocaux. Et ce qui est amusant avec le widget, et ce n'est pas si drôle que ça, mais c'est plutôt cool, c'est que c'est littéralement juste un petit bloc. Si vous voyez ici, je clique sur l'onglet du widget. Tout ce qu'il dit, c'est, ok, ajoutez le script suivant aux pages où vous voulez que le widget de conversation soit présent. Et je kopie... je copierais simplement ceci, je le donnerais à Cloud Code et je dirais, hey, mets ça sur mon site web. C'est aussi simple que ça. Donc, tout cela étant dit, passons directement à la création en direct d'un agent vocal. D'accord. Donc
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau de bord analytique et interface de développement / éditeur de code.
+**Interface & Outils** : Interface web d'ElevenLabs (ElevenAgents)
 
-**Contenu textuel & Code** : Métriques comparatives (Run time, API cost, Total tokens, Checks, Questions asked) et invite de génération d'un calculateur ROI Northwind en HTML.
+**Contenu textuel & Code** : Code d'intégration HTML du widget (`<elevenlabs-convai agent-id="...">`) et options de configuration de l'interface.
 
-**Action / Démonstration** : Analyse comparative des coûts et performances d'exécution des différents niveaux de prompt d'Opus 5.5.
+**Action / Démonstration** : Navigation et présentation des options de configuration du widget d'intégration pour un agent vocal.
 
-![Tableau de comparaison affichant les performances selon différents niveaux d'effort (Low, Medium, High, Extra) avec les métriques de temps, coût API, tokens, vérifications et questions posées.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000722_seg17.jpg)
-*⏱️ 00:07:22 — Tableau de comparaison affichant les performances selon différents niveaux d'effort (Low, Medium, High, Extra) avec les métriques de temps, coût API, tokens, vérifications et questions posées.*
-
-![Interface de développement avec un éditeur affichant l'exécution d'un agent de génération de code et le panneau de chat latéral.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000739_seg17.jpg)
-*⏱️ 00:07:39 — Interface de développement avec un éditeur affichant l'exécution d'un agent de génération de code et le panneau de chat latéral.*
+![Interface de la plateforme ElevenLabs montrant les paramètres de configuration du widget d'intégration avec le code HTML à copier et un aperçu visuel du widget vocal.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000635_seg17.jpg)
+*⏱️ 00:06:35 — Interface de la plateforme ElevenLabs montrant les paramètres de configuration du widget d'intégration avec le code HTML à copier et un aperçu visuel du widget vocal.*
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:06:51 - 00:07:25]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> pour votre éditeur qui intègre votre compte Hostinger dans l'outil de programmation que vous utilisez déjà, que ce soit VS Code, Cursor, Cloud Code, Codex, et j'en passe. Vous vous connectez une seule fois en un clic, et à partir de là, votre agent peut déployer le site, y associer un domaine, configurer les enregistrements DNS et vérifier votre VPS sans que vous n'ayez jamais à quitter l'éditeur. Ainsi, peu importe celui de ces outils que vous finirez par préférer, ce qu'il a construit est à quelques minutes d'obtenir une vraie URL sur un hébergement géré. Le connecteur est gratuit sur chaque formule d'hébergement, donc si vous avez toujours besoin de l'hébergement sous-jacent, profitez de la formule illimitée grâce au lien dans la description et utilisez le code NATEHERK pour obtenir 10 % de réduction. Cela inclut également un nom de domaine gratuit et un e-mail professionnel pour un an. Et c'est toujours le moyen le plus économique que j'ai trouvé pour obtenir quelque
+> la première chose que nous allons faire, c'est que nous allons ouvrir Cloud Code. Maintenant, vous pouvez l'utiliser dans l'application de bureau, comme vous le voyez ici. Personnellement, je n'aime pas trop utiliser l'application de bureau. Je préfère en fait utiliser VS Code, qui est simplement un EDI. C'est entièrement gratuit à télécharger. Allez simplement sur Google, cherchez Visual Studio Code et téléchargez-le. Et ensuite, lorsque vous l'ouvrez, ça devrait ressembler à quelque chose comme ça, ce que vous allez vouloir faire, c'est ouvrir un projet. Donc, ouvrez un projet vide sur votre bureau ou dans vos documents ou où vous voulez, et ensuite ouvrez-le ici. Vous pouvez voir ce que j'ai en ce moment est juste un projet très simple. Et tout ce que nous avons fait ici, c'est que nous avons construit un site web ou une simple page de destination. Donc voici ma simple page de destination ici. C'est pour une sorte d'IA
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de gestion Hostinger connectée et interface de terminal Claude Code.
+**Interface & Outils** : Visual Studio Code
 
-**Contenu textuel & Code** : Statut "Connected" via OAuth, Node.js 24.13.0, et liste des outils disponibles pour l'assistant (Websites, Domains, Subscriptions & Payments, Email Marketing).
+**Contenu textuel & Code** : Arborescence de fichiers du projet : CLAUDE.md, index.html, README.md, script.js, styles.css
 
-**Action / Démonstration** : Connexion du compte Hostinger à l'IDE et affichage des outils accessibles par l'assistant.
+**Action / Démonstration** : Le présentateur présente l'interface de VS Code comme alternative préférée pour travailler sur le projet.
 
-![Interface montrant la connexion de Hostinger depuis l'IDE avec la liste des outils disponibles (Websites, Domains, Subscriptions, Email Marketing) et le panneau Claude Code à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000757_seg18.jpg)
-*⏱️ 00:07:57 — Interface montrant la connexion de Hostinger depuis l'IDE avec la liste des outils disponibles (Websites, Domains, Subscriptions, Email Marketing) et le panneau Claude Code à droite.*
+![Capture d'écran de l'éditeur de code Visual Studio Code ouvert sur un projet nommé 'ELEVENLABS DEMO', montrant la structure des fichiers dans le panneau latéral gauche et le présentateur en incrustation vidéo dans le coin inférieur droit.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000700_seg18.jpg)
+*⏱️ 00:07:00 — Capture d'écran de l'éditeur de code Visual Studio Code ouvert sur un projet nommé 'ELEVENLABS DEMO', montrant la structure des fichiers dans le panneau latéral gauche et le présentateur en incrustation vidéo dans le coin inférieur droit.*
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:07:25 - 00:07:47]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> tu as construit cela sur une vraie URL. Donc revenons à la vidéo. D'accord. Encore une fois, très, très marqué par la marque. C'est un écran de chargement encore meilleur que le précédent. Nous avons ce joli petit effet en arrière-plan. Nous avons le logo. Nous allons entrer dans le lieu. D'accord. Nous y voilà. Ça a l'air plutôt bien. Nous commençons à l'extérieur et vous pouvez voir que nous avons ces drapeaux pour tous les intervenants, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. C'est plutôt cool. Nous avons des blocs en direct ici.
+> comme partenaire de conseil ou de transformation. Et j'ai demandé à Claude de créer rapidement ceci parce que c'est là que nous allons intégrer notre widget d'agent vocal dans l'exemple d'aujourd'hui. Si vous n'avez pas déjà de site web, ne vous inquiétez pas. Vous n'en avez pas besoin. Vous pouvez quand même suivre et vous serez toujours capable de construire un agent vocal. C'est juste que je veux vous montrer comment vous pouvez réellement l'intégrer à la fin du tutoriel. Donc nous sommes dans ce projet. Nous allons ouvrir CloudCode.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D / Environnement virtuel (AIS Live)
+**Interface & Outils** : Navigateur web affichant un site internet au design épuré (mode sombre).
 
-**Contenu textuel & Code** : Interface d'un événement virtuel avec cartes de contrôle (WASD, MOUSE), bannières de conférenciers et indicateur de progression (Passport).
+**Contenu textuel & Code** : Texte de présentation de l'entreprise 'Neurel' axée sur la transformation par l'IA et menu de navigation supérieur (Services, Process, Work, Manifesto, FAQ, Book a diagnostic).
 
-**Action / Démonstration** : Connexion et exploration de l'espace virtuel de l'événement en 3D.
+**Action / Démonstration** : Le présentateur présente le site web factice créé avec l'aide de Claude pour y intégrer le widget d'agent vocal.
 
-![Écran de chargement et d'accueil de la plateforme virtuelle 'AIS LIVE', affichant le logo et les instructions de contrôle.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000829_seg19.jpg)
-*⏱️ 00:08:29 — Écran de chargement et d'accueil de la plateforme virtuelle 'AIS LIVE', affichant le logo et les instructions de contrôle.*
-
-![Vue de la place virtuelle 3D ('AIS Live Plaza') montrant des avatars de personnages et un environnement urbain stylisé.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000835_seg19.jpg)
-*⏱️ 00:08:35 — Vue de la place virtuelle 3D ('AIS Live Plaza') montrant des avatars de personnages et un environnement urbain stylisé.*
-
-![Navigation dans l'espace virtuel 3D avec des panneaux d'affichage aux noms de conférenciers et des éléments interactifs.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000841_seg19.jpg)
-*⏱️ 00:08:41 — Navigation dans l'espace virtuel 3D avec des panneaux d'affichage aux noms de conférenciers et des éléments interactifs.*
+![Capture d'écran montrant la page d'accueil du site web 'Neurel' avec un design sombre, un titre accrocheur 'AI transformation, without the layoffs' et le présentateur incrusté en bas à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000731_seg19.jpg)
+*⏱️ 00:07:31 — Capture d'écran montrant la page d'accueil du site web 'Neurel' avec un design sombre, un titre accrocheur 'AI transformation, without the layoffs' et le présentateur incrusté en bas à droite.*
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:07:48 - 00:08:07]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Il a pris cette photo de moi, votre hôte, Nate Herc, John, Dave, Nate Herc. Voilà. D'accord. Les portes. Génial. Ce sont des portes coulissantes automatiques en verre. J'adore ça. Nous pouvons voir l'enregistrement VIP. Nous pouvons voir l'admission générale. Nous pouvons venir ici et nous pouvons découvrir l'exposition avec différents stands, le coin de la communauté. Vous pouvez également voir qu'en haut à gauche, j'ai un passeport. Donc c'est comme si, cela montrera combien d'endroits j'ai visités. Tout cela est une lecture réelle. Nous avons un mur de ressources avec tous les différents intervenants. Ils ont également une session de networking ici. Je vais donc venir très vite et voir de quoi il s'agit. Nous avons donc le bar à cold brew AIS. Nous avons différents membres de la communauté qui ont été mis en avant ou mis en lumière.
+> Donc je vais fondamentalement juste cliquer sur ce petit bouton juste ici en haut à droite, ce qui ouvre CloudCode. Maintenant, si c'est votre première fois dans VS Code, ce que vous allez devoir faire, c'est aller sur les extensions juste ici, cliquer dessus, rechercher CloudCode, puis aller de l'avant et installer CloudCode. Cela va fondamentalement vous permettre d'ouvrir la petite extension. Maintenant, une fois que vous aurez installé ceci, cela va vous inviter à vous connecter.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle 3D d'événement en ligne.
+**Interface & Outils** : Visual Studio Code
 
-**Contenu textuel & Code** : Environnement 3D interactif avec interface de navigation et panneaux d'information (Registration, VIP Check-in, Expo Hall).
+**Contenu textuel & Code** : Arborescence de fichiers du projet (CLAUDE.md, index.html, README.md, script.js, styles.css)
 
-**Action / Démonstration** : Exploration et navigation d'un avatar dans un monde virtuel simulant une conférence en ligne.
+**Action / Démonstration** : Le présentateur explique comment accéder à l'extension CloudCode dans l'interface de l'éditeur.
 
-![Vue d'un espace virtuel 3D de type événement en ligne (Registration Concourse) avec des avatars et des comptoirs d'accueil.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000856_seg20.jpg)
-*⏱️ 00:08:56 — Vue d'un espace virtuel 3D de type événement en ligne (Registration Concourse) avec des avatars et des comptoirs d'accueil.*
-
-![Navigation dans un hall d'exposition virtuel (Expo Hall) montrant divers stands interactifs et des informations sur les certifications.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000905_seg20.jpg)
-*⏱️ 00:09:05 — Navigation dans un hall d'exposition virtuel (Expo Hall) montrant divers stands interactifs et des informations sur les certifications.*
-
-![Déplacement d'un avatar au milieu d'autres personnages dans le hall de la conférence virtuelle avec de larges baies vitrées.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000914_seg20.jpg)
-*⏱️ 00:09:14 — Déplacement d'un avatar au milieu d'autres personnages dans le hall de la conférence virtuelle avec de larges baies vitrées.*
+![L'éditeur VS Code ouvert sur le projet ELEVENLABS DEMO, montrant l'explorateur de fichiers à gauche et le présentateur dans l'encadré en bas à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000752_seg20.jpg)
+*⏱️ 00:07:52 — L'éditeur VS Code ouvert sur le projet ELEVENLABS DEMO, montrant l'explorateur de fichiers à gauche et le présentateur dans l'encadré en bas à droite.*
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:08:07 - 00:08:26]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> On a l'aile VIP. Attends, quoi ? Récupère un bracelet. Oh, je dois vraiment aller chercher le bracelet. D'accord. Laisse-moi m'enregistrer rapidement. Le bracelet est déjà mis. Attends, quoi ? D'accord. Oh, d'accord. Maintenant, les portes se sont ouvertes pour moi. Cool. Je peux entrer ici. Oh, ça mène juste à la scène principale. Salon VIP. Il y a une séance de questions-réponses en cours. Ça a l'air très sympa. Je veux dire, je suis très impressionné par la façon dont il est capable de faire ça. Waouh. D'accord. Donc c'est vraiment bien. Ce qu'on a fait, c'est qu'on a eu des salles de discussion VIP avec différentes personnes. Tu peux voir qu'il y a différentes salles, différents membres de l'équipe AIS qui vont dans des trucs. C'est vraiment cool. C'est très cool. C'est un VIP bien meilleur
+> Vous devez avoir un compte payant de Claude pour pouvoir accéder à Claude code. Inscrivez-vous donc pour votre abonnement, puis connectez-vous juste ici. Et ensuite, vous ouvrirez Claude code comme ceci. Maintenant, c'est là que j'ai dit que ça devient plutôt cool. Parce que tout ce que j'ai à faire, c'est de venir en bas à droite, de cliquer sur le mode plan, ce qui signifie fondamentalement que Claude va nous aider à réfléchir à ce que nous voulons.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application virtuelle interactive 2D/3D (style Gather.town)
+**Interface & Outils** : Visual Studio Code (VS Code) avec l'extension Claude Code.
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant le statut du passeport, la mini-carte, les noms des salles (Registration Concourse, VIP Lounge, VIP Working Sessions) et les sous-titres.
+**Contenu textuel & Code** : Panneau latéral des extensions montrant "Claude Code for VS Code" par Anthropic, et l'explorateur de projets contenant des fichiers (index.html, script.js, styles.css, CLAUDE.md).
 
-**Action / Démonstration** : Navigation et exploration de différentes zones et salles d'un événement virtuel par l'avatar de l'utilisateur.
+**Action / Démonstration** : Présentation de l'interface et ouverture de Claude Code au sein de l'éditeur de code.
 
-![Vue d'un espace virtuel interactif (Gather.town ou similaire) montrant le personnage de l'utilisateur dans le hall de la zone Registration Concourse, avec des messages textuels et une mini-carte.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000932_seg21.jpg)
-*⏱️ 00:09:32 — Vue d'un espace virtuel interactif (Gather.town ou similaire) montrant le personnage de l'utilisateur dans le hall de la zone Registration Concourse, avec des messages textuels et une mini-carte.*
+![Capture d'écran de Visual Studio Code montrant l'extension Claude Code installée, avec le présentateur incrusté en bas à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000812_seg21.jpg)
+*⏱️ 00:08:12 — Capture d'écran de Visual Studio Code montrant l'extension Claude Code installée, avec le présentateur incrusté en bas à droite.*
 
-![Le personnage navigue dans le salon VIP (VIP Lounge) où un écran affiche une visioconférence avec des participants, et des sous-titres en bas.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000940_seg21.jpg)
-*⏱️ 00:09:40 — Le personnage navigue dans le salon VIP (VIP Lounge) où un écran affiche une visioconférence avec des participants, et des sous-titres en bas.*
-
-![Le personnage se déplace dans une section de sessions de travail VIP comportant plusieurs tables rondes avec des écrans thématiques (« Price It Right », « Land Your First Paying Client »).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000948_seg21.jpg)
-*⏱️ 00:09:48 — Le personnage se déplace dans une section de sessions de travail VIP comportant plusieurs tables rondes avec des écrans thématiques (« Price It Right », « Land Your First Paying Client »).*
+![Visual Studio Code affichant l'interface de Claude Code avec l'explorateur de fichiers à gauche et le présentateur en incrustation à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000816_seg21.jpg)
+*⏱️ 00:08:16 — Visual Studio Code affichant l'interface de Claude Code avec l'explorateur de fichiers à gauche et le présentateur en incrustation à gauche.*
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:08:26 - 00:08:47]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expérience que ce qui a été montré dans la première partie. D'accord. After party VIP. Regardez ça. On a une piste de danse. On a tous ces éléments ici. On a la lecture réelle de l'after party VIP juste ici. Et il y a une estrade pour DJ. C'est tellement marrant. Il y a un petit bug ici, un petit glitch par là, mais c'est génial. Oh, super. Donc quand je suis ici sur la scène principale, on a des sous-titres. Vous pouvez voir juste ici au bas de mon écran, on a ces sous-titres de Wyatt qui est en train de parler ici. On a des lumières. On a le panel. Très cool. Belle scène principale. Je vais aller par ici. On peut aller à la fondation,
+> Et en tant qu'humains, nous sommes très doués pour connaître l'objectif final, mais nous ne connaissons pas toujours le chemin pour y arriver, n'est-ce pas ? Donc tout ce que j'ai to faire, c'est de lui parler et il va m'aider à poser des questions et à nous guider dans la bonne direction. Donc, hé, Cloud Code, ce que j'ai pour toi est un peu un projet. J'ai donc un site web, qui s'appelle Neural. Il est à l'intérieur de ce projet et c'est fondamentalement juste notre page d'atterrissage.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle 3D (Metaverse / espace événementiel en ligne)
+**Interface & Outils** : Visual Studio Code, Claude Code, navigateur web
 
-**Contenu textuel & Code** : Environnement virtuel 3D avec avatars, écrans de visioconférence intégrés, interface utilisateur de navigation et bannières d'événements.
+**Contenu textuel & Code** : Interface de Claude Code avec le message "// TODO: Everything. Let's start." et page web "AI transformation without the layoffs"
 
-**Action / Démonstration** : Navigation et présentation interactive dans un espace événementiel virtuel 3D.
+**Action / Démonstration** : Présentation de l'outil Claude Code intégré dans l'éditeur et démonstration visuelle d'une page web d'entreprise
 
-![Capture d'écran montrant l'espace virtuel de l'after-party VIP avec une piste de danse lumineuse, des avatars et un écran affichant des participants en visio.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001004_seg22.jpg)
-*⏱️ 00:10:04 — Capture d'écran montrant l'espace virtuel de l'after-party VIP avec une piste de danse lumineuse, des avatars et un écran affichant des participants en visio.*
+![Vue de l'interface de l'éditeur VS Code avec l'extension Claude Code ouverte au centre et le présentateur en médaillon en bas à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000831_seg22.jpg)
+*⏱️ 00:08:31 — Vue de l'interface de l'éditeur VS Code avec l'extension Claude Code ouverte au centre et le présentateur en médaillon en bas à gauche.*
 
-![Capture d'écran montrant une vue plus large de l'after-party VIP virtuel avec la signalétique "VIP AFTER-PARTY" et de multiples avatars.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001013_seg22.jpg)
-*⏱️ 00:10:13 — Capture d'écran montrant une vue plus large de l'after-party VIP virtuel avec la signalétique "VIP AFTER-PARTY" et de multiples avatars.*
-
-![Capture d'écran montrant la scène principale (Main Stage) de l'événement virtuel avec un auditorium rempli d'avatars et un écran géant de présentation.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001021_seg22.jpg)
-*⏱️ 00:10:21 — Capture d'écran montrant la scène principale (Main Stage) de l'événement virtuel avec un auditorium rempli d'avatars et un écran géant de présentation.*
+![Capture d'écran d'un site web au design moderne avec un titre accrocheur sur l'intelligence artificielle et le présentateur visible en incrustation vidéo.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000842_seg22.jpg)
+*⏱️ 00:08:42 — Capture d'écran d'un site web au design moderne avec un titre accrocheur sur l'intelligence artificielle et le présentateur visible en incrustation vidéo.*
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:08:47 - 00:09:16]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> avancé, et les parcours d'entreprise par ici. Alors voyons voir. Nous avons l'anatomie de trois vraies transactions. Nous avons hyper agent. Nous avons les évaluations avec Nate et Ed ici. Nous avons Dave qui intervient sur les trucs avancés. C'est vraiment sympa. Je veux dire, évidemment, chacun, chacun de ces résultats jusqu'à présent, faible était correct. Moyen était meilleur. Élevé a été encore meilleur. Voyons si cette tendance se poursuit et allons voir ce que cela nous a coûté. Donc, élevé a tourné pendant une heure et sept minutes. Donc, un peu plus rapide que moyen, cela nous aurait coûté 16 dollars et 31 cents. Il a utilisé un demi-million de tokens, 509 000. Il a fait 22 vérifications. Et il nous a aussi demandé, enfin, non, je me suis trompé. Ce
+> Nous dirigeons une agence de conseil en IA et voici notre page de destination. Et ce que je veux faire, c'est intégrer un widget d'agent vocal sur mon site web. Je veux que cet agent ait des informations sur l'entreprise. Je veux qu'il soit capable de répondre aux questions de, vous savez, clients potentiels. Mais en fin de compte, ce que je veux qu'il fasse, c'est essayer de pousser les gens à réserver un appel de découverte. C'est un peu ton rôle. Tu es donc un peu comme un vendeur, un agent commercial sur mon site web. Donc ce que je veux que tu fasses, c'est m'aider à comprendre comment je t'intègre sur le site web ?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc / interface de présentation (Excalidraw ou similaire).
+**Interface & Outils** : Navigateur web affichant une page d'atterrissage (Landing Page).
 
-**Contenu textuel & Code** : Tableau avec les colonnes Low, Medium, High, Extra et les lignes Run time, API cost, Total tokens, Checks, Questions asked.
+**Contenu textuel & Code** : Le site web d'une entreprise de conseil en IA nommée "NEUREL" avec le slogan "AI transformation without the layoffs".
 
-**Action / Démonstration** : Visualisation d'un tableau comparatif des performances et coûts de différents niveaux d'effort d'agents IA.
+**Action / Démonstration** : Le présentateur présente la page de destination de son agence de conseil en IA avant d'intégrer le widget d'agent vocal.
 
-![Un tableau comparatif montrant les métriques de différents niveaux d'effort (Low, Medium, High, Extra) avec les temps d'exécution, coûts API et tokens.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001057_seg23.jpg)
-*⏱️ 00:10:57 — Un tableau comparatif montrant les métriques de différents niveaux d'effort (Low, Medium, High, Extra) avec les temps d'exécution, coûts API et tokens.*
+![Capture d'écran montrant la page de destination de l'agence de conseil en IA "NEUREL" avec le présentateur incrusté en bas à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000854_seg23.jpg)
+*⏱️ 00:08:54 — Capture d'écran montrant la page de destination de l'agence de conseil en IA "NEUREL" avec le présentateur incrusté en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:09:16 - 00:09:49]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> l'un m'a posé une question et spoiler, c'était le seul qui nous a posé une question pendant tout ça. Donc voyons voir, il nous en reste trois : extra, max et ultra code. Laissez-moi ouvrir extra et nous verrons ce que nous avons. D'accord. Donc celui-là a l'air plutôt bien. Je dirais honnêtement que jusqu'à présent, l'écran de chargement haut était le meilleur. Celui qu'on vient juste de voir, mais bref, entrons dans le direct d'AIS.
+> Je veux utiliser ElevenLabs. Et ensuite, comment est-ce que je peux réellement vous prompter de la bonne manière pour, vous savez, être un vendeur ? Et ensuite, comment est-ce que je peux réellement vous connecter à cal.com, qui est l'outil que j'utilise pour mes réservations en gros. C'est synchronisé avec mon calendrier. Donc ça devrait montrer aux gens les créneaux disponibles. Et comment puis-je vous donner accès à cet outil pour que vous puissiez réellement aller de l'avant et réserver des réunions pour les gens. Ils vous donneraient du coup peut-être leur e-mail et leur nom complet. Et ensuite, vous iriez simplement de l'avant et vous utiliseriez l'outil cal.com pour leur réserver un appel. C'est donc un peu ça l'objectif global que j'ai pour vous. Aidez-moi à trouver la meilleure façon de faire cela et posez-moi toutes les questions que vous
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau de bord d'analyse de données / Interface web de type tableau comparatif
+**Interface & Outils** : Visual Studio Code / Claude Code
 
-**Contenu textuel & Code** : Données chiffrées de performance pour les modes Low, Medium, High et Extra (ex: Run time : 16m 43s à 1h 13m, API cost : 3.91$ à 16.31$, Questions asked : 0, 0, 1)
+**Contenu textuel & Code** : Explorateur de fichiers avec CLAUDE.md, index.html, README.md, script.js, styles.css ; invite de commande Claude Code avec le texte '// TODO: Everything. Let\'s start.'
 
-**Action / Démonstration** : Le présentateur commente les résultats et s'apprête à ouvrir les détails du mode 'Extra' sur le tableau.
+**Action / Démonstration** : Le présentateur présente l'interface de développement et s'apprête à interagir avec l'assistant IA.
 
-![Tableau comparatif affichant les métriques de différents modes d'exécution (Low, Medium, High, Extra) avec les lignes Run time, API cost, Total tokens, Checks et Questions asked. Le présentateur apparaît dans une incrustation vidéo à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001111_seg24.jpg)
-*⏱️ 00:11:11 — Tableau comparatif affichant les métriques de différents modes d'exécution (Low, Medium, High, Extra) avec les lignes Run time, API cost, Total tokens, Checks et Questions asked. Le présentateur apparaît dans une incrustation vidéo à gauche.*
+![Vue de l'éditeur Visual Studio Code affichant une interface Claude Code avec un projet nommé ELEVENLABS DEMO, le présentateur apparaissant en incrustation vidéo dans le coin inférieur gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000924_seg24.jpg)
+*⏱️ 00:09:24 — Vue de l'éditeur Visual Studio Code affichant une interface Claude Code avec un projet nommé ELEVENLABS DEMO, le présentateur apparaissant en incrustation vidéo dans le coin inférieur gauche.*
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:09:49 - 00:10:08]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Wouah. D'accord. Donc on a comme de petits extraits sonores. Je peux discuter avec des gens. Le panneau sur la guerre des outils a réglé quelques débats pour moi. Sympa. Une bonne perspective là-bas. Nous sommes de nouveau dehors. Nous avons ces différentes bannières, bien qu'elles soient toutes les mêmes. Elles n'indiquent pas le nom de différentes personnes. Donc, grand logo Big AIS Live. L'aile de l'atelier est par ici. Et passons par les portes coulissantes en verre pour voir ce que nous avons. Nous avons donc le café AIS. La carte est en bas à droite, et elle n'est pas très descriptive.
+> avez si je n'ai pas expliqué les choses de manière assez claire. C'est donc le problème que nous allons envoyer. Si vous êtes curieux de savoir comment j'ai pu dicter et voir le texte apparaître, consultez le lien dans la description. C'est un outil formidable et cela a changé ma façon de travailler. Et d'ailleurs, vous remarquerez peut-être qu'actuellement j'utilise Whisper et qu'en fait, j'oriente les gens vers Glido.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D / jeu ou métavers.
+**Interface & Outils** : Visual Studio Code, Claude Code extension
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle montrant une minimap, des indications de lieu ("Convention Plaza") et des avatars.
+**Contenu textuel & Code** : Explorateur de fichiers du projet ELEVENLABS DEMO (CLAUDE.md, index.html, README.md, script.js, styles.css) et interface de chat Claude Code avec le message "// TODO: Everything. Let's start." et une barre de saisie de prompt.
 
-**Action / Démonstration** : Navigation et exploration de l'environnement virtuel en 3D par le présentateur.
+**Action / Démonstration** : Le présentateur s'apprête à interagir avec l'outil de dictée vocale et l'interface de Claude Code pour envoyer un problème à résoudre.
 
-![Un avatar virtuel explore une place extérieure modélisée en 3D avec des bannières et des personnages non-joueurs.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001132_seg25.jpg)
-*⏱️ 00:11:32 — Un avatar virtuel explore une place extérieure modélisée en 3D avec des bannières et des personnages non-joueurs.*
-
-![L'avatar poursuit sa progression sur la place extérieure près de bâtiments éclairés au crépuscule.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001138_seg25.jpg)
-*⏱️ 00:11:38 — L'avatar poursuit sa progression sur la place extérieure près de bâtiments éclairés au crépuscule.*
-
-![L'avatar se dirige vers l'entrée lumineuse d'un bâtiment de type convention.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001145_seg25.jpg)
-*⏱️ 00:11:45 — L'avatar se dirige vers l'entrée lumineuse d'un bâtiment de type convention.*
+![Capture d'écran montrant l'interface de l'éditeur Visual Studio Code avec le panneau Claude Code ouvert et le présentateur en médaillon vidéo dans le coin inférieur gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_000954_seg25.jpg)
+*⏱️ 00:09:54 — Capture d'écran montrant l'interface de l'éditeur Visual Studio Code avec le panneau Claude Code ouvert et le présentateur en médaillon vidéo dans le coin inférieur gauche.*
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:10:08 - 00:10:39]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> J'aime bien comment les autres cartes nous ont dit quoi, genre où étaient les choses, mais celle-ci a l'air très professionnelle. On peut voir ici c'est la scène principale. Allons y faire un saut rapidement. Ils ont tous ces ballons qui volent partout, ce qui je pense est plutôt marrant. Les ballons de plage AIS. On me voit là-haut en train de parler. Je crois que j'introduisais l'un des jours. Continuons à avancer par ici vers la salle d'atelier sur ce côté gauche. D'accord. Donc ici nous avons le Hyper Agent Theater. Nous avons cette session sponsorisée ici par Hyper Agent, mais ça nous montre aussi ce qui va s'y passer. C'est vraiment marrant qu'on puisse discuter avec les gens. Salmon a construit un représentant commercial vocal en direct. La salle du Juste Prix était comble. As-tu pris le guide d'accompagnement VIP ? C'est tellement marrant. Nous avons le parcours avancé dans
+> Glido est beaucoup plus rapide. C'est privé. J'ai complètement basculé, mais le support pour Windows arrive dans environ une semaine. C'est donc pour cela qu'en ce moment vous voyez Whisper. Mais c'est pour cela que j'ai officiellement rejoint l'équipe de Glido, parce que le produit est vraiment tellement mieux. Quoi qu'il en soit, comme je l'ai dit, cela va lancer un brainstorming. Si vous voulez découvrir la compétence « superpowers », elle est également entièrement gratuite. Il vous suffit d'aller sur Google et de chercher « Cloud Code superpowers », et vous devrez le télécharger, mais c'est super facile et j'aime l'utiliser pour le brainstorming. Mais maintenant, je vais simplement voir avec vous s'il revient avec des questions afin que je puisse vous montrer la façon dont nous y répondons.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de conférence ou d'événement virtuel en 3D (metaverse).
+**Interface & Outils** : Visual Studio Code (avec Claude Code intégré)
 
-**Contenu textuel & Code** : Environnement virtuel 3D interactif représentant une conférence avec écrans vidéo, avatars et infobulles de chat.
+**Contenu textuel & Code** : Prompt utilisateur demandant l'intégration d'un widget de vente vocal (ElevenLabs) sur un site web, suivi des réflexions et actions de l'agent (lecture du fichier index.html).
 
-**Action / Démonstration** : Exploration d'un espace virtuel 3D, navigation à travers la scène principale et les couloirs de l'événement.
+**Action / Démonstration** : L'agent IA analyse le projet en mode plan pour comprendre la structure du site web avant d'apporter des modifications.
 
-![Vue de la scène principale d'une conférence virtuelle 3D avec un grand écran de diffusion et des avatars.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001200_seg26.jpg)
-*⏱️ 00:12:00 — Vue de la scène principale d'une conférence virtuelle 3D avec un grand écran de diffusion et des avatars.*
-
-![Vue du hall d'entrée (Grand Lobby) d'un espace virtuel 3D interactif avec des avatars de participants.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001209_seg26.jpg)
-*⏱️ 00:12:09 — Vue du hall d'entrée (Grand Lobby) d'un espace virtuel 3D interactif avec des avatars de participants.*
-
-![Navigation dans un couloir d'un centre de conférence virtuel 3D avec des avatars en discussion.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001217_seg26.jpg)
-*⏱️ 00:12:17 — Navigation dans un couloir d'un centre de conférence virtuel 3D avec des avatars en discussion.*
+![Interface de Visual Studio Code affichant une discussion avec un agent IA (Claude Code) pour intégrer un widget de vente vocal.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001016_seg26.jpg)
+*⏱️ 00:10:16 — Interface de Visual Studio Code affichant une discussion avec un agent IA (Claude Code) pour intégrer un widget de vente vocal.*
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:10:39 - 00:11:12]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> ici. Encore une fois, nous avons la lecture en direct. Est-ce que c'est la lecture en direct ? Oh, d'accord. Ça a commencé une fois que je suis entré, mais je peux prendre place. Oh la la. Je peux regarder ça. Je peux me lever. Je veux m'asseoir au premier rang. C'est plutôt cool. C'est très bien. J'aime bien ça. Et vous savez ce que j'ai remarqué jusqu'à présent ? Le personnage que j'incarne me ressemble un peu. Je pense qu'il a été modélisé à partir de mes photos de profil ou quelque chose comme ça. Bref, nous avons Sabrina ici, l'animatrice de la salle ici, prenez n'importe quel siège libre. D'accord, cool. Et j'ai vraiment aimé la fonctionnalité pour s'asseoir. C'est plutôt marrant. Genre, on pourrait vraiment assister à cet atelier et participer. Bref, ça nous montre les intervenants. Ça nous montre les
+> Très bien, alors voici quelques questions que nous avons. Quel est l'état actuel de votre configuration ElevenLabs ? Eh bien, dans ElevenLabs, allons dans nos agents et faisons simplement comme si nous n'en avions aucun configuré actuellement et que nous voulions en créer un nouveau. Donc, j'irais fondamentalement juste dans Cloud Code et je ne dirais rien, ou je suppose que je dirais j'ai un compte, mais pas encore d'agent. Cal.com. Quel est l'état actuel de votre configuration Cal.com ? J'ai un compte et un type d'événement prêts. Oui. C'est exactement ce que nous avons. Comment voulez-vous que l'agent crée réellement la réservation Cal.com directement d'ElevenLabs vers Cal.com ? C'est ce que je veux faire. Vous pourriez, comme je l'ai dit plus tôt, faire en mesure qu'ElevenLabs appelle un
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de réunion virtuelle 3D / Environnement de métavers.
+**Interface & Outils** : ElevenLabs, Visual Studio Code
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant une session de formation en direct "Advanced Track".
+**Contenu textuel & Code** : Liste des agents ElevenLabs (Nate's AI Assistant, Test Agent, etc.) et code source de démonstration avec une boîte de dialogue cal.com.
 
-**Action / Démonstration** : Navigation et exploration de l'environnement virtuel 3D par l'utilisateur.
+**Action / Démonstration** : Navigation dans l'interface d'ElevenLabs pour montrer la gestion des agents vocaux et utilisation de l'éditeur de code pour intégrer un widget.
+
+![Image montrant l'interface d'ElevenLabs avec la liste des agents configurés et le présentateur en médaillon.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001047_seg27.jpg)
+*⏱️ 00:10:47 — Image montrant l'interface d'ElevenLabs avec la liste des agents configurés et le présentateur en médaillon.*
+
+![Image montrant l'éditeur de code Visual Studio Code avec un projet "ELEVENLABS DEMO" et une interface contextuelle "cal.com Booking flow".](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001056_seg27.jpg)
+*⏱️ 00:10:56 — Image montrant l'éditeur de code Visual Studio Code avec un projet "ELEVENLABS DEMO" et une interface contextuelle "cal.com Booking flow".*
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:11:12 - 00:11:39]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. Il y a un petit tapis rouge ici pour prendre des photos. On peut prendre la pose. Oh, wouah. C'est plutôt cool. Bibliothèque de ressources, obtenir la certification AIS Plus, Glido, Hyper Agent, AIS Plus, trois vraies offres. Génial. Je veux dire, je dirais vraiment que jusqu'à présent, chacune est meilleure. Et on n'a même pas encore vu la section VIP, le salon VIP. Montons ici très vite. J'espère que je pourrai entrer. Sympa. On a le réinitialisation des outils. Ce sont les différentes pièces où l'on peut aller. Donc encore une fois, je pourrais prendre la feuille de calcul et essayer de comprendre comment tarifer mes trucs. C'est tellement cool. C'est vraiment mieux que le précédent où l'on faisait juste
+> Le workflow NNN et les livres de workflow NNN réservent l'événement, mais cela fait tout simplement trop de morceaux. Nous allons donc aller directement d'ElevenLabs à cal.com et je vais envoyer ces réponses. Et donc, au cas où vous seriez curieux, cal.com est fondamentalement la même chose que Calendly. Il se synchronise avec votre agenda Google ou, vous savez, votre agenda Microsoft, peu importe ce que vous voulez. Et il montrera aux gens les créneaux disponibles qu'ils peuvent réserver. Nous pouvons donc en fait donner à notre agent ElevenLabs l'accès à ceci et il peut simplement réserver des appels pour les gens au lieu que nous ayons à faire cela manuellement.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle interactive en 3D (metaverse / événement virtuel)
+**Interface & Outils** : VS Code (éditeur de code), interface de l'assistant IA intégré, et interface web de cal.com.
 
-**Contenu textuel & Code** : Environnement virtuel 3D avec des stands d'exposition, des avatars et des textes d'information
+**Contenu textuel & Code** : Échanges de prompts et de réponses textuelles dans l'outil de développement, et liste des types de rendez-vous configurés sur cal.com (30 min meeting, 15 min meeting, Secret meeting).
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par le présentateur ou les utilisateurs
+**Action / Démonstration** : Le présentateur explique la transition de l'intégration des flux complexes vers l'utilisation directe de cal.com pour la planification des rendez-vous.
 
-![Vue de l'Expo Hall dans l'environnement virtuel avec des stands de sponsors comme Hyperagent et Glido.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001307_seg28.jpg)
-*⏱️ 00:13:07 — Vue de l'Expo Hall dans l'environnement virtuel avec des stands de sponsors comme Hyperagent et Glido.*
+![Image #1 montre l'éditeur VS Code avec une discussion interactive d'IA (interface de type assistant de code) en cours d'utilisation, ainsi que la webcam du présentateur en bas à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001119_seg28.jpg)
+*⏱️ 00:11:19 — Image #1 montre l'éditeur VS Code avec une discussion interactive d'IA (interface de type assistant de code) en cours d'utilisation, ainsi que la webcam du présentateur en bas à gauche.*
 
-![Vue du hall d'accueil virtuel avec des escaliers mécaniques et divers avatars d'utilisateurs.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001315_seg28.jpg)
-*⏱️ 00:13:15 — Vue du hall d'accueil virtuel avec des escaliers mécaniques et divers avatars d'utilisateurs.*
-
-![Vue de l'espace VIP Lounge avec des avatars assis autour d'une table et des questions affichées.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001323_seg28.jpg)
-*⏱️ 00:13:23 — Vue de l'espace VIP Lounge avec des avatars assis autour d'une table et des questions affichées.*
+![Image #2 montre l'interface web de cal.com affichant la configuration des types d'événements (« Event types »), avec la webcam du présentateur en bas à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001125_seg28.jpg)
+*⏱️ 00:11:25 — Image #2 montre l'interface web de cal.com affichant la configuration des types d'événements (« Event types »), avec la webcam du présentateur en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:11:39 - 00:12:13]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> genre regardé des trucs. Génial. Je peux aller derrière le bar et venir ici. C'est très bien. Bon. Alors, en ce qui concerne les statistiques, celui-ci a tourné pendant une heure et demie. Il a coûté 25,92 dollars. Je ne sais pas pourquoi je dis point 25, 92 cents. C'était 733 000 jetons et 34 vérifications. Il a donc eu le plus grand nombre de vérifications de loin jusqu'à présent. Et il ne nous a posé aucune question. J'ai hâte de voir ce qu'on a obtenu ici de max et ultra code. D'accord. Voici les écrans de chargement de max, ennuyeux, mais c'est dans l'esprit de la marque et il y a notre logo.
+> Nous avons d'autres questions ici. Donc, comment le widget doit-il apparaître sur la page ? Une bulle flottante par défaut. C'est parfait. Quelle personnalité vocale voulez-vous pour l'agent ? Nous allons simplement opter pour un ton de vente B2B chaleureux et professionnel. C'est parfait. Et des champs de données au-delà du nom complet et de l'e-mail, qui sont obligatoires pour réserver. Que doit capturer l'agent pendant la conversation ? Le nom de l'entreprise serait formidable. Le problème qu'ils essaient de résoudre serait formidable. La taille de l'équipe et le rôle. Ce serait également formidable. Et s'il y a autre chose que je veux, je peux simplement aller de l'avant et ajouter autre chose, et je peux taper plus. Mais pour l'instant, je me contente de ces trois choses. J'espère donc que vous voyez la valeur jusqu'à présent. Il va faire toutes les recherches. Il va comprendre comment fabriquer ces deux
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc ou de design interactif affichant un tableau de statistiques.
+**Interface & Outils** : Visual Studio Code
 
-**Contenu textuel & Code** : Colonnes Medium, High, Extra (1h 31m, $25.92, etc.), Max, Ultracode.
+**Contenu textuel & Code** : Un éditeur de texte affichant une conversation avec une IA (mentionnant 'Embed AI sales agent widget with cal.com') et une fenêtre modale affichant les options de personnalité vocale, notamment 'Warm-professional, B2B sales tone'.
 
-**Action / Démonstration** : Le présentateur commente les statistiques du test affichées à l'écran.
+**Action / Démonstration** : Sélection de la personnalité vocale pour l'agent IA dans l'éditeur de code.
 
-![Tableau comparatif sous forme de tableau ou graphique montrant différentes métriques (durée, coût, tokens) pour les niveaux Medium, High, Extra, Max et Ultracode.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001338_seg29.jpg)
-*⏱️ 00:13:38 — Tableau comparatif sous forme de tableau ou graphique montrant différentes métriques (durée, coût, tokens) pour les niveaux Medium, High, Extra, Max et Ultracode.*
+![Capture d'écran de l'éditeur VS Code montrant une interface de configuration de persona vocal pour l'agent IA, avec le présentateur en incrustation vidéo dans le coin inférieur gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001147_seg29.jpg)
+*⏱️ 00:11:47 — Capture d'écran de l'éditeur VS Code montrant une interface de configuration de persona vocal pour l'agent IA, avec le présentateur en incrustation vidéo dans le coin inférieur gauche.*
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:12:13 - 00:12:49]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc c'était bien. J'aime bien ça. On va continuer et entrer dans AIS live. Oh, une jolie petite animation ici qui nous fait entrer. Encore une fois, le personnage me ressemble. Ils m'ont tous ressemblé. Enfin, en quelque sorte, nous sommes assis en arrière-plan. Ça ressemble à Chicago. Comme je l'ai mentionné plus tôt, beaucoup de ces éléments jouent des sons et je n'inclurai pas cela parce que ce serait très perturbateur pour vous d'essayer d'écouter ce qui se passe en même temps que je parle. Il y a donc une légère musique dans tout cela. Je déteste la façon dont il marche. Cette démarche est vraiment, vraiment mauvaise. Je veux dire, la démarche, ouais, je n'aime pas du tout ça. Donc ce n'est pas génial. Mais à part ça, allons explorer. Remarquez ces ombres quand j'entre, elles changent vraiment. Je ne sais pas trop pourquoi,
+> les outils se parlent entre eux, ou trois techniquement je suppose. Et il va me poser toutes les questions dont j'ai besoin pour que cet agent se comporte de la manière que je souhaite vraiment. Très bien. Donc ce qui se passe maintenant, c'est qu'il revient avec un plan à examiner par nous. Donc agent commercial à voix neuronale plus réservation cal.com. Il va nous donner un peu de contexte et il va nous montrer l'architecture de ce qu'il est en train de configurer. Voyons donc ce qu'il va faire. Il va, tout d'abord, faire un peu de préparation cal.com. Nous allons donc devoir récupérer notre clé API et nous allons devoir la donner à CloudCode pour qu'il puisse réellement le faire. Et ensuite, nous allons devoir lui donner l'identifiant du type d'événement réel que nous voulions utiliser. Si vous vous souvenez dans Cal, nous en avions quelques différents
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle 3D (AIS live)
+**Interface & Outils** : Éditeur de code (type VS Code / Cursor) avec panneau latéral de discussion/plan d'agent IA.
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle avec mini-carte, indicateurs d'événements et commandes de navigation à l'écran.
+**Contenu textuel & Code** : Texte du plan intitulé "NEUREL voice sales agent + cal.com booking", description du contexte et options de validation ("Yes, and auto-accept", "Yes, and manually approve edits", "No, keep planning").
 
-**Action / Démonstration** : Navigation et déplacement d'un avatar dans l'environnement virtuel 3D de la plateforme AIS live.
+**Action / Démonstration** : Examen du plan proposé par l'agent IA par l'utilisateur avant validation et application des modifications.
 
-![Vue d'un monde virtuel 3D (AIS live) montrant une place urbaine avec des avatars de personnages et une mini-carte en bas à droite, tandis que le présentateur apparaît en incrustation à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001408_seg30.jpg)
-*⏱️ 00:14:08 — Vue d'un monde virtuel 3D (AIS live) montrant une place urbaine avec des avatars de personnages et une mini-carte en bas à droite, tandis que le présentateur apparaît en incrustation à gauche.*
-
-![Poursuite de la navigation dans l'environnement virtuel 3D avec les avatars et les bâtiments de l'exposition.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001417_seg30.jpg)
-*⏱️ 00:14:17 — Poursuite de la navigation dans l'environnement virtuel 3D avec les avatars et les bâtiments de l'exposition.*
-
-![L'avatar se déplace vers l'entrée d'un bâtiment dans l'espace virtuel 3D d'AIS live.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001426_seg30.jpg)
-*⏱️ 00:14:26 — L'avatar se déplace vers l'entrée d'un bâtiment dans l'espace virtuel 3D d'AIS live.*
+![Un éditeur de code affichant un panneau de révision de plan d'action d'un agent IA pour "NEUREL voice sales agent + cal.com booking" avec le présentateur incrusté en bas à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001222_seg30.jpg)
+*⏱️ 00:12:22 — Un éditeur de code affichant un panneau de révision de plan d'action d'un agent IA pour "NEUREL voice sales agent + cal.com booking" avec le présentateur incrusté en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:12:49 - 00:13:08]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> mais bref, on peut discuter avec des gens ici aussi. Le stand Hyperagent est juste là où l'on entre dans l'expo. Tout va bien. D'accord, cool. Je peux continuer à cliquer sur E pour changer ce qu'ils disent. Nous avons les conférenciers juste ici. Ça a l'air plutôt bien. Bien que nous ayons définitivement la photo de profil de tout le monde. Je ne sais donc pas pourquoi ce n'est pas inclus là. On voit des gens prendre des photos juste ici. J'adore ça. Et ça enregistre une petite photo. D'accord. La carte n'est pas non plus super, genre ne me donne pas une super explication de ce qui se passe, mais j'aime ces stands. Ils sont cool. Je pense que ces stands sont les meilleurs que j'ai vu jusqu'à présent. Genre, ils ont juste l'air bien. Ils ont des représentants. Il y a de belles diapositives derrière eux. Ouais. Ces stands sont cool. D'accord. Nous avons un petit théâtre en vedette
+> événements. Donc on veut probablement lui donner l'ID pour cet événement de 30 minutes. Et ensuite, il va devoir s'assurer qu'il y a une authentification correcte entre 11labs et cal.com. J'espère qu'il est capable de s'occuper de tout cela pour nous. Et ensuite, il va procéder à la création de l'agent. Il va choisir une voix. Il va choisir un LLM. Il va configurer le premier message. Il va lui donner un prompt système. Il va faire tout cela pour nous. Et ensuite, il va configurer les outils.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de monde virtuel 3D interactif (metaverse/salon virtuel).
+**Interface & Outils** : Éditeur de code / Navigateur web (Documentation markdown ou guide de configuration)
 
-**Contenu textuel & Code** : Environnement virtuel 3D, avatars, panneaux d'information, mini-carte de navigation et commandes clavier en bas.
+**Contenu textuel & Code** : Texte de documentation détaillant 'Step 2 — ElevenLabs workspace auth (3 min)' avec des instructions sur l'authentification des connexions et 'Step 3 — Create the agent (5 min)' avec la configuration (Nom : NEUREL Diagnostic, Voice, LLM, First message).
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel de l'exposition avec le présentateur.
+**Action / Démonstration** : Le présentateur explique les étapes de configuration de l'authentification et de la création de l'agent vocal en suivant la documentation affichée.
 
-![Vue d'un espace virtuel 3D de réception avec des avatars et des panneaux affichant des conférenciers.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001444_seg31.jpg)
-*⏱️ 00:14:44 — Vue d'un espace virtuel 3D de réception avec des avatars et des panneaux affichant des conférenciers.*
-
-![Navigation dans l'espace virtuel près de l'entrée de l'exposition avec des interactions textuelles.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001453_seg31.jpg)
-*⏱️ 00:14:53 — Navigation dans l'espace virtuel près de l'entrée de l'exposition avec des interactions textuelles.*
-
-![Exploration du hall d'exposition virtuel montrant différents stands (Evals Lab, Enterprise AI).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001502_seg31.jpg)
-*⏱️ 00:15:02 — Exploration du hall d'exposition virtuel montrant différents stands (Evals Lab, Enterprise AI).*
+![Capture d'écran montrant le présentateur dans un coin et, à l'écran, un éditeur de texte ou une documentation expliquant les étapes pour configurer l'authentification ElevenLabs workspace (Step 2) et créer l'agent (Step 3).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001254_seg31.jpg)
+*⏱️ 00:12:54 — Capture d'écran montrant le présentateur dans un coin et, à l'écran, un éditeur de texte ou une documentation expliquant les étapes pour configurer l'authentification ElevenLabs workspace (Step 2) et créer l'agent (Step 3).*
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:13:08 - 00:13:31]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> qui se passe par ici. C'sest Casper. Bien que pourquoi est-ce que ça ne joue pas ? J'ai l'impression que ça devrait jouer, non ? Comme dans les autres, ils étaient toujours en train de jouer. On peut parler à d'autres personnes par ici. Le café est gratuit. Blah, blah, blah. Amy Simpson, Matt Wolf. Sympa. D'accord. C'est juste la zone de réseautage où nous sommes en ce moment, mais on peut voir en haut à droite. On peut aussi voir ce qui est en direct sur la scène principale en ce moment. C'est un panel sur la guerre des outils. Alors allons-y. On a Devin, Cole, Dave et Russ qui discutent ici. On a en quelque sorte de l'audiovisuel, des petits trucs d'éclairage qui se passent ici à l'arrière.
+> Et il semble qu'il va y en avoir deux. Il doit en ajouter un pour vérifier la disponibilité et ensuite il doit en ajouter un pour réellement réserver un appel. Donc c'est super. Ça va s'occuper de tout ça. Voici le prompt système qu'il a déjà rédigé, ce qui va bien pour l'instant. Et puis la dernière étape sera de connecter le widget au site. Donc c'est ce qu'on a. Je vais continuer et retourner à la conversation principale et je vais simplement accepter ces modifications parce que tout cela me semble bon.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D (type métavers / plateforme de webinaire interactive).
+**Interface & Outils** : Interface web d'ElevenLabs dans VS Code.
 
-**Contenu textuel & Code** : Aucun code source, terminal ou prompt n'est affiché.
+**Contenu textuel & Code** : Configuration du webhook pour la réservation d'appels : URL `https://api.cal.com/v2/bookings` et paramètres (start, attendee.name, attendee.email).
 
-**Action / Démonstration** : Navigation et exploration d'un monde virtuel 3D par le présentateur.
+**Action / Démonstration** : Le présentateur explique la configuration des outils de l'agent vocal pour l'intégration avec Cal.com.
+
+![Interface de configuration d'un agent vocal montrant les paramètres de l'API Cal.com (nom, description, méthode POST, URL et paramètres du corps).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001314_seg32.jpg)
+*⏱️ 00:13:14 — Interface de configuration d'un agent vocal montrant les paramètres de l'API Cal.com (nom, description, méthode POST, URL et paramètres du corps).*
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:13:31 - 00:13:50]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Basculer la scène principale vers ce qui importe vraiment en ce moment. Je peux donc changer de sujet. Cool. Je viens donc de passer à moi et Matt. Nous pouvons passer à l'anatomie de trois vraies transactions. C'est plutôt cool. La scène a l'air bien. Nous avons un petit panneau sympa ici. Je peux monter sur la scène ? Sympa. Sympa. Enfin, je ne peux pas aller trop loin, en fait. Bon, tout le monde, laissez-moi prendre le selfie. Tout le monde entre là-dedans. Je peux aussi m'asseoir dans ce public là-bas et simplement profiter de la session.
+> Et d'ailleurs, vous vous demandez peut-être pourquoi j'utilise Eleven Labs plutôt que d'autres outils disponibles ? Eh bien, j'ai mon clone vocal dans Eleven Labs. Et je pense que c'est le meilleur clone vocal professionnel que l'on puisse obtenir. J'aime aussi beaucoup l'interface. Autant nous voulons rester dans Cloud Code, mais quand je viens dans Eleven Labs, j'ai juste l'impression de savoir où se trouve chaque chose. Et j'aime la façon dont tout cela fonctionne. Et cela rend les choses super faciles avec ce widget intégré.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif (plateforme de conférence virtuelle).
+**Interface & Outils** : Interface web d'ElevenLabs (ElevenAgents).
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant des commandes de déplacement (WASD, Shift, Space) et des informations sur les sessions en cours.
+**Contenu textuel & Code** : Tableaux de bord de monitoring des agents vocaux affichant les métriques (nombre d'appels, durée moyenne, coûts en crédits et en LLM) ainsi qu'un menu latéral de configuration.
 
-**Action / Démonstration** : Navigation et interaction d'un avatar dans l'espace virtuel de conférence.
+**Action / Démonstration** : Le présentateur commente l'interface et les fonctionnalités de la plateforme ElevenLabs en naviguant sur le tableau de bord.
+
+![Capture d'écran montrant l'interface du tableau de bord d'ElevenLabs (ElevenAgents) avec des statistiques d'appels et de coûts, tandis que le présentateur apparaît en médaillon vidéo en bas à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001336_seg33.jpg)
+*⏱️ 00:13:36 — Capture d'écran montrant l'interface du tableau de bord d'ElevenLabs (ElevenAgents) avec des statistiques d'appels et de coûts, tandis que le présentateur apparaît en médaillon vidéo en bas à droite.*
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:13:51 - 00:14:12]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Très cool, très cool. OK, allons par ici. Je vois une section à l'étage. C'est marrant comme ils choisissent tous de mettre la section VIP à l'étage. Je veux dire, je ne déteste pas ça. Oh la la, ils ont un escalator. Pas possible. Je vais discuter avec ce type sur l'escalator. Glenn a 15 ans d'expérience en agence. Ses trucs de "land and expand" étaient en or. Du beau travail, Glenn. Cool, donc je vais... je n'arrive même pas à passer devant ce type, par contre.
+> C'est donc pour ça que j'utilise ElevenLabs dans la vidéo d'aujourd'hui. Et si vous voulez jeter un œil à ElevenLabs, allez simplement cliquer sur ce lien dans la description. Et ça vous enverra directement ici. Et à ce stade, je vais mettre cet agent en mode de contournement des autorisations. Pour qu'il puisse tout simplement se lancer et pondre ce plan. Mais on dirait qu'il veut quelque chose très rapidement. L'ordre des opérations a son importance ici. Les étapes de un à six consistent toutes en un travail de tableau de bord dans cal.com et ElevenLabs que vous êtes le seul à pouvoir faire.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Plateforme de conférence virtuelle (probablement une interface 3D personnalisée ou un environnement de métavers)
+**Interface & Outils** : Interface web d'ElevenLabs, Visual Studio Code, extension Claude pour l'édition de code.
 
-**Contenu textuel & Code** : B bulle de dialogue "Glenn a 15 ans d'expérience. Glenn et moi avons discuté pendant une heure et demie. Glenn et moi avons beaucoup discuté." et "Chat with this attendee".
+**Contenu textuel & Code** : Tableaux de bord de gestion d'agents vocaux, graphiques statistiques et plan d'implémentation d'un agent de vente vocal.
 
-**Action / Démonstration** : Exploration d'un espace virtuel de conférence et interaction avec des avatars.
+**Action / Démonstration** : Navigation sur le tableau de bord ElevenLabs et affichage d'un plan d'intégration d'agent IA dans VS Code.
 
-![L'image montre une vue de la réception d'une conférence virtuelle en 3D, avec des avatars se déplaçant dans un espace spacieux.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001600_seg34.jpg)
-*⏱️ 00:16:00 — L'image montre une vue de la réception d'une conférence virtuelle en 3D, avec des avatars se déplaçant dans un espace spacieux.*
+![Le tableau de bord principal d'ElevenLabs affichant les statistiques d'utilisation des agents vocaux IA (appels, durée, coûts).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001356_seg34.jpg)
+*⏱️ 00:13:56 — Le tableau de bord principal d'ElevenLabs affichant les statistiques d'utilisation des agents vocaux IA (appels, durée, coûts).*
 
-![L'image représente un escalator menant au niveau VIP d'une conférence virtuelle. Plusieurs avatars montent l'escalator.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001604_seg34.jpg)
-*⏱️ 00:16:04 — L'image représente un escalator menant au niveau VIP d'une conférence virtuelle. Plusieurs avatars montent l'escalator.*
-
-![L'image montre des avatars sur un escalator, se dirigeant vers le niveau VIP. Une bulle de dialogue indique "Glenn a 15 ans d'expérience. Glenn et moi avons discuté pendant une heure et demie. Glenn et moi avons beaucoup discuté." et "Chat with this attendee".](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001609_seg34.jpg)
-*⏱️ 00:16:09 — L'image montre des avatars sur un escalator, se dirigeant vers le niveau VIP. Une bulle de dialogue indique "Glenn a 15 ans d'expérience. Glenn et moi avons discuté pendant une heure et demie. Glenn et moi avons beaucoup discuté." et "Chat with this attendee".*
+![L'éditeur Visual Studio Code affichant une interface d'assistant de code IA avec un plan de développement détaillé.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001401_seg34.jpg)
+*⏱️ 00:14:01 — L'éditeur Visual Studio Code affichant une interface d'assistant de code IA avec un plan de développement détaillé.*
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:14:13 - 00:14:33]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, je devais sauter par-dessus lui. D'accord, niveau VIP, badge requis. Oh la la. Tu te moques de moi ? Je dois aller chercher mon badge. D'accord, super. Maintenant, ça montre que je suis un vrai VIP et je peux aller ici dans la section VIP. Nous avons de petites sessions de travail sympas là-bas, auxquelles nous pouvons participer. Je me demande si ça va me laisser genre m'asseoir ici. Je peux juste discuter. Est-ce que je peux participer ? Ça ne me laisse pas m'asseoir et participer. C'est pas grave. On a la salle de crise des prix. Oh, c'est peut-être l'after-party. Allons voir ce qui se passe par ici. Ou peut-être que je dois juste entrer par ici. D'accord. C'est bizarre. Je devais juste entrer par ici. Cet after-party n'est pas aussi cool que l'autre. Mais bref, allons voir ce qui se passe par ici.
+> On pourrait en fait le faire le faire si on lui donnait du genre d'utilisation de l'ordinateur. Mais bref, étape sept, le seul changement de code nécessite votre ID d'agent avant que je puisse le rendre utile. Très bien. Alors dites-moi exactement ce dont vous avez besoin de ma part. Si vous avez besoin de clés API, alors créez un fichier .env et je vais tout y déposer. Mais guidez-moi simplement étape par étape. De quoi avez-vous réellement besoin de ma part en ce moment ? Je veux que cela rende mon travail aussi facile que possible.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web d'événement virtuel 3D en ligne (type Gather ou plateforme similaire).
+**Interface & Outils** : VS Code / Éditeur de code avec extension ou panneau de chat IA intégré (Claude)
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant le profil de Nate Herk avec badge VIP, mini-carte en bas à droite et bulles de discussion.
+**Contenu textuel & Code** : Texte du plan de Claude expliquant l'intégration d'un widget d'agent commercial vocal ElevenLabs et Cal.com, mentionnant l'étape 7 avec l'ID d'agent requis.
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel 3D par le présentateur accédant à la section VIP.
+**Action / Démonstration** : Affichage des instructions de l'assistant IA dans l'éditeur de code pour configurer l'ID d'agent ElevenLabs.
 
-![Vue en perspective dans l'espace virtuel 3D montrant l'avatar du présentateur au rez-de-chaussée près d'un escalier.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001623_seg35.jpg)
-*⏱️ 00:16:23 — Vue en perspective dans l'espace virtuel 3D montrant l'avatar du présentateur au rez-de-chaussée près d'un escalier.*
-
-![Vue de l'espace virtuel VIP avec des avatars réunis autour d'une table ronde pour une session de travail.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001631_seg35.jpg)
-*⏱️ 00:16:31 — Vue de l'espace virtuel VIP avec des avatars réunis autour d'une table ronde pour une session de travail.*
-
-![Vue en hauteur de la section VIP de l'événement virtuel montrant un espace lounge avec bar et des avatars connectés.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001639_seg35.jpg)
-*⏱️ 00:16:39 — Vue en hauteur de la section VIP de l'événement virtuel montrant un espace lounge avec bar et des avatars connectés.*
+![Interface de VS Code montrant une discussion avec un assistant IA (Claude) affichant un plan et les instructions pour intégrer un agent vocal ElevenLabs, avec le présentateur en médaillon vidéo.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001418_seg35.jpg)
+*⏱️ 00:14:18 — Interface de VS Code montrant une discussion avec un assistant IA (Claude) affichant un plan et les instructions pour intégrer un agent vocal ElevenLabs, avec le présentateur en médaillon vidéo.*
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:14:33 - 00:14:55]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> dans les ateliers. OK. Ce n'était pas bon. Regardez ça. Vous pouvez tout voir et je viens de bugger et maintenant boum. Donc ce n'est pas bon. Je dirais dans l'ensemble, je veux dire, vous avez une idée de comment ça marche, mais je dirais que celui d'avant, qui était, je crois haut, je l'aimais mieux. Je ne peux pas non plus m'asseoir sur ces chaises. Oui. Donc je n'aime pas la marche dans celui-ci.
+> D'accord. C'est assez drôle. Il voulait que j'aille tout faire. Alors j'ai dit, hé, je veux que tu fasses tout. Donc, tu sais, débrouille-toi. Et maintenant il revient et dit, d'accord, tu as raison. Je peux en fait faire une grande partie de ceci. Voici donc ce dont j'ai besoin de toi. Tu peux voir qu'il a créé un fichier .env et nous devons aller chercher notre clé API Cal et notre clé API 11labs. Allons donc faire ça très vite et lui faire savoir que ce travail a été fait.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web d'événement virtuel 3D (metaverse / plateforme de conférence interactive).
+**Interface & Outils** : Visual Studio Code avec panneau de discussion IA intégré.
 
-**Contenu textuel & Code** : Interface utilisateur affichant le profil de Nate Herk, les commandes de déplacement (WASD, shift, etc.), une mini-carte et des bulles de discussion.
-[DESC_IMAGE_3] Navigation et exploration d'un environnement virtuel interactif en 3D représentant des ateliers de conférence.
+**Contenu textuel & Code** : Texte de l'assistant IA expliquant sa nouvelle stratégie ('Revised division of labor: What only you can do... What I'll do...').
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Lecture de la réponse de l'agent IA proposant de configurer la majeure partie du projet via les API REST d'ElevenLabs et Cal.com.
 
-![Vue en 3D d'un espace virtuel interactif (style événement virtuel) montrant un avatar se déplaçant dans un couloir avec des éléments d'interface (mini-carte, profil de Nate Herk).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001653_seg36.jpg)
-*⏱️ 00:16:53 — Vue en 3D d'un espace virtuel interactif (style événement virtuel) montrant un avatar se déplaçant dans un couloir avec des éléments d'interface (mini-carte, profil de Nate Herk).*
-
-![L'avatar s'approche de l'entrée de la « Room C » dans le monde virtuel.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001657_seg36.jpg)
-*⏱️ 00:16:57 — L'avatar s'approche de l'entrée de la « Room C » dans le monde virtuel.*
-
-![L'avatar entre dans la salle de conférence virtuelle (Room C - HyperAgent Lab) où d'autres avatars assistants et des écrans de présentation sont visibles.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001702_seg36.jpg)
-*⏱️ 00:17:02 — L'avatar entre dans la salle de conférence virtuelle (Room C - HyperAgent Lab) où d'autres avatars assistants et des écrans de présentation sont visibles.*
+![Vue de l'éditeur de code VS Code affichant un échange textuel avec un assistant IA qui redéfinit la répartition des tâches entre l'utilisateur et l'IA.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001439_seg36.jpg)
+*⏱️ 00:14:39 — Vue de l'éditeur de code VS Code affichant un échange textuel avec un assistant IA qui redéfinit la répartition des tâches entre l'utilisateur et l'IA.*
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:14:55 - 00:15:33]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je n'aime pas autant l'ambiance et il y a quelques bugs. Donc, jusqu'à présent, si nous voulons aller dans notre liste, j'ai aimé extra extra, c'était celui que j'ai le plus aimé jusqu'à présent. Mais bref, celui-ci était max. Celui-ci était max ici même. Alors voyons combien de temps cela a duré, deux heures et 28 minutes. Donc cela a duré longtemps, 50 dollars et 38 cents, 1,18 million de tokens. Donc il a en fait atteint une compaction et a dû auto-compacter. Et puis il a fait 51 vérifications. Vraiment ? Parce qu'il y avait beaucoup de bugs là-dedans. Et bref, celui-ci ne nous a posé aucune question. Donc, jusqu'à présent, chaque fois cela est devenu à peu près plus cher et a pris plus de temps à part ici. Mais ces基本上
+> Donc d'abord, je vais aller sur Cal et je vais aller dans mes paramètres, et je vais cliquer sur clés API ici en bas, et je vais créer une nouvelle clé. Celle-ci va s'appeler démo. Je vais supprimer ça plus tard, donc je m'en fiche un peu. Et je vais créer ça, copier ceci, puis retourner dans Cloud Code. Et si je clique sur le .env, il a créé ces espaces réservés pour nous. Donc tout ce que j'ai à faire est de coller cette clé API, d'appuyer sur Contrôle-S, et c'est maintenant enregistré. Et maintenant pour 11 Labs, je retourne dans mon tableau de bord 11 Labs, et je viens dans mes paramètres, et je vais dans développeurs. Vous pouvez voir qu'il y a aussi un onglet de clés API ici. Je peux aller de l'avant et créer cette clé, appeler celle-ci démo et aller de l'avant et créer
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou tableau de bord de type canvas / tableur.
+**Interface & Outils** : Cal.com et ElevenLabs (interfaces web).
 
-**Contenu textuel & Code** : Tableau avec les colonnes Medium (1h 13m, $12.44, 419.2K, 23, 0), High (1h 7m, $16.31, 509.3K, 22, 1), Extra (1h 31m, $25.92, 733.7K, 34, 0), ainsi que les colonnes Max et Ultracode avec des boîtes bleues vides.
+**Contenu textuel & Code** : Nom de la clé API « demo », date d'expiration à 30 jours, et liste des agents vocaux existants sur ElevenLabs.
 
-**Action / Démonstration** : Le présentateur commente et analyse les différents niveaux du tableau comparatif.
+**Action / Démonstration** : Création d'une nouvelle clé API sur Cal.com et navigation sur la plateforme ElevenLabs.
 
-![Tableau comparatif affichant les différents niveaux d'effort (Medium, High, Extra, Max, Ultracode) avec des métriques de temps, de coût et de performance.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001716_seg37.jpg)
-*⏱️ 00:17:16 — Tableau comparatif affichant les différents niveaux d'effort (Medium, High, Extra, Max, Ultracode) avec des métriques de temps, de coût et de performance.*
+![Interface des paramètres de Cal.com avec une fenêtre modale de création de clé API nommée « demo ».](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001505_seg37.jpg)
+*⏱️ 00:15:05 — Interface des paramètres de Cal.com avec une fenêtre modale de création de clé API nommée « demo ».*
+
+![Tableau de bord d'ElevenLabs affichant la liste des agents vocaux configurés.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001523_seg37.jpg)
+*⏱️ 00:15:23 — Tableau de bord d'ElevenLabs affichant la liste des agents vocaux configurés.*
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:15:33 - 00:16:11]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> a pris à peu près le même temps, mais chaque fois, il utilise plus de tokens parce qu'ils ont beaucoup réfléchi. Et puis, vous savez, ces tokens vont coûter plus cher. Mais bref, passons au dernier, qui est ultra code. Nous espérions vraiment que ce serait le meilleur. Alors, allons-y sur cet hôte local et voyons ce que nous avons. D'accord, super. Regardez ce badge. C'est un joli badge, accès complet à l'hôte. Nous avons une jolie petite visualisation ici. Nous allons entrer dans AIS Live. Super. D'accord. Bienvenue, Nate. J'aime la façon dont ça marche. Ça semble réaliste. J'aime le logo, bien qu'il manque le petit point rouge qui le fait ressembler à en direct. La carte en haut à droite
+> cette clé. Cependant, je n'ai sélectionné aucune permission. Donc ça dit que vous créez une clé API sans permissions. Donc elle ne pourra rien faire. Donc ce que vous devez faire, c'est lui donner accès à des choses, ou je pourrais simplement désactiver la restriction. Donc en gros, ça dit, Hé, cette clé peut tout faire, ce qui est très bien pour l'instant. Et vous pouvez aussi définir une sorte de limite de dépenses mensuelle, ce qui est plutôt cool. Mais je vais aller de l'avant et créer cette clé. Je vais copier cette clé API, retourner dans Cloud Code, la coller là-dedans, appuyer sur Contrôle S pour l'enregistrer, et ensuite je peux fermer ça. Et maintenant que nous avons configuré ces deux choses, Cloud Code, je viens d'y insérer ces clés API, je continue. Et maintenant vous pouvez voir que ça va simplement progresser à travers cette liste de tâches.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau de bord comparatif et application 3D interactive
+**Interface & Outils** : Navigateur web (ElevenLabs Dashboard) et VS Code (avec extension Claude).
 
-**Contenu textuel & Code** : Métriques de test d'IA (temps d'exécution, coût en dollars, nombre de tokens) et interface d'événement virtuel.
+**Contenu textuel & Code** : Interface de gestion des clés API ElevenLabs et code source avec instructions de l'agent IA dans VS Code.
 
-**Action / Démonstration** : Présentation des résultats comparatifs et visualisation d'une application 3D générée.
+**Action / Démonstration** : Création d'une clé API sur ElevenLabs et configuration du projet dans VS Code.
 
-![Un tableau comparatif montrant les performances des différents modes d'effort (High, Extra, Max, Ultracode) avec des métriques de temps, de coût et de tokens.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001752_seg38.jpg)
-*⏱️ 00:17:52 — Un tableau comparatif montrant les performances des différents modes d'effort (High, Extra, Max, Ultracode) avec des métriques de temps, de coût et de tokens.*
+![Interface de configuration des clés API sur le tableau de bord ElevenLabs avec un panneau latéral pour créer une clé nommée "Demo".](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001542_seg38.jpg)
+*⏱️ 00:15:42 — Interface de configuration des clés API sur le tableau de bord ElevenLabs avec un panneau latéral pour créer une clé nommée "Demo".*
 
-![Une interface virtuelle 3D représentant un événement nommé 'AIS LIVE' avec des avatars et des écrans d'accueil.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001809_seg38.jpg)
-*⏱️ 00:18:09 — Une interface virtuelle 3D représentant un événement nommé 'AIS LIVE' avec des avatars et des écrans d'accueil.*
+![Popup de confirmation affichant la nouvelle clé API générée sur ElevenLabs avec le bouton "Copy to Clipboard".](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001552_seg38.jpg)
+*⏱️ 00:15:52 — Popup de confirmation affichant la nouvelle clé API générée sur ElevenLabs avec le bouton "Copy to Clipboard".*
+
+![Éditeur VS Code affichant un assistant IA (Claude) listant les tâches à accomplir et demandant d'insérer les clés API dans le fichier `.env`.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001601_seg38.jpg)
+*⏱️ 00:16:01 — Éditeur VS Code affichant un assistant IA (Claude) listant les tâches à accomplir et demandant d'insérer les clés API dans le fichier `.env`.*
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:16:11 - 00:16:30]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> est étiqueté un peu mieux, donc je peux voir ce qui se passe. Je vais entrer ici et récupérer mon bracelet VIP rapidement. Ok, sympa. Il me dit aussi quoi faire. Donc en haut à gauche, il est dit de scanner à la porte VIP au mur est du hall. Je crois que l'est serait par ici, n'est-ce pas ? Jamais manger de gaufres détrempées. Ouais. Ailes VIP, scanner le bracelet. Ok, cool. Maintenant, je suis dans la section VIP. Je peux voir ces différentes salles. Le redémarrage de l'outillage. De la vidéo en direct est diffusée. Je peux voir les sous-titres juste là de ce dont on parle. Il diffuse aussi les sons, mais je ne vous diffuse pas l'audio car je ne veux pas vous submerger.
+> Il va faire une pause et il va nous demander quelque chose s'il a besoin de nous, mais espérons qu'il devrait être capable de venir à bout de la plupart de ceux-ci sans notre intervention, parce que nous avons déjà pris le temps et fait l'effort d'expliquer ce que nous voulons et de nous aligner sur le plan avant de commencer à le laisser construire quoi que ce soit. Très bien, donc quelques minutes plus tard, apparemment tout est en ligne. Nous avons été vérifiés dans Calendar.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif (plateforme virtuelle AIS Live 2026).
+**Interface & Outils** : Visual Studio Code (éditeur de code avec arborescence, éditeur markdown et invite de commande en bas).
 
-**Contenu textuel & Code** : Textes d'indication de mission à l'écran ("Scan in at the VIP gate", "VIP Wing", "VIP Room 5").
+**Contenu textuel & Code** : Instructions sous forme de liste à puces pour configurer des clés API Cal.com et ElevenLabs, et initialiser un agent IA, avec le prompt utilisateur "Claude code: I just dropped in those API keys. Keep going."
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par le présentateur.
+**Action / Démonstration** : L'utilisateur visualise le déroulement des tâches confiées à l'agent de code dans l'interface de développement.
 
-![L'avatar du présentateur se déplace dans le hall d'enregistrement virtuel d'AIS Live 2026.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001825_seg39.jpg)
-*⏱️ 00:18:25 — L'avatar du présentateur se déplace dans le hall d'enregistrement virtuel d'AIS Live 2026.*
-
-![L'avatar franchit la porte d'entrée de la zone VIP Wing après avoir scanné son accès.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001833_seg39.jpg)
-*⏱️ 00:18:33 — L'avatar franchit la porte d'entrée de la zone VIP Wing après avoir scanné son accès.*
-
-![L'avatar arrive dans la salle VIP Room 5 intitulée "Tooling Reset / Solo to Real Business" avec plusieurs autres avatars autour d'une table ronde.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001841_seg39.jpg)
-*⏱️ 00:18:41 — L'avatar arrive dans la salle VIP Room 5 intitulée "Tooling Reset / Solo to Real Business" avec plusieurs autres avatars autour d'une table ronde.*
+![Vue de Visual Studio Code montrant un fichier Markdown ouvert avec des instructions pour l'agent IA, ainsi que l'arborescence des fichiers du projet à gauche et le présentateur incrusté en bas à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001616_seg39.jpg)
+*⏱️ 00:16:16 — Vue de Visual Studio Code montrant un fichier Markdown ouvert avec des instructions pour l'agent IA, ainsi que l'arborescence des fichiers du projet à gauche et le présentateur incrusté en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
+### ⏱️ `[00:16:30 - 00:16:50]` | Segment #40
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Encore une fois, celui-ci fonctionne avec Cody et Mustafa là-dedans. C'est génial. Vidéo en direct. La vidéo ne se lance pas tant qu'on n'entre pas, par contre. Donc honnêtement, je pense que c'est une bonne décision. Dès que j'entre, par contre, la vidéo démarre. Sympa. Belle touche. Toutes ces salles. Génial. Ouais. Je veux dire, ça fait vraiment très haut de gamme. Voici une war room sur les prix. Entrons là-dedans. Moi et John là-dedans.
+> Ça va utiliser le créneau de 30 minutes, ce qui est très bien. Et ça suggère aussi de renommer cet appel Neural Diagnostic, parce que présentement dans notre calendrier, ça s'appelle juste un appel de 30 minutes ou quelque chose comme ça. Ouais, ça s'appelle juste réunion de 30 minutes. Donc ça nous indique que ça utilise celui-ci et ça veut qu'on le renomme, ce qui est un bon conseil. Ça a aussi créé un agent 11labs.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou plateforme virtuelle 3D (type Metaverse / espace de réunion virtuel)
+**Interface & Outils** : VS Code / Cal.com
 
-**Contenu textuel & Code** : Environnement virtuel 3D avec affichage textuel (« VIP Wing », « Price It Right - First 10 Clients Plan »), mini-carte radar en haut à droite et avatar de l'utilisateur.
+**Contenu textuel & Code** : Résumé de configuration Cal.com, identifiants d'événements, configuration de l'agent ElevenLabs et clés API Cal.com.
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel en 3D, entrée dans une zone de réunion.
+**Action / Démonstration** : Examen des résultats de configuration par Claude Code et navigation dans le tableau de bord Cal.com.
 
-![Capture d'écran montrant l'avatar du présentateur naviguant dans un espace virtuel 3D (« VIP Wing ») où l'on aperçoit une salle de réunion avec un flux vidéo en direct.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001854_seg40.jpg)
-*⏱️ 00:18:54 — Capture d'écran montrant l'avatar du présentateur naviguant dans un espace virtuel 3D (« VIP Wing ») où l'on aperçoit une salle de réunion avec un flux vidéo en direct.*
+![Interface VS Code affichant un résumé de Claude Code avec les détails de l'intégration Cal.com et ElevenLabs, incluant la suggestion de renommer le type d'événement.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001635_seg40.jpg)
+*⏱️ 00:16:35 — Interface VS Code affichant un résumé de Claude Code avec les détails de l'intégration Cal.com et ElevenLabs, incluant la suggestion de renommer le type d'événement.*
+
+![Interface web des paramètres de Cal.com montrant la section des clés API.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001640_seg40.jpg)
+*⏱️ 00:16:40 — Interface web des paramètres de Cal.com montrant la section des clés API.*
 
 ---
 
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
+### ⏱️ `[00:16:50 - 00:17:13]` | Segment #41
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et ensuite, nous avons l'after-party sympa. Cet after-party n'est pas encore aussi animé. Et nous avons plus de ballons de plage pour une raison quelconque, mais cet after-party est cool. Je veux dire, ça nous donne une bonne ambiance et il y a la rediffusion juste ici de notre séance de questions-réponses de l'after-party, tout cela est en direct aussi. Génial. Bon. Allons sur la scène principale. Cela m'invite aussi à prendre un siège côté allée sur la scène principale, qui est tout droit à travers l'expo. Donc en fait, traversons d'abord l'expo. Qu'est-ce que vous construisez ? Il y a beaucoup de gens qui parlent de différentes choses par ici. Waouh. Il y a aussi genre un petit truc de basketball. Est-ce que je peux le lancer ? Je peux. Est-ce que je dois regarder en haut pour le lancer vers le haut ? D'accord.
+> Donc si je vais dans mon tableau de bord ici pour les agents et que je clique sur agents, juste ici nous voyons neural diagnostics. Donc c'est celui qu'il vient de créer avec une invite système complète. Et si je clique sur outils, nous devrions voir que nous avons deux outils configurés, ce qui est génial. Nous ne les avons pas encore testés. Nous allons devoir voir s'ils fonctionnent, mais tout a l'air d'avoir effectivement été configuré. Donc il est dit que c'est maintenant en ligne sur le site, du moins la version localhost, et il veut qu'on le teste.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de métavers ou espace virtuel 3D en ligne.
+**Interface & Outils** : Interface web d'ElevenLabs (tableau de bord des agents).
 
-**Contenu textuel & Code** : Environnement virtuel 3D avec avatars interactifs et panneaux d'affichage.
+**Contenu textuel & Code** : Liste des agents IA avec leurs noms ('NEUREL Diagnostic', 'Nate's AI Assistant', 'JARVIS', etc.) et leurs dates de création.
 
-**Action / Démonstration** : Navigation et exploration de différentes zones d'un espace virtuel 3D.
+**Action / Démonstration** : Le curseur de la souris survole l'agent 'NEUREL Diagnostic' dans la liste.
+
+![Tableau de bord ElevenLabs affichant la liste des agents configurés, avec en surbrillance l'agent 'NEUREL Diagnostic', et une incrustation vidéo du présentateur en bas à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001656_seg41.jpg)
+*⏱️ 00:16:56 — Tableau de bord ElevenLabs affichant la liste des agents configurés, avec en surbrillance l'agent 'NEUREL Diagnostic', et une incrustation vidéo du présentateur en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
+### ⏱️ `[00:17:13 - 00:17:32]` | Segment #42
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Eh bien, pas terrible. Mais bref, nous avons un stand AIS plus. Nous avons le stand Glido. Est-ce que ça diffuse en direct ? Oui, ça diffuse bel et bien en direct. Sympa. Nous avons le stand Hyper Agent. Nous avons d'autres trucs par ici. D'accord, cool. Je vais aller dans la salle principale et voir si nous pouvons trouver une place côté allée. Dès qu'on entre, tout commence à jouer. On a une très belle ambiance de scène. Comment faire pour trouver une place côté allée par contre. Voilà. Il a fallu que je trouve la bonne. Trouver la place côté allée. Il n'y a personne sur scène, ce qui est bizarre. J'aimais bien quand il y avait du monde sur scène dans les versions précédentes.
+> Donc allons-y et ouvrons le site, faisons un rafraîchissement forcé. Et juste là en bas, vous pouvez voir que nous avons ce widget. Donc je vais cliquer sur démarrer l'appel et testons juste un peu ce truc. Hé, quoi de neuf ? Hé, juste là pour répondre à toutes vos questions sur Neural ou ce que nous faisons. Est-ce que vous examinez l'automatisation par IA pour votre équipe ou est-ce que quelque chose de spécifique a attiré votre attention ?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web virtuelle en 3D (type plateforme d'événement en ligne).
+**Interface & Outils** : Navigateur web affichant le site internet 'NEURAL' (Neurel) avec widget d'appel IA intégré.
 
-**Contenu textuel & Code** : Noms des stands (Glido, Hyper Agent, AIS) et de la salle principale (Main Stage).
+**Contenu textuel & Code** : Page d'accueil du site 'NEUREL' avec le titre 'AI transformation without the layoffs' et l'interface vocale active.
 
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par le présentateur.
+**Action / Démonstration** : Le présentateur clique sur le widget d'appel pour lancer et tester l'interaction vocale en direct sur le site.
 
-![Vue de l'Expo Hall virtuel avec différents stands d'entreprises et des avatars.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001948_seg42.jpg)
-*⏱️ 00:19:48 — Vue de l'Expo Hall virtuel avec différents stands d'entreprises et des avatars.*
+![Le site web 'NEUREL' avec le widget d'appel vocal en bas à droite proposant le bouton 'Start a call'.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001717_seg42.jpg)
+*⏱️ 00:17:17 — Le site web 'NEUREL' avec le widget d'appel vocal en bas à droite proposant le bouton 'Start a call'.*
 
-![Entrée du présentateur dans la salle principale (Main Stage) de l'événement virtuel.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001955_seg42.jpg)
-*⏱️ 00:19:55 — Entrée du présentateur dans la salle principale (Main Stage) de l'événement virtuel.*
-
-![Avatars assis dans la salle principale (Main Stage) avec l'option de s'asseoir ou regarder la session.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002001_seg42.jpg)
-*⏱️ 00:20:01 — Avatars assis dans la salle principale (Main Stage) avec l'option de s'asseoir ou regarder la session.*
+![Le site web 'NEUREL' où le widget d'appel vocal est actif, affichant une animation sphérique bleue d'onde vocale.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001722_seg42.jpg)
+*⏱️ 00:17:22 — Le site web 'NEUREL' où le widget d'appel vocal est actif, affichant une animation sphérique bleue d'onde vocale.*
 
 ---
 
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
+### ⏱️ `[00:17:32 - 00:17:51]` | Segment #43
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Prenons un petit selfie. Bref, on a moi et Pat là-haut. Pat est tout habillé comme un ouvrier du bâtiment. Comme vous pouvez voir, on faisait un petit appel de découverte simulé dans cet exemple. Je vais revenir par l'expo et on va aller ici dans l'aile de l'atelier et juste vérifier si ces chambres sont fondamentalement exactement les mêmes qu'elles devraient l'être. Maintenant, je ne peux pas vraiment discuter avec les gens. Je le pouvais avant, dans les versions précédentes, discuter avec les gens, ce que je trouvais être une très belle touche. Et on a un atelier, un parcours fondation. Est-ce que je peux m'asseoir ?
+> Bon. J'ai donc préféré raccrocher cet appel parce que je n'aime pas trop cette voix. C'était Adam et je n'aimais tout simplement pas sa façon de parler. De plus, pour une raison quelconque, le premier message n'est pas passé. J'ai donc cliqué sur le bouton et j'ai dû patienter. Et je me suis dit, bon, pourquoi ça ne parle pas ? Et ensuite, j'ai dû commencer à parler pour que ça revienne. Donc à ce stade, ce que vous allez faire, c'est continuer à faire des itérations. Ce ne sera pas parfait du premier coup.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D en ligne (plateforme de conférence virtuelle).
+**Interface & Outils** : Interface web ElevenLabs / ElevenAgents
 
-**Contenu textuel & Code** : Interface utilisateur affichant une carte miniature, des indications textuelles (« Expo Hall », « Workshop Wing ») et des avatars de participants.
+**Contenu textuel & Code** : Configuration d'agent vocal : prompt système définissant un consultant IA pour le site NEUREL, sélection de la voix Adam, paramétrage de la langue anglaise et du modèle LLM (Claude Sonnet 4.5).
 
-**Action / Démonstration** : Navigation et déplacement du point de vue à l'intérieur de l'espace virtuel 3D présenté à l'écran.
+**Action / Démonstration** : Navigation et configuration des paramètres de l'agent vocal ElevenLabs, avec un aperçu interactif de l'appel sur le panneau latéral droit.
+
+![Capture d'écran montrant l'interface d'ElevenLabs (ElevenAgents) avec le tableau de bord de configuration d'un agent vocal, incluant le prompt système, le choix de la voix ("Adam"), et un panneau de prévisualisation avec une animation visuelle bleue et un bouton de discussion.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001737_seg43.jpg)
+*⏱️ 00:17:37 — Capture d'écran montrant l'interface d'ElevenLabs (ElevenAgents) avec le tableau de bord de configuration d'un agent vocal, incluant le prompt système, le choix de la voix ("Adam"), et un panneau de prévisualisation avec une animation visuelle bleue et un bouton de discussion.*
 
 ---
 
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
+### ⏱️ `[00:17:51 - 00:18:10]` | Segment #44
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je ne peux pas m'asseoir. Je ne sais pas. Nous avons Liberty qui parle en ce moment et elle est en train de parler et nous pouvons l'entendre. Donc c'est bien, mais ça ne me laisse pas m'asseoir. Et regardez ça. Je deviens assez bugué juste ici. Ça buguait de la façon dont je marchais. Ça ne me laissera pour ainsi dire pas marcher. Ce n'est pas bon. Pareil. Nous avons cette piste avancée là-dedans. Génial. Donc dans l'ensemble, ils ont une ambiance très similaire. Je dirai que je suis impressionné par la façon dont ils ont été capables de raconter une histoire à partir de ce que nous faisions. Bibliothèque de points clés des intervenants. D'accord. C'est cool. Je ne pense pas que nous ayons vu ça depuis différents endroits, mais ce sont comme les ressources et ça montre des trucs sympas. Oh, waouh. Je
+> Donc je vais y retourner. Je vais faire un transfert de session très rapide, qui va fondamentalement juste nous donner un message pour effacer le contexte et remettre le message juste parce que je veux garder mon contexte propre. Donc c'est capable de, tu sais, pour qu'on n'entre pas dans le territoire de saturation du contexte ou quelque chose comme ça. C'est fondamentalement une compétence que j'ai construite pour me donner juste un résumé d'où nous en sommes.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif (type metaverse/plateforme de conférence virtuelle).
+**Interface & Outils** : Visual Studio Code / Terminal Claude Code
 
-**Contenu textuel & Code** : Interface d'un espace virtuel de conférence avec indications textuelles ("Workshop A", "Workshop B", "Speaker Takeaways Library", bannières de navigation).
+**Contenu textuel & Code** : Commandes et instructions relatives au widget de vente IA ElevenLabs et Cal.com, avec la commande `/session-handoff` et le texte "Discombobulatin..."
 
-**Action / Démonstration** : Le présentateur navigue et déplace son avatar à l'intérieur des différentes salles de l'environnement virtuel interactif.
+**Action / Démonstration** : Exécution d'un transfert de session (`/session-handoff`) pour nettoyer le contexte de l'assistant IA.
 
-![Vue d'un monde virtuel interactif montrant le "Workshop A - Foundation Track" avec un avatar en train d'explorer l'espace.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002040_seg44.jpg)
-*⏱️ 00:20:40 — Vue d'un monde virtuel interactif montrant le "Workshop A - Foundation Track" avec un avatar en train d'explorer l'espace.*
-
-![Navigation dans le monde virtuel vers le "Workshop B - Advanced Track" montrant une salle de classe virtuelle avec des pupitres et des écrans.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002048_seg44.jpg)
-*⏱️ 00:20:48 — Navigation dans le monde virtuel vers le "Workshop B - Advanced Track" montrant une salle de classe virtuelle avec des pupitres et des écrans.*
-
-![Exploration de la "Speaker Takeaways Library" dans l'environnement virtuel avec des avatars et des présentations affichées aux murs.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002056_seg44.jpg)
-*⏱️ 00:20:56 — Exploration de la "Speaker Takeaways Library" dans l'environnement virtuel avec des avatars et des présentations affichées aux murs.*
+![Vue de l'éditeur Visual Studio Code montrant l'interface de l'outil Claude Code avec la commande de transfert de session.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001756_seg44.jpg)
+*⏱️ 00:17:56 — Vue de l'éditeur Visual Studio Code montrant l'interface de l'outil Claude Code avec la commande de transfert de session.*
 
 ---
 
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
+### ⏱️ `[00:18:10 - 00:18:40]` | Segment #45
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> peut effectivement ouvrir toutes ces choses et nous pouvons prendre des photos ici même aussi. Super. Prends une photo. Je peux sauvegarder ça aussi. Genre, je peux vraiment télécharger ça. Et maintenant nous avons cette photo que nous venons de prendre à cet événement en direct de l'AIS. Très bien. Eh bien, je pense qu'il est temps pour moi de tirer quelques conclusions, mais d'abord voyons ce que cette exécution nous a coûté. Cela a pris une heure et 35 minutes. C'était donc beaucoup plus rapide que max. Cela n'a coûté que 18 dollars et 69 cents. Waouh. C'était donc un peu plus cher que high, moins cher que extra et beaucoup moins cher que max. Cela a également consommé 606 000 jetons et 42 vérifications avec zéro question. Maintenant, une autre chose intéressante à noter est que tout
+> Ce qui est important à retenir. Si vous voulez aller voir ça, rejoignez ma communauté School gratuite, toutes mes compétences et toutes mes ressources y sont. Bon. Alors, nous venons de tester l'agent sur le site et ça a l'air bien. Ça fonctionne dans l'ensemble. Bon. Quelques trucs que j'ai remarqués. Tout d'abord, changez la voix. Je n'aime pas cette voix. Elle a l'air un peu trop enthousiaste. Ça fait trop IA. La deuxième chose, c'est que quand je clique sur démarrer un appel, ça ne me donne pas vraiment de premier message. Pour une raison quelconque, ça me force à commencer la conversation, même si dans le tableau de bord, on dirait bien que vous avez configuré un premier message, mais on ne le voit pas s'afficher en réalité.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Visionneuse d'images Windows et outil de diagramme de type Excalidraw ou application web collaborative.
+**Interface & Outils** : VS Code (éditeur de code) et navigateur web affichant le site Neurel.
 
-**Contenu textuel & Code** : Photo d'un événement virtuel "AIS LIVE" et tableau de données chiffrées (durées, coûts, métriques).
+**Contenu textuel & Code** : Instructions pour l'agent IA d'ElevenLabs ("Pick up here", "Wait for the user's smoke-test results", etc.) et interface web du site Neurel.
 
-**Action / Démonstration** : Présentation de la photo sauvegardée et visualisation de graphiques ou tableaux analytiques.
+**Action / Démonstration** : Présentation du code de configuration de l'agent et démonstration du widget d'appel en direct sur le site web.
 
-![Visionneuse d'images affichant une photo prise lors de l'événement en direct de l'AIS montrant des avatars 3D sur un tapis rouge.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002113_seg45.jpg)
-*⏱️ 00:21:13 — Visionneuse d'images affichant une photo prise lors de l'événement en direct de l'AIS montrant des avatars 3D sur un tapis rouge.*
+![VS Code ouvert sur le projet ElevenLabs Demo, affichant un assistant IA avec des instructions de configuration de session et de test.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001818_seg45.jpg)
+*⏱️ 00:18:18 — VS Code ouvert sur le projet ElevenLabs Demo, affichant un assistant IA avec des instructions de configuration de session et de test.*
 
-![Interface d'un tableau comparatif ou d'un outil de diagramme montrant des statistiques de performance avec des en-têtes comme "Extra", "Max", et "Ultracode".](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002122_seg45.jpg)
-*⏱️ 00:21:22 — Interface d'un tableau comparatif ou d'un outil de diagramme montrant des statistiques de performance avec des en-têtes comme "Extra", "Max", et "Ultracode".*
+![Page d'accueil du site web "Neurel" avec le slogan "AI transformation without the layoffs" et un widget d'appel vocal en bas à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001825_seg45.jpg)
+*⏱️ 00:18:25 — Page d'accueil du site web "Neurel" avec le slogan "AI transformation without the layoffs" et un widget d'appel vocal en bas à droite.*
 
 ---
 
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
+### ⏱️ `[00:18:40 - 00:19:15]` | Segment #46
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> ces exécutions, aucune d'entre elles n'a utilisé de sous-agent. J'ai vérifié et je me suis assuré qu'aucune d'elles n'avait utilisé de sous-agents. Elles ne voulaient déléguer aucun travail, ce qui était intéressant. Donc ces jetons sont ce qui a été reflété à l'intérieur de cette session. Évidemment, comme je l'ai dit, celle-ci a dépassé, vous savez, 950 000, donc, ou peu importe quelle est la fenêtre de compaction. Je ne laisse jamais habituellement monter si haut, mais comme c'était un objectif global et que je n'étais pas impliqué, celle-ci a dû se compacter, mais le reste d'entre elles a simplement tourné dans cette unique session. Et ce sont les statistiques globales. Et aussi, très rapidement concernant les trucs d'UltraCode, les gars, je ne sais pas si vous l'avez remarqué, mais quand j'ai exécuté UltraCode ces derniers temps, ça a juste fait bizarre. Ça a semblé un peu buggé. J'ai, à quelques reprises, je l'ai exécuté
+> Donc je n'ai pas encore testé les outils, mais je voulais juste apporter ces rapides modifications au prompt actuel. Donc ouais, vas-y, implémente ces changements et ensuite je vais le tester à nouveau. Et c'est vraiment aussi simple que ça, tu ispires en disant : "Hé, voici ce que j'ai aimé, voici ce que je n'ai pas aimé, va régler ça pour moi." Donc il a vraiment du mal avec cette histoire de premier message, et c'est marrant parce que sur mon autre site et celui-ci, quand j'ai fait ça, il a réussi le premier message du premier coup, il n'a eu aucun problème. C'est peut-être un truc qui se passe en coulisses, mais tu sais, je n'ai pas envie d'être celui qui doit fouiller dans la documentation pour comprendre ça, alors je lui fais faire cette recherche, il va chercher tout ce dont il a besoin de découvrir.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau de bord de statistiques ou application de notes/présentation (marquée « Opus 5.5 Efforts »).
+**Interface & Outils** : Visual Studio Code et navigateur web affichant le site internet personnel.
 
-**Contenu textuel & Code** : Tableau avec les colonnes : Low, Medium, High, Extra, Max, Ultracode, et les lignes : Run time, API cost, Total tokens, Checks, Questions asked.
+**Contenu textuel & Code** : Fichiers de configuration `.env`, instructions textuelles pour l'agent de vente vocal et code du site web.
 
-**Action / Démonstration** : Le présentateur commente et analyse les résultats chiffrés et les coûts d'exécution affichés dans le tableau pour chaque niveau de performance.
+**Action / Démonstration** : Interaction avec l'éditeur de code et présentation du site web avec widget d'appel IA.
 
-![Tableau comparatif affichant les performances selon différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec des métriques telles que le temps d'exécution, le coût API, le total des tokens, les vérifications et les questions posées, aux côtés du présentateur en incrustation vidéo.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002149_seg46.jpg)
-*⏱️ 00:21:49 — Tableau comparatif affichant les performances selon différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec des métriques telles que le temps d'exécution, le coût API, le total des tokens, les vérifications et les questions posées, aux côtés du présentateur en incrustation vidéo.*
+![Vue de l'éditeur de code VS Code affichant un assistant IA et le panneau de configuration avec le présentateur en incrustation.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001849_seg46.jpg)
+*⏱️ 00:18:49 — Vue de l'éditeur de code VS Code affichant un assistant IA et le panneau de configuration avec le présentateur en incrustation.*
+
+![Page web de la marque Nate Herk affichant le site 'AI Automation Made Easy' avec le widget vocal en bas à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001907_seg46.jpg)
+*⏱️ 00:19:07 — Page web de la marque Nate Herk affichant le site 'AI Automation Made Easy' avec le widget vocal en bas à droite.*
 
 ---
 
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
+### ⏱️ `[00:19:15 - 00:19:39]` | Segment #47
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> et je me suis dit, est-ce que ça tourne vraiment sous UltraCode ? Ça a fait pas mal de vérifications de plus que ces autres-là, mais pour une raison quelconque, ça ne me semblait pas correct, parce qu'essentiellement, ce qu'est UltraCode, c'est un effort supplémentaire et c'est juste comme utiliser des flux de travail plus dynamiques pour faire les choses. Et donc, à travers toutes mes recherches dans les journaux de session et même quand je regardais ce truc se construire dans UltraCode, ça ne lançait aucun de ces flux de travail dynamiques et j'ai essayé ça plusieurs fois.
+> afin de régler ça donc j'espère que je vais vérifier avec vous dans une seconde et que ce problème sera réglé mais c'est juste un point de mentalité important à aborder ici car comme Cloud Code a la capacité de raisonner et de faire des recherches si quelque chose ne fonctionne pas soyez précis sur ce qui ne fonctionne pas et vous savez donnez-lui du contexte mais il va être capable d'aller faire des recherches pour trouver comment résoudre ce problème spécifique. Hé, c'est NERL. Qu'est-ce qui vous amène aujourd'hui ?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web ou tableau de bord analytique présentant des métriques d'IA ("Opus 5.5 Efforts").
+**Interface & Outils** : Visual Studio Code / Extension Claude Code
 
-**Contenu textuel & Code** : Tableau avec des colonnes Low, Medium, High, Extra, Max, Ultracode et des lignes Run time, API cost, Total tokens, Checks, Questions asked.
+**Contenu textuel & Code** : Prompt utilisateur « The first message still isn't coming through, fix this issue », une commande Bash utilisant curl pour interroger l'API ElevenLabs, et la réponse JSON correspondante avec un STATUS:200.
 
-**Action / Démonstration** : Le présentateur commente les résultats et les métriques affichées dans le tableau comparatif.
+**Action / Démonstration** : L'assistant analyse le code et exécute des requêtes de diagnostic via son terminal intégré pour résoudre un problème de message manquant.
 
-![Tableau comparatif des performances de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) affichant le temps d'exécution, le coût API, le nombre de tokens, les vérifications et les questions posées.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002218_seg47.jpg)
-*⏱️ 00:22:18 — Tableau comparatif des performances de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) affichant le temps d'exécution, le coût API, le nombre de tokens, les vérifications et les questions posées.*
+![Capture d'écran montrant l'éditeur VS Code avec une interface d'agent conversationnel Claude Code intégrée, affichant un prompt sur le premier message et une commande Bash exécutée avec sa sortie.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_001921_seg47.jpg)
+*⏱️ 00:19:21 — Capture d'écran montrant l'éditeur VS Code avec une interface d'agent conversationnel Claude Code intégrée, affichant un prompt sur le premier message et une commande Bash exécutée avec sa sortie.*
 
 ---
 
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
+### ⏱️ `[00:19:40 - 00:20:14]` | Segment #48
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc je ne sais pas si c'est un bug en ce moment dans le harnais CloudCode ou si c'est juste avec Opus 5.5, c'est un tout petit peu pire avec UltraCode en ce moment ou quelque chose comme ça, mais de toute façon, ce sont les niveaux d'effort globaux réels et tout cela semble tout à fait logique quand on regarde un peu comment ils progressent. Jetons donc un coup d'œil à ceci. Coût maximum par rapport au minimum, nous avons eu 12,9 fois sur l'exécution la moins chère par rapport à l'exécution la plus chère, ce qui, je crois, allait de 3,98 $ à 50,38 $.
+> Hé, NERL. Je me demandais si je pouvais réserver un appel. Compris. Juste pour clarifier, aujourd'hui nous sommes le 28 avril 2026, et il est actuellement environ 19h55 UTC, ce qui fait environ 14h55. Bon, c'était mieux, n'est-ce pas ? Nous devons modifier certaines choses parce qu'il se trompait sur l'heure actuelle. Et nous devons aussi mieux le prompter pour qu'il comprenne vraiment qu'il doit confirmer l'orthographe des noms des gens et l'orthographe de leurs e-mails, parce que le formatage n'était pas bon
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou tableau de bord avec une incrustation vidéo du présentateur en bas à gauche.
+**Interface & Outils** : VS Code, assistant de code Claude Code
 
-**Contenu textuel & Code** : Tableau de données montrant les performances et coûts de différents niveaux d'effort (ex: Low: 16m 43s, $3.91, 191.3K tokens; Ultracode: 1h 35m, $18.69, 606.2K tokens).
+**Contenu textuel & Code** : Fichier index.html avec le code du widget ElevenLabs et modifications de script (ajout de "use-rtc").
 
-**Action / Démonstration** : Analyse et présentation visuelle des résultats de tests selon les différents niveaux d'effort de l'IA.
+**Action / Démonstration** : Modification du code source pour basculer le widget en mode WebRTC afin de corriger les problèmes audio.
 
-![Tableau comparatif affichant les niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec les métriques associées (Run time, API cost, Total tokens, Checks, Questions asked).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002241_seg48.jpg)
-*⏱️ 00:22:41 — Tableau comparatif affichant les niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec les métriques associées (Run time, API cost, Total tokens, Checks, Questions asked).*
+![Capture d'écran montrant l'éditeur de code VS Code avec le projet "ElevenLabs Demo" et l'interface de l'assistant Claude Code.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002006_seg48.jpg)
+*⏱️ 00:20:06 — Capture d'écran montrant l'éditeur de code VS Code avec le projet "ElevenLabs Demo" et l'interface de l'assistant Claude Code.*
 
 ---
 
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
+### ⏱️ `[00:20:14 - 00:20:46]` | Segment #49
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc c'était bas et maximum. En ce qui concerne les vérifications maximum par rapport au minimum, nous avons eu un multiple de 2,3. Le total pour les six était de 127 dollars et l'ultracode était de 18,69 dollars. Examinons la vitesse par rapport au coût ici. Laissez-moi donc dézoomer un peu pour que nous puissions voir tout cela. Sur l'axe des X, nous avons le temps d'exécution. Sur l'axe des Y, nous avons le coût.
+> les e-mails, c'est ça. Donc, à chaque fois que vous discutez avec ce truc, vous allez probablement remarquer quelques points à améliorer. Donc, je vais fondamentalement juste lui donner ce retour, de la même manière que je vous ai dit ce qui manquait, et ensuite nous le testerons à nouveau et nous verrons, espérons-le, que c'est mieux. Maintenant, l'autre chose à laquelle vous allez devoir faire attention en ce qui concerne la disponibilité, c'est votre réservation réelle. Donc, que vous fassiez cela sur Calendly ou cal.com, la réservation a un certain genre de limite. Donc, si je viens ici et que je vais dans la disponibilité, vous pouvez voir que cela va seulement me donner une disponibilité entre 9h et 17h en semaine. Donc, si je voulais pouvoir changer cela, je devrais modifier cette disponibilité. Donc, disons simplement pour le
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou tableau de bord analytique (« Opus Effort Test »).
+**Interface & Outils** : Visual Studio Code (avec extension Claude Code) et Cal.com (interface web de prise de rendez-vous)
 
-**Contenu textuel & Code** : Statistiques sur les performances : « 12.9x Max cost vs Low », « 2.3x Max checks vs Low », « $18.69 Ultracode cost, 42 checks », « $127.65 Total across all six ».
+**Contenu textuel & Code** : Code source HTML modifié pour configurer un widget ElevenLabs Convai (activation du mode WebRTC) et liste des types d'événements de calendrier sur Cal.com.
 
-**Action / Démonstration** : Présentation des résultats d'analyse comparative (benchmark) sur différents niveaux d'effort (de Low à Max et Ultracode).
+**Action / Démonstration** : Modification du code pour corriger le problème de lecture audio du widget vocal et configuration des types de réunions sur le calendrier.
 
-![Capture d'écran montrant l'interface d'un tableau de bord de test d'effort Opus avec des métriques de coûts et de vérifications.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002305_seg49.jpg)
-*⏱️ 00:23:05 — Capture d'écran montrant l'interface d'un tableau de bord de test d'effort Opus avec des métriques de coûts et de vérifications.*
+![L'image montre l'interface de l'éditeur de code VS Code avec l'extension Claude Code affichant des modifications dans le fichier index.html, tandis que le présentateur apparaît en médaillon vidéo dans le coin inférieur gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002022_seg49.jpg)
+*⏱️ 00:20:22 — L'image montre l'interface de l'éditeur de code VS Code avec l'extension Claude Code affichant des modifications dans le fichier index.html, tandis que le présentateur apparaît en médaillon vidéo dans le coin inférieur gauche.*
+
+![L'image affiche l'interface d'administration de Cal.com montrant la configuration des types d'événements (réunions de 30 min, 15 min, réunion secrète), avec le présentateur en médaillon vidéo dans le coin inférieur droit.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002030_seg49.jpg)
+*⏱️ 00:20:30 — L'image affiche l'interface d'administration de Cal.com montrant la configuration des types d'événements (réunions de 30 min, 15 min, réunion secrète), avec le présentateur en médaillon vidéo dans le coin inférieur droit.*
 
 ---
 
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
+### ⏱️ `[00:20:46 - 00:21:21]` | Segment #50
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc j'ai l'impression que le mieux serait en bas à gauche, mais pas vraiment. Donc de toute façon, vous pouvez voir que low était bon marché et rapide. Max était lent et coûteux. Mais ce genre de graphique a généralement du sens. À mesure que vous augmentez l'effort, ça va coûter plus cher et ça va prendre un peu plus de temps. C'est logique. Maintenant, voyons la croissance par rapport à low. Nous avons donc le temps d'exécution en bleu, les coûts d'API en orange, les jetons en vert, et les vérifications en or jaunâtre, moutarde.
+> de la démo, nous allons simplement dire que nous sommes disponibles de 9h à 21h. Et je vais simplement copier ces horaires pour toute la semaine. Comme je l'ai dit, juste pour les besoins de la démo, et nous allons enregistrer cela. D'accord, donc je fais quelques modifications ici. Il va parler uniquement dans le fuseau horaire central parce que c'est le mien. Il va parler un peu plus de manière concise, car je voulais simplement qu'il soit plus concis. Il va également vérifier qu'il répète correctement le nom et l'e-mail, car évidemment, il doit avoir le bon e-mail pour réserver le bon type de rendez-vous. Il a baissé un peu la température pour rendre les résultats un peu plus cohérents. Et je pense que c'était parce que je
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web d'analyse de données avec graphique interactif.
+**Interface & Outils** : Cal.com et Visual Studio Code.
 
-**Contenu textuel & Code** : Graphique à nuage de points comparant le temps d'exécution (Run time) et le coût API ($), avec une info-bulle sur le point "Low" indiquant 16m 43s - $3.91 - 191.3K tokens - 22 checks.
+**Contenu textuel & Code** : Configuration des heures de travail (9h00 - 21h00 du lundi au vendredi) et tableau de suivi des modifications d'un agent IA.
 
-**Action / Démonstration** : Le présentateur commente le graphique de performance et survole le point "Low" pour afficher les détails.
+**Action / Démonstration** : Le présentateur modifie et sauvegarde ses horaires de disponibilité, puis revient sur VS Code pour examiner la documentation.
 
-![Un graphique montrant la vitesse en fonction du coût (Speed vs Cost) d'un test intitulé "Opus Effort Test".](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002325_seg50.jpg)
-*⏱️ 00:23:25 — Un graphique montrant la vitesse en fonction du coût (Speed vs Cost) d'un test intitulé "Opus Effort Test".*
+![Capture d'écran montrant l'interface web de configuration des horaires de travail (Working hours) sur Cal.com, avec le présentateur en incrustation.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002055_seg50.jpg)
+*⏱️ 00:20:55 — Capture d'écran montrant l'interface web de configuration des horaires de travail (Working hours) sur Cal.com, avec le présentateur en incrustation.*
+
+![Capture d'écran montrant l'éditeur de code Visual Studio Code affichant un fichier Markdown de configuration d'agent IA, avec le présentateur en incrustation.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002104_seg50.jpg)
+*⏱️ 00:21:04 — Capture d'écran montrant l'éditeur de code Visual Studio Code affichant un fichier Markdown de configuration d'agent IA, avec le présentateur en incrustation.*
 
 ---
 
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
+### ⏱️ `[00:21:21 - 00:21:54]` | Segment #51
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et d'ailleurs, la raison pour laquelle UltraCode apparaît comme ça, c'est parce qu'il utilise réellement un niveau d'effort supplémentaire. Il est simplement incité et il utilise plutôt des flux de travail dynamiques et des choses de ce genre, ce qui fait que, vous savez, cela a du sens parce qu'il utilisait essentiellement un supplément sous le capot. C'est aussi pourquoi Claude l'a étiqueté ici en orange. Quoi qu'il en soit, si nous continuons plus bas ici, cela a généralement du sens, n'est-ce pas ?
+> je lui ai demandé de le rendre plus concis. Et ensuite, il s'est aussi assuré que les outils fonctionnaient. Donc, ce que j'ai fini par faire, c'est dire : hé, je n'aime pas qu'il épelle avec l'alphabet phonétique de l'OTAN, parce que ça prenait tout simplement trop de temps. Donc, je lui fais aussi faire ce changement. Et une fois que c'est passé, ce qui a l'air d'être le cas maintenant, nous allons retourner dans l'application. Je vais lui donner un autre rafraîchissement forcé et essayons une fois de plus de faire une réservation. Et, espérons-le, à ce stade, nous nous dirons : ok, super, nous aimons cet agent. Donc, je vais l'appeler. Salut, ici Neural. Qu'est-ce qui vous amène aujourd'hui ? Salut Neural. Je possède une entreprise de construction, 500 employés. Nous cherchons à automatiser notre
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de tableau de bord ou d'analyse de données avec graphique en courbes.
+**Interface & Outils** : VS Code, Claude Code CLI, navigateur web affichant le site Neurel avec widget vocal intégré.
 
-**Contenu textuel & Code** : Graphique "Growth relative to Low" affichant les courbes pour le temps d'exécution (Run time 8.9x), le coût API (API cost 12.9x), les tokens (Tokens 6.2x) et les vérifications (Checks 2.3x) jusqu'au niveau Ultracode.
+**Contenu textuel & Code** : Fichier agent-patch.json, instructions textuelles de modification pour supprimer l'alphabet phonétique de l'OTAN.
 
-**Action / Démonstration** : Présentation et analyse comparative des performances et des coûts selon les différents niveaux d'effort de l'IA.
+**Action / Démonstration** : Modification du code source et test de l'interface web avec l'agent conversationnel.
 
-![Capture d'écran montrant un graphique de résultats d'un test d'effort ("Opus Effort Test") avec différentes métriques (Run time, API cost, Tokens, Checks) comparées selon les niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002347_seg51.jpg)
-*⏱️ 00:23:47 — Capture d'écran montrant un graphique de résultats d'un test d'effort ("Opus Effort Test") avec différentes métriques (Run time, API cost, Tokens, Checks) comparées selon les niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode).*
+![Vue de l'éditeur VS Code affichant un fichier de configuration et un terminal Claude Code en cours d'exécution.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002129_seg51.jpg)
+*⏱️ 00:21:29 — Vue de l'éditeur VS Code affichant un fichier de configuration et un terminal Claude Code en cours d'exécution.*
+
+![Page web du site de Neurel avec le widget d'assistant vocal IA visible en bas à droite de l'écran.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002138_seg51.jpg)
+*⏱️ 00:21:38 — Page web du site de Neurel avec le widget d'assistant vocal IA visible en bas à droite de l'écran.*
+
+![Page web du site de Neurel montrant le widget vocal en cours d'interaction avec l'utilisateur.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002146_seg51.jpg)
+*⏱️ 00:21:46 — Page web du site de Neurel montrant le widget vocal en cours d'interaction avec l'utilisateur.*
 
 ---
 
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
+### ⏱️ `[00:21:54 - 00:22:13]` | Segment #52
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Alors que le niveau d'effort augmente, encore une fois, ces métriques vont augmenter. Le temps d'exécution, les coûts de l'API, les jetons et les vérifications. C'est la même chose ici avec le temps d'exécution. Cela nous donne en quelque sorte plus de graphiques linéaires individuels maintenant pour chacune de ces différentes métriques, comme le coût de l'API, les vérifications, le total des jetons, le coût par vérification, et tous les chiffres au même endroit. Des données plutôt cool donc.
+> génération de propositions. C'est très manuel. Et je veux réserver un appel avec votre équipe. Comme je l'ai dit, je suis le fondateur et le propriétaire de cette entreprise appelée Sandbox Construction. Compris. Tu veux que je prenne des minutes sur le calendrier de l'équipe ? C'est un appel pour voir s'il y a une adéquation ou non. Aucune pression. Ils écouteront ce que vous gérez et vous diront franchement si nous pouvons aider.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de test et de visualisation de données.
+**Interface & Outils** : Navigateur web affichant une page d'accueil moderne avec interface de chat intégrée.
 
-**Contenu textuel & Code** : Graphiques linéaires comparant "API cost" (12.9x), "Run time" (8.9x), "Tokens" (6.2x) et "Checks" (2.3x) du niveau "Low" à "Max/Ultracode".
+**Contenu textuel & Code** : Texte du site 'AI transformation without the layoffs' et interface de discussion 'Hey, this is NEUREL. What brought you in today?'.
 
-**Action / Démonstration** : Le présentateur commente l'augmentation des métriques à mesure que le niveau d'effort augmente.
+**Action / Démonstration** : Navigation et présentation de la plateforme web de service client/IA de Neurel.
 
-![Capture d'écran montrant un graphique de performance nommé "Opus Effort Test" illustrant la croissance relative des coûts d'API, du temps d'exécution, des jetons et des vérifications en fonction du niveau d'effort.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002406_seg52.jpg)
-*⏱️ 00:24:06 — Capture d'écran montrant un graphique de performance nommé "Opus Effort Test" illustrant la croissance relative des coûts d'API, du temps d'exécution, des jetons et des vérifications en fonction du niveau d'effort.*
+![Capture d'écran montrant le site web 'Neurel' avec un titre principal axé sur la transformation par l'IA, ainsi qu'une fenêtre de chat contextuelle à droite et une incrustation vidéo du présentateur en bas à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002159_seg52.jpg)
+*⏱️ 00:21:59 — Capture d'écran montrant le site web 'Neurel' avec un titre principal axé sur la transformation par l'IA, ainsi qu'une fenêtre de chat contextuelle à droite et une incrustation vidéo du présentateur en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
+### ⏱️ `[00:22:14 - 00:22:35]` | Segment #53
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je dirais que rien ici n'est trop choquant. Ce qui m'a le plus choqué, ce sont ces résultats. Mes deux principaux favoris étaient high, qui est celui-ci, et extra, qui est celui-ci. Donc je dois retourner ici et me rappeler ce que j'ai pensé d'eux. J'ai vraiment aimé cette sensation. Celui-ci donne aussi simplement l'impression d'être le plus fluide. La physique était agréable. La porte coulissante en verre était agréable. Je n'ai pas vraiment remarqué beaucoup de bugs dans celui-ci, ce qui est ce que j'ai vraiment aimé.
+> Ouais, allons-y pour planifier un moment. Tu peux me dire quels créneaux sont disponibles pour aujourd'hui ? Bien sûr. Quel est ton nom complet et dans quel fuseau horaire es-tu ? Je m'appelle Nate Herc, épelé H-E-R-K. Je suis dans le fuseau horaire central. Laissez-moi confirmer N-A-T-E-N-A-T-H-E-R-K-HERK. Est-ce que j'ai bien compris ? Ouais, c'est ça.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web interactive / environnement virtuel 3D (AIS LIVE)
+**Interface & Outils** : Navigateur web affichant le site de l'agence Neurel et son widget de chat IA interactif.
 
-**Contenu textuel & Code** : Interface utilisateur affichant 'AIS LIVE - Real Projects, Real Revenue' et des instructions de contrôle clavier/souris.
+**Contenu textuel & Code** : Page web avec le titre "AI transformation without the layoffs" et une conversation affichée dans le widget de chat à droite.
 
-**Action / Démonstration** : Exploration d'un monde virtuel interactif en 3D représentant une conférence ou un événement en ligne.
+**Action / Démonstration** : Présentation du site web et démonstration en direct d'un agent conversationnel intégré pour la prise de rendez-vous.
 
-![Écran d'accueil de l'application virtuelle 'AIS LIVE' avec le bouton 'Enter the Venue' et les contrôles de navigation.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002426_seg53.jpg)
-*⏱️ 00:24:26 — Écran d'accueil de l'application virtuelle 'AIS LIVE' avec le bouton 'Enter the Venue' et les contrôles de navigation.*
-
-![Vue immersive à la première ou troisième personne dans la place virtuelle 'AIS Live Plaza' avec des avatars et des bannières.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002431_seg53.jpg)
-*⏱️ 00:24:31 — Vue immersive à la première ou troisième personne dans la place virtuelle 'AIS Live Plaza' avec des avatars et des bannières.*
-
-![Navigation dans la place virtuelle 'AIS Live Plaza' montrant le déplacement d'un avatar et les éléments interactifs du décor.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002435_seg53.jpg)
-*⏱️ 00:24:35 — Navigation dans la place virtuelle 'AIS Live Plaza' montrant le déplacement d'un avatar et les éléments interactifs du décor.*
+![Capture d'écran montrant la page web du site "NEUREL" avec un widget de chat conversationnel IA en bas à droite et le présentateur visible dans un encadré en bas à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002219_seg53.jpg)
+*⏱️ 00:22:19 — Capture d'écran montrant la page web du site "NEUREL" avec un widget de chat conversationnel IA en bas à droite et le présentateur visible dans un encadré en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
+### ⏱️ `[00:22:37 - 00:23:12]` | Segment #54
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je ne me rappelle plus si celui-ci était un de ceux où, oh, je ne pouvais pas parler aux gens par contre. Je pouvais juste passer à travers eux. Je ne pouvais pas m'asseoir dans celui-ci non plus. Voici un autre petit truc visuel où je fais essentiellement juste passer à travers ce mur. Donc je n'aime pas trop ça. Mais je pense, est-ce que c'était celui où je pouvais m'asseoir dans ces sessions ? Non. D'accord. Donc je ne pense pas que c'était mon gagnant alors. Celui-ci est extra haut. Je pense que c'est le gagnant. Ouais. Je pense que c'était celui que j'aimais le plus. J'adorais toute cette ambiance. J'adorais le fait de pouvoir discuter avec les gens. C'était définitivement celui où on pouvait venir ici et on pouvait s'asseoir où on voulait, prendre une place, se lever. Je pouvais lire ces trois offres et je pouvais discuter avec eux. J'ai aussi réalisé qu'il y avait de petites sections pour simuler des appels de découverte ici aussi.
+> Génial. Et quel est votre e-mail professionnel ? Épelez-le-moi caractère par caractère. Laissez-moi confirmer N-A-T-E-H-E-R-K-88 at gmail.com. J'ai bien compris ? Ouais. Parfait. Et qu'essayez-vous spécifiquement de résoudre avec la génération de propositions ? Qu'est-ce qui est manuel là-dedans aujourd'hui ? Ouais, on rédige essentiellement toutes les propositions à la main et on fait aussi tous les chiffrages manuellement. Donc je veux que l'intelligence artificielle puisse nous aider à prendre des exigences brutes et à les transformer en une proposition qu'on peut tout simplement envoyer à nos clients. C'est bien noté. Et quelle est la taille des
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D "AIS Live"
+**Interface & Outils** : Navigateur web affichant la page d'accueil du site Neurel et un widget de chat vocal interactif sur le côté droit.
 
-**Contenu textuel & Code** : Interface utilisateur virtuelle 3D avec affichage de la "Main Stage" et des avatars d'utilisateurs.
+**Contenu textuel & Code** : Transcription de la conversation vocale entre l'assistant IA et l'utilisateur (« My name is Nate Hurk... », « Let me confirm - N. A. T. E... », etc.) et le texte de présentation du site (« AI transformation without the layoffs »).
 
-**Action / Démonstration** : Navigation et exploration de l'espace événementiel virtuel 3D.
+**Action / Démonstration** : Démonstration en direct d'une interaction vocale avec un assistant conversationnel intégré sur un site web professionnel.
 
-![L'animateur présente une interface virtuelle 3D (AIS Live) montrant un espace événementiel avec des avatars.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002448_seg54.jpg)
-*⏱️ 00:24:48 — L'animateur présente une interface virtuelle 3D (AIS Live) montrant un espace événementiel avec des avatars.*
-
-![Vue en 3D d'un espace événementiel virtuel avec une scène principale affichant une retransmission vidéo.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002505_seg54.jpg)
-*⏱️ 00:25:05 — Vue en 3D d'un espace événementiel virtuel avec une scène principale affichant une retransmission vidéo.*
+![Capture d'écran montrant le site web de l'agence Neurel avec, superposée à droite, une interface de discussion vocale sous forme de chat affichant la transcription de la conversation en cours.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002245_seg54.jpg)
+*⏱️ 00:22:45 — Capture d'écran montrant le site web de l'agence Neurel avec, superposée à droite, une interface de discussion vocale sous forme de chat affichant la transcription de la conversation en cours.*
 
 ---
 
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
+### ⏱️ `[00:23:12 - 00:23:35]` | Segment #55
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons des goodies et des sacs cabas, ce qui est de la vraie physique. J'aime bien ça. C'était celui où nous pouvions nous asseoir partout. Oui, j'ai vraiment, vraiment aimé celui-là. Bien que je pense que le seul inconvénient de celui-ci était qu'il n'avait pas vraiment d'after-party VIP, parce que je pense que c'était le salon. Et je pense que c'était la seule partie de la section VIP, c'était que c'étaient les différentes pièces dans lesquelles on pouvait entrer et s'asseoir. Mais à part ça, il n'offrait pas une super expérience VIP par rapport à certains des autres que nous avons vus. Donc mon gagnant ici va définitivement être Extra. Extra a fait un travail phénoménal. C'avait environ la moitié de la durée et la moitié du coût de Max. Donc Max, je pense, était tout simplement bien trop cher pour pas assez de qualité. Je pense que le niveau était correct. Ça aurait pu,
+> l'équipe qui gère les propositions en ce moment ? Ou quel est ton rôle dans le processus ? L'équipe compte 500 personnes et mon rôle est juste, je supervise en quelque sorte. Il me reste un créneau aujourd'hui, 18h30 heure centrale. Est-ce que ça va ? Ouais, je veux dire, ça va, mais j'aimerais bien pouvoir le faire, tu sais, à 19h30 heure centrale.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application virtuelle 3D et tableau de bord/interface de données (Opus 5.5 Efforts).
+**Interface & Outils** : Google Calendar (interface web)
 
-**Contenu textuel & Code** : Environnement virtuel 3D et tableau comparatif de métriques d'IA.
-[DESC_ACTION_1] Navigation d'un avatar dans le couloir virtuel.
-[DESC_ACTION_2] Avatars assis et interaction dans le salon VIP virtuel.
-[DESC_ACTION_3] Sélection d'une colonne dans le tableau comparatif de performance.
+**Contenu textuel & Code** : Planning du 28 avril 2026 affichant des créneaux de réunion et de disponibilité
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation et consultation du calendrier pour planifier un créneau à 18h30
 
-![Vue d'un espace virtuel 3D avec des avatars se déplaçant dans un couloir (West Concourse).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002523_seg55.jpg)
-*⏱️ 00:25:23 — Vue d'un espace virtuel 3D avec des avatars se déplaçant dans un couloir (West Concourse).*
-
-![Vue de l'intérieur d'un espace virtuel 3D (VIP Lounge) avec des avatars assis autour d'une table et un écran géant.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002532_seg55.jpg)
-*⏱️ 00:25:32 — Vue de l'intérieur d'un espace virtuel 3D (VIP Lounge) avec des avatars assis autour d'une table et un écran géant.*
-
-![Tableau comparatif de performances (Run time, API cost, Total tokens, etc.) avec différentes configurations (Low, Medium, High, Extra, Max, Ultracode).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002542_seg55.jpg)
-*⏱️ 00:25:42 — Tableau comparatif de performances (Run time, API cost, Total tokens, etc.) avec différentes configurations (Low, Medium, High, Extra, Max, Ultracode).*
+![Capture montrant une interface de calendrier numérique (Google Calendar) avec les créneaux horaires de la journée et le présentateur en médaillon.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002329_seg55.jpg)
+*⏱️ 00:23:29 — Capture montrant une interface de calendrier numérique (Google Calendar) avec les créneaux horaires de la journée et le présentateur en médaillon.*
 
 ---
 
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
+### ⏱️ `[00:23:35 - 00:24:03]` | Segment #56
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> avec peut-être un ou deux prompts de plus, arrivé là où je l'aimais vraiment. Mais pour un objectif de niveau slash, Extra a fourni un résultat incroyable ici. Je n'ai pas adoré Medium. Et pour une grande partie de mon travail de réflexion et de ce que je fais, Medium fonctionne très bien. Mais pour cette tâche précisément, j'avais besoin de beaucoup de raisonnement. Il devait passer par des tonnes de choses. Il devait passer par des tonnes de vidéos. Il devait trouver beaucoup de choses à l'intérieur de mes projets. Il devait créer une expérience et raconter une histoire à partir de tout. Je pense qu'Extra a fait un travail phénoménale. En général, cependant, j'ai aimé beaucoup de ces résultats, mais Extra est celui avec lequel je voudrais commencer dès maintenant. Si je voulais vraiment en faire une application et un univers super, super polis et cool, je commencerais par le résultat d'Extra et probablement
+> Ce n'est pas disponible ? Ça ne montre rien à 19h30 aujourd'hui. Tu veux que je vérifie demain ou un autre jour cette semaine ? D'accord, donc ce qu'on remarque ici, c'est que le flux fonctionne un peu mieux. Honnêtement, je pense que ça me pose trop de questions parce que ça rend la démo un peu difficile, mais il devrait y avoir des créneaux libres. Vous pouvez voir que le calendrier est ouvert de genre 16h00 jusqu'à 21h00, ce qui, si l'on revient à notre événement de calendrier, devrait nous laisser de la disponibilité depuis 9h00 du matin.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau comparatif sur fond sombre avec le présentateur incrusté en médaillon dans le coin inférieur gauche.
+**Interface & Outils** : Navigateur web affichant un site internet d'entreprise et Google Calendar.
 
-**Contenu textuel & Code** : Tableau avec des colonnes de niveaux (Low, Medium, High, Extra, Max, Ultracode) et des lignes de données (Run time, API cost, Total tokens, Checks, Questions asked).
+**Contenu textuel & Code** : Interface de chat avec messages textuels et options d'évaluation, ainsi qu'un calendrier avec des plages horaires.
 
-**Action / Démonstration** : Le présentateur commente et compare les résultats des différents niveaux d'effort affichés dans le tableau.
+**Action / Démonstration** : Navigation et démonstration d'un flux de conversation par agent IA lié à la gestion d'un calendrier.
 
-![Un tableau comparatif montrant les métriques de performance de différents niveaux d'effort ("Low", "Medium", "High", "Extra", "Max", "Ultracode") incluant le temps d'exécution, le coût API, le total des tokens, les vérifications et les questions posées.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002600_seg56.jpg)
-*⏱️ 00:26:00 — Un tableau comparatif montrant les métriques de performance de différents niveaux d'effort ("Low", "Medium", "High", "Extra", "Max", "Ultracode") incluant le temps d'exécution, le coût API, le total des tokens, les vérifications et les questions posées.*
+![Capture montrant un site web professionnel avec un widget de chat interactif en bas à droite où une conversation est affichée, et la webcam du présentateur en médaillon.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002342_seg56.jpg)
+*⏱️ 00:23:42 — Capture montrant un site web professionnel avec un widget de chat interactif en bas à droite où une conversation est affichée, et la webcam du présentateur en médaillon.*
+
+![Capture montrant une interface de calendrier (Google Calendar) avec des événements planifiés, et la webcam du présentateur en superposition.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002356_seg56.jpg)
+*⏱️ 00:23:56 — Capture montrant une interface de calendrier (Google Calendar) avec des événements planifiés, et la webcam du présentateur en superposition.*
 
 ---
 
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
+### ⏱️ `[00:24:03 - 00:24:35]` | Segment #57
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> continuez d'itérer avec Extra. Donc de toute façon, les gars, c'eut été l'expérience. J'espère que vous avez trouvé cela instructif. J'espère que vous avez appris quelque chose de nouveau. Et si c'est le cas, veuillez lui donner un j'aime. Ça m'aide énormément. Et comme toujours, je vous remercie d'être arrivés jusqu'à la fin de la vidéo, et je vous verrai sur la prochaine. Merci à tous.
+> jusqu'à 21 heures. Donc ce que je veux faire, c'est je veux comprendre pourquoi l'outil calendrier ne fonctionne pas comme il le devrait. Donc je vais procéder à un autre transfert de session. Je vais effacer le contexte pour que nous puissions demander à Cloud Code de nous aider à déboguer ce problème. C'est donc ce que j'ai dit. J'ai dit : j'ai besoin que tu m'aides à comprendre ce qui se passe avec l'appel d'outil, car l'outil de vérification de disponibilité vient de dire, hé, nous avons seulement 18h30 de disponible, mais nous devrions voir de 16h00 jusqu'à 21h00. Il y a donc plusieurs choses qui pourraient mal se passer ici, n'est-ce pas ? Cal.com pourrait ne renvoyer que 18h30, ce qui signifierait que quelque chose ne va pas sur Cal.com ou que l'agent n'utilise pas l'outil
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Aucun (caméra de studio).
+**Interface & Outils** : Visual Studio Code (avec extension de chat IA / Claude Code)
 
-**Contenu textuel & Code** : Aucun contenu technique, code ou interface logicielle affiché.
+**Contenu textuel & Code** : Fichiers du projet (agent-config.json, .env, CLAUDE.md), commande `/session-handoff` et texte de prompt concernant le débogage des créneaux horaires disponibles.
 
-**Action / Démonstration** : Le présentateur conclut la vidéo en parlant à l'audience.
+**Action / Démonstration** : Effectuer un transfert de session (`/session-handoff`) dans l'outil de développement IA pour déboguer le problème de l'outil de calendrier.
+
+![VS Code affichant un panneau de chat avec Claude Code, montrant la commande de transfert de session `/session-handoff` et le présentateur à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002411_seg57.jpg)
+*⏱️ 00:24:11 — VS Code affichant un panneau de chat avec Claude Code, montrant la commande de transfert de session `/session-handoff` et le présentateur à droite.*
+
+![VS Code avec le panneau de chat de l'assistant IA affichant un prompt détaillé sur les problèmes d'appel d'outils du calendrier Cal.com et le présentateur à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002419_seg57.jpg)
+*⏱️ 00:24:19 — VS Code avec le panneau de chat de l'assistant IA affichant un prompt détaillé sur les problèmes d'appel d'outils du calendrier Cal.com et le présentateur à gauche.*
+
+---
+
+### ⏱️ `[00:24:35 - 00:25:08]` | Segment #58
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> correctement. Et peut-être qu'il interroge seulement un périmètre très limité ou que Cal.com renvoie plusieurs créneaux, mais que l'agent lit mal le résultat. Il y a donc en gros trois pièces différentes ou trois domaines différents où quelque chose pourrait mal tourner. Et nous devons déterminer lequel de ces cas s'est produit afin de pouvoir le corriger. Tu sais, nous pourrions aller dans notre tableau de bord actuel et nous pourrions cliquer sur les outils et nous pourrions examiner cet endpoint et nous pourrions comprendre ce qui se passe. Et ce qui est également génial, c'est que nous pouvons voir toutes les conversations réelles que nous avons eues. Nous pouvons donc suivre tout cela, à quelles heures elles ont eu lieu. Nous pouvons également les écouter et lire la transcription. Et c'est ce qui aide
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Visual Studio Code et ElevenLabs Dashboard
+
+**Contenu textuel & Code** : Texte d'analyse des erreurs (Cal.com, tool-call payload, créneaux horaires) et listes de conversations d'agents vocaux dans ElevenLabs.
+
+**Action / Démonstration** : Analyse et débogage du comportement d'un agent vocal IA interagissant avec Cal.com.
+
+![Image #1 montre l'éditeur de code VS Code avec l'interface d'un assistant IA affichant les trois causes possibles du problème lié à Cal.com et une commande Bash pour interroger les créneaux disponibles.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002444_seg58.jpg)
+*⏱️ 00:24:44 — Image #1 montre l'éditeur de code VS Code avec l'interface d'un assistant IA affichant les trois causes possibles du problème lié à Cal.com et une commande Bash pour interroger les créneaux disponibles.*
+
+![Image #2 montre l'interface d'ElevenLabs (tableau de bord de l'agent "NEUREL Diagnostic", onglet "Analysis") listant l'historique des conversations avec leurs statuts.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002500_seg58.jpg)
+*⏱️ 00:25:00 — Image #2 montre l'interface d'ElevenLabs (tableau de bord de l'agent "NEUREL Diagnostic", onglet "Analysis") listant l'historique des conversations avec leurs statuts.*
+
+---
+
+### ⏱️ `[00:25:08 - 00:25:42]` | Segment #59
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> nous ayons plus de visibilité afin de déboguer et d'optimiser tout cela au fil du temps. D'accord. Donc, apparemment, l'agent a trouvé le problème. Il y a donc deux problèmes. L'un d'eux est un vrai bug, malheureusement. Donc, au tour 16 de la transcription, nous pouvons voir ce qui s'est réellement passé avec la vérification de la disponibilité. Et l'agent a configuré cela en UTC plutôt qu'en heure centrale. La fenêtre de recherche était donc faussée. Ce qu'il doit donc faire, c'est modifier le paramètre réel afin d'interroger au bon endroit. Et ensuite, espérons-le, nous devrions être capables de corriger cela. Il y a une autre observation : le prompt système indique de simplement redonner deux ou trois créneaux, mais ce n'est pas vraiment le problème principal. Le problème principal était que le
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Visual Studio Code (éditeur de code)
+
+**Contenu textuel & Code** : Document Markdown expliquant un problème de gestion des fuseaux horaires (UTC vs Central time) avec un outil de vérification de disponibilité (tool call: check_availability).
+
+**Action / Démonstration** : Le présentateur commente le compte rendu textuel généré par l'agent IA expliquant la cause racine du bogue.
+
+![Vue de l'éditeur VS Code montrant un panneau Markdown détaillant l'analyse du bug (turn 16 in the transcript) avec le présentateur incrusté en bas à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002516_seg59.jpg)
+*⏱️ 00:25:16 — Vue de l'éditeur VS Code montrant un panneau Markdown détaillant l'analyse du bug (turn 16 in the transcript) avec le présentateur incrusté en bas à gauche.*
+
+---
+
+### ⏱️ `[00:25:42 - 00:26:04]` | Segment #60
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> l'appel d'outil réel était mal effectué. Donc pendant que cela corrige, retournons simplement au tableau de bord et parlons de la façon dont nous y sommes parvenus, d'accord ? Nous aurions pu soit venir ici manuellement et tout inspecter et essayer de comprendre. Mais est-ce que vous avez vu à quel tout cela a été facile pour Cloud Code de trouver cela ? Et tout ce que j'avais à faire, c'était d'expliquer mon expérience, ce que j'ai vécu qui a mal tourné. Maintenant, certains d'entre vous ont peut-être entendu cette démo et pourraient être curieux concernant la latence et tout ça.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web ElevenLabs (ElevenAgents)
+
+**Contenu textuel & Code** : Tableau de bord d'analyse listant les conversations avec le statut 'Successful', paramètres du modèle LLM d'analyse (Gemini 2.5 Flash), critères d'évaluation et widget de chat/appel vocal.
+
+**Action / Démonstration** : Navigation sur le tableau de bord d'analyse de l'agent après un appel d'outil pour examiner les résultats et l'historique des interactions.
+
+![Capture d'écran montrant l'interface d'ElevenLabs avec le tableau de bord d'analyse d'un agent IA (NEUREL Diagnostic), affichant l'historique des conversations et le panneau de test interactif sur le côté droit, avec le présentateur incrusté en bas à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002548_seg60.jpg)
+*⏱️ 00:25:48 — Capture d'écran montrant l'interface d'ElevenLabs avec le tableau de bord d'analyse d'un agent IA (NEUREL Diagnostic), affichant l'historique des conversations et le panneau de test interactif sur le côté droit, avec le présentateur incrusté en bas à gauche.*
+
+---
+
+### ⏱️ `[00:26:04 - 00:26:25]` | Segment #61
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> C'est là que vous voudriez intervenir et tester différents modèles et différents prompts. Et j'ai aussi remarqué que lorsque je teste cela sur un site web avec un serveur local, la latence est juste un peu pire que lorsque c'est en fait une sorte de widget en direct. Donc gardez cela à l'esprit. Mais il y a d'autres choses que vous pouvez faire. Si vous vous souvenez ici, nous voyions fondamentalement la transcription en direct. Et si vous n'aimez pas ça, vous n'êtes pas obligé de l'avoir. C'est juste quelque chose que mon code cloud ici a ajouté.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface ElevenLabs et site web Neurel.
+
+**Contenu textuel & Code** : Paramètres d'analyse d'agents vocaux et interface de widget de test en direct.
+
+**Action / Démonstration** : Présentation des réglages de modèles et des tests sur widget en direct.
+
+![Interface d'ElevenLabs montrant le tableau de bord d'analyse d'agents vocaux avec un widget de test en direct sur le côté droit.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002609_seg61.jpg)
+*⏱️ 00:26:09 — Interface d'ElevenLabs montrant le tableau de bord d'analyse d'agents vocaux avec un widget de test en direct sur le côté droit.*
+
+![Page web de l'entreprise NEUREL avec un widget de chat en direct intégré en bas à droite montrant une conversation.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002620_seg61.jpg)
+*⏱️ 00:26:20 — Page web de l'entreprise NEUREL avec un widget de chat en direct intégré en bas à droite montrant une conversation.*
+
+---
+
+### ⏱️ `[00:26:25 - 00:26:44]` | Segment #62
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Mais lorsque vous arrivez sur le widget, vous pouvez configurer beaucoup de choses différentes avec l'interface. Vous pouvez changer la couleur. Vous pouvez voir ce texte envoyé pendant l'appel. Vous pouvez avoir une transcription en temps réel. Il y a beaucoup de choses que vous pouvez faire lorsque vous configurez ce widget réel. Comme je l'ai dit, cela peut être une image différente si vous voulez. Cela peut être une couleur différente. Beaucoup de choses que vous pouvez faire ici. Bon, alors de toute façon, qu'est-ce qui a cassé ?
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web d'ElevenLabs (ElevenAgents).
+
+**Contenu textuel & Code** : Paramètres de configuration du widget incluant "Chat (text-only) mode", "Send text while on call", et "Realtime transcript of the call".
+
+**Action / Démonstration** : Le présentateur présente et commente les différentes options de configuration de l'interface du widget.
+
+![Capture d'écran montrant l'interface de configuration du widget ElevenLabs avec les options d'interface, le code d'intégration et l'aperçu du widget sur la droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002630_seg62.jpg)
+*⏱️ 00:26:30 — Capture d'écran montrant l'interface de configuration du widget ElevenLabs avec les options d'interface, le code d'intégration et l'aperçu du widget sur la droite.*
+
+---
+
+### ⏱️ `[00:26:44 - 00:27:02]` | Segment #63
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Nous venons de voir ce qui a planté. Et maintenant, apparemment, c'est réparé. Donc on va faire un autre rechargement forcé et on va essayer de dérouler une autre démo parce que ce type, Neural, aime vraiment beaucoup trop parler. Mais voyons voir si c'est réparé. Salut, c'est Neural. Qu'est-ce qui vous amène aujourd'hui ? D'accord, je ne veux pas que vous me posiez de questions. Je veux juste que vous me réserviez un appel.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Visual Studio Code et navigateur web affichant le site web et l'agent vocal Neurel.
+
+**Contenu textuel & Code** : Documentation de session de correction ("Session Handoff — NEUREL voice agent iteration") et texte d'accueil de l'agent vocal ("Hey, this is NEUREL. What brought you in today?").
+
+**Action / Démonstration** : Rechargement forcé de la page web pour tester le widget vocal réparé et démarrer une nouvelle démo.
+
+![Vue de l'éditeur de code (VS Code) montrant un fichier de configuration et de documentation pour un agent vocal IA (Embed AI sales agent widget).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002648_seg63.jpg)
+*⏱️ 00:26:48 — Vue de l'éditeur de code (VS Code) montrant un fichier de configuration et de documentation pour un agent vocal IA (Embed AI sales agent widget).*
+
+![Page web de l'entreprise "NEUREL" avec un widget de chat vocal IA en bas à droite proposant de démarrer un appel.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002653_seg63.jpg)
+*⏱️ 00:26:53 — Page web de l'entreprise "NEUREL" avec un widget de chat vocal IA en bas à droite proposant de démarrer un appel.*
+
+![Page web de "NEUREL" avec le widget vocal ouvert affichant un message de salutation et le bouton "Talk to interrupt".](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002657_seg63.jpg)
+*⏱️ 00:26:57 — Page web de "NEUREL" avec le widget vocal ouvert affichant un message de salutation et le bouton "Talk to interrupt".*
+
+---
+
+### ⏱️ `[00:27:02 - 00:27:32]` | Segment #64
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Tout de suite, s'il vous plaît, réservez un appel. Je m'appelle Nate Herc, H-E-R-K. Mon e-mail est nateherk88 at gmail.com, N-A-T-E-H-E-R-K-88 at gmail.com. Et je veux des disponibilités pour ce soir. J'ai besoin de caler quelque chose de toute urgence. S'il vous plaît, ne me posez pas de questions et laissez-moi réserver un appel. J'ai ce soir à 18h30, 19h30, 20h30 ou 20h30 heure centrale.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Navigateur web affichant une page d'accueil moderne avec un widget d'assistant conversationnel (IA) et incrustation vidéo de la webcam du présentateur.
+
+**Contenu textuel & Code** : Texte principal du site : 'AI transformation, without the layoffs.' et dans la bulle de chat : 'Hey, this is NEUREL. What brought you in today?'
+
+**Action / Démonstration** : Présentation de l'interface web et du widget d'intelligence artificielle intégré au site pendant que le présentateur parle.
+
+![Capture d'écran montrant la page web de l'entreprise NEUREL avec le titre 'AI transformation, without the layoffs.' et une petite fenêtre de chat textuel/vocal sur le côté droit, ainsi que le présentateur en incrustation vidéo dans le coin inférieur gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002710_seg64.jpg)
+*⏱️ 00:27:10 — Capture d'écran montrant la page web de l'entreprise NEUREL avec le titre 'AI transformation, without the layoffs.' et une petite fenêtre de chat textuel/vocal sur le côté droit, ainsi que le présentateur en incrustation vidéo dans le coin inférieur gauche.*
+
+---
+
+### ⏱️ `[00:27:32 - 00:27:51]` | Segment #65
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Lequel vous convient ? Allons-y pour 19h00 heure du Centre. C'est tout bon pour 19h00 heure du Centre ce soir. Vous recevrez un e-mail de confirmation à nateherk88 arobase gmail.com avec le lien de la vidéo. D'accord, donc ça a réellement fonctionné. Vous pouvez voir que ça a été complètement débogué.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web du site Neurel et Google Calendar.
+
+**Contenu textuel & Code** : Chatbot vocal interactif et détails d'un rendez-vous de 30 minutes entre Nate Herk et nateherk88@gmail.com.
+
+**Action / Démonstration** : Démonstration de la prise de rendez-vous en direct via l'assistant vocal et vérification dans le calendrier.
+
+![Capture montrant le site web "Neurel" avec un chatbot vocal intégré en bas à droite en train de converser.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002737_seg65.jpg)
+*⏱️ 00:27:37 — Capture montrant le site web "Neurel" avec un chatbot vocal intégré en bas à droite en train de converser.*
+
+![Capture montrant Google Calendar avec les détails d'un événement de réunion planifié automatiquement par l'agent IA à 19h00.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002747_seg65.jpg)
+*⏱️ 00:27:47 — Capture montrant Google Calendar avec les détails d'un événement de réunion planifié automatiquement par l'agent IA à 19h00.*
+
+---
+
+### ⏱️ `[00:27:51 - 00:28:25]` | Segment #66
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Et la raison pour laquelle vous vous demandez peut-être pourquoi 4h30 ou 5h n'étaient pas disponibles... Eh bien, je suppose que c'était dans Cal. Donc si je viens dans Cal et que je vais dans les limites, il y a probablement quelque chose ici. Le préavis minimum est de deux heures. Donc s'il est actuellement 4h30, le premier créneau disponible sera 6h30 parce que c'est deux heures plus tard. Donc ça a parfaitement fonctionné. Ça a trouvé la bonne disponibilité et ça a réservé cette réunion avec le bon e-mail, comme vous pouvez le voir. Et aussi sur mon nateherk88@gmail.com, je viens de recevoir cette notification. Donc cela aurait envoyé avec précision un e-mail à n'importe quel client qui a réservé.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Cal.com, Google Calendar, Gmail
+
+**Contenu textuel & Code** : Paramètres de disponibilité, vue journalière du calendrier du 28 avril 2026, email de confirmation "Your event has been scheduled"
+
+**Action / Démonstration** : Navigation entre les paramètres de Cal.com, le calendrier et les e-mails pour analyser les disponibilités de réservation.
+
+![L'interface des paramètres d'un événement Cal.com montrant la disponibilité hebdomadaire.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002800_seg66.jpg)
+*⏱️ 00:28:00 — L'interface des paramètres d'un événement Cal.com montrant la disponibilité hebdomadaire.*
+
+![Une vue calendrier affichant les événements du 28 avril 2026.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002808_seg66.jpg)
+*⏱️ 00:28:08 — Une vue calendrier affichant les événements du 28 avril 2026.*
+
+![Une interface Gmail affichant un email de confirmation de réunion Cal.com.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002817_seg66.jpg)
+*⏱️ 00:28:17 — Une interface Gmail affichant un email de confirmation de réunion Cal.com.*
+
+---
+
+### ⏱️ `[00:28:25 - 00:29:00]` | Segment #67
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> un appel directement ici. Donc tout a parfaitement fonctionné. Il y a évidemment des choses que je n'aime pas trop dans le prompt et peut-être dans l'apparence. Et c'est là que vous commenceriez à affiner ce genre de choses. Mais d'un point de vue technique, cela a fonctionné comme prévu. Les outils fonctionnent, vous savez, la création fonctionne. Et c'est ce qui est le plus important pour les besoins de cette démo, c'était de vous montrer comment nous avons configuré cela sans avoir à lire de documentation d'API ni à faire quoi que ce soit manuellement dans la configuration réelle de cet agent sur ElevenLabs. Et maintenant, ce que vous feriez à ce stade, c'est pratiquement juste publier ce site web.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Navigateur web affichant le site web "NEUREL" avec un widget de chat intégré.
+
+**Contenu textuel & Code** : Texte de la page d'accueil "AI transformation without the layoffs." et discussion textuelle dans le widget de chat montrant un échange pour planifier un appel.
+
+**Action / Démonstration** : Présentation et démonstration du fonctionnement technique du chatbot intégré sur le site web.
+
+![Capture d'écran montrant le présentateur à gauche et la page web du site "NEUREL" à droite, avec une interface de chat interactive ouverte affichant une conversation de réservation d'appel.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002834_seg67.jpg)
+*⏱️ 00:28:34 — Capture d'écran montrant le présentateur à gauche et la page web du site "NEUREL" à droite, avec une interface de chat interactive ouverte affichant une conversation de réservation d'appel.*
+
+---
+
+### ⏱️ `[00:29:00 - 00:29:34]` | Segment #68
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc je ne vais pas passer en revue cela dans la vidéo d'aujourd'hui, mais tout ce que vous auriez à faire, c'est de synchroniser ce site web avec une URL GitHub ou un dépôt GitHub. Et ensuite, vous synchroniseriez ce dépôt GitHub avec Vercel. J'ai donc fait plusieurs vidéos où j'ai abordé cela. Je vais en étiqueter une juste ici si vous voulez voir ce processus, mais c'est super simple. Alors maintenant, parlons de qui paie, car il y a vraiment certaines choses dont vous devez tenir compte lorsque vous mettez un widget sur votre site web. Ce widget est synchronisé avec votre compte ElevenLabs. Donc, chaque fois que quelqu'un lui parle, c'est vous qui allez assumer ce coût. À moins, bien sûr, que vous ayez une sorte d'authentification ou que ce soit une application et qu'ils entrent leur clé API, alors cela va évidemment leur être facturé. Mais si vous
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Visual Studio Code / Claude Code
+
+**Contenu textuel & Code** : Fichiers du projet (index.html, script.js, styles.css, etc.) et interface de chat de Claude Code avec des instructions de test et de configuration.
+
+**Action / Démonstration** : Navigation et présentation du projet de code dans l'éditeur.
+
+![L'éditeur de code VS Code affichant un projet de démonstration avec Claude Code dans le volet principal et la webcam du présentateur en incrustation à gauche.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_002909_seg68.jpg)
+*⏱️ 00:29:09 — L'éditeur de code VS Code affichant un projet de démonstration avec Claude Code dans le volet principal et la webcam du présentateur en incrustation à gauche.*
+
+---
+
+### ⏱️ `[00:29:34 - 00:30:09]` | Segment #69
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> laissez simplement ça sur votre site web et que quelqu'un a de très mauvaises intentions et lui parle 24 heures sur 24, cela va revenir et consommer vos crédits. C'est donc quelque il faut prendre en compte. Il y a donc des choses que vous pouvez faire en matière de sécurité. L'une d'elles consiste simplement à verrouiller le nom d'hôte, n'est-ce pas ? Ce widget ne peut apparaître que sur nateherk.com, nulle part ailleurs. Au cas où quelqu'un inspecterait le code, volerait ce widget HTML, ce qui est tout à fait faisable, vous savez, parce que le widget se résume essentiellement à cela. Si quelqu'un le volait et le mettait sur son site, boum, il dispose d'un agent vocal qui vous appartient. Vous pouvez donc aller dans la sécurité et restreindre l'accès par domaine. Vous pouvez donc ajouter l'hôte à une liste autorisée. Et je crois aussi que dans le widget,
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : ElevenLabs (Interface web de gestion d'agents vocaux et widget)
+
+**Contenu textuel & Code** : Code d'intégration HTML `<elevenlabs-conval agent-id="...">` et options de configuration du widget (feedback collection, chat mode, etc.).
+
+**Action / Démonstration** : Le présentateur explique comment intégrer le widget sur un site web et montre les paramètres de configuration.
+
+![Interface de configuration du Widget ElevenLabs montrant les options d'intégration web et de code d'intégration.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_003000_seg69.jpg)
+*⏱️ 00:30:00 — Interface de configuration du Widget ElevenLabs montrant les options d'intégration web et de code d'intégration.*
+
+---
+
+### ⏱️ `[00:30:09 - 00:30:38]` | Segment #70
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Il y a des paramètres ici en bas pour autoriser les domaines, juste là. Et encore une fois, oui, vous pouvez le faire ici, mais vous pouvez aussi dire : « Hey, Cloud Code, aide-moi à verrouiller tout ça. Je ne veux pas que les gens en abusent. » Il y a aussi d'autres choses auxquelles il faut penser. Donc, l'ancrage basé sur la base de connaissances : fournissez de vrais documents à l'agent. Sinon, il va juste inventer des choses, n'est-ce pas ? La limite de conversation. Donc, vous voulez peut-être définir un plafond de durée maximale par appel. C'est donc en quelque sorte un garde-fou budgétaire, ou peut-être, vous savez, un nombre maximum de minutes, ou peut-être que si vous vouliez être vraiment technique, il faudrait que les gens s'authentifient pour pouvoir passer un appel.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web d'ElevenLabs (Agents/Widget) et présentation visuelle de type slide.
+
+**Contenu textuel & Code** : Paramètres de widget ElevenLabs avec options de sécurité pour les domaines et liste de 4 points clés sur les agents vocaux (KB grounding, Conversation cap, Rate limit, Latency).
+
+**Action / Démonstration** : Présentation des options de configuration de sécurité d'un agent vocal et affichage des bonnes pratiques à garder à l'esprit lors du déploiement.
+
+![Interface d'ElevenLabs montrant les paramètres de configuration des agents, notamment la gestion des domaines autorisés (Allowed domains) et des liens Markdown.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_003016_seg70.jpg)
+*⏱️ 00:30:16 — Interface d'ElevenLabs montrant les paramètres de configuration des agents, notamment la gestion des domaines autorisés (Allowed domains) et des liens Markdown.*
+
+![Diapositive de présentation listant quatre points d'attention (Four things to think about) : KB grounding, Conversation cap, Rate limit et Latency.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_003024_seg70.jpg)
+*⏱️ 00:30:24 — Diapositive de présentation listant quatre points d'attention (Four things to think about) : KB grounding, Conversation cap, Rate limit et Latency.*
+
+---
+
+### ⏱️ `[00:30:39 - 00:30:58]` | Segment #71
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Vous pourriez également configurer une limite de taux. Donc, si la page est publique, limitez les requêtes, juste pour vous assurer que le widget n'est pas abusé mille fois par seconde par Internet. Et ensuite, comme je l'ai mentionné à propos de la latence tout à l'heure, si vous utilisez une voix premium avec un LLM vraiment intelligent, il y aura simplement plus de latence et c'est tout simplement comme ça que ça fonctionne. Alors, déterminez le compromis que vous voulez sur votre site web.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation de diapositives / Slides (logiciel de présentation inconnu)
+
+**Contenu textuel & Code** : Texte de la diapositive : "Four things to think about." avec quatre sections numérotées de 01 à 04 décrivant les bonnes pratiques pour configurer un widget vocal d'IA.
+
+**Action / Démonstration** : Le présentateur explique les quatre éléments importants à prendre en compte lors du déploiement du widget.
+
+---
+
+### ⏱️ `[00:30:59 - 00:31:25]` | Segment #72
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Et une fois de plus, maintenant que vous avez configuré cet agent vocal, vous pouvez l'utiliser où vous voulez. Donc ce que nous venons de présenter, c'était de l'avoir sur un site web comme celui-ci, par exemple. Mais maintenant que nous avons cet agent, nous avons les outils configurés, nous avons les instructions configurées, nous avons la voix, la personnalité, nous avons tout configuré. Nous pouvons aussi simplement le connecter à un téléphone. Donc non seulement les gens peuvent venir sur Neural et parler à notre agent ici même, mais si nous le connectons à un téléphone, à un numéro de téléphone, alors s'ils appellent Neural, nous pourrons aussi faire en sorte que l'agent décroche.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Navigateur web affichant le site Neurel et la plateforme ElevenLabs Agents.
+
+**Contenu textuel & Code** : Texte de prompt système pour l'agent vocal (« You are NEUREL's voice agent... ») et interface de conversation textuelle/vocale.
+
+**Action / Démonstration** : Présentation de la mise en place d'un agent vocal IA intégré sur un site web professionnel.
+
+![Vue du site web Neurel affichant le titre principal 'AI transformation without the layoffs' avec un widget de chat vocal interactif actif dans le coin inférieur droit.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_003106_seg72.jpg)
+*⏱️ 00:31:06 — Vue du site web Neurel affichant le titre principal 'AI transformation without the layoffs' avec un widget de chat vocal interactif actif dans le coin inférieur droit.*
+
+![Interface de configuration de l'agent vocal ElevenLabs montrant le prompt système, les options de voix (Adam), et le modèle LLM (Claude Sonnet 4.5).](../screenshots/-cdexJWN8YA/-cdexJWN8YA_003112_seg72.jpg)
+*⏱️ 00:31:12 — Interface de configuration de l'agent vocal ElevenLabs montrant le prompt système, les options de voix (Adam), et le modèle LLM (Claude Sonnet 4.5).*
+
+![Vue identique du site web Neurel avec le widget de discussion vocale et textuelle ouverte montrant un échange de messages de configuration.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_003119_seg72.jpg)
+*⏱️ 00:31:19 — Vue identique du site web Neurel avec le widget de discussion vocale et textuelle ouverte montrant un échange de messages de configuration.*
+
+---
+
+### ⏱️ `[00:31:26 - 00:31:56]` | Segment #73
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc c'est ce qui rend cette chose assez puissante. C'est le même moteur derrière les coulisses. C'est juste une porte différente. Donc c'est ce que je voulais partager avec vous les gars aujourd'hui. J'espère que vous avez vu, vous savez, nous avons fait quatre ou cinq itérations peut-être et cela m'a pris, vous savez, peut-être 45 minutes pour faire cette démo pour vous les gars. Mais pensez à si vous passiez cinq heures assis à tester cette chose et juste à faire des itérations et juste à utiliser votre langage naturel. À la fin de la journée, vous auriez un agent vocal vraiment solide prêt à l'emploi. Et vous n'auriez pas à vous occuper de tous ces tracas de documentation d'API ou, vous savez, de configurer les choses ensemble manuellement.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Logiciel de présentation ou diaporama web
+
+**Contenu textuel & Code** : Texte de présentation listant les étapes du projet : "The payoff", "01 Built it in code", "02 Pushed with one command", "03 Embedded on a real domain", "04 Locked it down to the hostname".
+
+**Action / Démonstration** : Le présentateur conclut la présentation en récapitulant les différentes étapes accomplies lors des itérations précédentes.
+
+![Diapositive de présentation intitulée "The payoff" montrant la liste des étapes réalisées : 01 Built it in code, 02 Pushed with one command, 03 Embedded on a real domain, 04 Locked it down to the hostname, avec le présentateur en médaillon vidéo en haut à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_003133_seg73.jpg)
+*⏱️ 00:31:33 — Diapositive de présentation intitulée "The payoff" montrant la liste des étapes réalisées : 01 Built it in code, 02 Pushed with one command, 03 Embedded on a real domain, 04 Locked it down to the hostname, avec le présentateur en médaillon vidéo en haut à droite.*
+
+---
+
+### ⏱️ `[00:31:56 - 00:32:22]` | Segment #74
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Nous l'avons construit en code. Nous pouvons désormais déployer cela avec une seule commande. Nous pourrions intégrer cela sur un vrai domaine. Et ensuite, nous devrions discuter et réfléchir avec Cloud Code sur la façon de sécuriser tout cela. Comment rendre cela sûr ? Comment s'assurer que nous n'allons pas épuiser un millier de crédits du jour au lendemain ? Il y a plein de façons différentes de le faire. Tout dépend de votre scénario spécifique. C'est donc tout pour aujourd'hui. J'espère que vous avez apprécié la vidéo. Si c'est le cas ou si vous avez appris quelque chose de nouveau, veuillez mettre un pouce bleu, cela m'aide énormément. Et comme toujours, je vous remercie d'être arrivés jusqu'à la fin de la vidéo. Je vous vois dans la prochaine. Merci à tous.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation visuelle (diapositive) avec incrustation vidéo du présentateur.
+
+**Contenu textuel & Code** : Texte à puces résumant les étapes : 01 Built it in code, 02 Pushed with one command, 03 Embedded on a real domain, 04 Locked it down to the hostname.
+
+**Action / Démonstration** : Le présentateur explique et récapitule les étapes du projet déployé.
+
+![Une diapositive de présentation intitulée "The payoff" résumant les étapes réalisées, avec une webcam du présentateur en haut à droite.](../screenshots/-cdexJWN8YA/-cdexJWN8YA_003202_seg74.jpg)
+*⏱️ 00:32:02 — Une diapositive de présentation intitulée "The payoff" résumant les étapes réalisées, avec une webcam du présentateur en haut à droite.*
 
 ---
 
