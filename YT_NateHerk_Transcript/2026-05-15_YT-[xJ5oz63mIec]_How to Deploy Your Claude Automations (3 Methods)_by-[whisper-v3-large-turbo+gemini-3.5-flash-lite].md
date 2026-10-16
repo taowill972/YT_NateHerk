@@ -25,10 +25,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:27]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> If you've been using Cloud for a while, you've probably built a lot of skills and a lot of agents. So today I'm going to talk about three different simple ways to actually deploy those agents so that they run while you sleep. So I don't want to waste any time. Let's just get straight into today's video. Okay. So before we get into the different methods, let me just paint you a picture here. There's kind of two different things that we're going to be looking at because the different ways that you deploy your agents have different pros and cons. So here's kind of like the slider we're looking at. The first thing is where does it actually run? Does this run on your machine?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -39,10 +39,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:27 - 00:00:53]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> and is it dependent on your machine staying on or is it running somewhere on the cloud, whether that's like Anthropics cloud or your own sort of cloud environment, modal, trigger, VPS, whatever it may be. And then on the vertical here, we basically have how deterministic is this thing? Is this the full agentic autonomous agent loop or is this more of a script that just runs basically the same way every time and there's not like that autonomous decision-making magic agent?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -53,10 +53,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:53 - 00:01:12]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> So as I'm breaking down these different methods, I will explain based on this method, where does it sit on the scale? Because the truth is there's not one best way to deploy an automation. It depends on the type of automation. So here is kind of a quick breakdown that we're gonna be coming back to throughout the video. So don't feel like you need to absorb all of this right now, but for each of these methods, we're gonna be looking at where it actually runs.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -67,10 +67,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:12 - 00:01:31]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> We're gonna be looking at the WAT framework that I've talked about. So workflow agent tools and what's actually getting deployed and what's not. We'll be looking at if your computer needs to be on and if your session needs to be on. So I will break all of this down. It's gonna be super, super simple. Okay, so method number one is just setting up a loop, which I think is a super cool way to just like very quickly deploy an automation.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -81,10 +81,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:32 - 00:01:50]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> Basically, the idea is you ask CloudCode to run a loop and do X, Y, and Z in the loop. So basically, it'll fire off every 10 minutes or so. It'll run the skill, it'll run the automation, execute what it needs to, and then it will stop. And then in 10 more minutes, it will just fire up again, and it will loop through that process until you either tell it to stop or it's hit its limit.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -95,10 +95,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:01:50 - 00:02:11]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> So how does this actually work under the hood? CloudCode has three different tools. for this sort of thing, which is called cron create, cron list, and cron delete. And if you've ever heard me or other people in the AI space say cron, that just basically means a scheduled task. A cron is like what time it fires off at. So saying that you're gonna set up a cron is basically like, I'm just gonna set up a scheduled automation.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -109,10 +109,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:11 - 00:02:45]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> And the scheduler is actually internal to the cloud code process. And what's really cool is that all of these crons that you might set up or these loops are session scoped. So if you're working in five different sessions, five different terminals or five different tabs in your desktop app, Then each one of those individual sessions can have their own loops and they don't interfere with each other Unless they're all like writing to the same file or something which in that case they would but their session scoped So you can run these in the cloud desktop app or in the terminal, which is pretty cool The terminal does give you a few extra things for some reason which I will explain But for now, let me just show you how easy this is because you don't actually have to remember
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -123,10 +123,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:02:45 - 00:03:21]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> Syntax of like how you do like a slash loop and how you you know explain how this works you can see you can obviously do the slash loop and then tell it to do something every 10 minutes or so or you can just use natural language so i can say hey can you just go ahead and set up a loop for every 10 minutes to remind me to take out the trash so i shoot that off and now you can see it's going to use a specific tool and a specific skill in order to set up that loop and right now i'm showing the desktop app like i said i will bounce over to the terminal in just a sec you can see that it just ran a skill called slash loop and now it's using its tool search and it's going to have to use the tool that we talked about, which was called cron create, as you can see right
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -137,10 +137,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:21 - 00:03:49]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> there. And this is basically just like cron syntax. And you don't have to understand how to read it because it will explain it to you in natural language. Now, what's kind of cool about this and interesting is that when you create a cron and you say every 10 minutes, that doesn't mean the first one's going to be 10 minutes from now. Right here, you can see at the bottom, it actually tells you in the desktop app how many seconds are left until your next cron. And you can see that it says every 10 minutes, next in one minute, ends in three days. So when you set up a loop, you're basically gonna be limited to how long they run, which is three days in the desktop app.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -151,10 +151,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:03:50 - 00:04:09]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> And it does this because it doesn't want to have everyone running a cron every 10 minutes on like 10.50, 11, 11.10, 11.20, because then their API would get throttled. So it kind of does like this random jitter thing, which I'll talk about in just a sec. So anyways, that's how easy it is to use on the desktop app. And then if you wanted to stop it, you could just come in here and say, kill that loop.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -165,10 +165,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:04:09 - 00:04:28]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> And it will go ahead and use the cron delete and kill it. Or you could obviously just like open up this tab and just like close the session. Now what's interesting is in the desktop app, if you were running a loop every five minutes or so and you clear your chat, it will kill that cron. But what's cool is that in the terminal, it doesn't actually do that. So here's an example that I just worked on to show you guys.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -179,10 +179,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:04:29 - 00:04:47]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> I said, set up a loop every minute to remind me to take out the trash. It creates this cron job, right? And then it fires it. And then what I did is a slash clear. And then after I cleared the session, I said, do you have any crons in this session? And it used its cron list tool to take a look. And it said, yes, I still have the once a minute remind me to take out the trash. So that's cool.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -193,10 +193,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:04:47 - 00:05:08]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> You can basically in the terminal clear sessions if your context is starting to fill up and your crons are still alive as long as you don't actually terminate that session. And then the next thing is that I wanted to set up a loop every five minutes that will run the slash clear command. Because if you have a loop running every 10 minutes and it's processing skills and looking at data, then your context window is gonna slowly fill up and you're gonna hit context rot.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -207,10 +207,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:05:08 - 00:05:26]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> So it would be nice to set up another cron. And in this case, I said every five minutes, but it's going to run the slash clear command. And it's interesting because Claude code actually doesn't think that's gonna work, but it does. I basically tried it, I set one up where I inject just the word slash clear, and it actually treated it like a clear command. Right here was the actual cron firing off.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -221,10 +221,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:05:26 - 00:05:45]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> And then after it cleared it once again, I said, what crons do you have? And it found both of them still alive. So that is why whenever I'm really gonna use loops, I'm using it in the terminal because you get functionality like this, which you don't get in the desktop app for some reason. And another interesting thing is that these crons or these loops, are supposed to actually run for seven days.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -235,10 +235,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:05:45 - 00:06:05]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
+> And right now in the desktop app, you could see that it said three. Now, maybe if I relaunched and I updated, that would update. And now we would see that these live for seven days. But typically when you're using the terminal, you just get more functionality. And then real quick, that jitter thing that I was talking about, to avoid every session hitting the API at the same exact moment, the recurring tasks fire up to 30 minutes after the scheduled time.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -249,10 +249,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:06:05 - 00:06:32]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> So if you want something to run like at 9.17 and 9.27 exactly, it might not do it because of this whole jitter thing. But it would still set up an interval to run like every 10 minutes. So one example that I was using this for is when I first started doing the Nate's AI agent responding to comments on my YouTube videos, I would just upload a video and then I would go into Cloud Code and say, hey, set up a loop for every 10 minutes to read the comments on my new upload and respond to them using the transcript and point them in the right directions.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -263,10 +263,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:06:33 - 00:06:57]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> And so that was me just setting up a loop. I could even say, set up a loop to do that for every 10 minutes and then automatically kill the loop after 24 hours. and it would do that. Okay, anyways, real quick, pros and cons. The first pro is that this is zero setup. You literally just, say, set up a loop and it runs. You get the full agentic loop because all this is doing is working inside of your session. So all your skills, all your files, anything that you do normally when you're doing your knowledge work in Cloud Code, you get access to.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -277,10 +277,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:06:57 - 00:07:16]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> You can even do a loop that runs skills explicitly. You can make it shut itself down after a certain amount of iterations and you can run the slash commands directly like you guys just saw me do with the slash clear loop. Now, some cons, the session has to stay open, obviously. So if you close out of that terminal session, the loop dies. Your machine has to stay on.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -291,10 +291,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:07:16 - 00:07:50]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> So if your computer turns off, the loop also turns off. You've got a seven-day expiry and then the whole fixed interval thing that we talked about. And then of course, the different nuance there with desktop app versus terminal. So that was loop. This is basically what we're seeing. Your machine is where it lives. You get the workflow, you get the agent and you get the tools. And one quick thing to clear up is with this WAT framework, people have been asking me like, okay, well, where do skills live in there? Well, skills are basically the W and the T, because sometimes you have a skill that's just a W, right? Sometimes your skill is just, here's how I write a LinkedIn post, and that's just a workflow. But sometimes you have a skill
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -305,10 +305,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:07:50 - 00:08:26]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> where it's like, okay, here's how I write a LinkedIn post and generate the infographics. And in that generate infographics section of the workflow or the skill, you're probably pointing to this image generator and this API, and you're combining those together. The tools with the workflow is a skill. Anyways, you're getting all three of those elements, W-A-T, your computer has to say on, and your session has to say open as well. Real quick, guys, I know we're about to cover a ton of information in this one, so I broke all of this down into a very simple resource guide, which you can access for completely free. The link for that is down in the description. All you have to do is join my free school community, and once you get in there, click on classroom and go to all
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -319,10 +319,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:08:26 - 00:08:48]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> YouTube resources, and you'll be able to find everything in there. So if you want to grab that resource guide completely free, head over there. But anyways, let's get back to the video. Thanks, guys. All right. So now let's move on to this next one, which is desktop scheduled tasks and cloud routines. And the reason I put them together in one bucket is because if you open up your cloud desktop app and you go to routines, you can see right here that you can create different routines.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -333,10 +333,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:08:48 - 00:09:21]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> And in here you can either have local or remote. So they work very, very similarly, but there's one main difference. And that is what I'm going to talk about real quick. And it's honestly pretty obvious, like right here, scheduled tasks run on your machine. So if you close out of the desktop app, they won't run. And the cloud routines will run no matter what, because they're actually running inside of Anthropics infrastructure on Anthropics cloud, which is why if you're doing the cloud routines, you're limited to how many runs you can do per day. So right here, I'm on a max plan and I get 15 runs a day for remote scheduled tasks. And if you're on the pro, you only get five.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -347,10 +347,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:09:22 - 00:09:46]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> And I think if you're on team or enterprise, you get 25. Otherwise it'll just cost you extra usage. But what's really cool about these is it's very similar to that loop because you're basically just getting to inject a prompt into the conversation of a regular cloud code terminal. So it's nothing too crazy. So, for example, if I look at that school wins engagement one, which I currently have paused because I switched this over to a Hermes agent, you can see that I have these instructions, right?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -361,10 +361,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:09:46 - 00:10:05]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. Okay. So we have like little sound bites. I can chat with people. The tool war panel settled a few debates for me. Nice. Good perspective there. We're outside again. We have these different banners, although they're all the same. They don't say like different people's names. So big AIS live logo. Workshop wing is over here. And let's go through the sliding glass doors and see what we've got. So we've got the AIS cafe. The map is in the bottom right, and it's not too descriptive.
+> I basically say, hey, run the wins engagement skill. This means you do X, Y, Z in this order. Here are all my instructions. And so when this actually runs, if I go down to like an example that ran, you can see May 6th, what it does is it just injects that entire prompt into a Cloud Code session and then it just executes it, right? This project has my API keys.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -375,10 +375,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:10:05 - 00:10:38]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> It has my context. It has everything that it needs. And it can even search through other things. So you get the full agentic loop right here. You get Cloud Code on a timer. Now the Cloud Routines are basically the exact same way, let me just click on this remote one, which is a paused one at the moment. You put in a specific prompt and that just gets injected right into the session same exact way The only difference is that because these run on anthropics cloud You are basically getting like a clone of a repo in the cloud And so you have to set environment variables a little bit differently So i'm not going to do a full breakdown right now
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -389,10 +389,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:10:38 - 00:10:59]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> But I did a full breakdown video, which I will tag right up here if you're interested in checking that out Click up there. Okay, so pros and cons here the pro this is built into cloud code on the desktop app so there's no extra infrastructure or configuration. You obviously get your full cloud code session capabilities with skills, shell, MCPs, subagents, reasoning, all that.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -403,10 +403,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:10:59 - 00:11:27]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
+> The cloud variant is awesome because you can literally set up those cloud routines and your machine can be off and your terminal can be closed, whatever it is, that will always run no matter what. Something else that's really cool about the local ones, so remember if you guys saw, I had all of these local ones running too. If I accidentally turned off my computer for like five days and then I turned it back on, when I open up the desktop app, Cloud Code would look through all of the local tasks that hadn't fired while it was turned off and it would play catch up, which is pretty cool.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -417,10 +417,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:11:28 - 00:11:50]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> But definitely keep that in mind because if you don't want it to play catch up, you're gonna wanna make sure that you like pause those. Otherwise it will play catch up. And what else is cool on the remote ones is that you can have those be called by an API. So it's basically a web hook that you could have other automations call on. So besides those just being time-based, they can also be event-driven because you can also set them up to be called by like a GitHub action.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -431,10 +431,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:11:50 - 00:12:11]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> So here is me creating a new cloud routine. You can see I can choose schedule, GitHub event, or API. So that's pretty neat. Of course, though, it's tough because you only have 15 per day unless you want to use extra usage. Anyways, cons. The cloud routines, you have a one hour minimum interval. So you couldn't run like one every 20 minutes. If you wanted to do something like that, you would probably just want to do a slash loop.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -445,10 +445,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:12:11 - 00:12:48]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
+> The cap can be pretty tight, five a day with pro, but you know, you can always upgrade. Of course, if you're doing the desktop ones, the local ones, you have to keep everything on. And the other thing to think about is whenever you're injecting prompts into your cloud code sessions, and the idea is that you don't have to give any input, you really want to play with the prompts and you really want to watch it for a while to make sure that it can just autonomously go do whatever because careless prompt scoping can cause unwanted actions, which is just the nature of an autonomous automation. Okay. So that was these two right here. These two scheduled tasks we have, obviously this one is on your machine. This one in Anthropics cloud. They all have the W, A, and the T, which is great. And then the scheduled tasks
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -459,10 +459,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:12:48 - 00:13:22]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> needs your desktop app open and your machine open. You don't need the session open because it starts a new session. And then the cloud routines, you don't need anything on or any sessions open. So it's truly a 24 seven type of system. Okay. So moving on to method three, we have deploying to something like modal or trigger.dev, which is kind of, it's not your own cloud. It's either modal or trigger.dev's cloud, but it's not Anthropics. It's something that you are kind of configuring on your own, but it's not very difficult. The idea here is that you basically write a script. So Python, if you're using modal or type script, if you're using trigger.dev, you deploy that script
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -473,10 +473,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:13:22 - 00:13:42]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
+> to modal or trigger, and you can have them run on a schedule or even like a web hook fire. So it can be like an API endpoint essentially. And then it executes that Python script or type scripts script. And then it gives you the output and you get a dashboard and modal or trigger to see how many times they've run and you can see, you know, errors and how long it took and stuff like that.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -487,10 +487,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:13:43 - 00:14:05]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
+> So what's the difference between modal and trigger.dev? Well, modal is Python serverless. You write a Python function and you just push it over to modal and then it runs in the cloud on a cron. So this very much feels more like a script on a timer. Trigger.dev uses TypeScript and it feels a little bit more agentic because sometimes your things get broken down into like two different like scripts that would call on the other one.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -501,10 +501,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:14:05 - 00:14:24]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
+> So typically I have preferred to use trigger.dev, but at the end of the day, if you have a very deterministic process, they're both going to achieve you the same result. And I don't really know how to write code in Python or TypeScript. Obviously my Cloud Code does it for me, but if you do understand Python way better than TypeScript, then you probably would want to go with modal. Cloud Code works with both of these two options very, very well.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -515,10 +515,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:14:24 - 00:14:45]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
+> It understands how to push scripts to the dev, move them to the prod. It understands that you need to put your environment variables over on modal or trigger.dev so that your automation can actually access things. I'm not gonna do a full breakdown right now, but I have done multiple videos with modal on this channel. I will tag one of those right up here. And then I will also tag a video that I did with trigger.dev that I made on this channel, which breaks it down a little bit more.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -529,10 +529,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:14:46 - 00:15:06]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
+> I will tag that one right up here. Anyways, the one-line analogy, modal is a cron job in the cloud. Trigger.dev is a durable workflow engine that happens to also support cron. But once again, both of these could be an API endpoint. You could turn that into a webhook call. Okay, so that was modal trigger.dev. You can see here that's going to run on your cloud or technically like modal's cloud.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -543,10 +543,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:15:06 - 00:15:28]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
+> And for the WAT framework, you're basically just deploying your skill. You're basically just deploying the workflow and the tools. You don't get that autonomous agent loop. And what else that means is all of the AI processing that you're going to be doing there will be an API call. Whether that's the Cloud API or whether that's the open router, it will be not your Cloud code subscription, which means it might be more expensive, right?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -557,10 +557,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:15:28 - 00:15:47]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
+> Because you're running an AI processing that's token-based, paper token. But the other cool thing about this is that a lot of these automations that you're going to deploy, because they're going to be primarily pretty deterministic, might not even use AI at all. And that's where I would opt for one of these is if the process doesn't need AI, and I can just chuck that script up somewhere to run on a cadence.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -571,10 +571,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
+### ⏱️ `[00:15:47 - 00:16:10]` | Segment #40
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
+> Because it doesn't need your computer on, and it doesn't need any sort of session to be open. Now what you guys notice down here is I do show you an option with modal and trigger.dev that gives you the A part of the WIT framework. And that is using the agent SDK. So what is the Cloud Agent SDK? So this is not really an official method that I'm diving into right now. It's just kind of like a little bonus thing to think about. But the agent SDK, it almost gives you like an endpoint for Cloud Code.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -585,10 +585,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
+### ⏱️ `[00:16:10 - 00:16:29]` | Segment #41
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
+> Because essentially, Cloud Code is kind of just like a user interface built on top of Cloud's agent SDK. It has the tools. It has the query ability. It has more of that agent feel compared to if you just hit, you know, a raw Cloud API endpoint where you're just kind of talking to the model and you can answer back.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -599,10 +599,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
+### ⏱️ `[00:16:29 - 00:17:04]` | Segment #42
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
+> But the agent sdk is like cloud code where it has like that harness and it can call tools and things like that So yeah, the cloud api gives you just the brain that talks back while the agent sdk gives you cloud code Essentially the brain plus the hands so it can do all of these, you know bash file edits web search that whole loop And it's already wired up so that you can actually do the work instead of just give you some sort of like Text based output. So here's kind of what it would look like you would send off a query you would shoot off an api call to This agent sdk The agent would read that it would decide on what tools it would reason it would run the tools It would get the results and it would keep iterating and then it would give you some sort of output
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -613,10 +613,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
+### ⏱️ `[00:17:04 - 00:17:32]` | Segment #43
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
+> And so that's essentially what cloud code is, right? It's just wrapped up nice. Like I said Now the one thing that used to confuse me a lot about how the agent sdk worked and how cloud code worked Was when you're in a cloud code session. So for example, if I just pull up this one We can see how much has been used of my limit and I could do something like a slash clear And I could do a slash compact and I could do things like that And I know that if I'm having a long ongoing conversation and I keep scrolling up, Claude will actually read that and help use that as context for my next decision.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -627,10 +627,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
+### ⏱️ `[00:17:32 - 00:17:51]` | Segment #44
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
+> And the thing about the agent SDK is by default, every message that you send off is going to be stateless, meaning it wakes up, no memory, nothing. So basically the fix there is when you make your request to the agent SDK, if you're sending over the session ID, that's how you have an ongoing session. The agent SDK will also auto compact and things like that, but I don't think it does a slash clear.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -641,10 +641,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
+### ⏱️ `[00:17:51 - 00:18:11]` | Segment #45
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
+> If you want to do a slash clear, you would basically just start a new session. But anyways, it can do all of these tools, of course, and it can utilize subagents, MCPs, hooks, skills, slash commands, cloud.md, memory, compaction, all that kind of stuff. And obviously this is an official SDK from Anthropic. But the one thing that, of course, is bad about this is that you cannot use your cloud subscription.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -655,10 +655,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
+### ⏱️ `[00:18:11 - 00:18:37]` | Segment #46
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
+> If you're using the agent SDK, it requires a cloud API key. So it's going to be much more expensive than you just using CloudCode in your app or VS Code, your terminal, whatever it is, wherever you use CloudCode. I'm so glad that I waited a few days to post this video because then on May 13th, they just announced that your monthly credit can actually go towards something like the CloudAgent SDK.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -669,10 +669,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
+### ⏱️ `[00:18:37 - 00:19:10]` | Segment #47
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
+> But it's not exactly like super straightforward. It's not the same weekly usage that you get. It's like a different dedicated budget. it. So I'm not going to dive into that too much right now. I just wanted to let you guys know. Theo made a really good breakdown where he kind of dives into like the scale and the different nuances. So I will link that in the description if you guys want to check that out after this, if you're interested in like understanding what this really means, but just want to let you guys know. So let's get back to the video. But the idea of pushing some sort of automation to modal or trigger.dev is still the same, except for you just get the agent now, which obviously lets those
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -683,10 +683,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
+### ⏱️ `[00:19:10 - 00:19:45]` | Segment #48
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
+> automations be a little bit more non-deterministic, a little bit more agentic, not even a little bit more, a lot more agentic. Okay. So there are two more things that I wanted to very, very briefly touch on. I'm not going to dive into them in this video, but I did want to call them out. So the first thing is managed agents, which is a fairly new service that Anthropic has spun up, which lets you do managed agents completely on Anthropics cloud. Now, the reason I'm not going to dive into them in this video is because I played around with it and I honestly don't love it. Like I'm just going to keep working in my own infrastructure, the way that I have my routines, the way that I have my endpoints, things like that. I think a big value of the managed agents is for people who've
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -697,10 +697,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
+### ⏱️ `[00:19:45 - 00:20:14]` | Segment #49
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
+> probably never opened up cloud code before, and they're looking to start building some agents. It just feels a little bit more like wrapped up nicely, but there's some functionality in there that I don't get. So if you already are using cloud code and you understand it really well, then I would just say stick with cloud code. But if you guys do want me to play around with them more and give you a video, just let me know in the comments. Obviously I'm here to experiment and figure out what works for what use case. And the other thing that I wanted to touch on was hooks, which honestly I haven't talked about too much on this channel, but it's a really, really important and really cool feature of Cloud Code.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -711,10 +711,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
+### ⏱️ `[00:20:14 - 00:20:36]` | Segment #50
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
+> So hooks are basically like event-driven little automations and they're much more deterministic. So you write something to Cloud Code, right? The agent does something, whether that's a grep or a glob or an edit to a file. And after a specific event happens, you can set up a hook to fire. So then that hook script runs every time a certain action happens.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -725,10 +725,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
+### ⏱️ `[00:20:36 - 00:20:55]` | Segment #51
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
+> and that is very, very powerful if you kind of layer a bunch of hooks together. So a real quick example is every time Cloud Code sends you a message, that is something that can fire a hook and you can have that hook fire a noise notification so that if you're working, you can hear when Cloud Code has sent you a message. The other things, of course, could be like a pre-tool use.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -739,10 +739,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
+### ⏱️ `[00:20:55 - 00:21:19]` | Segment #52
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
+> It could be a post-tool use. It could be a session start or a session end. So there's a lot of power. I think if you're already just starting to like have some light bulb moments of, oh, wow, every time the session ends, I want it to do this or every single time it uses like one of these tools, I would like it to do this for me. That's where you start to sort of loop them together. So it's a very, very powerful feature. If you guys wanna see like a full kind of masterclass breakdown of hooks and different use cases and how they work, let me know.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -753,10 +753,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
+### ⏱️ `[00:21:19 - 00:21:37]` | Segment #53
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
+> And I would love to bring you guys a video about that as well. But anyways, that is going to do it for today. And I know we covered a ton of information in this one. So I threw all of this into a resource guide that you can access for completely free. The link for that is down in the description. You just have to join my free school community. This is what it will look like once you join. And then once you're in there, you're gonna go to classroom and then you'll just click on all YouTube resources.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -767,52 +767,10 @@ Dans cette vidéo intitulée **How to Deploy Your Claude Automations (3 Methods)
 
 ---
 
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
+### ⏱️ `[00:21:37 - 00:21:48]` | Segment #54
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
+> Everything that I've ever shared for free is in there. But if you guys enjoyed the video or you learned something new, please give it a like, it helps me out a ton. And as always, I appreciate you guys making it to the end of the video and I will see you all in the next one. Thanks everyone.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
