@@ -12,1124 +12,1480 @@
 ## 📌 Synthèse Exécutive & Outils
 
 ### 💡 Résumé
+La vidéo de la chaîne Nate Herk | AI Automation explore l'intégration puissante entre le modèle conversationnel Claude d'Anthropic et la plateforme de génération visuelle par IA Higgsfield, démontrant comment transformer un LLM en une véritable agence de création autonome. En connectant l'API via les protocoles MCP (Model Context Protocol) et CLI, l'analyste illustre comment piloter des workflows multimodaux complexes de bout en bout — de la recherche stratégique de marché à la production d'identités de marque, de catalogues produits, de visuels publicitaires et de vidéos dynamiques (UGC, hyper-motion).
 
-Dans cette vidéo issue de la chaîne de Nate Herk, l'analyste explore en profondeur l'impact des différents niveaux d'effort (« Effort Level ») du modèle **Opus 5.5** d'Anthropic appliqué à un cas d'usage d'ingénierie logicielle et d'agents IA hautement complexe. Le défi soumis à l'IA via un simple prompt programmatique (« slash goal ») consistait à concevoir entièrement, à partir d'un volume brut de 105 gigaoctets d'enregistrements vidéo d'un événement virtuel (provenant d'AIS Live sur Frame.io), un monde virtuel 3D explorable en vue à la troisième personne. Ce monde devait simuler fidèlement une conférence tech physique, dotée de scènes, de pistes de formation, d'éléments de branding, de PNJ (personnages non-joueurs) dynamiques, et de flux vidéo en direct.
-
-La démonstration technique compare les résultats obtenus en faisant varier uniquement le paramètre d'effort de l'agent (allant du niveau « Bas » jusqu'au « Code Ultra », en passant par « Moyen » et « Élevé »). L'analyse comparative met en lumière l'évolution drastique de la qualité architecturale, de la fidélité visuelle, des performances et de l'autonomie des agents. Alors que le niveau bas génère un environnement sommaire, truffé de bugs graphiques d'affichage, de textures statiques et de PNJ fantômes en seulement 16 minutes, le niveau moyen élève considérablement le niveau de complexité en respectant la charte graphique de la marque, en intégrant de vraies lectures vidéo fluides, des PNJ interactifs réactifs et des environnements immersifs soignés, pour un temps d'exécution d'une heure et 13 minutes. 
-
-Cette expérimentation met en exergue la puissance des agents autonomes sous Claude 5.5 capables d'exécuter des dizaines de vérifications dans un navigateur de manière totalement autonome — sans nécessiter la moindre clarification ou question intermédiaire de la part de l'utilisateur. La vidéo illustre la mutation des LLM d'assistants textuels en véritables agences de création logicielle et d'ingénierie automatisée, tout en soulignant la transition opérationnelle inévitable entre le développement local et le déploiement en production via des solutions d'hébergement intégrées.
+À travers des démonstrations pratiques, comme la création ex nihilo de la marque de casques audio « Murmur » ou l'itération rapide sur des campagnes publicitaires à partir d'une simple image de référence, la vidéo prouve qu'il est possible de multiplier par cent la productivité créative. Malgré quelques frictions initiales liées à des faux positifs de modération (contenu sensible) ou à des dérives d'interprétation des prompts, le système démontre une capacité remarquable à s'auto-corriger, à analyser ses propres erreurs de génération et à itérer en temps réel pour produire des assets marketing de qualité professionnelle en quelques minutes.
 
 ### 🛠️ Outils, Modèles & Logiciels Présentés
-
-* **Opus 5.5** : Modèle phare d'Anthropic réputé pour son intelligence, son coût d'API optimisé, sa polyvalence créative et son architecture hautement performante en matière de raisonnement agentique.
-* **Claude Code** : Environnement de développement et interface d'agent de codage avancé permettant de piloter des tâches d'ingénierie logicielle complexes directement depuis le terminal.
-* **Higgsfield** : Plateforme ou brique technologique évoquée comme catalyseur de transformation des assistants IA en véritables agences de création multimédia autonomes.
-* **Frame.io** : Solution cloud de gestion et de stockage vidéo utilisée ici comme source massive (105 Go) pour alimenter l'agent en éléments multimédias d'événements.
-* **Système d'exploitation IA Herc 2** : Écosystème d'automatisation propriétaire et personnalisé servant de base de travail et de réservoir de données et d'outils pour les agents.
-* **Hostinger Connector** : Extension gratuite pour éditeur de code permettant de combler le fossé entre le développement local d'applications par l'IA et leur mise en ligne rapide sur un hébergement web.
+* **Claude (Anthropic)** : L'interface conversationnelle et agentique centrale utilisée pour orchestrer le workflow, concevoir la stratégie de marque et piloter l'automatisation.
+* **Claude Code / Claude sur le Web** : L'environnement d'exécution et d'interface utilisateur permettant d'intégrer des connecteurs personnalisés et d'exécuter des requêtes multimodales.
+* **Higgsfield** : La plateforme spécialisée dans la génération avancée d'images et de vidéos par IA, connectée à Claude via MCP et CLI.
+* **Higgsfield MCP & CLI** : Le protocole et l'interface de commande permettant la communication bidirectionnelle et sécurisée entre Claude et l'écosystème Higgsfield.
+* **Studio Marketing Higgsfield** : Un outil intégré au sein de Higgsfield permettant d'appliquer des formats dynamiques (hypermotion, déballage, UGC) à partir d'un produit ou d'un lien.
 
 ### 🔑 Points Clés & Enseignements Stratégiques
-
-* **Impact direct du paramètre d'effort (*Effort Level*)** : La manipulation du niveau d'effort sur un même prompt complexe modifie radicalement la profondeur d'exécution, la rigueur logique et le niveau de finition esthétique du code généré par l'IA.
-* **Montée en charge algorithmique et temporelle** : Le passage d'un effort faible à un effort moyen multiplie par plus de quatre le temps de traitement (de 16 minutes à plus d'une heure), corollaire direct de la complexité des tâches d'intégration 3D et de gestion des flux médias.
-* **Évolution des coûts d'API** : Les coûts de calcul mesurés passent de manière proportionnelle de 3,91 $ (niveau bas) à 12,44 $ (niveau moyen) pour des volumes de tokens s'élevant de 191 000 à 490 000 jetons, illustrant l'investissement computationnel requis pour des agents autonomes profonds.
-* **Autonomie totale des agents autonomes** : Quel que soit le niveau d'effort configuré, les agents exécutent l'intégralité du cahier des charges de manière unilatérale, affichant un taux de sollicitation utilisateur de zéro question tout au long du processus.
-* **Capacité de vérification automatisée** : L'agent valide lui-même son travail en ouvrant à de multiples reprises (plus de 20 fois) un navigateur pour inspecter, tester et ajuster le rendu visuel et fonctionnel de l'application 3D qu'il développe.
-* **Transformation des données brutes en expériences immersives** : L'agent démontre une capacité remarquable à ingérer des téraoctets de données non structurées (105 Go de vidéos) et à les structurer logiquement dans un métavers interactif doté de salles thématiques et d'agendas contextuels.
-* **Respect des chartes de marque** : Les niveaux d'effort supérieurs (moyen et au-delà) intègrent avec succès les directives de design, les palettes de couleurs et le branding de l'entreprise, transformant un prototype générique en une application sur mesure.
-* **Dynamisme des PNJ et intégration multimédia** : Les agents de niveau supérieur injectent de la vie dans l'application en scriptant des comportements interactifs pour les personnages non-joueurs et en synchronisant de véritables flux vidéo en streaming à l'intérieur des scènes virtuelles.
-* **Recommandation méthodologique officielle** : Suivant les recommandations d'Anthropic, la stratégie de prompt engineering optimale consiste à initier les requêtes complexes au niveau moyen, puis à ajuster l'effort à la hausse ou à la baisse selon la criticité du livrable.
-* **Le goulet d'étranglement du déploiement** : L'automatisation de la création de logiciels par l'IA déplace le défi technique de l'écriture du code vers la mise en production, rendant indispensables des outils de connectivité directe entre l'IDE et l'hébergeur web.
+* **Convergence Agents IA et Multimédia** : L'association d'un LLM de pointe (Claude) et d'une suite de génération visuelle (Higgsfield) via les protocoles MCP permet d'abolir la frontière entre la conception textuelle et la production visuelle.
+* **Automatisation de la Chaîne de Valeur Créative** : Il est désormais possible de confier à un agent unique la recherche de marché, la définition du positionnement, l'élaboration de la voix de marque et la génération du catalogue de produits.
+* **Effet Multiplicateur de Productivité** : La capacité à concevoir et générer des ressources marketing (photos de produits, publicités Instagram, vidéos UGC) en quelques minutes surpasse largement les méthodes traditionnelles de studio.
+* **Intégration Fluide via MCP** : L'utilisation des connecteurs personnalisés et des configurations OAuth simplifie drastiquement le pontage entre les interfaces conversationnelles et les services cloud tiers.
+* **Gestion Granulaire des Permissions** : La configuration des connecteurs permet de restreindre ou d'autoriser totalement les actions de l'agent sur le compte tiers, offrant un contrôle de sécurité et d'autonomie ajustable.
+* **Importance Cruciale du Prompting de Référence** : Pour éviter que l'IA ne supprime des éléments textuels ou ne modifie excessivement un produit existant, il faut formuler des consignes strictes interdisant toute altération non sollicitée de l'image source.
+* **Capacité d'Auto-Correction et de Diagnostic** : Face à des refus de génération (erreurs de contenu sensible), l'agent est capable d'analyser son propre prompt, d'identifier les termes déclencheurs et de réitérer avec succès après nettoyage.
+* **Itération Contextuelle Conversationnelle** : Le maintien du contexte permet de corriger des micro-détails (comme la suppression d'en-têtes dupliqués ou l'ajustement d'un format 16:9) par simple instruction textuelle naturelle.
+* **Exploitation des Formats Avancés (Hyper-Motion)** : L'utilisation de styles visuels dynamiques spécifiques permet de générer des vidéos captivantes à forte conversion, bien qu'un réglage fin soit parfois nécessaire pour atteindre le style recherché.
+* **Construction de Compétences et de Garde-Fous** : La structuration de workflows répétables permet de pénaliser ou d'encadrer les comportements de l'agent afin d'éviter les erreurs récurrentes (comme les blocages de modération) lors des futures exécutions.
 
 ---
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:19]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. Ce modèle est littéralement partout et pour de très bonnes raisons. Il est intelligent, il est bon marché, il a un goût incroyable, c'est un modèle d'IA incroyable. Mais avec chaque modèle d'IA, vous avez le choix de l'effort, qu'il s'agisse de faible, moyen, élevé, extra, max ou code ultra.
+> Donc Higgs Field a accès à tous les meilleurs modèles de génération d'images et de vidéos par IA. Et Claude nous permet de parler à Higgs Field et de créer des compétences et des agents personnalisés et de programmer toutes ces automatisations pour qu'elles s'exécutent pendant que nous dormons. Et lorsque nous combinons ces outils, nous sommes capables d'augmenter réellement notre contenu parce que nous pouvons concevoir des idées et nous pouvons générer cent fois plus vite que ne le pourrait un être humain moyen.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface du réseau social X (Twitter).
+**Interface & Outils** : Application web de gestion de routines / Google Sheets
 
-**Contenu textuel & Code** : Publication textuelle et vidéo intégrée montrant un environnement 3D tropical.
+**Contenu textuel & Code** : Liste de routines planifiées (Notification responses, Bull - Pre-market research, etc.) et base de données de générations (Speed to sleep, Stay asleep all night, etc.)
 
-**Action / Démonstration** : Affichage à l'écran d'un tweet illustrant la discussion sur les capacités des modèles d'IA.
+**Action / Démonstration** : Présentation des interfaces de planification de tâches automatisées et de structuration des données pour Higgs Field.
 
-![Capture d'écran montrant un post sur les réseaux sociaux (X/Twitter) affichant une vidéo de paysage tropical généré en 3D avec un texte concernant l'impact de l'IA sur les métiers créatifs.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000005_seg1.jpg)
-*⏱️ 00:00:05 — Capture d'écran montrant un post sur les réseaux sociaux (X/Twitter) affichant une vidéo de paysage tropical généré en 3D avec un texte concernant l'impact de l'IA sur les métiers créatifs.*
+![Interface d'une application de gestion de routines automatisées montrant un calendrier avec des tâches programmées à différents horaires, avec le présentateur en médaillon.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000005_seg1.jpg)
+*⏱️ 00:00:05 — Interface d'une application de gestion de routines automatisées montrant un calendrier avec des tâches programmées à différents horaires, avec le présentateur en médaillon.*
+
+![Feuille de calcul Google Sheets intitulée "Higgs Field Studio - Master Generations Database" listant des identifiants, noms et descriptions de projets, avec le présentateur en médaillon.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000014_seg1.jpg)
+*⏱️ 00:00:14 — Feuille de calcul Google Sheets intitulée "Higgs Field Studio - Master Generations Database" listant des identifiants, noms et descriptions de projets, avec le présentateur en médaillon.*
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:19 - 00:00:59]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc, dans cette vidéo, j'ai donné exactement le même prompt à Opus 5.5 et je l'ai exécuté sur chaque niveau d'effort, et nous allons comparer les résultats. Nous examinerons la qualité de tous les différents résultats réels, mais nous examinerons également combien de temps chacun d'eux a pris pour s'exécuter, combien cela nous a coûté si c'était une facturation par API, le nombre total de tokens, combien de vérifications ils ont exécutées, et combien de questions ils m'ont réellement posées tout au long du processus.
+> Donc, dans la vidéo d'aujourd'hui, je vais vous montrer comment nous sommes capables de transformer Claude en agence créative. Donc, très rapidement, laissez-moi vous montrer quelques exemples que j'ai pu générer en littéralement cinq minutes avec une seule instruction. Je veux dire, ceux-là sont incroyables.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de tableau comparatif (type application de mindmapping ou tableau de bord).
+**Interface & Outils** : Lecteur vidéo intégré avec barre de progression, commandes de lecture et vignette du présentateur en bas à droite.
 
-**Contenu textuel & Code** : Tableau avec les colonnes Low, Medium, High, Extra, Max, Ultracode et les lignes Run time, API cost, Total tokens, Checks, Questions asked.
+**Contenu textuel & Code** : Visuels publicitaires générés par IA (casque audio et flacon de produits de santé).
 
-**Action / Démonstration** : Affichage et comparaison des performances des différents niveaux d'effort d'Opus 5.5.
+**Action / Démonstration** : Présentation d'exemples de contenus créatifs générés automatiquement par l'IA au début de la vidéo.
 
-![Tableau comparatif sur une interface web montrant les différents niveaux d'effort de Opus 5.5 (Low, Medium, High, Extra, Max, Ultracode) et des métriques telles que Run time, API cost, Total tokens.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000029_seg2.jpg)
-*⏱️ 00:00:29 — Tableau comparatif sur une interface web montrant les différents niveaux d'effort de Opus 5.5 (Low, Medium, High, Extra, Max, Ultracode) et des métriques telles que Run time, API cost, Total tokens.*
+![Affichage d'une vidéo générée par IA montrant un casque audio haut de gamme en gros plan sur fond neutre, présenté en format paysage.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000029_seg2.jpg)
+*⏱️ 00:00:29 — Affichage d'une vidéo générée par IA montrant un casque audio haut de gamme en gros plan sur fond neutre, présenté en format paysage.*
+
+![Affichage d'une autre vidéo publicitaire générée par IA présentant le même casque audio de type format vertical/Reels sur fond beige.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000039_seg2.jpg)
+*⏱️ 00:00:39 — Affichage d'une autre vidéo publicitaire générée par IA présentant le même casque audio de type format vertical/Reels sur fond beige.*
+
+![Affichage d'un autre exemple de contenu créatif généré par IA montrant une bouteille de complément pour le sommeil ('Sleep Support') dans un décor mystique avec de la fumée.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000049_seg2.jpg)
+*⏱️ 00:00:49 — Affichage d'un autre exemple de contenu créatif généré par IA montrant une bouteille de complément pour le sommeil ('Sleep Support') dans un décor mystique avec de la fumée.*
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:59 - 00:01:19]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et les résultats que nous avons obtenus ne sont pas du tout ce à quoi je m'attends, donc j'ai hâte de partager cela avec vous les gars. Ne perdons pas de temps et entrons directement dans le vif du sujet. D'accord, alors plongeons directement dans celui-ci. Je veux commencer simplement en vous montrant le prompt réel que nous avons utilisé, que nous avons donné à chacun de ces différents agents. Je vais aller dans les fichiers ici, et nous allons ouvrir ce fichier markdown de prompt, et je vais vous montrer ce que nous avons obtenu. Voici donc le slash objectif que j'ai fourni.
+> Je pense que celui-ci, le deuxième, est probablement mon préféré. Genre, le zoom sur le produit, les détails, toutes les animations en arrière-plan, la musique. Je veux dire, c'est incroyable. Même ce détail ici, pensez au temps que cela vous aurait pris si vous aviez voulu le monter à la main ou le tourner avec un studio et une actrice payée, cela aurait demandé tellement plus de temps et de ressources.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de type éditeur / outil de développement IA (Opus 5.5, Ultracode) avec panneau latéral de navigation.
+**Interface & Outils** : Lecteur vidéo standard intégré au navigateur
 
-**Contenu textuel & Code** : Texte du prompt affiché : "Hi Nate. This worktree has the effort-test task queued in PROMPT.md : build a walkable third-person 3D world..." et champ de saisie de commande "Type / for commands".
+**Contenu textuel & Code** : Vidéo promotionnelle générée montrant un casque audio sous différents angles
 
-**Action / Démonstration** : Affichage de l'interface de l'outil IA montrant le prompt initial d'un projet de monde 3D interactif.
-
-![Interface d'une application de développement avec un assistant IA (Opus 5.5 / CLI ou interface dédiée) affichant un prompt concernant un projet 3D, avec une incrustation vidéo du présentateur sur la gauche.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000048_seg3.jpg)
-*⏱️ 00:00:48 — Interface d'une application de développement avec un assistant IA (Opus 5.5 / CLI ou interface dédiée) affichant un prompt concernant un projet 3D, avec une incrustation vidéo du présentateur sur la gauche.*
+**Action / Démonstration** : Lecture de la vidéo de démonstration du produit publicitaire
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:19 - 00:01:53]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> J'ai dit, tu dois me créer un monde en 3D qui est une conférence tech réaliste dans laquelle je peux me promener en vue à la troisième personne. Tu vas regarder ce dossier, qui contient mes éléments d'enregistrement d'événements provenant de AIS Live. Et ce dossier est un dossier Frame.io de 105 gigaoctets d'enregistrements vidéo. C'était un événement entièrement virtuel. Tout a été enregistré et tous les enregistrements sont juste ici. J'ai dit, ton objectif est de prendre cet événement et de le transformer en un monde explorable en 3D qui me donne l'impression d'être réellement allé à une vraie conférence en personne avec différentes salles, différentes pistes, différentes scènes, bla, bla, bla. N'hésite pas à utiliser key.ai si tu as besoin de générer des images ou des vidéos. Et tu peux aussi utiliser tout le reste à l'intérieur de mon projet Herc 2, qui est comme mon système d'exploitation IA. J'ai dit,
+> Et comme je le disais, j'ai pu générer tous ces résultats simplement en parlant à Claude avec un prompt qui ressemblait à peu près à ça. Donc, avant de vous montrer ces conversations et exactement comment j'ai fait, laissez-moi vous montrer comment nous connectons HiggsField à Claude. Donc, si vous n'avez pas de compte HiggsField, allez sur higgsfield.ai et vous pourrez vous inscrire. Vous devrez souscrire à un type d'abonnement ou un autre, mais une fois que vous y êtes, vous voulez essentiellement venir sur cette page qui s'appelle MCP et CLI. Et nous allons, tout d'abord, connecter ceci à Claude sur le web. C'est juste votre chat Claude habituel que vous utilisez probablement depuis des mois maintenant. Vous allez aller dans les paramètres, et vous allez cliquer sur les connecteurs, et vous allez devoir ajouter un connecteur personnalisé. Donc, ici en bas, vous pouvez voir que
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Éditeur de code (type VS Code / Cursor) et interface web Frame.io
+**Interface & Outils** : Interface web de Claude.ai et site web de HiggsField (section MCP & CLI).
 
-**Contenu textuel & Code** : Instructions du prompt demandant de convertir les enregistrements virtuels en un monde 3D explorable en vue à la troisième personne, avec lien Frame.io (https://f.io/sPdlo-Si).
+**Contenu textuel & Code** : Un prompt demandant à Claude de construire une marque de casque audio de zéro (recherche, branding, catalogue produit, photos, publicité Instagram et vidéo UGC) en utilisant le MCP HiggsField.
 
-**Action / Démonstration** : Présentation du prompt de configuration et des fichiers d'actifs vidéo de l'événement stockés sur Frame.io.
+**Action / Démonstration** : Le présentateur montre l'interface de configuration pour connecter HiggsField à Claude via le protocole MCP, puis présente le prompt utilisé pour générer les résultats.
 
-![Un éditeur de texte affichant le fichier PROMPT.md avec les instructions de création d'un monde 3D interactif et le lien Frame.io des éléments d'enregistrement.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000107_seg4.jpg)
-*⏱️ 00:01:07 — Un éditeur de texte affichant le fichier PROMPT.md avec les instructions de création d'un monde 3D interactif et le lien Frame.io des éléments d'enregistrement.*
-
-![Une interface web Frame.io montrant un dossier d'enregistrements d'événements AIS Live d'une taille totale de 105,69 Go avec les sous-dossiers GA Access et VIP Access.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000116_seg4.jpg)
-*⏱️ 00:01:16 — Une interface web Frame.io montrant un dossier d'enregistrements d'événements AIS Live d'une taille totale de 105,69 Go avec les sous-dossiers GA Access et VIP Access.*
-
-![Vue similaire sur l'éditeur de texte affichant le fichier PROMPT.md avec les consignes détaillées données à l'agent IA.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000125_seg4.jpg)
-*⏱️ 00:01:25 — Vue similaire sur l'éditeur de texte affichant le fichier PROMPT.md avec les consignes détaillées données à l'agent IA.*
+![Capture montrant le site web de HiggsField dans la section "MCP & CLI", expliquant comment connecter HiggsField à Claude avec un connecteur personnalisé.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000136_seg4.jpg)
+*⏱️ 00:01:36 — Capture montrant le site web de HiggsField dans la section "MCP & CLI", expliquant comment connecter HiggsField à Claude avec un connecteur personnalisé.*
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:53 - 00:02:20]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> tu seras jugé sur la créativité, le design, la physique et la sensation générale lorsque j'explorerai le monde en 3D que tu as construit. Et c'était fondamentalement la fin des instructions. Donc, comme vous pouvez le voir sur ce côté gauche, j'ai exécuté cela à travers tous les différents niveaux d'effort. Commençons par le niveau bas et remontons jusqu'à ultra code. Très bien. Donc ici, nous avons le résultat du niveau bas. Ouvrons ceci et jetons un coup d'œil. Nous avons donc AIS Live, le sommet des services IA en personne enfin, et nous avons pu cliquer partout. Tout d'abord, cela ne fait pas très personnalisé. Genre, ce n'ha pas le logo d'IS Live. Ce n'est même pas nos couleurs. Donc je n'aime pas trop ça, mais entrons ici. D'accord. C'est beaucoup trop lumineux. Euh, nous avons une carte en haut à droite, nous avons une ville par ici, je ne peux pas dire quelle ville c'est
+> J'ai Higgs field comme connecteur personnalisé. Alors allez-y et cliquez sur ajouter un connecteur personnalisé. Et vous allez essentiellement appeler ça, vous savez, Higgs field, ou si vous voulez l'appeler autrement, je ne vois vraiment pas pourquoi vous leeriez. Et ensuite, vous allez copier cette commande juste ici et retour dans Claude. Vous allez simplement coller ça dedans, appuyez sur ajouter. Le mien dit que ça ne va pas marcher parce que je l'ai déjà fait, mais le vôtre va se connecter. Et puis essentiellement, ça va vous inviter à vous connecter. Donc vous appuierez sur configurer. Ça va vous amener à l'OAuth de Higgs field. Vous vous connecterez avec le compte que vous venez juste de créer, et ensuite vous aurez maintenant Higgs field prêt à l'emploi.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web ou application de bureau d'un assistant de code IA (type Claude / interface personnalisée) avec panneau latéral de gestion des sessions (worktrees) et zone de chat principale.
+**Interface & Outils** : Interface web de configuration des connecteurs Claude (Anthropic).
 
-**Contenu textuel & Code** : Message de l'assistant IA proposant de construire un monde 3D en troisième personne à partir d'enregistrements ("Hi Nate. This worktree has the effort-test task queued in PROMPT.md; build a walkable third-person 3D world..."). Barre latérale affichant les différents niveaux : Hello, Extra, High, Max, Ultracode, Medium, Low.
+**Contenu textuel & Code** : Nom du connecteur 'Higgsfield' et champ d'URL du serveur MCP distant.
 
-**Action / Démonstration** : Navigation et sélection des différents niveaux de test d'effort dans le panneau latéral gauche de l'application.
+**Action / Démonstration** : Saisie du nom du connecteur personnalisé Higgsfield dans la boîte de dialogue d'ajout.
 
-![Interface d'une application de type assistant IA (style Claude/éditeur) montrant différents niveaux de tests d'effort dans la barre latérale gauche et un échange de messages concernant la construction d'un monde 3D.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000142_seg5.jpg)
-*⏱️ 00:01:42 — Interface d'une application de type assistant IA (style Claude/éditeur) montrant différents niveaux de tests d'effort dans la barre latérale gauche et un échange de messages concernant la construction d'un monde 3D.*
+![Fenêtre modale 'Add custom connector' affichée avec le nom 'Higgsfield' saisi dans le champ dédié.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000200_seg5.jpg)
+*⏱️ 00:02:00 — Fenêtre modale 'Add custom connector' affichée avec le nom 'Higgsfield' saisi dans le champ dédié.*
+
+![Écran des connecteurs montrant la liste des applications intégrées avec le connecteur personnalisé 'Higgsfield' ajouté.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000213_seg5.jpg)
+*⏱️ 00:02:13 — Écran des connecteurs montrant la liste des applications intégrées avec le connecteur personnalisé 'Higgsfield' ajouté.*
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:02:20 - 00:02:43]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> c'est. D'accord. C'est Chicago, ce qui est plutôt cool parce que vous savez, j'habite à Chicago, mais bref, en haut à droite, nous pouvons voir une carte. Nous avons un hall d'accueil. Nous avons un hall d'exposition. Nous avons le salon VIP, la scène principale. De plus, la carte montre où se trouve chaque autre personne et cela se synchronise en direct. Nous pouvons donc voir l'enregistrement. Nous pouvons voir le premier jour, la keynote de l'hyper agent, le débriefing en direct. Cool. Donc ça connaît réellement l'agenda et puis il y a le deuxième jour. Donc il a trouvé ça, c'est bien. Nous avons ces petites boules ici que je peux espérer lancer autour de moi. D'accord. Le visage, Oh, regardez ça. Si je vais par ici, tous les gens disparaissent tout simplement. Très mauvais. Très mauvais. D'accord. Alors voyons voir. Est-ce que je peux sprinter ? D'accord.
+> Et ensuite, si vous voulez cliquer sur configurer, vous pouvez fondamentalement changer les permissions. Donc si vous vouliez seulement qu'il fasse certaines choses dans votre compte Higgsfield, vous pouvez le limiter à cela. Ou vous pourriez venir ici et vous pouvez simplement dire, hé, toujours tout autoriser. Ça m'est égal. Donc, peu importe comment vous voulez configurer cela. Et maintenant, chaque fois que vous êtes dans un Cloud chat, si vous allez ici et que vous regardez vos connecteurs, vous pouvez voir que Higgsfield est juste là et vous pouvez simplement lui demander de vous créer des images avec ou des vidéos avec ou tout ce que vous voulez faire.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle 3D interactive (metaverse / événement virtuel) avec mini-carte de navigation.
+**Interface & Outils** : Interface web de configuration des connecteurs et permissions d'outils
 
-**Contenu textuel & Code** : Panneaux textuels de programme ('DAY 1', sessions, sponsor booths) et interface de navigation 3D.
+**Contenu textuel & Code** : Listes d'outils ("Read-only tools", "Write/delete tools", "App-only tools") avec des options de configuration et des boutons radio/permissions.
 
-**Action / Démonstration** : Exploration et navigation dans les différents espaces virtuels de la conférence (lobby, expo hall, badges).
+**Action / Démonstration** : Configuration des permissions d'accès et des outils autorisés pour l'intégration.
 
-![Vue dans une plateforme virtuelle 3D montrant un espace avec un avatar et une carte en haut à droite indiquant le hall, la scène principale et les autres zones.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000216_seg6.jpg)
-*⏱️ 00:02:16 — Vue dans une plateforme virtuelle 3D montrant un espace avec un avatar et une carte en haut à droite indiquant le hall, la scène principale et les autres zones.*
-
-![Navigation dans le hall virtuel avec un panneau affichant le programme du premier jour (Day 1) et la mini-carte en haut à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000224_seg6.jpg)
-*⏱️ 00:02:24 — Navigation dans le hall virtuel avec un panneau affichant le programme du premier jour (Day 1) et la mini-carte en haut à droite.*
-
-![Exploration de l'Expo Hall virtuel avec des participants représentés par des avatars colorés et une installation lumineuse au centre.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000232_seg6.jpg)
-*⏱️ 00:02:32 — Exploration de l'Expo Hall virtuel avec des participants représentés par des avatars colorés et une installation lumineuse au centre.*
+![Interface de configuration des permissions avec des listes d'outils en lecture seule, écriture/suppression et des options personnalisées.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000226_seg6.jpg)
+*⏱️ 00:02:26 — Interface de configuration des permissions avec des listes d'outils en lecture seule, écriture/suppression et des options personnalisées.*
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:44 - 00:03:03]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je peux avancer un peu plus vite. Je vais d'abord aller par ici. Il y a des produits promotionnels, euh, certifiés AIS plus glido. D'accord. Donc il y a les vrais stands qu'on avait lors de l'événement virtuel. On avait des stands. C'est donc plutôt cool. Un petit endroit pour prendre des photos. Salle C. En ce moment, nous avons Tangy Frederick qui anime un atelier. D'accord. Mais ce n'est pas une vidéo. Comme vous pouvez le voir, c'est juste une image. Elle ne bouge pas. C'est donc juste une image. Ces gens sont en train de disparaître. Ce doivent être des fantômes. Allons par ici dans la salle A.
+> Maintenant, il va être capable de réellement parler à Higgsfield, comme vous pouvez le voir. Donc, juste pour commencer et vous montrer quelques exemples rapides, ce que j'ai dit ici, c'est : « Construis-moi une marque de casque audio à partir de zéro. Je veux que tu fasses des recherches, que tu élabores l'identité de marque, que tu construises le catalogue de produits. Et pour chacun d'eux, je veux que tu génères des ressources : une photo de produit, une publicité Instagram et une vidéo UGC. » Et je lui ai dit d'utiliser le MCP de Higgsfield pour toutes ces générations.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif (type événementiel virtuel).
+**Interface & Outils** : Interface web de chat / assistant IA avec la vidéo incrustée du présentateur en bas à gauche.
 
-**Contenu textuel & Code** : Instructions textuelles et tutoriels sur écrans virtuels pour la configuration d'API.
+**Contenu textuel & Code** : Prompt utilisateur : « Build me a headphone brand from scratch. I want you to do research, build the branding, build the product catalog... Use the Higgsfield MCP for all of the generations. » et réponse textuelle de l'IA analysant les tendances du marché.
 
-**Action / Démonstration** : Exploration et déplacement de l'avatar dans l'espace virtuel pour découvrir les stands et les ateliers.
+**Action / Démonstration** : L'assistant IA traite le prompt complexe et commence à rédiger l'étude de marché et la stratégie de marque.
 
-![Vue d'un espace virtuel 3D avec un avatar se déplaçant devant un stand sponsorisé "Glaido" comportant des cubes de produits promotionnels.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000246_seg7.jpg)
-*⏱️ 00:02:46 — Vue d'un espace virtuel 3D avec un avatar se déplaçant devant un stand sponsorisé "Glaido" comportant des cubes de produits promotionnels.*
-
-![Navigation de l'avatar dans une salle virtuelle éclairée en vert avec des tables d'atelier et un écran de présentation au fond.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000252_seg7.jpg)
-*⏱️ 00:02:52 — Navigation de l'avatar dans une salle virtuelle éclairée en vert avec des tables d'atelier et un écran de présentation au fond.*
-
-![Gros plan sur un écran virtuel affichant des instructions étape par étape sur la création de clés API ("Step 1: Go to...").](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000258_seg7.jpg)
-*⏱️ 00:02:58 — Gros plan sur un écran virtuel affichant des instructions étape par étape sur la création de clés API ("Step 1: Go to...").*
+![Interface web d'un assistant conversationnel montrant un prompt détaillé pour créer une marque de casque audio et les débuts de la réponse de l'IA.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000248_seg7.jpg)
+*⏱️ 00:02:48 — Interface web d'un assistant conversationnel montrant un prompt détaillé pour créer une marque de casque audio et les débuts de la réponse de l'IA.*
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:03:04 - 00:03:36]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons Liberty White. D'accord. Très cool. Vos 30 premiers jours en automatisation. Encore une fois, c'est juste une image fixe et les gens ont des bugs d'affichage. Donc ce n'est pas très bien ici. Je vais aller sur la scène principale et voir ce que nous avons. D'accord, cool. Donc nous avons une scène principale. Les gens ont de gros bugs d'affichage. Vraiment mauvais. Ce n'est vraiment pas terrible. Notre vidéo est en train de bouger. Genre, j'ai vu mon visage ici et j'ai vu celui de Devin, mais maintenant ils ont disparu. Donc je ne sais pas ce qui s'est passé. D'accord. Ça ressemble plutôt à un diaporama. Rien n'est vraiment diffusé pour l'instant. Bref, entrons ici.
+> Donc oui, ce que nous aurions pu faire, c'est faire toutes ces recherches par nous-mêmes ou prendre toutes ces recherches de Claude, les mettre dans un Google Doc, puis aller sur Higgsfield par nous-mêmes et trouver tous ces différents modèles d'images et de vidéos par IA et générer tout cela dans l'interface. Nous aurions pu faire cela. Mais dans la vidéo d'aujourd'hui, je vous montre comment vous pouvez essentiellement traiter Claude Code ou Claude comme l'interface pour faire tout cela et d'une manière plus cohérente, répétable et automatisée qui va vraiment vous aider à passer à l'échelle bien plus que si vous faisiez tout cela manuellement. Donc, comme vous pouvez le voir, il fait les recherches, il a examiné le mûr, et maintenant il m'a aidé à construire une marque appelée Murmur.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D de type métavers ou événementiel en ligne.
+**Interface & Outils** : Interface web de Higgsfield
 
-**Contenu textuel & Code** : Interface de navigation en 3D avec affichage de salles d'ateliers et de présentations en direct.
+**Contenu textuel & Code** : Documentation d'intégration MCP et options de génération d'images/vidéos par IA
 
-**Action / Démonstration** : Exploration et déplacement de l'avatar dans l'espace virtuel de la conférence.
+**Action / Démonstration** : Navigation sur la plateforme Higgsfield et présentation des fonctionnalités de connexion avec Claude
 
-![Vue d'une salle d'atelier virtuelle ("Workshop Room A") avec des plateformes circulaires lumineuses au sol.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000311_seg8.jpg)
-*⏱️ 00:03:11 — Vue d'une salle d'atelier virtuelle ("Workshop Room A") avec des plateformes circulaires lumineuses au sol.*
+![Interface web de Higgsfield montrant la page de connexion MCP avec les instructions pour Claude.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000312_seg8.jpg)
+*⏱️ 00:03:12 — Interface web de Higgsfield montrant la page de connexion MCP avec les instructions pour Claude.*
 
-![Vue de la scène principale ("Main Stage") d'un événement virtuel rempli d'avatars assis dans un auditorium.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000317_seg8.jpg)
-*⏱️ 00:03:17 — Vue de la scène principale ("Main Stage") d'un événement virtuel rempli d'avatars assis dans un auditorium.*
+![Page d'accueil de la plateforme Higgsfield affichant différentes fonctionnalités et outils d'IA.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000320_seg8.jpg)
+*⏱️ 00:03:20 — Page d'accueil de la plateforme Higgsfield affichant différentes fonctionnalités et outils d'IA.*
 
-![Vue de la scène principale affichant un grand écran géant "AIS LIVE AI Services Summit" dans l'espace virtuel.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000324_seg8.jpg)
-*⏱️ 00:03:24 — Vue de la scène principale affichant un grand écran géant "AIS LIVE AI Services Summit" dans l'espace virtuel.*
+![Page d'accueil de la plateforme Higgsfield montrant les options de génération d'images et de vidéos.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000328_seg8.jpg)
+*⏱️ 00:03:28 — Page d'accueil de la plateforme Higgsfield montrant les options de génération d'images et de vidéos.*
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:36 - 00:04:10]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons d'autres stands. Nous avons hyper agent. Nous avons Claude Code. Nous avons plus de cadeaux publicitaires. La salle B, c'est Dave Ebelor. Je suppose que c'est exactement la même chose. Nous avons du café. Et puis, je suppose que le salon VIP, c'est accès VIP uniquement. C'est plutôt cool, mais il n'y a vraiment rien qui se passe ici. Cet écran est bien trop lumineux. Bon. Donc je pense que vous comprenez l'ambiance qu'on obtient ici avec Opus 5.5 en effort faible. Et c'est là que les choses deviennent intéressantes. À combien est-ce que vous pensez que cela a tourné ? Combien de temps ? Celui-ci a duré 16 minutes et 43 secondes. Combien pensez-vous que cela a coûté ?
+> Et nous avons des éléments comme le positionnement, l'acheteur cible, la voix, l'identité visuelle, et tout ce genre de choses. Et cela a créé trois produits différents. Donc un casque circum-auriculaire, qui est le plus cher, nous avons des écouteurs sans fil et nous avons à nouveau des écouteurs filaires à dos ouvert. Et ensuite, ça continue et génère tout le reste. Donc toutes ces images et vidéos que vous êtes sur le point de voir proviennent d'un apport minimal. C'était littéralement juste : Hé, construis-moi une marque et construis ces choses. Et maintenant nous avons cette première photo de notre produit phare, qui a l'air très bien. Nous avons cette publicité Instagram, qui est sortie avec un peu de texte dupliqué pour une raison quelconque. Mais si nous voulions corriger
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web ou tableau blanc interactif type canevas (Opus 5.5 Efforts) et environnement virtuel 3D.
-[DESC_IMAGE_3_CONTENT] Tableau avec les colonnes Low, Medium, High, Extra, Max, Ultracode et les lignes Run time, API cost, Total tokens, Checks, Questions asked.
+**Interface & Outils** : Interface web de documentation ou de gestion de projet (type Notion), incluant des blocs de génération d'images par IA.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableaux de spécifications de produits audio, invites textuelles de génération d'images publicitaires et visuels de produits.
 
-**Action / Démonstration** : Navigation et présentation des fonctionnalités dans un espace virtuel 3D puis affichage d'un tableau comparatif de performance.
+**Action / Démonstration** : Présentation du catalogue de produits et génération d'actifs visuels publicitaires à l'aide d'outils d'IA.
 
-![Interface de tableau comparatif nommée 'Opus 5.5 Efforts' affichant des niveaux (Low à Ultracode) et des métriques (Run time, API cost, etc.).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000351_seg9.jpg)
-*⏱️ 00:03:51 — Interface de tableau comparatif nommée 'Opus 5.5 Efforts' affichant des niveaux (Low à Ultracode) et des métriques (Run time, API cost, etc.).*
+![Un tableau de catalogue de produits montrant trois modèles de casques et écouteurs (Murmur Halo, Murmur Drift, Murmur Studio) avec leurs prix et spécifications.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000345_seg9.jpg)
+*⏱️ 00:03:45 — Un tableau de catalogue de produits montrant trois modèles de casques et écouteurs (Murmur Halo, Murmur Drift, Murmur Studio) avec leurs prix et spécifications.*
+
+![Une section détaillant la génération d'actifs visuels avec une invite textuelle pour le produit Murmur Halo via Higgsfield.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000353_seg9.jpg)
+*⏱️ 00:03:53 — Une section détaillant la génération d'actifs visuels avec une invite textuelle pour le produit Murmur Halo via Higgsfield.*
+
+![L'affichage d'une image générée par IA montrant un casque audio design posé sur un drap crème.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000401_seg9.jpg)
+*⏱️ 00:04:01 — L'affichage d'une image générée par IA montrant un casque audio design posé sur un drap crème.*
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:04:10 - 00:04:40]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> 3,91 dollars si c'était facturé par l'API. J'utilise évidemment mon abonnement ici, mais nous allons simplement calculer cela avec la tarification de l'API. Le nombre total de jetons était de 191 000. Il a effectué 22 vérifications. Donc pour la vérification, 22 fois il a ouvert le navigateur et a exécuté différents types de vérifications. Soit 22 catégories de vérifications. Et combien de questions m'a-t-il posées ? Il m'a posé un total de zéro question tout au long de cette invite de type slash goal. D'accord. Alors ouvrons l'effort moyen et voyons ce que nous avons. D'accord, c'est parti. Effort moyen. Nous avons Nate Herc. Nous avons mon badge. C'est aux couleurs de la marque AI's Life.
+> que, tout ce qu'on aurait à faire, c'est de dire, ok, modifier. Et ensuite, on peut lui donner une consigne parce qu'il connaît l'image de référence exacte et il sait de quoi on parle. Et je pourrais simplement dire, hé, tu sais, nous avons deux en-têtes différents ici, supprime-un d'entre eux. Donc, tu pourrais itérer très rapidement là-dessus. Et tu pourrais aussi cliquer sur animer. Donc, c'est fondamentalement le même type de consigne. Et on peut dire, hé, transforme ça en une vidéo où, tu sais, les écouteurs tournent en cercle et flottent dans les airs, peu importe ce qu'on veut faire. Donc, voilà pour l'annonce. Et ensuite, nous avons cette vidéo, qui est fondamentalement juste une personne qui écoute de la musique, en les portant et en souriant à la caméra.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau blanc numérique / outil de dessin (type Excalidraw ou similaire).
+**Interface & Outils** : Interface web d'IA générative (Claude / application personnalisée) avec affichage du présentateur en incrustation.
 
-**Contenu textuel & Code** : Tableau avec des lignes : Run time (16m 43s), API cost ($3.91), Total tokens (191.3K), Checks, Questions asked, sous les colonnes Low, Medium, High, Ex.
+**Contenu textuel & Code** : Modèle "nano_banana_2", URL de l'image de référence, champ de prompt et options de modèle "Opus 4.7 Adaptive".
 
-**Action / Démonstration** : Le présentateur explique les résultats et les coûts de l'API affichés dans le tableau.
+**Action / Démonstration** : Modification d'une image existante par l'IA en utilisant une image de référence et un prompt textuel.
 
-![Tableau comparatif sur une application de tableau blanc affichant les métriques d'exécution pour le niveau 'Low' (Run time: 16m 43s, API cost: $3.91, Total tokens: 191.3K, Checks, Questions asked).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000405_seg10.jpg)
-*⏱️ 00:04:05 — Tableau comparatif sur une application de tableau blanc affichant les métriques d'exécution pour le niveau 'Low' (Run time: 16m 43s, API cost: $3.91, Total tokens: 191.3K, Checks, Questions asked).*
+![Interface web montrant une image de référence avec le texte "murmur" en double et une boîte de prompt pour éditer l'image avec "nano banana 2".](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000417_seg10.jpg)
+*⏱️ 00:04:17 — Interface web montrant une image de référence avec le texte "murmur" en double et une boîte de prompt pour éditer l'image avec "nano banana 2".*
+
+![Interface web montrant l'image finale générée avec les casques audio, le texte en double "murmur", et les options de recréation ou génération vidéo.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000432_seg10.jpg)
+*⏱️ 00:04:32 — Interface web montrant l'image finale générée avec les casques audio, le texte en double "murmur", et les options de recréation ou génération vidéo.*
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:04:40 - 00:04:59]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc ça a déjà l'air un petit peu mieux. Ça ressemble à nos palettes de couleurs qui ont utilisé nos directives de marque. Premier jour de construction, deuxième jour de gain, VIP. Cool. D'accord. Je vais entrer dans le lieu. D'accord. Waouh. Une ambiance donc un peu similaire. C'est en arrière-plan. Ça ne ressemble pas à Chicago, hein ? Non, ça ressemble à, honnêtement, ça ressemble à une ville imaginaire. Quoi qu'il en soit, c'est drôle qu'ils aient décidé de faire ça. Voyons si je peux me déplacer un peu plus vite. Oh, waouh.
+> Donc vous pouvez voir cependant, que cette vidéo a l'air vraiment bien. Genre, la personne a l'air très réelle. Donc nous avons notre deuxième. Nous avons l'image juste ici. Nous avons la publicité juste ici. Celle-là a l'air beaucoup mieux en fait. Et puis de la même manière, nous avons cette vidéo avec de la musique d'une personne qui en met un dans son oreille et puis sourit à la caméra. Et puis nous avons exactement la même chose pour notre produit final.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web interactive / 3D virtuelle ("AIS Live").
+**Interface & Outils** : Interface web de génération de contenu vidéo et publicitaire par IA.
 
-**Contenu textuel & Code** : Écran de bienvenue avec le titre "Welcome to AIS Live", badge de conférence personnalisé (Nate Herk, Host - All Access) et contrôles de navigation.
-
-**Action / Démonstration** : Navigation et entrée dans l'environnement virtuel 3D de la conférence.
-
-![Interface d'accueil de l'application 'AIS Live' montrant un badge de conférence au nom de Nate Herk et un bouton pour entrer dans le lieu virtuel.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000431_seg11.jpg)
-*⏱️ 00:04:31 — Interface d'accueil de l'application 'AIS Live' montrant un badge de conférence au nom de Nate Herk et un bouton pour entrer dans le lieu virtuel.*
-
-![Vue à l'intérieur du lieu virtuel interactif en 3D avec des avatars d'utilisateurs et un panorama nocturne de ville en arrière-plan.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000441_seg11.jpg)
-*⏱️ 00:04:41 — Vue à l'intérieur du lieu virtuel interactif en 3D avec des avatars d'utilisateurs et un panorama nocturne de ville en arrière-plan.*
-
----
-
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Les gens interagissent avec moi. Regardez. Si je m'approche de ce type, il vient de lever le bras. Bon, maintenant il ne veut plus du tout avoir affaire à moi. Mais tous ces petits robots ici doivent prendre des décisions. Je ne sais pas s'ils utilisent Jev. C'est sûr que non. Je ne le lui ai pas dit. En fait, ma clé Jev est à l'arrière. Je ne sais pas. Peut-être qu'il l'a utilisée. Quoi qu'il en soit, nous pouvons voir ici que nous avons la salle d'atelier C, le laboratoire des agents. Sympa. Donc celui-ci est en fait en train d'être exécuté. Vous pouvez voir qu'il s'agit d'une vraie vidéo lue par Tangy. Tout le monde ici est en train de travailler sur un ordinateur portable. Ils ne buguent pas. C'est plutôt cool. De plus, mon badge est sur ma poitrine, ce qui est plutôt cool. Je peux venir par ici. Nous avons une carte en haut à droite, comme vous pouvez le voir, mais je peux venir par ici. Nous avons un
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de monde virtuel / métavers de type conférence.
-
-**Contenu textuel & Code** : Interface utilisateur affichant des informations sur les sessions ("Enterprise AI Services").
-
-**Action / Démonstration** : Navigation et exploration d'un environnement virtuel 3D avec des agents/avatars.
-
----
-
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> hall d'exposition. C'est là que nous avons le stand Glido. Et ça diffuse en ce moment. Oui, ça diffuse la vidéo de nous en train de parler de Glido. Ça diffuse la vidéo d'Ed et moi parlant de notre programme de certification. Nous avons le logo AIS Plus ici à l'arrière, qui est un peu mal placé. Ce sont les diapositives des conférenciers et les points clés. Alors wow, ce sont toutes les ressources que nous avons distribuées après l'événement. Elles sont toutes là également. Nous pouvons voir que nous avons un projecteur sur la communauté. C'est donc Aiden qui parle de l'accord qu'il a conclu et c'est diffusé en direct. Ces gens regardent.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D de type métavers ou plateforme d'événement virtuel.
-
-**Contenu textuel & Code** : Panneaux textuels, diapositives de présentation et affichages informatifs sur les stands virtuels.
-
-**Action / Démonstration** : Navigation et exploration d'un espace d'exposition virtuel par des avatars.
-
----
-
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Ils sont plutôt engagés. On a un hyper agent. C'était, c'est ce que je voulais dire. Si vous avez vu ces gens lever les bras en disant bonjour, c'était plutôt marrant. Regardez, regardez, le voilà qui recommence. Bref. Bon. Où est-ce que je suis maintenant ? Maintenant, je suis dans le hall principal. On a un bar à café. On a un grand logo, qui est le vrai logo. C'est trop lumineux, mais on a le logo. On peut voir si on peut entrer ici dans le parcours fondation. On a Sabrina Romanov et Liberty White. Donc différentes formations juste là. On peut entrer dans cette salle. C'est le parcours avancé. Alors qu'est-ce qui se passe ici. On a Dave Ebelar et Saman qui parlent de différentes choses là-dedans. Et maintenant, allons jeter un œil à la scène principale. Oh, attendez, il y a une vidéo de moi là-haut. C'est du genre VIP
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de métavers ou monde virtuel 3D en ligne.
-
-**Contenu textuel & Code** : Interface utilisateur affichant une carte miniature, des indications de texte comme "Main Lobby", et des avatars d'utilisateurs.
-
-**Action / Démonstration** : Navigation et déplacement d'un avatar à travers un espace virtuel interactif.
-
-![Le présentateur apparaît dans un encadré à gauche, tandis que l'écran principal affiche un monde virtuel 3D représentant un hall principal avec des avatars interactifs.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000555_seg14.jpg)
-*⏱️ 00:05:55 — Le présentateur apparaît dans un encadré à gauche, tandis que l'écran principal affiche un monde virtuel 3D représentant un hall principal avec des avatars interactifs.*
-
-![L'écran principal montre un avatar naviguant dans un environnement virtuel 3D se dirigeant vers une salle de conférence remplie de participants.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000604_seg14.jpg)
-*⏱️ 00:06:04 — L'écran principal montre un avatar naviguant dans un environnement virtuel 3D se dirigeant vers une salle de conférence remplie de participants.*
-
-![Vue en 3D d'un espace virtuel où le présentateur navigue parmi d'autres avatars dans un hall de conférence numérique.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000612_seg14.jpg)
-*⏱️ 00:06:12 — Vue en 3D d'un espace virtuel où le présentateur navigue parmi d'autres avatars dans un hall de conférence numérique.*
-
----
-
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section ? Ouais, on ira voir ça dans une minute. Mais bref, voici la scène principale. Ça a l'air vraiment, vraiment très bien. On a une grande scène. On a genre quatre personnes assises ici. On a les trois écrans d'Alex là-haut avec hyper agent. Est-ce que j'ai le droit de monter sur scène ? Oh, et il me laisse monter sur scène. D'accord. C'est plutôt sympa. Bon les gars, prenons un selfie. Laissez-moi attraper tout le monde en arrière-plan. Venez par ici. Bref, c'est vraiment, vraiment cool. Toutes les places ne sont pas prises par contre. Donc il va falloir qu'on travaille là-dessus. Mais bref, je vais y retourner en courant pour voir ce qu'était cette section VIP. D'accord. Le salon VIP. J'ai l'impression que c'est comme un aéroport ou un truc du genre.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D de conférence (Hyperagent)
-
-**Contenu textuel & Code** : Interface utilisateur virtuelle avec affichage de la session "Hyperagent Keynote" et mini-carte de navigation.
-
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel de la conférence par le présentateur.
-
-![Vue principale de l'auditorium virtuel avec des écrans montrant la keynote d'Alex McDonnell et des spectateurs assis.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000628_seg15.jpg)
-*⏱️ 00:06:28 — Vue principale de l'auditorium virtuel avec des écrans montrant la keynote d'Alex McDonnell et des spectateurs assis.*
-
-![Vue de dos de l'avatar naviguant vers la scène principale avec des personnes assises au premier plan.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000636_seg15.jpg)
-*⏱️ 00:06:36 — Vue de dos de l'avatar naviguant vers la scène principale avec des personnes assises au premier plan.*
-
-![Vue en contre-plongée montrant l'allée centrale de l'auditorium virtuel rempli de nombreux avatars.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000643_seg15.jpg)
-*⏱️ 00:06:43 — Vue en contre-plongée montrant l'allée centrale de l'auditorium virtuel rempli de nombreux avatars.*
-
----
-
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> D'accord, super. Donc maintenant nous avons les sessions VIP ici. Une foire aux questions VIP avec la lecture vidéo en direct de Nate juste ici. Très, très cool. Et nous avons comme un bar ou quelque chose. Génial. Je dirais que c'est un assez bon résultat. Maintenant, en ce qui concerne les statistiques ici, celle-ci a pris une heure et 13 minutes à s'exécuter. Cela nous aurait coûté 12 dollars et 44 cents. Elle a utilisé 490 000 jetons et elle a effectué 23 vérifications.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D et tableau de bord de statistiques (application web ou outil d'analyse).
-
-**Contenu textuel & Code** : Métriques de performance : 16m 43s de temps d'exécution, 3.91 $ de coût d'API, 191.3K tokens totaux, 22 vérifications.
-
-**Action / Démonstration** : Présentation de l'espace virtuel VIP puis transition vers l'affichage des statistiques de performance.
-
-![Vue d'un espace virtuel 3D (salon VIP) avec un écran affichant une session vidéo en direct du présentateur et des participants, ainsi qu'un espace bar en arrière-plan.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000656_seg16.jpg)
-*⏱️ 00:06:56 — Vue d'un espace virtuel 3D (salon VIP) avec un écran affichant une session vidéo en direct du présentateur et des participants, ainsi qu'un espace bar en arrière-plan.*
-
-![Tableau de statistiques affichant les métriques d'exécution (Run time: 16m 43s, API cost: $3.91, Total tokens: 191.3K, Checks: 22, Questions asked: 0).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000702_seg16.jpg)
-*⏱️ 00:07:02 — Tableau de statistiques affichant les métriques d'exécution (Run time: 16m 43s, API cost: $3.91, Total tokens: 191.3K, Checks: 22, Questions asked: 0).*
-
----
-
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et il nous a posé un total de zéro question une fois de plus. Très bien, passons au niveau élevé. C'était déjà un résultat plutôt correct et Anthropic eux-mêmes dans leur vidéo, ou désolé, pas une vidéo, un article sur comment prompter Opus 5.5, ils ont dit de commencer simplement par le niveau moyen et de l'ajuster à la hausse ou à la baisse si nécessaire. C'était donc un résultat moyen. Passons au niveau élevé et voyons ce que nous avons obtenu. Très rapidement, les gars, je dois prendre une seconde pour vous parler du sponsor de la vidéo d'aujourd'hui, Hostinger. Donc ces deux modèles viennent de me créer une version fonctionnelle de la même chose. Et maintenant, je me retrouve exactement là où je finis toujours, avec un projet terminé sur mon ordinateur portable et aucun moyen rapide de le mettre en ligne. Et c'est précisément le fossé que le connecteur d'Hostinger comble. C'est une extension gratuite
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau comparatif visuel / Éditeur de code et interface d'agent IA
-
-**Contenu textuel & Code** : Métriques de performance des différents niveaux de prompts (Low et Medium affichés, High et Extra en attente)
-
-**Action / Démonstration** : Présentation des résultats comparatifs et transition vers le niveau supérieur
-
-![Tableau de comparaison des performances (Run time, API cost, Total tokens, Checks, Questions asked) selon les niveaux (Low, Medium, High, Extra).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000722_seg17.jpg)
-*⏱️ 00:07:22 — Tableau de comparaison des performances (Run time, API cost, Total tokens, Checks, Questions asked) selon les niveaux (Low, Medium, High, Extra).*
-
-![Interface de développement avec un panneau latéral affichant les détails de génération d'un calculateur ROI (Northwind ROI calculator).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000739_seg17.jpg)
-*⏱️ 00:07:39 — Interface de développement avec un panneau latéral affichant les détails de génération d'un calculateur ROI (Northwind ROI calculator).*
-
----
-
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> pour votre éditeur qui intègre votre compte Hostinger dans l'outil de programmation que vous utilisez déjà, que ce soit VS Code, Cursor, Cloud Code, Codex, et j'en passe. Vous vous connectez une seule fois en un clic, et à partir de là, votre agent peut déployer le site, y associer un domaine, configurer les enregistrements DNS et vérifier votre VPS sans que vous n'ayez jamais à quitter l'éditeur. Ainsi, peu importe celui de ces outils que vous finirez par préférer, ce qu'il a construit n'est qu'à quelques minutes d'une vraie URL sur un hébergement géré. Connector est gratuit avec chaque formule d'hébergement, donc si vous avez toujours besoin de l'hébergement en dessous, profitez de la formule illimitée avec le lien dans la description et utilisez le code NATEHERK pour 10 % de réduction. Cela inclut également un domaine gratuit et un e-mail professionnel pour l'année. Et c'est toujours le moyen le plus économique que j'ai trouvé pour obtenir quelque chose
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de gestion Hostinger connectée et Claude Code.
-
-**Contenu textuel & Code** : Mention de "Manage Hostinger from your IDE", statut "Connected (VIA OAUTH)", et liste des outils disponibles (Websites, Domains, Subscriptions & Payments, Email Marketing).
-
-**Action / Démonstration** : Connexion du compte Hostinger à l'IDE via OAuth affichant les outils accessibles par l'assistant.
-
-![Interface montrant la connexion de Hostinger depuis un IDE avec une liste d'outils disponibles (Websites, Domains, Subscriptions, etc.) et Claude Code sur le panneau droit.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000757_seg18.jpg)
-*⏱️ 00:07:57 — Interface montrant la connexion de Hostinger depuis un IDE avec une liste d'outils disponibles (Websites, Domains, Subscriptions, etc.) et Claude Code sur le panneau droit.*
-
----
-
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> tu as construit sur une vraie URL. Donc revenons à la vidéo. D'accord. Encore une fois, très, très marqué par la marque. C'est un écran de chargement encore meilleur que le précédent. Nous avons ce petit effet sympa en arrière-plan. Nous avons le logo. Nous allons entrer dans le lieu. D'accord. Nous y voilà. Ça a l'air plutôt bien. Nous commençons à l'extérieur et vous pouvez voir que nous avons ces drapeaux pour tous les intervenants, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. C'est plutôt cool. Nous avons des blocs en direct ici.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D immersive (plateforme d'événement virtuel hébergée sur RingCentral).
-
-**Contenu textuel & Code** : Interface utilisateur avec panneaux d'information, bannières nominatives (Alex McDonnell, Wyatt Lyonsmith) et indications de navigation.
-
-**Action / Démonstration** : Navigation et entrée dans le lieu virtuel 3D de l'événement.
-
-![Écran de chargement et d'accueil de la plateforme virtuelle 'AIS LIVE', avec le logo et les instructions de contrôle (WASD, Mouse, etc.).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000829_seg19.jpg)
-*⏱️ 00:08:29 — Écran de chargement et d'accueil de la plateforme virtuelle 'AIS LIVE', avec le logo et les instructions de contrôle (WASD, Mouse, etc.).*
-
-![Vue dans le monde virtuel 3D 'AIS Live Plaza', montrant un avatar de type personnage cubique dans une grande place urbaine avec des bâtiments et d'autres avatars.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000835_seg19.jpg)
-*⏱️ 00:08:35 — Vue dans le monde virtuel 3D 'AIS Live Plaza', montrant un avatar de type personnage cubique dans une grande place urbaine avec des bâtiments et d'autres avatars.*
-
-![Exploration de la place virtuelle avec des bannières verticales affichant des noms de conférenciers, dans un environnement 3D style métavers.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000841_seg19.jpg)
-*⏱️ 00:08:41 — Exploration de la place virtuelle avec des bannières verticales affichant des noms de conférenciers, dans un environnement 3D style métavers.*
-
----
-
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> il a pris cette photo de moi, votre hôte, Nate Herc, John, Dave, Nate Herc. Voilà. D'accord. Les portes. Génial. Ce sont des portes coulissantes automatiques en verre. J'adore ça. On peut voir l'enregistrement VIP. On peut voir l'admission générale. On peut venir par ici et on peut découvrir l'exposition avec différents stands, le coin de la communauté. Vous pouvez aussi voir qu'en haut à gauche, j'ai un passeport. Donc c'est comme si, ça montrera combien d'endroits j'ai visités. Tout cela est une vraie lecture. Nous avons un mur de ressources avec tous les différents intervenants. Ils ont aussi une session de réseautage par ici. Donc je vais venir très vite et voir de quoi il s'agit. Nous avons donc le bar à cold brew AIS. Nous avons différents membres de la communauté qui ont été mis en avant ou en valeur.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif (jeu ou plateforme métavers).
-
-**Contenu textuel & Code** : Interface utilisateur virtuelle avec mini-carte, indicateurs de progression et panneaux d'affichage d'événement.
-
-**Action / Démonstration** : Exploration et navigation interactive dans l'espace virtuel de l'événement.
-
-![Vue d'un monde virtuel 3D montrant l'accueil d'un événement avec des comptoirs d'inscription et de VIP check-in.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000856_seg20.jpg)
-*⏱️ 00:08:56 — Vue d'un monde virtuel 3D montrant l'accueil d'un événement avec des comptoirs d'inscription et de VIP check-in.*
-
-![Navigation dans un hall d'exposition virtuel 3D avec des stands et des panneaux d'information.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000905_seg20.jpg)
-*⏱️ 00:09:05 — Navigation dans un hall d'exposition virtuel 3D avec des stands et des panneaux d'information.*
-
-![Vue à la troisième personne montrant un avatar se déplaçant dans le hall d'accueil virtuel parmi d'autres avatars.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000914_seg20.jpg)
-*⏱️ 00:09:14 — Vue à la troisième personne montrant un avatar se déplaçant dans le hall d'accueil virtuel parmi d'autres avatars.*
-
----
-
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> On a l'aile VIP. Attends, quoi ? Récupère un bracelet. Oh, je dois vraiment aller chercher le bracelet. D'accord. Laisse-moi m'enregistrer rapidement. Le bracelet est déjà mis. Attends, quoi ? D'accord. Oh, d'accord. Maintenant, les portes se sont ouvertes pour moi. Cool. Je peux entrer ici. Oh, ça mène juste à la scène principale. Salon VIP. Il y a une séance de questions-réponses en cours. Ça a l'air très sympa. Je veux dire, je suis très impressionné par la façon dont il parvient à faire ça. Waouh. D'accord. Donc c'est vraiment bien. Ce qu'on a fait, c'est qu'on a eu des salles de discussion VIP avec différentes personnes. Tu peux voir qu'il y a différentes salles, différents membres de l'équipe AIS qui participent à des trucs. C'est vraiment cool. C'est très cool. C'est un VIP bien meilleur
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web interactive / Plateforme virtuelle type métavers de conférence en ligne (Gather town ou similaire).
-
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant le lieu « VIP Lounge » et « VIP Working Sessions », des barres de progression de type passeport et un mini-carte en haut à droite.
-
-**Action / Démonstration** : Navigation et exploration de différents espaces virtuels (hall, salon VIP, salles de travail) avec l'avatar.
-
-![Vue dans l'espace virtuel de type métavers montrant l'avatar du présentateur naviguant dans le hall d'enregistrement (Registration Concourse).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000932_seg21.jpg)
-*⏱️ 00:09:32 — Vue dans l'espace virtuel de type métavers montrant l'avatar du présentateur naviguant dans le hall d'enregistrement (Registration Concourse).*
-
-![Vue du salon VIP virtuel où l'avatar assiste à une session de questions-réponses avec un écran affichant la vidéo du présentateur.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000940_seg21.jpg)
-*⏱️ 00:09:40 — Vue du salon VIP virtuel où l'avatar assiste à une session de questions-réponses avec un écran affichant la vidéo du présentateur.*
-
-![Vue de l'espace de sessions de travail VIP virtuel avec plusieurs salles thématiques et avatars assis autour de tables.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000948_seg21.jpg)
-*⏱️ 00:09:48 — Vue de l'espace de sessions de travail VIP virtuel avec plusieurs salles thématiques et avatars assis autour de tables.*
-
----
-
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expérience que ce qui a été montré dans la première partie. D'accord. After party VIP. Regardez ça. On a une piste de danse. On a tous ces éléments ici. On a la lecture de l'after party VIP juste ici. Et il y a une estrade pour DJ. C'est tellement marrant. Il y a un petit bug ici, un petit glitch ici, mais c'est génial. Oh, cool. Donc quand je suis ici sur la scène principale, on a des sous-titres. Vous pouvez voir juste ici en bas de mon écran, on a ces sous-titres de Wyatt qui est en train de parler ici. On a des lumières. On a le panel. Très cool. Belle scène principale. Je vais aller ici. On peut aller à la fondation,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de monde virtuel / événement en ligne en 3D
-
-**Contenu textuel & Code** : Environnement virtuel interactif avec avatars 3D, écrans de visioconférence et interface de navigation (passeport, commandes)
-
-**Action / Démonstration** : Navigation et exploration d'un monde virtuel 3D lors d'un événement en ligne
-
-![Vue d'un espace virtuel représentant une 'after-party VIP' avec une piste de danse, des avatars, et un écran affichant des participants en visioconférence.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001004_seg22.jpg)
-*⏱️ 00:10:04 — Vue d'un espace virtuel représentant une 'after-party VIP' avec une piste de danse, des avatars, et un écran affichant des participants en visioconférence.*
-
-![Poursuite de la visite de la piste de danse virtuelle avec des ballons rebondissants et des avatars animés.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001013_seg22.jpg)
-*⏱️ 00:10:13 — Poursuite de la visite de la piste de danse virtuelle avec des ballons rebondissants et des avatars animés.*
-
-![Transition vers une autre zone de l'événement virtuel montrant une scène principale ('Main Stage') avec des spectateurs assis et un grand écran de présentation.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001021_seg22.jpg)
-*⏱️ 00:10:21 — Transition vers une autre zone de l'événement virtuel montrant une scène principale ('Main Stage') avec des spectateurs assis et un grand écran de présentation.*
-
----
-
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> avancé, et les parcours d'entreprise par ici. Alors voyons voir. Nous avons l'anatomie de trois vraies transactions. Nous avons hyper agent. Nous avons les évaluations avec Nate et Ed ici. Nous avons Dave qui s'occupe des trucs avancés. C'est vraiment bien. Je veux dire, évidemment, chacun, chacun de ces résultats jusqu'à présent, le niveau bas était correct. Le niveau moyen était meilleur. Le niveau haut a été encore meilleur. Voyons si cette tendance se poursuit et allons voir ce que cela nous a coûté. Le niveau haut a donc tourné pendant une heure et sept minutes. Donc un peu plus rapide que le niveau moyen, cela nous aurait coûté 16 dollars et 31 cents. Il a utilisé un demi-million de tokens, 509 000. Il a fait 22 vérifications. Et il nous a aussi demandé, enfin, non, je me suis trompé. Ce
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc / interface de notes et de diagrammes (style Excalidraw / Opus).
-
-**Contenu textuel & Code** : Tableau de données comparatives : Run time (16m 43s, 1h 13m, 1h 7m), API cost ($3.91, $12.44, $16.31), Total tokens (191.3K, 419.2K), Checks (22, 23), Questions asked (0, 0).
-
-**Action / Démonstration** : Navigation et sélection d'éléments dans le tableau comparatif des coûts et performances d'exécution des agents.
-
-![Tableau comparatif dans un outil de design ou de notes affichant les métriques Low, Medium, High et Extra (Run time, API cost, Total tokens, Checks, Questions asked).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001057_seg23.jpg)
-*⏱️ 00:10:57 — Tableau comparatif dans un outil de design ou de notes affichant les métriques Low, Medium, High et Extra (Run time, API cost, Total tokens, Checks, Questions asked).*
-
----
-
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> l'un m'a posé une question et spoiler, c'était le seul qui nous a posé une question de tout ça. Donc voyons voir, il nous en reste trois extra, max et ultra code. Laissez-moi ouvrir extra et nous verrons ce que nous avons. D'accord. Donc celui-ci a l'air plutôt bien. Je dirais honnêtement jusqu'à présent, l'écran de chargement haut était le meilleur. Celui que nous venons juste de voir, mais bref, entrons dans AIS live.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau de bord ou interface web de comparaison de performances d'IA.
-
-**Contenu textuel & Code** : Tableau avec des lignes : Run time, API cost, Total tokens, Checks, et Questions asked.
-
-**Action / Démonstration** : Le présentateur commente les résultats et les métriques affichées dans le tableau.
-
-![Un tableau comparatif montrant les métriques de différents efforts (Low, Medium, High, Extra) avec le présentateur à l'écran.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001111_seg24.jpg)
-*⏱️ 00:11:11 — Un tableau comparatif montrant les métriques de différents efforts (Low, Medium, High, Extra) avec le présentateur à l'écran.*
-
----
-
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. D'accord. Donc on a comme de petits extraits sonores. Je peux discuter avec des gens. Le panneau sur la guerre des outils a réglé quelques débats pour moi. Sympas. Bonne perspective là-bas. On est dehors à nouveau. On a ces différentes bannières, bien qu'elles soient toutes les mêmes. Elles n'affichent pas de noms de personnes différents. Donc grand logo AIS Live. L'aile des ateliers est par ici. Et traversons les portes coulissantes en verre pour voir ce qu'on a. Donc on a le café AIS. La carte est en bas à droite, et elle n'est pas très descriptive.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D / application web type métavers ou monde virtuel (Convention Plaza - AIS LIVE).
-
-**Contenu textuel & Code** : Interface utilisateur de monde virtuel 3D avec mini-carte en bas à droite, indicateur "LIVE" en haut à gauche et avatars de personnages.
-
-**Action / Démonstration** : Navigation et exploration dans l'environnement virtuel 3D par le présentateur ou son avatar.
-
----
-
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> J'aime bien comment les autres cartes nous ont indiqué ce que, genre où se trouvaient les choses, mais celle-ci a l'air très professionnelle. On peut voir ici la scène principale. Allons y faire un tour rapidement. Ils ont tous ces ballons qui volent partout, ce qui je trouve est plutôt marrant. Les ballons de plage AIS. On me voit là-haut en train de parler. Je crois que j'étais en train de présenter l'une des journées. Continuons à avancer par ici vers la salle d'atelier sur ce côté gauche. D'accord. Donc ici, nous avons le théâtre Hyper Agent. Nous avons cette session sponsorisée ici par Hyper Agent, mais cela nous montre aussi ce qui va s'y passer. C'est vraiment marrant qu'on puisse discuter avec les gens. Salmon a créé un commercial vocal en direct. La salle du Juste Prix était comble. Avez-vous pris le guide d'accompagnement VIP ? C'est tellement marrant. Nous avons le parcours avancé dans
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web interactive de type monde virtuel 3D / événementiel en ligne.
-
-**Contenu textuel & Code** : Environnement virtuel 3D interactif avec avatars, interface de chat et mini-carte en bas à droite.
-
-**Action / Démonstration** : Exploration et navigation dans l'espace virtuel d'un événement.
-
-![Vue en 3D d'une grande salle de conférence virtuelle (Main Stage) avec des avatars et un écran géant diffusant une vidéo.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001200_seg26.jpg)
-*⏱️ 00:12:00 — Vue en 3D d'une grande salle de conférence virtuelle (Main Stage) avec des avatars et un écran géant diffusant une vidéo.*
-
-![Hall d'entrée virtuel (Grand Lobby) d'un événement en ligne avec des avatars d'utilisateurs et des enseignes de stands (Workshops).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001209_seg26.jpg)
-*⏱️ 00:12:09 — Hall d'entrée virtuel (Grand Lobby) d'un événement en ligne avec des avatars d'utilisateurs et des enseignes de stands (Workshops).*
-
-![Couloir virtuel d'un espace événementiel 3D avec des avatars en discussion et des bulles de texte.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001217_seg26.jpg)
-*⏱️ 00:12:17 — Couloir virtuel d'un espace événementiel 3D avec des avatars en discussion et des bulles de texte.*
-
----
-
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> ici. Encore une fois, nous avons la lecture en direct. Est-ce que c'est la lecture en direct ? Oh, d'accord. Ça a commencé une fois que je suis entré, mais je peux prendre place. Oh la la. Je peux regarder ça. Je peux me lever. Je veux m'asseoir au premier rang. C'est plutôt cool. C'est très bien. J'aime bien ça. Et vous savez ce que j'ai remarqué jusqu'à présent ? Le personnage que j'incarne me ressemble un peu. Je pense qu'il a été modélisé à partir de mes photos de profil ou quelque chose comme ça. Bref, nous avons Sabrina ici, l'animatrice de la salle ici, prenez n'importe quel siège libre. D'accord, super. Et j'ai vraiment aimé la fonctionnalité pour s'asseoir. C'est assez marrant. Genre, on pourrait vraiment assister à cet atelier et participer. Bref, ça nous montre les intervenants. Ça nous montre les
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D de webinaire / plateforme de conférence en ligne (type espace métavers ou événement virtuel interactif).
-
-**Contenu textuel & Code** : Interface d'événement virtuel avec un grand écran affichant un présentateur vidéo et des diapositives, et des avatars de participants assis dans une salle.
-
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel de conférence par le présentateur.
-
----
-
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> programme. Il y a un petit tapis rouge ici pour prendre des photos. On peut prendre la pose. Oh, waouh. C'est plutôt cool. Bibliothèque de ressources, devenir certifié AIS Plus, Glido, Hyper Agent, AIS Plus, trois vraies affaires. Génial. Je veux dire, je dirais vraiment que jusqu'à présent, chacune est meilleure. Et on n'a même pas encore regardé la section VIP, le salon VIP. Allons par ici très vite. J'espère que je pourrai entrer. Sympa. On a une réinitialisation des outils. Ce sont les différentes salles dans lesquelles on peut aller. Donc encore une fois, je pourrais prendre la feuille d'exercices et je pourrais essayer de comprendre comment tarifer mes trucs. C'est tellement cool. C'est vraiment mieux que le précédent où on a juste en quelque sorte
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : AUCUNE
-
-**Contenu textuel & Code** : AUCUN
-
-**Action / Démonstration** : AUCUNE
-
----
-
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> genre j'ai regardé des trucs. Génial. Je peux aller derrière le bar et venir ici. C'est très bien. Bon. Alors, en ce qui concerne les statistiques, celui-ci a duré une heure et demie. Il a coûté 25,92 dollars. Je ne sais pas pourquoi je dis point 25, 92 cents. Il y a eu 733 000 jetons et 34 vérifications. Il a donc eu le plus grand nombre de vérifications de loin jusqu'à présent. Et il ne nous a posé zéro question. J'ai hâte de voir ce qu'on a obtenu ici de max et ultra code. Bon. Voici les écrans de chargement de max, ennuyeux, mais c'est dans l'esprit de la marque et il y a notre logo.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau blanc / prise de notes interactive (type Excalidraw).
-
-**Contenu textuel & Code** : Tableau avec les colonnes Medium (1h 13m, $12.44, 419.2K), High (1h 7m, $16.31, 509.3K) et Extra (1h 31m).
-
-**Action / Démonstration** : Le présentateur commente les statistiques affichées dans le tableau comparatif des différents niveaux d'efforts.
-
-![Tableau comparatif sous forme de tableau blanc montrant les statistiques des différents niveaux d'effort (Medium, High, Extra, Max, Ultracode) avec des durées, coûts et consommations de jetons.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001338_seg29.jpg)
-*⏱️ 00:13:38 — Tableau comparatif sous forme de tableau blanc montrant les statistiques des différents niveaux d'effort (Medium, High, Extra, Max, Ultracode) avec des durées, coûts et consommations de jetons.*
-
----
-
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Alors c'était bien. J'aime bien. On va continuer et entrer dans AIS live. Ooh, jolie petite animation ici qui nous fait entrer. Encore une fois, le personnage me ressemble. Ils m'ont tous ressemblé. Je veux dire, en quelque sorte, nous sommes assis en arrière-plan. Ça ressemble à Chicago. Comme je l'ai mentionné plus tôt, beaucoup de ceux-ci jouent des sons et je n'inclut pas cela parce que ce serait très distrayant pour vous d'essayer d'écouter ce qui se passe en même temps que je parle. Il y a donc une légère musique dans tout ça. Je déteste la façon dont il marche. Cette marche est vraiment, vraiment mauvaise. Je veux dire, la marche, ouais, je n'aime pas du tout ça. Ce n'est donc pas génial. Mais à part ça, entrons et explorons. Remarquez ces ombres quand j'entre, elles changent vraiment, je ne sais pas trop pourquoi,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de l'application virtuelle 3D "AIS live"
-
-**Contenu textuel & Code** : Environnement virtuel 3D avec avatars, bannières et mini-carte
-
-**Action / Démonstration** : Exploration interactive de l'espace virtuel 3D de la plateforme AIS live
-
-![Vue d'une application virtuelle 3D (AIS live) montrant une place urbaine avec des avatars de personnages et des gratte-ciels en arrière-plan.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001408_seg30.jpg)
-*⏱️ 00:14:08 — Vue d'une application virtuelle 3D (AIS live) montrant une place urbaine avec des avatars de personnages et des gratte-ciels en arrière-plan.*
-
-![Navigation dans l'environnement virtuel 3D avec l'avatar qui s'approche d'un bâtiment moderne.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001417_seg30.jpg)
-*⏱️ 00:14:17 — Navigation dans l'environnement virtuel 3D avec l'avatar qui s'approche d'un bâtiment moderne.*
-
-![Gros plan sur l'avatar du présentateur se déplaçant sur la place virtuelle 3D en direction d'un bâtiment vitré.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001426_seg30.jpg)
-*⏱️ 00:14:26 — Gros plan sur l'avatar du présentateur se déplaçant sur la place virtuelle 3D en direction d'un bâtiment vitré.*
-
----
-
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> mais de toute façon, on peut discuter avec des gens ici aussi. Le stand de Hyperagent est juste là où l'on entre dans l'exposition. Tout va bien. D'accord, cool. Je peux continuer à cliquer sur E pour faire changer ce qu'ils disent. Nous avons les intervenants juste ici. Ça a l'air plutôt bien. Bien que nous avions définitivement la photo de profil de tout le monde. Je ne sais donc pas trop pourquoi ce n'est pas inclus là. Nous voyons des gens prendre des photos juste ici. J'adore ça. Et ça enregistre une petite photo. D'accord. La carte n'est pas non plus super, genre ne me donne pas une super explication de ce qui se passe, mais j'aime ces stands. Ils sont cool. Je pense que ces stands sont les meilleurs que j'ai vus jusqu'à présent. Genre, ils ont juste l'air bien. Ils ont des représentants. Il y a de superbes diaporamas derrière eux. Ouais. Ces stands sont cool. D'accord. Nous avons un petit théâtre mis en avant
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web 3D (Metavers / Espace virtuel de conférence)
-
-**Contenu textuel & Code** : Environnement virtuel 3D interactif avec des avatars, des panneaux d'affichage et des zones d'exposition.
-
-**Action / Démonstration** : Navigation et exploration d'un salon virtuel avec des avatars d'utilisateurs.
-
----
-
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> qui se passe par ici. C'est Casper. Bien que pourquoi est-ce que ça ne joue pas ? J'ai l'impression que ça devrait jouer, non ? Comme dans les autres, ils étaient toujours en train de jouer. On peut parler à d'autres personnes par ici. Le café est gratuit. Blabla. Amy Simpson, Matt Wolf. Sympa. D'accord. C'est juste la zone de réseautage dans laquelle nous sommes en ce moment, mais on peut voir en haut à droite. On peut aussi voir ce qui est en direct sur la scène principale en ce moment. C'est un panel de guerre des outils. Alors allons-y. Nous avons Devin, Cole, Dave et Russ qui discutent ici. Nous avons en quelque sorte de l'audiovisuel, des trucs de lumière qui se passent par ici.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Monde virtuel 3D (type métavers / salon virtuel interactif).
-
-**Contenu textuel & Code** : Aucun code source, terminal ou prompt visible.
-
-**Action / Démonstration** : Navigation et déplacement d'un avatar dans un environnement virtuel 3D.
-
----
-
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Passons la scène principale à ce qui compte vraiment en ce moment. Je peux donc changer de sujet. Cool. Je viens donc de passer à moi et Matt. On peut passer à l'anatomie de trois vraies transactions. C'est plutôt cool. La scène a l'air bien. On a un petit panneau sympa ici. Je peux monter sur la scène ? Sympa. Sympa. Bon, je ne peux pas aller trop loin, en fait. Bon tout le monde, laissez-moi prendre le selfie. Tout le monde vient là-dedans. Je peux aussi m'asseoir dans le public par ici et juste profiter de la session.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web interactive / Plateforme virtuelle 3D (type métavers de conférence)
-
-**Contenu textuel & Code** : Interface utilisateur de conférence virtuelle affichant des flux vidéo en direct, le nom des sessions ("Anatomy of Three Real Deals"), et des contrôles de navigation (commandes clavier WASD).
-
-**Action / Démonstration** : Navigation et déplacement d'un avatar 3D dans un environnement virtuel simulant une conférence en direct.
-
-![Vue d'une plateforme virtuelle de type métavers avec un avatar au premier plan et une scène principale affichant des intervenants vidéo ("AIS LIVE").](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001540_seg33.jpg)
-*⏱️ 00:15:40 — Vue d'une plateforme virtuelle de type métavers avec un avatar au premier plan et une scène principale affichant des intervenants vidéo ("AIS LIVE").*
-
-![L'avatar se déplace dans la salle de conférence virtuelle devant un public assis, avec un écran affichant "AIS LIVE" et le panneau "Anatomy of Three Real Deals".](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001545_seg33.jpg)
-*⏱️ 00:15:45 — L'avatar se déplace dans la salle de conférence virtuelle devant un public assis, avec un écran affichant "AIS LIVE" et le panneau "Anatomy of Three Real Deals".*
-
-![Vue en plongée arrière sur l'avatar du présentateur qui s'approche de la scène principale dans l'environnement virtuel 3D.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001550_seg33.jpg)
-*⏱️ 00:15:50 — Vue en plongée arrière sur l'avatar du présentateur qui s'approche de la scène principale dans l'environnement virtuel 3D.*
-
----
-
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Très cool, très cool. OK, allons par ici. Je vois une section à l'étage. C'est marrant comme ils choisissent tous de mettre la section VIP à l'étage. Je veux dire, je ne déteste pas ça. Oh la la, ils ont un escalator. Pas possible. Je vais discuter avec ce type sur l'escalator. Glenn a 15 ans d'expérience en agence. Ses trucs de "land and expand" étaient en or. Du bon travail, Glenn. Cool, donc je vais... je n'arrive même pas à passer devant ce type, par contre.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D interactif de type salon/événement en ligne.
-
-**Contenu textuel & Code** : Interface utilisateur avec mini-carte, commandes de déplacement (WASD), et informations textuelles sur les participants.
-
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel 3D par le présentateur.
-
-![Vue d'un espace virtuel 3D avec des avatars se déplaçant dans un hall d'accueil moderne.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001600_seg34.jpg)
-*⏱️ 00:16:00 — Vue d'un espace virtuel 3D avec des avatars se déplaçant dans un hall d'accueil moderne.*
-
-![L'avatar s'approche d'un escalier mécanique menant au niveau VIP dans l'environnement virtuel.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001604_seg34.jpg)
-*⏱️ 00:16:04 — L'avatar s'approche d'un escalier mécanique menant au niveau VIP dans l'environnement virtuel.*
-
-![L'avatar monte sur l'escalier mécanique et une bulle de dialogue affiche les informations sur Glenn.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001609_seg34.jpg)
-*⏱️ 00:16:09 — L'avatar monte sur l'escalier mécanique et une bulle de dialogue affiche les informations sur Glenn.*
-
----
-
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, j'ai dû sauter par-dessus lui. D'accord, niveau VIP, badge requis. Oh la vache. Tu te moques de moi ? Je dois aller chercher mon badge. D'accord, cool. Maintenant, ça montre que je suis un vrai VIP et je peux aller ici dans la section VIP. On a de superbes petites sessions de travail là-bas, auxquelles on peut se joindre. Je me demande si ça va me laisser m'asseoir ici. Je peux juste discuter. Est-ce que je peux participer ? Ça ne me laisse pas m'asseoir et participer. Ce n'est pas grave. On a la salle de crise des prix. Oh, ça pourrait être l'after-party. Allons voir ce qui se passe par ici. Ou peut-être que je dois juste entrer par ici. D'accord. C'est bizarre. J'avais juste à entrer par ici. Cet after-party n'est pas aussi cool que l'autre. Mais bref, allons voir ce qui se passe par ici.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de métaverse / environnement virtuel 3D interactif
-
-**Contenu textuel & Code** : Interface utilisateur virtuelle avec mini-carte, badges VIP, commandes de déplacement (WASD) et bulles de discussion.
-
-**Action / Démonstration** : Navigation et déplacement de l'avatar dans l'environnement virtuel pour accéder aux zones VIP.
-
-![Vue d'un monde virtuel 3D de type métaverse montrant un avatar dans un hall de réception avec des escaliers.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001623_seg35.jpg)
-*⏱️ 00:16:23 — Vue d'un monde virtuel 3D de type métaverse montrant un avatar dans un hall de réception avec des escaliers.*
-
-![Vue de l'espace VIP du monde virtuel avec des avatars autour d'une table lors d'une session de travail.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001631_seg35.jpg)
-*⏱️ 00:16:31 — Vue de l'espace VIP du monde virtuel avec des avatars autour d'une table lors d'une session de travail.*
-
-![Vue de l'avatar naviguant dans la zone VIP du monde virtuel vers une section bar/salle de réunion.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001639_seg35.jpg)
-*⏱️ 00:16:39 — Vue de l'avatar naviguant dans la zone VIP du monde virtuel vers une section bar/salle de réunion.*
-
----
-
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> dans les ateliers. D'accord. Ce n'était pas bien. Regardez ça. On peut tout voir et j'ai juste bugué et maintenant boum. Donc ce n'est pas bon. Je dirais qu'globalement, je veux dire, vous captez l'ambiance de comment ça fonctionne, mais je dirais que celui d'avant, qui était, je crois, élevé, j'aimais mieux celui-là. Je ne peux pas m'asseoir dans ces chaises non plus. Ouais. Donc je n'aime pas la marche dans celui-ci.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Plateforme d'événement virtuel 3D (style metaverse / Gather.town amélioré)
-
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant les informations sur Nate Herk, la carte, et les discussions en direct.
-
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel des ateliers par le présentateur.
-
-![L'avatar du présentateur navigue dans le couloir virtuel d'une plateforme d'événement virtuel.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001653_seg36.jpg)
-*⏱️ 00:16:53 — L'avatar du présentateur navigue dans le couloir virtuel d'une plateforme d'événement virtuel.*
-
-![L'avatar s'approche de l'entrée de la salle C - HyperAgent Lab.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001657_seg36.jpg)
-*⏱️ 00:16:57 — L'avatar s'approche de l'entrée de la salle C - HyperAgent Lab.*
-
-![L'avatar entre dans la salle de conférence virtuelle où des participants virtuels assistent à un atelier.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001702_seg36.jpg)
-*⏱️ 00:17:02 — L'avatar entre dans la salle de conférence virtuelle où des participants virtuels assistent à un atelier.*
-
----
-
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je n'aime pas trop l'ambiance et il y a quelques bugs. Donc, jusqu'à présent, si nous voulons regarder notre liste, j'aime bien Extra Extra, c'était celui que j'aimais le plus jusqu'à présent. Mais de toute façon, celui-ci était au maximum. Celui-ci était au maximum juste ici. Alors voyons combien de temps cela a tourné : deux heures et 28 minutes. Donc ça a tourné pendant longtemps, 50 dollars et 38 cents, 1,18 million de jetons. Donc il a en fait atteint une compaction et a dû s'auto-compacter. Et puis il a fait 51 vérifications. Est-ce qu'il l'a vraiment fait, hein ? Parce qu'il y avait beaucoup de bugs là-dedans. Et de toute façon, celui-ci ne nous a posé aucune question. Donc, jusqu'à présent, chaque fois, ou presque, c'est devenu plus cher et ça a pris plus de temps, à part ici. Mais ceux-ci, fondamentalement
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de tableau ou de comparaison de modèles.
-
-**Contenu textuel & Code** : Tableau avec des colonnes de configuration (Medium, High, Extra, Max, Ultracode) et des lignes de données chiffrées (durées, coûts en dollars, et volumes).
-
-**Action / Démonstration** : Le présentateur commente et compare les différentes colonnes du tableau des niveaux d'efforts.
-
-![Tableau comparatif affichant les niveaux Medium, High, Extra, Max et Ultracode avec différentes métriques de temps, de coûts et de performances.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001716_seg37.jpg)
-*⏱️ 00:17:16 — Tableau comparatif affichant les niveaux Medium, High, Extra, Max et Ultracode avec différentes métriques de temps, de coûts et de performances.*
-
----
-
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> a pris à peu près le même temps, mais à chaque fois, il a utilisé plus de tokens parce qu'il a davantage réfléchi. Et puis, vous savez, ces tokens vont coûter plus cher. Mais bref, passons au dernier, qui est Ultra Code. Donc on espère vraiment que celui-ci sera le meilleur. Alors allons sur ce localhost et voyons ce qu'on a. D'accord, super. Regardez ce badge. C'est un joli badge "host all access". On a un petit visuel sympa juste ici. On va aller de l'avant et entrer "AIS Live". Cool. D'accord. Bienvenue, Nate. J'aime bien la marche, ça fait réaliste. J'aime le logo, même s'il lui manque le petit point rouge qui donne l'air d'un direct. La carte en haut à droite
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau de données comparatif (image 1) et interface 3D/virtuelle interactive (image 2).
-
-**Contenu textuel & Code** : Tableaux comparatifs de coûts et de temps d'exécution (1h 7m, $16.31, 509.3K tokens, etc.) et environnement 3D "AIS LIVE".
-
-**Action / Démonstration** : Présentation des résultats comparatifs des différents modèles et visualisation du produit final généré dans un environnement 3D.
-
-![Tableau comparatif montrant les performances de différents niveaux de configuration (High, Extra, Max, Ultracode) avec des métriques de temps, de coût et de tokens.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001752_seg38.jpg)
-*⏱️ 00:17:52 — Tableau comparatif montrant les performances de différents niveaux de configuration (High, Extra, Max, Ultracode) avec des métriques de temps, de coût et de tokens.*
-
-![Interface d'un jeu ou d'un monde virtuel 3D affichant "AIS LIVE" au centre avec des avatars de personnages.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001809_seg38.jpg)
-*⏱️ 00:18:09 — Interface d'un jeu ou d'un monde virtuel 3D affichant "AIS LIVE" au centre avec des avatars de personnages.*
-
----
-
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> est un tout petit peu mieux étiqueté, donc je peux voir ce qui se passe. Je vais venir ici et récupérer mon bracelet VIP rapidement. D'accord, super. Ça me dit aussi quoi faire. Donc en haut à gauche, il est écrit de badger à l'entrée VIP du mur est du hall. Donc je crois que l'est serait par là, non ? Ne mangez jamais de gaufres détrempées. Ouais. Ailes VIP, badger le bracelet. D'accord, cool. Maintenant je suis dans la section VIP. Je peux voir ces différentes pièces. L'outil a été réinitialisé. Une vidéo en direct est diffusée. Je peux voir les sous-titres juste là de ce dont on est en train de parler. Ça diffuse aussi les sons, mais je ne diffuse tout simplement pas l'audio pour vous les gars parce que je ne veux pas surcharger.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Environnement virtuel 3D / plateforme interactive de webinaire ou conférence virtuelle
-
-**Contenu textuel & Code** : Interface utilisateur virtuelle affichant des instructions textuelles de navigation, des noms de pièces et des mini-cartes de localisation.
-
-**Action / Démonstration** : Navigation de l'avatar du présentateur à travers le lobby virtuel pour entrer dans la zone VIP et rejoindre une session de travail.
-
-![Le présentateur évolue dans un espace virtuel 3D ("Registration & Lobby"), avec un avatar qui se déplace et des indications textuelles à l'écran concernant l'entrée VIP.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001825_seg39.jpg)
-*⏱️ 00:18:25 — Le présentateur évolue dans un espace virtuel 3D ("Registration & Lobby"), avec un avatar qui se déplace et des indications textuelles à l'écran concernant l'entrée VIP.*
-
-![L'avatar franchit une zone délimitée menant à l'espace "VIP Wing" dans l'environnement virtuel.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001833_seg39.jpg)
-*⏱️ 00:18:33 — L'avatar franchit une zone délimitée menant à l'espace "VIP Wing" dans l'environnement virtuel.*
-
-![L'avatar se trouve à l'intérieur de la "VIP Room 5 - Tooling Reset / Solo to Real Business" autour d'une table avec d'autres avatars virtuels.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001841_seg39.jpg)
-*⏱️ 00:18:41 — L'avatar se trouve à l'intérieur de la "VIP Room 5 - Tooling Reset / Solo to Real Business" autour d'une table avec d'autres avatars virtuels.*
-
----
-
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Encore une fois, celui-ci fonctionne avec Cody et Mustafa là-dedans. C'est génial. Vidéo en direct. La vidéo ne se lance pas tant qu'on n'entre pas, par contre. Donc, honnêtement, je pense que c'est un bon choix. Dès que j'entre, par contre, la vidéo démarre. Sympathique. Belle attention. Toutes ces pièces. Génial. Ouais. Je veux dire, ça fait très haut de gamme. Voici une salle de crise pour les prix. Allons dedans. Moi et John là-dedans.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web / environnement virtuel 3D de type espace de réunion interactif.
-
-**Contenu textuel & Code** : Affichage de l'espace virtuel "VIP Wing", mini-carte en haut à droite, et affichage vidéo dans une pièce avec des participants.
-
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par l'avatar.
-
-![Capture d'écran montrant l'interface d'un espace virtuel en 3D (type salon ou espace de conférence virtuel) avec un avatar en mouvement près d'une salle VIP où l'on aperçoit une vidéoconférence.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001854_seg40.jpg)
-*⏱️ 00:18:54 — Capture d'écran montrant l'interface d'un espace virtuel en 3D (type salon ou espace de conférence virtuel) avec un avatar en mouvement près d'une salle VIP où l'on aperçoit une vidéoconférence.*
-
----
-
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et ensuite, nous avons l'after-party sympa. Cet after-party n'est pas encore aussi animé. Et nous avons plus de ballons de plage pour une raison quelconque, mais cet after-party est cool. Je veux dire, ça nous donne une bonne ambiance et il y a la rediffusion juste ici de notre session de questions-réponses de l'after-party, tout cela est en direct aussi. Génial. Bon. Allons sur la scène principale. Cela m'invite aussi à prendre un siège côté allée sur la scène principale, qui est tout droit en traversant l'expo. Donc en fait, traversons d'abord l'expo. Qu'est-ce que vous construisez ? Il y a beaucoup de gens qui parlent de différentes choses par ici. Waouh. Il y a aussi genre un petit truc de basketball. Est-ce que je peux le lancer ? Je peux. Est-ce que je dois regarder en l'air pour le lancer vers le haut ? D'accord.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de métavers / espace virtuel 3D interactif (type Gather ou similaire)
-
-**Contenu textuel & Code** : Interface utilisateur virtuelle montrant un salon VIP, un panneau d'affichage et des avatars d'utilisateurs
-
-**Action / Démonstration** : Navigation et exploration d'un espace virtuel 3D lors d'un after-party en ligne
-
-![Vue d'un espace virtuel 3D de type 'VIP Lounge & After-Party' avec des avatars d'utilisateurs et un écran de rediffusion.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001917_seg41.jpg)
-*⏱️ 00:19:17 — Vue d'un espace virtuel 3D de type 'VIP Lounge & After-Party' avec des avatars d'utilisateurs et un écran de rediffusion.*
-
----
-
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Eh bien, pas terrible. Mais bref, nous avons un stand AIS plus. Nous avons le stand Glido. Est-ce que ça diffuse en direct ? Ouais, ça diffuse définitivement en direct. Sympa. Nous avons le stand de l'hyper agent. Nous avons d'autres trucs par ici. OK, cool. Je vais aller dans la scène principale et voir si on peut prendre une place côté allée. Dès qu'on entre, tout commence à diffuser. On a une très belle ambiance de scène. Comment faire pour prendre une place côté allée par contre. Voilà. Il fallait que je trouve la bonne. Je prends la place côté allée. Il n'y a personne sur la scène, ce qui est bizarre. J'aimais bien quand il y avait du monde sur la scène dans les versions précédentes.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de monde virtuel / salon virtuel 3D (AIS Live)
-
-**Contenu textuel & Code** : Interface utilisateur affichant des avatars 3D, des stands virtuels et les écrans d'une conférence en direct.
-
-**Action / Démonstration** : Navigation et exploration de l'espace virtuel par le présentateur.
-
----
-
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Prenons un petit selfie. Bref, il y a moi et Pat là-haut. Pat est habillé comme un ouvrier du bâtiment. Comme vous pouvez le voir, nous faisions un petit appel de découverte fictif dans cet exemple. Je vais revenir par l'expo et nous allons sortir ici dans l'aile de l'atelier et simplement vérifier si ces pièces sont fondamentalement exactement les mêmes qu'elles devraient l'être. Maintenant, je ne peux plus vraiment discuter avec les gens. Je le pouvais avant, dans les versions précédentes, discuter avec les gens, ce que je trouvais être une très belle attention. Et nous avons l'atelier d'une piste de base. Est-ce que je peux m'asseoir ?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle 3D d'événement en ligne (type metavers/salon virtuel).
-
-**Contenu textuel & Code** : Environnement virtuel 3D interactif avec avatars, mini-carte en haut à droite et sous-titres contextuels.
-
-**Action / Démonstration** : Navigation et déplacement à l'intérieur d'un espace d'exposition virtuel en 3D.
-
----
-
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je ne peux pas m'asseoir. Je ne sais pas. Nous avons Liberty qui parle en ce moment même et elle est en train de parler et nous pouvons l'entendre. Donc c'est bien, mais ça ne me laisse pas m'asseoir. Et regardez ça. Je deviens assez instable juste ici. Ça buguait de la façon dont je marchais. Ça ne me laissera pour ainsi dire pas marcher. Ce n'est pas bon. Pareil. Nous avons cette piste avancée là-dedans. Génial. Donc dans l'ensemble, ils ont une ambiance très similaire. Je dirai que je suis impressionné par la façon dont ils ont été capables de raconter une histoire à partir de ce que nous faisions. Bibliothèque des points clés des intervenants. D'accord. C'est cool. Je ne pense pas que nous ayons vu cela depuis différents endroits, mais ce sont comme les ressources et ça montre des choses cool. Oh, waouh. Je
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application ou plateforme virtuelle 3D interactive (metaverse / espace virtuel d'événement).
-
-**Contenu textuel & Code** : Interface d'un espace virtuel affichant des titres de salles, des avatars et des indications textuelles (« Workshop A », « Workshop B », « Speaker Takeaways Library »).
-
-**Action / Démonstration** : Exploration et navigation en temps réel dans un monde virtuel 3D avec un avatar.
-
-![Le présentateur navigue dans un espace virtuel 3D intitulé « Workshop A - Foundation Track » avec un avatar.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002040_seg44.jpg)
-*⏱️ 00:20:40 — Le présentateur navigue dans un espace virtuel 3D intitulé « Workshop A - Foundation Track » avec un avatar.*
-
-![L'avatar se déplace dans une salle virtuelle intitulée « Workshop B - Advanced Track ».](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002048_seg44.jpg)
-*⏱️ 00:20:48 — L'avatar se déplace dans une salle virtuelle intitulée « Workshop B - Advanced Track ».*
-
-![L'avatar explore une autre zone virtuelle 3D intitulée « Speaker Takeaways Library ».](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002056_seg44.jpg)
-*⏱️ 00:20:56 — L'avatar explore une autre zone virtuelle 3D intitulée « Speaker Takeaways Library ».*
-
----
-
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> peut réellement ouvrir toutes ces choses et nous pouvons prendre des photos juste ici également. Super. Prendre une photo. Je peux aussi enregistrer ceci. Genre, je peux vraiment télécharger ceci. Et maintenant nous avons cette photo que nous venons de prendre à cet événement en direct de l'IA. Très bien. Eh bien, je pense qu'il est temps pour moi de tirer quelques conclusions, mais voyons d'abord ce que cette exécution nous a coûté. Cela a pris une heure et 35 minutes. C'était donc beaucoup plus rapide que le maximum. Cela n'a coûté que 18 dollars et 69 cents. Waouh. C'était donc un peu plus cher qu'élevé, moins cher que extra et beaucoup moins cher que maximum. Cela a également consommé 606 000 jetons et 42 vérifications avec zéro question. Maintenant, une autre chose intéressante à noter est que tout
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Visionneuse de photos Windows, outil de tableau de bord / conception (Excalidraw ou similaire).
-
-**Contenu textuel & Code** : Photo de l'événement virtuel avec des avatars, tableau de données avec des durées, des prix et des métriques.
-
-**Action / Démonstration** : Le présentateur montre la photo capturée lors de l'événement virtuel, puis passe à un tableau de bord ou un diagramme analytique.
-
-![L'image montre une visionneuse de photos affichant une capture d'écran d'un événement virtuel avec des avatars sur un tapis rouge arborant le logo 'AIS LIVE'.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002113_seg45.jpg)
-*⏱️ 00:21:13 — L'image montre une visionneuse de photos affichant une capture d'écran d'un événement virtuel avec des avatars sur un tapis rouge arborant le logo 'AIS LIVE'.*
-
-![L'image montre l'interface d'un outil de tableau de bord ou de conception, affichant un tableau comparatif avec des colonnes comme 'Extra', 'Max' et 'Ultracode'.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002122_seg45.jpg)
-*⏱️ 00:21:22 — L'image montre l'interface d'un outil de tableau de bord ou de conception, affichant un tableau comparatif avec des colonnes comme 'Extra', 'Max' et 'Ultracode'.*
-
----
-
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> ces exécutions, aucune d'entre elles n'a utilisé de sous-agent. J'ai vérifié et je me suis assuré qu'aucune d'elles n'avait utilisé de sous-agents. Elles ne voulaient déléguer aucun travail, ce qui était intéressant. Donc ces jetons sont ce qui a été reflété à l'intérieur de cette session. Évidemment, comme je l'ai dit, celle-ci a dépassé, vous savez, 950 000, donc, ou peu importe quelle est la fenêtre de compaction. Je ne la laisse généralement jamais monter aussi haut, mais comme c'était un objectif « slash » et que je n'étais pas impliqué, celle-ci a dû se compacter, mais les autres ont simplement fonctionné dans cette seule session. Et ce sont les statistiques globales. Et aussi, très rapidement, concernant les trucs d'UltraCode, les gars, je ne sais pas si vous l'avez remarqué, mais ces derniers temps, quand j'ai exécuté UltraCode, ça m'a fait bizarre. Ça a l'air un peu buggé. À quelques reprises, je l'ai exécuté
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau de données interactif / Interface de présentation (mode sombre).
-
-**Contenu textuel & Code** : Tableau avec des colonnes de niveaux (Low à Ultracode) et des lignes de mesures : temps d'exécution (Run time), coût API (API cost), jetons totaux (Total tokens), vérifications (Checks) et questions posées (Questions asked).
-
-**Action / Démonstration** : Le présentateur commente les résultats chiffrés du tableau comparatif des exécutions.
-
-![Un tableau comparatif montrant les différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec les métriques associées (Run time, API cost, Total tokens, Checks, Questions asked).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002149_seg46.jpg)
-*⏱️ 00:21:49 — Un tableau comparatif montrant les différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec les métriques associées (Run time, API cost, Total tokens, Checks, Questions asked).*
-
----
-
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> et je me suis dit, est-ce que ça tourne vraiment sous UltraCode ? Il a fait un peu plus de vérifications que ces autres-là, mais pour une raison quelconque, ça ne me semblait pas correct, car essentiellement ce qu'est UltraCode, c'est un effort supplémentaire et c'est juste comme utiliser des flux de travail plus dynamiques afin de faire les choses. Et donc à travers toutes mes recherches dans les journaux de session et même quand je regardais cette chose se construire dans UltraCode, ça ne lançait aucun de ces flux de travail dynamiques et j'ai essayé cela plusieurs fois.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application de tableau de bord ou interface web avec un tableau comparatif, incrustation vidéo du présentateur en bas à gauche.
-
-**Contenu textuel & Code** : Tableau avec des colonnes de métriques : Run time, API cost, Total tokens, Checks, Questions asked pour différents modes de performance.
-
-**Action / Démonstration** : Présentation des résultats comparatifs des différents niveaux de configuration et d'efforts d'IA.
-
-![Un tableau comparatif des différents niveaux d'efforts (Low, Medium, High, Extra, Max, Ultracode) affichant le temps d'exécution, le coût API, le total des tokens, les vérifications et les questions posées.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002218_seg47.jpg)
-*⏱️ 00:22:18 — Un tableau comparatif des différents niveaux d'efforts (Low, Medium, High, Extra, Max, Ultracode) affichant le temps d'exécution, le coût API, le total des tokens, les vérifications et les questions posées.*
-
----
-
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc, je ne sais pas si c'est un bug dans le harnais CloudCode en ce moment ou si c'est juste avec Opus 5.5, c'est un peu pire avec UltraCode en ce moment ou quelque chose comme ça, mais quoi qu'il en soit, ce sont les niveaux d'effort réels en bloc et tout cela semble avoir beaucoup de sens quand on regarde comment ils progressent. Alors, jetons un coup d'œil à cela. Coût maximum par rapport au minimum, nous avons eu 12,9 fois sur l'exécution la moins chère par rapport à l'exécution la plus chère, qui je crois était de 3,98 $ à 50,38 $.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau de bord / application web avec un tableau comparatif de performance.
-
-**Contenu textuel & Code** : Tableau avec les colonnes : Low, Medium, High, Extra, Max, Ultracode, et les lignes : Run time, API cost, Total tokens, Checks, Questions asked.
-
-**Action / Démonstration** : Présentation et analyse des différents niveaux d'effort des modèles d'IA.
-
-![Tableau comparatif des niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) affichant le temps d'exécution, le coût API, le nombre total de tokens, les vérifications et les questions posées.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002241_seg48.jpg)
-*⏱️ 00:22:41 — Tableau comparatif des niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) affichant le temps d'exécution, le coût API, le nombre total de tokens, les vérifications et les questions posées.*
-
----
-
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc c'était le minimum et le maximum. En ce qui concerne les vérifications maximales par rapport au minimum, nous avons eu un multiple de 2,3. Le total pour les six était de 127 dollars et l'ultracode était de 18,69 dollars. Examinons la vitesse par rapport au coût ici. Laissez-moi donc dézoomer un peu pour que nous puissions voir tout cela. Sur l'axe des X, nous avons le temps d'exécution. Sur l'axe des Y, nous avons le coût.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Système d'exploitation de bureau, application de présentation/visualisation de données
-
-**Contenu textuel & Code** : "Opus Effort Test"
-"Six sessions ran the same prompt at different effort settings. Low through Max are plotted in order; Ultracode (xhigh plus workflows) sits off the line as a hollow orange point."
-"12.9x"
-"Max cost vs Low"
-"2.3x"
-"Max checks vs Low"
-"$18.69"
-"Ultracode cost, 42 checks"
-"$127.65"
-"Total across all six"
-
-**Action / Démonstration** : Affichage de données et de statistiques relatives à un test d'effort.
-
-![Le présentateur, un homme asiatique portant un t-shirt noir, est à gauche de l'écran. À droite, un écran d'ordinateur affiche des statistiques relatives à un test d'effort appelé "Opus Effort Test". Les statistiques montrent le coût maximal par rapport au minimum (12,9x), le nombre maximal de vérifications par rapport au minimum (2,3x), le coût d'Ultracode (18,69 $) et le coût total sur six sessions (127,65 $).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002305_seg49.jpg)
-*⏱️ 00:23:05 — Le présentateur, un homme asiatique portant un t-shirt noir, est à gauche de l'écran. À droite, un écran d'ordinateur affiche des statistiques relatives à un test d'effort appelé "Opus Effort Test". Les statistiques montrent le coût maximal par rapport au minimum (12,9x), le nombre maximal de vérifications par rapport au minimum (2,3x), le coût d'Ultracode (18,69 $) et le coût total sur six sessions (127,65 $).*
-
----
-
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Donc j'ai l'impression que le mieux serait en bas à gauche, mais pas vraiment. Donc de toute façon, vous pouvez voir que low était bon marché et rapide. Max était lent et coûteux. Mais ce genre de graphique a généralement du sens. À mesure que vous augmentez l'effort, ça va coûter plus cher et ça va prendre un peu plus de temps. C'est logique. Voyons maintenant la croissance par rapport à low. Nous avons donc le temps d'exécution en bleu, les coûts de l'API en orange, les jetons en vert, et les vérifications en or jaunâtre, moutarde.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de test d'effort Opus affichant un graphique de dispersion.
-
-**Contenu textuel & Code** : Graphique avec en abscisse le temps d'exécution (Run time) et en ordonnée le coût en API ($), avec une infobulle sur le point "Low" indiquant 16m 43s - $3.91 - 191.3K tokens - 22 checks.
-
-**Action / Démonstration** : Le présentateur commente le graphique comparant le coût et la vitesse des différents niveaux d'effort.
-
-![Un graphique montrant la vitesse par rapport au coût (Speed vs cost) d'un test d'effort d'Opus avec différentes configurations (Low, Medium, High, Extra, Ultracode, Max).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002325_seg50.jpg)
-*⏱️ 00:23:25 — Un graphique montrant la vitesse par rapport au coût (Speed vs cost) d'un test d'effort d'Opus avec différentes configurations (Low, Medium, High, Extra, Ultracode, Max).*
-
----
-
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Et d'ailleurs, la raison pour laquelle UltraCode apparaît comme ça, c'est parce qu'il utilise réellement un niveau d'effort supplémentaire. Il est simplement incité et il utilise plutôt des flux de travail dynamiques et des choses comme ça, ce qui fait que, vous savez, cela a du sens parce qu'il utilisait essentiellement un supplément sous le capot. C'est aussi pourquoi Claude l'a étiqueté ici en orange. Quoi qu'il en soit, si nous continuons plus bas ici, cela a généralement du sens, n'est-ce pas ?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Graphique
-
-**Contenu textuel & Code** : Le graphique affiche les données relatives à "Run time", "API cost", "Tokens" et "Checks", avec des valeurs allant de 0x à 14x par rapport à un point de référence "Low".
-
-**Action / Démonstration** : Aucune action visible à l'écran, il s'agit d'une visualisation de données.
-
-![Un graphique intitulé "Growth relative to Low" montre la croissance de différentes métriques (Run time, API cost, Tokens, Checks) en fonction de l'effort. La métrique "API cost" atteint son point le plus élevé à 12,9 fois la valeur de référence "Low".](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002347_seg51.jpg)
-*⏱️ 00:23:47 — Un graphique intitulé "Growth relative to Low" montre la croissance de différentes métriques (Run time, API cost, Tokens, Checks) en fonction de l'effort. La métrique "API cost" atteint son point le plus élevé à 12,9 fois la valeur de référence "Low".*
-
----
-
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> À mesure que le niveau d'effort augmente, encore une fois, ces métriques vont augmenter. Temps d'exécution, coûts d'API, tokens et vérifications. Même chose ici avec le temps d'exécution. Ça nous donne juste en quelque sorte plus de graphiques linéaires individuels maintenant pour chacune de ces différentes métriques, comme le coût d'API, les vérifications, le total des tokens, le coût par vérification, et tous les chiffres réunis au même endroit. Donc des données plutôt cool.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface web de visualisation de données / graphique analytique.
-
-**Contenu textuel & Code** : Graphique linéaire comparant l'évolution des métriques (Run time 8.9x, API cost 12.9x, Tokens 6.2x, Checks 2.3x) selon différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode).
-
-**Action / Démonstration** : Le présentateur commente les différentes courbes de performance et de coûts affichées à l'écran.
-
-![Capture d'écran montrant un graphique de résultats d'un test d'effort ("Opus Effort Test") avec plusieurs courbes représentant les métriques (coût API, temps d'exécution, tokens, vérifications) en fonction du niveau d'effort.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002406_seg52.jpg)
-*⏱️ 00:24:06 — Capture d'écran montrant un graphique de résultats d'un test d'effort ("Opus Effort Test") avec plusieurs courbes représentant les métriques (coût API, temps d'exécution, tokens, vérifications) en fonction du niveau d'effort.*
-
----
-
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je dirais que rien ici n'est vraiment choquant. Ce qui m'a le plus choqué, ce sont ces résultats. Mes deux principaux favoris étaient high, qui est celui-ci, et extra, qui est celui-là. Je dois donc retourner ici et me rappeler ce que j'en pensais. J'ai vraiment aimé cette sensation. Celui-ci donne aussi l'impression d'être le plus fluide. La physique était sympa. La porte coulissante en verre était sympa. Je n'ai pas vraiment remarqué beaucoup de bugs dans celui-ci, ce qui est ce que j'ai vraiment aimé.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Navigateur web affichant une application virtuelle 3D (metaverse/espace virtuel de conférence).
-
-**Contenu textuel & Code** : Interface utilisateur de navigation 3D avec les touches de déplacement (WASD, Mouse, Space) et affichage d'une place virtuelle.
-
-**Action / Démonstration** : Exploration interactive de l'espace virtuel de conférence "AIS LIVE".
-
-![Écran d'accueil de l'application web 3D "AIS LIVE" avec le bouton "Enter the Venue".](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002426_seg53.jpg)
-*⏱️ 00:24:26 — Écran d'accueil de l'application web 3D "AIS LIVE" avec le bouton "Enter the Venue".*
-
-![Vue à la première/troisième personne dans l'univers virtuel "AIS Live Plaza" montrant des avatars et des bannières.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002431_seg53.jpg)
-*⏱️ 00:24:31 — Vue à la première/troisième personne dans l'univers virtuel "AIS Live Plaza" montrant des avatars et des bannières.*
-
-![Navigation dans la place virtuelle "AIS Live Plaza" avec des blocs lumineux formant le mot "LIVE".](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002435_seg53.jpg)
-*⏱️ 00:24:35 — Navigation dans la place virtuelle "AIS Live Plaza" avec des blocs lumineux formant le mot "LIVE".*
-
----
-
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Je ne me rappelle pas si celui-ci était un de ceux où, oh, je ne pouvais pas parler aux gens par contre. Je pouvais juste traverser tout droit à travers eux. Je ne pouvais pas m'asseoir dans celui-ci non plus. Voici une autre petite chose visuelle où je fais fondamentalement juste traverser tout droit ce mur. Donc je n'aime pas trop ça. Mais je pense, est-ce que c'était celui où je pouvais m'asseoir dans ces sessions ? Non. D'accord. Donc je ne pense pas que celui-ci était mon gagnant alors. Celui-ci est super haut. Je pense que c'est le gagnant. Ouais. Je pense que c'était celui que j'aimais le plus. J'adorais toute cette ambiance. J'adorais que je pouvais clavarder avec les gens. C'était définitivement celui où nous pouvions venir ici et nous pouvions nous asseoir où nous voulions, prendre un siège, nous lever. Je pouvais lire ces trois offres et je pouvais clavarder avec eux. J'ai aussi réalisé qu'il y avait de petites sections pour simuler des appels de découverte ici aussi.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web interactive / plateforme virtuelle AIS LIVE
-
-**Contenu textuel & Code** : Interface utilisateur 3D, navigation par avatars, flux vidéo en direct d'événements virtuels
-
-**Action / Démonstration** : Navigation et exploration d'un environnement virtuel de conférence en ligne
-
-![L'écran montre un espace virtuel 3D avec des avatars d'utilisateurs et une interface de conférence interactive "Main Stage".](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002448_seg54.jpg)
-*⏱️ 00:24:48 — L'écran montre un espace virtuel 3D avec des avatars d'utilisateurs et une interface de conférence interactive "Main Stage".*
-
-![L'écran affiche un avatar naviguant dans un couloir virtuel d'un événement en ligne avec affichage de la "Main Stage".](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002505_seg54.jpg)
-*⏱️ 00:25:05 — L'écran affiche un avatar naviguant dans un couloir virtuel d'un événement en ligne avec affichage de la "Main Stage".*
-
----
-
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Nous avons des produits dérivés et des sacs en tissu, ce qui est de la vraie physique. J'aime bien ça. C'était celui où l'on pouvait s'asseoir partout. Oui, j'ai vraiment, vraiment aimé celui-là. Bien que je pense que le seul inconvénient de celui-ci, c'est qu'il n'y avait pas vraiment d'after party VIP, parce que je crois que c'était le salon. Et je pense que c'était la seule partie de la section VIP, c'est-à-dire ces différentes pièces où l'on pouvait entrer et s'asseoir. Mais à part ça, il n'offrait pas une super expérience VIP par rapport à certains des autres que nous avons vus. Donc mon gagnant ici va définitivement être Extra. Extra a fait un travail phénoménal. Cela représentait environ la moitié de la durée et la moitié du coût de Max. Donc Max, je pense, c'était tout simplement beaucoup trop pour pas assez de bien. Je pense que les points forts étaient corrects. Ça pouvait,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application virtuelle 3D / Navigateur web ou application de tableau de données
-
-**Contenu textuel & Code** : Environnement virtuel avec avatars et tableau de statistiques (Run time, API cost, Total tokens, Checks, Questions asked)
-
-**Action / Démonstration** : Navigation dans l'espace virtuel 3D et sélection de données sur un tableau comparatif
-
-![Vue à la première personne dans un environnement virtuel 3D représentant un couloir de conférence.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002523_seg55.jpg)
-*⏱️ 00:25:23 — Vue à la première personne dans un environnement virtuel 3D représentant un couloir de conférence.*
-
-![Avatars virtuels assis autour d'une table de réunion dans le monde virtuel.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002532_seg55.jpg)
-*⏱️ 00:25:32 — Avatars virtuels assis autour d'une table de réunion dans le monde virtuel.*
-
-![Tableau de comparaison des coûts et performances d'Opus 5.5 Efforts montrant différentes catégories (Low, Medium, High, Extra, Max, Ultracode).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002542_seg55.jpg)
-*⏱️ 00:25:42 — Tableau de comparaison des coûts et performances d'Opus 5.5 Efforts montrant différentes catégories (Low, Medium, High, Extra, Max, Ultracode).*
-
----
-
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> avec peut-être un ou deux prompts de plus, arrivé là où je l'aimais vraiment. Mais pour un objectif de niveau slash, Extra a fourni un résultat incroyable ici. Je n'ai pas adoré Medium. Et pour une grande partie de mon travail de réflexion et de ce que je fais, Medium fonctionne très bien. Mais pour cette tâche précisément, j'avais besoin de beaucoup de raisonnement. Il devait passer par des tonnes de choses. Il devait passer par des tonnes de vidéos. Il devait trouver beaucoup de choses à l'intérieur de mes projets. Il devait créer une expérience et raconter une histoire à partir de tout. Je pense qu'Extra a fait un travail phénoménale. En général, cependant, j'ai aimé beaucoup de ces résultats, mais Extra est celui avec lequel je voudrais commencer dès maintenant. Si je voulais vraiment en faire une application et un monde super, super soignés et cools, je commencerais par le résultat d'Extra et probablement
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Tableau comparatif sur fond sombre, avec une incrustation vidéo du présentateur en bas à gauche.
-
-**Contenu textuel & Code** : Tableau de métriques comparatives : Run time (de 16m 43s à 2h 28m), API cost (de $3.91 à $50.38), Total tokens (de 191.3K à 1.18M), Checks, et Questions asked.
-[ACCORD_OU_ACTION] Le présentateur analyse les résultats des différents niveaux d'effort affichés dans le tableau.
+**Contenu textuel & Code** : Textes publicitaires, prompts de génération vidéo ("Vertical 9:16 UGC iPhone-style video..."), options de format Kling 3.0.
+[DESC_IMAGE_3] Visualisation et démonstration de créations publicitaires générées par intelligence artificielle.
 
 **Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
-![Un tableau comparatif montrant les performances de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec les métriques associées (Run time, API cost, Total tokens, Checks, Questions asked).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002600_seg56.jpg)
-*⏱️ 00:26:00 — Un tableau comparatif montrant les performances de différents niveaux d'effort (Low, Medium, High, Extra, Max, Ultracode) avec les métriques associées (Run time, API cost, Total tokens, Checks, Questions asked).*
+![Interface web montrant une vidéo verticale générée par IA d'une femme portant un casque audio, avec le titre "Building a headphone brand from scratch".](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000445_seg11.jpg)
+*⏱️ 00:04:45 — Interface web montrant une vidéo verticale générée par IA d'une femme portant un casque audio, avec le titre "Building a headphone brand from scratch".*
+
+![Interface web affichant une publicité publicitaire avec une image de produit "murmur - pocket-sized quiet" et un prompt de génération vidéo.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000449_seg11.jpg)
+*⏱️ 00:04:49 — Interface web affichant une publicité publicitaire avec une image de produit "murmur - pocket-sized quiet" et un prompt de génération vidéo.*
+
+![Interface web montrant une seconde vidéo UGC verticale générée par IA d'un homme dans un appartement ensoleillé.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000454_seg11.jpg)
+*⏱️ 00:04:54 — Interface web montrant une seconde vidéo UGC verticale générée par IA d'un homme dans un appartement ensoleillé.*
 
 ---
 
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
+### ⏱️ `[00:04:59 - 00:05:24]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> continuez d'itérer avec Extra. Donc de toute façon, les gars, c'était l'expérience. J'espère que vous avez trouvé cela instructif. J'espère que vous avez appris quelque chose de nouveau. Et si c'est le cas, veuillez mettre un pouce bleu. Ça m'aide énormément. Et comme toujours, je vous remercie d'être arrivés jusqu'à la fin de la vidéo, et je vous dis à la prochaine. Merci à tous, les amis.
+> Nous avons une image, nous avons une publicité, et ensuite nous avons une vidéo de quelqu'un qui utilise le produit, comme vous pouvez le voir. Ensuite, j'ai dit, prenez le halo, qui était le premier, et j'ai dit, utilisez le studio marketing de Higfield pour créer une vidéo de lancement. Donc Higfield a ici un truc vraiment sympa appelé studio marketing, où vous déposez un produit ou un lien vers un produit et vous pouvez même insérer votre propre avatar personnalisé et cela le transforme fondamentalement en un format différent.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Aucune interface logicielle ou technique visible.
+**Interface & Outils** : Interface web de génération de vidéo (Kling 3.0)
 
-**Contenu textuel & Code** : Aucun code, terminal, prompt ou donnée affiché à l'écran.
+**Contenu textuel & Code** : Lecteur vidéo vertical avec boutons 'Download' et 'Recreate'
 
-**Action / Démonstration** : Le présentateur parle pour conclure sa vidéo et saluer son audience.
+**Action / Démonstration** : Visionnage de la vidéo générée montrant une personne utilisant le produit publicitaire
+
+![Interface web montrant une vidéo générée d'un homme utilisant un casque audio, avec le présentateur en médaillon dans le coin inférieur gauche.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000506_seg12.jpg)
+*⏱️ 00:05:06 — Interface web montrant une vidéo générée d'un homme utilisant un casque audio, avec le présentateur en médaillon dans le coin inférieur gauche.*
+
+---
+
+### ⏱️ `[00:05:24 - 00:05:46]` | Segment #13
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc l'hypermotion, c'est un peu comme ça. Ça pourrait être un déballage. Vous savez, il y a d'autres styles, il y a l'UGC. Il y a tellement de choses différentes que vous pouvez faire ici pour le marketing. Genre, ces hypermotions sont super, super cool. Je veux dire, regardez ça. Donc je lui ai dit d'utiliser ce format de studio marketing à l'intérieur de Claude juste ici. Donc il regarde le studio marketing, il a trouvé quoi faire, et il revient avec ça.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Marketing Studio d'Higgsfield, interface web, assistant Claude 4.7
+
+**Contenu textuel & Code** : Modèles de vidéos marketing (Hyper Motion, UGC, Unboxing, TV Spot) et prompts textuels pour la génération de campagnes publicitaires.
+
+**Action / Démonstration** : Sélection et prévisualisation de différents formats de vidéos publicitaires à l'aide des presets de la plateforme.
+
+![Interface d'une application marketing présentant une grille de modèles de vidéos publicitaires (Hyper Motion, Unboxing, UGC).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000530_seg13.jpg)
+*⏱️ 00:05:30 — Interface d'une application marketing présentant une grille de modèles de vidéos publicitaires (Hyper Motion, Unboxing, UGC).*
+
+![Interface d'un assistant conversationnel (Claude) affichant des instructions pour intégrer l'outil Marketing Studio d'Higgsfield.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000540_seg13.jpg)
+*⏱️ 00:05:40 — Interface d'un assistant conversationnel (Claude) affichant des instructions pour intégrer l'outil Marketing Studio d'Higgsfield.*
+
+---
+
+### ⏱️ `[00:05:47 - 00:06:07]` | Segment #14
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Comme vous pouvez le voir, c'est cool, mais ce n'est pas du tout dans le style hyper motion. C'est très calme. On a cette scène bizarre où la personne touche le casque d'une manière un peu intime. Je ne sais pas trop ce que ça vient faire là, mais bon, ça va, non ? Du tout, je me suis dit, bon, c'est un peu, vous savez, pas vraiment ce qu'on veut. Je veux que tu utilises la variante hyper motion, et je veux que tu rendes ça plus captivant. Et je veux aussi une version 16 par 9.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de type application IA conversationnelle (Claude-like / agent conversationnel).
+
+**Contenu textuel & Code** : Prompt utilisateur : "Generate me a hypermotion variant that's a little bit more engaging. This one was way too calm..."
+
+**Action / Démonstration** : L'utilisateur visualise et discute des résultats de génération vidéo de casques audio au sein d'une interface de chat avec un modèle d'IA.
+
+![Interface de chat montrant un prompt demandant de générer une variante hyper motion plus engageante pour un casque audio.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000602_seg14.jpg)
+*⏱️ 00:06:02 — Interface de chat montrant un prompt demandant de générer une variante hyper motion plus engageante pour un casque audio.*
+
+---
+
+### ⏱️ `[00:06:07 - 00:06:31]` | Segment #15
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc je voulais que ça attire plus l'attention. Et puis c'est là que ça revient et ça nous donne celui-ci, que j'adore absolument. Je pense que celui-ci est bien. Mais ensuite, pour la version 16 par 9, ça a dit que c'était du contenu sensible et ça m'a remboursé mes crédits. Donc j'ai dit, ok, réessaie. Ça a fait exactement la même chose. Et puis finalement, j'ai pu dire, ok, pourquoi ça a été refusé ? Montre-moi le prompt, comprends pourquoi c'est arrivé.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de génération de vidéo (type application IA ou plateforme de workflow).
+
+**Contenu textuel & Code** : Texte de prompt descriptif pour un produit de casque audio ("Hyper Motion product showcase for Murmur Halo..."), tags "Sensitive content" et "Credits refunded".
+
+**Action / Démonstration** : Navigation et affichage des résultats de génération vidéo avec un message de modération de contenu sensible.
+
+![Interface web montrant la vidéo générée d'un casque audio avec les boutons de téléchargement et de recréation.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000613_seg15.jpg)
+*⏱️ 00:06:13 — Interface web montrant la vidéo générée d'un casque audio avec les boutons de téléchargement et de recréation.*
+
+![Interface web montrant un prompt et un message d'erreur indiquant "Sensitive content" et "Credits refunded".](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000619_seg15.jpg)
+*⏱️ 00:06:19 — Interface web montrant un prompt et un message d'erreur indiquant "Sensitive content" et "Credits refunded".*
+
+---
+
+### ⏱️ `[00:06:31 - 00:06:58]` | Segment #16
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Il m'a lu le prompt. Et puis il a dit, bon, je pense que c'est à cause de ces mots, tu vois, tout ce genre de trucs. Donc je vais me débarrasser de ça. Il le refait. Et ensuite j'ai pu obtenir cette version, que vous avez aussi vue dans l'intro de cette vidéo. Donc ce n'est pas parfait, mais ce qu'on est capable de faire, c'est qu'on est capable de créer des compétences et des trucs autour de ça pour que ça ne se reproduise plus, où on se prend des blocs de contenu sensible. Bon. Alors un autre exemple rapide, je dépose une image. Donc disons qu'on a déjà un produit avec lequel on veut commencer.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web de génération vidéo IA (style interface de chat avec LLM).
+
+**Contenu textuel & Code** : "Hyper Motion product launch video for Murmur Halo premium walnut and bone over-ear headphones..."
+
+**Action / Démonstration** : Génération et affichage d'une vidéo après modification du prompt pour éviter la censure.
+
+![Interface montrant un prompt vidéo affiné et nettoyé pour contourner les déclencheurs de modération.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000638_seg16.jpg)
+*⏱️ 00:06:38 — Interface montrant un prompt vidéo affiné et nettoyé pour contourner les déclencheurs de modération.*
+
+![Affichage de la vidéo finale générée montrant une femme marchant avec un casque audio dans un espace lumineux.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000645_seg16.jpg)
+*⏱️ 00:06:45 — Affichage de la vidéo finale générée montrant une femme marchant avec un casque audio dans un espace lumineux.*
+
+![Interface montrant un message d'erreur de contenu sensible et le remboursement des crédits associés.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000651_seg16.jpg)
+*⏱️ 00:06:51 — Interface montrant un message d'erreur de contenu sensible et le remboursement des crédits associés.*
+
+---
+
+### ⏱️ `[00:06:58 - 00:07:22]` | Segment #17
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Je veux des publicités et des trucs pour ça. Alors je lui demande, tu sais, de me faire quelques publicités prêtes pour Instagram pour ce produit. Et s'il a des questions à poser, alors il m'a posé une chose et je lui ai donné une réponse rapide. Et ensuite, il commence à générer des trucs. Donc voici une image. Maintenant, ce que vous remarquerez, c'est qu'il s'est débarrassé de certains des mots. Donc sur la photo originale, nous avions comme des petites légendes et du sous-texte supplémentaires ici, et il s'en est débarrassé.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web conversationnelle (style Claude / interface de génération de contenu).
+
+**Contenu textuel & Code** : Prompt utilisateur demandant des publicités Instagram avec le connecteur Higgsfield et réponse textuelle de l'assistant IA.
+
+**Action / Démonstration** : Génération et affichage d'un visuel publicitaire pour le produit à partir des consignes de l'utilisateur.
+
+![Interface d'un assistant conversationnel affichant une réponse avec des propositions de direction créative pour des publicités Instagram.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000704_seg17.jpg)
+*⏱️ 00:07:04 — Interface d'un assistant conversationnel affichant une réponse avec des propositions de direction créative pour des publicités Instagram.*
+
+![Affichage d'une image générée représentant une bouteille de produit « Sleep Support » sur une table dans un cadre chaleureux.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000710_seg17.jpg)
+*⏱️ 00:07:10 — Affichage d'une image générée représentant une bouteille de produit « Sleep Support » sur une table dans un cadre chaleureux.*
+
+---
+
+### ⏱️ `[00:07:22 - 00:07:58]` | Segment #18
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc, nous devons être plus précis en lui disant de ne pas modifier du tout l'image de référence. C'est très important. Mais bref, c'est une jolie photo. Celle-ci est sympa aussi. C'est un peu plus du genre photo à effets. Et puis nous avons aussi celle-là, qui ressemble un peu à une story Instagram, ce qui n'est pas exactement ce que je cherchais, mais elle a l'air bien en ce qui concerne l'interface et le réalisme. Donc il a dit, Hé, nous en avons une calme. Nous en avons une cinématographique et nous en avons une sorte de réaliste et proche de nous. Donc maintenant, nous sommes capables de continuer à itérer avec ce que nous voulons, mais j'ai dit, ce n'est pas assez bien. J'have besoin que ce soient de vraies publicités prêtes à être diffusées sur différents réseaux sociaux. Et puis il revient. Il nous en génère d'autres. Donc celle-ci a du texte. Il est écrit, arrêtez de compter les moutons, commencez à faire des nuits complètes.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web avec le connecteur Higgsfield et le modèle d'IA Opus 4.7.
+
+**Contenu textuel & Code** : Image générée représentant une bouteille bleue de 'Sleep Support' entourée de fumée, avec une boîte de dialogue de message en bas et l'appel de fonction 'Higgsfield_generate_image'.
+
+**Action / Démonstration** : Le présentateur commente l'image générée tout en affichant l'interface de l'application.
+
+![Interface web montrant une image générée d'un flacon de produit 'Sleep Support' avec de la fumée, et le présentateur en médaillon en bas à gauche.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000731_seg18.jpg)
+*⏱️ 00:07:31 — Interface web montrant une image générée d'un flacon de produit 'Sleep Support' avec de la fumée, et le présentateur en médaillon en bas à gauche.*
+
+---
+
+### ⏱️ `[00:07:58 - 00:08:17]` | Segment #19
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Ça a un côté un peu cinématique. Celui-là, je l'ai trouvé plutôt cool. Nous avons aussi celui-ci, que j'ai adoré : dormir en 10 minutes, s'endormir plus vite, rester endormi plus longtemps, se réveiller sans tracas. J'adore absolument celui-ci aussi. Et vous pouvez voir qu'avec très peu de consignes, tout ce que j'ai dit, c'est : hé, crée-moi des publicités prêtes pour Instagram. Il comprend les titres et l'espacement. Et je pensais juste que ceux-là avaient l'air vraiment, vraiment bien.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de Higgsfield avec panneau de génération de contenu publicitaire.
+
+**Contenu textuel & Code** : Publicité pour 'SLEEP SUPPORT' avec les mentions 'Asleep in 12 minutes' et options d'édition.
+
+**Action / Démonstration** : Présentation d'un exemple de visuel publicitaire généré par IA et exploration des options d'animation.
+
+![Interface web affichant une publicité générée pour un produit de sommeil avec le texte 'ASLEEP IN 12 MINUTES'.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000802_seg19.jpg)
+*⏱️ 00:08:02 — Interface web affichant une publicité générée pour un produit de sommeil avec le texte 'ASLEEP IN 12 MINUTES'.*
+
+![Interface de Higgsfield montrant une publicité pour un complément de sommeil avec les options 'Animate', 'Download', 'Edit', 'Recreate'.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000807_seg19.jpg)
+*⏱️ 00:08:07 — Interface de Higgsfield montrant une publicité pour un complément de sommeil avec les options 'Animate', 'Download', 'Edit', 'Recreate'.*
+
+![Retour à l'affichage standard de l'interface web de la publicité pour le produit de sommeil.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000812_seg19.jpg)
+*⏱️ 00:08:12 — Retour à l'affichage standard de l'interface web de la publicité pour le produit de sommeil.*
+
+---
+
+### ⏱️ `[00:08:18 - 00:08:39]` | Segment #20
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Et puis nous en avions un autre ici également. Donc le problème principal est qu'il n'avait pas la bouteille qui apparaissait exactement comme nous le voulions dans l'image de référence, ce qui est un problème assez facile à régler. En voici donc un autre. Vous n'avez pas encore vu celui-ci parce qu'il est beaucoup plus lent et que ce n'est pas exactement le style hyper-mouvement, mais c'est quand même une petite animation sympa. Et puis nous avons aussi celui-ci, qui montre simplement la personne en train de le regarder.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de génération d'images et de vidéos, avec le modèle Opus 4.7.
+
+**Contenu textuel & Code** : Générations visuelles publicitaires pour Instagram avec une bouteille de complément alimentaire.
+[DESC_ACTION_1] Le présentateur commente le résultat visuel de l'image générée.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+![Interface web affichant une image générée d'une bouteille de complément "SLEEP SUPPORT" avec le texte "Sleep is a skill", et une incrustation vidéo du présentateur en bas à gauche.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000823_seg20.jpg)
+*⏱️ 00:08:23 — Interface web affichant une image générée d'une bouteille de complément "SLEEP SUPPORT" avec le texte "Sleep is a skill", et une incrustation vidéo du présentateur en bas à gauche.*
+
+![Interface web montrant une animation vidéo verticale avec de la fumée et des effets de lumière autour d'une bouteille de "SLEEP SUPPORT".](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000828_seg20.jpg)
+*⏱️ 00:08:28 — Interface web montrant une animation vidéo verticale avec de la fumée et des effets de lumière autour d'une bouteille de "SLEEP SUPPORT".*
+
+---
+
+### ⏱️ `[00:08:39 - 00:08:57]` | Segment #21
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc ce sont des vidéos correctes, mais elles ne sont pas prêtes pour faire de la publicité. Donc on a dû être un peu plus précis encore. Donc j'ai dit, donne-m'en une qui soit rythmée et énergique. Elle a des coupes de caméra, elle a des ralentis, elle a des gros plans. Et ensuite on a eu celle que vous avez vue plus tôt, qui était juste ici. Ça m'a pris quelques essais de plus. Et ensuite on a eu celle-ci que vous avez vue dans la démo avec les gélules.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de type assistant IA / LLM (Claude)
+
+**Contenu textuel & Code** : Texte du prompt : "Give me one that is fast-paced and energetic and it has: • camera cuts • slow motion • close-ups..."
+
+**Action / Démonstration** : Affichage d'un prompt dans l'interface de discussion avec les instructions précises pour la génération de vidéos publicitaires.
+
+![Capture d'écran montrant une interface de chat (style Claude) avec un prompt détaillé demandant une vidéo rythmée et énergique avec des coupes de caméra et des ralentis.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000843_seg21.jpg)
+*⏱️ 00:08:43 — Capture d'écran montrant une interface de chat (style Claude) avec un prompt détaillé demandant une vidéo rythmée et énergique avec des coupes de caméra et des ralentis.*
+
+---
+
+### ⏱️ `[00:08:57 - 00:09:30]` | Segment #22
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Je pensais que celui-ci était vraiment, vraiment bon. Donc ce qui est génial avec ça, c'est que vous pouvez prendre une idée très vague de haut niveau. Vous pouvez dire des mots comme engageant, cool, au rythme rapide, des choses qui sont émotionnelles, et Claude fait le travail difficile de conception du prompt, puis envoie le tout au studio marketing de Higgs Field, qui possède un joli modèle pré-entraîné en arrière-plan, et ensuite vous obtenez des trucs comme ça en quelques minutes. Et puis ce que vous pouvez faire, c'est dire : hé, celui-ci était une publicité gagnante, vous savez, ce format, ce style, cette palette de couleurs, je veux tout un tas de versions différentes de celle-ci à tester, et il va simplement analyser, planifier et élaborer une stratégie sur les différentes versions, les différents en-têtes.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web d'assistant IA (type Claude Artifacts/Interface de génération).
+
+**Contenu textuel & Code** : Génération de contenu publicitaire vidéo, messages textuels décrivant des variations rapides et dynamiques de vidéos.
+[DESC_IMAGE_1] L'utilisateur présente le résultat de la génération d'une publicité vidéo via l'interface IA.
+[DESC_IMAGE_2] Affichage en plein écran d'un visuel publicitaire généré pour un produit d'aide au sommeil.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+![Interface web montrant une vidéo générée pour Instagram intitulée 'Instagram ads with Higgsfield connector' avec un aperçu vidéo vertical et une zone de chat.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000906_seg22.jpg)
+*⏱️ 00:09:06 — Interface web montrant une vidéo générée pour Instagram intitulée 'Instagram ads with Higgsfield connector' avec un aperçu vidéo vertical et une zone de chat.*
+
+![Gros plan sur une publicité vidéo générée affichant un flacon de complément alimentaire avec le texte 'ASLEEP IN 12 MINUTES'.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000922_seg22.jpg)
+*⏱️ 00:09:22 — Gros plan sur une publicité vidéo générée affichant un flacon de complément alimentaire avec le texte 'ASLEEP IN 12 MINUTES'.*
+
+---
+
+### ⏱️ `[00:09:30 - 00:09:49]` | Segment #23
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> et ensuite nous allons simplement tous les fabriquer. Et maintenant, vous avez tellement plus de pièces à tester. Et en fin de compte, une fois que vous avez trouvé votre combinaison gagnante, vous y injectez simplement plus de budget et vous essayez vraiment de faire croître votre produit. D'accord, c'est donc comme ça qu'on fait dans Claude. Vous utilisez le MCP Higgs Build. C'est super facile. C'est génial pour faire un peu de POC là-dedans. Maintenant, il y a beaucoup de choses que nous voulons améliorer.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web (semblable à un outil de génération ou un assistant IA type Claude/ChatGPT).
+
+**Contenu textuel & Code** : Texte de prompt pour la génération d'image publicitaire (« Premium sleep supplement product advertisement... ») et image générée affichant une bouteille de complément avec le texte « 7 HOURS. UNINTERRUPTED. ».
+
+**Action / Démonstration** : Visualisation d'une variation d'annonce publicitaire générée par IA pour les tests.
+
+![Interface web montrant la génération d'une publicité pour un produit de sommeil avec une image générée et un prompt textuel.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000935_seg23.jpg)
+*⏱️ 00:09:35 — Interface web montrant la génération d'une publicité pour un produit de sommeil avec une image générée et un prompt textuel.*
+
+---
+
+### ⏱️ `[00:09:49 - 00:10:08]` | Segment #24
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Le truc des images. On veut plus de contrôle. On veut créer des compétences réutilisables. On veut créer des automatisations. Et c'est là qu'on va passer de Claude à Claude code. Maintenant, n'ayez pas peur. On va utiliser l'application de bureau juste pour le tutoriel d'aujourd'hui. Et tout ce à quoi ça ressemble, c'est Claude. Vous avez un chat et vous avez un projet et vous pouvez développer beaucoup plus de puissance dans cette interface.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application de bureau Claude
+
+**Contenu textuel & Code** : Prompt utilisateur demandant de créer des variations publicitaires à partir d'une image de référence, et liste des sessions actives sur le tableau de bord.
+
+**Action / Démonstration** : Navigation et démonstration de l'interface de bureau Claude pour la gestion des sessions et des prompts d'automatisation.
+
+![Interface de l'application Claude montrant une conversation de création de variations publicitaires avec une image de référence.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_000954_seg24.jpg)
+*⏱️ 00:09:54 — Interface de l'application Claude montrant une conversation de création de variations publicitaires avec une image de référence.*
+
+![Tableau de bord de l'application Claude affichant les sessions récentes, le menu latéral et la barre de saisie pour décrire une tâche.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001003_seg24.jpg)
+*⏱️ 00:10:03 — Tableau de bord de l'application Claude affichant les sessions récentes, le menu latéral et la barre de saisie pour décrire une tâche.*
+
+---
+
+### ⏱️ `[00:10:08 - 00:10:28]` | Segment #25
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc je vais vous montrer comment faire. Donc la première chose que vous allez vouloir faire, c'est que vous allez vouloir ouvrir un dossier vide. Vous allez aller dans votre Finder, où vous voulez l'avoir. Donc où que vous vouliez l'avoir, vous pouvez simplement l'avoir directement sur votre bureau. Vous allez créer un nouveau dossier et appeler ça du genre Higgs Field Marketing Studio ou peu importe comment vous voulez l'appeler. Donc dans mon cas, ça s'appelle Higgs Field Studio. Donc la toute première chose que nous devons faire, c'est de tout configurer.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web ou interface de bureau d'IA avec un panneau latéral de sessions ("New session", "Routines", "Customize") et une barre de saisie en bas.
+
+**Contenu textuel & Code** : Liste de sessions récentes ("Notification responses", "Skool wins engagement") et champ de texte "Describe a task or ask a question".
+
+**Action / Démonstration** : Le présentateur explique l'utilisation de l'outil tout en affichant l'interface principale de l'application à l'écran.
+
+![Interface d'une application d'IA (semblable à un assistant de type Cursor ou interface de sessions de code) avec le présentateur en médaillon dans le coin inférieur gauche.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001013_seg25.jpg)
+*⏱️ 00:10:13 — Interface d'une application d'IA (semblable à un assistant de type Cursor ou interface de sessions de code) avec le présentateur en médaillon dans le coin inférieur gauche.*
+
+---
+
+### ⏱️ `[00:10:29 - 00:11:01]` | Segment #26
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc laissez-moi vous montrer la façon dont je rédigerais un prompt pour configurer ça. J'irais dans Higgsfield. Je vais cliquer sur MCP et CLI. Et quand on fait spécifiquement ça pour Claude, ou si on veut faire ça avec OpenClaw ou Hermes ou peu importe, on veut faire ça avec la CLI au lieu du MCP. Maintenant, la raison étant qu'au final, fonctionnellement, ils peuvent faire à peu près la même chose, mais le MCP a tous ces outils. Donc d'un point de vue des tokens, c'est en fait plus cher d'utiliser un MCP. Et la CLI est juste meilleure pour les agents. Ça va être plus rapide. Ça va être plus efficace. Comme je l'ai dit, nous allons utiliser
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Navigateur web (site Higgsfield)
+
+**Contenu textuel & Code** : Commandes affichées : `npm install -g @higgsfield/cli`, `higgsfield auth login`, et `npx skills add higgsfield-ai/ski...`
+
+**Action / Démonstration** : Navigation sur l'onglet CLI pour expliquer l'installation et l'authentification de l'outil en ligne de commande.
+
+![Page web de Higgsfield montrant la section MCP & CLI pour connecter l'outil à Claude, OpenClaw, Hermes, etc.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001037_seg26.jpg)
+*⏱️ 00:10:37 — Page web de Higgsfield montrant la section MCP & CLI pour connecter l'outil à Claude, OpenClaw, Hermes, etc.*
+
+---
+
+### ⏱️ `[00:11:01 - 00:11:36]` | Segment #27
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> l'interface de ligne de commande. Donc tout ce que vous avez à faire, c'est de copier exactement ces trois commandes. Je vais copier ceci. Je vais copier ceci. Et je vais copier ceci. Et je vais aller dans Claude Code et dire, ce projet est essentiellement configuré pour utiliser Higgs Field. Et il va être configuré pour une sorte de studio créatif, un studio marketing. J'ai besoin que tu installes l'interface de ligne de commande de Higgs Field. J'ai besoin que tu exécutes ensuite l'authentification pour moi afin que je me connecte. Et ensuite, j'ai besoin que tu installes les compétences d'agent Higgs Field. Donc voici ci-dessous les trois commandes. Et voilà. Je colle les trois commandes et ensuite je lance le tout. Et ça va vous configurer. Ça va installer l'interface de ligne de commande et ensuite ça va
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web d'agent IA / application de chat (Claude Code ou interface similaire avec panneau latéral et sessions).
+
+**Contenu textuel & Code** : Sessions récentes affichées ("Notification responses", "Skool wins engagement"), options dans la barre latérale ("New session", "Routines", "Customize", "Higgsfield Studio"), et la zone de saisie "Describe a task or ask a question".
+
+**Action / Démonstration** : Navigation et présentation de l'interface de l'application avant l'utilisation des commandes dans le terminal.
+
+![Interface sombre d'une application de type assistant ou agent IA avec le message d'accueil "Welcome back, Nate" et un champ de saisie de prompt en bas.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001110_seg27.jpg)
+*⏱️ 00:11:10 — Interface sombre d'une application de type assistant ou agent IA avec le message d'accueil "Welcome back, Nate" et un champ de saisie de prompt en bas.*
+
+---
+
+### ⏱️ `[00:11:36 - 00:12:10]` | Segment #28
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> on va faire le flux d'authentification. Donc ça va ouvrir un onglet et vous allez simplement vous connecter là où vous avez créé votre compte Higgsfield. Et ensuite, ça va ajouter les compétences de l'agent que vous pourrez utiliser. Maintenant, ici pour moi en particulier, quand il essaie d'installer ceci, il va dire, Hé, ceci existe déjà, mais le vôtre va en fait tout simplement continuer et s'installer. Donc le voici. Il est dit que la CLI fonctionne, maintenant exécution de auth login, ce qui ouvre un navigateur. Et comme vous pouvez le voir juste ici, il me demande en gros simplement si je suis d'accord pour connecter Claude à Hicksfield et vous allez cliquer sur connecter puis vous connecter. Et maintenant vous avez été autorisé et de retour dans Claude, il devrait dire, ok, super. Vous êtes maintenant connecté, je peux voir votre compte et maintenant j'installe les compétences de l'agent. Donc exactement comme vous le voyez juste ici. Maintenant, pendant que ça s'installe, il y a quelque chose que je
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web / Application de développement (style éditeur d'agent IA)
+
+**Contenu textuel & Code** : npm install -g @higgsfield/cli, higgsfield auth login, npx skills add higgsfield-ai/skills
+
+**Action / Démonstration** : Affichage des commandes d'installation et de la mémoire de l'agent concernant un bug sous Windows avec Git Bash.
+
+![Interface d'une application montrant les instructions d'installation de la CLI Higgsfield avec un prompt contenant les commandes npm, higgsfield auth login et npx skills.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001145_seg28.jpg)
+*⏱️ 00:11:45 — Interface d'une application montrant les instructions d'installation de la CLI Higgsfield avec un prompt contenant les commandes npm, higgsfield auth login et npx skills.*
+
+---
+
+### ⏱️ `[00:12:10 - 00:12:43]` | Segment #29
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> je veux vous parler, qui est le fait que tout ceci n'est pas magique. Tout ceci vous permet simplement d'automatiser des choses et d'avoir des idées. Donc mon point de vue est que, si vous n'êtes pas un maître rédacteur ou un publicitaire, il pourrait vous être très difficile de créer d'excellents textes publicitaires et des créations de premier ordre. Et c'est pourquoi ce que vous pouvez faire avec Claude, c'est utiliser l'expertise d'autres personnes et l'intégrer pour faire de Claude Code l'expert en la matière ici. Ce n'est donc pas parfait. Vous savez, un maître rédacteur va construire une meilleure automatisation de newsletter que je ne le ferais. Donc ce que vous pouvez faire, c'est dans
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de l'outil de développement / assistant de code (type Cursor/Claude) avec une incrustation vidéo du présentateur en bas à gauche.
+
+**Contenu textuel & Code** : Texte technique décrivant l'exécution de commandes (téléchargement de tarball, extraction de hf.exe via PowerShell, authentification et installation des compétences globales).
+
+**Action / Démonstration** : Suivi de l'exécution des commandes d'installation et de configuration de Higgsfield CLI par l'assistant.
+
+![Interface d'un assistant de code affichant les étapes d'installation et de configuration de Higgsfield CLI.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001219_seg29.jpg)
+*⏱️ 00:12:19 — Interface d'un assistant de code affichant les étapes d'installation et de configuration de Higgsfield CLI.*
+
+---
+
+### ⏱️ `[00:12:43 - 00:13:07]` | Segment #30
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> votre projet, vous pouvez faire un peu de recherche. Donc voici un chat que j'ai fait tout à l'heure juste avant ceci. Et j'ai grossièrement dit : Hé, j'ai besoin que tu fasses une recherche approfondie sur les meilleures stratégies pour faire de la publicité en 2026, en ce qui concerne les publicités organiques sur des plateformes comme TikTok, Meta ou X et ce qui capte l'attention des gens, ce qui convertit et en quoi cela diffère selon la plateforme. Donc je voulais essentiellement qu'il crée un fichier markdown complet appelé masterclass publicitaire qui vivrait dans ce projet.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web d'un outil de développement ou d'un assistant IA (Higgsfield Studio / Opus 4.7).
+
+**Contenu textuel & Code** : Texte du prompt demandant une recherche approfondie sur les stratégies publicitaires en 2026 pour TikTok, Meta ou X, ainsi qu'un document de plan nommé 'AdvertisingMasterclass.MD'.
+
+**Action / Démonstration** : Affichage de l'historique d'une conversation avec l'assistant IA et du document de planification généré associé.
+
+![Interface d'un assistant IA montrant un historique de chat avec une requête sur les stratégies publicitaires pour 2026 et un panneau latéral affichant un plan détaillé de recherche.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001249_seg30.jpg)
+*⏱️ 00:12:49 — Interface d'un assistant IA montrant un historique de chat avec une requête sur les stratégies publicitaires pour 2026 et un panneau latéral affichant un plan détaillé de recherche.*
+
+---
+
+### ⏱️ `[00:13:07 - 00:13:41]` | Segment #31
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Et ensuite, je pourrais faire en sorte que mes agents consultent cela lorsqu'ils ont besoin d'aide pour trouver des idées ou lorsqu'ils ont besoin d'aide pour analyser ce qui se passe avec nos données. Et cela va les aider à nous donner de meilleurs textes et de meilleurs prompts à intégrer dans Higgsfield. Et c'est quelque chose que je fais tout le temps. Chaque fois que je construis différents agents ou automatisations, j'exploite toujours les fils Twitter, les vidéos YouTube, les recherches Perplexity. J'utilise des informations qui existent déjà et qui ont fait leurs preuves, et je les intègre dans mes systèmes. Donc, fondamentalement, cela a fait toutes ces recherches. Cela m'a posé des questions, et ensuite cela m'a donné un fichier markdown complet, qui se trouve maintenant dans ce projet. Comme vous pouvez le voir, advertising masterclass.md,
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web / application d'assistant IA (type Claude / interface de développement d'agents).
+
+**Contenu textuel & Code** : Prompt utilisateur demandant des recherches approfondies sur les stratégies publicitaires pour 2026 sur les plateformes comme TikTok, Meta et X, ainsi que la réponse de l'agent créant un plan de recherche.
+
+**Action / Démonstration** : L'agent analyse la demande, formule un plan de recherche et prépare la création d'un document de référence stratégique dans le projet Higgsfield Studio.
+
+![Interface d'un assistant IA avec un panneau de chat à gauche et un panneau de planification/documentation à droite, montrant l'interaction avec l'agent et la création du document AdvertisingMasterclass.MD.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001316_seg31.jpg)
+*⏱️ 00:13:16 — Interface d'un assistant IA avec un panneau de chat à gauche et un panneau de planification/documentation à droite, montrant l'interaction avec l'agent et la création du document AdvertisingMasterclass.MD.*
+
+---
+
+### ⏱️ `[00:13:41 - 00:14:10]` | Segment #32
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> il fait 617 lignes. Je pourrais aller de l'avant et l'ouvrir juste ici, et nous pouvons lire ceci, qui est un guide complet pour le contenu organique. Il a été mis à jour pour la dernière fois en mai 2026. Nous avons une feuille de triche. Nous avons différentes plateformes et nous avons un tas d'informations sur la manière dont l'attention est captée. Et maintenant, toutes nos publicités vont, espérons-le, être meilleures parce que nous avons fait un document de recherche comme celui-ci. Mais de toute façon, maintenant nous avons le CLI d'installé. Nous avons été authentifiés et nous avons nos compétences d'installées. Donc nous sommes prêts à commencer à essayer de construire quelques automatisations ici.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web / outil de développement avec panneau latéral de navigation.
+
+**Contenu textuel & Code** : Texte du guide organique, règles de ciblage, et logs d'installation de la CLI Higgsfield avec Claude Code.
+
+**Action / Démonstration** : Navigation et affichage du guide de contenu organique et des instructions d'installation des compétences d'agent.
+
+![Interface d'une application affichant un guide complet pour le contenu organique et une feuille de triche (TL;DR).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001348_seg32.jpg)
+*⏱️ 00:13:48 — Interface d'une application affichant un guide complet pour le contenu organique et une feuille de triche (TL;DR).*
+
+![Interface affichant les étapes d'installation et de configuration de Higgsfield CLI et des compétences d'agent (Claude Code).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001403_seg32.jpg)
+*⏱️ 00:14:03 — Interface affichant les étapes d'installation et de configuration de Higgsfield CLI et des compétences d'agent (Claude Code).*
+
+---
+
+### ⏱️ `[00:14:10 - 00:14:34]` | Segment #33
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> D'accord. Donc, j'ai vidé ce chat et voici la première chose que je vous recommanderais de faire. Donc, dans mon champ Higgs, si vous vous souvenez, si je vais dans mes actifs, nous avons déjà une tonne d'actifs générés. Nous avons 45 actifs différents créés. Nous avons quelques produits différents. Nous avons un truc de pilule pour dormir. Nous avons quelques écouteurs différents qui ont été générés, quelques publicités UGC différentes. Donc, voici ce que je veux faire. Allez-y et jetez un œil à tous les actifs que nous avons générés dans le champ Higgs.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de la plateforme de génération d'actifs (type Higgsfield ou similaire).
+
+**Contenu textuel & Code** : Galerie d'images et de vidéos miniatures organisées en grille affichant des visuels publicitaires de produits (bouteilles de compléments alimentaires, casques audio, etc.).
+
+**Action / Démonstration** : Navigation et affichage des actifs générés par l'IA dans l'interface utilisateur.
+
+![Vue de la galerie d'actifs générés (All assets) dans l'interface de l'application avec de nombreuses images de produits et vidéos.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001422_seg33.jpg)
+*⏱️ 00:14:22 — Vue de la galerie d'actifs générés (All assets) dans l'interface de l'application avec de nombreuses images de produits et vidéos.*
+
+![Vue similaire de la galerie d'actifs (All assets) montrant les créations visuelles et vidéos générées pour les produits.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001428_seg33.jpg)
+*⏱️ 00:14:28 — Vue similaire de la galerie d'actifs (All assets) montrant les créations visuelles et vidéos générées pour les produits.*
+
+---
+
+### ⏱️ `[00:14:35 - 00:15:08]` | Segment #34
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> J'ai besoin d'aide pour créer essentiellement un journal de suivi de chaque génération que nous faisons ensemble, juste pour avoir de la visibilité sur nos invites et nos données, nos statistiques et des choses comme ça. Et je veux que tu formules cela dans une feuille Google, quelques onglets si tu en as besoin, mais utilise l'interface en ligne de commande GWS pour créer cette feuille Google et l'organiser en fonction du produit et des invites, ou de la manière qui te semble logique. En fin de compte, ce projet est configuré pour devenir une agence de création principale.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Higgsfield Studio (interface web de développement/IA).
+
+**Contenu textuel & Code** : Zone de texte "Type / for commands", option "Bypass permissions" activée, sélecteur de modèle "Opus 4.7 1M - High".
+
+**Action / Démonstration** : Le présentateur s'apprête à entrer une commande pour configurer le journal de suivi dans l'interface de Higgsfield.
+
+![L'interface principale de l'outil "Higgsfield Studio" avec un champ de saisie vide et le présentateur en médaillon.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001443_seg34.jpg)
+*⏱️ 00:14:43 — L'interface principale de l'outil "Higgsfield Studio" avec un champ de saisie vide et le présentateur en médaillon.*
+
+---
+
+### ⏱️ `[00:15:08 - 00:15:30]` | Segment #35
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc nous avons besoin d'une base de données où tout est centralisé afin de pouvoir suivre les éléments au fil du temps à mesure que nous augmentons notre volume de contenus créatifs. La raison pour laquelle je veux faire cela, c'est que je veux finalement arriver à un point où nous avons quelque chose comme ça, par exemple. J'ai donc toutes mes générations ici. Nous pouvons voir le produit, nous pouvons voir le style, nous pouvons voir l'image ou la vidéo, le modèle, et nous pouvons voir ce que nous sommes en train de générer.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets (Image 2)
+
+**Contenu textuel & Code** : Colonnes détaillées : Created, Product, Style, Type, Model, Aspect, Resolution, Duration, Dimensions, Result (URL), Start Image, Job ID.
+
+**Action / Démonstration** : Présentation de la structure de la base de données centralisée utilisée pour le suivi des assets générés par l'IA.
+
+![Tableau Google Sheets intitulé "Higgsfield Studio — Master Generations Database" listant des métadonnées de contenus créatifs (Date, Produit, Style, Type, Modèle, Aspect, Résolution, liens vers les assets, etc.).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001525_seg35.jpg)
+*⏱️ 00:15:25 — Tableau Google Sheets intitulé "Higgsfield Studio — Master Generations Database" listant des métadonnées de contenus créatifs (Date, Produit, Style, Type, Modèle, Aspect, Résolution, liens vers les assets, etc.).*
+
+---
+
+### ⏱️ `[00:15:31 - 00:16:06]` | Segment #36
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Nous pouvons également examiner les résultats et nous pouvons examiner les invites réelles pour tous, ce qui est vraiment important. À partir de là, nous pouvons analyser lesquels de ceux-ci nous aimons le plus ? Lesquels ont réellement le mieux converti ? Lesquels, vous savez, ont eu le meilleur budget ou ont eu la meilleure dépense sur notre compte Meta ou peu importe ce que c'est. Et nous pouvons avoir toutes ces autres statistiques comme par produits, par style, nous pouvons avoir une certaine planification. Et puis, sur la base de toutes ces données, et surtout si vous apportez des données réelles de vos annonces Google ou de vos annonces Meta, ou même simplement de votre compte TikTok ou Instagram, Cloud Code peut les examiner. Il peut utiliser l'expertise sectorielle que vous aviez lors de la recherche, et ensuite il peut planifier les choses. Donc maintenant, il planifie
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets (Tableur en ligne).
+
+**Contenu textuel & Code** : Données structurées sur les campagnes marketing (type, modèle, aspect, résolution, durée) et notes de planning stratégique (concepts, hooks, notes de production).
+
+**Action / Démonstration** : Navigation entre différents onglets du tableur pour analyser la performance et la planification des contenus générés par IA.
+
+![Vue d'un tableur Google Sheets répertoriant une base de données de générations "Higgsfield Studio" avec des détails sur les produits et styles.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001539_seg36.jpg)
+*⏱️ 00:15:39 — Vue d'un tableur Google Sheets répertoriant une base de données de générations "Higgsfield Studio" avec des détails sur les produits et styles.*
+
+![Vue d'un onglet "Style Summary" dans Google Sheets analysant la répartition des styles publicitaires.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001548_seg36.jpg)
+*⏱️ 00:15:48 — Vue d'un onglet "Style Summary" dans Google Sheets analysant la répartition des styles publicitaires.*
+
+![Vue d'un onglet "Production Planning" dans Google Sheets contenant une liste d'idées de concepts publicitaires et notes de production.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001557_seg36.jpg)
+*⏱️ 00:15:57 — Vue d'un onglet "Production Planning" dans Google Sheets contenant une liste d'idées de concepts publicitaires et notes de production.*
+
+---
+
+### ⏱️ `[00:16:06 - 00:16:25]` | Segment #37
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> différentes versions de publicités basées sur certaines choses. Nous avons donc différentes propositions de valeur, différents titres, différents avatars, différents styles. Et cela nous donne cette matrice de test où nous avons maintenant une centaine de choses différentes à tester et elles modifient toutes de petites variables différentes. Et en fin de compte, nous pouvons tester beaucoup plus de choses maintenant parce que nous ne sommes pas le goulet d'étranglement de la créativité.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets
+
+**Contenu textuel & Code** : Base de données de tests publicitaires contenant des propositions de valeur (VP), des titres (Headline) et des tons (Tone) pour différents scénarios.
+
+**Action / Démonstration** : Présentation de la matrice de test publicitaire structurée sous forme de feuille de calcul.
+
+![Un tableau Google Sheets intitulé "Higgsfield Studio - Master Generations Database" avec des colonnes ID, VP, Headline et Tone, tandis que le présentateur apparaît en médaillon vidéo dans le coin inférieur gauche.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001611_seg37.jpg)
+*⏱️ 00:16:11 — Un tableau Google Sheets intitulé "Higgsfield Studio - Master Generations Database" avec des colonnes ID, VP, Headline et Tone, tandis que le présentateur apparaît en médaillon vidéo dans le coin inférieur gauche.*
+
+---
+
+### ⏱️ `[00:16:25 - 00:17:03]` | Segment #38
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Et nous ne sommes pas non plus le goulot d'étranglement de la production, parce que je peux lancer un agent pour générer tout ça. Et ensuite, je peux aller me coucher et je peux me réveiller avec une centaine de textes publicitaires et de créas différents prêts à l'emploi. Et ensuite, vous pouvez aussi avoir un agent qui, chaque semaine, en génère une centaine de plus. Donc vous avez juste cette réserve illimitée de choses à tester, et tout est basé sur les données, pas juste sur des trucs aléatoires. Donc il regardait le tableau principal, qui existe déjà, qui est celui-ci juste ici. Donc je vais simplement aller de l'avant et dire : Hé, je veux en fait juste en créer un tout nouveau. Celui-là était bien, mais je fais juste une démo. Donc je veux que tu le refasses juste pour que je puisse montrer à mon audience à quel point tu es bon pour des choses comme ça. Et si vous les gars
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets, Interface d'agent IA / Chat (style Cursor ou application web dédiée).
+
+**Contenu textuel & Code** : Texte de prompt détaillé pour l'agent IA demandant de structurer les données et d'utiliser le CLI Google Workspace pour créer un Google Sheet ; tableau de données complet répertoriant des tests créatifs.
+
+**Action / Démonstration** : Consultation d'une base de données Google Sheets générée par un agent et visualisation de l'interface de commande/prompt de l'agent IA.
+
+![Capture d'écran montrant un tableau Google Sheets intitulé "Higgsfield Studio - Master Generations Database", affichant des données structurées sur des tests publicitaires (Avatar, Value Prop, Headline ID, Style, Format, Priority, Hypothesis).](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001635_seg38.jpg)
+*⏱️ 00:16:35 — Capture d'écran montrant un tableau Google Sheets intitulé "Higgsfield Studio - Master Generations Database", affichant des données structurées sur des tests publicitaires (Avatar, Value Prop, Headline ID, Style, Format, Priority, Hypothesis).*
+
+![Capture d'écran montrant une interface de chat/agent IA en mode sombre avec le titre "Higgsfield Studio / Untitled", affichant un prompt détaillé demandant de créer un journal de suivi dans Google Sheets pour les actifs générés, ainsi qu'une réponse de l'agent confirmant l'existence de la feuille principale.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001644_seg38.jpg)
+*⏱️ 00:16:44 — Capture d'écran montrant une interface de chat/agent IA en mode sombre avec le titre "Higgsfield Studio / Untitled", affichant un prompt détaillé demandant de créer un journal de suivi dans Google Sheets pour les actifs générés, ainsi qu'une réponse de l'agent confirmant l'existence de la feuille principale.*
+
+---
+
+### ⏱️ `[00:17:03 - 00:17:30]` | Segment #39
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> je n'ai jamais utilisé le GWS CLI auparavant, c'est incroyable. C'est un autre CLI, tout comme ce Higgsfield CLI est un CLI. Et nos agents sont désormais capables de consulter super rapidement Google Sheets, Google Docs, Gmail, Agenda, Drive. Il peut regarder partout. Et c'est beaucoup, beaucoup plus efficace que d'utiliser une multitude de serveurs MCP ou tout un tas d'appels API. Donc si vous n'avez pas encore testé le GWS CLI, c'est une avancée majeure. Je vais publier une vidéo complète juste ici où j'en parle davantage.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web Higgsfield Studio / agent conversationnel
+
+**Contenu textuel & Code** : Historique de discussion textuel avec l'agent IA mentionnant la création d'une base de données et de Google Sheets, et un champ de saisie en bas avec le texte "Type / for commands".
+
+**Action / Démonstration** : L'agent IA répond à une instruction de l'utilisateur pour recréer une feuille de calcul Google Sheet pour les besoins d'une démonstration.
+
+![Interface sombre de Higgsfield Studio montrant une conversation avec un agent IA qui discute de la création d'une nouvelle feuille Google Sheet, avec le présentateur en médaillon en bas à gauche.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001710_seg39.jpg)
+*⏱️ 00:17:10 — Interface sombre de Higgsfield Studio montrant une conversation avec un agent IA qui discute de la création d'une nouvelle feuille Google Sheet, avec le présentateur en médaillon en bas à gauche.*
+
+---
+
+### ⏱️ `[00:17:30 - 00:17:58]` | Segment #40
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Bon, alors maintenant, il a récupéré l'ensemble de ces 45 générations, comme vous pouvez le voir. Laissez-moi juste ouvrir cette feuille pour qu'on puisse y jeter un œil. Nous avons toutes les générations ici même. Je vais procéder à la réduction de leur taille. Bon, alors nous avons ces 45 générations. Nous pouvons aussi voir par produit. Nous pouvons voir par style et planification. Donc vraiment, ce que je voulais faire là, c'est juste vous montrer les gars que CloudCode peut maintenant regarder à l'intérieur de HiggsField, voir tout ce que nous avons fait, et non seulement le voir, mais il peut extraire des informations comme l'identifiant de tâche, le statut, le prompt, le format, tout ce genre de choses qui sont vraiment importantes.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets
+
+**Contenu textuel & Code** : Tableau avec des colonnes telles que Created, Product, Style, Type, Model, Aspect, Resolution, Duration, Dimensions, Result, et Start Image, contenant des données de test.
+
+**Action / Démonstration** : Le présentateur présente la base de données tableur regroupant l'ensemble des générations obtenues.
+
+![Une feuille de calcul Google Sheets nommée "Higgsfield Studio - Master Generations Database (Demo)" affichant des métadonnées de générations d'images, avec en bas à gauche une incrustation vidéo du présentateur.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001737_seg40.jpg)
+*⏱️ 00:17:37 — Une feuille de calcul Google Sheets nommée "Higgsfield Studio - Master Generations Database (Demo)" affichant des métadonnées de générations d'images, avec en bas à gauche une incrustation vidéo du présentateur.*
+
+---
+
+### ⏱️ `[00:17:58 - 00:18:19]` | Segment #41
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Je veux dire, pensez au temps que cela vous aurait pris d'aller regarder manuellement tout votre contenu et de l'intégrer dans une sorte de base de données interne. Et puis, bien sûr, c'est là que ça peut aller plus loin et s'appuyer là-dessus. Et ça peut nous donner des tonnes et des tonnes de nouvelles idées pour aller créer encore plus de contenus visuels. Alors allons-y dès maintenant. Je vais réouvrir Cloud Code. Et très rapidement, je vais taper arobase, ce qui va nous permettre de taguer certaines choses.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets (tableur en ligne).
+
+**Contenu textuel & Code** : Colonnes : Product, Style, Type, Model, Aspect, Resolution, Duration, Dimensions, Result, Start Image, Job ID.
+
+**Action / Démonstration** : Navigation et présentation de la base de données interne contenant les métadonnées et liens du contenu généré.
+
+![Un tableau Google Sheets servant de base de données de contenu, affichant des métadonnées comme le produit, le style, le modèle et les liens de résultats.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001803_seg41.jpg)
+*⏱️ 00:18:03 — Un tableau Google Sheets servant de base de données de contenu, affichant des métadonnées comme le produit, le style, le modèle et les liens de résultats.*
+
+---
+
+### ⏱️ `[00:18:19 - 00:18:54]` | Segment #42
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Et je vais étiqueter le fichier advertisingmasterclass.md, qui est, vous savez, l'analyse complète. Et je vais dire, très bien, donc je veux que tu examines toutes les différentes générations que nous avons faites. Je veux aussi que tu lises ce document de masterclass publicitaire, et je veux que tu m'aides à trouver un tas de variations différentes que nous pourrions créer. Vous savez, nous avons fait des choses avec différents en-têtes, avec différents styles, avec différents types de contenu, et je veux combiner et assortir un tas de variables différentes afin que nous puissions finalement en tester un certain nombre et y consacrer un bon budget pour voir laquelle d'entre elles génère les meilleures dépenses. Alors faites preuve de créativité ici,
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface utilisateur de type éditeur/assistant IA (probablement Cursor ou une application similaire avec assistant intégré comme Claude Code/Opus).
+
+**Contenu textuel & Code** : Texte décrivant la mise à jour d'un fichier Google Sheets « Higgsfield Studio — Master Generations Database (Demo) », ainsi qu'un champ de saisie en bas avec le fichier « AdvertisingMasterclass.MD ».
+
+**Action / Démonstration** : L'utilisateur configure ou référence le fichier markdown `AdvertisingMasterclass.MD` dans le prompt de l'assistant IA pour analyser les générations publicitaires.
+
+![Interface d'une application montrant une conversation avec une IA et le résultat textuel de la création d'une base de données Google Sheets (Higgsfield Studio), avec un fichier markdown sélectionné en bas.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001828_seg42.jpg)
+*⏱️ 00:18:28 — Interface d'une application montrant une conversation avec une IA et le résultat textuel de la création d'une base de données Google Sheets (Higgsfield Studio), avec un fichier markdown sélectionné en bas.*
+
+---
+
+### ⏱️ `[00:18:54 - 00:19:27]` | Segment #43
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> utilise tes meilleures pratiques et aide-moi à obtenir tout un tas d'idées différentes pour, tu sais, plus de visuels. Et une fois qu'on aura lancé ça avec ce plan, j'aurais probablement dû dire de mettre ça dans l'interface de commande GW, dans ce Google Sheet. J'espère que ça comprend. Si ça a l'air de ne pas comprendre, je vais l'arrêter et dire, au fait, mets ça dans le Google Sheet. Mais c'est bien ce qu'on recherche ici comme livrable. Bon. Alors, on dirait que tout est terminé. J'ai fini par devoir lui dire de le mettre dans le Google Sheet. Ce n'était pas encore si intelligent, mais laisse-moi aller sur la feuille et on verra qu'on a ce nouvel onglet appelé calendrier de création. Et ici, celui-là a l'air
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de l'éditeur Higgsfield Studio / Opus 4.7
+
+**Contenu textuel & Code** : Texte du prompt demandant d'analyser les générations publicitaires et de proposer de nouvelles idées créatives, ainsi que le pipeline technique (scripts/categorize.js -> build_values.js -> gws values update).
+
+**Action / Démonstration** : Saisie et affichage d'un prompt d'automatisation IA pour générer des variantes créatives de publicités.
+
+![Interface d'un assistant IA montrant un espace de travail Higgsfield Studio avec le contenu du document de masterclass publicitaire et le champ de saisie des commandes.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001902_seg43.jpg)
+*⏱️ 00:19:02 — Interface d'un assistant IA montrant un espace de travail Higgsfield Studio avec le contenu du document de masterclass publicitaire et le champ de saisie des commandes.*
+
+---
+
+### ⏱️ `[00:19:27 - 00:19:53]` | Segment #44
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> meilleur que le précédent. Il ne nous en a pas donné une centaine. On pourrait évidemment dire, Hé, donne-nous une centaine, mais celui-ci a fini par nous en donner quelque part dans les trentaines. Donc ça nous a aussi en quelque sorte montré les priorités. Donc ceux-ci doivent évidemment partir dès que possible. Et puis nous en avons d'autres également pour différents produits. Vous pouvez voir le murmur halo. Nous avons le supplément pour le sommeil. Donc de toute façon, mais maintenant nous avons cette base de données que nous pouvons consulter. Nous pourrions aussi avoir une sorte de statut pour que lorsque nous le faisons générer automatiquement, il puisse les marquer comme traités ou faits ou peu importe ce que c'est.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets (Tableur)
+
+**Contenu textuel & Code** : Colonnes de données avec des priorités (P0 en rouge, P1 en orange, P2 en vert), produits, angles, archétypes de hooks et formats de contenu.
+
+**Action / Démonstration** : Le présentateur commente le tableau de données et les priorités affichées à l'écran.
+
+![Un tableur Google Sheets nommé 'Higgsfield Studio - Master Generations Database (Demo)' affichant des priorités (P0, P1, P2) avec des codes couleur, tandis que le présentateur apparaît en médaillon dans le coin inférieur droit.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001933_seg44.jpg)
+*⏱️ 00:19:33 — Un tableur Google Sheets nommé 'Higgsfield Studio - Master Generations Database (Demo)' affichant des priorités (P0, P1, P2) avec des codes couleur, tandis que le présentateur apparaît en médaillon dans le coin inférieur droit.*
+
+---
+
+### ⏱️ `[00:19:53 - 00:20:17]` | Segment #45
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Et ensuite, il va créer les prompts et parler à Higgs Field pour les créer pour nous. Donc ça va être très, très cool. Désolé pour l'éclairage. Je viens de voir, apparemment, une tornade est passée et il fait très sombre. J'allume donc ma petite lumière. D'accord. Donc maintenant que nous avons configuré tous ces exemples, disons que nous voulons générer ces cinq priorités principales. Les lignes 3 à 7, nous allons les générer. Ce que je veux donc que vous fassiez maintenant, c'est créer les prompts pour les lignes 3 à 7.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets, navigateur web
+
+**Contenu textuel & Code** : Base de données de générations avec des colonnes de priorité, produits, angles, formats (vidéo, image) et concepts visuels.
+
+**Action / Démonstration** : Le présentateur présente une base de données de production de contenu pour Higgsfield.
+
+![Capture d'écran montrant un tableau Google Sheets intitulé 'Higgsfield Studio - Master Generations Database (Demo)' avec le présentateur en médaillon en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_001959_seg45.jpg)
+*⏱️ 00:19:59 — Capture d'écran montrant un tableau Google Sheets intitulé 'Higgsfield Studio - Master Generations Database (Demo)' avec le présentateur en médaillon en bas à droite.*
+
+---
+
+### ⏱️ `[00:20:18 - 00:20:42]` | Segment #46
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc ces cinq premiers que vous avez créés. Mais ce que nous devons également faire, ce qui est vraiment important, c'est d'avoir un suivi. J'ai remarqué sur la feuille que vous n'aviez aucune colonne de statut. Ajoutez donc une colonne de statut. Et ce que je veux que vous fassiez, c'est de créer les prompts pour ces cinq-là, d'aller sur Higgs Field et de les générer, puis de les cocher sur la feuille. Une fois qu'ils reviennent et qu'ils sont terminés, comme complets ou en révision ou tout ce que vous voulez y faire, cochez-les simplement afin que nous puissions garder une trace de ce qui se passe.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de type workspace / prise de notes (Higgsfield Studio)
+
+**Contenu textuel & Code** : Tableau avec des intitulés de projets vidéo, une liste de colonnes de priorité (P0/P1/P2) et une barre de commande en bas.
+
+**Action / Démonstration** : Le présentateur explique l'importance d'ajouter un suivi et une colonne de statut sur la feuille de calcul.
+
+![Interface d'une application montrant un tableau de suivi de contenu textuel (Higgsfield Studio) et le présentateur dans un encart en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002024_seg46.jpg)
+*⏱️ 00:20:24 — Interface d'une application montrant un tableau de suivi de contenu textuel (Higgsfield Studio) et le présentateur dans un encart en bas à droite.*
+
+---
+
+### ⏱️ `[00:20:42 - 00:21:01]` | Segment #47
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc, coupez simplement ça. Si vous êtes curieux de savoir comment je parle avec ma voix, allez voir l'outil dans la description. Il s'appelle Glido. J'ai officiellement rejoint l'équipe de Glido et je suis super, super excité à ce sujet. Je suis passé de Whisper à Glido. Je crois vraiment en la vision que nous construisons ici. Donc, si vous voulez soutenir et si vous avez besoin d'un outil vocal, allez voir Glido. C'est plus rapide, c'est privé et ça va être beaucoup plus agentique.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web d'assistant IA / éditeur de prompts
+
+**Contenu textuel & Code** : Texte de logique prioritaire (P0, P1, P2) et un prompt utilisateur demandant de créer des prompts pour des lignes spécifiques et d'ajouter une colonne de suivi.
+
+**Action / Démonstration** : Affichage de l'interface de travail et des instructions données à l'outil d'IA.
+
+![Interface d'une application de type assistant IA affichant des instructions et des prompts liés à Higgsfield Studio, avec le présentateur en médaillon en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002047_seg47.jpg)
+*⏱️ 00:20:47 — Interface d'une application de type assistant IA affichant des instructions et des prompts liés à Higgsfield Studio, avec le présentateur en médaillon en bas à droite.*
+
+---
+
+### ⏱️ `[00:21:01 - 00:21:20]` | Segment #48
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Alors, rejoignez le mouvement. Mais bref, ça va s'élancer vers Higgsfield et je vous retrouverai quand nous aurons récupéré ces publicités pour y jeter un œil. Bon, alors ces cinq-là sont terminés. Je vais aller dans les Google Sheets proprement dits pour qu'on puisse jeter un œil. On peut voir ici qu'il a ajouté une colonne de statut. Il a marqué ceux-ci comme terminés. Nous avons l'URL du résultat. Nous avons l'ID de la tâche. Alors jetons un coup d'œil à juste quelques-uns d'entre eux très rapidement. Bon, alors celui-ci est intéressant.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web / Interface de code / Google Sheets.
+[DESC_IMAGE_1_CONTENT] Texte de prompt détaillé concernant la création de prompts pour des lignes de tableau et le suivi avec Higgsfield, avec la webcam du présentateur.
+[DESC_IMAGE_2_CONTENT] Tableau Google Sheets structuré avec des colonnes telles que Priority, Product, Angle, Hook Archetype, Format, Aspect, Type, Concept/Visual, etc., montrant des lignes de données pour « Sleep Supplement ».
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Navigation et affichage des données du tableur Google Sheets liées au projet Higgsfield Studio.
+
+![Interface d'une application de type LLM ou éditeur avec un panneau de discussion montrant des instructions sur Higgsfield Studio et une webcam du présentateur en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002106_seg48.jpg)
+*⏱️ 00:21:06 — Interface d'une application de type LLM ou éditeur avec un panneau de discussion montrant des instructions sur Higgsfield Studio et une webcam du présentateur en bas à droite.*
+
+![Un tableur Google Sheets nommé « Higgsfield Studio - Master Generations Database (Demo) » affichant des données sur des concepts de publicités et de produits, avec la webcam du présentateur en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002110_seg48.jpg)
+*⏱️ 00:21:10 — Un tableur Google Sheets nommé « Higgsfield Studio - Master Generations Database (Demo) » affichant des données sur des concepts de publicités et de produits, avec la webcam du présentateur en bas à droite.*
+
+---
+
+### ⏱️ `[00:21:20 - 00:21:39]` | Segment #49
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> C'est un peu comme un mème. Vous savez, ça fait 18 mois sans dormir. Donc voilà. Vous pouvez aussi remarquer que l'image ne ressemble pas du tout à notre image de référence. Si vous vous souvenez, je viens par ici. C'était celle-ci. Non, pas celle-ci, désolé. C'était celle-ci. C'est donc honnêtement de ma faute. Je ne lui avais pas demandé de le faire dans le prompt. Nous allons donc devoir refaire un autre tour.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de chat Claude (Opus 4.7 Adaptive).
+
+**Contenu textuel & Code** : Un message utilisateur demandant de créer des variations de publicité à partir d'une image de référence, et la réponse de l'assistant planifiant l'utilisation de Higgsfield MCP.
+
+**Action / Démonstration** : Le présentateur montre l'interface de l'assistant IA discutant de la stratégie de génération de variantes publicitaires.
+
+![Interface de chat Claude affichant une conversation sur la création de variations publicitaires avec Higgsfield MCP, avec le présentateur en médaillon.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002129_seg49.jpg)
+*⏱️ 00:21:29 — Interface de chat Claude affichant une conversation sur la création de variations publicitaires avec Higgsfield MCP, avec le présentateur en médaillon.*
+
+---
+
+### ⏱️ `[00:21:39 - 00:22:00]` | Segment #50
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Mais regardons très vite ce qu'il nous reste ici, parce que ce que vous remarquerez, c'est que ceux-là ne vont probablement pas être super cohérents. Et c'est parce qu'on fait juste du prompting à l'aveugle. On tire le levier de la machine à sous, qui est l'IA. Et si on n'a pas de directives, si on n'a pas de recettes autour, de compétences, alors ils ne vont pas être super cohérents. Donc celui-là, je ne sais pas ce que c'est.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets (Higgsfield Studio - Master Generations Database)
+
+**Contenu textuel & Code** : Tableau de données avec colonnes On-Screen Text, CTA, Platform Fit, Notes, Status, Result URL, Job ID.
+
+**Action / Démonstration** : Présentation et analyse d'une base de données de générations de contenu par IA.
+
+![Capture d'écran d'une base de données sur Google Sheets (Higgsfield Studio) montrant des lignes de prompts, statuts et URL de résultats.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002155_seg50.jpg)
+*⏱️ 00:21:55 — Capture d'écran d'une base de données sur Google Sheets (Higgsfield Studio) montrant des lignes de prompts, statuts et URL de résultats.*
+
+---
+
+### ⏱️ `[00:22:01 - 00:22:36]` | Segment #51
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Celui-ci, c'est une vidéo, très générique. D'accord, donc ce qui s'est passé, c'est que dans le prompt, je suppose qu'il disait essentiellement, hé, c'est une bouteille bleue. Il y a écrit soutien au sommeil dessus et c'est tout. Donc ça crée juste ces bouteilles qui ont l'air aléatoires de soutien au sommeil. Donc ce que je vais faire, c'est que je vais devoir retourner dans Cloud Code. Je vais glisser l'image réelle. C'est l'image de notre produit réel. C'est un actif qu'on devrait toujours utiliser. Donc quand vous créez ces publicités pour le produit de supplément de sommeil, il doit apparaître tel qu'il est montré dans ce
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets, application de génération vidéo, interface de développement.
+
+**Contenu textuel & Code** : Base de données de production vidéo avec statuts, URLs de résultats, modèles IA utilisés (seedance_2_0, gpt_image_2) et texte à l'écran.
+
+**Action / Démonstration** : Démonstration et analyse des vidéos générées par IA pour le soutien au sommeil.
+
+![Une vidéo générée montrant un homme fatigué dans une cuisine avec le texte '18 MONTHS. NO SLEEP' et un flacon de complément 'SLEEP SUPPORT', ainsi que le présentateur en médaillon.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002219_seg51.jpg)
+*⏱️ 00:22:19 — Une vidéo générée montrant un homme fatigué dans une cuisine avec le texte '18 MONTHS. NO SLEEP' et un flacon de complément 'SLEEP SUPPORT', ainsi que le présentateur en médaillon.*
+
+---
+
+### ⏱️ `[00:22:36 - 00:23:04]` | Segment #52
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> image de référence à chaque fois. Elle doit apparaître exactement comme ça. Même couleur, même texte. Ne change rien. Et je veux que tu recommences et régénères ces cinq exemples. Rappelle-toi aussi que le but ici, c'est la conversion. Le but est de donner envie à quelqu'un d'acheter notre produit. Alors vas-y, refais ces cinq-là. Maintenant, il est évident qu'on cherche une certaine cohérence, mais ce qui importe, c'est d'avoir un angle différent. Tu sais, celui-ci, c'était la curiosité. Celui-là, c'était le contre-pied.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web Higgsfield Studio / Interface de chat et de gestion de code
+
+**Contenu textuel & Code** : Tableau listant des hooks publicitaires (Curiosity gap, Contrarian, etc.), des modèles d'IA, des types de médias et des statuts de génération, avec un champ de saisie de commandes en bas.
+
+**Action / Démonstration** : Consultation du tableau de résultats et des mises à jour de la feuille de calcul générée par l'agent.
+
+![Interface d'une application avec un panneau latéral de sessions de code et un tableau central affichant des données sur des hooks publicitaires, avec la vidéo du présentateur en incrustation en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002243_seg52.jpg)
+*⏱️ 00:22:43 — Interface d'une application avec un panneau latéral de sessions de code et un tableau central affichant des données sur des hooks publicitaires, avec la vidéo du présentateur en incrustation en bas à droite.*
+
+---
+
+### ⏱️ `[00:23:04 - 00:23:24]` | Segment #53
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Celui-ci était une rupture de schéma, une question et un flash statistique. C'est donc toute la valeur de pouvoir générer autant de types d'angles différents. Mais ce que vous remarquerez également ici, c'est qu'il a utilisé différents modèles. Il a voulu essayer ces deux-là avec Nano Banana 2. Il a voulu essayer ces deux-là avec GBT Image 2. Nous avons donc beaucoup plus de possibilités avec lesquelles jouer ici. Et c'est évidemment beaucoup plus automatisé.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Higgsfield Studio (application web d'IA)
+
+**Contenu textuel & Code** : Tableau avec des colonnes Hook, Model, Type et Result (nano_banana_2, seeddance_2_0, gpt_image_2) et des lignes comme "Curiosity gap — tired-dad UGC", "Contrarian — melatonin rebuke", etc.
+
+**Action / Démonstration** : Présentation des résultats de génération de contenu avec différents modèles IA.
+
+![Interface d'une application montrant un tableau de génération de contenus avec différents modèles et types de médias.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002309_seg53.jpg)
+*⏱️ 00:23:09 — Interface d'une application montrant un tableau de génération de contenus avec différents modèles et types de médias.*
+
+---
+
+### ⏱️ `[00:23:24 - 00:23:56]` | Segment #54
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc je vais faire le point avec vous quand nous les aurons reçus. Donc je me suis dit que pendant que ça tournait, et désolé si vous entendez le tonnerre ou des camions de pompiers, je ne plaisantais pas à propos de la tornade, je me suis dit que j'allais prendre un petit instant pour parler des compétences. Parce que ce qui s'est passé ici, c'est que l'une d'elles est revenue avec une restriction, tout comme nous l'avons vu tout à l'heure. Et donc ce que nous pouvons faire, c'est commencer à constituer une sorte de base de connaissances sur les prompts qui sont restreints et pourquoi, et ceux qui ne le sont pas, pour que cela ne se produise plus à l'avenir. Alors, qu'est-ce qu'une compétence ? Une compétence est essentiellement une recette pour un agent IA.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application ou interface web "Higgsfield Studio" (éditeur de code / agent IA).
+
+**Contenu textuel & Code** : Texte décrivant l'état de tâches en arrière-plan ("Background task completed...", "Row 5 came back flagged NSFW..."), des logs d'exécution et une barre de saisie en bas avec l'indication "Type / for commands".
+
+**Action / Démonstration** : Suivi et affichage de l'état d'exécution de tâches automatisées en arrière-plan par l'agent IA.
+
+![Interface d'une application de type assistant de code ou agent IA montrant l'historique d'exécution de tâches en arrière-plan et un panneau de discussion, avec la webcam du présentateur en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002332_seg54.jpg)
+*⏱️ 00:23:32 — Interface d'une application de type assistant de code ou agent IA montrant l'historique d'exécution de tâches en arrière-plan et un panneau de discussion, avec la webcam du présentateur en bas à droite.*
+
+---
+
+### ⏱️ `[00:23:56 - 00:24:19]` | Segment #55
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc si quelqu'un disait, hé, est-ce que tu peux me préparer des crêpes aux pépites de chocolat ? Tu sortirais une recette de crêpes aux pépites de chocolat et tu les préparerais. Et la fois suivante, tu sortirais cette même recette et tu préparerais les crêpes et elles seraient exactement pareilles. Mais si tu n'avais pas de recette et que tu devinais un peu les mesures, et que tu devinais l'ordre et la température, tes crêpes sortiraient différentes à chaque fois. Donc, quand nous donnons une compétence à notre agent, cela signifie fondamentalement, d'accord, chaque fois que je veux une publicité Instagram, tu le fais exactement comme ça.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web de session de code (Higgsfield Studio / interface d'agent IA).
+
+**Contenu textuel & Code** : Journaux de tâches d'arrière-plan avec des messages de statut (ex: 'Background task completed', 'Row 5 came back flagged NSFW'), et une barre de saisie de commandes en bas.
+
+**Action / Démonstration** : Suivi et affichage de l'exécution de commandes et de tâches automatisées en arrière-plan.
+
+![Interface d'une application de développement affichant des logs d'exécution de tâches en arrière-plan et un panneau de discussion, avec le présentateur incrusté en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002402_seg55.jpg)
+*⏱️ 00:24:02 — Interface d'une application de développement affichant des logs d'exécution de tâches en arrière-plan et un panneau de discussion, avec le présentateur incrusté en bas à droite.*
+
+---
+
+### ⏱️ `[00:24:19 - 00:24:53]` | Segment #56
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Et maintenant, tout semble cohérent avec la marque. Tout semble cohérent. Donc si nous intégrons dans une compétence : "Hé, au fait, par le passé, tu as utilisé ces cinq expressions et ces cinq mots, et ça a été, tu sais, fondamentalement signalé. Ne plus jamais utiliser ces cinq mots ou expressions." Et le plus chouette avec les compétences, c'est que chaque fois que tu exécutes ta compétence, cette compétence s'améliore, parce que tu peux exécuter ta compétence et tu peux dire : "D'accord, tu viens de me créer ces cinq publicités avec cette compétence. Je n'aime pas X, Y et Z, mais j'adore A, B et C. Donc mets à jour la compétence pour t'assurer que la prochaine fois, tu sais, c'est mieux." Donc, pendant que cela se termine réellement et que ces générations se produisent
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web / interface de développement Higgsfield Studio avec panneau latéral de sessions et zone de chat.
+
+**Contenu textuel & Code** : Messages de statut de tâches en arrière-plan ("Background task completed", "Row 5 came back flagged NSFW by the safety model"), historique des commandes et champ de saisie en bas ("Type / for commands").
+
+**Action / Démonstration** : Affichage des résultats d'exécution et des messages de journalisation d'un agent traitant des lignes de données, avec détection de contenu sensible (NSFW).
+
+![Interface d'une application de type assistant de code ou agent IA (Higgsfield Studio) montrant des logs d'exécution de tâches en arrière-plan et le présentateur en incrustation vidéo en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002427_seg56.jpg)
+*⏱️ 00:24:27 — Interface d'une application de type assistant de code ou agent IA (Higgsfield Studio) montrant des logs d'exécution de tâches en arrière-plan et le présentateur en incrustation vidéo en bas à droite.*
+
+---
+
+### ⏱️ `[00:24:53 - 00:25:26]` | Segment #57
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Laissez-moi juste vous montrer quelque chose, j'ouvre un nouveau chat dans ce projet et je vais aller sur notre Claude ici. Disons qu'on veut en trouver un qu'on aime vraiment beaucoup, donc en fait, une de mes générations préférées jusqu'à présent était celle-ci. Ce que je peux faire, c'est prendre ce prompt et je peux copier ce prompt. Et je vais essentiellement ce que je vais faire, c'est procéder à l'ingénierie inverse d'une compétence à partir de ce prompt. Donc je vais retourner dans Claude. Je vais coller ce prompt et je vais juste commencer à blablater. Hé Claude. Donc ce prompt que vous regardez juste au-dessus est mon résultat préféré que nous avons
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web d'assistant IA et application de génération de contenu (Higgsfield / Claude).
+
+**Contenu textuel & Code** : Prompts de génération de contenu publicitaire, texte descriptif pour des casques audio et des produits de soin.
+
+**Action / Démonstration** : Navigation et sélection de blocs de texte et de prompts dans l'interface de l'agent IA.
+
+![Interface web affichant une conversation avec une IA et l'utilisation de l'outil Higgsfield pour générer des images publicitaires.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002501_seg57.jpg)
+*⏱️ 00:25:01 — Interface web affichant une conversation avec une IA et l'utilisation de l'outil Higgsfield pour générer des images publicitaires.*
+
+![Interface web montrant un long prompt détaillé sélectionné en surbrillance bleue pour la génération de vidéos publicitaires avec Higgsfield.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002509_seg57.jpg)
+*⏱️ 00:25:09 — Interface web montrant un long prompt détaillé sélectionné en surbrillance bleue pour la génération de vidéos publicitaires avec Higgsfield.*
+
+![Tableau de bord d'une application avec une barre latérale de navigation et l'affichage d'une session de chat active.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002518_seg57.jpg)
+*⏱️ 00:25:18 — Tableau de bord d'une application avec une barre latérale de navigation et l'affichage d'une session de chat active.*
+
+---
+
+### ⏱️ `[00:25:26 - 00:25:56]` | Segment #58
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> obtenu du studio marketing Higgs field. C'était une vidéo de lancement hyper dynamique, au rythme effréné, un peu comme pour notre produit. Et je l'ai adorée. Elle avait des coupes rapides. Elle avait de jolis zooms. Elle avait de jolis détails. Et je veux transformer cela en une compétence qui réside localement à l'intérieur de ce projet dans le dossier point cloud slash skills afin que chaque fois que je demande une vidéo de style hyper dynamique, tu l'utilises et qu'elles soient toujours cohérentes et qu'elles aient toujours ce style. Transforme donc cela en une compétence pour moi.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web (interface de type IDE cloud / assistant IA)
+
+**Contenu textuel & Code** : Texte descriptif détaillé d'une publicité pour des AirPods Max avec des indications de mouvements de caméra et d'ambiance visuelle.
+
+**Action / Démonstration** : Consultation ou écriture du prompt de description pour la génération vidéo.
+
+![Interface web d'un assistant de code affichant une session de travail avec du texte descriptif et le présentateur en médaillon.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002534_seg58.jpg)
+*⏱️ 00:25:34 — Interface web d'un assistant de code affichant une session de travail avec du texte descriptif et le présentateur en médaillon.*
+
+---
+
+### ⏱️ `[00:25:59 - 00:26:32]` | Segment #59
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Et c'est pratiquement tout. Je veux dire, évidemment, la compétence ne va pas être parfaite du premier coup. Mais lorsqu'il s'agit réellement de créer la compétence, c'est tout ce que ça demande. Et généralement, la façon dont j'aime les construire, c'est que j'aime jouer avec un tas de résultats, vous savez, peut-être en générer cinq différents. Et puis je choisis celui que j'aime le plus ou les deux ou trois que j'aime le plus et je dis, bon, comment puis-je faire de la rétro-ingénierie d'une compétence à partir de ces résultats ? Et c'est exactement ce que vous venez de me voir faire. D'accord. Donc, ceux-ci devraient être terminés. Maintenant, je vais ouvrir les feuilles et nous allons y jeter un œil. J'espère que maintenant, la chose la plus importante que je cherche vraiment ici, c'est que les images, ou désolé, la photo de notre produit ressemble exactement à ce qu'elle devrait.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web Higgsfield Studio et Google Sheets
+
+**Contenu textuel & Code** : Description textuelle d'un spot publicitaire pour des écouteurs et tableau de données répertoriant des URLs de résultats et des identifiants de tâches.
+
+**Action / Démonstration** : Navigation et présentation de la base de données de résultats de générations.
+
+![Interface sombre de type application avec un panneau latéral et un bloc de texte descriptif pour 'Higgsfield Studio'.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002607_seg59.jpg)
+*⏱️ 00:26:07 — Interface sombre de type application avec un panneau latéral et un bloc de texte descriptif pour 'Higgsfield Studio'.*
+
+![Feuille de calcul Google Sheets intitulée 'Higgsfield Studio - Master Generations Database (Demo)' affichant des données de génération.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002624_seg59.jpg)
+*⏱️ 00:26:24 — Feuille de calcul Google Sheets intitulée 'Higgsfield Studio - Master Generations Database (Demo)' affichant des données de génération.*
+
+---
+
+### ⏱️ `[00:26:32 - 00:26:54]` | Segment #60
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> C'est tellement parfait. Celui-ci ressemble exactement à l'image de référence. Celui-ci indique 18 mois, pas de sommeil, puis sept nuits de ça. Essayez-le ce soir, garantie de remboursement de 60 jours. Et cela ressemble à une publicité de style story Instagram. D'après les recherches qu'il a menées, celui-ci correspond en quelque sorte à ce qui se passe et à ce qui devrait convertir. Jetons un coup d'œil à celui-ci ensuite. Nous avons la bouteille de sommeil, qui ressemble exactement à ce qu'elle devrait être, ce qui est parfait.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Publicité Instagram / Réseaux sociaux et encadré vidéo du présentateur.
+
+**Contenu textuel & Code** : Texte publicitaire : "18 months. No sleep. Then 7 nights of this.", "Try it tonight - 60-night money-back.", "Tap to shop".
+
+**Action / Démonstration** : Le présentateur commente l'exemple de publicité de style Story Instagram affiché à l'écran.
+
+---
+
+### ⏱️ `[00:26:54 - 00:27:22]` | Segment #61
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Il est écrit que la mélatonine n'est pas égale au sommeil. Essayez la formule. 28 000 parents ne jurent que par la livraison gratuite. Donc, encore une fois, cela ressemble à une sorte de publicité de style story Instagram. Jetons un œil à la vidéo que nous avons ici. D'accord. Donc, une vidéo super courte de cinq secondes. Je n'adore pas celle-ci. Je ne sais pas si elle est super engageante, mais hé, c'était basé sur les recherches que notre agent a faites. Et évidemment, nous testerions celle-ci.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Lecteur vidéo affichant une publicité de style story Instagram, avec le présentateur en incrustation (PiP) en bas à droite.
+
+**Contenu textuel & Code** : Texte publicitaire incrusté sur la vidéo : "Melatonin != sleep. Try the formula" et "Better mornings start tonight".
+
+**Action / Démonstration** : Le présentateur analyse et commente une vidéo publicitaire diffusée à l'écran.
+
+---
+
+### ⏱️ `[00:27:22 - 00:27:55]` | Segment #62
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Si ça ne dépense pas bien, on l'arrêterait. Celui-ci est plutôt de style carré. Donc on dirait que c'est seulement une diapositive de carrousel parmi cinq différentes, mais pourquoi suis-je épuisé à 14h même quand je dors huit heures ? Formule de sommeil avancée. Voyons pourquoi. D'accord, c'était donc vraiment la preuve que les bouteilles arrivent enfin comme elles le devraient. Celui-ci a une énorme statistique en haut. On peut donc voir que tout cela était basé sur le texte à l'écran, basé sur l'appel à l'action, basé sur l'adéquation à la plateforme et les notes, et tout le reste sur lequel l'agent a fait des recherches et nous a aidés à concevoir. Maintenant, ce que je veux faire, c'est essayons d'en faire un autre basé sur cette compétence.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets, application de tableur en ligne
+
+**Contenu textuel & Code** : Tableau de suivi de campagnes publicitaires avec des colonnes telles que Concept/Visual, Hook Line, On-Screen Text, CTA, Platform Fit, Notes, Status.
+
+**Action / Démonstration** : Navigation et présentation de la base de données de générations publicitaires dans le tableur.
+
+![Capture d'écran montrant un tableur Google Sheets ("Higgsfield Studio - Master Generations Database") répertoriant différentes idées de concepts publicitaires, lignes d'accroche et métadonnées de campagnes.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002747_seg62.jpg)
+*⏱️ 00:27:47 — Capture d'écran montrant un tableur Google Sheets ("Higgsfield Studio - Master Generations Database") répertoriant différentes idées de concepts publicitaires, lignes d'accroche et métadonnées de campagnes.*
+
+---
+
+### ⏱️ `[00:27:55 - 00:28:16]` | Segment #63
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc, une fois que cette compétence sera terminée, nous allons essayer de l'invoquer et nous allons essayer de créer une autre vidéo de style hyper motion à partir de cette compétence juste ici. Très bien. Donc, ça nous en a créé une appelée hyper motion video. Maintenant, gardez à l'esprit que lorsque nous avons installé notre CLI Higgs field, nous avons également installé les compétences de l'agent. Donc, même si vous n'avez pas celle-ci et que vous dites : Hé, peux-tu me générer une image ?
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web Higgsfield Studio avec interface de chat pour agent IA.
+
+**Contenu textuel & Code** : Texte de prompt descriptif : "Hyper Motion product showcase for Murmur Halo premium walnut and bone over-ear headphones..." et messages d'état de l'agent.
+
+**Action / Démonstration** : L'agent exécute la vérification d'un fichier de compétence créé ("Running Verify skill file created").
+
+![Interface de Higgsfield Studio montrant un prompt détaillé pour la création d'une vidéo hyper motion pour un casque audio, avec le présentateur en médaillon dans le coin inférieur droit.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002800_seg63.jpg)
+*⏱️ 00:28:00 — Interface de Higgsfield Studio montrant un prompt détaillé pour la création d'une vidéo hyper motion pour un casque audio, avec le présentateur en médaillon dans le coin inférieur droit.*
+
+---
+
+### ⏱️ `[00:28:16 - 00:28:36]` | Segment #64
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Peux-tu m'accorder une vidéo ? Elle devrait automatiquement déclencher ces autres compétences par défaut du champ de Higgs de manière automatique. Mais de toute façon, ce que nous allons faire, c'est que nous devons ouvrir une nouvelle session pour essayer d'utiliser cette compétence. D'accord, maintenant, avant d'utiliser réellement la compétence, je veux vérifier, est-ce qu'elle a sauvegardé notre image de référence ou non ? Donc je vais retourner là-dedans. Je vais cliquer sur les fichiers et je veux voir si nous avons des actifs de marque.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de Higgsfield Studio / assistant de code
+
+**Contenu textuel & Code** : Texte décrivant la création de la compétence : "Skill created at .claude/skills/hyper-motion-video/SKILL.md", ainsi que des instructions sur son utilisation et une zone de commande en bas ("Type / for commands").
+
+**Action / Démonstration** : Affichage des détails d'une compétence (skill) créée pour générer des vidéos Hyper Motion et préparation de la saisie d'une nouvelle commande.
+
+![Interface de l'application affichant le résultat de la création d'une compétence dans Higgsfield Studio avec le chemin du fichier skill.md et une zone de saisie en bas.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002821_seg64.jpg)
+*⏱️ 00:28:21 — Interface de l'application affichant le résultat de la création d'une compétence dans Higgsfield Studio avec le chemin du fichier skill.md et une zone de saisie en bas.*
+
+---
+
+### ⏱️ `[00:28:37 - 00:28:59]` | Segment #65
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Il ne semble pas qu'on en ait. Nous avons un tas de données. En fait, attendez, non, nous en avons, juste ici. Données, ressources, nous avons notre image de bouteille de sommeil. Donc vous ne pouvez pas la voir dans cet aperçu, mais si j'ouvre réellement notre dossier, dans lequel se trouve ce projet, qui est juste ici, notre studio Higgs field, si je vais dans données et si je vais dans ressources, vous pouvez voir qu'il a bien téléchargé ceci comme image de référence, ce qui est génial parce que ce que cela signifie, c'est que dans une nouvelle discussion, je peux la taguer.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de Higgsfield Studio / Éditeur de code.
+
+**Contenu textuel & Code** : Explorateur de fichiers affichant les dossiers 'data', 'scripts' et le fichier 'AdvertisingMasterclass.MD', ainsi qu'un panneau de discussion détaillant la création d'une compétence (skill) pour une vidéo Hyper Motion.
+
+**Action / Démonstration** : Le présentateur navigue dans l'arborescence des fichiers du projet pour localiser les ressources et les données.
+
+![Interface de l'application Higgsfield Studio avec un panneau de fichiers sur la droite et une zone de chat au centre.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002842_seg65.jpg)
+*⏱️ 00:28:42 — Interface de l'application Higgsfield Studio avec un panneau de fichiers sur la droite et une zone de chat au centre.*
+
+---
+
+### ⏱️ `[00:28:59 - 00:29:22]` | Segment #66
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc ça s'appelait référence bouteille de sommeil, PNG. Donc je peux utiliser ça. Et puis j'espère pouvoir faire une commande oblique pour champ de Higgs. Oh, non, ça ne s'appelait pas champ de Higgs. Ça s'appelait hyper motion. Donc si je fais commande oblique hyper motion, d'accord, je ne le vois pas pour l'instant. Essayons de l'invoquer simplement en langage naturel. Donc je veux que tu utilises la compétence hyper motion et que tu transformes cette image de bouteille de sommeil, qui est l'image de référence que j'ai étiquetée.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web / interface de gestion de sessions et de code.
+
+**Contenu textuel & Code** : Menu déroulant de recherche affichant des commandes comme "access", "add-broll", "batch", "brainstorming", "claude-api", "codex:setup", etc., avec un champ de saisie "Type to filter" et une liste latérale "Higgsfield Studio".
+
+**Action / Démonstration** : Recherche et filtrage d'une session ou d'une commande dans l'interface de l'application.
+
+![Interface d'une application avec une liste de sessions et de commandes en cours de recherche, avec le présentateur en médaillon en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002905_seg66.jpg)
+*⏱️ 00:29:05 — Interface d'une application avec une liste de sessions et de commandes en cours de recherche, avec le présentateur en médaillon en bas à droite.*
+
+---
+
+### ⏱️ `[00:29:22 - 00:29:42]` | Segment #67
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> et je veux que vous créiez une vidéo de style hyper mouvement dans Higgs field en utilisant leur studio marketing. C'est donc tout ce que je vais dire pour une consigne. Je ne vais rien lui donner d'autre. Ce que je surveille ici, c'est de m'assurer que cela invoque réellement la compétence parce que chaque fois que Cloud Code invoque une compétence, il vous le dira. J'espère donc que ce que nous verrons, c'est qu'il en cherche une et qu'il l'appelle réellement.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application web d'IA (interface de type interface de chat ou d'agent)
+
+**Contenu textuel & Code** : Mention de "Welcome back, Nate", des sessions listées comme "Notification responses", et un chemin de fichier "@data/assets/sleep_bottle_reference.png" dans la zone de saisie.
+
+**Action / Démonstration** : Saisie d'une référence d'image et navigation dans l'interface de l'application.
+
+![Interface web d'une application d'IA montrant un espace de travail avec un panneau latéral et une zone de saisie en bas avec un fichier de référence.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002927_seg67.jpg)
+*⏱️ 00:29:27 — Interface web d'une application d'IA montrant un espace de travail avec un panneau latéral et une zone de saisie en bas avec un fichier de référence.*
+
+---
+
+### ⏱️ `[00:29:42 - 00:30:14]` | Segment #68
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Si ce n'est pas le cas, je vais arrêter cette génération. Et en ce moment, il exécute la mauvaise compétence. Il exécute « Higgs field generate ». Ce n'est donc pas celle que nous voulions réellement exécuter. Nous voulions qu'il exécute la compétence « hyper motion ». Donc ce qui se passe, c'est probablement juste parce que nous venons de la créer, donc elle n'a pas encore été enregistrée. Je vais donc aller de l'avant et arrêter cette session très rapidement. Et ce que nous voulons faire, c'est vérifier si cette compétence existe réellement. Je vais donc aller sur notre projet, je vais retourner à la section principale. Les compétences se trouvent dans un dossier point clod. Donc, point clod, compétences, hypermotion video, la compétence existe bel et bien. Je ne sais donc pas exactement pourquoi elle n'a pas été appelée.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web d'un outil d'automatisation IA, avec vignette vidéo du présentateur en bas à droite.
+
+**Contenu textuel & Code** : Prompt utilisateur mentionnant '@data/assets/sleep_bottle_reference.png' et la compétence Remotion, avec l'indication 'Running skill /higgsfield-generate'.
+
+**Action / Démonstration** : L'agent IA exécute la compétence 'higgsfield-generate' au lieu de la compétence 'hyper motion' demandée.
+
+![Interface d'un outil d'IA avec un panneau latéral de sessions et une zone de chat principale montrant l'exécution de la compétence 'higgsfield-generate'.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_002950_seg68.jpg)
+*⏱️ 00:29:50 — Interface d'un outil d'IA avec un panneau latéral de sessions et une zone de chat principale montrant l'exécution de la compétence 'higgsfield-generate'.*
+
+---
+
+### ⏱️ `[00:30:14 - 00:30:51]` | Segment #69
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Ouvrons-le rapidement pour y jeter un œil. C'est à quoi ressemble réellement un fichier de compétence, c'est simplement du format Markdown. Il s'appelle « hyper motion video », générer une vidéo de lancement de produit de type « hyper motion » haut de gamme via Higgs field marketing studio, haute énergie, quand l'invoquer, quoi faire, quoi demander avant de générer, en gros le modèle. Voici donc les règles strictes pour cette compétence. Je vais donc peut-être devoir fermer l'application cloud, la rouvrir, et nous devrions alors pouvoir voir la compétence. Très bien. J'ai donc fermé l'application et maintenant que je suis de retour dedans, je peux voir la compétence « hyper motion video ». Et je vais simplement dire : c'est la compétence que je veux que tu utilises réellement. Je me suis aussi rendu compte que ma dictée a corrigé par erreur « hyper motion » en « remotion ».
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Éditeur de code (type VS Code) avec un panneau latéral et une fenêtre de chat en bas, aux côtés de la vidéo du présentateur dans un encadré.
+
+**Contenu textuel & Code** : Fichier SKILL.md contenant les métadonnées (nom, description avec mots-clés) et le corps du texte expliquant quand et comment invoquer la compétence de génération de vidéos de lancement.
+
+**Action / Démonstration** : Visualisation du contenu d'un fichier de compétence Markdown dans l'éditeur de code.
+
+![Un fichier au format Markdown affiché dans un éditeur de code, décrivant les instructions et les déclencheurs pour une compétence de génération vidéo « hyper-motion ».](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003023_seg69.jpg)
+*⏱️ 00:30:23 — Un fichier au format Markdown affiché dans un éditeur de code, décrivant les instructions et les déclencheurs pour une compétence de génération vidéo « hyper-motion ».*
+
+---
+
+### ⏱️ `[00:30:51 - 00:31:34]` | Segment #70
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc c'est pour ça que Claude s'est peut-être un petit peu emmêlé les pinceaux, mais il va regarder l'image. Il va lire la compétence et ensuite on devrait obtenir un résultat plutôt solide. Et parce qu'il a lu la compétence, il a dit, d'accord, une petite question rapide avant que je ne finalise le prompt, est-ce que vous voulez un modèle dans la publicité ? Est-ce que vous voulez que ce soit du contenu généré par les utilisateurs ou est-ce que vous voulez juste que ce soit le produit uniquement ? Et je vais répondre le produit uniquement, et espérons que ce soit bon maintenant. Très bien. L'heure de vérité. C'est fait. Je vais l'ouvrir. Voyons voir ce qu'on a. Waouh. Franchement, c'est incroyablement bien.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de type application d'agent IA / interface de génération de prompts avec un panneau latéral et une vue incrustée de la caméra du présentateur.
+
+**Contenu textuel & Code** : Texte de dialogue de l'IA proposant des options pour une publicité vidéo (version avec modèle ou version produit uniquement) et brouillon de prompt publicitaire.
+
+**Action / Démonstration** : L'assistant IA analyse les instructions et demande une précision à l'utilisateur avant de finaliser le prompt de génération de vidéo.
+
+![Interface d'une application d'assistant IA montrant une conversation où l'IA pose une question de clarification ("One quick question before I lock the prompt...") sur un projet de vidéo publicitaire pour un produit ("Sleep Support").](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003102_seg70.jpg)
+*⏱️ 00:31:02 — Interface d'une application d'assistant IA montrant une conversation où l'IA pose une question de clarification ("One quick question before I lock the prompt...") sur un projet de vidéo publicitaire pour un produit ("Sleep Support").*
+
+![Gros plan sur une bouteille de complément alimentaire bleue foncée étiquetée "SLEEP SUPPORT", montrée comme référence visuelle dans le workflow.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003124_seg70.jpg)
+*⏱️ 00:31:24 — Gros plan sur une bouteille de complément alimentaire bleue foncée étiquetée "SLEEP SUPPORT", montrée comme référence visuelle dans le workflow.*
+
+---
+
+### ⏱️ `[00:31:35 - 00:32:11]` | Segment #71
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Je pense, vous savez, évidemment c'est là que je me dis, bon, c'est plutôt mauvais, mais tout ça, je veux dire, ça a suivi la compétence et on serait capable de dire, Hé, j'aime ça. Je n'aime pas ça et tu l'améliores un petit peu, mais je pense que c'est vraiment bien. Je veux dire, j'aime vraiment le rendu. Ça a l'air très réel et ouais, je suis plutôt content de ce résultat. Maintenant, c'est un petit peu regrettable parce que dans l'image de référence, tous les mots apparaissent parfaitement. Ce n'est donc pas un problème avec l'image de référence. C'est un problème avec le modèle qui a généré cette vidéo. Parfois, les modèles gâchent un peu le texte, surtout quand on fait de l'image vers vidéo.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Lecteur vidéo et visionneuse d'images avec le flux webcam du présentateur.
+
+**Contenu textuel & Code** : Visuels publicitaires et image de référence pour un produit fictif "Sleep Support".
+[DESC_IMAGE_3] Présentation d'éléments visuels et graphiques du produit.
+
+**Action / Démonstration** : Le présentateur commente le rendu visuel de la vidéo publicitaire et l'image de référence du produit générée.
+
+![Capture d'une vidéo montrant une bouteille de complément alimentaire "Sleep Support" avec un effet visuel lumineux étincelant et la webcam du présentateur en incrustation.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003144_seg71.jpg)
+*⏱️ 00:31:44 — Capture d'une vidéo montrant une bouteille de complément alimentaire "Sleep Support" avec un effet visuel lumineux étincelant et la webcam du présentateur en incrustation.*
+
+![Gros plan sur une vidéo publicitaire d'un produit "Sleep Support" (bouteille violette de capsules) avec la webcam du présentateur en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003153_seg71.jpg)
+*⏱️ 00:31:53 — Gros plan sur une vidéo publicitaire d'un produit "Sleep Support" (bouteille violette de capsules) avec la webcam du présentateur en bas à droite.*
+
+![Visualisation d'une image de référence de bouteille nommée "sleep_bottle_reference.png" dans une visionneuse d'images, avec le présentateur en incrustation.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003202_seg71.jpg)
+*⏱️ 00:32:02 — Visualisation d'une image de référence de bouteille nommée "sleep_bottle_reference.png" dans une visionneuse d'images, avec le présentateur en incrustation.*
+
+---
+
+### ⏱️ `[00:32:11 - 00:32:30]` | Segment #72
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> plutôt qu'image à image. Maintenant, une chose à garder à l'esprit, c'est que c'est le pire niveau que les modèles de génération de vidéo par IA n'auront jamais. Chaque jour, chaque mois, ils vont s'améliorer de plus en plus. Donc, en ce moment, c'est le pire niveau qu'ils connaîtront. Mais je me demande tout de même s'il y a certaines choses que l'on pourrait faire dans cette vidéo et dans la formulation des instructions pour la vidéo afin de la rendre un tout petit peu plus précise.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets
+
+**Contenu textuel & Code** : Tableau de données avec des colonnes de planification, concepts visuels et accroches marketing ("Sleep Supplement").
+
+**Action / Démonstration** : Présentation d'une base de données de production de contenu vidéo publicitaire généré par IA.
+
+![Capture montrant un tableau de suivi (Google Sheets) intitulé "Higgsfield Studio - Master Generations Database" listant des concepts de vidéos publicitaires.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003225_seg72.jpg)
+*⏱️ 00:32:25 — Capture montrant un tableau de suivi (Google Sheets) intitulé "Higgsfield Studio - Master Generations Database" listant des concepts de vidéos publicitaires.*
+
+---
+
+### ⏱️ `[00:32:31 - 00:32:49]` | Segment #73
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Et je pense que si c'était moi et que j'avais ce résultat et que j'obtenais juste ce genre de qualité mais que les mots ne sortaient pas correctement, alors je me dirais probablement, tu sais quoi ? C'est très bien. Pour nos vidéos qui sont d'une aussi haute qualité, nous allons simplement utiliser une autre couverture d'étiquette, qui est juste le logo et le nom plutôt que toutes les petites métadonnées dont nous n'avons peut-être pas besoin pour l'instant. Donc de toute façon, il y a des façons de contourner le problème.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web d'agent / application de développement IA (Higgsfield Studio)
+
+**Contenu textuel & Code** : Historique de discussion textuel détaillant l'exécution de commandes, la vérification de schéma et un lien URL vers un fichier vidéo MP4 généré.
+
+**Action / Démonstration** : Consultation du résultat d'une génération vidéo et des détails de configuration par l'assistant.
+
+![Interface d'une application de type assistant de code ou IA montrant l'historique d'une conversation de génération vidéo (Higgsfield Studio) avec des liens vers le rendu CloudFront et le présentateur en incrustation.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003235_seg73.jpg)
+*⏱️ 00:32:35 — Interface d'une application de type assistant de code ou IA montrant l'historique d'une conversation de génération vidéo (Higgsfield Studio) avec des liens vers le rendu CloudFront et le présentateur en incrustation.*
+
+---
+
+### ⏱️ `[00:32:49 - 00:33:08]` | Segment #74
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Il y a des façons d'avoir une meilleure attitude positive à ce sujet plutôt que de simplement le détester et de tout qualifier de bouillie d'IA. Et comme cela utilisait Marketing Studio Video, il était dit que cela n'utilisait pas réellement un modèle spécifique. Ça a plutôt utilisé un mélange parce que ça utilisait Marketing Studio. Donc vous ne le choisissez pas directement, à moins de l'avoir exécuté avec une sorte de paramètre.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface web de Higgsfield Studio / outil de génération vidéo par IA
+
+**Contenu textuel & Code** : Texte de conversation avec l'IA mentionnant 'Marketing Studio', 'hyper_motion', 'tv_spot', et un lien vers une vidéo générée (.mp4).
+
+**Action / Démonstration** : Affichage des résultats d'une génération de vidéo publicitaire par IA avec les paramètres techniques sélectionnés.
+
+![Interface de Higgsfield Studio montrant un flux de discussion textuel avec l'IA sur la création de vidéos Remotion, avec le présentateur en médaillon en bas à droite.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003254_seg74.jpg)
+*⏱️ 00:32:54 — Interface de Higgsfield Studio montrant un flux de discussion textuel avec l'IA sur la création de vidéos Remotion, avec le présentateur en médaillon en bas à droite.*
+
+---
+
+### ⏱️ `[00:33:08 - 00:33:27]` | Segment #75
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc de toute façon, c'est un peu le flux de travail principal, n'est-ce pas ? Nous l'utilisons pour trouver des idées, nous remplissons un tableur, nous marquons des statuts, mais comment commencer réellement à automatiser tout cela ? Eh bien, pensez à ceci. Dans Claude, nous avons la possibilité de configurer ces éléments appelés des routines. Et ce que sont les routines, c'est en gros, selon une cadence définie, l'injection d'une consigne dans Claude Code.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets, application de bureau Claude (Claude App / Interface d'automatisation).
+
+**Contenu textuel & Code** : Tableau de suivi de production de contenu (colonnes : Priority, Product, Angle, Hook Archetype, Format, Concept/Visual) et liste de routines programmées (Skool wins engagement, AI news roundup, Notification responses).
+
+**Action / Démonstration** : Présentation du flux de travail de gestion des idées sur tableur, puis transition vers la configuration des routines automatisées dans l'application Claude.
+
+![Un tableur Google Sheets ("Higgsfield Studio - Master Generations Database") affichant des idées de contenu, avec le présentateur en incrustation vidéo dans le coin inférieur droit.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003313_seg75.jpg)
+*⏱️ 00:33:13 — Un tableur Google Sheets ("Higgsfield Studio - Master Generations Database") affichant des idées de contenu, avec le présentateur en incrustation vidéo dans le coin inférieur droit.*
+
+![L'interface de l'application Claude montrant la section "Routines" avec une liste de tâches planifiées et automatisées, avec le présentateur en incrustation vidéo dans le coin inférieur droit.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003322_seg75.jpg)
+*⏱️ 00:33:22 — L'interface de l'application Claude montrant la section "Routines" avec une liste de tâches planifiées et automatisées, avec le présentateur en incrustation vidéo dans le coin inférieur droit.*
+
+---
+
+### ⏱️ `[00:33:27 - 00:33:46]` | Segment #76
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Donc ce qu'on vient de faire ici, ça pourrait être une routine. Tout ce qu'on a à faire, c'est de lui donner l'instruction de le faire. Donc dans une routine, ce qu'on pourrait faire, c'est qu'on pourrait en construire une nouvelle qui dit fondamentalement, ok, chaque dimanche, je veux que tu consultes ce Google Sheet et je veux que tu pulles aussi des données d'Instagram ou de là où on publie ces trucs. Et je veux que tu analyses ce qui fonctionne, ce qui ne fonctionne pas.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Interface de gestion de routines d'IA et tableur Google Sheets.
+
+**Contenu textuel & Code** : Liste de routines automatisées (Skool wins engagement, AI news roundup, Youtube comment replies) et tableau de données de production vidéo.
+
+**Action / Démonstration** : Présentation de la configuration de routines automatisées et de bases de données de suivi.
+
+![Interface affichant la liste des "Routines" programmées avec leurs horaires d'exécution.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003332_seg76.jpg)
+*⏱️ 00:33:32 — Interface affichant la liste des "Routines" programmées avec leurs horaires d'exécution.*
+
+![Tableur Google Sheets nommé "Higgsfield Studio -- Master Generations Database (Demo)".](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003341_seg76.jpg)
+*⏱️ 00:33:41 — Tableur Google Sheets nommé "Higgsfield Studio -- Master Generations Database (Demo)".*
+
+---
+
+### ⏱️ `[00:33:46 - 00:34:22]` | Segment #77
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Et ensuite je veux que vous fassiez du remue-méninges et je veux que vous ajoutiez en haut du tableau, 50 nouvelles générations. Donc 50 nouvelles chaque semaine. Et ensuite ce qu'on fait, c'est que disons que c'est un dimanche soir. On pourrait peut-être en avoir un le lundi matin qui est une nouvelle routine. D'accord, le lundi matin, vous allez aller sur le tableau et vous allez choisir 30 vidéos avec un statut vide. Et c'est comme ça qu'on s'assure qu'on ne fait pas de doublons dans les efforts. Donc disons qu'il choisit, vous savez, ces 30, ce n'est pas 30, mais disons qu'il choisit toutes celles-ci parce qu'il n'y a pas de statut réel, il prendrait les 30, il créerait les prompts pour toutes, il les générerait toutes, et ensuite on se réveillerait le lundi matin avec toutes ces vidéos terminées avec des URL.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets
+
+**Contenu textuel & Code** : Base de données de génération de contenu, tableur avec colonnes Priority, Product, Angle, Hook Archetype, Format, Aspect, Type, Concept / Visual, Hook Line, On-Screen Text, CTA, Platform Fit, Status.
+
+**Action / Démonstration** : Présentation du tableau de suivi des concepts de génération de contenu et d'automatisation créative.
+
+![Vue d'un tableau Google Sheets nommé 'Higgsfield Studio - Master Generations Database (Demo)' affichant les priorités, produits, angles, formats et concepts visuels de campagnes.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003355_seg77.jpg)
+*⏱️ 00:33:55 — Vue d'un tableau Google Sheets nommé 'Higgsfield Studio - Master Generations Database (Demo)' affichant les priorités, produits, angles, formats et concepts visuels de campagnes.*
+
+![Défilement horizontal et vertical dans le même tableau Google Sheets montrant les colonnes supplémentaires pour les textes à l'écran, appels à l'action (CTA) et statuts.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003413_seg77.jpg)
+*⏱️ 00:34:13 — Défilement horizontal et vertical dans le même tableau Google Sheets montrant les colonnes supplémentaires pour les textes à l'écran, appels à l'action (CTA) et statuts.*
+
+---
+
+### ⏱️ `[00:34:22 - 00:34:55]` | Segment #78
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> et avec des identifiants de tâches. Et ensuite, nous pourrions le faire monter en charge. Peut-être que nous faisons de la planification chaque dimanche et jeudi, et ensuite peut-être que nous faisons de la génération chaque lundi et vendredi, et peut-être que nous passons de 50 à 100 ou 200. Et c'est ainsi que vous poussez en quelque sorte le système au point où il évolue beaucoup plus vite que vous ne le pourriez en tanthumain, ou même peut-être de multiples humains. Et ensuite, si vous voulez aller encore plus loin, vous pourriez réellement connecter ce pipeline, une fois que vous arrivez à un stade où vous faites confiance aux résultats, à quelque chose comme Potato, ou même peut-être le brancher au gestionnaire de publicités Meta. Et vous commencez à planifier et à publier ces choses automatiquement aussi, parce que vous avez accumulé un ensemble de compétences auxquelles vous faites réellement assez confiance
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Google Sheets
+
+**Contenu textuel & Code** : Tableau de données contenant des statuts de tâches (« Complete »), des URL de résultats et des identifiants de tâches (« Job ID »).
+
+**Action / Démonstration** : Navigation et présentation des données de la base de tâches et de génération dans le tableur.
+
+![Un tableau Google Sheets intitulé « Higgsfield Studio - Master Generations Database (Demo) » affichant des colonnes de données telles que CTA, Platform Fit, Notes, Status, Result URL et Job ID, avec le présentateur visible en incrustation vidéo dans le coin inférieur droit.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003430_seg78.jpg)
+*⏱️ 00:34:30 — Un tableau Google Sheets intitulé « Higgsfield Studio - Master Generations Database (Demo) » affichant des colonnes de données telles que CTA, Platform Fit, Notes, Status, Result URL et Job ID, avec le présentateur visible en incrustation vidéo dans le coin inférieur droit.*
+
+---
+
+### ⏱️ `[00:34:55 - 00:35:27]` | Segment #79
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> de simplement les laisser tourner de manière autonome. C'est donc un peu l'idée. Et tout le monde va venir ici et tout le monde va faire les choses un tout petit peu différemment, mais c'est vraiment, vraiment simple de configurer vos routines directement ici ou de venir ici et de dire, Hé, je veux que tu me configures une routine à 8h le lundi, fais ceci et cela, parce que tout cela est tout à fait possible avec le langage naturel. Donc si vous voulez creuser un peu plus le sujet des routines, je vais épingler une vidéo complète juste ici où je plonge dans la façon de les configurer et quelques petits pièges qui s'y trouvent, mais c'est tout pour cette vidéo. Donc si vous avez apprécié, n'hésitez pas a mettre un pouce bleu, ça m'aide énormément. Et comme toujours, je vous remercie d'être arrivés jusqu'à la fin de la vidéo et je vous dis à la prochaine. Merci à tous.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Application de gestion de routines / plateforme d'automatisation d'IA.
+
+**Contenu textuel & Code** : Liste des routines configurées : 'Skool wins engagement', 'AI news roundup', 'Notification responses', 'Youtube comment replies', 'Bull - Env diagnostic', etc.
+[CONSULTATION] Navigation et visualisation du tableau de bord des routines automatisées avec le menu de création d'une routine 'Local' ou 'Remote'.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+![Interface de gestion des routines affichant la liste des tâches automatisées configurées avec le menu déroulant de création de nouvelle routine ouvert.](../screenshots/xn6Z5PYyAIE/xn6Z5PYyAIE_003503_seg79.jpg)
+*⏱️ 00:35:03 — Interface de gestion des routines affichant la liste des tâches automatisées configurées avec le menu déroulant de création de nouvelle routine ouvert.*
 
 ---
 
