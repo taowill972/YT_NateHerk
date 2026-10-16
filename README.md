@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `143 / 358` (`39.9%`)
+- **Vidéos traitées** : `144 / 358` (`40.2%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -160,6 +160,7 @@
 | 2026-04-21 | [TcFeSjwTo7g](https://www.youtube.com/watch?v=TcFeSjwTo7g) | **Claude Design crée de superbes sites web 3D en un instant (tutoriel complet)** | [2026-04-21_YT-[TcFeSjwTo7g]_Claude Design crée de superbes sites web 3D en un instant (tutoriel complet)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-21_YT-[TcFeSjwTo7g]_Claude Design crée de superbes sites web 3D en un instant (tutoriel complet)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-21_YT-[TcFeSjwTo7g]_Claude Design crée de superbes sites web 3D en un instant (tutoriel complet)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `135` |
 | 2026-04-20 | [_qZvORxGqI0](https://www.youtube.com/watch?v=_qZvORxGqI0) | **Comment ne plus jamais atteindre la limite de vos sessions Claude** | [2026-04-20_YT-[_qZvORxGqI0]_Comment ne plus jamais atteindre la limite de vos sessions Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-20_YT-[_qZvORxGqI0]_Comment ne plus jamais atteindre la limite de vos sessions Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-20_YT-[_qZvORxGqI0]_Comment ne plus jamais atteindre la limite de vos sessions Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `50` |
 | 2026-04-18 | [ZNbgOhxhzXg](https://www.youtube.com/watch?v=ZNbgOhxhzXg) | **Claude Just Destroyed Every Video Editing Tool** | [2026-04-18_YT-[ZNbgOhxhzXg]_Claude Just Destroyed Every Video Editing Tool_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-18_YT-[ZNbgOhxhzXg]_Claude Just Destroyed Every Video Editing Tool_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-18_YT-[ZNbgOhxhzXg]_Claude Just Destroyed Every Video Editing Tool_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `89` |
+| 2026-04-17 | [gAoZ95kqG7w](https://www.youtube.com/watch?v=gAoZ95kqG7w) | **Claude Design Just Became Unstoppable** | [2026-04-17_YT-[gAoZ95kqG7w]_Claude Design Just Became Unstoppable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-17_YT-[gAoZ95kqG7w]_Claude Design Just Became Unstoppable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-17_YT-[gAoZ95kqG7w]_Claude Design Just Became Unstoppable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `51` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
