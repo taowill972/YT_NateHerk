@@ -25,10 +25,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:33]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> So right now, it feels like everyone trying to get into AI is kind of hearing this one shiny path, which is to start an AI automation agency. And that's the current trend, and I get it, because I did that, and a lot of the top creators in this space are teaching content and building offers around that business model. And I'm not saying that that isn't a viable business model, but today, I want to talk about something else that is more realistic for, I think, the majority of people. And if you don't know who I am, my name is Nate. I've been deep in the AI game for a while now. I run a free community of over 350,000 people, and I scaled my AI agency to over $100,000 a month and then sold it. So the reason that I mention all that
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -39,10 +39,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:33 - 00:01:06]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> is because I've worked with businesses and I've seen the problems that they're trying to solve. And I've also seen a ton of my students go through all the phases of scaling their own AI automation agency. And I spent a lot of my free time just thinking about where the space is headed. And what really got me thinking about this was IBM. They surveyed 2000 CEOs from some pretty massive companies. So what I want to talk about in this video is a huge opportunity that nobody on AI YouTube is really talking about. And it's a move that fits people who don't want to run sales calls all day and what every business is actually hiring and promoting for in 2026. So if you've ever sat there thinking, I need to get involved with AI, you know, I can't miss this boat, but
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -53,10 +53,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:01:06 - 00:01:25]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> I don't know what I actually do. Then this video is for you. And hopefully by the end, you have some clarity and you feel excited about this crazy time that we're currently living in. And by the way, in this video, I'm going to be briefly going over some stats from the study. I'm going to be talking about the two paths. I'm going to be talking about what actually matters for you to be successful. So there are timestamps down below. Feel free to jump around to whatever you find interesting.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -67,10 +67,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:25 - 00:01:47]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> All right, so let's start with the first stat that blew my mind. So this study surveyed 2,000 CEOs from large publicly traded companies with a median annual revenue of about $5.8 billion. So we're talking big established companies here. Now these are diverse industries, but it's not a global average of every single business out there. And that matters when you hear these stats because what is true for these CEOs is not automatically true everywhere.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -81,10 +81,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:47 - 00:02:19]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> Okay, so listen to this. 76% of CEOs in this study either already have a chief AI officer or they are hiring one this year. 76%. Two years ago, this number was 26%. Now real quick, in case you don't know what a chief AI officer is, let me give you some quick context. You probably know what a CEO is, a chief executive officer. They run the place. A CFO is a chief financial officer who runs the money. A COO runs operations. Some companies even have a CISO, the chief information security officer who runs
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -95,10 +95,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:02:19 - 00:02:53]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> cybersecurity. Now think about that last one for a second. The CISO did not exist as a role until the internet showed up. Nobody needed a chief information security officer in 1980 because cyber threats were not really a thing yet. Then the internet hit and cyber attacks became a real cost to business. And within about 15 years, every major company had to have someone, you know, somewhere to coordinate that responsibility. And maybe not all of them are called CISOs, but those responsibilities 100% fall on someone at those companies. The name is obviously just the name, but the role was created because a brand new problem appeared that nobody at the
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -109,10 +109,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:53 - 00:03:23]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> top knew how to handle. And that right there is exactly what's happening right now with AI. AI did not exist as a serious business priority five years ago. But today, every CEO is getting asked about it on every earnings call, every meeting from the board. They're feeling so much pressure, it's not even funny. So naturally, the CAIO role was born. Except this time, it didn't take decades. It didn't take 15 years. The chief AI officer came around in about 24 months. It literally jumped from 26% of these companies in 2024 to 76% in 2026.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -123,10 +123,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:03:23 - 00:03:58]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> And that doesn't just happen for no reason. So the question becomes, who is going to fill all of those seats? Because, I mean, they need to be filled. And the part that I really wanted to plant in your head here is that you don't have to become a chief AI officer to play this game. Because most people watching this video probably won't. And that's completely fine. Because the same report says that every other leader in the C-suite has to also become AI fluent, which means every company is quietly installing AI fluent leaders in every department, whether that's marketing or finance or ops or sales, you know, whatever it is. The CAIO is the most visible new seat, but it's not the only one.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -137,10 +137,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:58 - 00:04:30]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> So if becoming a chief AI officer feels far away or unrealistic, don't worry. There is a seat in this wave for almost every type of person who's watching this. And we will get to which one fits you in just a minute here. But there's another stat that's really interesting. And I need to show it to you guys because it's like a big gap that is causing a lot of panic amongst CEOs right now. So once again, inside these companies that were surveyed, only 25% of employees are actually using AI tools in their daily work. 25%, one in four. But the same CEOs are saying that 86% of
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -151,10 +151,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:04:30 - 00:05:04]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> their employees do actually have the skills to use AI, or at least could pick them up with just a little bit of training. So actually hear those numbers. 86% have the skills, but 25% actually use them. That is a 61 point gap. Now, of course, this is self-reported survey data and employees almost certainly always under report what they actually use day to day. So the exact gap is fuzzy, but the existence of the gap is absolutely real. And every CEO is staring at it and they know it's real. I mean, like adoption is such a huge problem with tech. Change management is such a
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -165,10 +165,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:05:04 - 00:05:39]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> huge problem. And this number tells you almost exactly where the bottleneck is. The reason that most companies have not deployed AI everywhere yet is not that they don't have the right people. It's more so that nobody is connecting the people who can use AI to the workflows that actually need it. Nobody is like building that bridge from, oh, you know, we have the skills to we're actually saving like 40 hours a week with these new tools and with these new automations. And that bridge doesn't just get built unless someone is like curious enough to take that initiative or they are explicitly assigned to build that bridge. What I basically just alluded to, nobody's rushing to
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -179,10 +179,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:05:39 - 00:06:08]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> take charge of that because change management is so brutal, especially the larger the company is. Because whenever a new technology shows up, you have like a very real short-term cost that you have to bear as an organization before you get that long-term payoff. Because people need retraining. Existing workflows need to be torn down and rebuilt. Things get worse before they actually get better. And then even though the long-term upside is enormous, that short-term pain is what scares most decision makers into just like doing what they're already doing.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -193,10 +193,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:06:08 - 00:06:44]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> So honestly, in a lot of cases, the smartest move inside of a big company might not even be transitioning the whole org. It might be like spinning up a new business unit that is AI first from day one, because they don't have those legacy SOPs or standard operating procedures. They don't have to rework those. They don't have like a new tech stack to migrate. They can just build one up AI native from the start. And that is honestly, it's way easier than dragging an entire organization, hundreds of employees through a new set of procedures, because they have their own way that they're already so used to operating. But either way, somebody does have to lead the
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -207,10 +207,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:06:44 - 00:07:12]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> charge. And that somebody is the person that we're talking about in this video. They might be called the chief AI officer. They might be called the director of AI or the head of AI. They might even be called just like head of marketing, but this head of marketing happens to be the AI person of the company, the most AI fluent person in the building. So whoever closes this gap is the person that every CEO is paying for right now. And there's not just going to be one per company. This is going to be the new normal. I mean, we've all heard that cliche. AI is not going to take your job.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -221,10 +221,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:07:12 - 00:07:49]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> Someone who knows how to use it is going to take your job. And the other thing is you don't need to be hired into this role to start doing that type of work. You can just start closing the gap inside of your existing job right now. You can just pick one workflow in your function that nobody on your team has touched with AI yet, build the AI version of it or automate it or whatever you want to do there, document it, show the time saved, show the benefits, and then just show your boss, show your team. And the more you do this kind of stuff, the better. Okay. So how do you actually go full time into this? Because I kind of see it right now as like two paths into that seat. And I think that one of them is way more accessible than most people actually realize. So path A is you start
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -235,35 +235,10 @@ Dans cette vidéo intitulée **The AI Career Opportunity Nobody is Talking About
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:07:49 - 00:08:18]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de chat virtuel, Interface de tableau de bord
-
-**Contenu textuel & Code** : Statistiques de performance :
-Temps d'exécution : 16m 43s
-Coût de l'API : 3.91 $
-Total de tokens : 191.3K
-Vérifications : 22
-Questions posées : 0
-
-**Action / Démonstration** : Affichage des statistiques de performance d'une tâche ou d'un agent.
-
-![Une interface de chat virtuel avec un écran de diffusion vidéo diffusant une interview, un espace événementiel 3D avec des avatars, et des informations sur la session en cours.](../screenshots/iIfOprq2kCM/iIfOprq2kCM_000656_seg16.jpg)
-*⏱️ 00:06:56 — Une interface de chat virtuel avec un écran de diffusion vidéo diffusant une interview, un espace événementiel 3D avec des avatars, et des informations sur la session en cours.*
-
-![Un tableau de bord affichant des statistiques de performance, incluant le temps d'exécution, le coût de l'API, le nombre total de tokens, et les questions posées.](../screenshots/iIfOprq2kCM/iIfOprq2kCM_000702_seg16.jpg)
-*⏱️ 00:07:02 — Un tableau de bord affichant des statistiques de performance, incluant le temps d'exécution, le coût de l'API, le nombre total de tokens, et les questions posées.*
-
----
-
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> as an AI consultant, an AI automation agency, or some kind of just like advisor. You take a few clients, maybe some freelance gigs, you help businesses solve their problems with AI inside of their company. And some of those companies are going to look at you and go, we should just hire you full time. So you're basically getting pulled in-house through the work that you already did. And this is what a lot of you guys who have been in the space for a while are probably doing right now or actively pursuing. And this is path A. Now path B is more of that internal promotion path.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -274,10 +249,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:08:18 - 00:08:38]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> Like you already have a job at a company. You're quietly the most AI fluent person in the building. You're showing up to meetings with prompts that saved your team three hours. You are shipping internal automations that nobody asked for because you're curious and you're learning, you're experimenting. And the next time that a seat opens up at the big boy table, or maybe just like the bigger boy table, you are the obvious person to fill that seat.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -288,10 +263,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:08:39 - 00:09:11]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> And this is path B. Now, most people watching this video assume that path A is the only option because once again, that's kind of been like the narrative and something that I've obviously talked a lot about on this channel as well. start an agency, sell agents, freelance, become a consultant, you know, it works because you're still helping these businesses, you know, sort of navigate this overwhelming AI world. And what you're really doing there is you're proving a couple of things. You're proving that you can provide value and you're proving that you do have a level of expertise in this field, but path B might actually be way more accessible for you. And there's a stat from a different IBM study that
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -302,10 +277,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:09:11 - 00:09:48]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> backs this up. So in a 2025 IBM study of 600 chief AI officers, 57% of them were appointed from inside that company. So they were internal employees who were already there and got promoted into that seat of chief AI officer. And most of these CAIOs at major companies got the job because they were already inside building, doing the work before there was even a title for it. And I'm literally seeing this play out in real time in my own communities right now. In the last few months alone, I've watched multiple AIS Plus members either get pulled in-house from agency work or get promoted internally because they were already the AI person in their org. And it's for real,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -316,10 +291,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:09:48 - 00:10:06]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> It's happening right now and it's really cool to see. So maybe your freelancing gigs or your AI agency, it's good for cashflow right now and for building a nice reputation. And it's kind of like you're on ramp for a deeper, more impactful role, like an in-house CAIO or something similar. I just think that there's more ways to achieve, like what is your ultimate end goal? Is it financial freedom?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -330,10 +305,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:10:06 - 00:10:26]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> Is it location freedom? Like it's not always in this case, just like start an AI agency. There's other ways to change your life with AI. And the real question is which path fits you? because the answer depends way less on title and way more on something that we still haven't yet talked about. And that thing is passion. You cannot commit to something that you don't actually like.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -344,10 +319,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:10:26 - 00:10:45]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> You just can't. And a lot of people watching this video right now are seeing the same narrative everywhere. You know, if you wanna make money with AI, if you wanna change your life with AI, start an AI agency. And they think that that is what they have to do because it's basically all they're being shown. But a lot of those same people don't wanna get on those sales calls. They don't want to close leads.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -358,10 +333,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:10:45 - 00:11:03]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> They don't want to chase leads. They don't want to hear no 50 times before they get their first yes. They just don't want to do that and just isn't who they are. And there's absolutely nothing wrong with that. This truly matters more than anything else in this whole video, because to actually become the AI native version of yourself, you have to put in the hours. You have to push through things that are overwhelming.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -372,10 +347,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:11:04 - 00:11:24]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. D'accord. Donc on a comme de petits extraits sonores. Je peux discuter avec des gens. Le panel sur la guerre des outils a tranché quelques débats pour moi. Sympa. Bonne perspective là-dessus. On est de nouveau dehors. On a ces différentes bannières, bien qu'elles soient toutes identiques. Elles n'affichent pas, genre, le nom de différentes personnes. Donc gros logo AIS live. L'aile des ateliers est par ici. Et passons les portes coulissantes en verre pour voir ce qu'on a. On a donc le café AIS. La carte est en bas à droite, et elle n'est pas très descriptive.
+> And most days, you know, you might get outputs that are just, and the work is going to be hard. The client might want something different than what you built or what you scoped. And you might feel behind. You're going to feel overwhelmed. the only thing that gets you through is loving the thing enough to keep going. You know, people ask me like, why am I making so many YouTube videos or why am I doing this? It's because I wake up and I'm excited to actually go do it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -386,10 +361,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:11:24 - 00:11:43]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> So if you don't love sales calls, you are probably gonna hate running an agency. You're probably gonna hate trying to get people to close. You're probably going to hate how many times you have to hear no. It just sucks at times. But if you love that hustle, then it sucks less and you can actually win. And it's the same thing on the inside. Like even if you don't wanna be an entrepreneur, it's still about what you already are good at and what you know.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -400,10 +375,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:11:43 - 00:12:04]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> Like if you love marketing, you are going to hate to try to build a bunch of finance agents and automations. You are just going to hate it. But you're going to love automating things like your content creation or your marketing copy or building your landing pages. You're going to be the AI native marketer that your CMO eventually promotes. And that's the move. So whatever you love right now, that thing is the play.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -414,10 +389,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:12:04 - 00:12:30]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
+> Build the AI native version of what you already do. Don't try to be someone else. That's where the imposter syndrome comes from, which is one of the most common issues I hear in my communities. Now, I want to show you the data behind why that reframe works, because every word I just said is backed up by what these 2000 CEOs are telling IBM. Okay, so stat number one is that 85% of CEOs in this study said that every single functional leader at their company has to become a tech expert.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -428,10 +403,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:12:30 - 00:12:58]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> Every single one of them. The CMO, the CFO, the COO, the head of sales, head of customer success, all of them. And that is the CEOs themselves saying this. This isn't just consultants at big tech like Anthropic or Google. These are CEOs. these are the people that are actually running these companies. So stat number two, 77% said that talent leadership and tech leadership roles are converging. That means that the soft skills role of leading people and the hard skills role of running tech are kind of merging into one job.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -442,10 +417,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:12:58 - 00:13:27]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> The leader who can do both of those is going to win. So think about it like this. When the internet hit us, right, that was like one of the biggest shifts we'd seen in the past couple of decades. we had internet agencies. We had digital marketing consultants. We had internet marketers. And that was an actual job category that people would like write on their business cards. But now that's just all, it's just all marketing. If someone walked up to you today and introduced themselves as an internet marketer, you'd probably look at them like they were crazy because that is just marketing.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -456,10 +431,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:13:27 - 00:14:01]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
+> Now the internet seeped into every single function so completely that that qualifier of saying internet before things disappeared. And I think that that exact same like qualifier disappearing pattern is going to happen with AI. Like, you know, right now we have AI consultants, we have AI agencies, we have AI strategists, but it's just going to be consultants. And if a consultant doesn't natively speak AI, then there's no way they're going to be able to keep up with their peers. There's just no shot. So this is not a new industry being created that you can just like opt in or opt out of. AI is going to change the way that businesses actually get stuff done. It's
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -470,10 +445,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:14:01 - 00:14:36]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> going to change the infrastructure. It's going to change the way that all teams work. It's going to literally like seep into everything and fill the cracks of everything. But once again, I know that that might sound scary and that's not what I'm trying to do. I'm trying to like excite you here because the fact that it's going to go into everything means that you get to actually find what you already enjoy and what you're already good at, what you would already potentially consider yourself an expert at and just think, hmm, how can I use AI here to help me do this, this thing that I already love, help me do this better and faster. Okay. So then also IBM drops this quote, and I'm going to paraphrase this slightly, but it really made me think. They said
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -484,10 +459,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:14:36 - 00:15:09]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
+> today, AI augments people by 2030, people will augment AI. The biggest shift will not be structural. It will be cultural. Like I said, that one makes me think, you know, today AI augments you, but by 2030, you will augment AI. And that is the inversion of the entire human to machine relationship in five years. The thing that actually changes is the way that you work and all of the fancy tools and tech is just kind of like downstream of that. Now, there is something that I noticed while I was reading this report that I think is pretty fascinating. The chief AI officer role
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -498,10 +473,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:15:09 - 00:15:45]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
+> itself is being pretty much invented in real time. Like there's no template for it because in a separate IBM study, 40% of CAIOs report directly to the CEO. 24% of them report to the CIO and the rest are scattered across reporting to CTOs and COOs and whatnot and other senior roles. So really nobody can actually agree on what this role 100% is. And that might sound chaotic, but I think it's actually good news for you because if you walk into a company today and you start operating as like the AI native version of yourself, there's no playbook for someone to compare you to because you
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -512,10 +487,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:15:45 - 00:16:19]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
+> essentially are the playbook. The first person to define what this looks like inside of a given function wins by default. Now, if you're in healthcare or finance or defense or government or any other industry that's pretty highly regulated, you might think that this whole video does not apply to you because you can't just plug AI into like all of your existing workflows and data, and there are compliance rules in the way. But I would actually challenge you to think about the fact that it might even apply more because domain knowledge plus AI fluency inside of a constraint is the single rarest hire in the world right now. Everyone else fluent in AI has no idea how your industry works because you actually have both.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -526,10 +501,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:16:19 - 00:16:39]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
+> So please lean into that. But I know that some of you might be thinking like, okay, Nate, yeah, I've been trying, I've been pushing leadership, I have been researching compliant tools, I've been pitching things to my team and I just keep getting told no. And yeah, I mean, that sucks. It happens, especially in regulated industries where one wrong move could cost millions of dollars in fines or it could end up getting someone fired.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -540,10 +515,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:16:39 - 00:16:57]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
+> But getting told no right now obviously does not mean you should stop. You should build your own projects at home for fun. You should build the AI version of a workflow that you actually have at your job, but you would just use dummy data so you're not sending anything sensitive over. And then just casually start sharing it with your team and showing them, hey, look what I built this weekend. I'm just messing around. Hey, look what I could do.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -554,10 +529,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:16:58 - 00:17:22]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
+> Look, AI is awesome. Just start like planting those seeds because inevitably your company is going to get the green light. Eventually your boss is going to walk into a meeting and someone's gonna be like, hey, we need an AI strategy or something along those lines. And in that exact moment, your name is gonna be the first one that pops into your boss's head because you're already AI fluent. So before I close this out, a few more things that I realized when I was reading all this stuff and like just thinking that I need you to understand.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -568,10 +543,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:17:22 - 00:17:40]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
+> So first, these stats are from a survey of 2000 CEOs from large established companies, right? There's, you know, different regions and there's diverse industries, but these CEOs run companies most people watching this video don't work at. The 76% CAIO adoption number is real for these companies, but it is not real for the world.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -582,10 +557,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
+### ⏱️ `[00:17:40 - 00:18:14]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
+> Like globally, the actual percentage, I imagine is significantly lower. Like I would be shocked if that was over 30%. Second, CEOs are guessing in public. In 2024, half of these CEOs thought that AI would be primarily driving growth by 2026. But today in 2026, almost halfway through the year, only 10% say that it actually is. So they were off by about 40% in one year. You should obviously still be taking this timeline very, very seriously because this stuff is evolving way quicker than anyone imagined. But I did want to let you know that some of the predictions that the CEOs in the study made were pretty far off.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -596,10 +571,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
+### ⏱️ `[00:18:14 - 00:18:49]` | Segment #40
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
+> But what is not in dispute is this. CEOs are hiring. The org chart is changing. The functional leaders who are the most affluent are getting promoted. That part is real and it's happening right now. All right. So let me just wrap this whole thing up. You do not need to change your role. You need to change which version of your role you are. You need to play to your strengths because you can outsource your thinking, but you cannot outsource your understanding. So pick your path on purpose. So that is what I wanted to talk to you guys about after reading this report over and over and just thinking about it all week. And I will link it in the description if you're curious and if you want to check it out yourself. And if you feel like this might have
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -610,220 +585,10 @@ Questions posées : 0
 
 ---
 
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
+### ⏱️ `[00:18:49 - 00:19:12]` | Segment #41
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
+> sparked something for you and you want to dive a little bit deeper, then definitely check out my free community. It is linked down there in the description. You can get in there. You can talk to people. You can ask what they're doing. You can ask questions. You can check out all my free resources and you can just start learning more about AI. But anyways, that is going to do it for this one. So if you guys enjoy the video or you learn something new, please give it a like. It definitely helps me out a ton. And as always, I appreciate you guys making it to the end of the video and I'll see you on the next one. Thanks everyone.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
