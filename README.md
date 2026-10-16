@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `153 / 358` (`42.7%`)
+- **Vidéos traitées** : `154 / 358` (`43.0%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -170,6 +170,7 @@
 | 2026-04-12 | [4XqVR6xI6Kw](https://www.youtube.com/watch?v=4XqVR6xI6Kw) | **This One Plugin Just 10x’d Claude Code** | [2026-04-12_YT-[4XqVR6xI6Kw]_This One Plugin Just 10x’d Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-12_YT-[4XqVR6xI6Kw]_This One Plugin Just 10x’d Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-12_YT-[4XqVR6xI6Kw]_This One Plugin Just 10x’d Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-04-11 | [NvxiSG34mPU](https://www.youtube.com/watch?v=NvxiSG34mPU) | **Seedance 2.0 + Claude Code Creates $10k Websites in Minutes** | [2026-04-11_YT-[NvxiSG34mPU]_Seedance 2.0 + Claude Code Creates $10k Websites in Minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-11_YT-[NvxiSG34mPU]_Seedance 2.0 + Claude Code Creates $10k Websites in Minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-11_YT-[NvxiSG34mPU]_Seedance 2.0 + Claude Code Creates $10k Websites in Minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-04-09 | [1EPsUXSManU](https://www.youtube.com/watch?v=1EPsUXSManU) | **Claude Just Told Us to Stop Using Their Best Model** | [2026-04-09_YT-[1EPsUXSManU]_Claude Just Told Us to Stop Using Their Best Model_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-09_YT-[1EPsUXSManU]_Claude Just Told Us to Stop Using Their Best Model_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-09_YT-[1EPsUXSManU]_Claude Just Told Us to Stop Using Their Best Model_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-04-09 | [eu8UJtuIi-E](https://www.youtube.com/watch?v=eu8UJtuIi-E) | **I Gave OpenClaw $10,000 to Trade Stocks** | [2026-04-09_YT-[eu8UJtuIi-E]_I Gave OpenClaw $10,000 to Trade Stocks_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-09_YT-[eu8UJtuIi-E]_I Gave OpenClaw $10,000 to Trade Stocks_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-09_YT-[eu8UJtuIi-E]_I Gave OpenClaw $10,000 to Trade Stocks_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
