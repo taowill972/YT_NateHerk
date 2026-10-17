@@ -1,0 +1,2473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Vous maîtrisez Claude, et maintenant ? — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Vous maîtrisez Claude, et maintenant ?</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-06-22</span>
+                <span class="badge">⏱️ 00:16:53</span>
+                <span class="badge">🆔 <code>-zL_trhnQaI</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=-zL_trhnQaI" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>La vidéo de Nate Herk aborde l'évolution rapide de l'écosystème de l'intelligence artificielle et pose la question centrale : que faire lorsque l'on maîtrise des outils de pointe comme Claude, alors que la sécurité de l'emploi en entreprise est mise à mal par l'accélération technologique ? Plutôt que de succomber au mirage des compétences éphémères ou de se lancer tête baissée dans le freelancing instable, l'auteur démontre que 88 % des organisations utilisent l'IA mais qu'un tiers seulement en tire de réels projets. Cet écart abyssal crée une opportunité majeure pour les professionnels capables de dépasser le simple stade de l'exécution technique pour devenir de véritables stratèges.<br><br>L'analyse de la transition des marchés montre le passage d'une phase de simples chatbots et d'automatisations basiques à l'ère de l'IA agentique, où les agents autonomes exécutent des tâches complexes. Face à un marché du conseil en IA en pleine explosion (estimé à plus de 64 milliards de dollars d'ici 2028), Nate Herk introduit une distinction fondamentale entre le « bâtisseur » (comparé au pharmacien qui se contente de délivrer ce qu'on lui demande) et le « consultant » (comparé au médecin qui diagnostique le vrai problème). La maîtrise des outils s'efface donc au profit de la capacité à identifier les besoins critiques des entreprises.<br><br>Enfin, la vidéo structure deux voies claires pour capitaliser sur ces compétences : la voie du consultant indépendant, qui permet une maîtrise totale du temps et de la variété des missions, et la voie du consultant en interne, qui répond à la demande croissante des entreprises cherchant à structurer leurs initiatives autour de rôles de direction de l'IA. À travers son parcours personnel, de son poste d'analyste chez Goldman Sachs à la création de son agence True Horizon, l'auteur illustre comment concilier rigueur méthodologique et agilité face aux mutations technologiques perpétuelles.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Claude** : Modèle de langage conversationnel de pointe d'Anthropic servant de socle à la création d'agents, d'automatisations et de systèmes complexes.<br>* **Claude Code** : Outil de développement et d'ingénierie logicielle avancé permettant d'accélérer la construction de solutions techniques.<br>* **Opus 5.5** : Modèle linguistique de nouvelle génération utilisé pour concevoir des architectures d'agents et des flux de travail sophistiqués.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Obsolescence des compétences techniques pures** : Se contenter d'apprendre un outil spécifique comme Claude ne garantit pas la pérennité professionnelle, car les technologies évoluent constamment ; seules les méthodologies d'adaptation transversales perdurent.<br>* **Le piège des vagues technologiques** : S'accrocher aux anciens modèles d'agences d'automatisation basiques conduit à une course vers le fond sur un marché saturé, tandis que surfer sur les nouvelles vagues agentiques ouvre des fenêtres d'opportunité lucratives.<br>* **L'écart d'adoption des entreprises** : Bien que 88 % des organisations utilisent l'IA, seulement un tiers ont transformé cet usage en projets concrets, révélant un gouffre opérationnel massif que les experts doivent combler.<br>* **La métaphore du médecin et du pharmacien** : La valeur se déplace des « bâtisseurs » (exécutants techniques) vers les « consultants » (stratèges capables de diagnostiquer les véritables points de friction des entreprises).<br>* **L'explosion du marché du conseil** : Le marché mondial du conseil en IA est en forte croissance et devrait dépasser les 64 milliards de dollars d'ici 2028, porté par un taux d'échec ou d'abandon élevé des projets d'entreprise (environ 30 %).<br>* **L'essor des rôles de direction internes** : Selon une étude d'IBM, 76 % des grandes organisations disposent désormais d'un rôle de type directeur de l'IA, marquant une institutionnalisation rapide de la fonction au niveau exécutif.<br>* **La double voie de monétisation** : Le choix professionnel s'articule entre le conseil indépendant (partenariat à long terme et autonomie) et le conseil interne (stabilité salariale et expertise approfondie au sein d'une seule structure).<br>* **L'importance cruciale du diagnostic** : La rémunération la plus élevée revient à la personne capable de nommer précisément le problème initial et de prouver la valeur mesurable de la solution apportée.<br>* **Gestion du changement et complexité** : Dans les grandes structures institutionnelles, la lenteur bureaucratique et les exigences réglementaires freinent souvent l'innovation agile, poussant certains profils vers l'entrepreneuriat.<br>* **Immortaliser l'apprentissage par la pratique** : L'expérimentation personnelle en parallèle d'un emploi classique (comme l'exploration de l'IA menée par l'auteur chez Goldman Sachs) constitue un tremplin idéal pour pivoter vers des responsabilités stratégiques.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude</span><span class="tool-tag">Claude Code</span><span class="tool-tag">Opus 5.5</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Obsolescence des compétences techniques pures** : Se contenter d&#x27;apprendre un outil spécifique comme Claude ne garantit pas la pérennité professionnelle, car les technologies évoluent constamment ; seules les méthodologies d&#x27;adaptation transversales perdurent.</span></li><li><span class="point-bullet">✦</span><span>Le piège des vagues technologiques** : S&#x27;accrocher aux anciens modèles d&#x27;agences d&#x27;automatisation basiques conduit à une course vers le fond sur un marché saturé, tandis que surfer sur les nouvelles vagues agentiques ouvre des fenêtres d&#x27;opportunité lucratives.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;écart d&#x27;adoption des entreprises** : Bien que 88 % des organisations utilisent l&#x27;IA, seulement un tiers ont transformé cet usage en projets concrets, révélant un gouffre opérationnel massif que les experts doivent combler.</span></li><li><span class="point-bullet">✦</span><span>La métaphore du médecin et du pharmacien** : La valeur se déplace des « bâtisseurs » (exécutants techniques) vers les « consultants » (stratèges capables de diagnostiquer les véritables points de friction des entreprises).</span></li><li><span class="point-bullet">✦</span><span>L&#x27;explosion du marché du conseil** : Le marché mondial du conseil en IA est en forte croissance et devrait dépasser les 64 milliards de dollars d&#x27;ici 2028, porté par un taux d&#x27;échec ou d&#x27;abandon élevé des projets d&#x27;entreprise (environ 30 %).</span></li><li><span class="point-bullet">✦</span><span>L&#x27;essor des rôles de direction internes** : Selon une étude d&#x27;IBM, 76 % des grandes organisations disposent désormais d&#x27;un rôle de type directeur de l&#x27;IA, marquant une institutionnalisation rapide de la fonction au niveau exécutif.</span></li><li><span class="point-bullet">✦</span><span>La double voie de monétisation** : Le choix professionnel s&#x27;articule entre le conseil indépendant (partenariat à long terme et autonomie) et le conseil interne (stabilité salariale et expertise approfondie au sein d&#x27;une seule structure).</span></li><li><span class="point-bullet">✦</span><span>L&#x27;importance cruciale du diagnostic** : La rémunération la plus élevée revient à la personne capable de nommer précisément le problème initial et de prouver la valeur mesurable de la solution apportée.</span></li><li><span class="point-bullet">✦</span><span>Gestion du changement et complexité** : Dans les grandes structures institutionnelles, la lenteur bureaucratique et les exigences réglementaires freinent souvent l&#x27;innovation agile, poussant certains profils vers l&#x27;entrepreneuriat.</span></li><li><span class="point-bullet">✦</span><span>Immortaliser l&#x27;apprentissage par la pratique** : L&#x27;expérimentation personnelle en parallèle d&#x27;un emploi classique (comme l&#x27;exploration de l&#x27;IA menée par l&#x27;auteur chez Goldman Sachs) constitue un tremplin idéal pour pivoter vers des responsabilités stratégiques.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:28</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors, vous avez appris tout ce que vous pouviez sur Claude. Vous pouvez créer des agents, des automatisations et des systèmes complexes. Mais que faites-vous maintenant ? Est-ce que vous lancez une agence d&#x27;IA ? Est-ce que vous vendez des automatisations ? Ou est-ce que vous développez des logiciels pour des entreprises ? Il y a tellement d&#x27;options différentes, mais 90 % de ces options ne concernent pas le spectateur moyen de cette chaîne. Et je comprends que la plupart d&#x27;entre vous occupent des emplois normaux, ont une carrière en entreprise, et préfèrent de loin la sécurité de l&#x27;emploi aux hauts et aux bas du travail indépendant. Mais avec le secteur de l&#x27;IA qui change, pour ainsi dire chaque jour, cette sécurité à laquelle la plupart d&#x27;entre vous sont habitués est en train de disparaître.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique animée de présentation vidéo avec icônes circulaires.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte central &quot;OPTIONS&quot; avec le profil de la chaîne YouTube &quot;Nate Herk | AI Automation&quot; (800K subscribers) et bouton &quot;Subscribe&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Animation graphique introduisant les différentes options et directions possibles présentées dans la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000014_seg1.jpg" alt="Un diagramme circulaire graphique à thème technologique montrant le logo de la chaîne et le mot &quot;OPTIONS&quot; entouré d&#x27;icônes d&#x27;actions diverses." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000014_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:14</span>
+                        <span class="caption-text">Un diagramme circulaire graphique à thème technologique montrant le logo de la chaîne et le mot &quot;OPTIONS&quot; entouré d&#x27;icônes d&#x27;actions diverses.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:28 - 00:00:48</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc dans cette vidéo, je vais vous montrer la meilleure chose que vous puissiez faire dès maintenant pour gagner de l&#x27;argent avec vos compétences sur Claude au sein de votre carrière de prédilection et la feuille de route exacte pour y parvenir. Entrons donc dans le vif du sujet. Avant de vous donner la feuille de route proprement dite, il y a une chose que vous devez comprendre d&#x27;abord, c&#x27;est que le domaine de l&#x27;IA ne s&#x27;arrête jamais d&#x27;avancer. Il ne reste pas immobile une seule seconde. Devenir très bon sur Claude en ce moment tout seul ne veut presque rien dire à long terme parce que les outils vont changer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Code CLI / Terminal</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface en ligne de commande Claude Code affichant le modèle Opus (1M context) avec des fenêtres de terminal en arrière-plan.</p>
+                        <p><strong>Action / Démonstration :</strong> Animation graphique de type pixel art simulant l&#x27;utilisation d&#x27;outils de développement en ligne de commande.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000043_seg2.jpg" alt="Animation style pixel art montrant plusieurs fenêtres de terminal, dont une interface Claude Code en ligne de commande." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000043_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:43</span>
+                        <span class="caption-text">Animation style pixel art montrant plusieurs fenêtres de terminal, dont une interface Claude Code en ligne de commande.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:49 - 00:01:08</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce qui compte vraiment, ce sont les compétences qui se cachent derrière l&#x27;outil et l&#x27;apprentissage de la manière de prendre ces compétences et de les appliquer à chaque nouvelle phase de l&#x27;intelligence artificielle au fur et à mesure qu&#x27;elle se présente. Et la raison pour laquelle c&#x27;est si important, c&#x27;est parce que le domaine de l&#x27;IA n&#x27;a jamais vraiment eu un seul meilleur emploi fixe ou un seul meilleur modèle économique. Il ne cesse de les remplacer tous les ans ou presque. Et à chaque fois qu&#x27;il le fait, une toute nouvelle fenêtre s&#x27;ouvre pour quiconque y prête attention.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface logicielle technique ou de démonstration affichée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte &#x27;Skills&#x27; et éléments graphiques d&#x27;illustration.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation orale des concepts par le présentateur.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:08 - 00:01:27</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Laissez-moi donc vous expliquer ce que je veux dire très rapidement. Si l&#x27;on rembobine d&#x27;environ un an, lorsque l&#x27;intelligence artificielle a vraiment commencé à exploser, les premiers vrais boulots rémunérés étaient plutôt simples. Vous pouviez être la personne qui mettait en place une seule automatisation ou un seul chatbot pour une petite entreprise ou une équipe, et cela seul suffisait pour être assez bien payé. Mais évidemment, les choses ont changé assez vite. C&#x27;est devenu la phase des systèmes d&#x27;IA en entier, ou ce que la plupart des gens appellent maintenant la phase de l&#x27;agence d&#x27;automatisation par IA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo en face caméra avec infographies animées.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes graphiques animés illustrant les propos du présentateur (&#x27;AI Explosion&#x27;, icônes utilisateur/IA).
+[DESC_IMAGE_3] Aucune action technique ou démonstration de logiciel n&#x27;est effectuée.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:27 - 00:01:47</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tout le monde, vous savez, essaie de transformer ses services en produits, de lancer des agences et de vendre des systèmes clés en main à tour de bras. Mais ensuite, les choses ont encore évolué, vous savez, vers l&#x27;ère des créateurs d&#x27;agents IA. Et c&#x27;est là que les gens ont arrêté de construire ces petites automatisations simples. Et qu&#x27;ils ont commencé à construire des agents capables de réellement réfléchir et d&#x27;exécuter une tonne de ces tâches répétitives que nous faisons tous les jours. Et ensuite, nous arrivons à la phase la plus récente, la phase agentique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de commande et interface graphique personnalisée de création d&#x27;agents IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Lignes de code, texte de terminal et options de configuration d&#x27;agents IA (Think / Execute).
+[DESC_IMAGE_1] Présentation de code source/terminal en arrière-plan lors de l&#x27;explication sur la vente de systèmes.
+[DESC_IMAGE_2] Illustration visuelle du concept de construction d&#x27;agents IA avec des boutons interactifs.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000132_seg5.jpg" alt="Capture d&#x27;écran montrant un terminal sombre avec du code et des lignes de commande, avec le texte superposé &quot;Selling done for you systems&quot;." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000132_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:32</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un terminal sombre avec du code et des lignes de commande, avec le texte superposé &quot;Selling done for you systems&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000142_seg5.jpg" alt="Interface graphique d&#x27;un générateur d&#x27;agents IA (&quot;AI AGENT BUILDER&quot;) avec des options de sélection pour &quot;Simple automations&quot;, &quot;Agents&quot;, &quot;Think&quot; et &quot;Execute&quot;." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000142_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:42</span>
+                        <span class="caption-text">Interface graphique d&#x27;un générateur d&#x27;agents IA (&quot;AI AGENT BUILDER&quot;) avec des options de sélection pour &quot;Simple automations&quot;, &quot;Agents&quot;, &quot;Think&quot; et &quot;Execute&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:47 - 00:02:11</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Gartner prévoit environ 202 milliards de dollars de dépenses pour l&#x27;IA agentique en 2026 seulement. Donc, si vous y pensez juste une seconde, les entreprises investissent ce genre d&#x27;argent dans une IA qui ne se contente pas de répondre à vos questions, mais qui va réellement faire le travail à votre place. Et cela semble être la phase dans laquelle nous nous trouvons actuellement. Mais le modèle que je veux vraiment que vous remarquiez là, c&#x27;est qu&#x27;à chaque fois que l&#x27;une de ces phases a changé, les personnes qui ont agi tôt, vous savez, ont pu attraper et surfer sur la vague.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface logicielle ou outil technique affiché.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun code source, commande ou prompt affiché.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;adresse directement au public pour expliquer l&#x27;utilité de l&#x27;IA agentique.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:12 - 00:02:31</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et les gens qui sont restés collés à l&#x27;ancienne phase ont fini par se battre juste pour survivre dans le nouveau marché surpeuplé, en quelque sorte une course vers le fond. Il n&#x27;a jamais vraiment été question d&#x27;apprendre l&#x27;outil spécifique. Il s&#x27;agissait de comprendre ce que les outils pouvaient réellement faire et quelle était la valeur de cela pour de vrais êtres humains. Et le plus fou, c&#x27;est que la construction elle-même devient de plus en plus facile chaque mois. La barrière à l&#x27;entrée ne cesse de baisser.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Incrustation graphique (éléments textuels animés)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparatif &quot;Learning the tool&quot; (marqué d&#x27;une croix rouge) versus &quot;Tool usage&quot; (marqué d&#x27;une coche verte)</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre visuellement la distinction entre l&#x27;apprentissage d&#x27;un outil et son usage concret.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000221_seg7.jpg" alt="Le présentateur s&#x27;exprime face caméra avec deux infographies comparatives incrustées en bas : une étiquette rouge &quot;Learning the tool&quot; avec une croix rouge, et une étiquette verte &quot;Tool usage&quot; avec une coche verte." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000221_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:21</span>
+                        <span class="caption-text">Le présentateur s&#x27;exprime face caméra avec deux infographies comparatives incrustées en bas : une étiquette rouge &quot;Learning the tool&quot; avec une croix rouge, et une étiquette verte &quot;Tool usage&quot; avec une coche verte.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:31 - 00:02:55</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">McKinsey a constaté qu&#x27;environ 88 % des organisations utilisent désormais l&#x27;IA quelque part dans leur entreprise, mais qu&#x27;un tiers seulement environ a réellement transformé cela en de vrais projets. Je vais donc répéter cela très rapidement. Presque tout le monde utilise l&#x27;IA, mais presque personne n&#x27;est bon en IA. Et cet écart, c&#x27;est toute l&#x27;opportunité. La prochaine phase n&#x27;est donc pas un nouveau type de créateur. La valeur se déplace vers la personne qui décide de ce qu&#x27;il faut construire en premier lieu, pourquoi vous le construisez, et si la chose a réellement fonctionné.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document texte / rapport de recherche (McKinsey).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte extrait d&#x27;un rapport de McKinsey : &quot;Many organizations are already experimenting with AI agents...&quot; avec des statistiques sur l&#x27;adoption technologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;un extrait de rapport pour illustrer les statistiques d&#x27;utilisation de l&#x27;IA par les entreprises.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000237_seg8.jpg" alt="Capture d&#x27;écran montrant un rapport ou un article de McKinsey sur l&#x27;utilisation des agents IA dans les organisations, avec le texte surligné concernant les pourcentages d&#x27;expérimentation." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000237_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:37</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un rapport ou un article de McKinsey sur l&#x27;utilisation des agents IA dans les organisations, avec le texte surligné concernant les pourcentages d&#x27;expérimentation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:55 - 00:03:15</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et cette personne est un consultant en IA. Maintenant, un consultant est en réalité simplement la personne qui détermine ce qui ne va pas réellement et trouve ensuite comment y remédier. Donc, au lieu de simplement rester assis là et de faire tout ce qu&#x27;on leur dit de faire, pensez-y comme à un médecin par rapport à un pharmacien. Un pharmacien va fondamentalement vous donner exactement ce que vous demandez, mais un médecin doit déterminer ce dont vous avez réellement besoin. Ainsi, les bâtisseurs sont un peu comme les pharmaciens et les consultants sont les médecins.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUNE</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:16 - 00:03:34</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et le médecin est celui qui reçoit la vraie rémunération parce que les clients ne savent jamais vraiment ce dont ils ont besoin. Ils savent seulement ce qui fait mal. Votre travail n&#x27;est donc pas d&#x27;être la personne la plus rapide pour la construction. Votre travail consiste à nommer le vrai problème dès le départ. Et bien sûr, l&#x27;argent soutient tout cela. Le marché du conseil en IA devrait dépasser les 64 milliards de dollars d&#x27;ici 2028. Et il y a un gouffre géant à combler ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Graphique animé explicatif et article de recherche / rapport web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du rapport : &#x27;Global AI Consulting Services Market Forecasted to Reach $64.3 Billion by 2028&#x27; et schéma &#x27;AI consultant : Fastest to build vs Name the problem&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage des statistiques de marché et d&#x27;un diagramme conceptuel comparant rapidité de construction et identification du problème.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000325_seg10.jpg" alt="Un schéma graphique animé illustrant le rôle de l&#x27;AI consultant avec les options &#x27;Fastest to build&#x27; (marquée d&#x27;une croix rouge) et &#x27;Name the problem&#x27; (mise en avant)." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000325_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:25</span>
+                        <span class="caption-text">Un schéma graphique animé illustrant le rôle de l&#x27;AI consultant avec les options &#x27;Fastest to build&#x27; (marquée d&#x27;une croix rouge) et &#x27;Name the problem&#x27; (mise en avant).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000329_seg10.jpg" alt="Une capture d&#x27;écran d&#x27;un rapport de marché de BCC Research titré &#x27;Global AI Consulting Services Market Forecasted to Reach $64.3 Billion by 2028&#x27;." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000329_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:29</span>
+                        <span class="caption-text">Une capture d&#x27;écran d&#x27;un rapport de marché de BCC Research titré &#x27;Global AI Consulting Services Market Forecasted to Reach $64.3 Billion by 2028&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:34 - 00:03:54</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">À peu près 30 % des projets d&#x27;IA en entreprise sont tout simplement abandonnés. Et seulement environ 6 % des entreprises qui utilisent l&#x27;IA y sont réellement bonnes. Donc, presque toutes les entreprises en ce moment sont plutôt mauvaises dans ce domaine. Et le point important, c&#x27;est qu&#x27;elles savent qu&#x27;elles y sont mauvaises. Et c&#x27;est exactement là que le consultant intervient pour aider. Le meilleur choix que vous puissiez faire en ce moment est donc de devenir ce consultant. Mais il y a en fait deux chemins complètement différents pour accéder à ce rôle.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Article de recherche / document texte mis en surbrillance.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte extrait d&#x27;un rapport sur l&#x27;IA d&#x27;entreprise mentionnant les organisations performantes en IA (« representing about 6 percent of respondents »).</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;un extrait de rapport textuel pour appuyer les statistiques sur les projets d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000339_seg11.jpg" alt="Capture d&#x27;écran montrant un article ou un rapport soulignant en jaune la portion de texte « representing about 6 percent of respondents » en lien avec les performances en IA." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000339_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:39</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un article ou un rapport soulignant en jaune la portion de texte « representing about 6 percent of respondents » en lien avec les performances en IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:54 - 00:04:13</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et celle que vous choisissez dépend vraiment du type de personne que vous êtes. La première voie est celle du consultant indépendant en IA. C&#x27;est là que vous entrez dans d&#x27;autres entreprises, vous trouvez leurs problèmes, puis vous prescrivez et construisez les solutions d&#x27;IA qui les résolvent. C&#x27;est vraiment juste l&#x27;idée de l&#x27;agence d&#x27;IA, mais vous vous présentez beaucoup plus comme un partenaire à long terme plutôt que comme une équipe de développeurs débrouillards capables de créer des automatisations d&#x27;IA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique animée (graphisme d&#x27;illustration de présentation).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes explicatifs animés (&#x27;2 different roads&#x27;, &#x27;Independent AI consultant&#x27;, &#x27;Go to business&#x27;, &#x27;Solve one problem&#x27;, &#x27;AI solutions&#x27;).</p>
+                        <p><strong>Action / Démonstration :</strong> Animation visuelle illustrant les deux types de parcours ou voies professionnelles présentés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:13 - 00:04:36</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parce qu&#x27;au lieu de vendre ces automatisations, vous vendez la solution réelle à un problème spécifique. Et en toute transparence, c&#x27;est pratiquement la voie que j&#x27;ai empruntée moi-même, donc je connais assez bien. Mais la deuxième voie est plutôt celle du consultant en IA en interne. Et c&#x27;est la porte dont je veux commencer à parler davantage sur ma chaîne, car j&#x27;ai réalisé que tout le monde ne veut pas lancer sa propre activité de conseil. Donc, au lieu de conseiller un tas d&#x27;entreprises différentes de l&#x27;extérieur, vous devenez essentiellement la personne de référence en matière d&#x27;IA au sein d&#x27;une seule et même entreprise.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> YouTube, interface graphique d&#x27;illustration vidéo</p>
+                        <p><strong>Contenu textuel & Code :</strong> Miniatures de vidéos YouTube et infographie sur les chemins professionnels</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle des deux voies professionnelles possibles dans l&#x27;IA</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:36 - 00:04:57</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et cette entreprise pourrait même être celle où vous travaillez déjà en ce moment même. Et bien sûr, les entreprises commencent à prendre cela très au sérieux. Elles commencent à embaucher des responsables de l&#x27;IA en interne avec de vrais titres, des choses comme un directeur de l&#x27;intelligence artificielle ou un directeur de l&#x27;IA. Et un grand nombre de ces rôles paient entre le début et le milieu de la tranche à six chiffres. IBM vient en fait de publier son étude de 2026 sur les PDG, et ils ont constaté que 76 % des organisations ont désormais quelqu&#x27;un dans un rôle de type directeur de l&#x27;IA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document web ou présentation statistique (slides/rapport).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte statistique affichant &quot;76% of CEOs say they have a Chief AI Officer (CAIO) in 2026, up from just 26% in 2025.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;un graphique statistique à l&#x27;écran pour appuyer les propos du présentateur sur l&#x27;embauche de responsables de l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000452_seg14.jpg" alt="Une capture d&#x27;écran d&#x27;un rapport ou d&#x27;un site web montrant des statistiques en pourcentage, avec notamment le chiffre &quot;76%&quot; mis en avant concernant les PDG et les rôles liés à l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000452_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:52</span>
+                        <span class="caption-text">Une capture d&#x27;écran d&#x27;un rapport ou d&#x27;un site web montrant des statistiques en pourcentage, avec notamment le chiffre &quot;76%&quot; mis en avant concernant les PDG et les rôles liés à l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:57 - 00:05:19</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et cela représente une hausse par rapport à seulement 26 % il y a deux ans. Donc, cela a presque triplé en un temps record pour un rôle de dirigeant. Maintenant, je veux être juste concernant ce chiffre une seconde. Cette étude n&#x27;a interrogé qu&#x27;environ 2 000 PDG, et il s&#x27;agissait de très grandes entreprises. Nous parlons d&#x27;un chiffre d&#x27;affaires médian d&#x27;environ 5,8 milliards de dollars, et près de quatre sur cinq d&#x27;entre elles étaient cotées en bourse. Donc, ce chiffre de 76 % est vraiment juste, vous savez, des entreprises géantes qui se précipitent pour pourvoir le poste en premier.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Graphiques et animations de présentation visuelle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Statistiques sur l&#x27;évolution des chiffres (26% vs 76%, $5.8B).</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage de graphiques statistiques illustrant les propos du présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000502_seg15.jpg" alt="Graphique en barres montrant l&#x27;évolution des pourcentages (26% en 2025 et 76% en 2026)." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000502_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:02</span>
+                        <span class="caption-text">Graphique en barres montrant l&#x27;évolution des pourcentages (26% en 2025 et 76% en 2026).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000513_seg15.jpg" alt="Interface graphique affichant la mention &#x27;$5.8B&#x27; et &#x27;Publicly traded&#x27; avec une icône de cercle de chargement." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000513_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:13</span>
+                        <span class="caption-text">Interface graphique affichant la mention &#x27;$5.8B&#x27; et &#x27;Publicly traded&#x27; avec une icône de cercle de chargement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:19 - 00:05:38</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Les petites et moyennes entreprises, ce qui est le secteur où la plupart d&#x27;entre vous essayeront de travailler et de faire du conseil, je suppose, ce marché est encore grand ouvert. Donc, si quoi que ce soit, cela me indique qu&#x27;il reste énormément de place pour le reste d&#x27;entre nous pour simplement y entrer directement. Et le truc cool, c&#x27;est que ces deux chemins représentent fondamentalement la même idée, c&#x27;est-à-dire que vous diagnostiquez le problème, vous prescrivez la solution d&#x27;intelligence artificielle, et ensuite vous prouvez que cela a réellement fonctionné.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface logicielle, terminal ou éditeur visible.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun code source, terminal, prompt ou donnée textuelle affichée.</p>
+                        <p><strong>Action / Démonstration :</strong> Aucune action de démonstration technique ou de manipulation d&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:38 - 00:06:03</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La seule vraie différence, c&#x27;est de savoir si vous faites cela pour tout un tas d&#x27;entreprises ou juste pour une seule. Et peu importe l&#x27;outil que vous finissez par utiliser tant que vous pouvez apporter de vrais résultats, ce qui explique pourquoi les compétences comptent tellement plus. La voie de l&#x27;indépendant va vous convenir si vous voulez une totale maîtrise de votre temps, que vous aimez la variété, et que cela ne vous dérange pas de faire des choses comme des appels de prospection et d&#x27;aller chercher vos propres clients. La voie du salarié en interne vous correspond mieux si vous préférez la stabilité, si vous voulez un seul endroit où vous pouvez creuser vraiment en profondeur, et si vous aimez l&#x27;idée d&#x27;un salaire régulier pendant que vous le faites, sans avoir à quitter votre poste pour essayer de lancer votre propre entreprise.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique animée de présentation de carrière et infographie vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &#x27;Independent AI consultant&#x27;, &#x27;In-House AI Consultant&#x27;, &#x27;Own schedule&#x27;, &#x27;Prefer stability&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Animation de transition entre différentes options de carrière pour les consultants en IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:03 - 00:06:24</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je ne suis pas ici en train de vous dire qu&#x27;une voie est meilleure que l&#x27;autre. Tout dépend vraiment de vos objectifs, de votre expérience, de ce que vous voulez dans la vie, et, vous savez, de ce que vous voulez tirer de toute cette opportunité liée à l&#x27;intelligence artificielle au départ. Et écoutez, je comprends. Il y a un million de personnes là-dehors qui vous disent quoi faire avec l&#x27;intelligence artificielle en ce moment même. Alors avant de continuer, je veux vous donner un peu de contexte sur les raisons pour lesquelles c&#x27;est moi qui suis là à vous dire tout cela, parce que j&#x27;ai en quelque sorte été des deux côtés de ce dont nous venons de parler.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface logicielle ou technique présentée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun code, terminal ou prompt visible.</p>
+                        <p><strong>Action / Démonstration :</strong> Aucune action technique ou manipulation n&#x27;est effectuée.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:24 - 00:06:42</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;ai en fait commencé à temps plein en sortant de l&#x27;université chez Goldman Sachs. Et quand l&#x27;IA a vraiment commencé à décoller, j&#x27;étais le gars de l&#x27;équipe qui faisait des recherches dessus en parallèle et qui en était obsédé, qui jouait avec pendant mon temps libre et essayait même, genre, de le montrer à mon équipe et de le présenter à mon équipe. Je voulais vraiment être, genre, la personne responsable de l&#x27;IA en interne. J&#x27;espérais un peu pouvoir, genre, vous savez, mener une nouvelle initiative ou travailler sur des projets d&#x27;IA chez Goldman.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation (workflow), éditeur de code, terminal, et tableau de bord analytique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagrammes de flux de données, lignes de code source et métriques de performance sur plusieurs écrans.
+[DESC_IMAGE_3] Conception de workflows d&#x27;automatisation et développement sur poste de travail en entreprise.</p>
+                        <p><strong>Action / Démonstration :</strong> Manipulation d&#x27;outils de développement et d&#x27;automatisation d&#x27;agents IA en environnement professionnel et personnel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000633_seg19.jpg" alt="Le conférencier travaillant sur son ordinateur portable, affichant un diagramme de workflow de type automatisation." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000633_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:33</span>
+                        <span class="caption-text">Le conférencier travaillant sur son ordinateur portable, affichant un diagramme de workflow de type automatisation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000637_seg19.jpg" alt="Le conférencier dans un bureau avec une plaque Goldman Sachs, utilisant plusieurs moniteurs affichant du code et des tableaux de bord." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000637_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:37</span>
+                        <span class="caption-text">Le conférencier dans un bureau avec une plaque Goldman Sachs, utilisant plusieurs moniteurs affichant du code et des tableaux de bord.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:42 - 00:07:00</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais c’est évidemment une énorme entreprise avec énormément de réglementations et énormément de problèmes de gestion du changement. Et tout cela semblait beaucoup trop lent par rapport à ce que je voulais faire. C’est donc à ce moment-là que j’ai fini par miser sur moi-même et par quitter ce poste. Peu de temps après, je faisais pas mal de travail en freelance. J’ai fondé ma propre agence d’IA appelée True Horizon avec quelques partenaires commerciaux. Et nous avons fait croître cette structure à plus de 100 000 dollars par mois en moins d’un an.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la page d&#x27;accueil de TrueHorizon AI</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de présentation de l&#x27;entreprise d&#x27;IA « TrueHorizon AI » et boutons d&#x27;appel à l&#x27;action (« Schedule consultation », « View case studies »)</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage de la page web institutionnelle de TrueHorizon AI illustrant l&#x27;activité de conseil et d&#x27;accompagnement en IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000655_seg20.jpg" alt="Capture d&#x27;écran montrant la page web d&#x27;une entreprise nommée « TrueHorizon AI » avec le titre « Your AI partner for the next decade »." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000655_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:55</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant la page web d&#x27;une entreprise nommée « TrueHorizon AI » avec le titre « Your AI partner for the next decade ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:00 - 00:07:19</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et j&#x27;ai fini par m&#x27;en retirer parce que je me suis simplement rendu compte que j&#x27;étais beaucoup plus passionné par l&#x27;éducation, par le fait d&#x27;être devant les gens et d&#x27;aider un maximum de personnes à comprendre comment utiliser tout ça par elles-mêmes, ce qui m&#x27;a mené là où je suis aujourd&#x27;hui, à bâtir ce qui est la plus grande communauté d&#x27;automatisation par IA au monde. Nous avons plus de 400 000 membres et tout cela s&#x27;est fait en un peu moins de deux ans. Maintenant, si je vous raconte tout ça, ce n&#x27;est pas pour me la péter.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de la communauté Skool (AI Automation Society)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de profil de la communauté affichant &quot;AI Automation Society&quot;, le nombre de membres (403.1k), les utilisateurs en ligne (1.3k) et divers liens de ressources.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage de la plateforme communautaire Skool pour illustrer l&#x27;espace éducatif géré par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000714_seg21.jpg" alt="Capture d&#x27;écran de l&#x27;interface de la plateforme Skool montrant la communauté &quot;AI Automation Society&quot; (AIS) avec ses statistiques de membres." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000714_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:14</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface de la plateforme Skool montrant la communauté &quot;AI Automation Society&quot; (AIS) avec ses statistiques de membres.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:19 - 00:07:41</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est fondamentalement juste pour dire que j&#x27;ai une grande communauté et que je suis capable de voir ce qui se passe réellement sur le marché. Et j&#x27;ai toujours l&#x27;occasion de voir ce que les propriétaires d&#x27;entreprise essaient de faire, ce que les employés essaient de faire, ce que les entrepreneurs en herbe essaient de faire. Et j&#x27;ai remarqué qu&#x27;il y a une tonne de contenu sur la façon de démarrer une entreprise d&#x27;IA. Mais la plupart d&#x27;entre vous n&#x27;essaient pas de faire ça ou ne veulent pas le faire. Ou vous pensez que c&#x27;est la seule option. Mais la plupart d&#x27;entre vous veulent peut-être simplement progresser dans leur carrière en tant qu&#x27;employé ou peut-être obtenir un meilleur emploi ou une promotion ou plus de sécurité.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUNE</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:41 - 00:07:59</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et presque personne ne publie ce qui vous aide réellement à faire ça. Maintenant, l&#x27;autre chose importante que je veux que vous entendiez, c&#x27;est que je n&#x27;ai pas de bagage technique. Genre, je viens du marketing et des analyses. Je ne suis pas un ingénieur et je ne l&#x27;ai jamais été. Et la seule raison pour laquelle c&#x27;est important, c&#x27;est parce que la barrière à l&#x27;entrée pour apprendre réellement tout ça est pratiquement tombée à zéro. Genre, n&#x27;importe qui peut faire ça maintenant. Alors si vous êtes là à vous demander, est-ce que je peux seulement apprendre ça ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUN</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:00 - 00:08:33</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce n&#x27;est même plus une question que vous devriez vous poser. La réponse est oui. La vraie question qui compte est celle-ci. Quand quelqu&#x27;un vous demande, pourquoi devrais-je vous embaucher plutôt que la personne qui a regardé exactement le même nombre de tutoriels YouTube et connaît exactement la même terminologie et a la même expérience que vous ? Vous devez réfléchir à la façon dont vous répondez à cette question, car les gagnants sur ce marché ne sont pas ceux qui en apprennent le plus. Ce sont ceux qui peuvent réellement prouver qu&#x27;ils peuvent générer de vrais résultats commerciaux. Donc, c&#x27;est cela la question centrale. C&#x27;est aussi une grande partie de la raison pour laquelle nous avons construit quelque chose en silence de notre côté pour vous aider en matière de crédibilité. Mais nous y reviendrons plus tard. Pour l&#x27;instant, méditez juste sur cette question une petite seconde, car peu importe laquelle de ces voies vous empruntez, cette question est exactement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de messagerie mobile (Smartphone).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;Why should I hire you? Over the person who watched the exact same amount of YouTube tutorials&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration visuelle du sujet de discussion via une simulation d&#x27;échange de messages.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000808_seg24.jpg" alt="Une capture d&#x27;écran d&#x27;un smartphone affichant une interface de messagerie (type iMessage) avec une bulle de texte posant la question du recrutement face à un concurrent ayant le même niveau théorique." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000808_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:08</span>
+                        <span class="caption-text">Une capture d&#x27;écran d&#x27;un smartphone affichant une interface de messagerie (type iMessage) avec une bulle de texte posant la question du recrutement face à un concurrent ayant le même niveau théorique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:33 - 00:09:07</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce que représente tout votre parcours. Et on vous posera cette question. Maintenant, l&#x27;avantage, c&#x27;est que peu importe laquelle de ces deux voies vous ressemble le plus, devenir consultant en IA est probablement la prochaine étape naturelle de votre parcours. Et je veux détailler cela un instant, car il y a fondamentalement, selon moi, quatre types de personnes qui regardent probablement ceci en ce moment. Et cette démarche a du sens pour chacun de ces quatre profils. Le premier type est la personne qui crée simplement avec Claude par passion. Et hé, si c&#x27;est votre cas, il n&#x27;y a rien de mal à cela. C&#x27;est tout à fait normal. Mais si vous pouvez réellement monétiser ce que vous faites d&#x27;une manière ou d&#x27;une autre, cela fait deux grandes choses pour vous. Premièrement, cela valide que vous êtes réellement compétent dans ce domaine, car c&#x27;est probablement le moyen le moins cher de savoir si vos compétences sont suffisantes pour que quelqu&#x27;un soit prêt à payer pour cela.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface logicielle, éditeur de code ou outil d&#x27;automatisation n&#x27;est affiché.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte statique : &quot;AI Consultant&quot; et &quot;4 TYPES AI users&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Aucune manipulation technique, démonstration logicielle ou exécution de code n&#x27;est visible. Les images sont des plans de présentation ou des illustrations graphiques statiques.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:07 - 00:09:42</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les. Et deuxièmement, ça finance le passe-temps. Vous savez, il y a tellement de nouveaux outils d&#x27;IA et, vous savez, les jetons coûtent cher et les abonnements coûtent cher. Donc si vous pouvez avoir un petit peu d&#x27;argent supplémentaire qui rentre à côté, alors vous pouvez simplement continuer à jouer avec ces trucs et peut-être continuer à expérimenter avec encore plus d&#x27;outils. Maintenant, le deuxième type de personne est l&#x27;entrepreneur en herbe, la personne qui veut réellement gagner de l&#x27;argent avec ça et qui veut bâtir une entreprise. Et si c&#x27;est vous, vous avez acquis une compétence sur un marché avec une demande massive et presque personne qui peut assurer. Alors regardez simplement les chiffres. Le Forum Économique Mondial prévoit que l&#x27;IA va créer environ 170 millions de nouveaux emplois d&#x27;ici 2030. Et même si vous soustrayez, vous savez, tous les rôles qu&#x27;elle va remplacer ou modifier, cela représente quand même un gain net d&#x27;environ 80 millions d&#x27;emplois. En plus de cela,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique animée de présentation et site web du World Economic Forum.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes : &quot;Hobbyist&quot;, &quot;Entrepreneur&quot;, &quot;Make money&quot;, &quot;Build business&quot;, &quot;Future of Jobs Report 2025: 78 Million New Job Opportunities by 2030&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation visuelle entre différents profils d&#x27;utilisateurs et affichage d&#x27;un rapport économique mondial.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000925_seg26.jpg" alt="Schéma interactif montrant les profils de &#x27;Hobbyist&#x27; et &#x27;Entrepreneur&#x27; avec des options &#x27;Make money&#x27; et &#x27;Build business&#x27;." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000925_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:25</span>
+                        <span class="caption-text">Schéma interactif montrant les profils de &#x27;Hobbyist&#x27; et &#x27;Entrepreneur&#x27; avec des options &#x27;Make money&#x27; et &#x27;Build business&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000934_seg26.jpg" alt="Capture d&#x27;écran du rapport du Forum Économique Mondial (World Economic Forum) intitulé &#x27;Future of Jobs Report 2025&#x27;." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000934_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:34</span>
+                        <span class="caption-text">Capture d&#x27;écran du rapport du Forum Économique Mondial (World Economic Forum) intitulé &#x27;Future of Jobs Report 2025&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:43 - 00:10:03</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">À peu près la moitié de toutes les offres d&#x27;emploi dans la tech aux États-Unis demandent déjà des compétences en IA. Et ce chiffre a doublé en un an seulement. Vous avez donc cette vague de demande géante et vous n&#x27;avez pour ainsi dire personne qui soit réellement capable de la surfer. Et ce que cela signifie pour vous, c&#x27;est que vous n&#x27;avez pas besoin d&#x27;être le meilleur au monde. Vous devez juste être le meilleur dans la pièce. Et le troisième type de personne, c&#x27;est l&#x27;employé qui veut simplement progresser au travail. Et c&#x27;est la catégorie la plus récente du lot. Et c&#x27;est là que cette voie interne se transforme en un véritable code de triche.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur graphique animée (UI design de style futuriste).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des catégories : &quot;Entrepreneur&quot;, &quot;Employee&quot; (avec icône associée), et &quot;Business Owner&quot; partiellement visible.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation ou mise en surbrillance de l&#x27;option &quot;Employee&quot; dans un menu circulaire.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_000958_seg27.jpg" alt="Une interface graphique animée de type diagramme radial ou menu de sélection circulaire montrant différentes catégories professionnelles (Entrepreneur, Employee, Business Owner)." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_000958_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:58</span>
+                        <span class="caption-text">Une interface graphique animée de type diagramme radial ou menu de sélection circulaire montrant différentes catégories professionnelles (Entrepreneur, Employee, Business Owner).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:03 - 00:10:24</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parce que devenir la personne responsable de l&#x27;IA dans votre entreprise protège votre emploi. Et en plus de cela, cela fonctionne essentiellement comme une augmentation. PwC a analysé près d&#x27;un milliard d&#x27;offres d&#x27;emploi. Et ils ont constaté que la prime salariale pour les compétences en IA a plus que doublé en une seule année, passant de 25 % à 56 %. Et le salaire n&#x27;est que la moitié du problème. Une autre étude a publié un rapport selon lequel près des deux tiers des employés ont admis avoir écarté quelqu&#x27;un d&#x27;une promotion parce que ses compétences étaient obsolètes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUN</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:24 - 00:10:45</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, les compétences que vous possédez déjà deviennent discrètement ce qui décide qui avance et qui est laissé pour compte. Et le quatrième type de personne est quelqu&#x27;un qui possède déjà une entreprise. Et pour vous, celui-ci est presque trop facile. Vous n&#x27;avez pas besoin d&#x27;aller embaucher un consultant coûteux et vous n&#x27;avez pas non plus besoin de devenir vous-même un consultant à louer. Vous consultez simplement votre propre entreprise, vous savez, un processus à la fois. Vous avez déjà le premier client idéal et c&#x27;est vous. Il y a une chose que je tiens à souligner qui est assez intéressante car elle change à quel point tout cela est réellement urgent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Graphique animé en incrustation vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte &quot;4 TYPES AI users&quot;, &quot;HIRE CONSULTANT&quot;, &quot;Become consultant&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des différents types d&#x27;utilisateurs et de leurs options stratégiques.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:45 - 00:11:08</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est fondamentalement l&#x27;étiquette de consultant en IA. Je pense qu&#x27;elle a une date de péremption. Tout comme toutes les autres vagues dont nous avons parlé plus tôt, celle-ci est également temporaire. L&#x27;IA va s&#x27;infiltrer dans absolument toutes les industries. Elle va combler les moindres failles et elle va s&#x27;immiscer dans absolument tous les rôles qui existent. Donc, dans quelques années, plus personne ne s&#x27;appellera probablement consultant en IA. Ce sera simplement consultant, parce que chaque consultant va utiliser l&#x27;IA et devra y être complètement natif, car s&#x27;ils ne parlent pas IA, ils ne vont tout simplement pas obtenir de contrats.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Graphique illustré / Infographie contextuelle</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte et illustrations sur l&#x27;entretien des plantes en cinq étapes (Watering, Lighting, Feeding, Cleaning, Monitoring)</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;une infographie illustrative pour appuyer le propos sur l&#x27;expansion de l&#x27;IA dans tous les domaines</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001056_seg30.jpg" alt="Une infographie illustrée intitulée &#x27;A Botanist&#x27;s Guide to Plant Care&#x27; montrant un plan en 5 étapes pour l&#x27;entretien des plantes." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001056_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:56</span>
+                        <span class="caption-text">Une infographie illustrée intitulée &#x27;A Botanist&#x27;s Guide to Plant Care&#x27; montrant un plan en 5 étapes pour l&#x27;entretien des plantes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:08 - 00:11:28</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors, pensez-y simplement comme ça. Quelqu&#x27;un aujourd&#x27;hui, s&#x27;il venait vous voir et se disait comptable Excel, est-ce que ça ne semblerait pas complètement ridicule ? Parce qu&#x27;il est évident que chaque comptable utilise Excel. Mais si vous remontez au moment où Excel est peut-être sorti pour la première fois, vous pourriez avoir un groupe de comptables qui utilisent Excel, mais un autre groupe qui s&#x27;en tient toujours à l&#x27;ancienne méthode. Alors peut-être que s&#x27;appeler, vous savez, un comptable Excel ou lister cela comme l&#x27;une de vos compétences était important.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUN</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:28 - 00:11:48</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est une histoire similaire avec les gens qui s&#x27;auto-proclamaient marketeurs sur Internet à l&#x27;époque où Internet est apparu pour la première fois. Mais maintenant, c&#x27;est simplement du marketing. C&#x27;est ainsi que tout le monde procède. C&#x27;est donc exactement là où nous en sommes avec l&#x27;intelligence artificielle en ce moment. L&#x27;étiquette est la partie qui est temporaire, mais l&#x27;avantage concurrentiel est bien réel. Les compétences sont réelles et la fenêtre pour s&#x27;en emparer est grand ouverte en ce moment même. Elle ne va tout simplement pas rester ouverte aussi grand pour toujours. Maintenant, je sais ce que certains d&#x27;entre vous sont probablement en train de penser, à savoir devenir un consultant en IA ou la personne référente en IA en interne à votre poste.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucun éditeur de code ou terminal de démonstration technique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte graphique de transition &quot;MARKETING&quot;, &quot;LABEL&quot; et &quot;EDGE&quot;.
+[AMOUL] Présentation face caméra et transition graphique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:48 - 00:12:09</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous devez aller démissionner de votre travail demain, aller vous bâtir une marque personnelle massive, commencer à faire des vidéos YouTube et miser toute votre vie là-dessus. Mais vous n&#x27;avez vraiment pas à le faire. Tout le point de cette vidéo est qu&#x27;il y a une façon beaucoup plus intelligente et beaucoup moins risquée de faire cela. Laissez-moi donc établir le principe de fonctionnement qui fait fonctionner toute la feuille de route, puis vous guider à travers les quatre étapes que vous pouvez commencer dès demain. Parce que la plupart des gens abordent cela complètement de travers. Et la différence est exactement la raison pour laquelle la plupart des créateurs ne devienennt jamais consultants.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUNE</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:09 - 00:12:31</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La mauvaise approche ici, c&#x27;est de simplement regarder son travail, de trouver les tâches répétitives et de les automatiser. Ne vous méprenez pas, ce n&#x27;est évidemment pas une mauvaise chose en soi. C&#x27;est juste que ce n&#x27;est pas ce qui vous rend extrêmement précieux. Parce que si vous automatisez quelque chose qui ne freine pas réellement l&#x27;entreprise, vous venez de passer une semaine à économiser peut-être, vous savez, 20 minutes sur une tâche que personne n&#x27;attendait de toute façon. Tout le monde s&#x27;en moque un peu. Donc la vraie démarche repose sur deux points. Premièrement, chaque projet que vous construisez doit cibler un véritable goulot d&#x27;étranglement de l&#x27;entreprise.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran : &#x27;AUTOMATION Random task&#x27; puis &#x27;2 Real move - OPTION 1&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation orale des concepts d&#x27;automatisation sans manipulation de logiciel ou de code.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:31 - 00:12:54</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Quelque chose qui, si vous le réparez, l&#x27;entreprise devient plus rapide ou gagne plus d&#x27;argent ou arrête de saigner quelque part où elle ne devrait pas saigner. Et deuxièmement, chaque projet a besoin d&#x27;un KPI clair qui lui est lié avant de commencer à le construire. Un chiffre spécifique que vous essayez réellement de faire bouger. Et c&#x27;est votre étoile polaire pour ce projet spécifique. La contrainte vient donc en premier et le KPI vient en second. Et ce qui est important à ce sujet, c&#x27;est que c&#x27;est ainsi que vous communiquez réellement la valeur d&#x27;une manière que personne d&#x27;autre sur ce marché ne communique actuellement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Graphique de présentation superposé (Overlay).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;2 Real move&quot;, &quot;Target actual constraint&quot;, &quot;OPTION 1&quot;, &quot;OPTION 2&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation conceptuelle des étapes de décision stratégique pour un projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001236_seg35.jpg" alt="Un graphique stylisé affiche &quot;2 Real move&quot; avec les mentions &quot;Target actual constraint&quot; et des boutons &quot;OPTION 1&quot; / &quot;OPTION 2&quot;." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001236_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:36</span>
+                        <span class="caption-text">Un graphique stylisé affiche &quot;2 Real move&quot; avec les mentions &quot;Target actual constraint&quot; et des boutons &quot;OPTION 1&quot; / &quot;OPTION 2&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:54 - 00:13:14</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parce que n&#x27;importe qui peut dire, hé, tu sais, j&#x27;ai construit cet agent IA. Presque personne ne peut dire j&#x27;ai construit un agent IA qui a fait bouger ce chiffre spécifique de tant pour cette entreprise spécifique, ce qui a généré X pour cent de profit en plus ou, tu sais, X clients de plus ou peu importe quelle est la métrique. Et c&#x27;est exactement ça qui vous démarque. Le modèle opérationnel complet derrière tout ça se trouve dans un livre que je suis en train d&#x27;écrire. Mais pour les besoins de cette feuille de route, la règle est très simple. La contrainte d&#x27;abord, le KPI ensuite, la construction en troisième.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur de type &quot;Chatbot&quot; (simulée graphiquement).</p>
+                        <p><strong>Contenu textuel & Code :</strong> &quot;I built an agent that moved this specific number by [ this much ] for this specific business, which resulted in X percent more profit or X more customers&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage progressif du texte dans l&#x27;interface de chat pour illustrer le discours du présentateur sur la valeur ajoutée des agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001259_seg36.jpg" alt="Une interface de chat stylisée affichant une bulle de message avec du texte concernant la construction d&#x27;un agent IA." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001259_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:59</span>
+                        <span class="caption-text">Une interface de chat stylisée affichant une bulle de message avec du texte concernant la construction d&#x27;un agent IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001304_seg36.jpg" alt="La même interface de chat mise à jour, affichant deux bulles de message détaillant l&#x27;impact commercial d&#x27;un agent IA (profit/clients)." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001304_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:04</span>
+                        <span class="caption-text">La même interface de chat mise à jour, affichant deux bulles de message détaillant l&#x27;impact commercial d&#x27;un agent IA (profit/clients).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:14 - 00:13:33</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, la première étape, c&#x27;est d&#x27;auditer votre propre rôle. Posez-vous avec ce prisme des contraintes dont nous venons de parler et passez en revue votre travail. Au lieu de lister chaque tâche répétitive que vous faites, demandez-vous laquelle ralentit réellement l&#x27;équipe, bloque les revenus ou cause une vraie douleur quelque part en aval que personne ne résout actuellement. Et c&#x27;est ça, votre vraie liste. Ensuite, pour chaque élément, notez le chiffre précis que vous essaieriez de faire bouger si vous le régliez, la métrique spécifique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte incrusté à l&#x27;écran listant les trois critères d&#x27;audit du rôle (« Which one is actually slowing the team? », « Which one is gating revenue? », « Which one is causing real pain? »).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation orale des critères d&#x27;audit avec apparition animée du texte à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:33 - 00:13:51</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et voilà, c&#x27;est votre première liste de projets. Pas les choses faciles, mais ce qui compte vraiment. La deuxième étape consiste à entreprendre de petits projets. Vous choisissez donc un élément de cette liste, vous en définissez la portée et vous construisez une solution pour celui-ci. Ensuite, vous demandez si vous pouvez l&#x27;implémenter dans une seule zone de l&#x27;entreprise. Juste un petit coin de l&#x27;entreprise où vous pouvez réellement tester quelque chose, prouver que cela fonctionne et montrer de vrais résultats.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Graphique animé de présentation (type motion design).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affichant &quot;4 Steps&quot;, &quot;1 Self-Audit&quot; et &quot;2 Take on small projects&quot; disposés autour d&#x27;un cercle central.</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration visuelle des étapes du processus de travail mentionné par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001337_seg38.jpg" alt="Un graphique circulaire stylisé présentant un processus en &quot;4 Steps&quot;, avec l&#x27;étape 2 &quot;Take on small projects&quot; mise en évidence." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001337_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:37</span>
+                        <span class="caption-text">Un graphique circulaire stylisé présentant un processus en &quot;4 Steps&quot;, avec l&#x27;étape 2 &quot;Take on small projects&quot; mise en évidence.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:51 - 00:14:12</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parce que ces résultats, quels qu&#x27;ils finissent par être, sont concrètement votre première étude de cas. Vous pouvez la montrer à votre patron. Vous pouvez la montrer à votre équipe. Vous pouvez la mettre sur votre portfolio. Vous pouvez la poster sur LinkedIn. Juste pour que les gens commencent à le remarquer. La troisième étape consiste ensuite à devenir un expert dans la résolution de problèmes, et pas seulement dans la construction. C&#x27;est en fait l&#x27;étape la plus importante de cette feuille de route. Parce qu&#x27;une fois que vous avez réalisé suffisamment de ces petites créations, vous commencez à voir les schémas sous-jacents. Vous commencez à remarquer que les entreprises ne cessent de se heurter à la même poignée de problèmes, encore et encore.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Page web de présentation et graphisme vidéo d&#x27;animation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte marketing et étapes méthodologiques pour la création d&#x27;automatisations.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique et illustration visuelle de concepts d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:12 - 00:14:34</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est bien là la dernière compétence dont vous avez besoin pour devenir un vrai consultant. Vous arrêtez d&#x27;être la personne qui se contente de construire tout ce qu&#x27;on lui donne. Vous êtes maintenant la personne qui peut arriver dans une situation, trouver le vrai problème, concevoir le système et résoudre le problème. Et dès que cela se produit, vos collègues commencent à venir vous voir au lieu que ce soit l&#x27;inverse. Ensuite, la quatrième étape consiste à formaliser tout ça. Une fois que vous avez fourni assez de preuves que l&#x27;entreprise a réellement besoin de ce genre de personne dans ses effectifs, c&#x27;est là que vous officialisez la chose.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Graphismes animés incrustés dans la vidéo YouTube (style motion design minimaliste).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;FIND THE PROBLEM&quot;, &quot;DESIGN THE SYSTEM&quot;, &quot;SOLVE THE PROBLEM&quot;, &quot;4 Formalize it&quot;, &quot;4 Steps&quot;.
+[DESC_IMAGE_1] Aucun élément technique pertinent (gros plan présentateur).</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001423_seg40.jpg" alt="Le présentateur apparaît avec trois encadrés de texte superposés à gauche : &quot;FIND THE PROBLEM&quot;, &quot;DESIGN THE SYSTEM&quot;, &quot;SOLVE THE PROBLEM&quot;." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001423_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:23</span>
+                        <span class="caption-text">Le présentateur apparaît avec trois encadrés de texte superposés à gauche : &quot;FIND THE PROBLEM&quot;, &quot;DESIGN THE SYSTEM&quot;, &quot;SOLVE THE PROBLEM&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001428_seg40.jpg" alt="Un graphique stylisé avec le texte &quot;4 Formalize it&quot; et un badge circulaire &quot;4 Steps&quot;." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001428_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:28</span>
+                        <span class="caption-text">Un graphique stylisé avec le texte &quot;4 Formalize it&quot; et un badge circulaire &quot;4 Steps&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:34 - 00:14:54</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tu vas voir ton patron ou ton équipe de direction avec les preuves, et tu proposes le poste toi-même. La plupart d&#x27;entre vous ne vont pas trouver ce boulot affiché sur LinkedIn. Vous allez peut-être le créer de l&#x27;intérieur. Et la seule raison pour laquelle vous pouvez réussir ça, c&#x27;est parce que vous avez passé les étapes un à trois à bâtir discrètement le dossier pour y arriver. Et même si l&#x27;organisation n&#x27;est pas encore prête à avoir ce rôle, quand elle sera prête, inévitablement, tu veux être le premier nom qui leur vient à l&#x27;esprit.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucun éditeur ou logiciel technique, simple incrustation de texte vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste à 3 éléments : 1. Self-Audit, 2. Take on small projects, 3. Expert at solving problems.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des étapes clés sous forme de liste animée à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001444_seg41.jpg" alt="Le présentateur apparaît à l&#x27;écran avec une liste à puces animée sur la gauche affichant 3 étapes clés." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001444_seg41.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:44</span>
+                        <span class="caption-text">Le présentateur apparaît à l&#x27;écran avec une liste à puces animée sur la gauche affichant 3 étapes clés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-42">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:54 - 00:15:14</span>
+                <span class="segment-idx">Segment #42</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc voilà toute la feuille de route. Auditer, construire, reconnaître les schémas, formaliser. Quatre étapes. Et vous vous souvenez quand je parlais de l&#x27;IA qui s&#x27;infiltre partout ? Vous n&#x27;avez pas besoin d&#x27;aller apprendre un secteur complètement nouveau. Pensez simplement à ce que vous faites déjà au jour le jour. En quoi êtes-vous doué ? Et comment l&#x27;IA peut-elle vous aider à avancer plus vite, à être plus intelligent et à obtenir de meilleurs résultats dans ce que vous faites déjà ? Et le truc cool ici, c&#x27;est que ce n&#x27;est pas théorique. Je me suis réellement assis avec quelqu&#x27;un de ma communauté qui a exécuté cette exact stratégie en temps réel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique animée de présentation avec des icônes minimalistes.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Deux blocs distincts étiquetés &#x27;DAILY WORK&#x27; avec une icône de document et &#x27;EXPERTISE&#x27; avec une icône de médaille.</p>
+                        <p><strong>Action / Démonstration :</strong> Animation graphique illustrant le lien entre le travail quotidien et l&#x27;expertise sectorielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001504_seg42.jpg" alt="Schéma graphique animé illustrant les concepts de travail quotidien et d&#x27;expertise connectés par une ligne pointillée." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001504_seg42.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:04</span>
+                        <span class="caption-text">Schéma graphique animé illustrant les concepts de travail quotidien et d&#x27;expertise connectés par une ligne pointillée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-43">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:14 - 00:15:35</span>
+                <span class="segment-idx">Segment #43</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Elle s&#x27;appelle Aylan. Il y a environ un an, elle avait passé 15 ans en tant que développeur d&#x27;e-mails. Donc pas super technique, sans bagage en IA, mais toute son équipe a ensuite été licenciée et elle a dû trouver quelque chose de nouveau. Elle a donc commencé à apprendre de bout en bout. Elle s&#x27;est reconvertie dans le code cloud. Et pendant qu&#x27;elle apprenait, elle a fait la seule chose que les gens zappent, c&#x27;est-à-dire qu&#x27;elle a construit en public. Elle a lancé deux chaînes YouTube montrant simplement ce qu&#x27;elle fabriquait. Elle a publié ses créations sur LinkedIn. Elle a enregistré des démos de absolument tout ce sur quoi elle travaillait.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code, Claude Code (extension/terminal intégré)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source TypeScript pour un agent automatisé utilisant trigger.dev, l&#x27;API Anthropic et Firecrawl.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du code source et démonstration de l&#x27;outil de développement assisté par IA Claude Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001525_seg43.jpg" alt="Un éditeur de code (VS Code) affichant un script TypeScript (`morning-research.ts`) avec une incrustation vidéo d&#x27;Aylan parlant et l&#x27;interface de Claude Code." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001525_seg43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:25</span>
+                        <span class="caption-text">Un éditeur de code (VS Code) affichant un script TypeScript (`morning-research.ts`) avec une incrustation vidéo d&#x27;Aylan parlant et l&#x27;interface de Claude Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-44">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:35 - 00:15:54</span>
+                <span class="segment-idx">Segment #44</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et le truc génial, c&#x27;est qu&#x27;elle n&#x27;a pas des milliers et des milliers d&#x27;abonnés et de followers. Elle a juste des preuves. Donc, lorsqu&#x27;elle a postulé pour un poste de responsable de l&#x27;IA dans une entreprise de 15 personnes appelée Young, le recruteur lui a envoyé un e-mail avec une seule question, qui était : qu&#x27;avez-vous construit ? Et rappelez-vous, c&#x27;est exactement la question dont je vous ai dit qu&#x27;elle décide qui gagne sur ce marché. Donc, au lieu d&#x27;avoir à taper une longue explication vague, elle a juste envoyé des liens.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Gmail affichée sur un écran d&#x27;ordinateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> E-mail de recrutement provenant de &#x27;Young HR&#x27; avec la phrase en surbrillance : &#x27;What have you built ?&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage à l&#x27;écran de l&#x27;e-mail envoyé par le recruteur à Ailin Werner.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001544_seg44.jpg" alt="Capture d&#x27;écran d&#x27;un e-mail reçu dans Gmail de la part de l&#x27;équipe RH de Young posant la question &#x27;What have you built ?&#x27;." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001544_seg44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:44</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un e-mail reçu dans Gmail de la part de l&#x27;équipe RH de Young posant la question &#x27;What have you built ?&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-45">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:54 - 00:16:12</span>
+                <span class="segment-idx">Segment #45</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Elle vient juste d&#x27;envoyer son étude de cas. Elle a envoyé de vraies preuves. Et elle a pu sauter les RH complètement, aller directement voir le PDG, et elle a décroché le job. Donc, en un an, passer de pratiquement zéro en IA à responsable de l&#x27;IA, c&#x27;est vraiment génial. Si vous voulez voir l&#x27;interview complète que j&#x27;ai faite avec elle, je vais la taguer juste ici pour que vous puissiez aller voir ça. Laissez-moi donc résumer toute cette vidéo en une seule respiration. Vous n&#x27;avez pas besoin de quitter votre emploi. Vous n&#x27;avez pas besoin de construire une marque personnelle massive. Vous n&#x27;avez même pas besoin d&#x27;être super technique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUNE</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-46">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:13 - 00:16:31</span>
+                <span class="segment-idx">Segment #46</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La vraie démarche consiste à identifier une contrainte réelle dans votre rôle ou votre entreprise, à la lier à un indicateur clé de performance, à créer une solution, puis à en concevoir quelques autres afin d&#x27;avoir un véritable historique. Ensuite, publiez cet historique là où les gens peuvent réellement le voir, même s&#x27;il s&#x27;agit simplement d&#x27;un site web personnel où vous créez votre propre portfolio, bref, quelque chose que vous pouvez envoyer aux gens. Donc, si vous souhaitez obtenir de aide pour appliquer toute cette méthode, le lien dans la description mène vers ma communauté School gratuite.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUNE</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-47">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:31 - 00:16:49</span>
+                <span class="segment-idx">Segment #47</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tout ce dont nous avons parlé dans cette vidéo, je l&#x27;ai regroupé dans un guide de ressources gratuit auquel vous pouvez accéder, ainsi qu&#x27;à d&#x27;autres cours, dépôts GitHub, compétences, frameworks, et à des centaines de milliers de personnes qui cherchent à garder une longueur d&#x27;avance avec l&#x27;IA. C&#x27;est entièrement gratuit. C&#x27;est le premier lien dans la description. Mais bref, c&#x27;est tout pour aujourd&#x27;hui. Si vous avez aimé la vidéo ou si vous avez appris quelque chose de nouveau, n&#x27;hésitez pas à mettre un pouce bleu. Ça m&#x27;aide énormément.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme de communauté en ligne (AI Automation Society / Skool).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des membres de la communauté, profils utilisateurs, statistiques de membres.
+[DESC_IMAGE_2] Navigation dans l&#x27;annuaire des membres de la communauté de la plateforme AIS.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zL_trhnQaI/-zL_trhnQaI_001640_seg47.jpg" alt="Capture d&#x27;écran de l&#x27;interface de la communauté en ligne &quot;AI Automation Society&quot; (AIS) affichant la liste des membres." loading="lazy" onclick="openLightbox('../screenshots/-zL_trhnQaI/-zL_trhnQaI_001640_seg47.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:40</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface de la communauté en ligne &quot;AI Automation Society&quot; (AIS) affichant la liste des membres.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-48">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:49 - 00:16:53</span>
+                <span class="segment-idx">Segment #48</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et comme toujours, je vous remercie d&#x27;être arrivés jusqu&#x27;à la fin de la vidéo et je vous vois tous dans la prochaine. Merci les gars.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucun logiciel ni interface affichés.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun code ni texte informatif à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur fait ses adieux et clôture la vidéo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
