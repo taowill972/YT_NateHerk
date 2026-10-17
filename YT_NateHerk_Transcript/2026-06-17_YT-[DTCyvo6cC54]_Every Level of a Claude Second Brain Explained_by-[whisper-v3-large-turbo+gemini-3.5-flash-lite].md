@@ -25,10 +25,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:26]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> Today, I'm gonna explain the different levels of building your own AI second brain. You can see here we have a visual of three very different types of data. This one is where we have our context really starting to form and we're starting to see some relationships and we're starting to see some different nodes and entities form. And then as we continue to scale this up, add more knowledge, more knowledge, more relationships, we start to get something that looks a little bit more like this, where we have clearly different clusters and inside of all of these nodes, we can see how they relate to each other.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -39,10 +39,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:27 - 00:00:46]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> And then over here, we're taking all of those relationships a step farther and we're able to then start to see how everything really pieces together rather than just having files that sort of link back to each other. This is relationship mapping. And so really the idea of an AI second brain has blown up because we're all trying to get as much information out of our heads into our systems as possible.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -53,10 +53,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:46 - 00:01:19]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> That's the true value. Your moat is your data. It's your IP. But the process of organizing that into a system so that you can use it with a bunch of different AI models and so that it can actually recall things in a way that makes sense rather than just hallucinating or spending a bunch of your time and tokens trying to look through everything, that's the issue. So clearly all of this is my real data and this is what the actual project looks like. It is my Herc2 project. I have a bunch of folders and files here. And at the end of the day, that's basically all it is. It is markdown files that are organized in a way that I understand and that my agents understand. And so yes, I'm going to walk you guys through what I have here and how it works, but I also have this other project
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -67,10 +67,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:19 - 00:01:48]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> where I'm going to show you if you're starting from scratch or if you feel like maybe you're in between level two and three, how we can actually look at the differences and what it might look like to scale up your own systems and start to add context in different ways. So super excited to dig into this today. And I don't want to waste any of your guys' time. So let's just start looking at these five levels and how they differ. All right. So every level of a Claude Code second brain, and I'm going to be obviously kind of referring to Claude Code a lot, but keep in mind, this can be used with any AI model. I use my second brain all the time with Codex as well.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -81,10 +81,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:48 - 00:02:12]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> I use it with Hermes agent. This can be used by different agent harnesses because it's just files folders. So what is the actual job of a second brain? A lot of people probably define this differently, but the way that I think about it is that it's a place for me to save notes, meeting recordings, click up threads, stuff like that. I can save it there. And then it helps me basically ingest it and get it into the right spots so that it can actually find it later.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -95,10 +95,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:02:12 - 00:02:45]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> And so that's really the thing to think about is can your agent find it again? And could you find it again? Because if the answer is no, then you probably don't have the right routing or folder architecture set up, which is what I'm here to talk about today. And one other sort of mindset thing that I want to get out there before we dive into these five levels is that you kind of have to work backwards. You want to reverse engineer based on the question. So this will start to make more sense as we get into it. But really what you should be thinking about is how do I want to use this data in the future? Because how it's going to be accessed and recalled determines the way that you
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -109,10 +109,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:45 - 00:03:20]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> put it in in the first place. For example, a basketball hoop and a basketball. We know what shape the hoop is and we know that the ball needs to go through. So why would we ever design the ball to be a giant square? Because it just wouldn't fit through the hoop. So that would make no sense. So you need to start with the end in mind a little bit. Once again, I will show you exactly what I mean by that as we continue on. Because remember, we're trying to get to the point where your second brain knows everything about your business, about you, your relationships. It It knows everything to the point where it probably can recall stuff better than you can because it has a better memory and it can search through things way faster than you can.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -123,10 +123,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:03:20 - 00:03:40]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> So we've got five different levels to talk about and they each kind of have different questions. So level one is can you find the file or the info by looking for an exact word or name? Level two is can you pull everything on a certain topic together? Level three is I search for different words than I wrote. So semantic search, you're searching for meaning rather than an exact word match.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -137,10 +137,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:40 - 00:04:00]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> and then trace relationship chains. Can you ask about topic X and then trace that all the way back to topic A? And then level five is just kind of making this whole second brain thing super autonomous to the point that you don't even have to think about it. And by the way, this isn't me saying that number five is best. I have some arguments about why I do not currently sit on level five.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -151,10 +151,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:04:00 - 00:04:20]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> The point I'm trying to make here is each level is different and you want to find the simplest level or the lowest level that actually fits your needs. If you don't have a pain point in your system, then I don't really think there's a need to go experiment or develop a new sort of architecture. If there's not pain, then why create more?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -165,10 +165,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:04:20 - 00:04:40]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> Okay, so level one is pretty simple and this is where you always start. So you start with a claw.md or if you're using codecs or something, you would start with an agents.md. But you start with a claw.md, which is kind of, you know, that gets loaded up. That's almost like the system prompt for that session, for that project. And then you've just got a bunch of folders and files. But the key part there is the claw.md is kind of treated as a router.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -179,10 +179,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:04:40 - 00:05:04]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> So yes, you've got some, hey, this is your role. Here is what's important. But you also have routing rules. If you ever need to find information about me personally, look in this folder. If you need information about our quarter one priorities, look in this folder. Because if you've ever had a point where you ask Claude to do something and then it asks you, hey, can you give me more info? I don't know what you're talking about, but you know there's files and folders in your project, then you probably just didn't give Claude the knowledge to go look there.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -193,10 +193,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:05:04 - 00:05:25]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> It's not just gonna go search your entire code base automatically. I mean, you wouldn't want it to do that because it's gonna waste your time and your tokens. So if it doesn't know if something lives somewhere, then it's probably not gonna be able to find it. So when this is properly set up, you will stop having to re-explain things. You will talk to it and it will just know where to go look and why. But the problems with this is that if it grows too big, it can start to get messy and feel ignored.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -207,10 +207,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:05:25 - 00:05:44]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> And this is typically more of like an exact word type of search, depending on the way that you route. So if I open up my example project here, let's open up level one. So in level one, what you can see, pretend this is its own Claude project. We've got a Claude.MD. So let me click into that. We can see here, it says, this file loads automatically every time you open Cloud Code in this folder.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -221,10 +221,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:05:45 - 00:06:03]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> It is the one file that tells the AI who you are, how you work and where things live. At level one, this file plus a few folders is your entire second brain. So here's kind of like that basic knowledge. And then right here, it's this simple, where things live. In the context folder, always true background about you and how you work, read this first. Projects, decision log. And that's basically it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -235,10 +235,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:06:03 - 00:06:29]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
+> So right here, you can see there's a context folder. We have an about me file, which you could grow. We have stack and conversations file. We have decisions. So this is a decision log where you can have your cloud.md always append new decisions and the dates whenever you make a big change to your project or to your life or to your business. And then we have projects. So this is where you could have a markdown file or even folders within the projects for all of your ongoing projects, all of your ongoing clients, whatever it is, however you want to organize it, that's where you can have some projects.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -249,10 +249,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:06:29 - 00:06:52]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> And you can even start to organize these things by dates if you want. So if you want to just have one that's for like May, and then you have all of those stuff and you have one for June. The thing that I really want to stress here with level one And the thing that I answer a lot in my community in the comments is that there is not yet a standard way that has been proven the best way to set up your projects or your second brain, besides some of the most common things like your context and your cloud.md and your, you know, whatnot.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -263,10 +263,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:06:52 - 00:07:15]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> But the point I'm trying to make there is don't see what I do and think that that's the right way or see what someone else you watch does and think that that's the only right way. All that matters is do you have proper routing in place? and does it make sense to you? And does it make sense to your AI? Okay, so let's say I have my Herc2 project right here and I need to find something in here, but I can't ask AI for some reason.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -277,10 +277,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:07:15 - 00:07:35]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> What I need to find is easy because I understand the drill downs. You know, I understand my base folders. And let's say I'm looking for the HTML slide deck I built for my ranking cloud code features video. I would come into here and I say, okay, I know that's a project, so I'll go there. Within my projects, I've got another project for YouTube videos. I'll open that up. And now I know I made this video right here.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -291,10 +291,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:07:35 - 00:07:55]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> May 30th, Cloud Code Top 50 features. In here, I have the actual tier list deck. And when I open that up, now I have the slide deck. And not only can I find it easily, but my agent can find it because it all makes sense and I have routing rules. Real quick, guys, if you're watching this video, you're probably interested in building your own AI operating system. Lucky for you, I have a full free course on that in my FreeSchool community.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -305,10 +305,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:07:56 - 00:08:18]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> The link for that is down in the description. Join the FreeSchool community, hop in here, take the seven-day challenge, build your own AI operating system, and apply these principles into building your second brain, which will make your AI operating system even more powerful. So links in the description. Let's get back to the video. Awesome. Okay, so that is how you start. Now, as you move up to level two, you might be able to start to work in some things like the LLM wiki, which is what I've got set up for a few different things.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -319,10 +319,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:08:18 - 00:08:39]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> This is the whole Carpathie LLM wiki, which I did make a full video about. If you wanna check that out, I'll tag that right up here. But this is when you start to have more files and they start to take a bit of a different shape and you wanna organize them together in a bit of a different way. So it could be really good for researching all on a certain project. It could be really good for, you know, a few of the ones that I've got set up is my YouTube transcripts all live in their own wiki.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -333,10 +333,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:08:39 - 00:08:59]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> I've got all of like my meeting transcripts that live in their own wiki. So for example, this is the obsidian view of my wiki for all of my YouTube video transcripts. You can see here, if I go to wiki, you can see there's main concepts like agendic workflows, AI coding market, context window, and all of these in here start to relate back to other tools and concepts and videos and stuff like that.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -347,10 +347,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:08:59 - 00:09:21]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> So we've got the sources, we've got platforms, we've got context management techniques, And all of this was auto-created by our Claude code when I told it to ingest this YouTube transcript into our Wiki. So I'm not gonna dive super, super deep into all of this right now, but definitely check out that YouTube video I linked. Now, what else is cool about this is this transcript Wiki actually lives within my main Herk2 project.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -361,10 +361,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:09:21 - 00:09:42]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. Okay. So we have like little sound bites. I can chat with people. The tool war panel settled a few debates for me. Nice. Good perspective there. We're outside again. We have these different banners, although they're all the same. They don't say like different people's names. So big AIS live logo. Workshop wing is over here. And let's go through the sliding glass doors and see what we've got. So we've got the AIS cafe. The map is in the bottom right, and it's not too descriptive.
+> So here's Herk2. If I go right here to Other Worlds, and then I go down to YouTube OS, and I click into the transcript Wiki right here, this is what we were just looking at in Obsidian. We could see the concepts, we could see the comparisons, We could see sources, techniques. This is what we were looking at in Obsidian. So all Obsidian is, is it basically just visualizes your markdown files.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -375,10 +375,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:09:42 - 00:10:03]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> You see here, wiki, concepts, comparisons, techniques. This is what we were just looking at. All we get now is we just get a visual view of all that. And so the reason I wanted to bring that up as well is because I think a lot of people obviously get pretty infatuated by that visual view. And obviously I started the video with that because I think that's what hooks a lot of people in. But all that really matters is, can your system grab that and give it to you?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -389,10 +389,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:10:03 - 00:10:37]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> If you are a visual person and you really want that view, then by all means install obsidian and set it up It's super easy, but i'm saying that you don't always need that visual layer if it's not beneficial to you I hardly ever open obsidian just to be honest because I know that it all lives here and I know that my Second brain and my os can find all of that. So anyways in level two here. Let's look at this It's very similar in shape to level one It's just building on top of it because now we have our cloud.md which starts to route to some other things because it routes to the wiki and it still routes to context, projects, decisions, but it's also routing to references and memory.md.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -403,10 +403,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:10:37 - 00:10:56]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
+> So we're just starting to add a bit more of these routing rules inside of the Cloud.md. We can grow the context, we can grow the decisions, we can grow projects and references, and we can also start to get this idea of memory. And what's really cool about this is you can turn on auto memory in Cloud code and the AI will basically start to write this file and update it on its own. So you don't even have to think about it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -417,10 +417,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:10:57 - 00:11:16]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> If you come in here and you do slash memory, it'll say auto memory on or off. And if it's off, if you want to turn that on, just turn it on. And now one thing to think about is, I mentioned earlier that we want to make our second brains tool agnostic. And this is one thing that's pretty specific about Cloud Code is it uses claw.md and it uses this memory.md and it keeps that updated on its own.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -431,10 +431,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:11:17 - 00:11:43]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> So if you wanted to move this over to Codex, what you would do is you would first of all transition your claw.md, you'd make a copy of it called agents.md. As you can see here in my Herc 2, I've got my, if I scroll down, claw.md right here, And then I've got agents.md right here. And they're essentially the exact same file. Just so Codex can read this one and Cloud Code can read this one. But because Cloud Code keeps that auto memory, all you need to do is make sure you have that memory.md file and just tell Codex, hey, by the way, for memories, look in our memory.md file.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -445,10 +445,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:11:43 - 00:12:06]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
+> It's all about the routing there. Anyways, just felt like that was important to throw out. But at a certain point, when you have these wikis, they do start to degrade a little bit because what's great about them is that they have indexes, right? So when your AI starts to look in the wiki, it knows, okay, if the user's asking about agentic workflows, I'm probably going to start here. And then from here, I'm going to drill down and read this to see what else is important to them.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -459,10 +459,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:12:06 - 00:12:39]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> Maybe they're asking about the WAT framework, and then I can drill into that. And maybe from there, I need to learn a little bit more about the clawed.md system prompt, and then I will drill into that. So there are relationships here a little bit, but this isn't the same as like semantic relationships or knowledge graph relationships that have more meaning. This is more about just actually following a trail and reading the page in its entirety. And I'll be fully honest with you guys. I pretty much sit my entire Herc 2 project in this level, in level two, because this has been working really well for me. Like I mentioned earlier, I haven't felt a pain
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -473,10 +473,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:12:39 - 00:13:14]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
+> yet big enough to switch over to level two. And here's what I meant by that. My wiki has links. Isn't that a knowledge graph? Not exactly, because this doesn't have connections of how they are related, like this is endorsed by this or this has cron to here, these just have connections because it's like a C also. It's like backlinks. So they're very similar. And yes, they can achieve a similar effect, but it's still a little bit different. Anyways, let's take a look at level three, which is where you start to do things like semantic search. Whether you do that in Obsidian, whether you do that with Pinecone or Supabase, however you start to grab the actual semantic
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -487,10 +487,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:13:14 - 00:13:36]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
+> search, that is what level three is. And so just as a quick visual for you guys, let's take a look at this quadrant cluster of images. So every one of these vector points is an image. And what we see in here is the payload is stuff like the file name, the URL, the name of the author or the artist, and the URL. But we don't actually see like what's in the image. We don't get a description.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -501,10 +501,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:13:37 - 00:13:55]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
+> So what we have to do is we have to organize these images by meaning or by similarity. So when I open up this graph and we start to visualize this stuff here, what you see is that we have this main image, these owls, these kind of like, I don't even know. It's a very trippy style, like hallucinogenic style. Anyways, then this one is kind of similar, right?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -515,10 +515,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:13:55 - 00:14:15]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
+> It's got those colors, it's got the paint. This one is also similar, but they're not the same. They just share similarities. And as we start to expand these more and more, we can start to get into different styles. So this one has like some creepy eyes and mushrooms or whatever. This one is kind of more down that fantasy lane. And as we start to build out more of these relationships and meanings, we can expand and grow away from them.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -529,10 +529,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:14:16 - 00:14:41]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
+> And so Quadrant really just gives you a visualization here. I mean, it has clusters and vector store. But the reason I pulled this up as a demo is just because we start to see the actual relationships form here based on meaning. And that's what's important about semantic search is that we're no longer doing keyword matching. We're searching based on meaning. So here in my YouTube transcript, second brain, if I go to the smart lookup over here, this is very different from just the regular search.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -543,10 +543,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:14:41 - 00:15:02]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
+> So for example, if I search here for feedback, let's say, we're actually doing a match on the word feedback. And it's only showing me where that word actually appears inside of our second brain. But if I come over here in the smart lookup and I search for feedback, we are getting matches that have things in here that mean feedback.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -557,10 +557,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:15:02 - 00:15:23]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
+> So live test results, Cloud Code Skills, which was talking about evaluations and stuff. So there's a big difference between keyword matching and semantic search, similarity matching. This one over here is saying X equals X, and this one is saying X is similar to X, Y, and Z. And so this all just goes back to vector databases. I've talked so, so much about vector databases, so I'm not gonna dive super deep in.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -571,10 +571,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
+### ⏱️ `[00:15:23 - 00:15:43]` | Segment #40
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
+> I've got so many resources on my channel. But basically what it is, is we take a document, so let's just say a YouTube transcript, we chunk it up, and then each chunk is ran through an embeddings model. And the embeddings model puts that chunk of text onto like a three-dimensional space where space is related to meaning. And so it decides, okay, this chunk is about a company.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -585,10 +585,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
+### ⏱️ `[00:15:43 - 00:16:17]` | Segment #41
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
+> So we're going to put it up here. This chunk is about finances. So it's going to go here. And we start to see these vectors form near other similar vectors. Now, do you guys remember how I said earlier, like you want to think about how is the data going to be used? What type of questions are you going to ask? This is a reason why that's so important. So think about this. Let's say I put my meeting transcript of March 5th meeting into my second brain. And I put those in as, you know, vectorized chunks. So let's say when I vectorize that meeting, we actually get, you know, like 20 chunks. It actually creates 20 chunks or however many that is. And then when I say, hey, Mr. AI
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -599,10 +599,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
+### ⏱️ `[00:16:17 - 00:16:45]` | Segment #42
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
+> agent, can you summarize the meeting on March 5th? It will basically search for March 5th meeting summary, and it will pull chunks that are similar to March 5th meeting summary. And then even if it gets the right chunks, it's going to only summarize those five chunks. It's not able to look at the entire meeting summary or sorry, like meeting transcript in entirety. So it doesn't really know a summary. It might be missing a lot of key information. Now, yes, there are things you can start to play with there like metadata and other things like that to make these results better.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -613,10 +613,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
+### ⏱️ `[00:16:45 - 00:17:03]` | Segment #43
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
+> But at the end of the day, people kind of assume that a vector database was some magic solution where it could always pull back what you need, but that is very false. And I mean, think about it like this. Let's say we have a table and we say, Hey, which week do we have the highest sales? Okay. The agent looks for highest sales. It may be grabs this chunk outlined in gray of data.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -627,10 +627,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
+### ⏱️ `[00:17:03 - 00:17:29]` | Segment #44
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
+> And then it looks like, okay, week six here was the highest sales. So that must be the answer. But in reality, you can see week 14 was higher. Week 19 was higher. So when you need something that has actual full context, then you can't do the vector database chunking. That's where you'd rather just have a markdown file of March 5th. And then all this agent would have to do is read that entire markdown file and then give you a summary. And that's just going to be more accurate.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -641,10 +641,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
+### ⏱️ `[00:17:29 - 00:18:02]` | Segment #45
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
+> So in this project, if we open up level three, you can see it's very similar because you can still have context files, decision files. You can still have all that. And then you might identify, okay, actually this one specific unit of my business, maybe my YouTube transcripts, maybe I want just that to be a vector database, but I still want my context and my projects and my decisions to be markdown files. So another point I'm trying to make here is just because you have a second brain and just because you have a massive, you know, folder here with a bunch of folders and files, doesn't mean that the whole folder needs to be one style. It doesn't mean that everything
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -655,10 +655,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
+### ⏱️ `[00:18:02 - 00:18:23]` | Segment #46
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
+> needs GraphRack. It doesn't mean that everything is just LLM wiki. It means that you're able to decide based on the type of data and the way you use it, how can you structure this specific folder in the way you want it? So here we have a vector index folder and we click on the how search works. It works by chunking, embedding, search, hybrid, re-ranking. There's some things you can get really, really nitty gritty on when it comes to semantic search.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -669,10 +669,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
+### ⏱️ `[00:18:23 - 00:18:54]` | Segment #47
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
+> But what vector retrieval is really, really good at is looking at tons and tons of data, typically just like a lot of text. And when you need a very specific answer, something that's very similar. So if you had a thousand rules that you needed to store and you basically said, hey, can you remind me what rule 17 was? That might be a really good use case for vector search because it's able to search for rule 17, pulling those chunks and just give you a little snippet because it would be a waste of time and tokens for your agent to read the entire markdown file of all a thousand rules if you just needed rule 17.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -683,10 +683,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
+### ⏱️ `[00:18:54 - 00:19:20]` | Segment #48
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
+> So that's kind of the difference there. Like I said, I've got so many videos on vector stuff on my channel, but really you could say, hey, to your cloud code agent, I have this data, here's how I wanna use it. Do you think this would be better for now as markdown files or should I do semantic search? Like what would actually make more sense here? And it will help walk you through the way that you should actually set that up. So now I hope you guys are starting to understand And why I said, you know, moving up on, or I'm sorry, like moving up on levels, moving down doesn't necessarily mean better.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -697,10 +697,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
+### ⏱️ `[00:19:21 - 00:19:42]` | Segment #49
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
+> It's all about figuring out what is the pain point with what you're currently doing and where would a different level help you out and fix that pain point. Okay, so now let's take a look at level four. This is where we start to get into like knowledge graphs and relationship graphs, which typically are gonna be the most complex and sometimes the most expensive as well. If you're doing it on a certain platform, you could always use open source software, but anyways, knowledge graphs.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -711,10 +711,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
+### ⏱️ `[00:19:43 - 00:20:16]` | Segment #50
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
+> And I also wanna be upfront. I've played with these a lot, but I do not actually use these on the day-to-day because I found out just other ways to use routing files and wikis that fit my needs. Now, my work is very different than what a lot of your guys' work may be. Mine is very project-based and it is very, you know, content heavy. I don't have a massive CRM to manage with a bunch of different businesses and clients, you know? And if I did, maybe a knowledge graph would make a lot more sense and it probably would. But typically the cool part about that is if you identify that you needed a knowledge graph, let's say for all your projects, you wanted to put all of this in a knowledge graph,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -725,10 +725,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
+### ⏱️ `[00:20:17 - 00:20:35]` | Segment #51
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
+> the data probably already exists here. And that's the thing about building out these relationships in your knowledge graph is that the system, whatever software you use, is typically gonna be pretty good at embedding that and creating that. But the problem that you have to solve is you have to give it enough data. And so one thing that I really like to do is I like to have these brainstorm sessions, as you can see.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -739,10 +739,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
+### ⏱️ `[00:20:36 - 00:20:55]` | Segment #52
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
+> And what I do with these brainstorm sessions is I use a skill called Grill Me. So if you see here, I have a skill called Grill Me, which I originally got from Matt Pocock. I customized it a little bit. I'll leave the skill for Grill Me in my free school community. The link for that is down in the description. All you have to do is hop in here, go to classroom, click on all YouTube resources and you can find all the skills and everything like that.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -753,10 +753,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
+### ⏱️ `[00:20:55 - 00:21:19]` | Segment #53
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
+> But the skill, what that does is it basically just grills me. It interviews me relentlessly about a certain topic and it creates a brainstorm file here. It only stops when it knows everything about it. So if you wanted to start building up a knowledge graph for all your clients and businesses, just say Grill Me about client A, Grill Me about client B, grill me about business A. And it would just ask you questions and you can feed it files. You can give it stuff. You can feed it in transcripts. You can feed it in contracts, whatever it is.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -767,10 +767,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
+### ⏱️ `[00:21:19 - 00:21:56]` | Segment #54
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
+> And that's how you can start to form a lot of data. Hey guys, me again, real quick. I'm editing this video and I realized that I needed to throw out one thing here, which is that obviously if you're putting all of this data and you're sending it all to Anthropic, to Claude Models, then that's not private. So if you feel comfortable with that, that's fine. I am putting a lot of my data in there and it is my business stuff and that's what I'm doing. But if you don't feel comfortable with that or you don't want to send client data, of course you don't, then maybe you want to do that through open source models. And maybe CloudCode isn't where you have the second brain that has every single piece of information about you and your business and your client's
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -781,10 +781,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
+### ⏱️ `[00:21:56 - 00:22:28]` | Segment #55
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
+> business. So the point I'm trying to make here is just this is what I'm doing. I'm obviously aware of the fact that my data goes to Anthropic when I process it through Cloud. And if you guys are doing that, then you should also be aware of that. But there are other options if you can't do that. So I had to throw that out there. I am planning to make a ton of videos here soon about local AI and open source models and all this stuff because it's a really, really exciting space that I think is going to start becoming bigger and bigger. So yeah, keep that in mind. Back to the video. I think sometimes that's a misconception about how I got here and how people build their own AIOS
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -795,10 +795,10 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
+### ⏱️ `[00:22:28 - 00:22:48]` | Segment #56
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
+> or second brain is that they think the problem is the system not retrieving it great, which sometimes it is, but sometimes it seems like the bigger problem is getting everything out of your brain into the system. So before you blame AI, take a look at your folders and files and say, is this actually holistic? Is this, does this have all the nuance that I have in my brain?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -809,10 +809,248 @@ Dans cette vidéo intitulée **Every Level of a Claude Second Brain Explained**,
 
 ---
 
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
+### ⏱️ `[00:22:48 - 00:23:25]` | Segment #57
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
+> Anyways, from there, when you open up level four, you can see that it's, it's, you know, very similar still. We're just adding on a few things. You can see here, we've added an agents.md, which is the exact same as the cloud.md. And what else is cool is you can literally just reference inside of your cloud.md at agents.md, and then you can delete all this because this basically just like injects that file into here. But I just wanted to show that. But anyways, you can see we're still following the same principles. We have a wiki. We've also added a knowledge graph layer. We've still got the same where things live with the routing with all these just regular folders and boring markdown, but boring is beautiful. You can see that our memory is still here. It's starting to grow and we just keep building on top of this. So one thing we
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:23:25 - 00:23:58]` | Segment #58
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> added here, as you can see, was our knowledge graph folder. And so what happens here is we get different entities, right? So like we can see, okay, Jordan is a person, Acme is a company, And then we can start to form relationships between all these things. So Jordan works at Acme. Acme is endorsed by Postpilot. Postpilot is a competitor of Cadently. And it starts to build out not only these entities, but it shows you how they're all related. And so that's why when I said that I really like using, you know, this, um, what's it called? LLM wiki is because I have enough of that feel of all of these relationships because I've put so much time and effort into ingesting
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:23:58 - 00:24:33]` | Segment #59
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> these in the right way and giving it context. The thing about this one is that it has to read every single file it wants. Maybe it was looking at AI video production and all it needed to know was 11 labs. It still would have read this entire file first. And so that's where sometimes the knowledge graph is actually more lightweight in that sense. And this is the example I showed at the beginning of the video where we have light rag and forgive me, I'm going to have to blur some of this stuff out because this is like legitimately my entire second brain in our business. But as I really zoom in here, and this kind of slows down my computer because there's so much, but what you'll notice is that we actually start to get relationships. I probably shouldn't
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:24:33 - 00:25:06]` | Segment #60
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> have done this with so much data, but you can see like we have this collaborates with that. We have this builds that. And so if I really started to open up all of these little, you know, circles, we could see what was going on and how they're all related. We could see that our seven day AIS challenge, it was provided from YouTube. It connects to the onboarding process of AIS plus. It was developed by Aiden. And so we can basically follow around these relationships as you see. And even though it's pretty much the same data that you see here in Obsidian, we're not getting that same level of relationships between these different entities. So anyways, if you guys want
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:25:06 - 00:25:38]` | Segment #61
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> to see, you know, a full breakdown video on something like LightRag or Graphify or all the other solutions that there are out there for more of a knowledge graph, relationship graph, then let me know. But that is kind of the difference there. So if you don't need those sort of relationship chains and you're not worried about that semantic type of relationships, then you probably don't need to use something like a knowledge graph. And then level five, we have more of the always on brain OS and something like G brain, Gary Tan, CEO of Y Combinator. He created this thing called G brain, which pairs really well with G stack. But G brain is kind of the idea of
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:25:38 - 00:26:15]` | Segment #62
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> everything we've talked about here, wikis, routing, relationships, tools. But G brain has kind of that always on element because it is like constantly syncing and refreshing memories and adding more stuff. So adding in G-Brain to something like a Hermes agent would be really, really good. You could still do it in cloud code, but you'd have to handle those crons and get all that stuff set up, which is why I don't currently run G-Brain at the moment, but I have been playing around with it with my Hermes agent. So anyways, the point here is that it's very similar to everything else we've just talked about. It's just having that auto updating feel, more of the autonomous always on feel. But I will say another thing that I kind of, that kind of scares me about that is you have
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:26:15 - 00:26:50]` | Segment #63
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> this whole dilemma of, you know, when do you have too much context? And when does it get to the point where it's actually doing more damage than it's doing good? And the reason I bring that up is because I am in complete control of what my second brain ingests. I will run a skill to go grab all of my meeting transfers in the week. I will say, hey, here's something, help me figure out, like, help me brainstorm about this, and then let's ingest it together. And for me, I really like being in that control. Because in my mind, there's a big difference between a few types of data. If you guys remember in my like AIOS videos, I've talked about the four C's. So context, connections, capabilities, and cadence. And for the second brain, I mainly think about it as just these first two.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:26:50 - 00:27:11]` | Segment #64
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So context and connections. And so when I think of context, that's stuff like, you know, what my business has done. So if I come into here, into my second brain, and you can see here, if I go to up at OTAs, so OTAs are basically just our projects for the quarter. And so here I can see all the Q1 ones, right? I can look at all those and I can click at them and see decisions that we've made in the statuses.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:27:11 - 00:27:29]` | Segment #65
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And I can also see Q2 OTAs. So I can see what's going on here. And my second brain's able to see that because that has been, basically those are locked in decisions. This is what we're doing this quarter. And then I'm updating the statuses of that stuff. So that's like context. That's what's going on in the business. But when it comes to connections, if I go back to this, this is more of like the real data that isn't as evergreen.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:27:29 - 00:27:50]` | Segment #66
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> This is stuff that changes. This is like Slack threads. This is emails. This is a customer data. And that type of data, you don't want to ingest into a second brain because that's just noise then. Then you have to go back every month and like delete old stuff. So the way that I like to think about my actual second brain is stuff that I'm not gonna delete. This is stuff that is like, okay, in a year, will it be good for me to have this memory in here?
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:27:51 - 00:28:09]` | Segment #67
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Yes, otherwise it's just adding noise. So when you're adding data into your project, think about it like the context and connections. Think about if this is kind of like more evergreen, holistic data, or if this is more things that are gonna change next week. So you probably shouldn't pull it in, but you should make sure that your second brain has access to go grab it.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:28:09 - 00:28:33]` | Segment #68
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So that way, if I said to my second brain, hey, can you just take a look real quick at what John and I were talking about last week about OTA number seven, it would first go to our OTA file and it would search through there and it would try to find it there. If it couldn't find it there, it would look through the wiki and it would look through meeting transcripts and see what we talked about there. And if it couldn't find it there, it would finally go to ClickUp itself, pull real data in from me and John's conversations and see if the answer lived there.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:28:33 - 00:28:53]` | Segment #69
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And so that in my mind is still a second brain because I'm able to ask a vague question and the second brain knows exactly where to look in what order to find that real-time data and then give me back the answer that I need. That's the question I ask myself is, does this thing understand where my data lives and where to look and can it give me accurate answers? So as far as finding your level, remember, your whole project doesn't fit into one level.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:28:53 - 00:29:20]` | Segment #70
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Maybe this folder's level two, maybe this folder's level four, maybe this folder's level three. Here's some things to think about. If you are re-explaining your setup and you need to find things by exact words or files, look at level one. If you have 30 plus notes and you keep forgetting what's in them, look at level two. That's where you sort of like ingest them and get that wiki with relationships. If your project is just completely whiffing on notes that you know exist and your routing isn't working, then maybe you wanna look for something more like a semantic search that doesn't rely on an exact word level match.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:29:20 - 00:29:43]` | Segment #71
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> If you're looking for relationships and to be able to follow chains of questions and thoughts, then you probably wanna look for something like a knowledge graph. And if you're running agents offline and you've got so much data and you wanna sync up a bunch of Hermes agents together, then you probably are looking for something like level five, something like G-Brain. And another topic that I get some questions about, which I'm not going to fully address in this video, but I will briefly bring up, is the fact that you are building your own second brain OS.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:29:43 - 00:30:17]` | Segment #72
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So are other people on your team. The next question is, how do you actually make sure that everyone's data is syncing together? And how do you have more of like your team's second brain? There's a lot of different ways to solve that. I think once again, it's not an issue of, oh, do we use Google Drive or Notion or GitHub or Cloud plugins? I think the issue to figure out with your team is how do we actually make sure that we all habit shift so that this stuff is actually useful and not just noise? How do we make sure that process owners are updating their docs and syncing their stuff there? How do we make sure that other people are pulling from that rather than always just pinging the same people
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:30:17 - 00:30:42]` | Segment #73
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> for questions and answers all the time? I think the adoption and the change management question is the bigger one. The tech and the way it actually functionally rolls out is a little bit less. But what I do know is that you getting set up with your own first and understanding how it works, how you should route, how you should make the decisions of where the data should live. That's the first hurdle. You can only solve the team-wide problem once you feel comfortable about the way you run it every single day, and then it works for you. That is going to do it for today.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:30:42 - 00:30:59]` | Segment #74
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Like I said, you guys can grab all the skills and everything that you need from this free community. The link for that's down in the description. I will also include the slide deck if you guys are interested in flipping through. So if you guys enjoy the video or you learned something new, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I will see you all in the next one. Thanks, guys.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
