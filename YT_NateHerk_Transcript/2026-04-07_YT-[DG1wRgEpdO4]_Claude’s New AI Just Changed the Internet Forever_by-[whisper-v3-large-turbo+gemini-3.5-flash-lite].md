@@ -31,11 +31,17 @@ Dans cette vidéo intitulée **Claude’s New AI Just Changed the Internet Forev
 > So, Anthropic just built an AI model that found more security bugs in a few weeks than most security researchers find in their entire career. It found a bug in OpenBSD that's been hiding for 27 years. It found a bug in FFmpeg, the software that handles video on basically the entire internet, that 5 million automated tests missed. And the thing is, they're not releasing this model to the public.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Présentation officielle / Interface de type site web d'annonce technologique.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Textes informatifs sur les capacités de "Claude Mythos Preview" à identifier des vulnérabilités zero-day et détails techniques spécifiques sur une faille critique vieille de 27 ans dans OpenBSD.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation informative mettant en avant les capacités de recherche de bugs du modèle IA d'Anthropic.
+
+![Capture d'écran montrant le titre de présentation "IDENTIFYING VULNERABILITIES AND EXPLOITS WITH CLAUDE MYTHOS PREVIEW" sur fond sombre.](../screenshots/DG1wRgEpdO4/DG1wRgEpdO4_000005_seg1.jpg)
+*⏱️ 00:00:05 — Capture d'écran montrant le titre de présentation "IDENTIFYING VULNERABILITIES AND EXPLOITS WITH CLAUDE MYTHOS PREVIEW" sur fond sombre.*
+
+![Capture d'écran affichant le résultat d'une découverte : "27 years" et "Hidden bug in OpenBSD" avec l'explication qu'il pouvait faire planter des serveurs à distance.](../screenshots/DG1wRgEpdO4/DG1wRgEpdO4_000010_seg1.jpg)
+*⏱️ 00:00:10 — Capture d'écran affichant le résultat d'une découverte : "27 years" et "Hidden bug in OpenBSD" avec l'explication qu'il pouvait faire planter des serveurs à distance.*
 
 ---
 
@@ -199,11 +205,11 @@ Dans cette vidéo intitulée **Claude’s New AI Just Changed the Internet Forev
 > And behind that update is an AI that found a vulnerability that a human might've never caught. And now it's been made better. This is one of the first times that AI is directly going to make your digital life safer without you having to do anything. Hopefully, at least. Now, if you're a small business owner, this is where it gets interesting because security has always been like a fortune 500 problem.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Aucun
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Aucun
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur s'adresse directement aux spectateurs.
 
 ---
 
@@ -241,11 +247,11 @@ Dans cette vidéo intitulée **Claude’s New AI Just Changed the Internet Forev
 > So let me leave you with what I think this really means. I think that Anthropic just did the right thing, and I think that they do deserve a ton of credit for it. They had a model that probably could have made them a ton of money. They're already making a ton of money, but you know what I mean. It also is going to generate them a lot of hype. If they shipped this tomorrow, it would be absolutely crazy. Everyone on the internet in the AI world would be talking about this.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Aucune.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Aucun.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur s'exprime verbalement sans manipuler d'interface.
 
 ---
 
@@ -266,7 +272,7 @@ Dans cette vidéo intitulée **Claude’s New AI Just Changed the Internet Forev
 ### ⏱️ `[00:06:49 - 00:07:09]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Completely agree. Nice job, Boris and CloudCode team. So here's my honest take. What I'm really watching for is whether this actually becomes the new standard or whether it's just a thing that one lab did one time. because the uncomfortable truth is this isn't a one-time event. Every generation of AI models is going to be better at finding exploits. The exponential curve doesn't flatten.
+> Tout à fait d'accord. Beau travail, Boris et l'équipe de CloudCode. Voici donc mon avis honnête. Ce que j'attends vraiment de voir, c'est si cela devient réellement le nouveau standard ou si c'est juste un truc qu'un labo a fait une seule fois, parce que la vérité dérangeante, c'est que ce n'est pas un événement unique. Chaque génération de modèles d'IA sera de plus en plus douée pour trouver des failles. La courbe exponentielle ne s'aplatit pas.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
