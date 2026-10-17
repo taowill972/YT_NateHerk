@@ -25,10 +25,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:21]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> AI is real and it's not going away. Just like social media replaced newspapers and billboards and Netflix replaced cable, AI will change and replace millions of jobs, including yours, unless you learn six important skills. These six AI skills will future-proof your career so that you don't have to try and start a business if you don't want to, or switch careers if you don't want to. So these six skills are going to apply no matter what job title you hold or whatever career you're pursuing.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -39,10 +39,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:21 - 00:00:57]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> And I can guarantee you the last skill in this video will surprise you because it's the most unique skill, but it does work. So let's just get started with skill number one, the AI person. So becoming the AI person. I know that that sounds like super obvious because this is an AI video, but I think that a lot of people misunderstand what that actually means. If you're watching this, you probably feel like you're on the beginning side of AI. And honestly, you probably are because there's so much happening right now. There's always new models. There's always new tools. There's always new agents and workflows, new benchmarks, all of this kind of stuff coming out every single week. But I bet if you went and you talked to your friends or your family, or just a lot of the people that you work with, they probably already think of you as an AI person.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -53,10 +53,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:57 - 00:01:18]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> Or if they don't, you want them to. And that's the point. Being the AI person is relative. It doesn't mean that you're the best AI engineer in the world or that you understand every single AI model and the architecture behind it. You guys probably think of me as an AI person, but in reality, I feel overwhelmed every single day by how much I still don't know. But just remind yourself it's all relative. It just means that inside of your circle, you know more than the other people.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -67,10 +67,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:18 - 00:01:37]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> And that matters way more than you might think. I've seen this happen over and over in my communities. People start picking up AI almost like a hobby. So they're playing with Claude. Maybe they're testing out Codex. Maybe they're messing around with Google VO3, building little tools or little AI side projects, automating parts of their job, just running a bunch of experiments. And then what happens is they start showing people and that's usually all it takes.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -81,10 +81,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:37 - 00:02:11]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> They show someone at work, hey, look at this thing I built this weekend. Or hey, I use Claude to clean up this process. Or hey, I figured out a way to make this task, which normally takes me three hours, only take me 20 minutes because of AI. And all of a sudden that person becomes known as the AI person. And the reason this is so powerful is because companies are about to have a ton of like AI moments. they're going to get access to a new model, or they're going to spin up a new internal product, or maybe they're going to want to build a little AI task force internally. And when that happens, someone's going to say, we need someone to lead this. You want someone in the meeting to say, actually, I know someone who's really into this stuff or something like, we should ask Nate, you know, he's told me that he's been playing around with all these AI tools. That's how
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -95,10 +95,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:02:11 - 00:02:46]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> these opportunities open up before there's a formal job title. And that's how people get pulled into better projects. That's how people become more valuable without quitting their job and starting from zero. And the data backs this up. So IBM's 2026 CEO study found that 85% of CEOs said that all functional leaders have to become technology experts in their own domain. Not just the CTO, not just the engineers, not just the IT team, everybody. So whether you're in marketing, sales, finance, ops, legal, customer success, whatever you're in, this applies to you. And the thing to remember here is that it's not just in one department. It's not like cybersecurity, where you kind of have like a new team and then you're done. It's going to seep into every single
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -109,10 +109,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:46 - 00:03:08]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> role and every vertical, whether you like it or not. And I know some of you are probably thinking, okay, but my role doesn't really need AI. And that's your mistake. Your role will need AI, because every single role will. So instead of trying to switch careers or learn a completely new job, just take a look at your role. Take a look at what you already do and ask yourself, how do I become faster and better and more useful at this specific task and this specific role with AI?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -123,10 +123,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:03:08 - 00:03:27]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> So, I mean, think about it. If you were an accountant when Excel came out and you basically just said, you know what? I'm good. I like the way I do this. I'm gonna keep doing all of this on paper and with a calculator. You were done. Like that was probably your last day at that company if you said something like that, if you made kind of like that stubborn statement. The people who learned Excel first were just faster. They got through spreadsheets in a fraction of the time that it used to take them.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -137,10 +137,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:27 - 00:03:45]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> Let's just say from two spreadsheets a week to 10. That's just random numbers, right? But that new level of output became the baseline. And AI is like that, but it's a lot bigger. Because right now, being the AI person feels like an edge. But in a few years, it's just going to be the new normal. So the advantage isn't waiting until someone's forced to learn it. The advantage is becoming the new normal while most people still think it's optional.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -151,10 +151,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:03:45 - 00:04:04]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> So practically, how do you actually do this? Well, I would say you pick one main AI tool and actually get pretty good with it. So as of May 2026, recording this video, for me, that's Claude. And I use Claude for my general knowledge work and to build automations. But the exact tool isn't the point. The point is, you need one tool that you're not just messing around with. You're using a tool to actually deliver some sort of ROI.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -165,10 +165,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:04:04 - 00:04:22]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> And then you can pick one workflow in your current job. You can take something that you already do every week, and then figure out how you can use AI to make it better or faster. Document what changed. How long did it take before? How long after? What got better? What still needed human judgment? Now, obviously, be smart. Like, don't expose company data or break any regulations. Don't try to automate something at work without getting like permission about it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -179,10 +179,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:04:23 - 00:04:41]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> And if your company has guidelines and you can't use Claude, then that's actually another opportunity for you to look at because you can go dig into what those regulations are and you can figure out which tools you actually could use. And that alone shows that you care. But I just want you guys to remember that you don't need to change careers. You can just find the AI native version of the career that you already have. So that's skill number one, become the AI person.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -193,10 +193,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:04:42 - 00:05:06]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> But skill number two is where a lot of people are going to mess this whole thing up. Because the more you use AI, the more tempting it gets to just trust the output and say like, That's good enough. And that's where skill number two comes in, which is taste and judgment. As AI gets better, it gets easier and easier to just trust the first thing that it gives you. And I saw this joke the other day that was on one side, we had a person with a bullet point and they were using AI to turn that bullet point into like a super professional structured email to send to the team.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -207,10 +207,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:05:06 - 00:05:30]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> And then on the other side, we had that team and they were using AI to turn that structured email into just one bullet point. Now, it's funny, but it does also kind of create the perfect image of where work is going if we're not careful. You know, everyone's transforming things, but is everyone reading it? And that's dangerous because when you first start using AI, you review everything, right? Like you read every word, you double check the claims, you make sure it sounds like you, but the outputs start getting pretty good. And then you get more comfortable with it and you just kind of let your guard down.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -221,10 +221,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:05:30 - 00:05:58]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> And that's the trap. And sometimes the giveaway is really small, like M dashes. You know, AI is notorious for putting M dashes in everything because it's been, you know, trained on so many white papers and formal documents. And so like for me, I've basically never manually written or typed an em dash in my entire life. So if something goes out for me with five em dashes in it, people who know me are going to look at that and be like, okay, Nate obviously didn't write this. This is AI. And the problem is the second they think that it changes the way that they interpret that entire message. They start wondering, did this person actually read this?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -235,10 +235,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:05:58 - 00:06:33]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
+> Is any of this true? How much of this is actually them? And that's where taste comes in. And just to be clear, I'm not saying that I don't use AI to write or that you shouldn't. I think everyone should. It's just about taste. But anyways, this issue comes up for me all the time with video. So AI helps me make motion graphics that are honestly way better than what I could do by hand. They're way faster, they're cleaner, they're more polished, but it doesn't always get right where the motion graphics should come in or how long they should stay on screen or the visuals and like what's explaining and if it's distracting or if it's helpful. And that is still my job to watch the whole video back and give feedback. And that's going to be true in every field. AI can write the sales email. You still need to know if it'll annoy the prospect. AI can draft you the HR memo,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -249,10 +249,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:06:33 - 00:07:07]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> but you still need to know if it'll make the employees feel weird. So how do you actually build this skill. First, you should study the best work in your field. If you're in sales, study great sales emails. If you're in marketing, study great landing pages. Next, start saving examples. So build a library of stuff that you actually like and stuff that sounds like you. And when something's good, don't just say, cool, that's good, and just copy and paste it somewhere else. Ask it why. Ask what made it good, and ask what makes it clear, and ask what makes it trustworthy, and tell it why you think it's good, and tell it what you like about it. Third, every time you correct AI, you feed that correction back into the system. So the feedback loop is for good things, but also for bad things. If AI writes something and you change five things, say, hey, here are five
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -263,10 +263,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:07:07 - 00:07:40]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> things that I changed. Here's why. Update your instructions so that next time it's closer. And that's how you actually train the system to better understand your taste. Because at the end of the day, AI can generate the work. Taste is deciding what deserves your name. Because remember, if you produce something with AI, your name is assigned to it. Whether that is something that's really, really good and the whole team loves it, you will get credit for it. Or if it's something that's bad, you will take the blame. It doesn't matter if AI wrote it, doesn't matter if you wrote it for that piece of work because your name is assigned to it. So now the question is, how do you actually get AI to produce better work in the first place? Because if you're just typing prompts and just crossing your fingers, then you're leaving a lot on the table. So that's skill number three,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -277,10 +277,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:07:40 - 00:08:14]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> and it's something that you can apply the second you close out of this video. And that skill is becoming a context engineer. So you might have heard the term prompt engineering. This was a huge thing a couple of years ago. The whole idea of prompt engineering was that if you wanted a better output from an AI model, you had to give it a good prompt. You had to give it a role, clear instructions. You had to tell it the end state. You had to give it examples. You had to tell it what to do and what explicitly not to do. But prompt engineering is getting less important over time because the models are just getting so much better on their own. Even Andre Carpathie, who's one of the GOATs of AI and actually just joined Anthropic, called context engineering the delicate art and science of filling the context window with just the right information.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -291,10 +291,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:08:14 - 00:08:48]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> So translation in layman's terms, prompts are how you ask, context is what your AI actually knows. And context engineering is way more durable than prompting because no matter how good the models get, they still need to know what's actually in your brain. So what's going on in your business, what's on your calendar, what your priorities are, stuff like that. So here's my personal example. I've built what I call my AI operating system or my AIOS. And basically it has pretty much all the context that's in my head. It can see my meeting transcripts. It can see all my YouTube videos. It can read through my DMs and channels and click up in Slack. It can pull my emails. It honestly knows what's going on in my world better than I do because it can recall everything instantly and
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -305,10 +305,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:08:48 - 00:09:11]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> perfectly. And I can't do that. So it's kind of like this running joke that if someone couldn't get ahold of me, they should just message my AIOS and it would actually give them an answer that's better and faster than waiting for me to respond. And that's the point you want to get to, where an AI has so much context about you that you can say something like that. So how do you actually start that? Well, the simplest move, stop opening Claude or ChatGPT in a blank chat. Instead, spin up a custom GPT or spin up a Claude project and feed it real context from whatever you're working on.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -319,10 +319,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:09:11 - 00:09:46]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> So say you're running a marketing campaign for a new product launch. Don't just open up a fresh chat every time you need help with ideas. Spin up a project. Drop in documents with your product details, your marketing calendar, ad copy that's worked well in the past, ad copy that's flopped in the past. Now the AI is actually working with that context, not generic best practices. And the analogy I keep coming back to here is a summer intern. When a new intern shows up at the company, you have to sit them down and kind of onboard them, right? Like you have to explain what the business does, walk them through who's on the team and who does what. You have to tell them what current projects matter. And only after they have all that context can they actually contribute in a meaningful way. And AI is the exact same. And without the context, it's just a smart intern
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -333,10 +333,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:09:46 - 00:10:22]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> who's guessing. And remember, the context you're giving for the most part is data that's not publicly accessible. The context about your subject matter expertise, your brain, your IP, that's what makes the outputs unique. If everyone's using that same model and asking for the same things, then everyone's outputs will look the exact same. So your context is really, really important. So just remember, garbage in, garbage out. If you give your AI bad data and no context, then you're going to get a very generic output. So that's skill number three, become a context engineer. Now, skill number four is one of the most underrated skills on the entire list. And in the AI era, it might be the biggest separator between the people who win and the people who get left behind, and it's iteration speed. Now, if skill number two was about knowing what good
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -347,10 +347,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:10:22 - 00:10:46]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> looks like, this skill is about getting there as fast as possible. So the two skills kind of work hand in hand. But this one stands on its own because in the era of AI, the people who iterate fastest are the ones who win. If you can move fast without sacrificing quality, you're just going to outperform everybody because every iteration is more data. Every iteration is a chance to learn what's working and what's not, and a chance to make your skills and your agents and your prompts and your context, all of it, better. The analogy I always go back to here is like you're teaching a kid to ride a bike.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -361,10 +361,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:10:46 - 00:11:04]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. Okay. So we have like little sound bites. I can chat with people. The tool war panel settled a few debates for me. Nice. Good perspective there. We're outside again. We have these different banners, although they're all the same. They don't say like different people's names. So big AIS live logo. Workshop wing is over here. And let's go through the sliding glass doors and see what we've got. So we've got the AIS cafe. The map is in the bottom right, and it's not too descriptive.
+> You can't just chuck a kid on a bike and say, have fun and expect them to go ride a mile. That's not how it works. You would put them on the bike. You'd maybe put one hand on their back. You'd hold the handle and you'd start walking with them. You would feel if they were leaning left and correct them. You'd say, hey, you know, shift your weight over to the right a little bit. You're helping them calibrate. And after each run up and down the driveway, you continue to calibrate. You continue to iterate and adjust.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -375,10 +375,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:11:05 - 00:11:39]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> And the more time that that kid spends on the bike with your guidance, the more that you can start to slowly let go. And eventually you take off the training wheels. And one day you give them a little push and they just ride and they're pedaling and they are doing great. And that's exactly how building with AI works. You very rarely can just one shot something. You use the data and you feed it back in and you make it better. And the thing is, once you've taught one kid to ride a bike, teaching the next kid is easier and teaching the third kid's easier. And by the time you're teaching your 15th kid how to ride a bike, you've pretty much got the process down to a science. And now obviously every use case is different, right? Like some agents are more complex than others and they don't always get built the same. But the idea of your process and building agents gets better every
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -389,10 +389,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:11:39 - 00:12:13]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> time. So hopefully you guys get the point that I'm trying to make here. Remember earlier that little example I said of like, let's say people are typically producing two spreadsheets a week, and then after Excel, they move that baseline up to 10. The faster you can iterate, the faster you're going to be able to produce things, which means your new baseline is going to be higher than everyone else's baseline as far as like units of output. So how do you actually train yourself to be able to iterate and move faster? This part may sound silly, but the first thing I think is to master keyboard shortcuts. Stop using your mouse for every little thing. And honestly, stop typing everything, right? Like use voice input. It's way faster than typing. And we actually have a voice to text tool called Glido that I use literally every day. So if you want to
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -403,10 +403,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:12:13 - 00:12:45]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
+> check it out, links in the description. But the bigger move is rapid prototyping. Don't sit there trying to plan the perfect version. Just build the ugly version fast. See what breaks, fix it, and iterate. That's the whole idea of getting out a POC or a proof of concept. Now there's another half to this skill that's just as important, which is knowing when to stop iterating. Because when you're building AI tools, it can feel like there's no such thing as a finished product. I've been there. There's always a nice to have. There's always one more feature you could add. So what you have to do is give yourself a North Star. You have to tie one automation to one very specific business metric, and you have to define what done is. You have to define what done looks like before you even
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -417,10 +417,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:12:45 - 00:13:21]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> start building. So if it's a customer support automation, tickets resolved per day. If it's a sales automation, maybe it's qualified appointments set per week. If it's an ops automation, maybe it's refund percentage going down by X percent. So pick the metric, build until you hit it, and once you hit it, move into maintenance mode. Obviously over time, you can probably find ways to improve it and maybe improve the metrics even more, but the heavy lifting is done. So whether you're building automations for yourself or for a client, a clear definition of done is what keeps you from scope creeping on yourself. And that's skill number four, iteration speed. Now, skill number five is going to feel a little bit different and it's inspired by Iron Man. So this skill is building your own Jarvis. So you guys have seen Iron Man, right? Tony Stark doesn't sit at his computer typing prompts
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -431,10 +431,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:13:21 - 00:13:53]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> into Jarvis all day. Jarvis is already always there. He runs in the background and he notices things and he pings Tony when something needs attention. He'll even kick off tasks before Tony even asks. Now, this is different from skill three. Context engineering was about teaching your AI what you know. Skill number five is about teaching your AI to act on what it knows without you having to be the trigger. So here's the way I think about this. Imagine you build an automation that only runs when you explicitly fire it off. That's great. It's going to make you a lot more productive, but if you are not around to trigger it, nothing happens. Now imagine you build a system that fires on its own while you're in a meeting, while you're on a walk, while you're taking a nap on
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -445,10 +445,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:13:53 - 00:14:26]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
+> the beach. That's real leverage. So the move here is to do an audit of your day. What things do you do every week that get triggered by something predictable? Meaning maybe a specific type of email coming in, or every Monday morning, or every Wednesday evening, or every time a new lead lands in your CRM. Every one of those triggers is something that you can actually hand to a system and tell it to do X, Y, and Z when A or B happens. But here's the catch. The second you take yourself out of the loop, the risk obviously goes up because you're not sitting there watching it and making sure nothing goes wrong. There's no catching the mistake before it reaches a customer or pulls the wrong data or sends the wrong message to the wrong list. So the moment you remove yourself from
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -459,10 +459,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:14:26 - 00:14:56]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> the process, the system has to be pretty airtight and pretty battle-tested, which is exactly why a lot of people screw this up. The second they hear Jarvis or an always-on personal AI assistant, their brain jumps straight to building an AI agent for basically every function. Whether that's a new email or an end-of-week report, a lot of people just jump straight to an AI agent. So the real skill here is knowing when something needs an AI agent versus when it just needs a simple workflow that doesn't even use AI at all. So I think about this like a vending machine versus a slot machine. A vending machine is deterministic. You put in a quarter, you hit E4, you get a Coke.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -473,10 +473,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:14:56 - 00:15:30]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
+> Same input, same output, every single time. A slot machine is non-deterministic. You pull the lever. Sometimes you win, sometimes you lose, sometimes nothing. So AI agents are slot machines. And essentially, like every time you talk to an AI, it's almost like you're gambling, like not really when you put the right harness and context in place, but you never know what's going to come out the other side. Agents are really powerful when you need deep reasoning and you need, you know, variability, but they cost more, they fail more often in unexpected ways. So they introduce more risk. But if you have a simple, you know, if this, then that, that's a workflow. And that's just a vending machine. Predictable, it's really cheap, and it doesn't break. So if your task is something like every morning at 9am, pull last week's revenue from Stripe and post that in Slack,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -487,10 +487,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:15:31 - 00:15:59]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
+> that does not need an agent. A simple workflow could do that in five minutes and basically never fail. But if your task was something like read these incoming customer emails and understand what they actually want and draft a tailored response, now you need some AI in there because the input is messy and there's reasoning and you have to generate some sort of content. And honestly, this is the elite version of being the AI person that we talked about at the start, because in a world where everyone is shouting AI, AI, AI, a person who can actually step back and say, hey, we don't actually need AI here. We can solve this cheaper, faster, and with way less risk.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -501,10 +501,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:15:59 - 00:16:33]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
+> That person stands out way more than the one who's cramming AI into every single task. So being the person that has that take signals that you actually understand the business problem, not just the AI hype. When you're building your Jarvis, ask yourself two questions for every task that you want to automate. First one, do I actually need to be the one triggering this, or can the system fire this off on its own? And second, does this step actually need AI, or could a simple Python script or no-code workflow, do it at a fraction of the cost with less risk. And what you want to do is default to the simplest thing that gets the job done. Because the people who win in the AI era aren't the ones who are building the fanciest agents with hundreds of tools and hundreds of sub-agents.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -515,10 +515,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:16:33 - 00:17:05]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
+> They're the ones building systems that run quietly in the background, costing them almost nothing, and doing real work whether they're there or not. So that's skill number five. But the final skill I can guarantee is something that you've never heard of, at least not in this context. I'm talking about unemployment insurance. And no, I don't literally mean taking out insurance. Rather, I mean creating your own insurance. This might be a bit of a hot take. Not everyone's going to agree with me on this, but I'm bringing it up because I'm really confident this is going to become way more normal over the next few years. And the skill is building multiple income streams using AI so that no single employer or client can take you out. The old career model was basically
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -529,10 +529,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:17:05 - 00:17:40]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
+> like one job, one income, a 401k, maybe a few investments, but basically all your eggs were in one basket. And if you got fired, you were kind of back on the hunt. You were polishing your resume, applying to a hundred jobs, hoping somebody bit. And this new model that I'm talking about that I see emerging is job stacking, your day job, plus a couple of AI-powered side income streams. I've already seen a ton of people running multiple remote jobs, you know, part-time gigs, side projects, and stacking that all to equal way more income than they'd ever make at just one full-time job. I'm not saying that every one of you guys should just go quit your full-time job and do this. I'm saying that it's already happening and it's about to become way more common because AI lets one person do work that used to take a team of five. Now, the thing I want
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -543,10 +543,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:17:40 - 00:18:11]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
+> to hammer home here, you don't have to stack five income streams in completely different domains. That's how people end up burnt out and broke. The better version is one passion with multiple branches. I'm a really, really strong believer that to be successful at anything in life, you have to enjoy it. You have to have at least some kind of passion for it. If you're chasing AI for the wrong reasons, or you're going after something because someone said there's a lot of money in it, then people are going to be able to see right through that, and it's going to be really hard to be successful. So what I want you to take out of this is to figure out what motivates you, figure out what you're actually passionate about, and that's where your North Star comes from.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -557,10 +557,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:18:11 - 00:18:38]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
+> I've got a few different income streams myself, and what's cool about it is that they all stem off of my same North Star, same theme, same expertise, just packaged in a few different ways. For example, you've got your career. That's your foundation. Your expertise about that career packaged into maybe a course or a niche newsletter or blog or micro SaaS, or maybe even some consulting on the side. It's the same domain, but it just takes different shapes. And that's how you avoid the biggest trap with this whole idea, which is distraction. When you're starting, just pick one and go hard until you have momentum under you. And then you can sort of branch out.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -571,10 +571,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
+### ⏱️ `[00:18:38 - 00:19:12]` | Segment #40
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
+> Now, a couple of quick caveats to mention here is once again, be smart, check your employment contract, watch out for non-competes, disclose whatever you're doing on the side if your company requires it. Don't do anything sketchy and don't burn your day job chasing the side thing and be safe. But how do you practically do this? Well, honestly, this really depends on who you are as a person. But if I had to give a default move, I would say building in public. Experiment with AI tools, build small things and share what you're learning. Document the wins and losses. Build a tiny brand around the work you're already doing. Because the second you start posting, you become discoverable. That's how opportunities show up, clients show up, job offers show up. People want to work with the people actually doing the work. And this is also something interesting to think
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -585,10 +585,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
+### ⏱️ `[00:19:12 - 00:19:37]` | Segment #41
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
+> about. The world is shifting in a way where humans are using AI for almost everything, right? Which means when humans go to search the internet for something, they're probably going to do that through some sort of AI interface, which means if you don't exist basically at all, somewhere where an AI can find you and find information about you, then it's going to be a lot tougher to be discovered. Now, if building in public isn't your thing, that's fine. You just have to find your own version. Maybe it's a quiet consulting practice, niche newsletter that doesn't require your face.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -599,10 +599,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
+### ⏱️ `[00:19:37 - 00:19:58]` | Segment #42
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
+> Maybe it's a product that you build and sell without ever showing up on camera. Medium is completely up to you, but the point is you start building something that's actually yours. So those are the six skills that I'd recommend learning and developing to future-proof yourself in the AI era. I'm a strong believer in adaptation and survival of the fittest. So as long as you keep up with the changes and developments in the space that matter for your North Star, your ability to earn and live will always be protected.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -613,206 +613,10 @@ Dans cette vidéo intitulée **Learn These 6 AI Skills Now (Before Everyone Else
 
 ---
 
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
+### ⏱️ `[00:19:58 - 00:20:14]` | Segment #43
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
+> And I know that we covered a ton of information in this video, so I put all of this into a free resource guide, which you can access for completely free inside of my FreeSchool community. The link for that is down in the description. If you guys enjoyed the video or you learned something new, please give it a like. It definitely helps me out a ton. But as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks guys.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
