@@ -311,18 +311,21 @@ Dans cette vidéo intitulée **I Tested Claude's New Managed Agents... What You 
 > Now, what you'll notice, though, is this didn't even get sent to ClickUp, even though we actually had this connected. So that would be another case where I, the user, would have to go back and fix it there. So let me talk about some other things I tried. I made one called Field Monitor, which basically, it looks at things that are going on in the tech space and then sends me a signal in my ClickUp channel. And this is what that output looked like.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Claude Console (interface de gestion et de débogage d'agents IA).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Journal d'exécution (logs) incluant des appels d'outils ("Web Search", "Write") et un panneau "Message" listant des recommandations stratégiques (ex: "Capitalize on the rate limit frustration window").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur illustre une session d'agent où une intégration (mentionnée comme ClickUp dans l'audio) a échoué malgré une configuration préalable, nécessitant une intervention manuelle pour déboguer le processus.
+
+![Capture d'écran de l'interface "Claude Console" affichant un historique de session avec des logs d'exécution, des actions d'agent et des recommandations stratégiques textuelles.](../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000756_seg21.jpg)
+*⏱️ 00:07:56 — Capture d'écran de l'interface "Claude Console" affichant un historique de session avec des logs d'exécution, des actions d'agent et des recommandations stratégiques textuelles.*
 
 ---
 
 ### ⏱️ `[00:08:11 - 00:08:44]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> This one took me about two minutes to set up. I hit run and it's pretty good, right? I get all this information from the week. It gives me different clusters of information with all of these having sources. And it actually was able to send that to me in my ClickUp. And then I made another one right here called the ClickUp Research Agent, which the whole idea was that I would basically be able to come into this research queue area in my ClickUp. I would be able to create a new to-do down here for a different type of voice AI provider. And then when I move it to to do, the managed agent would pick up the task and then it would do research and it would leave me a comment over here. As you can see, I've got a summary, key findings, information like this, and
+> Celui-ci m'a pris environ deux minutes à configurer. J'ai cliqué sur exécuter et c'est plutôt pas mal, non ? J'obtiens toutes ces informations de la semaine. Ça me donne différents groupes d'informations, toutes ayant des sources. Et ça a même pu m'envoyer ça dans mon ClickUp. Et puis j'en ai fait un autre juste ici appelé le ClickUp Research Agent, dont toute l'idée était que je serais fondamentalement capable de venir dans cette zone de file d'attente de recherche dans mon ClickUp. Je serais capable de créer une nouvelle tâche ici en bas pour un type différent de fournisseur d'IA vocale. Et puis quand je la déplace dans « à faire », l'agent géré prendrait la tâche, puis il ferait des recherches et il me laisserait un commentaire ici. Comme vous pouvez le voir, j'ai un résumé, des conclusions clés, des informations comme ça, et
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -336,14 +339,17 @@ Dans cette vidéo intitulée **I Tested Claude's New Managed Agents... What You 
 ### ⏱️ `[00:08:44 - 00:09:17]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> then I get all the sources at the bottom and then it moves it to complete. Now, the thing about this is because our agents have to be triggered by a call to their API, it's just not super automatic and it requires a lot of glue in order to actually put the infrastructure together. Because what I had to do here is I had to come into the agent and say, hey, go check the click up and then see if you've got any to-dos and then fulfill them. And sometimes that's fine. But really what I wanted to do is I'd want it to pick up the to-dos automatically, which means I would need something from ClickUp to tell something to send an API call to my ClickUp research agent. And I was like,
+> ensuite j'obtiens toutes les sources en bas, et puis ça le déplace vers terminé. Maintenant, le truc avec ça, c'est que comme nos agents doivent être déclenchés par un appel à leur API, ce n'est tout simplement pas super automatique et cela demande beaucoup de liant pour vraiment assembler toute l'infrastructure. Parce que ce que j'ai dû faire ici, c'est que j'ai dû aller dans l'agent et dire, hé, va vérifier le ClickUp, et puis regarde si tu as des tâches à faire, et ensuite accomplis-les. Et parfois, c'est très bien. Mais ce que je voulais vraiment faire, c'est que je voudrais qu'il récupère les tâches à faire automatiquement, ce qui signifie qu'il me faudrait quelque chose de la part de ClickUp pour dire à quelque chose d'envoyer un appel API à mon agent de recherche ClickUp. Et là je me suis dit,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Claude Console (interface web de gestion d'agents).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste des agents : "Competitor Intelligence Agent" (claude-opus-4-6), "Field monitor" (claude-sonnet-4-6), "ClickUp Research Agent" (claude-sonnet-4-6) et "Deep researcher" (claude-sonnet-4-6), tous marqués avec le statut "Active".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation dans la liste des agents créés au sein de la console de gestion.
+
+![Interface de gestion "Claude Console" affichant une liste d'agents autonomes actifs.](../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000852_seg23.jpg)
+*⏱️ 00:08:52 — Interface de gestion "Claude Console" affichant une liste d'agents autonomes actifs.*
 
 ---
 
@@ -353,11 +359,14 @@ Dans cette vidéo intitulée **I Tested Claude's New Managed Agents... What You 
 > okay, cool. So if I can't do that via ClickUp webhooks, then maybe I'll just do a scheduled automation. So maybe I'll just have this ClickUp research agent wake up every 30 minutes, check the to-dos. If there's one, it'll process it. If there's not one, it'll just go back to sleep and that's fine. But it can't even do that. It can't even wake up on a cron. And so that's what made me realize that this managed agent thing, it really serves a purpose for a specific type of person. For me personally, I'm probably never going to use this because I can just do cloud code and make things better and more custom to my needs. Because if I wanted this exact type of agent, which I've actually done before and I've made a video on it, I would just use trigger.dev. And if
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Claude Console (Managed Agents / Agents / ClickUp Research Agent)
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Modèle : claude-sonnet-4-6. System prompt : "You are a research agent for an AI voice agent business platform. Your job is to research topics assigned via ClickUp tasks, then post a structured breakdown back to the task as a comment. ## Your Workflow When given a ClickUp task ID: 1. **Read the task** 2. **Extract URLs** 3. **Research the topic** 4. **Analyze for our business** 5. **Post your findings**"
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation de la structure du prompt système et des paramètres d'un agent de recherche automatisé configuré dans Claude Console.
+
+![L'interface Claude Console présente la configuration de l'agent "ClickUp Research Agent" utilisant le modèle claude-sonnet-4-6 ainsi que son prompt système décrivant le workflow de recherche.](../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000925_seg24.jpg)
+*⏱️ 00:09:25 — L'interface Claude Console présente la configuration de l'agent "ClickUp Research Agent" utilisant le modèle claude-sonnet-4-6 ainsi que son prompt système décrivant le workflow de recherche.*
 
 ---
 
@@ -437,11 +446,14 @@ Dans cette vidéo intitulée **I Tested Claude's New Managed Agents... What You 
 > automation, right? And I'm in Cloud Code, so I just shoot this off and I'm telling it to use Anthropics CLI to build myself a managed agent. The goal of this would be I can drop in a YouTube video transcript and then I can just have it do things for me in my ClickUp, like sending me a summary as well as potentially some action items from that video if I found out, hey, you know, I want to implement some of these strategies into my workflow or whatever. That's cool because I could drop in the transcript here. It could send off that API call to my managed agent in Anthropics Cloud. And then over there, it would take care of all of that ClickUp stuff. And I could just keep coding in Cloud Code right here. And like I said, it can also use all the context.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code avec le terminal intégré "Claude Code".
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Prompt utilisateur : "Hey, I want you to create a managed agent using Anthropics CLI in order to give me the ability to drop in a YouTube video transcript and have it extract all the key insights... It will create to-dos for me in my ClickUp...". Statut : "Successfully loaded skill", "Flibbertigibbetting... (thought for 2s)", "plan mode on".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'utilisateur soumet une requête à Claude Code pour créer un agent personnalisé capable d'analyser des transcriptions YouTube et d'automatiser des tâches dans ClickUp.
+
+![Une capture d'écran de l'interface VS Code montrant le terminal Claude Code en cours d'exécution avec une requête utilisateur explicite.](../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001249_seg30.jpg)
+*⏱️ 00:12:49 — Une capture d'écran de l'interface VS Code montrant le terminal Claude Code en cours d'exécution avec une requête utilisateur explicite.*
 
 ---
 
