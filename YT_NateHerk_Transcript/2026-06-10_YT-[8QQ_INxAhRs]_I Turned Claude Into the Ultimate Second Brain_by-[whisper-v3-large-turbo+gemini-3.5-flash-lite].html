@@ -1,0 +1,2734 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 I Turned Claude Into the Ultimate Second Brain — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 I Turned Claude Into the Ultimate Second Brain</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-06-10</span>
+                <span class="badge">⏱️ 00:34:20</span>
+                <span class="badge">🆔 <code>8QQ_INxAhRs</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=8QQ_INxAhRs" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **I Turned Claude Into the Ultimate Second Brain**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:19</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So this right here is basically my entire life and my entire business, all in one second brain. And Claude Fable is able to understand all of this better than I do. And not only that, but it&#x27;s helping me automate a lot of this. So if you haven&#x27;t heard, Claude Fable just dropped, and it is basically just Claude Mythos 5, but there are more cyber guardrails baked in.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:20 - 00:00:45</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And Claude Mythos is the model that Anthropic has been teasing for months now. It&#x27;s the one that&#x27;s so powerful that it&#x27;s not generally available. It&#x27;s only available to heavy cyber and infrastructure partners that are in Project Classwing. And what you&#x27;ll notice here is there aren&#x27;t a ton of like major, major jumps, but a lot of the feedback that I&#x27;ve been seeing from Andre Carpathie, Boris Cherney, and also just the general community is saying that this model is definitely a major step.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:45 - 00:01:09</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">However, today is June 9th, and this thing&#x27;s only available from today through June 22nd on your subscription. And then it&#x27;s going to switch to usage credits. Now, I&#x27;m sure that is going to come back to the subscription at some point, but you definitely want to get in here and play around with this model for the next two weeks-ish before it goes to usage credits. And this model is two times as expensive as Opus, so $10 for a million input tokens and $50 for a million output tokens.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:09 - 00:01:28</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it will eat your subscription faster than Opus. But anyways, what I want you guys to understand in this video is that this is kind of my second brain, and then I&#x27;ve obviously got my operating system, which is called Herc2. So if you&#x27;ve been following my channel for a while now, you probably are aware that this exists. And this isn&#x27;t something that I just built today because CloudFable dropped. This is something that I&#x27;ve been working on for months.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:28 - 00:01:47</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But today, I&#x27;ve been playing around with Fable all day long to see how it&#x27;s able to adjust into my AI operating system. And that&#x27;s what I want to talk about with you guys today. Basically show you exactly how I&#x27;ve set everything up and exactly how I keep improving it over time and how I&#x27;m able to be so productive and efficient. So today, I&#x27;m going to go over my CloudFable AI operating system and how this thing is my second brain.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:48 - 00:02:07</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So the first thing that I want to start off by talking about is a lot of this is a mindset shift. A lot of this is basically an adoption issue. It&#x27;s a habits shift. So basically, before I started using this AI operating system, I was opening different AI tools, different subscriptions I paid for. And I was using like custom projects or custom GPTs.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:07 - 00:02:27</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And I thought that that was being really productive. And it still was, but I was repeating myself. And it didn&#x27;t feel like I had an actual kind of like a co-founder that I could talk to that always knew what was going on in my life and my business. And so the first step is basically close out of all those tabs and try to have the mindset shift, try to default to using Cloud Code or Codex or whatever you want your harness to be.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:27 - 00:02:46</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Most of you guys clicked on this video, you probably want Cloud Code, but just default to using Cloud Code. I don&#x27;t care if you use that in the desktop app or in VS Code like I&#x27;m gonna be showing you in this video, just default to doing everything through Cloud Code. And you start to build up so much context and so much memory and preferences. And that&#x27;s, trust me, that&#x27;s just the way to do it. So anyways, an OS doesn&#x27;t start with architecture, it starts with a default.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:47 - 00:03:11</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">From there, we&#x27;ve kind of got two layers. And you probably hear people talk about my agentic OS or my second brain or my executive assistant, whatever they want to call it. I think of it in two distinct ways. I think of the second brain as the first piece. Without a second brain, you can&#x27;t have an AI operating system. Second brain is basically your knowledge. Does this thing know what&#x27;s going on in your business, in your life, with your clients, you know, with your YouTube channel, whatever it is, does your second brain know that?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:11 - 00:03:48</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And can you ask it questions? Once you have the second brain, you&#x27;re able to then build on top more of the OS infrastructure, the architecture of, hey, now that we have all this knowledge, let&#x27;s start to build some skills. Let&#x27;s start to automate some things. And let&#x27;s start to actually work out of here as my operating system rather than Apple or Windows or whatever you normally operate in. Let&#x27;s operate inside of this second brain instead. And so everyone has different definitions of second brain and AIOS, but that is the way that I think about it. And I think it&#x27;s pretty simple. So from there, the framework that I like to use to think about building and maintaining my AI operating system is called the four C&#x27;s and we take it in order. You can see the first two are</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:48 - 00:04:21</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">the second brain. The second two are the AI operating system. And we start with context, which is who you are, who your business is, stuff like that. And then we have connections. Can your second brain actually reach out for live data? Because sometimes you have data that&#x27;s static, right? Like your background, your meeting transcripts, your whatever, your 2025 progress and achievements. But then you have connections, which is real data, like your clickup messages to the team or your emails or your, you know, your QuickBooks P&amp;L, any data that&#x27;s less static and that&#x27;s constantly changing.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:22 - 00:04:40</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">That&#x27;s what I want to use as my connections. And then from there, we have capabilities, which is where we get into AIOS territory, building skills, building agents, building automations, building pipelines, and then turning those capabilities into cadence, meaning they can run on their own when you&#x27;re sleeping, not just when you&#x27;re sitting there triggering them manually and babysitting your AIOS. So this is the order.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:41 - 00:05:06</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">This is what I like to teach. And let&#x27;s say you already have your AIOS set up. this is still something really important to think about because maybe in the future, you need to help your team get upskilled with an AIOS or you maybe actually wanna go sell AIOS setups to a business. This is the framework to teach. So starting with the context, this is your routing tree. I&#x27;m gonna try to basically make this video by answering all the questions that I&#x27;ve been getting in my communities and my comments about how I use my AIOS day to day.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:06 - 00:05:39</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m gonna show you guys, I&#x27;m gonna open it up, show you guys what&#x27;s in there, but it&#x27;s a routing tree. And so I think of my claud.md file as my router, meaning yes I have some stuff in there about like hey this is your goal this is what I do this is your you know your your processes but more so it&#x27;s like okay this is where the files live so I&#x27;m pointing my agent to all the rules to the references to the skills to the other projects to the wikis and basically the pulse check here is you know when I open up my ios you guys will see I have so much so much context in here so many files and people ask me the question a lot</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:39 - 00:06:14</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">about at what point is it too much? And how do you know when you need to like split some stuff up? And so far mine has not been too much because whenever I ask it to find things or I ask it to like pull in some data, it finds them really quick. And because I&#x27;m sitting there watching it, if it&#x27;s searching for like five minutes for a file that I know where it is right away, then that&#x27;s probably an issue. And I probably need to update the architecture and the file system. You know, we&#x27;ve heard context engineering, prompt engineering, harness engineering. I also think that architecture engineering is going to be a new kind of like art. And I don&#x27;t think there&#x27;s a right answer, but basically the pulse check for me is, is it intuitive to myself?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:15 - 00:06:47</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Could I manually drill through my folders and files and find what I need? And can my agent do that as well? Okay. So here is my setup. Here are all of my files and folders on the left. And before I start drilling in, I just wanted to let you guys know this changes for me all the time. I&#x27;m always changing stuff around a little bit. I&#x27;m always adding new things and I am always updating my called an MD. But let me click into here real quick and just show you what&#x27;s going on. So you are Nate Herx executive assistant. I probably need to update that. It&#x27;s more of my iOS. Your job is to help him spend less time on operations, people management, and admin so we can focus on learning AI tools and making YouTube videos. Here&#x27;s some information about the knowledge base. I give it</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:47 - 00:07:18</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">the exact wiki path. I give it the hot cache. I give it the master index and I give it basically the way to look through it. I then start to talk about tools. I then start to talk about API keys. I show where the skills live. I show how the skills should structure. I show what&#x27;s active and when to use what. Honestly, I should probably clean this up a little bit, but that is kind of the way that I am thinking about showing where things are. I also notice in here, I&#x27;ve got some other stuff. And in my .claw, the two most important things for me really in here are my sub-agents and then my skills. This is pretty much my number one favorite feature in Claude code.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:18 - 00:07:37</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And this is how I&#x27;m so productive is with all of these custom skills that I&#x27;m building out. So that&#x27;s where they live, of course. And then something that I recently have switched over to, which I&#x27;ve gotten a ton of questions about, is I&#x27;m using a folder that I call other worlds. And what lives in my other worlds are basically other Cloud Code projects, like things that I was normally working in a completely different repo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:38 - 00:07:58</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You know, I would open them up from the file opener right here or the folder opener. But now I&#x27;ve just moved everything that I use frequently into my Herc 2 project. Now, a couple of reasons for that. I think the main one, honestly, when I really started to think about it is from a syncing perspective. If I wanted to push my Herc 2 project to GitHub so that I could go on my laptop and pull it in. I now have all of these synced up as well.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:58 - 00:08:20</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And I don&#x27;t have to go push like six different, you know, projects to GitHub before I move over to my laptop. So that&#x27;s one reason. Another good reason is because now my main operating system has context into like other things that I&#x27;m doing. So in here, I can have it go look at my book project. I can have it go change something on the website. I can have it, you know, edit the, edit videos or do something in the token dashboard, whatever I want to do.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:20 - 00:08:38</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I can kind of do that all from here. And it can CD around and it can find its way to what it needs. And I just kind of love having that feeling of, all I have to do is open up Herc2 and I can get to what I need to do. And these are not small projects, right? Like if I open up, for example, the YouTube OS, we&#x27;ve got projects, we&#x27;ve got references, we&#x27;ve got transcripts, we&#x27;ve got a ton of drill downs in here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:39 - 00:09:00</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Like these are pretty big projects and I&#x27;m still able to keep everything finding, you know, where it needs. I&#x27;m still able to have my agent find things. And if I go in here in my main Herc2 directory and I do a slash context, I&#x27;m still only at 40,000 tokens starting off. The majority of that is system tools. We&#x27;ve got a little bit of memory files here, but this has not been an issue for me.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:00 - 00:09:20</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And I don&#x27;t think that these markdown files will be an issue for a while. I also have a ton of working projects in here. So if I open up my projects folder, you can see that basically most of the stuff that I&#x27;m doing is typically creating a new folder inside of my projects. And these are not usually small folders either. Like if I go to my YouTube videos project, you can see this is a pretty big folder with a bunch of YouTube videos that I&#x27;ve been working on.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:20 - 00:09:40</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and those drill down even farther. So the point I&#x27;m trying to make here is you guys are asking a lot of questions and I don&#x27;t think there&#x27;s a right or wrong answer. There&#x27;s obviously a way to tell, okay, something&#x27;s not right here because I&#x27;m spending so much tokens or my agent&#x27;s searching for 20 minutes. But for the most part, there&#x27;s not a right or wrong answer. So you kind of get to be creative and orchestrate your own architecture here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:40 - 00:10:13</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">As long as you can follow the paths and it&#x27;s intuitive to you and as long as your agent isn&#x27;t wasting your tokens, then I don&#x27;t think there&#x27;s a wrong answer. So anyways, that was just to hopefully give you guys a little sense of comfort. So that&#x27;s kind of the idea of context. And the way that I like to think about what things to pull in and where to have my connections, which is the second C is this is kind of like the first tier that I think about. I think about, okay, on a weekly basis, what apps might I open? What bookmarks do I have in Chrome? Where do I go to text people or talk to people, whether that&#x27;s internal or external. And when you think about that tier one of like the main things you</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:13 - 00:10:50</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">would reach for, those are probably great things to pull in first. You know, they&#x27;re pretty high priority. And so if you&#x27;re having trouble thinking through that, I would think about revenue, customers, your calendar, comms, tasks, you know, project management, meetings, knowledge, where does that stuff live and where would you reach and just start to write that down. So for me, I just threw in some examples, right? And you can see that some might live in multiple. So for me, school lives in revenue and customers. I also have customers on, you know, YouTube. I have revenue in Stripe and QuickBooks. My calendar&#x27;s in Google Workspace. I com and Google Workspace, ClickUp and Slack. So I just start to go through these things and start to pull in context and start to</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:50 - 00:11:19</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">make my connections. And my connections are typically through API keys and API endpoints, but I will get to that in the next section. But that is how it works. And I&#x27;ve got a full course, by the way. So this video is more of like my high level mindset, how mine is set up, how I think about using it and how I get more out of it and how I prompt it. But if you want a full step-by-step course, I&#x27;ve got one in my free school community. It&#x27;s like a couple hours long. And like I said, it&#x27;s completely free. So join my free school community. The link for that is down in the description and you can do the build your own AIOS course. That&#x27;s more of a, like a step-by-step.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:19 - 00:11:51</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I also in that course, give you guys a free GitHub repo, which you can clone in. And then basically when you clone in that repo, it helps you walk you through all of that. The four C&#x27;s, it gives you an audit and it helps you build out the folder architecture from the beginning. So we go over the three M&#x27;s and we go over the four C&#x27;s. So all of that&#x27;s available in my free school community. Anyways, let&#x27;s keep on moving here. So the gut check is if you opened up your cloud code right now and you asked it about, you know, something about you, something about you and your business, would you get an answer that sounds like a stranger or would you get an answer that sounds more like a teammate or a co-founder? That&#x27;s a really good gut check.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:51 - 00:12:11</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So just to show you guys real quick, two examples of something that Fable did for me and proving to you that it knows me so well. Look at this one. So this first one, I said, slash goal using hyperframes. I want you to look through this project. What do you know about me? What do you know about my YouTube channel? What do you know about our business? Create me a video that explains my journey, who I am and what I&#x27;m up to. So let me pull up that video. All right.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:11 - 00:12:30</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m going to play this video on 1.5 speed, but who am I? Nate Herc, AI Automation, Chicago founder, creator, dog dad. I teach everyday people to build with AI. 2024, hit record for the first time. Anyone can build AI agents, no code required. 41 videos in 2024, 261 videos in 2025. The channel today.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:30 - 00:13:00</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So here&#x27;s one piece that I realized this is wrong. Right now I&#x27;m at like 800K subscribers, but it got this wrong because I have a lot of static data inside of my AIOS. So last time it did a refresh, it found that I had 620,000 subscribers. Now, if I right now prompted Cloud Code and said, how many subscribers do I have? And pull that in live, it would pull that in live, it would update the static data, and we&#x27;d be fine. But anyways, just wanted to call out why that was outdated there. So anyways, those are channel stats.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:00 - 00:13:21</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We move on to the free eight-hour course, which got over 1.5 million views. We&#x27;ve got the flywheel. YouTube funnels down to AIS free, funnels down to AIS paid, which funnels into coaching high ticket, which is something that we don&#x27;t have yet available. Our certification program we&#x27;re working on, some of you guys might know, but more information to come about that soon. But obviously I&#x27;ve been talking to it about it, brainstorming, ideating, building automations.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:22 - 00:13:44</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It knows what we&#x27;re doing there. We go through the flywheel. Every video feeds the machine. It talks about some revenue stuff, which is not completely accurate. There&#x27;s a lot of different data sources that has to pull together, but either way, a 13 person team runs the machine. And that is up at AI. That&#x27;s actually the core kind of like management company that owns everything that we&#x27;re doing across our different ventures. So 13 person team is kind of the core team right now.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:45 - 00:14:22</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">My only job is to learn AI, make videos, delegate the rest. Obviously it has some bias because its job is to help me do that as much as possible. But we also recently made a big pivot this year from NNN to Cloud Code, same mission, sharper tools, going AI native agents in every quarter of the business. And then we also have AI&#x27;s coaching, live events, and the book that I&#x27;m working on right here. So these are all things that aren&#x27;t actually out yet, but you guys may know about all this. Obviously it&#x27;s helping me do that on the backend. So anyways, the point I was trying to make here is there&#x27;s a video it did in one prompt. I used a slash goal and it created this video. Now, one thing to throw out here is that, you know, fable is not cheap. And that&#x27;s one</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:22 - 00:14:59</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">of the problems that people has been, have been saying is that it is eating up their session limits. I, when I first started playing around with this, I ate up my whole $200 a month max plan session. In the five-hour session, I did that in, it was like a little over an hour. Now, obviously, I was stress testing this thing, but it is noticeably eating it up more than Opus was, and that&#x27;s obviously to be expected. So be careful with it. Now, here&#x27;s another one that I did, which is really cool. I did slash goal. I&#x27;m not going to read this whole prompt. You guys can pause it if you want, but this was basically a one-shot prompt, right? This goal finished up in about 21 minutes, and I basically asked it to put all of my transcripts and all of</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:59 - 00:15:32</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">these like relationships into a super clean interface that anyone could go click through. Also, I just realized that this window was a little bit too high. So sorry about that. Hopefully that wasn&#x27;t bothering you guys too much. But let&#x27;s look at the output from this, which I think is amazing. So we have ideas, we have tools and harnesses, and we have techniques. And when I click on them, they show the actual connection. So agentic workflows that loops into context windows. And how does it cloud code for sale and it in plan mode, value-based pricing. And I can keep clicking around and I can see these relationships. I can see the videos that those concepts are talked about</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:32 - 00:16:08</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">in. And I think that this is just really cool. Claude code is kind of funny. It connects to literally everything, but we&#x27;ve got codex here. We&#x27;ve got open claw Hermes agent. We&#x27;ve got all these different things that we can click around. And basically anything that I&#x27;ve talked about on YouTube, we now have this system where someone could come in here and look at it. And this was once again, a one shot prompt from fable. And, um, I also have up here, I&#x27;m new here. It can show you where to start. I build things. It shows you where to start. And I run a business that can show you where to start. So this was something that I was pretty impressed by. Honestly, if you think about what I asked Fable to do, this was pretty solid. Because keep in mind, like what it had to go and do</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:08 - 00:16:27</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">is it had to obviously build the front end and build these things, but it had to basically look through everything in here. It had to look through my actual YouTube transcripts and figure out the different relationships between things and how they actually come together in a practical way. and it thought about the user journey there. So very, very impressive. So that was kind of starting to talk about connections.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:27 - 00:16:45</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I kind of already hit on this, right? Do they change constantly or is it static? And how you think about bringing them in? And for most of the, you know, for the most part, no database is gonna be needed when you start. Like you saw here, I&#x27;m basically just using markdown files. I&#x27;m using Carpathie&#x27;s LLM Wiki with Obsidian, which I&#x27;ve got a video about, which I&#x27;ll tag right up here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:46 - 00:17:21</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And that&#x27;s kind of how I&#x27;m using all of my contacts and connections right now. All right, so moving on to the third C, which is capabilities. This is basically now that you have, you know, context and connections, what can you actually do? What are the skills and what are the workflows and automations that you can build out of this thing? A big part of this, once again, is adoption. Now that you have everything in here, can you actually start using it instead? And not just using it for when you want to brainstorm or when you have like maybe a script you want to write, but using it to do things, using it to actually do your tasks. So the thing that I always try to challenge my students to do is rather than opening up that Chrome tab when you were going to send an email or when you</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:21 - 00:17:54</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">were going to go pull a report from some software, can you just default to opening up your VS code, which is obviously where I like to use my cloud code, right? Can you default to doing it inside of your AIOS rather than opening up that tab or opening up perplexity or whatever you open up normally? Try to do it here. Try to figure out, okay, does this tool have an API endpoint? If yes, grab it. Does it have a CLI? Grab that. I tend to like to use CLIs and APIs more than MCP servers, but if you want to use MCP servers, you can. The reason for that is I just feel like I have</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-42">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:54 - 00:18:18</span>
+                <span class="segment-idx">Segment #42</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">more control with CLIs and with APIs. They also seem to be cheaper, so I just like to use those instead. Anyways, skills don&#x27;t have to be some crazy massive 10-step workflow. They can also just be a prompt. If you always are writing the same prompt or doing the same things on a Monday morning or a Friday evening, turn that into a skill. If you&#x27;re brainstorming with CloudCode about how to do something, and then you actually end up doing it, then say, hey, what you just did was really good.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-43">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:18 - 00:18:37</span>
+                <span class="segment-idx">Segment #43</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I like this output. Turn that into a skill because next week when I have to do this again, I wanna do that again, and I want it to be faster. And the thing you have to think about is your skill will almost never be perfect on the first try. Every time you use your skill, that&#x27;s data. It&#x27;s data because you&#x27;re able to say, here&#x27;s what I liked, what you just did, here&#x27;s what I didn&#x27;t like. Update the skill, let&#x27;s run it again, and let&#x27;s just make the skill better and better.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-44">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:38 - 00:19:02</span>
+                <span class="segment-idx">Segment #44</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And the thing is, in my workflow, or in my cloud code here, I&#x27;ve got a ton of skills, right? This is maybe 20, maybe a little more than that. And then I&#x27;ve also got a bunch of global skills. Every single time I use a skill, I give it feedback and I say, update the skill. So even though, you know, maybe this generate image skill I built four months ago, I&#x27;m still iterating upon it every single time I use it because my preferences change, the models change, maybe even the endpoints change, who knows?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-45">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:03 - 00:19:26</span>
+                <span class="segment-idx">Segment #45</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Just have that mindset of like, there&#x27;s no such thing as a finished product. And as you&#x27;re building out more skills and as you&#x27;re doing more work inside of Cloud Code, this is something that I&#x27;ve thought about even from the early NNN days, which is how can you have one AI doing one thing really, really well? Kind of thinking like an assembly line. You have one person that&#x27;s making the wheels. One person is making the axles. One person&#x27;s making the hood.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-46">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:27 - 00:20:02</span>
+                <span class="segment-idx">Segment #46</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And it finally all comes together at the end. So you&#x27;re basically creating these little specialized AIs. And that&#x27;s the way I like to think about my sessions. So if you did everything in one session, things might start to blur together. You might run into some context rot territory. But if you do, kind of like, hey, spin up a Cloud Code agent and say, okay, let&#x27;s do some research on X, Y, and Z. And then you take that output, you do a slash clear, and then you bring that output into the next section. And now you&#x27;re working on the draft. And then you&#x27;ve taken that draft that is fully researched. You&#x27;re taking that output, putting into the next step, which is polishing. And that&#x27;s obviously a very rough example, but I like to work in phases like that. I like to bring outputs</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-47">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:20:02 - 00:20:34</span>
+                <span class="segment-idx">Segment #47</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and chain them together and have different specialized agents. Now, skills obviously kind of help with that because skills let you kind of bring in subject matter expertise into any session immediately, which is very nice. But for the most part, if you just have that mindset shift of like, my AI needs to do this one thing really, really well. And then I&#x27;m going to bring that to a different AI. Now it&#x27;s interesting because Claude Fable has been really impressive for me. It has been, you know, I try to tell you guys to not always feel like the benchmarks is the best way to judge if a model is the right one or not.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-48">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:20:34 - 00:20:56</span>
+                <span class="segment-idx">Segment #48</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I think more importantly, it&#x27;s the harness and it&#x27;s the way that you use it. But I also think that there&#x27;s a lot of feel. And I saw this text or I saw this tweet from Karpathy. Yeah, as if like Andre Karpathy is just texting me about what he thinks about Claude Fable. I saw this tweet and at this point he said, you can give Fable a lot more ambitious tasks than what you&#x27;re used to.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-49">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:20:56 - 00:21:17</span>
+                <span class="segment-idx">Segment #49</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And the model just gets it and he put gets it in quotes. And it&#x27;s interesting because a lot of times the model is all about feel. and I kind of have this feeling that when I&#x27;m talking to Fable, it just gets things more often and just understands a little bit of what I&#x27;m talking about. And later in this video, I have some usage tips on how I feel like I&#x27;m able to get more out of Fable, but one of those things is like giving it more context.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-50">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:21:17 - 00:21:37</span>
+                <span class="segment-idx">Segment #50</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And the more context you give it as far as like why you&#x27;re doing something and what not to do, it just seems to get it with multi-step reasoning and knowledge work. And this is Andre Kaprathe. Yes, he did just join Anthropic, so maybe he has different motivations, but he&#x27;s usually a pretty sound voice. And he said, this is a super exciting release.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-51">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:21:37 - 00:21:59</span>
+                <span class="segment-idx">Segment #51</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">He said, yes, the benchmarks are great and kind of state of the art, but this is a major version bump deserving step change forward. So far, I think it&#x27;s a really impressive model. Some of the issues I&#x27;ve been seeing with it are on the pricing. Sometimes it&#x27;s a little bit slow. Sometimes we run into those kind of guardrails because we know that it&#x27;s being restricted, you know, cyber safeguards.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-52">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:21:59 - 00:22:22</span>
+                <span class="segment-idx">Segment #52</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And sometimes those are firing off frequently. Like, hey, I can&#x27;t do that, blah, blah, blah. Like it says here, the model still has quirks that people will run into. And the safeguards are configured to be a little bit too trigger happy for launch, which honestly makes perfect sense to me. But those will hopefully be tuned over time. So they will be monitoring this and they will be tuning that stuff as more people use it and as the community gives more feedback on it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-53">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:22:22 - 00:22:57</span>
+                <span class="segment-idx">Segment #53</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So that was context discipline. The other thing is about delegation. So not only do you kind of have your specialized assembly line for chronological work. But for parallel work, you also want to delegate, especially if you are using Fable, which is not cheap, then you can delegate to cheaper workers. Whether that be Sonnet or whether that be Haiku, you can delegate for parallel tasks and then get one clean summary back. And that&#x27;s basically what the dynamic workflows do. I also just dropped a video on how to use Claude subagents better. I&#x27;ll tag that one right up here if you guys want to check that out. And then moving on to number four, we have Cadence. So this is basically</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-54">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:22:57 - 00:23:22</span>
+                <span class="segment-idx">Segment #54</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">the idea, like I said, that you can have things running while you sleep. And this is the last step. And you have to earn this because you have to prove that your skills are battle tested. You have to figure out the right use cases to actually automate because there&#x27;s two things I want to call out here. As you start to add more AI into things, the cost goes up and the risk goes up. And also the maintenance goes up because just because you put something into production and you automate something doesn&#x27;t mean you can just forget about it forever. You still need visibility.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-55">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:23:22 - 00:23:56</span>
+                <span class="segment-idx">Segment #55</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You still need to check in on it. And you still need to make sure that it&#x27;s actually moving the needle. And more autonomy doesn&#x27;t mean you forget about it. You still have to be the owner of that automation at the end of the day, or someone has to have ownership over it. So from here, you&#x27;re basically figuring out, I have all these skills. I have all this context. I have all these, you know, capabilities. What&#x27;s the trigger? If it&#x27;s manual and I just ask for it, then maybe it stays in your AIOS and maybe you do that. If it&#x27;s an event, meaning whenever you get a new email or whenever a new customer books a call or whatever it is, then you have a process happen. Or maybe it&#x27;s a schedule. Maybe it&#x27;s every Monday you do this, or maybe it&#x27;s every Sunday night you do this.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-56">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:23:57 - 00:24:24</span>
+                <span class="segment-idx">Segment #56</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">There&#x27;s different ways that you can trigger automations. There&#x27;s different ways to deploy them too. You can have them be cloud code routines. You can have them be loops. You can have them be deterministic scripts that you chuck on something like modal or TypeScript. There&#x27;s a lot of different ways to have automations. You can even have your cloud code OS build you out an NNN automation, and then you can just push that into NNN. So there&#x27;s so many different ways, nine ways to skin a cat, but figure out what works best for you and for your use case.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-57">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:24:24 - 00:24:43</span>
+                <span class="segment-idx">Segment #57</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I also have a video going over different ways to deploy your cloud automations, which I will tag right up here if you want to check that one out. And the important part here about operating in your AIOS and giving it so much reach and giving it so much context is that you have to earn the trust. And it&#x27;s not just a feeling, it&#x27;s not a vibe, it&#x27;s a legit thing that you can actually feel safe about.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-58">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:24:43 - 00:25:06</span>
+                <span class="segment-idx">Segment #58</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So a permission layer. A prompt is never a permission layer. You basically have to have the assumption that if it can, it will. So if it could send an email, it might. If it could read that database, it will. I&#x27;m sure you guys have heard the story that I&#x27;ve told, which is we accidentally sent out, an agent sent out an email to 150,000, 200,000 people on our list with a discount code that was not supposed to go out.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-59">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:25:06 - 00:25:43</span>
+                <span class="segment-idx">Segment #59</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And what happened was the agent was proactively picking up tasks from a list and it interpreted the task wrong and thought that I need to write this discount code and send it out. And it did. And so that was obviously a big problem. we had to issue an apology. And so that was just a really great lesson for the entire team to realize that we have to understand exactly what our agents could possibly touch. What do they have the keys to? Because if they don&#x27;t have the key to get into the room where they can send an email, then there&#x27;s no way that they can actually go send that email. And that is what you need to have. You need to have keys, not prompts. And that&#x27;s how you have a permission layer that you can actually trust. And from there, just think about every single time that you use your AIOS</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-60">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:25:43 - 00:26:03</span>
+                <span class="segment-idx">Segment #60</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">as more data. It compounds. If it slips up, you get data. It&#x27;s not a failure. I wasn&#x27;t mad at the person who built this agent where this happened. We treated this as an opportunity to write a case study and for the whole team to understand the risks of what we&#x27;re doing and how we do things safely. But that was great data for us, right? Like in a way, we almost needed that experience to learn.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-61">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:26:03 - 00:26:29</span>
+                <span class="segment-idx">Segment #61</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So fix the instruction. It never happens again. You go in this loop. Like I said, I&#x27;ve been building my AOS for months now and every day I make it better. And that is what&#x27;s so cool about this is the data helps us make it better. Okay, so let&#x27;s move into some usage tips here. So the first one is to treat this thing as a thought partner. This thing is really smart and involving it in your planning and your ideation is a really good idea, but you wanna take that with a grain of salt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-62">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:26:29 - 00:26:59</span>
+                <span class="segment-idx">Segment #62</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Don&#x27;t just use it as a thought partner and say, okay, how would I do this? It gives you an answer and you say, okay, go, let&#x27;s do it. Use it as a thought partner, meaning brainstorm with it and make it play devil&#x27;s advocate and you play devil&#x27;s advocate. So take it with a grain of salt and maybe have it spin up different sub-agents to give you different perspectives. I love doing that. I love having sub-agents or maybe even agent teams debate with each other, give me different perspectives, and then I&#x27;m able to use all of that research and those different personas and perspectives to make a more informed decision based on my gut.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-63">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:26:59 - 00:27:26</span>
+                <span class="segment-idx">Segment #63</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But I love using my Claude as a thought partner. These models do have a tendency to be sycophants, so they will just basically please you and say, yes, I do think that&#x27;s getting better, but because that&#x27;s kind of a known issue with all AI models in general, you should keep that in mind, right? The next thing is have it interview you. So I&#x27;ve got a skill called grill me, which I will drop in my free school community along with everything else that I told you guys you can get in there. And the grill me skill was originally from Matt Pocock.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-64">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:27:26 - 00:27:50</span>
+                <span class="segment-idx">Segment #64</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So shout out to Matt, but I changed it up a little bit so that it has like brainstorm docs. So if I come in here and I go to, um, my brainstorm folder, which is right here, which will automatically get created. If you use my skill, I&#x27;ve got different sessions where it&#x27;s grilled me relentlessly for, I&#x27;m talking like 15 questions, 25 questions, 30 questions, and it&#x27;s extracted so much more knowledge out of my head into my AIOS. So that&#x27;s a really great way to start off too.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-65">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:27:51 - 00:28:24</span>
+                <span class="segment-idx">Segment #65</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You could literally set up your AIOS and say, use the grill me skill to figure out everything about my business. And it will just ask you questions until it has enough info. I actually did a grill me here, as you can see literally today to help figure out the way that I use my AIOS, the way that I&#x27;ve set it up, the way that I think about it. And this helped me plan out this entire video. So it&#x27;s a very, very helpful skill. And then the final thing, which I think is the most important is to verify its own work. You&#x27;ll notice if I go into Claude and I go to this session where I prompted it to build this, you know, this relationship map thing at the end of my prompt here, I said,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-66">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:28:24 - 00:28:58</span>
+                <span class="segment-idx">Segment #66</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I gave it some context. I said, this is a demonstration for YouTube. So don&#x27;t feel the need to make this production ready, but it should be easy to understand. So don&#x27;t make it confusing. That&#x27;s not even what I meant to show you guys. I meant to show you guys this. And then once you have built that, use a dynamic workflow to verify that everything is accurate and works as expected. It&#x27;s really important that you are visually checking your work and testing that different personas would be able to click through this and understand it, meaning a beginner, a software engineer, a business owner, et cetera. So verifying its own work is super important, whether that is visually, whether that is by opening up a Playwright browser and clicking around. However,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-67">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:28:58 - 00:29:34</span>
+                <span class="segment-idx">Segment #67</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">you as a human would verify the work that, you know, maybe an intern gave you or an analyst would give you, however you would verify, just give Claude Code the ability to do that instead. So that way, when it verifies its work, instead of it giving you something on the first pass that was maybe like 70% of the way there, and you have to iterate a little bit, maybe it can give you something that&#x27;s 92% of the way there. And you still iterate a little bit, but it&#x27;s giving you things that are better, and you&#x27;re able to trust those outputs more. And one more thing, another big mindset shift is that the model, the harness, all of this is just basically the engine. And what you&#x27;re building here is a system. You&#x27;re building a second brain. You&#x27;re building capabilities. You&#x27;re</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-68">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:29:34 - 00:30:06</span>
+                <span class="segment-idx">Segment #68</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">building context and connections. You&#x27;re building something that looks like this. And you&#x27;re building something that looks like this. And at the end of the day, all this is, is folders and files. So who cares if you switch over to codex tomorrow? Who cares if you switch back to Sonnet 4.5? I don&#x27;t care. It&#x27;s folders and files. And every coding agent can use this stuff. That&#x27;s why you see here, I&#x27;ve got my dot Claude, but I&#x27;ve also got my dot codex. And I&#x27;ve also got my dot agents. And I&#x27;ve got my Claude.MD, but I&#x27;ve also got my agents.MD. And I want this thing to be as tool agnostic as possible so that I can switch in different models. Like I&#x27;m still using this thing</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-69">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:30:06 - 00:30:39</span>
+                <span class="segment-idx">Segment #69</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">on a daily basis with codecs because I&#x27;m trying it out with different stuff. I&#x27;m seeing what&#x27;s better. And that is the mindset you should have with, oh, these new models come out, right? Like I don&#x27;t have to, do I have to rebuild this? Oh, I&#x27;m building this wrong. I&#x27;m learning codecs. I&#x27;m not learning cloud code. You&#x27;re learning everything at once because you&#x27;re building your own repeatable, essentially IP of your business, your life, and your capabilities. Folders and markdown files, skills and routing logic, logs and wikis. That&#x27;s what you&#x27;re truly building in your second brain and in your AIOS. You&#x27;re not building a cloud code AIOS. You&#x27;re building your own personal</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-70">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:30:39 - 00:31:13</span>
+                <span class="segment-idx">Segment #70</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">operating system. And it&#x27;s really, really cool to think about that because it should hopefully remove some of that overwhelm or stress that you have about trying to stay up to date with the latest drops and stuff. You&#x27;re building your own system and whatever you plug in, whatever AI intelligence or harness you plug in, that&#x27;s just what you&#x27;re using right now. Because it&#x27;ll probably get to the point one day where maybe you&#x27;re using your own harness that you&#x27;ve built with an open source model and you&#x27;re not technical at all, but it just happened. Like I could see that definitely happening for a lot of you guys. And finally, I thought I&#x27;d end off with a little bit of a lightning round with other questions that I might feel like I hear frequently. So what does this cost</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-71">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:31:13 - 00:31:47</span>
+                <span class="segment-idx">Segment #71</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">to run all day? Depends on the day. I mean, I&#x27;m generally just doing knowledge work in here. I&#x27;m not doing heavy, heavy coding, but I&#x27;m on the $200 a month plan. And I rarely hit my five hour limit every once in a while. And every once in a while I hit my session limit for the week. So that&#x27;s what I&#x27;m on. Where does my data actually go? Well, if you&#x27;re using clawed models, then that&#x27;s going to Anthropic. It is a closed source model. So if you are dealing with tons of sensitive data, then you might not want to use closed source models. Do I need to know how to code? No. Day one,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-72">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:31:47 - 00:32:15</span>
+                <span class="segment-idx">Segment #72</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">empty folder, what&#x27;s the first thing I type? I would use the AIS OS, GitHub repo that I am dropping in my free school community along with the course. It tells you exactly how to do that. Follow that what&#x27;s in there and you will be able to get up and running in one day. What happens when it confidently gets something wrong? Well, as soon as it makes a mistake, you should be checking the work obviously, but as soon as it makes a mistake, update it. Say update your cloud.md so this never happens again. Update the skills so this never happens again. Always be verifying the exact source and show me the exact source where you&#x27;re getting this data from.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-73">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:32:15 - 00:32:43</span>
+                <span class="segment-idx">Segment #73</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">saying things like that is how you make the system better and better over time because it will confidently tell you something and it will be wrong so it&#x27;s on you to find that out and then to fix it how do the live connections actually work apis or clis and really all you have to do is search like let&#x27;s say for example you wanted to connect to fireflies you would search fireflies api documentation give that research to cloud code or even just have cloud code do that research in the first place and then say here are the exact endpoints i need to connect to what do you need How does that work?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-74">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:32:44 - 00:33:02</span>
+                <span class="segment-idx">Segment #74</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And it will walk you through pretty much everything. If you really want to get into it, you can start to get scoped API keys, which basically means, okay, this API key is for Cloud Code and it can only read all my meeting transcripts and it can&#x27;t actually edit them or can&#x27;t delete them or it can&#x27;t do anything with my team. All it can do is pull in transcripts. And that&#x27;s how we talked about the permission layer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-75">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:33:03 - 00:33:24</span>
+                <span class="segment-idx">Segment #75</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">What is your Cloud Code able to actually physically do, not just prompts? What if I ignore it for a few weeks? Probably nothing too bad. You&#x27;ll just have to like sync in your data or pull in some data. What about my team? Does everyone build their own? Yes, that&#x27;s a good one to end on. I say yes, but I think that you have to learn it first. You have to learn how it works first and you have to be able to teach them at first because then you can help them set it up.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-76">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:33:24 - 00:33:46</span>
+                <span class="segment-idx">Segment #76</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You can help them. Maybe you&#x27;ve built a few skills that are team-wide that you can give to your team. And then when it comes to shared knowledge, you should be thinking about where is our team&#x27;s knowledge? Does that live in ClickUp or Slack or Notion or maybe both or Google Drive? Where is the team knowledge that everyone should have read-only access to? because the worst case scenario really is that everyone&#x27;s duplicating knowledge, duplicating skills, duplicating work.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-77">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:33:47 - 00:34:05</span>
+                <span class="segment-idx">Segment #77</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And the biggest issue there is adoption, actually getting people to use the shared knowledge and actually getting certain stakeholders and process owners to update that shared knowledge. Adoption is the biggest issue, which is why you have to learn the tech first and be able to explain it and communicate it and make sure that your team adopts it. So that is going to do it for this one.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-78">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:34:05 - 00:34:20</span>
+                <span class="segment-idx">Segment #78</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I tried to put a ton of value in here and I tried to make this one practical for you guys. So I hope that it was insightful and I hope that it helps you guys out. If it did, please give it a like. It helps me out a ton. And as always, I really appreciate you guys making it to the end of the video and I will see you all in the next one. Thanks guys.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
