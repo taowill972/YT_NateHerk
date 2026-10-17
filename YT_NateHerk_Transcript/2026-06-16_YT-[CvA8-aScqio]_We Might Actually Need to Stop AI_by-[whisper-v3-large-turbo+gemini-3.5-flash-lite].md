@@ -25,10 +25,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:19]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> So a few days ago, Anthropic asked the whole world for a way to slow down AI. This week, OpenAI published their big plan for the future, and they asked for basically the exact same thing. So both of these companies also just took a real step towards going public. So the two companies racing the hardest are also the two who have turned around and said, hey, world, we need to slow down.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -39,10 +39,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:19 - 00:00:38]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> So what the heck is going on? That's what I want to get into today. Now, let me just start off real quick by being straight with you. I use both of these tools every single day, right? Claude, ChatGPT, whatever. I don't own any stock. I'm not on anybody's payroll. I don't have insider information. I don't even have a horse in the race to see like who wins. I'm just a guy who builds stuff and pays attention.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -53,10 +53,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:38 - 00:00:58]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> So I'm not here to defend any of these companies. I'm just here to figure out what does this actually mean for people like you and me. So anyways, on June 8th, opening, I put out this thing called built to benefit everyone, our plan. And it's Sam Altman and their chief scientist laying out their whole vision, essentially. And the mission line right at the top is to ensure that AGI benefits all of humanity.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -67,10 +67,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:00:58 - 00:01:21]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> And that same day, totally separately, they also announced that they'd filed to go public. But anyways, in this first article, they lay out three main goals. Number one is an AI automated researcher. So basically AI that can do a lot of the AI research itself. And they predict maybe by March of 2028, they will have that. Number two is accelerating the economy and sharing the gains and basically giving every single person on earth their own personal AGI.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -81,10 +81,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:22 - 00:01:40]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> And they do say a lot of stuff that I agree with here. They say they don't want to automate everything. They say that they don't think power should be concentrated with just a few companies. And then number three is they straight up call for some kind of international group that could let the world, and this is the quote, take coordinated action, including slowing frontier development when needed.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -95,10 +95,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:01:41 - 00:02:13]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> And it's interesting because a few days before this article from OpenAI, Anthropic put out their own report asking for the same exact thing, a verifiable way to slow or pause AI if it just gets too scary. So it's just really, really interesting to me because you've got the spectrum. right? And on one end, you've got the two leading AI labs and people that are in the weeds every day, the people that understand this tech better than anyone. And they're basically saying, this stuff is moving so fast and it's getting so powerful that we need the entire world to come together and help us slow it down. And then on the other end of the spectrum, you've got a ton
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -109,10 +109,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:13 - 00:02:48]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> of just regular people who think AI is just some funny tool that makes an image or, you know, a fancier version of Google search. And they basically barely touched it and they have no idea what it can actually do. And a lot of them think that it's a bad thing. There's a very negative, you know, association with AI. So that gap between the people building this stuff and the people who are going to have to live with this and go through this whole, you know, kind of like paradigm shift, not to throw out a buzzword is enormous. It's an enormous gap. And I don't understand how it got so wide because the brand of AI right now is honestly terrible. And I was going to make a separate YouTube video about this and I probably will, but I mean, you've got commencement speakers, right?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -123,10 +123,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:02:48 - 00:03:16]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> And they're getting booed at the second they bring up AI. And I think it's because a lot of people haven't really used it. So when they hear AI, they picture some society where robots are, you know, their masters and taking their jobs and, you know, all of this negative stuff rather than thinking, wait, I could actually just do way more, way faster. And my life actually gets a lot better because I'm using AI. And the way that I think about it is it's an amplifier on its own. It has no good or bad, you know, intentions. It basically just does whatever you point it at.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -137,10 +137,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:16 - 00:03:34]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> And it helps you do that faster. So you want to cure cancer. It'll help you do the research. It'll help you do all this stuff. If you want to hack into systems and you have malicious intent, it might help you do that too. Now, most of these models are getting essentially filtered. They're getting guardrails baked in to protect against that malicious intent. But you get my point. The intent is always the humans.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -151,10 +151,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:03:35 - 00:03:57]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> And just like these companies say, the judgment, which is, you know, knowing when and where and whether to even use this stuff, all of that stays us, the humans. The AI is more of the tool. And that's exactly why giving society more time to catch up is not a crazy thing to ask for. So why would the two companies with the most to gain from going as fast as possible both turn around and say, hey, let's slow this stuff down?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -165,10 +165,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:03:57 - 00:04:16]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> And OpenAI actually tells you why. The reason that they give for wanting this international group is, in their exact words, especially because the incentives around commercial and national competition are hard to escape. They're basically telling us right there that they cannot escape the incentive to race because the competition and the incentive is just too strong.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -179,10 +179,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:04:16 - 00:04:41]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> And Anthropics says basically the exact same thing, just in different words. Their whole pause idea hinges on everybody being able to verify everybody else is actually pausing too. So what's interesting there is neither of them are really saying we're going to stop. What they're both saying is we can't stop on our own. We can't give up our lead. So somebody needs to build some sort of group or like a referee that makes all of us stop together and actually verifies that everyone is stopping.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -193,10 +193,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:04:42 - 00:05:09]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> And that's a completely different thing. You know, the break they're asking for isn't a break that they're willing to pull. It's a break that they want somebody else to create and hold and not to throw out conspiracy theories, but it doesn't seem like a super easy thing. So I wonder, like, are they just throwing that out there for good press because they know it's not going to happen? But anyways, I don't necessarily think that it's them being evil, by the way. And, you know, to be fair, it's not like they've done nothing. They've each, you know, they published their own safety rules, you know, for years already.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -207,10 +207,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:05:09 - 00:05:31]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> They say they won't cross without certain protections in place. And so they're essentially inviting more regulation into their own industry, right? As they're both going out to raise money from public investors who just want growth, which is, it could be considered a costly thing to ask for. So anyways, the people building what they themselves call the most powerful tech ever just told you on the record that the system they're in won't let them slow down on their own.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -221,10 +221,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:05:31 - 00:05:54]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> So they're paying a price to ask for help. So the next thing I start wondering is, could that sort of treaty or referee, could something like that even exist? And I'm not like a foreign policy guy, right? But I just started thinking about actually what it would look like and what it would take to build what they're asking for. You'd basically need every single country that's serious about AI, probably every country in general, to agree.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -235,10 +235,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:05:54 - 00:06:14]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
+> Not just the US. You'd need China, Russia. You'd need everybody all signing some sort of treaty saying that they would play by the same rules. And, you know, let's just say somehow that actually happens. Everyone agrees. Now you need someone who can actually enforce that. You need, like, inspectors who can go look inside these companies, inside these countries, verify nobody's secretly training a bigger model in some basement somewhere.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -249,10 +249,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:06:14 - 00:06:44]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> You know, kind of like nuclear weapons inspectors, but for AI. Now you'd think the AI part would be the impossible thing to track. It's just code. It's a bunch of chips in a building running math. It's actually the opposite. I think that training one of these frontier models takes a huge visible footprint. Tens of thousands of specialized chips, a single building pulling as much power as a small city. And that whole footprint is probably kind of hard to hide. There's construction, there's power it's going to pull, there's massive chip orders.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -263,10 +263,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:06:44 - 00:07:18]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> it all does leave a trail. And those chips basically come from one supply chain on the entire planet. So the chips are kind of like the uranium here. Anthropic has said something about the bottleneck basically just being compute. So anyways, the point I'm trying to make there is I don't know how you would verify it and how that would work, but that's one issue, right? And that's probably solvable, even if it's not super, super, you know, trivial. But I think the real wall is the incentive, just like OpenAI mentioned, because nobody who's in the lead is incentivized to slow down and let everyone else catch up. The whole game is to win, really. I mean, so even if every
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -277,10 +277,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:07:18 - 00:07:39]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> country signs the treaty, the second that one of them thinks that they can quietly sprint ahead and grab the biggest prize in history, the whole treaty falls apart. It's the same way I think about a contract, right? No matter how bulletproof a contract is, if it covers every single scenario, it's only as good as the person on the other side of it. So anyways, that's the trap that OpenAI is pointing out when they say that those incentives are really hard to escape.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -291,10 +291,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:07:39 - 00:08:00]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> A slowdown only holds if breaking it costs you more than winning ever could. So the real question isn't whether we could build that treaty and we could build that verification system. It's how do you actually flip that incentive? How do you get to a world where the winning move is to respect a slowdown? And you actually think about society and how can everyone be doing this AI thing together rather than competing?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -305,10 +305,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:08:00 - 00:08:35]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> Because until somebody cracks that, I think that asking for a global pause button is either a genuine cry for help or just the safest thing you can say when you already know you can't actually stop. Maybe a little bit of both. And I don't obviously know which, but that's just what I'm thinking about right now. And whichever one of these labs you root for between OpenAI and Anthropic, you're not really the mission. I mean, I think people kind of feel like OpenAI is for the consumer and, you know, ChatGPT is the AI that your parents know, or like the general person knows. And Anthropic is more of like the enterprise one, you know, Claude is built for businesses and engineers. And that split was real, but it's starting to blur, I think, now that they're both
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -319,10 +319,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:08:35 - 00:09:10]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> going public and they're chasing the same dollars. And either way, you're the same thing to them. You're a user to sell to your, you know, a seat on some company's bill. So anyways, the point I'm trying to make when I'm saying all this is don't really, I wouldn't bet on a company. I've just bet on yourself, like the skills, the skills that you need to learn on how to use AI, how to become AI native, how to do it safely, how to think about it, how to communicate about it. Those sorts of things is what you should be betting on, you know, and I don't have kids yet. A lot of you guys probably do. And if you've got a kid right now, you're probably thinking about all of this and you're wondering what a career is going to look like when they're 22 and entering the workforce.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -333,10 +333,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:09:10 - 00:09:43]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> And I wonder the same thing, just kind of one step removed because I know the world in 20 years isn't going to be some slightly upgraded version of the one that we've got right now. It's going to be fundamentally different. How business works, how the economy works, where the money sits, where the power sits, all of that is just going to look a lot different. And right now it can feel like the whole future is getting decided by, I don't know, let's just say eight people that have the whole world in the palm of their hands because of this huge tech wave. And plus, you've got a couple of chip companies and stuff like that, but they're moving so fast that the rest of the world
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -347,10 +347,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:09:43 - 00:10:16]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> can't even react in real time. So how does the upside of all of this not just pull up around them? They basically said that they don't want it to be a huge divide like that. They want a personal AGI for every single person on earth. And on paper, that's the great equalizer. Everybody gets the same superpower. But if you're renting that intelligence from one of, you know, three companies that can change the price, change the rules or cut you off whenever they feel like it, do you actually get handed that power? Anyways, I'm not going to pretend that I have the whole answer. You know, anyone who tells you they know exactly how this stuff is going to pan out is probably trying to
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -361,10 +361,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:10:16 - 00:10:37]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. Okay. So we have like little sound bites. I can chat with people. The tool war panel settled a few debates for me. Nice. Good perspective there. We're outside again. We have these different banners, although they're all the same. They don't say like different people's names. So big AIS live logo. Workshop wing is over here. And let's go through the sliding glass doors and see what we've got. So we've got the AIS cafe. The map is in the bottom right, and it's not too descriptive.
+> sell you something. But I don't know. You don't really have a vote on the treaty right now. You don't have a vote on whether they slow down. The only thing that you fully control is how good you get at this stuff and what you know about it. And their own plan basically tells you where to aim. They say the human role that says valuable is judgment, taste, deciding what's actually worth doing. Because the moment everybody's got a personal AGI, the tool stops being the edge.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -375,10 +375,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:10:37 - 00:10:58]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> So I think like if you are really obsessed with AI stuff, which I bet if you're watching this video, you are, and you have a lot of friends, a lot of family, a lot of people that you care about that aren't, really start pushing them to learn it. I just think it's really, really important. And you can just pick one thing you do over and over, your email, planning out your week, putting together a report, and actually just run it through one of these tools instead of doing it the old way.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -389,10 +389,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:10:59 - 00:11:17]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> That's the whole move is you just start trying what you already do every day with these new tools rather than trying to invent new workflows for yourself and invent new passions. Just do what you already do with this technology. Also, I'm sure you guys have heard the news, but Claude Mythos and Claude Fable did get taken down.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -403,10 +403,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:11:17 - 00:11:51]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
+> At the moment of filming this, they say it's gonna come back. we will see but the u.s government basically told anthropic that they needed to suspend access so what's interesting about this is that the u.s government is getting involved not in the exact same way that anthropic and opening i have asked for as i talked about in this video but it is something to mention and i will be making more videos dedicated towards what happened here and what this means for the future but i just wanted to at least let you know if you hadn't heard about this, this did happen. This was on June 12th. You can obviously come here and read this tweet.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -417,10 +417,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:11:51 - 00:12:25]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> And then a topic put out a whole statement here, which you can read and dig into why that happened. Like I said, the video will be coming on it, but I wanted to throw that out there. So there you go. Anyways, if any of that got your brain going and you want to get good at using these tools yourself, I've got a free community. It's linked down in the description. We've got about 400,000 people in there who are building with AI, beginners, business owners, you know, engineers, whatever it is, a bunch of free resources in there and a bunch of people who are talking about this kind of stuff and it's completely free. But anyways, that is going to do it for this one. So if you guys enjoyed the video, you learned something new, please give a like, it helps me out a ton. And as always, I appreciate you guys making it to end the video
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
@@ -431,388 +431,10 @@ Dans cette vidéo intitulée **We Might Actually Need to Stop AI**, Nate Herk d�
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:12:25 - 00:12:27]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
+> and I'll see you on the next one. Thanks guys.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
