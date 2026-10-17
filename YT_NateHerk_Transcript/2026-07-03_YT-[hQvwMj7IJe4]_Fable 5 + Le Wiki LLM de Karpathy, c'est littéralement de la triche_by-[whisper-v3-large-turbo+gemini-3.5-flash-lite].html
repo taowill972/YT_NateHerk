@@ -1,0 +1,2397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Fable 5 + Le Wiki LLM de Karpathy, c&#x27;est littéralement de la triche — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Fable 5 + Le Wiki LLM de Karpathy, c&#x27;est littéralement de la triche</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-07-03</span>
+                <span class="badge">⏱️ 00:14:35</span>
+                <span class="badge">🆔 <code>hQvwMj7IJe4</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=hQvwMj7IJe4" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Dans cette vidéo, Nate Herk présente une méthode d'ingénierie des connaissances combinant la puissance de raisonnement des nouveaux modèles de pointe (notamment Fable/Claude de dernière génération) et l'architecture de **Wiki LLM** conceptualisée par Andrej Karpathy. En s'appuyant sur l'outil en ligne de commande Claude Code au sein de VS Code, il montre comment automatiser l'ingestion brute de transcriptions de vidéos YouTube et d'enregistrements de réunions d'affaires pour les transformer en un véritable second cerveau interconnecté, structuré sous forme de graphe bidirectionnel dans Obsidian.<br><br>L'intérêt majeur de cette approche réside dans l'exploitation contextuelle de cette base de connaissances unifiée via l'écosystème d'agents IA (son AIOS personnel, Herc 2). Nate démontre comment un modèle doté d'une forte sensibilité contextuelle est capable, en un seul prompt intuitif ou émotionnel, de synthétiser des téraoctets de données interconnectées pour générer des interfaces web interactives en HTML ou dresser une rétrospective analytique complète des performances de l'entreprise (funnel de conversion, revenus, métriques de churn et pivots stratégiques).<br><br>Le tutoriel se conclut par une démonstration technique pas-à-pas de l'initialisation du système en moins de cinq minutes. En créant un coffre (*vault*) Obsidian local, en ouvrant Claude Code dans le terminal et en lui injectant directement le *gist* d'Andrej Karpathy accompagné d'instructions précises pour initialiser le fichier de règles `CLAUDE.md`, l'utilisateur délègue entièrement la structuration de l'index, la nomenclature des dossiers, la tenue du journal et les schémas d'ingestion à un agent autonome.<br><br>---<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Claude Code** : Outil agentique en ligne de commande (CLI) développé par Anthropic, exécuté directement dans le terminal pour automatiser la lecture, la navigation et l'écriture autonome de code et de fichiers Markdown.<br>* **Fable (Anthropic)** : Modèle de raisonnement avancé mis en avant pour sa capacité supérieure à comprendre des consignes orientées expérience utilisateur, son empathie dans la mise en page et sa restitution sans surcharge cognitive face aux modèles antérieurs.<br>* **Opus (Anthropic / Claude Opus)** : Modèle de fondation utilisé en comparaison, puissant pour l'analyse brute mais nécessitant historiquement plus d'allers-retours pour concevoir des visualisations simples et conviviales.<br>* **Obsidian (obsidian.md)** : Application de gestion de connaissances locale basée sur des fichiers Markdown, servant de front-end visuel pour explorer les liens bidirectionnels et le graphe de connaissances.<br>* **Wiki LLM de Karpathy** : Méthodologie et spécification documentaire conçues par Andrej Karpathy visant à utiliser des LLM pour indexer, synthétiser et relier de manière autonome des sources disparates dans une base documentaire personnelle.<br>* **AIOS (Herc 2)** : Système d'exploitation d'intelligence artificielle personnalisé de l'auteur, regroupant plusieurs wikis cloisonnés par thématiques (réunions, stratégie, transcriptions média) pour alimenter des workflows agentiques.<br>* **Visual Studio Code (VS Code)** : Environnement de développement intégré utilisé comme espace de travail central pour gérer le coffre documentaire et faire tourner le CLI de Claude.<br><br>---<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Le concept de « Contexte Roi »** : La valeur d'un système agentique ne réside pas dans sa capacité brute de calcul, mais dans la pertinence, la richesse et le maillage du contexte opérationnel injecté dans son espace de travail.<br>* **Architecture de Wiki LLM selon Karpathy** : Délaisser le stockage passif au profit d'une structure vivante où le LLM agit comme bibliothécaire autonome, chargé de résumer les sources, d'en extraire les entités et de créer des hyperliens réciproques.<br>* **Compréhension sémantique vs structure rigide** : Les modèles de pointe comme Fable capturent des nuances de requêtes axées sur l'expérience humaine (« compréhensible par un débutant sans le submerger »), là où les versions antérieures généraient des dashboards visuellement surchargés.<br>* **Interfaçage dynamique en HTML** : Un LLM alimenté par un wiki structuré peut projeter instantanément des données complexes sous forme de pages HTML/CSS interactives, remplaçant avantageusement la navigation textuelle linéaire.<br>* **Cloisonnement modulaire des bases (Vaults)** : Pour éviter les hallucinations et la dilution de contexte, l'organisation optimale repose sur la création de wikis distincts par fonction (ex. transcriptions YouTube publiques vs réunions internes confidentielles), orchestrés au niveau supérieur par un AIOS.<br>* **Bootstrap d'un agent via `CLAUDE.md`** : L'injection des règles de gouvernance, des schémas d'ingestion et des nomenclatures dans le fichier `CLAUDE.md` dès la racine du projet garantit que chaque action future de Claude Code respectera scrupuleusement la taxonomie définie.<br>* **Génération de rétrospectives automatisées** : En accédant aux métriques et aux notes de l'entreprise réparties sur plusieurs mois, l'agent peut retracer l'histoire business, identifier les corrélations causales (ex. impact d'un pivot technique sur l'ARR et l'audience) et cartographier le tunnel de conversion.<br>* **Zéro friction d'ingestion manuelle** : L'automatisation supprime le besoin de relier manuellement les concepts ; Claude Code scanne les sources brutes, détecte les dépendances conceptuelles (ex. GitHub vers Vercel, puis vers Claude Code) et enrichit le graphe de connaissances de façon incrémentale.<br>* **Stockage local et souveraineté des données** : L'utilisation de fichiers Markdown sous-jacents via Obsidian garantit la portabilité, la pérennité et la propriété intégrale des connaissances, éliminant la dépendance aux formats de bases de données propriétaires.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude Code</span><span class="tool-tag">Fable (Anthropic)</span><span class="tool-tag">Opus (Anthropic / Claude Opus)</span><span class="tool-tag">Obsidian (obsidian.md)</span><span class="tool-tag">Wiki LLM de Karpathy</span><span class="tool-tag">AIOS (Herc 2)</span><span class="tool-tag">Visual Studio Code (VS Code)</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Le concept de « Contexte Roi »** : La valeur d&#x27;un système agentique ne réside pas dans sa capacité brute de calcul, mais dans la pertinence, la richesse et le maillage du contexte opérationnel injecté dans son espace de travail.</span></li><li><span class="point-bullet">✦</span><span>Architecture de Wiki LLM selon Karpathy** : Délaisser le stockage passif au profit d&#x27;une structure vivante où le LLM agit comme bibliothécaire autonome, chargé de résumer les sources, d&#x27;en extraire les entités et de créer des hyperliens réciproques.</span></li><li><span class="point-bullet">✦</span><span>Compréhension sémantique vs structure rigide** : Les modèles de pointe comme Fable capturent des nuances de requêtes axées sur l&#x27;expérience humaine (« compréhensible par un débutant sans le submerger »), là où les versions antérieures généraient des dashboards visuellement surchargés.</span></li><li><span class="point-bullet">✦</span><span>Interfaçage dynamique en HTML** : Un LLM alimenté par un wiki structuré peut projeter instantanément des données complexes sous forme de pages HTML/CSS interactives, remplaçant avantageusement la navigation textuelle linéaire.</span></li><li><span class="point-bullet">✦</span><span>Cloisonnement modulaire des bases (Vaults)** : Pour éviter les hallucinations et la dilution de contexte, l&#x27;organisation optimale repose sur la création de wikis distincts par fonction (ex. transcriptions YouTube publiques vs réunions internes confidentielles), orchestrés au niveau supérieur par un AIOS.</span></li><li><span class="point-bullet">✦</span><span>Bootstrap d&#x27;un agent via `CLAUDE.md`** : L&#x27;injection des règles de gouvernance, des schémas d&#x27;ingestion et des nomenclatures dans le fichier `CLAUDE.md` dès la racine du projet garantit que chaque action future de Claude Code respectera scrupuleusement la taxonomie définie.</span></li><li><span class="point-bullet">✦</span><span>Génération de rétrospectives automatisées** : En accédant aux métriques et aux notes de l&#x27;entreprise réparties sur plusieurs mois, l&#x27;agent peut retracer l&#x27;histoire business, identifier les corrélations causales (ex. impact d&#x27;un pivot technique sur l&#x27;ARR et l&#x27;audience) et cartographier le tunnel de conversion.</span></li><li><span class="point-bullet">✦</span><span>Zéro friction d&#x27;ingestion manuelle** : L&#x27;automatisation supprime le besoin de relier manuellement les concepts ; Claude Code scanne les sources brutes, détecte les dépendances conceptuelles (ex. GitHub vers Vercel, puis vers Claude Code) et enrichit le graphe de connaissances de façon incrémentale.</span></li><li><span class="point-bullet">✦</span><span>Stockage local et souveraineté des données** : L&#x27;utilisation de fichiers Markdown sous-jacents via Obsidian garantit la portabilité, la pérennité et la propriété intégrale des connaissances, éliminant la dépendance aux formats de bases de données propriétaires.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:29</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce que vous regardez juste ici, ce sont plusieurs de mes vidéos YouTube en train d&#x27;être ingérées dans un wiki LLM. Ce wiki LLM, comme vous pouvez le voir si je zoome, ce sont différentes vidéos YouTube et ce qui les relie, ce sont différentes relations. Nous commençons donc à voir ce genre de véritable second cerveau de toutes mes vidéos YouTube et comment elles se rapportent les unes aux autres. Et toute cette connaissance rend mon AIOS tellement plus intelligent. Et le truc le plus cool là-dedans, c&#x27;est que je n&#x27;ai pas eu du tout à connecter ces concepts. J&#x27;ai juste pu dire, hé, Claude Code, va chercher mes vidéos YouTube et ensuite ingère-les dans ce wiki.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de type Obsidian ou wiki LLM avec une vue graphique de type graphe de connaissances.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds et liens interconnectés affichant des titres de vidéos et des concepts liés à l&#x27;automatisation IA et YouTube.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et visualisation de la structure en graphe du wiki LLM contenant les données ingérées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000007_seg1.jpg" alt="Vue graphique (Graph view) d&#x27;un wiki LLM montrant un réseau de nœuds interconnectés représentant des vidéos YouTube et leurs relations, avec le présentateur incrusté en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000007_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:07</span>
+                        <span class="caption-text">Vue graphique (Graph view) d&#x27;un wiki LLM montrant un réseau de nœuds interconnectés représentant des vidéos YouTube et leurs relations, avec le présentateur incrusté en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:29 - 00:00:48</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et cette chose ne cesse de grandir et de grandir. Si je zoome un petit peu, ouvrons l&#x27;une de ces vidéos. Donc ici, j&#x27;ai des sites web Nano Banana 2. Quand j&#x27;ouvre ceci, nous pouvons voir quelques informations en haut, mais ensuite, en faisant défiler vers le bas, nous pouvons voir, vous savez, un résumé, les points clés, et d&#x27;autres outils et choses qui sont mentionnés, et d&#x27;autres techniques qui ont été discutées. Et je peux suivre tous ces liens. Disons que je m&#x27;intéresse à GitHub.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de type Obsidian ou outil de visualisation de graphes de notes.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de données interconnectés, avec notamment le dossier &quot;wiki&quot; et le nœud &quot;nano-banana-2-websites&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Exploration visuelle du graphe de connaissances montrant la structure grandissante des données.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000034_seg2.jpg" alt="Vue d&#x27;un graphe de connaissances interconnecté (Graph view) montrant de nombreux nœuds et liens, avec le présentateur incrusté en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000034_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:34</span>
+                        <span class="caption-text">Vue d&#x27;un graphe de connaissances interconnecté (Graph view) montrant de nombreux nœuds et liens, avec le présentateur incrusté en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:48 - 00:01:07</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je peux cliquer sur GitHub. Je peux voir de quoi il s&#x27;agit. Et ensuite je peux voir d&#x27;autres moments où nous avons fait référence à GitHub. Voici quelques informations qui relient GitHub à Vercel. Pourquoi est-ce que je ne cliquerais pas là-dessus pour en savoir un peu plus sur Vercel. Et ensuite Vercel peut me ramener à Cloud Code, où je peux à nouveau suivre tous ces liens retour jusqu&#x27;à ce que j&#x27;arrive là où je dois aller. Et donc, alors que toute cette carte mentale de ces vidéos YouTube commence à grandir, nous sommes capables de voir tout cela prendre vie.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web / application de notes (Obsidian ou outil similaire) affichant une page wiki sur GitHub avec le curseur sur le lien &#x27;vercel&#x27;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte sur GitHub, liens vers &#x27;claude-code&#x27; et &#x27;vercel&#x27;, et description des fonctionnalités clés comme &#x27;One repo per app&#x27; et les pipelines de déploiement.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole le lien vers &#x27;vercel&#x27; pour en savoir plus sur la relation entre GitHub et Vercel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000053_seg3.jpg" alt="Capture d&#x27;écran montrant une page wiki sur GitHub avec des sections &#x27;Key Features&#x27; et &#x27;Use Cases&#x27;, et une incrustation vidéo du présentateur en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000053_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:53</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une page wiki sur GitHub avec des sections &#x27;Key Features&#x27; et &#x27;Use Cases&#x27;, et une incrustation vidéo du présentateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:07 - 00:01:40</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et aujourd&#x27;hui, je vais vous montrer exactement comment vous pouvez mettre en place quelque chose tout à fait comme ça en environ cinq minutes. C&#x27;est tellement plus simple que vous ne le pensez. Maintenant, ce qui est impressionnant là-dedans, ce n&#x27;est pas le fait que Fable a été capable d&#x27;ingérer tout cela, c&#x27;est ce que Fable peut faire une fois que vous lui avez donné la puissance de toutes ces données. Parce que nous savons tous que les données sont rois, le contexte est roi. Voici un exemple sympa. J&#x27;ai demandé à Fable dans une seule instruction, j&#x27;ai dit, hé, je veux que tu transformes fondamentalement ce fouillis de connexions de transcriptions YouTube en quelque chose que les gens peuvent réellement regarder et comprendre. Je veux que ce soit une ressource simple qui ne soit pas écrasante, mais qui montre à mon audience comment ces outils, ces techniques et ces idées se connectent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web Obsidian / application de cartographie de connaissances</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds et liaisons textuelles représentant des concepts d&#x27;IA, outils (Claude Code, Cursor) et techniques (Agentic Workflows).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et visualisation de la structure interconnectée de la base de connaissances.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000116_seg4.jpg" alt="Vue graphique en réseau montrant les connexions entre différents concepts et notes dans une interface de type Obsidian." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000116_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:16</span>
+                        <span class="caption-text">Vue graphique en réseau montrant les connexions entre différents concepts et notes dans une interface de type Obsidian.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000124_seg4.jpg" alt="Interface web intitulée &quot;The AI Stack, Connected&quot; listant des catégories (Ideas, Tools &amp; Harnesses, Techniques) avec des tags interactifs." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000124_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:24</span>
+                        <span class="caption-text">Interface web intitulée &quot;The AI Stack, Connected&quot; listant des catégories (Ideas, Tools &amp; Harnesses, Techniques) avec des tags interactifs.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000132_seg4.jpg" alt="Vue globale dézoomée du graphe de connexions affichant la structure en toile d&#x27;araignée des données ingérées." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000132_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:32</span>
+                        <span class="caption-text">Vue globale dézoomée du graphe de connexions affichant la structure en toile d&#x27;araignée des données ingérées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:40 - 00:02:16</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les uns aux autres. Et maintenant, nous avons ce super HTML, sur lequel je peux cliquer, et je peux voir différentes idées en haut, des flux de travail agentiques et ce à quoi cela se connecte. Cela se connecte à des routines. Les routines se connectent à l&#x27;automatisation déterministe par rapport à l&#x27;automatisation agentique, ce qui se reconnecte à NNN et Cloud Code et à tout ce genre de choses. Et c&#x27;est tout simplement incroyable. À mon sens, quelque chose comme ça est une interface beaucoup plus conviviale que quelque chose comme ça. Et ce que je trouve génial là-dedans, c&#x27;est que j&#x27;ai pu le prompter d&#x27;une manière émotionnelle. J&#x27;ai dit des choses comme, d&#x27;une manière qu&#x27;un débutant pourrait comprendre et pourrait parcourir en cliquant et sans que cela ne le submerge. Et quelque chose comme Opus 4.8 ne comprend tout simplement pas ce que cela signifie aussi bien que Fable. Pour vous montrer ce que je veux dire par là,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web interactive personnalisée (HTML/JavaScript)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Carte conceptuelle interactive avec des sections &#x27;IDEAS&#x27;, &#x27;TOOLS &amp; HARNESSES&#x27;, et &#x27;TECHNIQUES&#x27;, affichant des éléments connectés comme &#x27;Agentic Workflows&#x27;, &#x27;Routines&#x27;, et &#x27;Claude Code&#x27;. Un panneau latéral à droite détaille la technique &#x27;Routines&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur clique sur le nœud &#x27;Routines&#x27; dans la section &#x27;TECHNIQUES&#x27;, mettant en surbrillance les connexions vers d&#x27;autres éléments et affichant sa description détaillée dans le panneau de droite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000149_seg5.jpg" alt="Une interface web interactive en mode sombre montrant une carte mentale complexe intitulée &#x27;The AI Stack, Connected&#x27;, avec des bulles de concepts interconnectées par des lignes, et le présentateur visible en incrustation à droite." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000149_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:49</span>
+                        <span class="caption-text">Une interface web interactive en mode sombre montrant une carte mentale complexe intitulée &#x27;The AI Stack, Connected&#x27;, avec des bulles de concepts interconnectées par des lignes, et le présentateur visible en incrustation à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:16 - 00:02:50</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est quelque chose sur quoi j&#x27;ai travaillé avec Opus pendant presque une journée entière. On a fait des allers-retours, on a construit ce truc et je ne l&#x27;aimais tout simplement pas assez pour le partager avec les gens parce que ça paraissait écrasant. Ça paraissait confus. Et la base de données en arrière-plan qui fait fonctionner ceci est exactement la même. Donc de toute façon, ce qu&#x27;on recherche ici, c&#x27;est la même chose. Vous pouvez effectuer des recherches parmi les outils, les techniques, les vidéos. Il y a en quelque sorte un cadre de couches dont nous avons discuté avec l&#x27;orchestrateur, les modèles, les entrées, tout ce genre de choses. Et il y a toutes les mêmes données et je peux toujours cliquer sur ces éléments et je peux suivre les liens retour et vous savez, c&#x27;est un peu la même idée. Mais encore une fois, cette version est tellement plus simple pour moi et je l&#x27;aime davantage. Vous pouvez voir,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme web personnalisée &quot;AI Matrix&quot; (application web de curation de workflows d&#x27;automatisation).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes descriptifs de stacks d&#x27;automatisation, sélection de personas utilisateurs (&quot;I&#x27;m new and overwhelmed&quot;, &quot;I know my way around&quot;, &quot;I want my team using AI&quot;) et intégration de lecteur vidéo YouTube.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans une bibliothèque de ressources IA, démonstration de la structure d&#x27;organisation des outils d&#x27;automatisation et présentation d&#x27;une vidéo explicative sur le &quot;Agent View&quot; de Claude Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000224_seg6.jpg" alt="Interface web &quot;AI Matrix&quot; présentant des options de filtrage par objectifs d&#x27;automatisation, profils utilisateurs (débutant, intermédiaire, équipe) et exemples de &quot;Worked Stacks&quot;." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000224_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:24</span>
+                        <span class="caption-text">Interface web &quot;AI Matrix&quot; présentant des options de filtrage par objectifs d&#x27;automatisation, profils utilisateurs (débutant, intermédiaire, équipe) et exemples de &quot;Worked Stacks&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000241_seg6.jpg" alt="Interface web affichant une page de tutoriel vidéo intitulée &quot;Multi-Agent Building In Claude Code Somehow Got Easier&quot;, avec une miniature YouTube montrant un tableau de bord d&#x27;agents IA (Agent View)." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000241_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:41</span>
+                        <span class="caption-text">Interface web affichant une page de tutoriel vidéo intitulée &quot;Multi-Agent Building In Claude Code Somehow Got Easier&quot;, avec une miniature YouTube montrant un tableau de bord d&#x27;agents IA (Agent View).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:50 - 00:03:25</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En cliquant sur un concept, nous pouvons voir sur le côté droit les vidéos d&#x27;où ces données ont été tirées. Nous pouvons en lire un peu plus à ce sujet et voir à quoi d&#x27;autre il est relié. C&#x27;est donc juste un tout petit exemple. Si vous me suivez depuis un certain moment, vous savez que dans mon AIOS, j&#x27;ai plusieurs wikis LLM différents. Celui-ci est celui de mes transcriptions YouTube. J&#x27;ai aussi le mien, le cerveau de Herc, qui est pratiquement l&#x27;endroit où je mets tous mes enregistrements de réunions. Donc toutes mes réunions, qu&#x27;elles soient internes ou externes, je les stocke ici. Et c&#x27;est ainsi que je peux voir comment les différents concepts dont je parle avec les gens ont évolué et comment ils vont continuer à évoluer. Et lorsque je rédige des publications pour la communauté, des publications sur LinkedIn, ou que j&#x27;écris des e-mails, tout cela est pris en compte parce que cet outil sait tout sur moi et sur mon entreprise.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (logiciel de prise de notes avec vue graphique).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de dossiers et fichiers dans la barre latérale (&quot;raw&quot;, &quot;wiki&quot;, &quot;CLAUDE&quot;, &quot;frontend-design-skill&quot;, &quot;idea-mining-skill&quot;, &quot;parallel-agent-monitoring&quot;, &quot;skill-evaluation&quot;, &quot;skill-iteration&quot;) et une visualisation interactive de réseau de connaissances.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et visualisation de la structure de données connectée dans le &quot;Graph view&quot; d&#x27;Obsidian.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000259_seg7.jpg" alt="Interface Obsidian affichant la &quot;Graph view&quot; montrant une constellation de nœuds reliés entre eux, avec une barre latérale listant des dossiers de notes (wiki, CLAUDE, skill-evaluation, etc.)." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000259_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:59</span>
+                        <span class="caption-text">Interface Obsidian affichant la &quot;Graph view&quot; montrant une constellation de nœuds reliés entre eux, avec une barre latérale listant des dossiers de notes (wiki, CLAUDE, skill-evaluation, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:26 - 00:03:58</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">À tel point que juste avant cette vidéo, j&#x27;ai dit : Hé, M. Fable, je veux que tu ailles de l&#x27;avant et que tu me racontes simplement une histoire sur les six derniers mois. Donc, tu sais, nous sommes à mi-chemin de 2026, construis-moi un parcours visuel de ce que nous avons fait jusqu&#x27;à présent en 2026. Et c&#x27;est ce qu&#x27;il m&#x27;a donné en un seul essai. Il a été capable de sortir cette photo de moi. Il a sorti notre logo. Et tu peux voir que cette chose a même l&#x27;air, et tu peux voir que l&#x27;image de marque de ceci donne l&#x27;impression d&#x27;appartenir à AI. C&#x27;est un peu en mode sombre, des couleurs de graphiques bleus. Et c&#x27;est ce qu&#x27;il m&#x27;a donné. Il a sorti des statistiques réelles, comme le nombre d&#x27;abonnés que j&#x27;ai gagnés. Il a notre mois au chiffre d&#x27;affaires le plus élevé, que je vais flouter, mais il a été capable de regarder</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web personnalisée (tableau de bord de storytelling de données).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif sur la croissance de la chaîne (+301K abonnés), métriques de performance et graphique temporel interactif.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation narrative des étapes franchies par l&#x27;entreprise au cours des six premiers mois de 2026.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000334_seg8.jpg" alt="Une page web interactive au design épuré montrant une frise chronologique intitulée &quot;The 2026 Journey&quot;, résumant la croissance de la chaîne de Nate Herk avec des étapes clés comme &quot;The Bet&quot;, &quot;The Wave&quot;, &quot;The Reckoning&quot; et &quot;The Machine&quot;." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000334_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:34</span>
+                        <span class="caption-text">Une page web interactive au design épuré montrant une frise chronologique intitulée &quot;The 2026 Journey&quot;, résumant la croissance de la chaîne de Nate Herk avec des étapes clés comme &quot;The Bet&quot;, &quot;The Wave&quot;, &quot;The Reckoning&quot; et &quot;The Machine&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:58 - 00:04:17</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">toutes ces données et de me les extraire. C&#x27;était un grand virage que j&#x27;ai pris cette année. Je suis passé de la création de contenus presque exclusivement axés sur la fin à la création de beaucoup de contenus sur le code dans le cloud. Et vous pouvez voir comment cela a pu porter ses fruits. Si nous regardons mes vues moyennes et notre revenus et comment l&#x27;entreprise a grandi depuis que j&#x27;ai fait ce virage. Ensuite, nous regardons d&#x27;autres choses comme la façon dont notre taux de résiliation a changé, comment notre conversion a changé, d&#x27;autres choses concernant nos revenus.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec diapositives graphiques et incrustation webcam.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur le changement de stratégie de contenu vers Claude Code et statistiques de performance (65K, 144K, 88K, 537K abonnés).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les résultats de son changement de stratégie éditoriale illustrés par les graphiques et métriques à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000403_seg9.jpg" alt="Une diapositive de présentation sombre intitulée &quot;Chapter One: January to February - The Bet&quot;, comparant les statistiques de vues entre n8n (65K) et Claude Code (144K), avec la vidéo du présentateur en incrustation dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000403_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:03</span>
+                        <span class="caption-text">Une diapositive de présentation sombre intitulée &quot;Chapter One: January to February - The Bet&quot;, comparant les statistiques de vues entre n8n (65K) et Claude Code (144K), avec la vidéo du présentateur en incrustation dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:17 - 00:04:41</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais regardez ça, c&#x27;est plutôt drôle. Il a extrait une photo différente de moi. Si vous vous souvenez, celle du début était souriante. Celle-ci est une photo de moi en train de réfléchir. Et donc, il est capable de parcourir tant de données et de ressources dont il dispose au sein de mon projet Herc2. Il montre tout le tunnel de vente de l&#x27;entreprise, ce qui prouve qu&#x27;il comprend comment les gens entrent dans notre écosystème et toutes les décisions qu&#x27;ils peuvent prendre à l&#x27;intérieur de notre tunnel et là où nous essayons de les pousser.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de présentation web / diaporamas (slides).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte et graphiques analytiques sur la croissance d&#x27;une chaîne et de l&#x27;entreprise.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les diapositives de sa rétrospective.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:41 - 00:04:59</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Quoi qu&#x27;il en soit, ce que j&#x27;essaie d&#x27;expliquer ici, c&#x27;est que plus vous donnez de données à vos projets, mieux c&#x27;est. Mais plus précisément, en vous assurant de les acheminer de la bonne façon. Et c&#x27;est exactement ce dans quoi le Wiki LLM est très bon. Voici mon projet Herc 2. Vous savez que c&#x27;est mon AIOS. Et nous avons tellement d&#x27;informations là-dedans. Nous avons différents wikis, différents projets, tout ce sur quoi j&#x27;ai travaillé. Et c&#x27;est ce que vous essayez de construire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code, terminal Claude Code v2.1.199</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explorateur de fichiers à gauche avec les dossiers du projet (herk-2, audits, Brainstorms, etc.) et interface de terminal affichant les informations sur le modèle (Opus 4.8 avec 1M de contexte) et une alerte d&#x27;authentification MCP.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit son projet &quot;Herc 2&quot; dans l&#x27;environnement de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000446_seg11.jpg" alt="Capture d&#x27;écran montrant l&#x27;éditeur VS Code avec le terminal Claude Code ouvert sur le projet Herc-2, et le présentateur visible en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000446_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:46</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;éditeur VS Code avec le terminal Claude Code ouvert sur le projet Herc-2, et le présentateur visible en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:59 - 00:05:20</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">D&#x27;ailleurs, si vous voulez suivre un cours gratuit et complet où je vous montre comment faire cela, dans ma communauté FreeSchool, le lien est dans la description, j&#x27;y propose un cours complet pour créer votre propre AIOS, totalement gratuit. Donc les liens sont dans la description pour ça. D&#x27;accord, alors voici où tout cela a commencé. Andre Kaparthi a dit : « Bases de connaissances LLM. Quelque chose que je trouve très utile ces derniers temps, c&#x27;est d&#x27;utiliser les LLM pour construire des bases de connaissances personnelles pour divers sujets d&#x27;intérêt de recherche. »</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de plateforme de communauté en ligne (type Skool) et réseau social X (Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titres de cours de la communauté AIS (&quot;Build Your AI OS&quot;, &quot;7 Day AIS Challenge&quot;) et publication textuelle d&#x27;Andrej Karpathy sur les bases de connaissances LLM.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation visuelle de la plateforme communautaire et des ressources de cours offertes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000504_seg12.jpg" alt="Capture d&#x27;écran de l&#x27;interface web de la communauté &quot;AI Automation Society&quot; (AIS) montrant les différents modules de cours disponibles, notamment &quot;Start Here&quot;, &quot;7 Day AIS Challenge&quot; et &quot;Build Your AI OS&quot;." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000504_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:04</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface web de la communauté &quot;AI Automation Society&quot; (AIS) montrant les différents modules de cours disponibles, notamment &quot;Start Here&quot;, &quot;7 Day AIS Challenge&quot; et &quot;Build Your AI OS&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:20 - 00:05:38</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il a indexé les sources, ce que je vais vous montrer comment faire. Et ensuite, il utilise quelque chose comme Obsidian comme front-end, ce que vous venez tout juste de voir. Donc la première chose que vous voulez faire, c&#x27;est d&#x27;aller sur obsidian.md, puis d&#x27;installer cela pour le système d&#x27;exploitation sur lequel vous êtes. Donc dans mon cas, je l&#x27;ai installé pour Windows, lancez l&#x27;assistant, configurez-le et ouvrez l&#x27;application. Quand vous ouvrirez l&#x27;application, elle ressemblera à ceci, sauf que vous n&#x27;aurez pas tout ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site officiel d&#x27;Obsidian (obsidian.md).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de téléchargement de l&#x27;application Obsidian avec le logo violet et le bouton « Download for Windows ».</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du site web d&#x27;Obsidian et explication de la nécessité d&#x27;installer l&#x27;application pour l&#x27;utiliser comme interface front-end.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000529_seg13.jpg" alt="Page web officielle de téléchargement d&#x27;Obsidian (obsidian.md) avec le bouton de téléchargement pour Windows." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000529_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:29</span>
+                        <span class="caption-text">Page web officielle de téléchargement d&#x27;Obsidian (obsidian.md) avec le bouton de téléchargement pour Windows.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:38 - 00:06:02</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et ensuite vous allez aller ici et cliquer sur gérer les coffres. Il se peut que ça s&#x27;affiche simplement comme ça et ensuite vous allez créer un nouveau coffre. Donc celui-ci, je vais simplement l&#x27;appeler test IA et ensuite vous allez choisir un emplacement pour celui-ci. Donc ça pourrait être sur votre bureau ou ce que j&#x27;aime typiquement faire c&#x27;est que je mets mes coffres à l&#x27;intérieur de mon projet Herc 2. Ainsi mon Herc 2 est capable de regarder une tonne de ces petits wikis LLM différents que j&#x27;ai divisés et séparés par sujet essentiellement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (Version 1.12.7)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champs &quot;Vault name&quot; et &quot;Location&quot; (avec le bouton Browse), ainsi que les coffres existants affichés dans le panneau de gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre comment créer un nouveau coffre local dans Obsidian et configure son nom et son emplacement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000544_seg14.jpg" alt="Interface de l&#x27;application Obsidian montrant l&#x27;écran de création d&#x27;un nouveau coffre (vault) local, avec le champ pour le nom du coffre et le bouton pour choisir l&#x27;emplacement." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000544_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:44</span>
+                        <span class="caption-text">Interface de l&#x27;application Obsidian montrant l&#x27;écran de création d&#x27;un nouveau coffre (vault) local, avec le champ pour le nom du coffre et le bouton pour choisir l&#x27;emplacement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:02 - 00:06:22</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais pour cet exemple, je vais juste mettre celui-ci sur mon bureau. Donc je vais créer ce wiki, vous pouvez voir ici, ou désolé, pas un wiki, un coffre. Nous allons transformer ceci en wiki. Donc pour l&#x27;instant, c&#x27;est ce que nous avons. Et ensuite, ce que je vais vouloir que vous fassiez, c&#x27;est d&#x27;aller dans Cloud Code ou partout où vous utilisez Cloud Code. Donc dans ce cas, j&#x27;utilise VS Code. Et vous allez ouvrir ce coffre dans quelque chose comme ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de bienvenue (&quot;This is your new vault&quot;, &quot;Make a note of something, create a link&quot;), explorateur de fichiers à gauche avec des dossiers (raw, wiki, transcripts) et vue graphique à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;un nouveau coffre (vault) Obsidian créé sur le bureau avant de le transformer en wiki.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000607_seg15.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface sombre d&#x27;Obsidian avec une note de bienvenue (&quot;Welcome&quot;) et une vue graphique en double panneau, ainsi que le présentateur dans un encadré en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000607_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:07</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface sombre d&#x27;Obsidian avec une note de bienvenue (&quot;Welcome&quot;) et une vue graphique en double panneau, ainsi que le présentateur dans un encadré en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:22 - 00:06:46</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, donc je viens d&#x27;ouvrir le coffre-fort. Vous pouvez voir que nous avons un dossier .obsidian. Nous avons un welcome.md. Ce sera juste la valeur par défaut lorsque vous ouvrirez un coffre-fort Obsidian. Et ensuite, ce que nous allons faire, c&#x27;est ouvrir Cloud Code. Donc, peu importe comment vous aimez l&#x27;utiliser. Dans VS Code, j&#x27;aime l&#x27;utiliser dans le terminal. Je vais donc lancer Claude pour ouvrir ceci. Et ensuite, nous allons commencer. Maintenant, une chose à souligner ici, c&#x27;est que nous voyons qu&#x27;il est écrit, d&#x27;accord, Fable, tu as seulement jusqu&#x27;au 7 juillet sur ta limite.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Claude Code CLI (terminal intégré)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explorateur de fichiers montrant le dossier `.obsidian` et `Welcome.md`, messages de bienvenue de Claude Code v2.1.200, invite de commande &quot;Try &#x27;how does &lt;filepath&gt; work?&#x27;&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Ouverture du dossier de projet dans l&#x27;éditeur de code, validation de la confiance du dossier, et lancement de l&#x27;interface Claude Code dans le terminal intégré.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000628_seg16.jpg" alt="Image #1 montre l&#x27;interface de VS Code avec un dossier ouvert nommé &quot;AI TEST&quot; contenant les fichiers `.obsidian` et `Welcome.md`." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000628_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:28</span>
+                        <span class="caption-text">Image #1 montre l&#x27;interface de VS Code avec un dossier ouvert nommé &quot;AI TEST&quot; contenant les fichiers `.obsidian` et `Welcome.md`.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000634_seg16.jpg" alt="Image #2 montre une boîte de dialogue de sécurité dans VS Code demandant si l&#x27;on fait confiance aux auteurs du dossier (&quot;Do you trust the authors of the files in this folder?&quot;)." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000634_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:34</span>
+                        <span class="caption-text">Image #2 montre une boîte de dialogue de sécurité dans VS Code demandant si l&#x27;on fait confiance aux auteurs du dossier (&quot;Do you trust the authors of the files in this folder?&quot;).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000640_seg16.jpg" alt="Image #3 montre le terminal intégré de VS Code exécutant Claude Code v2.1.200 avec les informations de bienvenue et l&#x27;invite de commande en bas." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000640_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:40</span>
+                        <span class="caption-text">Image #3 montre le terminal intégré de VS Code exécutant Claude Code v2.1.200 avec les informations de bienvenue et l&#x27;invite de commande en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:46 - 00:07:13</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Sinon, ce sera des crédits d&#x27;utilisation. J&#x27;ai cependant vu ce tweet de Thoric qui disait, ouais, c&#x27;est vrai, mais nous prévoyons de le réintégrer dans le cadre de votre abonnement dès que possible. Comme mentionné dans notre article de blog original, que vous pouvez voir au bas de cet article de blog, cela y est effectivement mentionné. Donc, cela ne dit pas quand, mais j&#x27;espère qu&#x27;ils seront en mesure d&#x27;étendre la période et de le ramener en tant que partie standard de votre plan d&#x27;abonnement. Quoi qu&#x27;il en soit, ce que vous allez faire ensuite, c&#x27;est aller sur cette page. Je mettrai le lien dans la description. Il s&#x27;agit du Gist du wiki LLM de Carpathie.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant Twitter, un article de blog institutionnel et GitHub Gist.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publications sur les réseaux sociaux et articles textuels sur l&#x27;accès aux modèles d&#x27;IA et un wiki pour LLM.
+[DESC_IMAGE_3] Lecture et présentation de pages web documentant des annonces de modèles IA et du code de documentation LLM.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000653_seg17.jpg" alt="Capture d&#x27;écran d&#x27;un tweet posté par Thariq concernant la disponibilité de Fable sur les abonnements." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000653_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:53</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un tweet posté par Thariq concernant la disponibilité de Fable sur les abonnements.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000659_seg17.jpg" alt="Capture d&#x27;écran d&#x27;un article de blog officiel expliquant les conditions d&#x27;accès et la tarification de Fable 5." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000659_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:59</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un article de blog officiel expliquant les conditions d&#x27;accès et la tarification de Fable 5.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000706_seg17.jpg" alt="Capture d&#x27;écran d&#x27;un dépôt GitHub Gist montrant le projet &#x27;llm-wiki.md&#x27; d&#x27;Andrej Karpathy." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000706_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:06</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un dépôt GitHub Gist montrant le projet &#x27;llm-wiki.md&#x27; d&#x27;Andrej Karpathy.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:13 - 00:07:39</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et je vais littéralement copier tout ceci. Si vous voulez vous arrêter et le lire, faites comme vous voulez, mais je vais copier tout ceci. Et ce que nous allons faire, c&#x27;est de ramener cela dans notre Claude et de le coller là-dedans. Et ensuite, ce que vous allez faire, c&#x27;est simplement prendre une capture d&#x27;écran de ceci afin de pouvoir la coller. J&#x27;ai dit : tu es désormais mon agent wiki LLM. Implémente ce fichier d&#x27;idées exact comme mon second cerveau complet. Guide-moi étape par étape, crée le schéma Claude.md avec mes règles complètes, configure l&#x27;index, le journal, définis les conventions de dossiers, et montre-moi le premier exemple d&#x27;ingestion.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code, terminal Claude Code</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte collé depuis le presse-papier : &quot;You are now my LLM Wiki agent. Implement this exact idea file as my complete second brain...&quot; avec des informations sur le modèle Fable 5.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur colle le texte copié du web directement dans l&#x27;interface de Claude Code à l&#x27;intérieur de l&#x27;éditeur pour configurer l&#x27;agent second cerveau.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000726_seg18.jpg" alt="Le présentateur est visible en bas à gauche, et l&#x27;écran principal affiche l&#x27;éditeur VS Code avec un terminal Claude Code actif montrant le texte collé et une invite de commande." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000726_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:26</span>
+                        <span class="caption-text">Le présentateur est visible en bas à gauche, et l&#x27;écran principal affiche l&#x27;éditeur VS Code avec un terminal Claude Code actif montrant le texte collé et une invite de commande.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:40 - 00:08:00</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">À partir de maintenant, chaque interaction suit le schéma. Donc je vais envoyer ça. Nous utilisons Fable ici. Comme je l&#x27;ai dit, vous n&#x27;avez probablement pas besoin de Fable. Fable est probablement exagéré pour ça. Il s&#x27;agit de ce que Fable fait après que vous ayez toutes ces données là-dedans. Donc si vous voulez remanier ça sur Opus, exécuter l&#x27;ingestion et ingérer les futurs documents avec Opus, c&#x27;est probablement un meilleur choix, honnêtement. Je vais juste vous montrer Fable dans cette vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (Visual Studio Code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur le pattern LLM wiki (&quot;The human&#x27;s job is to curate sources...&quot;, &quot;You are now my LLM Wiki agent...&quot;) et terminal en bas affichant un prompt vide et des informations sur l&#x27;outil Fable (Fable 5, auto mode on).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique l&#x27;utilisation du fichier et le fonctionnement de l&#x27;agent LLM, tandis que l&#x27;interface de VS Code et le terminal intégré sont affichés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000745_seg19.jpg" alt="Vue de l&#x27;éditeur VS Code affichant un fichier Markdown avec un texte sur la base de connaissances personnelle et un terminal intégré en bas." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000745_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:45</span>
+                        <span class="caption-text">Vue de l&#x27;éditeur VS Code affichant un fichier Markdown avec un texte sur la base de connaissances personnelle et un terminal intégré en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:00 - 00:08:19</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, ce qui est vraiment cool, c&#x27;est qu&#x27;au fur et à mesure que vous commencez à y mettre différentes choses, cela va en quelque sorte changer dynamiquement la structure. Laissez-moi donc vous montrer ce que je veux dire par là. Si j&#x27;ouvre ce wiki, vous pouvez voir que dans le wiki, j&#x27;ai des comparaisons. J&#x27;ai des concepts. J&#x27;ai des sources parce que celui-ci concerne mes vidéos YouTube. Il les a donc lues et il a analysé cela. Nous avons des techniques et nous avons des outils.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code et Obsidian (vue graphique / Graph view).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Document Markdown sur la base de connaissances personnelle (LLM wiki pattern) et vue de graphe interconnectée.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la structure dynamique d&#x27;un wiki de connaissances et de ses connexions.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000805_seg20.jpg" alt="VS Code affichant un document Markdown textuel et un terminal en bas avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000805_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:05</span>
+                        <span class="caption-text">VS Code affichant un document Markdown textuel et un terminal en bas avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000810_seg20.jpg" alt="Une interface d&#x27;application de type Obsidian montrant une vue graphique de réseau (graph view) de notes interconnectées." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000810_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:10</span>
+                        <span class="caption-text">Une interface d&#x27;application de type Obsidian montrant une vue graphique de réseau (graph view) de notes interconnectées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:20 - 00:08:56</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais si je bascule vers quelque chose comme mon cerveau Herc, qui est celui qui concerne plutôt mes transcriptions de réunions, vous pouvez voir que c&#x27;est une structure à peu près plate. Elle contient essentiellement tous mes enregistrements de réunions directement ici et elle n&#x27;a pas encore voulu les organiser. Et peut-être qu&#x27;à un moment donné, si nous faisons quelques balayages, elle trouvera différents dossiers pour les organiser. Mais parfois, garder cette structure plate est en fait mieux. Et par plate, ce que je veux dire, c&#x27;est d&#x27;avoir essentiellement tout dans le wiki plutôt que de devoir descendre dans encore plus de dossiers. La raison en est que vous voulez vous assurer que votre IA peut facilement effectuer des recherches dans tout ce contenu. Nous avons le brut, qui est l&#x27;endroit où vous mettez les choses. Ensuite, l&#x27;IA lira tout ce qui se trouve dans le brut et l&#x27;ingérera dans le wiki. Et c&#x27;est là que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian et schéma explicatif visuel.
+[DESC_IMAGE_1] Liste de fichiers markdown de transcriptions de réunions et graphe de liens entre les notes.
+[DESC_IMAGE_2] Arborescence de dossiers &#x27;my-wiki/&#x27; avec les rôles de chaque dossier et fichier pour un LLM.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la structure de dossiers et du graphe de connexions pour les notes de réunions.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000829_seg21.jpg" alt="Vue graphique (Graph view) d&#x27;Obsidian montrant la structure de notes et le panneau latéral avec la liste des fichiers de transcription." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000829_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:29</span>
+                        <span class="caption-text">Vue graphique (Graph view) d&#x27;Obsidian montrant la structure de notes et le panneau latéral avec la liste des fichiers de transcription.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000847_seg21.jpg" alt="Schéma explicatif intitulé &#x27;LLM Wiki File Tree&#x27; illustrant l&#x27;arborescence des dossiers avec raw, wiki, index.md, log.md et CLAUDE.md." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000847_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:47</span>
+                        <span class="caption-text">Schéma explicatif intitulé &#x27;LLM Wiki File Tree&#x27; illustrant l&#x27;arborescence des dossiers avec raw, wiki, index.md, log.md et CLAUDE.md.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:56 - 00:09:17</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pourrait prendre une source et la diviser en environ cinq ou six, ou peut-être même dix petites pages wiki. Ensuite, nous avons aussi l&#x27;index, qui est comme une table des matières. Nous avons le journal de bord et ensuite les fichiers .md sont tous les autres fichiers wiki. Et cette structure exacte est la façon dont celui de HercBrain est configuré, comme vous pouvez le voir, c&#x27;est très plat. Mais si nous retournons dans celui de mes transcriptions YouTube, celui-ci n&#x27;est pas plat, n&#x27;est-ce pas ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Schéma graphique explicatif et interface d&#x27;application de notes (Obsidian)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence structurée : raw/ (read-only), wiki/ (index.md, log.md, *.md), CLAUDE.md (rules/schema) et vue de graphe de connexions de notes.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la structure de dossiers et du système de fichiers pour un wiki géré par LLM, puis démonstration visuelle du graphe de connaissances.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000901_seg22.jpg" alt="Schéma explicatif de l&#x27;arborescence des fichiers du LLM Wiki montrant le dossier my-wiki, raw/, wiki/ (avec index.md, log.md, *.md) et CLAUDE.md." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000901_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:01</span>
+                        <span class="caption-text">Schéma explicatif de l&#x27;arborescence des fichiers du LLM Wiki montrant le dossier my-wiki, raw/, wiki/ (avec index.md, log.md, *.md) et CLAUDE.md.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000912_seg22.jpg" alt="Interface d&#x27;une application de type Obsidian montrant une vue graphique en réseau des notes et fichiers Markdown liés." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000912_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:12</span>
+                        <span class="caption-text">Interface d&#x27;une application de type Obsidian montrant une vue graphique en réseau des notes et fichiers Markdown liés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:17 - 00:09:39</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Celui-ci a tous ces autres sous-dossiers dont nous venons de parler. Et pour vous montrer à quoi cela ressemble dans cet exemple, voici mon index. Vous pouvez voir tous les outils. Vous pouvez voir toutes les techniques, tout ce qui a été cartographié ici avec tous les rétroliens. Et puis le journal, vous pouvez voir que j&#x27;ai fait quelques intégrations par lots ici, j&#x27;en ai fait une là. Et puis chaque fois que j&#x27;ai intégré une autre vidéo YouTube ou intégré d&#x27;autres sources de données, cela affichera un journal de cela là.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (éditeur de code avec aperçu Markdown et explorateur de fichiers)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier index.md contenant le catalogue des outils du wiki (claude-code, n8n, cursor, trigger-dev, firecrawl, perplexity, etc.) et l&#x27;explorateur de fichiers à gauche montrant les dossiers &quot;raw&quot;, &quot;wiki&quot; (comparisons, concepts, sources, techniques, tools, index, log, overview).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente visuellement la structure du wiki et la page d&#x27;index principale.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000922_seg23.jpg" alt="Capture d&#x27;écran montrant l&#x27;éditeur VS Code avec une page de documentation Markdown intitulée &quot;Wiki Index&quot;, affichant la liste des outils répertoriés." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000922_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:22</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;éditeur VS Code avec une page de documentation Markdown intitulée &quot;Wiki Index&quot;, affichant la liste des outils répertoriés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:39 - 00:09:58</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le but ultime de tout ceci est que l&#x27;IA puisse construire et maintenir ce wiki de manière incrémentielle. Elle doit donc être capable de consulter des éléments comme l&#x27;index, les journaux et tous les rétrolyens pour réellement parcourir et trouver les données que vous recherchez. Très bien, vous pouvez maintenant voir que c&#x27;est fait. Notre projet est configuré. Nous avons notre index, qui est vide. Nous avons notre journal, qui est pratiquement vide. Et enfin, nous avons notre dossier brut et notre dossier wiki.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (éditeur de code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier Markdown `log.md` montrant les entrées de journal d&#x27;opérations du wiki : `## [2026-07-03] setup | Vault initialized as LLM Wiki` et `## [2026-07-03] ingest | LLM Wiki idea file`.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la structure des journaux (log) dans le projet de wiki géré par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000953_seg24.jpg" alt="Capture d&#x27;écran montrant l&#x27;éditeur VS Code avec un fichier log.md affichant l&#x27;historique des opérations du wiki (setup, ingest)." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_000953_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:53</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;éditeur VS Code avec un fichier log.md affichant l&#x27;historique des opérations du wiki (setup, ingest).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:58 - 00:10:17</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce que vous pouvez voir ici déjà, c&#x27;est que dans le brut, il a traité cette idée de wiki LLM. Ce fichier est fondamentalement l&#x27;essentiel que Carpathie a rédigé. Il a donc décidé d&#x27;ingérer cela. Et ensuite dans le wiki, il est déjà prévu d&#x27;avoir des concepts, des entités et des sources. C&#x27;est donc avec cela que nous devons commencer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code et GitHub Gist.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier Markdown d&#x27;idées &#x27;llm-wiki-idea.md&#x27; et structure de dossiers (raw, wiki/concepts, wiki/entities, wiki/sources).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;explorateur de fichiers pour montrer l&#x27;organisation du projet de base de connaissances wiki LLM.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001003_seg25.jpg" alt="Visualisation dans VS Code du fichier markdown &#x27;llm-wiki-idea.md&#x27; décrivant le modèle de wiki LLM de Karpathy." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001003_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:03</span>
+                        <span class="caption-text">Visualisation dans VS Code du fichier markdown &#x27;llm-wiki-idea.md&#x27; décrivant le modèle de wiki LLM de Karpathy.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001012_seg25.jpg" alt="Navigation dans l&#x27;arborescence de VS Code montrant les dossiers &#x27;wiki&#x27; contenant &#x27;concepts&#x27;, &#x27;entities&#x27; et &#x27;sources&#x27;." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001012_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:12</span>
+                        <span class="caption-text">Navigation dans l&#x27;arborescence de VS Code montrant les dossiers &#x27;wiki&#x27; contenant &#x27;concepts&#x27;, &#x27;entities&#x27; et &#x27;sources&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:17 - 00:10:41</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, ce que je veux faire, c&#x27;est que nous allons intégrer deux choses différentes. Et je vais vous montrer différentes manières de le faire. Donc la première chose que nous allons intégrer, c&#x27;est la carte système Claude Fable 5 et Mythos 5. Donc je vais aller télécharger ceci sous forme de PDF. Ce que je vais faire, c&#x27;est prendre ce PDF et je vais le glisser dans le dossier raw. Donc maintenant ce PDF se trouve juste là dans raw. Et ensuite, ce que je vais faire, c&#x27;est que nous allons prendre cette avant-première OpenAI de GPT 5.6 soul et nous allons simplement faire cela sous forme d&#x27;URL à la place.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visualiseur de PDF, VS Code, Navigateur web</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation technique, code Markdown avec structure de wiki, article de blog OpenAI</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de documents de référence et de code source dans l&#x27;éditeur</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001029_seg26.jpg" alt="Éditeur de code VS Code affichant un document Markdown pour la construction d&#x27;une base de connaissances personnelle avec LLM, avec un panneau terminal en bas utilisant le modèle &#x27;Fable 5&#x27;." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001029_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:29</span>
+                        <span class="caption-text">Éditeur de code VS Code affichant un document Markdown pour la construction d&#x27;une base de connaissances personnelle avec LLM, avec un panneau terminal en bas utilisant le modèle &#x27;Fable 5&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:41 - 00:11:02</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce que je vais faire, c&#x27;est que je vais coller l&#x27;URL et je vais dire : hé Claude, lis cet article et ensuite ingère ça dans notre wiki ici. Et puis aussi, j&#x27;ai déposé un PDF dans le brut appelé Claude Fable 5. Et je veux que tu ingères ça aussi. Et c&#x27;est tout ce que je vais dire à ce modèle. Encore une fois, il devrait comprendre comment tout cela est configuré.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (Éditeur de code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL OpenAI dans la zone de texte : `https://openai.com/index/previewing-gpt-5-6-sol/`, et arborescence de fichiers avec les dossiers `raw` et `wiki`.</p>
+                        <p><strong>Action / Démonstration :</strong> Collage de l&#x27;URL d&#x27;un article dans l&#x27;assistant pour l&#x27;ingestion dans le wiki.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001047_seg27.jpg" alt="Vue de l&#x27;éditeur VS Code montrant l&#x27;arborescence des dossiers à gauche et un fichier markdown d&#x27;explication du wiki personnel au centre, avec une URL OpenAI collée dans le chat en bas." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001047_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:47</span>
+                        <span class="caption-text">Vue de l&#x27;éditeur VS Code montrant l&#x27;arborescence des dossiers à gauche et un fichier markdown d&#x27;explication du wiki personnel au centre, avec une URL OpenAI collée dans le chat en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:02 - 00:11:24</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous devrions voir un nouvel enregistrement dans l&#x27;index ainsi qu&#x27;un nouvel enregistrement dans le journal et de nouvelles sources dans le wiki. Donc, que Fable décide de transformer ce PDF en une ou cinq ou peut-être même 50 pages wiki en raison de la taille de ce PDF, même chose avec l&#x27;URL, je vous tiendrai au courant quand ce sera terminé. D&#x27;accord, donc c&#x27;est terminé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (éditeur de code) avec interface intégrée d&#x27;agent CLI (Claude Fable).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de fichiers comprenant .obsidian, raw, wiki (concepts, entities, sources), CLAUDE.md, index.md, log.md, Welcome.md. Dans le terminal intégré : une URL OpenAI, un prompt demandant à Claude de lire et ingérer l&#x27;article, et l&#x27;état de l&#x27;agent Fable 5 [xhigh] en mode automatique.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique l&#x27;utilisation de l&#x27;agent pour ingérer des sources externes (articles, PDF) dans la base de connaissances du wiki Obsidian.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001108_seg28.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code montrant l&#x27;arborescence du projet Obsidian avec un dossier &quot;wiki&quot; et une invite de commande interactive en bas." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001108_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:08</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code montrant l&#x27;arborescence du projet Obsidian avec un dossier &quot;wiki&quot; et une invite de commande interactive en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:24 - 00:11:58</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela a pris environ 10 à 12 minutes et vous pouvez voir ici qu&#x27;à partir de ces deux sources, cela a créé 20 pages wiki et elles sont entièrement interconnectées. Maintenant, regardez ça. Le lien qui justifiait d&#x27;avoir cela sous forme de wiki, au lieu de deux résumés séparés, c&#x27;est que les deux sources se référencent mutuellement, et c&#x27;est dans Frontier Model Cybersecurity que cela se trouve. OpenAI a évalué GPT 5.6 Sol par rapport à Mythos Preview, et j&#x27;ai repéré cet élément facile à manquer en les lisant séparément. OpenAI a comparé avec le prédécesseur d&#x27;avril, pas avec Mythos 5, et les deux laboratoires utilisent des bancs de test différents, donc les chiffres ne s&#x27;alignent pas directement. Bref, allons-y, ouvrons ce wiki en plein écran et jetons un coup d&#x27;œil. D&#x27;accord, voilà donc à quoi ça ressemble</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code / Obsidian (ou interface de notes similaire)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier Markdown décrivant une base de connaissances personnelle générée par LLM, avec des liens vers des sources OpenAI et Claude, et un graphe de connexions de notes.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente la structure interconnectée du wiki et le graphe de relations entre les sources.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001133_seg29.jpg" alt="Capture d&#x27;écran montrant l&#x27;écran partagé avec une vue de graphe de notes interconnectées à gauche et un éditeur de texte (VS Code) affichant un fichier Markdown généré à droite, avec le présentateur en médaillon en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001133_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:33</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;écran partagé avec une vue de graphe de notes interconnectées à gauche et un éditeur de texte (VS Code) affichant un fichier Markdown généré à droite, avec le présentateur en médaillon en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:58 - 00:12:18</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">genre. Vous pouvez voir qu&#x27;on a OpenAI ici en bas, et ce sont ceux auxquels ça se rapporte. Comme le code Claude le disait, il a fait référence à Claude Mythos 5 dans l&#x27;article. Donc c&#x27;est plutôt cool. Et on peut voir en quelque sorte la distribution ici. On peut voir à quel point on a des choses comme des sorties de modèles coordonnées par le gouvernement. On a des mesures de protection superposées, des mesures de protection pour l&#x27;utilisation concurrentielle. Et si on va ici sur le wiki, on peut voir qu&#x27;on a des concepts.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (Graph view)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds interconnectés affichant des termes liés à l&#x27;IA : &#x27;OpenAI&#x27;, &#x27;Claude-mythos-5&#x27;, &#x27;anthropic&#x27;, &#x27;layered-safeguards&#x27;, etc.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation des relations et de la distribution des données textuelles dans le graphe de connaissances.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001203_seg30.jpg" alt="Capture d&#x27;écran montrant un graphique de relations (Graph view) avec un nœud central &#x27;OpenAI&#x27; relié à divers concepts et modèles tels que &#x27;Claude-mythos-5&#x27; et &#x27;gpt-5-6&#x27;." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001203_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:03</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un graphique de relations (Graph view) avec un nœud central &#x27;OpenAI&#x27; relié à divers concepts et modèles tels que &#x27;Claude-mythos-5&#x27; et &#x27;gpt-5-6&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:18 - 00:12:38</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avons des entités. Nous avons des sources. Et ensuite nous avons des sujets. Donc les entités, c&#x27;est cool parce qu&#x27;ici nous avons des modèles. Nous avons Fable, Mythos, Mythos Preview, Opus 4.8, GBT 5.6. Nous avons Anthropic et OpenAI. Et ensuite, si nous allons dans le journal, vous pouvez voir que c&#x27;était la configuration initiale. Et ensuite nous avons eu l&#x27;article d&#x27;OpenAI et la carte système de CloudFable 5.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de fichiers wiki avec les dossiers « concepts », « entities » (contenant anthropic, claude-fable-5, claude-mythos-5, claude-opus-4-8, gpt-5-6, openai), « sources », « topics », et graphe de relations interconnectées.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et visualisation graphique des entités et de leurs liaisons dans le wiki.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001223_seg31.jpg" alt="Vue graphique (Graph view) interactive d&#x27;un wiki montrant les relations entre différentes entités, avec le panneau latéral affichant l&#x27;arborescence des dossiers et le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001223_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:23</span>
+                        <span class="caption-text">Vue graphique (Graph view) interactive d&#x27;un wiki montrant les relations entre différentes entités, avec le panneau latéral affichant l&#x27;arborescence des dossiers et le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:39 - 00:12:59</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc la leçon ici, c&#x27;est que nous avons maintenant ce système où nous avons CloudCode qui examine un ensemble de nos sources de données, n&#x27;est-ce pas ? Il examine le wiki et il examine potentiellement plusieurs wikis. Et à l&#x27;intérieur du wiki, ce qui se passe, c&#x27;est qu&#x27;il y a des règles de routage configurées afin que nos agents soient capables de déterminer où chercher telle ou telle chose spécifique, comme les données qu&#x27;il recherche.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Schéma conceptuel puis interface d&#x27;éditeur de texte/notes (type Obsidian ou VS Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma d&#x27;architecture avec &#x27;Raw Sources&#x27;, &#x27;LLM&#x27;, &#x27;The Wiki&#x27; et &#x27;CLAUDE.md&#x27; ; puis arborescence &#x27;wiki&#x27; contenant comparisons, concepts, sources, techniques, tools, index, log, overview et CLAUDE.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du modèle d&#x27;architecture LLM Wiki et navigation dans l&#x27;arborescence des fichiers du wiki pour montrer le contenu ingéré.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001244_seg32.jpg" alt="Schéma explicatif du &#x27;LLM Wiki Pattern&#x27; montrant les sources brutes, le LLM, le wiki géré par l&#x27;IA et le fichier de configuration CLAUDE.md." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001244_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:44</span>
+                        <span class="caption-text">Schéma explicatif du &#x27;LLM Wiki Pattern&#x27; montrant les sources brutes, le LLM, le wiki géré par l&#x27;IA et le fichier de configuration CLAUDE.md.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001254_seg32.jpg" alt="Interface de l&#x27;éditeur montrant l&#x27;arborescence des fichiers d&#x27;un wiki avec des dossiers et des fichiers Markdown affichant des journaux d&#x27;ingestion (log.md)." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001254_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:54</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur montrant l&#x27;arborescence des fichiers d&#x27;un wiki avec des dossiers et des fichiers Markdown affichant des journaux d&#x27;ingestion (log.md).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:59 - 00:13:25</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">parce qu&#x27;il doit parcourir fondamentalement tout cela d&#x27;une manière efficace afin de ne pas perdre notre temps et nos jetons pour trouver la bonne réponse. Et cette théorie est fondamentalement ce qu&#x27;est Cloud Code. Il s&#x27;agit fondamentalement de comprendre comment mon Cloud.md peut fonctionner comme un routeur pour pouvoir examiner mes projets passés, pour pouvoir examiner le contexte de mon entreprise et trouver le bon endroit. Et donc à partir d&#x27;ici, une fois que vous avez déjà commencé à mettre en place la structure, vous allez simplement commencer à ajouter plus de sources de données et vous allez voir comment cela évolue et vous allez constamment vérifier et voir si tout cela a du sens.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian / Éditeur de texte (interface avec volet latéral de navigation et vue graphique de type nœuds).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de fichiers sur le panneau de gauche (dossiers raw, wiki, comparisons, concepts, sources, techniques, tools, CLAUDE avec frontend-design-skill, idea-mining-skill, etc.) et un grand graphique de nœuds interconnectés au centre.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente la structure visuelle des données et des connexions affichées sous forme de graphe dans l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001305_seg33.jpg" alt="Vue graphique (Graph view) interactive représentant l&#x27;arborescence et les liens entre les fichiers Markdown dans l&#x27;éditeur." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001305_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:05</span>
+                        <span class="caption-text">Vue graphique (Graph view) interactive représentant l&#x27;arborescence et les liens entre les fichiers Markdown dans l&#x27;éditeur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:25 - 00:13:58</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parce que si vous faites un chargement par lot et que vous n&#x27;aimez pas la façon dont certains de ces dossiers et fichiers ont été organisés, alors vous décidez peut-être de modifier un tout petit peu tout ça. Vous savez, vous commencez à ouvrir ces pages comme les mesures de protection contre l&#x27;utilisation concurrentielle, à lire à ce sujet, à cliquer pour voir si tout a toujours du sens. Et si vous n&#x27;aimez pas la façon dont les choses se passent, alors mettez à jour les règles selon lesquelles vous effectuez le chargement. Comme je l&#x27;ai dit, chaque wiki LLM que j&#x27;ai configuré, ils ont des structures différentes et des règles un peu différentes en raison du type de données qui s&#x27;y trouvent, qu&#x27;il s&#x27;agisse de transcriptions de réunions ou, vous savez, de données personnelles ou, vous savez, de propositions, peu importe ce que vous chargez ici, faites en sorte que cela ait du sens, non seulement pour l&#x27;IA,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de code (probablement VS Code ou Obsidian) avec l&#x27;arborescence des dossiers à gauche et un document Markdown formaté en page wiki à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de notes structurée avec des métadonnées (propriétés &#x27;type&#x27;, &#x27;created&#x27;, &#x27;updated&#x27;, tags &#x27;ai-safety&#x27;, &#x27;anthropic&#x27;, &#x27;ai-policy&#x27;, &#x27;novel&#x27;) et du contenu textuel sur les mesures de protection des LLMs frontières.</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation et navigation dans la documentation organisée des dossiers et fichiers de connaissances.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001333_seg34.jpg" alt="Une page de documentation wiki intitulée &#x27;competitive-use-safeguards&#x27; affichée dans un éditeur avec un explorateur de fichiers sur la gauche et le présentateur visible en incrustation dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001333_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:33</span>
+                        <span class="caption-text">Une page de documentation wiki intitulée &#x27;competitive-use-safeguards&#x27; affichée dans un éditeur avec un explorateur de fichiers sur la gauche et le présentateur visible en incrustation dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:58 - 00:14:18</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">mais fais en sorte que ça ait du sens pour toi. Tout le problème, c&#x27;est que tu peux aussi parcourir ça et suivre la chaîne et trouver ce que tu cherches. Et le meilleur dans tout ça, c&#x27;est qu&#x27;une fois que tu réalises : oh, regarde, tout dans ce wiki, c&#x27;est juste un fichier Markdown. Ce sont juste des fichiers Markdown avec du routage. Ça veut dire que tu n&#x27;es pas enfermé dans l&#x27;utilisation de ceci uniquement dans le code cloud. Tu peux y connecter ton agent Hermes. Tu peux y connecter Codex. Tu peux y connecter tout ce que tu veux parce que ce sont juste des fichiers Markdown.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian / VS Code, explorateur de fichiers, interface agent IA avec terminal intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichiers Markdown (concepts, entities, sources, topics) et texte récapitulatif sur un LLM wiki.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;arborescence des fichiers Markdown du wiki et visualisation du contenu généré par l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001403_seg35.jpg" alt="Interface d&#x27;un wiki basé sur des fichiers Markdown affichant une page sur la surveillance de l&#x27;interprétabilité en boîte blanche, avec le présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001403_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:03</span>
+                        <span class="caption-text">Interface d&#x27;un wiki basé sur des fichiers Markdown affichant une page sur la surveillance de l&#x27;interprétabilité en boîte blanche, avec le présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001408_seg35.jpg" alt="Éditeur de code (VS Code / interface agent) montrant une structure de dossiers wiki avec des fichiers Markdown et un terminal en bas avec le mode automatique activé." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001408_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:08</span>
+                        <span class="caption-text">Éditeur de code (VS Code / interface agent) montrant une structure de dossiers wiki avec des fichiers Markdown et un terminal en bas avec le mode automatique activé.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:19 - 00:14:34</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si vous voulez en savoir plus sur toute l&#x27;idée de construire un second cerveau, alors regardez cette vidéo juste ici où je passe en revue chaque niveau de la construction d&#x27;un second cerveau et comment vous savez si vous avez réellement besoin de monter un petit peu ou de descendre un petit peu et de comprendre ce qui est bon pour vous et votre système. Donc de toute façon, merci d&#x27;être arrivé à la fin de la vidéo et je vous vois dans la prochaine. Merci les gars.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code) avec explorateur de fichiers et terminal intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Structure de dossiers de wiki (`concepts`, `entities`), fichiers Markdown (`model-welfare.md`, `anthropic.md`), et prompt dans le terminal de l&#x27;agent.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;explorateur de fichiers du projet &quot;ai test&quot; pour montrer la structure de la base de connaissances.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001423_seg36.jpg" alt="Vue de l&#x27;éditeur de code VS Code affichant un projet de base de connaissances sous forme de wiki avec des fichiers Markdown, et incrustation vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/hQvwMj7IJe4/hQvwMj7IJe4_001423_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:23</span>
+                        <span class="caption-text">Vue de l&#x27;éditeur de code VS Code affichant un projet de base de connaissances sous forme de wiki avec des fichiers Markdown, et incrustation vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
