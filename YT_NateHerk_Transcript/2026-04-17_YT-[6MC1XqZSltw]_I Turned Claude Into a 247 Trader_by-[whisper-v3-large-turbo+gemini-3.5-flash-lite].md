@@ -31,11 +31,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So Claude Opus 4.6 is finally here, and it got me thinking, because as I was scrolling down and I started looking at the benchmarks, I noticed right here we have agentic financial analysis, and we have about a 4% jump from Opus 4.6. And about a week ago, I dropped this video where me and Salman traded stocks for 30 days with our OpenClaw agents, and my OpenClaw agent was set up with Opus 4.6, and I was able to beat the S&P by about 8%, as you can see right here.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Page web de benchmarks LLM (image 1), lecteur YouTube (image 2).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Données de performance (pourcentages) pour des capacités comme "Agentic financial analysis" et "Agentic computer use" (image 1) ; graphique de courbes de capitalisation boursière sur 30 jours (image 2).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur pointe du doigt une ligne spécifique du tableau des benchmarks (image 1) ; il montre un extrait de sa propre vidéo précédente traitant de trading par IA (image 2).
+
+![Tableau comparatif des performances de différents modèles d'IA sur divers benchmarks, incluant l'analyse financière agentique.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000006_seg1.jpg)
+*⏱️ 00:00:06 — Tableau comparatif des performances de différents modèles d'IA sur divers benchmarks, incluant l'analyse financière agentique.*
+
+![Capture d'écran d'une vidéo YouTube montrant un graphique de trading comparant les performances de Nate, Samin et du S&P 500 sur 30 jours.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000012_seg1.jpg)
+*⏱️ 00:00:12 — Capture d'écran d'une vidéo YouTube montrant un graphique de trading comparant les performances de Nate, Samin et du S&P 500 sur 30 jours.*
 
 ---
 
@@ -45,11 +51,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > This green line is my chart and this gray line is the S&P. So if you guys want to check out this full video, I will link that right up here. So after this challenge, I wanted to keep my agent running to see if it could keep beating the S&P. But now I want to upgrade it to 4.7 instead of 4.6. So that's exactly what I want to cover with you guys today. How do we build a 24-7 AI trading agent with Opus 4.6 inside of Claude Code?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Dashboard de suivi de performance financière (Image 1) et présentation de plan de développement (Image 2).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Image 1 : Valeurs monétaires (ex: $9,980) et pourcentages de rendement. Image 2 : Titre "Build a 24/7 AI trading agent with Opus 4.7" suivi des étapes (Strategy, Scaffold, Guardrails).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Analyse comparative des résultats de trading dans l'image 1 ; définition du roadmap technique pour la mise à jour de l'agent vers Opus 4.7 dans l'image 2.
+
+![Un tableau de bord financier montrant une comparaison de performances entre trois entités (Nate, Samin, S&P 500) sur une période de 30 jours, avec des lignes de tendance colorées.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000030_seg2.jpg)
+*⏱️ 00:00:30 — Un tableau de bord financier montrant une comparaison de performances entre trois entités (Nate, Samin, S&P 500) sur une période de 30 jours, avec des lignes de tendance colorées.*
+
+![Une diapositive de présentation listant les étapes techniques pour construire un agent de trading IA, mentionnant "Opus 4.7" et la structure du projet.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000040_seg2.jpg)
+*⏱️ 00:00:40 — Une diapositive de présentation listant les étapes techniques pour construire un agent de trading IA, mentionnant "Opus 4.7" et la structure du projet.*
 
 ---
 
@@ -59,11 +71,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > We're not even going to touch OpenClaw or Hermes Agent. We're going to just do this with Claude Code. And this is all going to be thanks to another feature that we just got from the Anthropic team called Routines. If you don't know what that is, I'm going to break it down in this video, but I also made a full one if you want to check that out also right up here. So basically this is the unlock. 4.7 plus routines means you can have a 24-7 AI agent.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Plateforme de réseau social X (Twitter) via un navigateur web.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte du tweet : "We just launched Routines. We just launched Claude Opus 4.7. The real unlock is using them together. 4.7 was built for full-throttle agentic work...".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle de l'annonce officielle sur les réseaux sociaux pour introduire le sujet des "Routines" d'Anthropic.
+
+![Capture d'écran de l'interface X (Twitter) affichant un post de Noah Zweben annonçant le lancement des "Routines" et de "Claude Opus 4.7" avec une illustration pixel art d'une ampoule.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000050_seg3.jpg)
+*⏱️ 00:00:50 — Capture d'écran de l'interface X (Twitter) affichant un post de Noah Zweben annonçant le lancement des "Routines" et de "Claude Opus 4.7" avec une illustration pixel art d'une ampoule.*
 
 ---
 
@@ -73,11 +88,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And 4.7 was built for full throttle agentic work, judgment over ambiguity, and self-verifying outputs. So it's perfect for these types of routines. And that's how I'm going to set up my 24-7 trading agent with Cloud Code Routines. So if you follow along with this video, you'll be able to pretty much duplicate my exact setup and have yourself a working agent.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Plateforme de réseau social X (Twitter) pour l'image 1 ; Logiciel de présentation (type PowerPoint ou Google Slides) pour l'image 2.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Image 1 : Texte du tweet mentionnant les capacités de "full-throttle agentic work" de l'IA. Image 2 : Liste des étapes du projet ("What we're building", "The stack", "The mental model", "The context budget", "STEP 1: STRATEGY", "STEP 2: SCAFFOLD", "STEP 3: GUARDRAILS").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur commente l'actualité de Claude Opus 4.7 (image 1) puis présente la feuille de route structurée pour la création de l'agent de trading (image 2).
+
+![Diapositive de présentation sur fond blanc listant le plan du tutoriel pour construire un agent de trading IA 24/7 avec Opus 4.7.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000118_seg4.jpg)
+*⏱️ 00:01:18 — Diapositive de présentation sur fond blanc listant le plan du tutoriel pour construire un agent de trading IA 24/7 avec Opus 4.7.*
 
 ---
 
@@ -87,11 +105,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > and start trading with it. So let's go ahead and get started. What are we building? We're going to create a cloud code project that runs on a schedule, something like a pre-market cron, a market open, a midday, and a close. It's going to research the market. It's going to place trades via the Alpaca API. It's going to journal and make sure that it's writing context into the file so it can learn. And then it's going to send me every day, every day of the week, an end of day summary to my ClickUp. The goal obviously is just to beat the SMP. We're not looking to do any crazy crypto or crazy day trading stuff.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Éditeur de document ou présentation (type Markdown ou Google Docs).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Titre : "Build a 24/7 AI trading agent with Opus 4.7". Liste des étapes : "What we're building", "The stack", "The mental model", "The context budget", "STEP 1: STRATEGY".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur introduit les objectifs du projet et le plan de développement affiché à l'écran.
+
+![Une présentation sous forme de document textuel détaillant les objectifs du projet : créer un agent de trading automatisé avec Claude Code et Opus 4.7.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000129_seg5.jpg)
+*⏱️ 00:01:29 — Une présentation sous forme de document textuel détaillant les objectifs du projet : créer un agent de trading automatisé avec Claude Code et Opus 4.7.*
 
 ---
 
@@ -101,11 +122,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > I'm just kind of doing this as a fun long-term investment. Just beat the S&P challenge. Like I said, in my first 30 days, I gave Opus $10,000 and we were able to beat the S&P by about 8%, which is really good, especially in such a short amount of time. So what is the tech stack? We're gonna be using Cloud Code Routines. That's kind of our scheduler. For the AI model, we're gonna use Opus 4.7.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de présentation (type PowerPoint ou Google Slides).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Titre : "Build a 24/7 AI trading agent with Opus 4.7". Contenu : Description du projet utilisant Claude Code, Alpaca pour le trading et ClickUp pour le journal, avec la mention de la performance de +8% par rapport au S&P 500. Liste des sujets abordés : "The stack", "The mental model: files are the brain", "The context budget", "STEP 1: STRATEGY".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur introduit les composants techniques et méthodologiques de son agent de trading autonome.
+
+![Une présentation sous forme de liste à puces structurant le projet d'agent de trading IA, détaillant les objectifs et les étapes clés.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000157_seg6.jpg)
+*⏱️ 00:01:57 — Une présentation sous forme de liste à puces structurant le projet d'agent de trading IA, détaillant les objectifs et les étapes clés.*
 
 ---
 
@@ -115,11 +139,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > For the skills, we're gonna be using just kind of like building our own as we go. It'll be stuff like how the agent does research or how it makes decisions or how it places trades or makes logs, things like that. We're gonna use the Alpaca API as our brokerage. We're gonna use the Perplexity API for research. You could also just use the native web fetch and web search, but I'm gonna use Perplexity here.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Diaporama de présentation (type PowerPoint ou Google Slides).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste des composants : "Claude Code routines" (scheduler), "AI: Opus 4.7", "Skills" (recherche, trading, logs), "Alpaca API" (brokerage), "Perplexity API" (recherche), "ClickUp" (notifications). Titre : "Build a 24/7 AI trading agent with Opus 4.7".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique la structure technique et les outils qui seront utilisés pour construire l'agent de trading.
+
+![Une présentation sous forme de liste à puces décrivant l'architecture technologique (stack) du projet d'agent de trading IA avec le présentateur en incrustation.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000217_seg7.jpg)
+*⏱️ 00:02:17 — Une présentation sous forme de liste à puces décrivant l'architecture technologique (stack) du projet d'agent de trading IA avec le présentateur en incrustation.*
 
 ---
 
@@ -129,11 +156,20 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And then I'm gonna get my notifications and ClickUp this time rather than Telegram, just because I live in ClickUp a lot more. So obviously some of these things can be interchangeable for you, but if you wanna just copy my exact setup in this video, then feel free. Okay, so how to get started with these different tools that we need for this video. The first one is gonna be Alpaca. So go to alpaca.markets. You can see up at the top, we even see want to trade using AI. We launched an Alpaca's MCP server to help you trade with natural language. So you could use that. I'm just using the endpoints. I honestly like to use endpoints a lot more. But anyways, you're going to sign up right here and you'll click on trading API. Now, once you get in there, you will have basically a paper trading
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Site web Alpaca (alpaca.markets), Présentation PowerPoint/Keynote.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste des composants : "Claude Code routines", "Opus 4.7", "Alpaca API", "Perplexity API", "ClickUp". Texte promotionnel : "API for Stock, Options, Crypto Trading & more".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation des outils nécessaires au développement de l'agent de trading automatisé.
+
+![Une diapositive listant la pile technologique (tech stack) pour construire un agent de trading IA, incluant Claude Code, Opus 4.7, Alpaca API, Perplexity API et ClickUp.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000240_seg8.jpg)
+*⏱️ 00:02:40 — Une diapositive listant la pile technologique (tech stack) pour construire un agent de trading IA, incluant Claude Code, Opus 4.7, Alpaca API, Perplexity API et ClickUp.*
+
+![La page d'accueil du site web Alpaca, spécialisé dans les API de trading pour les actions et les cryptomonnaies.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000249_seg8.jpg)
+*⏱️ 00:02:49 — La page d'accueil du site web Alpaca, spécialisé dans les API de trading pour les actions et les cryptomonnaies.*
+
+![La même interface du site Alpaca, affichant des exemples d'interfaces de trading sur ordinateur et sur mobile.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000257_seg8.jpg)
+*⏱️ 00:02:57 — La même interface du site Alpaca, affichant des exemples d'interfaces de trading sur ordinateur et sur mobile.*
 
 ---
 
@@ -143,11 +179,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > account. And right here, you can see I've got a paper trading account with a hundred K. You could also open up a new account right here. And that's how you could put real money in. You might, like I said, they'll have to just verify your account, which could take a couple of days. and then they're both the same as far as the credentials. You basically scroll down and on the right-hand side, you have your API keys right here. You get an endpoint and you get a key, but you also need like a secret key.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Plateforme de trading en ligne (Web Trade UI).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Soldes affichés : "Individual Trading" ($9,763.69) et "Paper Trading" ($99,837.81). Panneau de commande : "Buy/Sell", "Market Price", "Quantity: 1", "Order Type: Market".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation dans le menu des comptes pour montrer la différence entre le compte réel et le compte de simulation ("Paper Trading").
+
+![Interface de trading affichant un menu déroulant pour basculer entre un compte réel (Live Account) et un compte de démonstration (Paper Account) avec un panneau de passage d'ordres à droite.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000311_seg9.jpg)
+*⏱️ 00:03:11 — Interface de trading affichant un menu déroulant pour basculer entre un compte réel (Live Account) et un compte de démonstration (Paper Account) avec un panneau de passage d'ordres à droite.*
 
 ---
 
@@ -157,11 +196,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So you have like a secret key and then you need like an ID. So you hit regenerate, generate new keys and this is where you get your key and your secret. And once you copy and paste this, just make sure to save it because then it's gonna go away and you'll only be able to see the key, but you need both of them. Next up, I have ClickUp. This is where I wanna get my notifications. You don't have to use ClickUp.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web d'Alpaca Markets (Trading Platform).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : URL de l'Endpoint API, clé API (Key) et secret API (Secret) masqué par une note d'avertissement sur sa disparition imminente.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Génération et affichage des clés API pour l'authentification d'un compte de trading.
+
+![Capture d'écran montrant l'interface utilisateur d'Alpaca Markets affichant les identifiants API (Key et Secret) nouvellement générés, avec le présentateur en médaillon.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000330_seg10.jpg)
+*⏱️ 00:03:30 — Capture d'écran montrant l'interface utilisateur d'Alpaca Markets affichant les identifiants API (Key et Secret) nouvellement générés, avec le présentateur en médaillon.*
 
 ---
 
@@ -171,11 +213,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > You can use Slack. you could use, you know, whatever, Telegram, WhatsApp. I would go up here and go to my settings and then I scroll down and find ClickUp API and then I would just copy this token right here. And then similarly with perplexity, I would go down here and I would click on all settings, I think, and then in here I can see API platform and this is where I would be able to go find my actual API key.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : ClickUp (application web de gestion de projet).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Jeton API masqué commençant par "pk_81487" et se terminant par "B3BZ". Liste des applications personnalisées connectées (Zealot, ClickUp MCP Service, Zapier).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation dans les paramètres de l'utilisateur pour accéder à la section "ClickUp API" afin de copier le jeton d'authentification.
+
+![Page des paramètres "ClickUp API" affichant le jeton d'accès masqué et les applications intégrées (Zealot, ClickUp MCP Service, Zapier).](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000355_seg11.jpg)
+*⏱️ 00:03:55 — Page des paramètres "ClickUp API" affichant le jeton d'accès masqué et les applications intégrées (Zealot, ClickUp MCP Service, Zapier).*
 
 ---
 
@@ -185,11 +230,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > If I went down to right here, API keys, I can make a new one or copy an old one. But basically the way it works is every platform has typically API keys. You just have to find them in the settings somewhere. If you can't find them, just do a quick perplexity or Google search or even ask cloud code And it should be able to help you get to your api keys And now that you know how to get these keys just hold on to them We're going to actually plug them in later in the video And then the final piece of the puzzle is going to be the cloud desktop app You can see here you can have cloud chat You can have cloud co-work or you can be in cloud code And this is where we're going to set up these actual routines Where now if I go to my calendar, you can see every single day
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web de gestion de clés API (type plateforme de développement).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste de clés API nommées "DEV", "Usman - DEV", "Unnamed Key", "Skool Automation", "Klaus" et "Trade Bot" avec leurs jetons masqués et timestamps.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Consultation de la section "API Keys" pour visualiser ou générer de nouvelles clés d'accès.
+
+![Une interface de plateforme API affichant une liste de clés API masquées avec des noms associés, des dates de dernière utilisation et des boutons de suppression, avec le présentateur en médaillon.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000413_seg12.jpg)
+*⏱️ 00:04:13 — Une interface de plateforme API affichant une liste de clés API masquées avec des noms associés, des dates de dernière utilisation et des boutons de suppression, avec le présentateur en médaillon.*
 
 ---
 
@@ -199,11 +247,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > I've got bull which is my trading agent waking up at 6 8 30 noon, 3 p.m. And then on certain days, like on Fridays, he's doing a weekly review. So this is the way I currently have mine set up and we're able to manage everything right from here inside of the Claude desktop app because of this whole routine feature. So all you need to do to use the Claude desktop app is just type in Claude desktop app download, and you should be able to install it right here. You go to the downloads page and then you just have to choose the Claude desktop for your operating system. And then the only other thing you need to do is make sure that you are on an actual subscription. So it has to be a paid either 20 bucks a month plan or the max
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de gestion de workflow (type calendrier/tâches) et navigateur web (site officiel Anthropic).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste des tâches planifiées : "Bull — Pre-market research", "Bull — Market-open execution", "Bull — Midday scan", "Bull — Daily summary (EOD)", "Bull — Weekly review".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Visualisation du planning d'automatisation de l'agent IA de trading.
+
+![Interface d'une application de gestion de tâches ou calendrier montrant une liste de routines quotidiennes pour l'agent "Bull".](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000446_seg13.jpg)
+*⏱️ 00:04:46 — Interface d'une application de gestion de tâches ou calendrier montrant une liste de routines quotidiennes pour l'agent "Bull".*
 
 ---
 
@@ -213,11 +264,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > plans. Now in this video, you might also see me use cloud code inside of something that looks like this, which is the VS code IDE. And then we use cloud code extension inside of it. It's not mandatory, but that is where I typically prefer to use cloud code because I can see all of my files over here. So if you want to do that, just type in VS code in your browser, open this up. It's completely free to download and then go ahead and download it and connect your cloud code account.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code avec l'extension Claude Code.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Arborescence de fichiers (dossiers .claude, memory, routines, scripts et fichiers .md/.json), logo Claude Code, et zone de saisie pour interagir avec l'agent IA.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation de l'environnement de développement intégré utilisé pour la gestion des routines de trading via l'extension Claude Code.
+
+![Interface VS Code affichant l'extension Claude Code avec son panneau de contrôle central et l'arborescence du projet "TRADING ROUTINE" à gauche.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000518_seg14.jpg)
+*⏱️ 00:05:18 — Interface VS Code affichant l'extension Claude Code avec son panneau de contrôle central et l'arborescence du projet "TRADING ROUTINE" à gauche.*
 
 ---
 
@@ -227,11 +281,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So that is pretty much the tech stack that we're gonna be using today to get all of this set up. And let's get back to the video. Okay, so before we get into the actual step-by-step kind of build, we are going to need to talk about the mental model. So understand this before you write anything. The trading strategy is a piece of the work, but the memory architecture that you're gonna use is gonna be huge.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (image 1) et support de présentation/diaporama (image 2).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Code source TypeScript/React (image 1) et plan de cours détaillé incluant "Strategy", "Scaffold" et "Guardrails" (image 2).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation de la pile technologique (tech stack) et introduction conceptuelle (mental model) nécessaire avant le codage.
+
+![Page web de présentation d'un éditeur de code IA (type Windsurf ou similaire), affichant une interface d'édition avec un agent IA intégré dans le panneau latéral.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000539_seg15.jpg)
+*⏱️ 00:05:39 — Page web de présentation d'un éditeur de code IA (type Windsurf ou similaire), affichant une interface d'édition avec un agent IA intégré dans le panneau latéral.*
+
+![Diapositive de présentation listant les étapes du tutoriel : "Build a 24/7 AI trading agent with Opus 4.7", mettant l'accent sur "The mental model: files are the brain".](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000544_seg15.jpg)
+*⏱️ 00:05:44 — Diapositive de présentation listant les étapes du tutoriel : "Build a 24/7 AI trading agent with Opus 4.7", mettant l'accent sur "The mental model: files are the brain".*
 
 ---
 
@@ -241,11 +301,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So every time a routine fires at 7 a.m., Cloud Code basically wakes up essentially stateless. It doesn't really know anything. So how do you make a stateless agent act disciplined and remember rules and learn over time. You do that with files and with context. So every routine basically wakes up, reads files, does the job, and then writes back any important lessons or anything like that the next agent when it wakes up needs to know, it just writes that down.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Éditeur de texte ou application de prise de notes (type Notion ou Obsidian).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte pédagogique expliquant l'architecture de mémoire : "The mental model: files are the brain", "Every time a routine fires at 7am, Claude Code wakes up knowing nothing", "Files. The files ARE the brain."
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique conceptuellement comment rendre un agent IA persistant en utilisant le système de fichiers pour stocker et charger le contexte.
+
+![Une présentation sous forme de notes structurées expliquant le "mental model" selon lequel les fichiers servent de mémoire à un agent IA sans état (stateless).](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000601_seg16.jpg)
+*⏱️ 00:06:01 — Une présentation sous forme de notes structurées expliquant le "mental model" selon lequel les fichiers servent de mémoire à un agent IA sans état (stateless).*
 
 ---
 
@@ -255,11 +318,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And that's kind of at a very high level, the type of framework that we're gonna be using here. So the final thing I wanted to talk about before we get into this is the context budget. So treat tokens like money, obviously. Every file that you ask the agent to read, it's going to cost you. Each routine gets about 200,000 tokens to work with. I mean, we do have the a million token context window models now, but I don't really like to think of it like I have a million tokens to play with because context rot.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de présentation ou éditeur de texte type Notion/Obsidian.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste des étapes : "What we're building", "The stack", "The mental model: files are the brain", "The context budget", "STEP 1: STRATEGY", "STEP 2: SCAFFOLD", "STEP 3: GUARDRAILS", "STEP 4: SKILLS", "STEP 5: ROUTINES".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur passe en revue les points clés de sa méthodologie d'automatisation IA avant d'approfondir le concept de "context budget".
+
+![Une liste à puces présentant le plan de travail de la vidéo, structurée par étapes logiques allant de la stratégie aux routines.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000626_seg17.jpg)
+*⏱️ 00:06:26 — Une liste à puces présentant le plan de travail de la vidéo, structurée par étapes logiques allant de la stratégie aux routines.*
 
 ---
 
@@ -269,11 +335,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So system instructions will take some up, strategy files, your trade log, your API, your research. Every run is going to take a different amount of tokens, but just keep that in mind. And the reason here that we're using, if I go back to the stack, cloud code instead of just using something like, you know, the agent's SDK or, I mean, I guess that could work, but rather than just using like a standard automation is because if we do this with routines, we basically get the full autonomy of us working with Cloud Code manually because it goes through that whole agenda carnage loop of figuring things out.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Présentation type diapo (ex: Google Slides ou PowerPoint).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste détaillée des coûts en tokens pour les différents composants d'une routine IA : "System prompt + instructions" (10K), "Strategy file" (2K), "Trade log" (8K+), "Research log" (5K+), "API responses + web search" (5K+), totalisant 25K tokens de base.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique la nécessité d'optimiser la consommation de tokens pour les agents IA en ne lisant que les fichiers nécessaires.
+
+![Une diapositive de présentation expliquant la gestion du "budget de contexte" (tokens) pour un agent IA, avec le présentateur visible en médaillon à droite.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000651_seg18.jpg)
+*⏱️ 00:06:51 — Une diapositive de présentation expliquant la gestion du "budget de contexte" (tokens) pour un agent IA, avec le présentateur visible en médaillon à droite.*
 
 ---
 
@@ -283,11 +352,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And especially with Opus 4.7, it's apparently going to be really, really good. Whereas if you just had like an automation that would do research and then make a trade, you're not getting that super variability that you probably want with something that could be very volatile like trading. All right, so now that we got all of that stuff out of the way, Let's get into the strategy. So step one Think of this like you're teaching a kid to ride a bike You have to explain How to balance before you go you have to explain to the kid that he's going to Steer with his hands and he's going to pedal with his feet and even once you put him on the bike
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de présentation (type diapositives Google Slides ou Notion).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte détaillé sur le "Context budget" : "Treat tokens like money. Every file you ask the agent to read costs you." Liste des coûts en jetons : "System prompt + instructions: ~10K", "Strategy file: ~2K", "Trade log: ~8K+", "Research log: ~5K+", "API responses: ~5K+". Titres de sections : "The stack", "The mental model", "STEP 1: STRATEGY", "STEP 2: SCAFFOLD".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique la gestion optimale des jetons dans un workflow d'agent d'IA pour le trading, en mettant en garde contre une consommation excessive.
+
+![Une diapositive de présentation listant les contraintes budgétaires de jetons (tokens) pour un agent IA spécialisé dans le trading, illustrant les coûts en jetons par fichier consulté.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000722_seg19.jpg)
+*⏱️ 00:07:22 — Une diapositive de présentation listant les contraintes budgétaires de jetons (tokens) pour un agent IA spécialisé dans le trading, illustrant les coûts en jetons par fichier consulté.*
 
 ---
 
@@ -297,11 +369,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > You're not just going to let him go. You're going to hold the handlebars You're going to put your hand on his back and you're going to walk with him until he gets a little more comfortable And then slowly you might take off, you know, you might stop steering But you might just run behind him and then slowly you'll put on some training wheels and like you just keep bumping it up in phases. You can't expect to just throw a kid on a bike and it's instantly going to be magic. So maybe you want to start with paper trading. This is obviously not financial advice and I'm not recommending that you go put all of your life savings in here and expect to make money and then get mad at me. This is an experiment for me and I'm trying to show you guys what's possible. So just keep that in mind. Start with paper trading first if you're not comfortable.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de prise de notes ou éditeur de texte type Notion/Obsidian.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte affiché : "The mental model: files are the brain", "The context budget", "STEP 1: STRATEGY - Teaching a kid to ride a bike...", recommandations pour migrer ou créer des agents de trading (ex: "Manual trader? Write your approach in plain language"), et mentions sur les performances d'Opus 4.7.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique d'un framework conceptuel pour structurer la stratégie d'un agent IA avant son implémentation technique.
+
+![Une présentation sous forme de liste structurée détaillant une méthodologie de stratégie pour les agents IA, illustrant l'analogie de l'apprentissage du vélo.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000755_seg20.jpg)
+*⏱️ 00:07:55 — Une présentation sous forme de liste structurée détaillant une méthodologie de stratégie pour les agents IA, illustrant l'analogie de l'apprentissage du vélo.*
 
 ---
 
@@ -311,11 +386,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > But anyways, the idea is you need a strategy. So for me, what I'm going to do is I'm basically going to extract all of the strategy that we've been using from my open claw agent. And I'm just going to say, Hey, let's take this over to cloud code. So for me, it's a little easier, but for you, if you actually are like a manual trader and every day you think about things and you do research and you place trades or you sell things, then just write down your strategy. How often are you checking the news? What are the signals that make you realize I'm going to buy this, or I'm going to sell this as much of your gut intuition and your routine about trading that you can get into this cloud code project, the better. And then over time, you're going to help it learn from its mistakes.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de prise de notes ou éditeur de texte (style Notion ou document Markdown).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste de points structurés : "The mental model: files are the brain", "The context budget", "STEP 1: STRATEGY" (détails sur l'explication d'une stratégie pour un agent), mention de "Claude Code", note de non-conseil financier, et statistiques sur "Opus 4.7".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique d'un workflow de développement d'agent, illustrant les étapes logiques à suivre avant l'implémentation technique.
+
+![Une page de notes structurées présentant une méthodologie en trois étapes pour créer un agent de trading, avec le présentateur en médaillon dans le coin inférieur droit.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000829_seg21.jpg)
+*⏱️ 00:08:29 — Une page de notes structurées présentant une méthodologie en trois étapes pour créer un agent de trading, avec le présentateur en médaillon dans le coin inférieur droit.*
 
 ---
 
@@ -325,11 +403,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > You're going to iterate and it's going to get better and better every time you use it. But if you're starting completely fresh, which in my case of the open cloud trading challenge, I literally just said, hey, I'm doing a 30 day challenge. I'm trying to compete against my friend Salman. Go do research, spin up a team of sub agents. You're my wealth advisor. Try to beat the SMP, figure out the best plan possible. And that's like genuinely all that I said to it, which I think is pretty cool. And it went off and it did a bunch of research. It figured out a strategy for me. And then for the next 30 days, it just did that. And I barely had to touch it at all. So if you want to start off by playing around with some research like that, then certainly do
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Éditeur de texte riche / Application de prise de notes.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le document détaille le "STEP 1: STRATEGY" avec des conseils sur la mise en place d'une stratégie de trading pour agents IA (ex: "Manual trader? Write your approach in plain language"). Il mentionne "Claude Code" et "Opus 4.7" en tant qu'outils d'analyse. Le texte souligne que "files are the brain" et mentionne un avertissement "NOT FINANCIAL ADVICE".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur illustre les étapes conceptuelles de son workflow de trading assisté par IA, servant de guide pour définir la stratégie avant de passer à l'implémentation technique.
+
+![Une capture d'écran d'un document texte structuré (type Notion ou Obsidian) détaillant une stratégie d'utilisation d'agents IA pour le trading.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000905_seg22.jpg)
+*⏱️ 00:09:05 — Une capture d'écran d'un document texte structuré (type Notion ou Obsidian) détaillant une stratégie d'utilisation d'agents IA pour le trading.*
 
 ---
 
@@ -339,11 +420,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > that. But if you guys remember at the beginning of this video, I kind of alluded to this benchmark here. So in the official release, and by the way, I just dropped a full video on this new release. I'll tag that up here. So in the official release of Claude Opus 417, they always drop the benchmarks and they compare it to other models that are kind of leading in the industry as well. And so this is the one I wanted to talk about in this case, we have agentic financial analysis, 64.4%. We also have stuff like graduate level reasoning and, you know, just the ability to think really well.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Page web officielle d'annonce (ou documentation) présentant les capacités du modèle.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableau de scores comparant les modèles sur des tâches comme : "Agentic coding", "Agentic terminal coding", "Multidisciplinary reasoning", "Agentic search", "Scaled tool use" et "Agentic computer use".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle des résultats de benchmarking pour illustrer la supériorité ou le positionnement de Claude Opus 4.7 par rapport à la concurrence.
+
+![Tableau comparatif des performances de divers modèles d'IA (Opus 4.7, 4.6, GPT-5.4, Gemini 3.1 Pro, Mythos Preview) sur différents benchmarks.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_000944_seg23.jpg)
+*⏱️ 00:09:44 — Tableau comparatif des performances de divers modèles d'IA (Opus 4.7, 4.6, GPT-5.4, Gemini 3.1 Pro, Mythos Preview) sur différents benchmarks.*
 
 ---
 
@@ -353,11 +437,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > Agentic search actually is worse than Opus 4.6, which is interesting, but yeah, agentic financial analysis. So what does that actually mean? This basically means that it is really good at analyzing a company, but it's not basically a signal or a benchmark for how good this model is at trading and specifically day trading. Like this doesn't mean that it's going to be able to look at like a technical analysis and look at the candlesticks and the MACD and figure out the exact best moment to buy and then the exact moment to sell. I'm not going to try to day trade with these agents. I just don't know enough about it to do it. But that's not what this metric is saying.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de présentation de type document ou éditeur de texte formaté.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte structuré : conseils pour l'utilisation d'agents ("Migrating?", "Manual trader?", "Starting fresh?"), mise en garde ("NOT FINANCIAL ADVICE"), et performance benchmark ("64.4% on Agentic financial analysis").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Affichage informatif et pédagogique servant de support visuel aux explications du présentateur sur les capacités et limites des modèles IA pour le trading.
+
+![Une diapositive de présentation listant des étapes stratégiques pour configurer des agents financiers (Scaffold, Guardrails, Skills, Routines) accompagnée de commentaires sur les capacités d'analyse financière du modèle Opus 4.7.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001006_seg24.jpg)
+*⏱️ 00:10:06 — Une diapositive de présentation listant des étapes stratégiques pour configurer des agents financiers (Scaffold, Guardrails, Skills, Routines) accompagnée de commentaires sur les capacités d'analyse financière du modèle Opus 4.7.*
 
 ---
 
@@ -367,11 +454,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > This benchmark rewards models that can digest fillings and write coherent fundamentals driven theses or theses, I guess. And that maps to long term or swing or fundamentals driven strategies, not day trading. So that's why, once again, we're just going to be trying to beat the S&P here. Okay, so that is the overall strategy. Let's talk about the scaffold. So what you need to do to spin up the Cloud Code project in about 60 seconds is you're gonna open up a new folder and we're gonna open up Cloud Code.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Document textuel ou support de présentation (type éditeur de texte/Markdown).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte structuré : "Teaching a kid to ride a bike...", "64.4% on Agentic financial analysis", et une liste numérotée : "STEP 2: SCAFFOLD", "STEP 3: GUARDRAILS", "STEP 4: SKILLS", "STEP 5: ROUTINES".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur expose une feuille de route conceptuelle pour structurer un agent d'investissement avant son implémentation technique.
+
+![Une diapositive de présentation listant des étapes méthodologiques pour la création d'un agent de trading, incluant des conseils sur la stratégie et une mise en garde sur le conseil financier.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001036_seg25.jpg)
+*⏱️ 00:10:36 — Une diapositive de présentation listant des étapes méthodologiques pour la création d'un agent de trading, incluant des conseils sur la stratégie et une mise en garde sur le conseil financier.*
 
 ---
 
@@ -381,11 +471,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So let me hop over to my project right here. This is a new folder. It's called trading, I think trading routine. This is basically just a settings file. There's hardly anything in there. The cloud.md is blank and then we have a readme just because I turned this into a GitHub repo so I can pull it into a routine later. If you haven't done that yet, it's fine. We'll talk about that in a sec.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code avec extension/terminal Claude Code (v2.1.111).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Arborescence de fichiers : .claude, CLAUDE.md, README.md. Terminal : "Claude Code v2.1.111", "Opus 4.7 (1M context)", répertoire actuel "~/OneDrive/Desktop/Trading Routine".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation de la structure de fichiers du projet avant utilisation de l'outil Claude Code.
+
+![Interface VS Code affichant l'explorateur de fichiers d'un projet nommé "Trading Routine" et un terminal Claude Code actif.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001100_seg26.jpg)
+*⏱️ 00:11:00 — Interface VS Code affichant l'explorateur de fichiers d'un projet nommé "Trading Routine" et un terminal Claude Code actif.*
 
 ---
 
@@ -395,11 +488,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > The reason why we're starting here in VS Code is because I want to get started in a place where I can see all of my files on this left-hand side. Because if you're in the desktop app, which we will move over to here later, you don't get to see all your files open on the left-hand side. On the left-hand side, you see your routines and your other sessions, which is great. But when we're first getting set up, I like to be able to see everything in one spot.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code, Claude Code (CLI).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Explorateur de fichiers (dossier 'TRADING...', fichiers .claude/settings.local.json, CLAUDE.md, README.md). Terminal affichant "Claude Code v2.1.111", "Opus 4.7 (1M context)" et le chemin du répertoire actif.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur illustre l'utilisation de VS Code pour visualiser la structure des fichiers du projet tout en interagissant avec l'interface CLI de Claude Code.
+
+![Capture d'écran de VS Code affichant l'explorateur de fichiers sur la gauche et un terminal Claude Code actif dans la zone principale.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001118_seg27.jpg)
+*⏱️ 00:11:18 — Capture d'écran de VS Code affichant l'explorateur de fichiers sur la gauche et un terminal Claude Code actif dans la zone principale.*
 
 ---
 
@@ -409,11 +505,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So we're going to start here in the VS Code, either terminal or the Cloud Code extension. So let me show you guys what I did. This is my Telegram chat with Bull, my trading bot. and I said, hey, I want to completely migrate you to a different AI agent setup. I need you to break down the strategy, the cron jobs. What are you looking for when you're doing your research? What type of sub agents do you have?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code, terminal Claude Code, interface de messagerie Telegram.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Terminal : "Claude Code v2.1.111", "Opus 4.7 (1M context)". Telegram : Prompt détaillé sur les Cron jobs, les recherches (Alpaca API, analyse de données économiques) et les critères de trading.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur passe de l'environnement de développement VS Code à la revue de l'historique des discussions avec son agent de trading sur Telegram pour expliquer la logique de migration du système.
+
+![Interface de VS Code affichant un terminal actif avec Claude Code v2.1.111.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001138_seg28.jpg)
+*⏱️ 00:11:38 — Interface de VS Code affichant un terminal actif avec Claude Code v2.1.111.*
+
+![Capture d'une conversation Telegram superposée montrant le prompt de l'utilisateur demandant une migration de l'agent IA et la réponse détaillée du bot de trading "Bull" sur sa stratégie.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001142_seg28.jpg)
+*⏱️ 00:11:42 — Capture d'une conversation Telegram superposée montrant le prompt de l'utilisateur demandant une migration de l'agent IA et la réponse détaillée du bot de trading "Bull" sur sa stratégie.*
 
 ---
 
@@ -423,11 +525,18 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > What are the different signals? Give me the full breakdown, all of your learnings. And so it gave me all this stuff. And so what I'm gonna do is I'm just gonna basically migrate over this strategy into my Cloud Code project. You can see we have all of these cell signals. We have all of these key learnings and these kind of main frameworks. And we have our current portfolio. Real quick, guys, when it comes time for you to get set up. I have this free resource for you. It's a 13 page PDF. And I'm assuming if you dropped this thing into cloud code and then started to brainstorm with it, it would help you out a lot as far as the infrastructure and the folder structure and the way you want to get
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Telegram (image 1), Google Docs (image 2).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image 1 : Planning détaillé du bot (Pre-Market Research, Market Open à 8h30, Midday Scan à 12h, Daily Summary).
+- Image 2 : Liste de dépannage technique ("Cause/Fix") pour un bot de trading, incluant des erreurs Alpaca API, Git, et ClickUp, ainsi qu'une procédure de déploiement.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique la logique de fonctionnement de son bot de trading, puis passe en revue le guide de maintenance et de réplication du système pour les utilisateurs.
+
+![Une vue montrant une interface de messagerie (probablement Telegram) affichant un "Bull Trading Bot - Full System Breakdown" avec un planning détaillé des tâches automatisées (cron jobs) de 6h à 15h.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001200_seg29.jpg)
+*⏱️ 00:12:00 — Une vue montrant une interface de messagerie (probablement Telegram) affichant un "Bull Trading Bot - Full System Breakdown" avec un planning détaillé des tâches automatisées (cron jobs) de 6h à 15h.*
+
+![Une vue d'un document Google Docs intitulé "Trading Bot: Master Setup Guide" qui liste des problèmes techniques courants (bugs liés aux variables d'environnement, erreurs Git, clés API manquantes) et une "Replication Checklist".](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001217_seg29.jpg)
+*⏱️ 00:12:17 — Une vue d'un document Google Docs intitulé "Trading Bot: Master Setup Guide" qui liste des problèmes techniques courants (bugs liés aux variables d'environnement, erreurs Git, clés API manquantes) et une "Replication Checklist".*
 
 ---
 
@@ -437,11 +546,20 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > things set up and the way you want to create your routines and things like that. So it should be very helpful. This you can download for completely free in my free school community. The link for that is down in the description. Once you get in there, just head over to the classroom, click on YouTube resources, and you'll be able to find it right in there. So let's get back to the video. So I pulled it up real quick. You can see here's today. We had a bit of a jump and then we came back down today.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Google Docs, Plateforme Skool (AI Automation Society), Dashboard de courtage/investissement.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte technique sur l'architecture d'un bot de trading ("Claude Code", "Cron jobs", "LLM invocation"), navigation vers des ressources pédagogiques, données financières de portefeuille ($9,875.69).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation du guide de configuration du bot et navigation utilisateur dans l'interface de formation communautaire.
+
+![Document Google Docs affichant le "Trading Bot: Master Setup Guide", détaillant les jobs quotidiens d'un agent de trading autonome.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001230_seg30.jpg)
+*⏱️ 00:12:30 — Document Google Docs affichant le "Trading Bot: Master Setup Guide", détaillant les jobs quotidiens d'un agent de trading autonome.*
+
+![Interface de la plateforme communautaire Skool, montrant la section "Classroom" avec différents cours et ressources accessibles.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001235_seg30.jpg)
+*⏱️ 00:12:35 — Interface de la plateforme communautaire Skool, montrant la section "Classroom" avec différents cours et ressources accessibles.*
+
+![Tableau de bord d'un compte d'investissement affichant un graphique de performance de portefeuille sur une journée avec le solde actuel.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001240_seg30.jpg)
+*⏱️ 00:12:40 — Tableau de bord d'un compte d'investissement affichant un graphique de performance de portefeuille sur une journée avec le solde actuel.*
 
 ---
 
@@ -451,11 +569,18 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > Here's the past month. So this is where we were with the OpenClaw agent. But you guys are going to want to go to Alpaca and make an account, especially if you want to put real money in. You might have to take a few days for your account to get approved. So head over there and get an account. Then I also told it to give me a technical cheat sheet as far as like the different API endpoints it uses and how it makes those requests, as you can see, just because it already has all this knowledge.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Plateforme de trading (Alpaca) et interface de messagerie.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image #1 : Données de solde (Buying Power, Cash), graphique de prix.
+- Image #2 : Guide technique API Alpaca, incluant : APCA-API-KEY-ID, APCA-API-SECRET-KEY, endpoints API (base, market data) et requêtes GET pour les comptes et positions.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique les bases du trading automatisé et montre les ressources techniques (API) pour connecter un agent de trading à Alpaca.
+
+![Interface de portfolio financier montrant un graphique de performance sur une journée et les soldes du compte.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001250_seg31.jpg)
+*⏱️ 00:12:50 — Interface de portfolio financier montrant un graphique de performance sur une journée et les soldes du compte.*
+
+![Interface de chat (type Telegram) affichant une "fiche technique" (cheat sheet) sur l'API Alpaca, incluant les endpoints et les headers d'authentification.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001301_seg31.jpg)
+*⏱️ 00:13:01 — Interface de chat (type Telegram) affichant une "fiche technique" (cheat sheet) sur l'API Alpaca, incluant les endpoints et les headers d'authentification.*
 
 ---
 
@@ -465,11 +590,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So why waste time trying to train a new agent if we could just migrate over all of these memories and knowledge to this new agent. And then at the end of that, it even gave me an export of all of these important files, like the agent instructions, the trading strategy, the trade log, the research log, the weekly review. And I'm just basically gonna migrate all this over. So let me show you what that's gonna look like.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface de chat IA (probablement ChatGPT ou outil similaire) affichée au-dessus d'une plateforme de trading web.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Documentation API pour la gestion des ordres (Market, Trailing Stop, Stop), commandes de suppression de positions (DELETE /v2/positions), et notes sur les règles PDT (Pattern Day Trader) et les contraintes de l'API Alpaca.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Consultation de la base de connaissances de l'agent IA concernant les stratégies d'exécution de trading et les limitations techniques de l'API.
+
+![Une fenêtre contextuelle d'interface de chat (type LLM) superposée à un tableau de bord financier, détaillant des instructions techniques pour une API de trading (Alpaca) et des leçons apprises sur les règles de trading (PDT).](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001311_seg32.jpg)
+*⏱️ 00:13:11 — Une fenêtre contextuelle d'interface de chat (type LLM) superposée à un tableau de bord financier, détaillant des instructions techniques pour une API de trading (Alpaca) et des leçons apprises sur les règles de trading (PDT).*
 
 ---
 
@@ -479,11 +607,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So you can see that it gave me this zip file of all of those seven files. And I'm just basically going to extract those into this project right here. So I'm choosing the trading routine project, select folder, and then extract. and we should see all those files just popped up right over here on this left-hand side. Now what I'm gonna do is just talk to my Claude. I'm gonna switch over here to plan mode and I'm just gonna start talking.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code avec l'extension Claude Code (Opus 4.7) active dans le terminal intégré.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste de fichiers de projet : AGENT-INSTRUCTIONS.md, RESEARCH-LOG.md, TRADE-LOG.md, TRADING-STRATEGY.md, WEEKLY-REVIEW.md.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Extraction d'une archive ZIP vers le dossier de travail du projet "Trading Routine" et visualisation des fichiers extraits dans l'explorateur.
+
+![Fenêtre contextuelle Windows "Extract Archive" superposée à l'interface VS Code, invitant l'utilisateur à choisir une destination pour l'extraction de fichiers.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001330_seg33.jpg)
+*⏱️ 00:13:30 — Fenêtre contextuelle Windows "Extract Archive" superposée à l'interface VS Code, invitant l'utilisateur à choisir une destination pour l'extraction de fichiers.*
+
+![Interface VS Code après l'extraction, montrant la liste des nouveaux fichiers (MARKDOWN, logs de trading) apparus dans l'explorateur de projet "TRADING ROUTINE".](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001340_seg33.jpg)
+*⏱️ 00:13:40 — Interface VS Code après l'extraction, montrant la liste des nouveaux fichiers (MARKDOWN, logs de trading) apparus dans l'explorateur de projet "TRADING ROUTINE".*
 
 ---
 
@@ -493,11 +627,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > All right, so I am creating you as a 24-7 AI agent trade bot for me. I had a project set up with OpenClaw and we were trading $10,000 using Alpaca for the past 30 days and we were doing pretty well. But now I wanna move it over here so we can set you up as a Claude code routine.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code, Claude Code (CLI).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Arborescence de fichiers comprenant .claude, AGENT-INSTRUCTIONS, CLAUDE.md, TRADE-LOG.md, etc. Le terminal affiche "Claude Code v2.1.111", "Opus 4.7" et le mode "|| plan mode on".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Initialisation de l'environnement de développement pour configurer l'agent de trading IA via Claude Code.
+
+![Interface VS Code affichant l'explorateur de fichiers d'un projet nommé "Trading Routine" et une session active de l'outil Claude Code dans le terminal intégré.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001350_seg34.jpg)
+*⏱️ 00:13:50 — Interface VS Code affichant l'explorateur de fichiers d'un projet nommé "Trading Routine" et une session active de l'outil Claude Code dans le terminal intégré.*
 
 ---
 
@@ -507,11 +644,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So I just dropped in a ton of context for you. There's a ton of files in this project. If you want to just take a second to get sort of like acclimated to what I dropped in there, there's going to be a lot of information. But basically, that's like all of the knowledge and all of the strategies and all of the signals that our OpenClaw agent had and how it was able to be successful.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (éditeur), terminal Claude Code v2.1.111.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Arborescence de fichiers : .claude, AGENT-INSTRUCTIONS.md, CLAUDE.md, RESEARCH-LOG.md, TRADE-LOG.md, TRADING-STRATEGY.md, etc. Terminal : "Welcome to Opus 4.7 xhigh!", "plan mode on".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur présente l'environnement de développement préparé avec les fichiers de contexte et la configuration de l'agent Claude Code pour la routine de trading.
+
+![Interface VS Code affichant une liste de fichiers de projet (Trading Routine) et un terminal actif avec Claude Code en exécution.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001408_seg35.jpg)
+*⏱️ 00:14:08 — Interface VS Code affichant une liste de fichiers de projet (Trading Routine) et un terminal actif avec Claude Code en exécution.*
 
 ---
 
@@ -521,11 +661,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And I just want to migrate that over here to you so that we're not losing any of our knowledge. I'm also going to paste in some of the key things that it told me that you should make sure to know. So I'm going to drop in that stuff right below. Now some of this stuff you can take with a grain of salt because it might have been set up and optimized for an open claw Agent harness, but your clawed code you understand the best way to set up your projects and to do things So what's really important is that you're ingesting this information and you're understanding it and then you're helping yourself Organize this project in the way that makes the most sense to you Okay So I know that that is a ton of information that I just chucked into there and you guys might be sitting there like
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (éditeur de code), terminal Claude Code (Opus 4.7).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le prompt de l'utilisateur demande la migration d'un projet de bot de trading (utilisant OpenClaw et Alpaca) vers Claude Code. L'interface affiche également la structure de fichiers du projet (fichiers .md, environnement, logs de trading) et le mode "plan mode on".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Saisie d'un prompt dans le terminal pour initialiser la migration et le transfert de connaissances du projet vers l'agent IA.
+
+![Capture d'écran de l'interface VS Code affichant le terminal Claude Code (version 2.1.111) où l'utilisateur soumet une instruction pour migrer un projet de bot de trading vers cet environnement.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001431_seg36.jpg)
+*⏱️ 00:14:31 — Capture d'écran de l'interface VS Code affichant le terminal Claude Code (version 2.1.111) où l'utilisateur soumet une instruction pour migrer un projet de bot de trading vers cet environnement.*
 
 ---
 
@@ -535,11 +678,19 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > Okay, well, I don't have all those files. What do I do? This is where you just start to brainstorm literally treat this thing as if it is your best friend who is the best trader in the world And you are just trying to give it your strategy now So if we think back to earlier in step one where I talked about this strategy When you open up a piece of paper or sorry, you take out a piece of paper You open up a google doc and you just start writing down How do you actually trade? What's your approach?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code (éditeur de code), terminal d'agent IA (Opus 4.7), logiciel de présentation.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image #1 : Liste de fichiers (TRADE-LOG.md, RESEARCH-LOG.md, etc.) et logs système de l'agent ("Transmuting... (thinking)").
+- Image #2 : Plan d'action textuel pour la configuration d'un projet "Claude Code" (fichiers .env, clés API, objectifs).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : - Image #1 : L'agent IA est en phase active de traitement/réflexion sur le contenu des fichiers du projet.
+- Image #2 : Présentation pédagogique du workflow de déploiement d'un agent de trading automatisé.
+
+![Interface VS Code affichant un fichier Markdown de documentation de projet de trading avec une fenêtre de terminal "Opus 4.7" en cours de réflexion.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001503_seg37.jpg)
+*⏱️ 00:15:03 — Interface VS Code affichant un fichier Markdown de documentation de projet de trading avec une fenêtre de terminal "Opus 4.7" en cours de réflexion.*
+
+![Slide de présentation listant les étapes du projet : "Step 1: Strategy" à "Step 5: Routines", avec un zoom sur la structure "Step 2: Scaffold".](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001509_seg37.jpg)
+*⏱️ 00:15:09 — Slide de présentation listant les étapes du projet : "Step 1: Strategy" à "Step 5: Routines", avec un zoom sur la structure "Step 2: Scaffold".*
 
 ---
 
@@ -549,11 +700,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > Once you write down all this stuff and you basically just brain dump about how you want to do it Then you plug it into the cloud code and that's where you see how I set up this project here I'm just helping it get situated with what we want to do right now And honestly the more context and details that you give it right now The more it asks you questions the better as you can see i'm using the brainstorming skill from superpowers And it's going to start off by asking me some questions Okay, so I just answered some questions and I did want to show you guys this so it alerted me about something with security Inside of this template that open claw gave me it had my live alpaca key in there
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code avec terminal intégré (Claude Code / Anthropic Opus 4.7).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Arborescence de fichiers ("TRADING ROUTINE") incluant des fichiers .md (README, TRADE-LOG, RESEARCH-LOG) et logs d'exécution de l'agent ("Skill(superpowers:brainstorming)", "Transmuting...", "Opus 4.7 (1M context)").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA analyse le répertoire de travail, charge une compétence de "brainstorming" et commence à explorer la structure des fichiers du projet.
+
+![Interface de VS Code montrant l'exécution de Claude Code interagissant avec les fichiers d'un projet de trading, avec le présentateur en incrustation vidéo.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001528_seg38.jpg)
+*⏱️ 00:15:28 — Interface de VS Code montrant l'exécution de Claude Code interagissant avec les fichiers d'un projet de trading, avec le présentateur en incrustation vidéo.*
 
 ---
 
@@ -563,11 +717,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So i'm gonna go ahead and rotate those before we actually push this new one into production but just something to be thinking about when you're migrating stuff or when you're feeding in API keys directly to a chat. Just be careful of that kind of stuff. And I'm going to show you how we get our API keys set up in routines because you don't want to put them straight into a GitHub repo. You're going to have to set them up in the environment variable. So I will show you guys that as well. Okay. So at this point, it's come back with a plan. So Nate ran a live money opaca trading bot called Bull on the open claw harness for 30 days. And now we have all these context files with strategy, with trade history, with research notes, blah, blah, blah. The goal of
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code avec intégration de l'agent IA (Claude Code / Opus 4.7).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte de la discussion IA traitant de la migration de fichiers contextuels (trading-strategy, trade-log, research-log), des décisions architecturales et de l'avertissement de sécurité sur les clés API exposées.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Analyse et planification par l'agent IA du processus de migration du projet de trading vers un environnement Claude Code plus sécurisé et structuré.
+
+![Interface VS Code affichant une discussion avec un agent IA (Opus 4.7) soulignant une vulnérabilité de sécurité concernant des clés API Alpaca et AgentMail en texte brut dans le fichier env-template.txt.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001601_seg39.jpg)
+*⏱️ 00:16:01 — Interface VS Code affichant une discussion avec un agent IA (Opus 4.7) soulignant une vulnérabilité de sécurité concernant des clés API Alpaca et AgentMail en texte brut dans le fichier env-template.txt.*
+
+![Interface VS Code affichant le plan de migration détaillé par l'agent IA pour transférer le bot de trading "Bull" de l'infrastructure OpenClaw vers Claude Code, incluant la gestion sécurisée des identifiants.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001618_seg39.jpg)
+*⏱️ 00:16:18 — Interface VS Code affichant le plan de migration détaillé par l'agent IA pour transférer le bot de trading "Bull" de l'infrastructure OpenClaw vers Claude Code, incluant la gestion sécurisée des identifiants.*
 
 ---
 
@@ -577,11 +737,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > this migration is to make Cloud Code a first class home for this bot. So we will set up the cron scheduling, the notifications. We're getting rid of that agent mail step. So me and Salman, we're having our agents trash talk each other. We're going to rotate our credentials, of course. And then it's proposing a layout for the way that the file should be set up. So you can see it's going to put the files in here into the memory. And then we're going to be able to prompt our routines to always check the memory first and update the memory. So this is where it will really help for you guys to brainstorm with how the project should be set up. Oh, one other thing that I forgot to give it here is that I want it to use perplexity for research. So I'm going to
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (Visual Studio Code).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableau de planification : "Cron scheduling" (Deferred), "Notifications" (ClickUp), "TradeBot / AgentMail rivalry" (Dropped), "Credential rotation" (Rotate keys). Présence d'une arborescence de fichiers dans le panneau de gauche (TRADING ROUTINE).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation de la documentation technique et de la structure du projet pour la migration vers Claude Code.
+
+![Une capture d'écran de l'éditeur VS Code montrant un fichier README.md qui détaille les décisions de migration du projet (roadmap) avec un tableau récapitulatif.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001634_seg40.jpg)
+*⏱️ 00:16:34 — Une capture d'écran de l'éditeur VS Code montrant un fichier README.md qui détaille les décisions de migration du projet (roadmap) avec un tableau récapitulatif.*
 
 ---
 
@@ -591,11 +754,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > come down here to the bottom of the plan and I'm going to say, yeah, this all looks pretty much good to go. But one thing I forgot to tell you is that we want to use perplexity for research rather than just the native cloud code web search and web fetch function. So add in that perplexity will be used for web search. And once again, once we set up the routine, that's when I'll give you the perplexity API key. Okay. So after this change has been made, we should be ready to start migrating over to setting up the routines.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (Visual Studio Code)
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Document markdown affichant un plan d'exécution pour "Alpaca wiring", "Memory files load", "Slash commands", des tests "Dry-run", et "ClickUp placeholder". Options finales : 1. Yes, and use auto mode, 2. Yes, manually approve edits, 3. No, refine with Ultraplan on Claude Code on the web, 4. Tell Claude what to change.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur est en train de réviser le plan d'exécution de l'agent et s'apprête à modifier les instructions pour intégrer Perplexity comme outil de recherche.
+
+![Interface VS Code affichant un plan de test détaillé pour un agent IA nommé "Claude", avec une liste d'étapes numérotées et des options de validation en bas de page.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001704_seg41.jpg)
+*⏱️ 00:17:04 — Interface VS Code affichant un plan de test détaillé pour un agent IA nommé "Claude", avec une liste d'étapes numérotées et des options de validation en bas de page.*
 
 ---
 
@@ -605,11 +771,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > All right, so the new plan has come back. So here's the end-to-end check. Secrets, alpaca, memory files, slash commands, dry run, click up, perplexity, nice. We're gonna go ahead and accept these changes. And you also notice that we have auto mode on. So I think with this new update with Opus 4.7, when you auto accept a plan, it turns on auto mode, which means it lets Cloud handle permission prompts automatically.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (Visual Studio Code) avec une vue de fichiers à gauche et un éditeur de texte/terminal affichant une procédure de test à droite.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste numérotée de 8 étapes de vérification pour un système de trading automatisé : 1. Secrets, 2. Alpaca, 3. Memory files, 4. Slash commands, 5. Dry-run /portfolio, 6. Dry-run /pre-market, 7. ClickUp, 8. Perplexity.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur passe en revue les étapes du plan de validation ("end-to-end check") pour s'assurer que l'intégration du système de trading fonctionne correctement avant de valider les changements.
+
+![L'écran montre une liste de vérification "end-to-end" affichée dans un éditeur de code, avec le présentateur en médaillon dans le coin inférieur gauche.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001729_seg42.jpg)
+*⏱️ 00:17:29 — L'écran montre une liste de vérification "end-to-end" affichée dans un éditeur de code, avec le présentateur en médaillon dans le coin inférieur gauche.*
 
 ---
 
@@ -619,11 +788,19 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > Now you will have to be careful though, because doing this is a little bit more expensive. So if you don't want it to be auto mode, then you can just switch it right off of auto mode, of course. But yeah, just something I wanted to point out. All right. So while all of that's still getting set up, let's talk about step three, which is guardrails. So before you start working in the trading logic, think about this kind of stuff. I obviously talked about how you could start with paper mode and then you toggle on real trading and put in money when you feel comfortable.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (avec extension d'agent IA intégrée) et éditeur de texte/Markdown.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image #1 : Commande Bash pour vérifier les secrets dans l'historique Git et prompt de validation "Do you want to proceed? 1. Yes, 2. No".
+- Image #2 : Liste de consignes pour configurer un environnement d'agent, notamment la gestion des clés API (.env) et les règles de sécurité (Guardrails) pour le trading.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : - Image #1 : L'utilisateur est invité à autoriser l'exécution d'une commande système sécurisée par l'agent.
+- Image #2 : Présentation pédagogique des meilleures pratiques pour structurer un projet d'automatisation IA avant le déploiement.
+
+![Interface de VS Code affichant une invite de commande interactive d'un agent IA demandant une validation pour exécuter une commande Git sensible.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001752_seg43.jpg)
+*⏱️ 00:17:52 — Interface de VS Code affichant une invite de commande interactive d'un agent IA demandant une validation pour exécuter une commande Git sensible.*
+
+![Document textuel (fichier Markdown) détaillant les étapes de configuration d'un projet d'agent IA, incluant les sections "Scaffold" et "Guardrails".](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001758_seg43.jpg)
+*⏱️ 00:17:58 — Document textuel (fichier Markdown) détaillant les étapes de configuration d'un projet d'agent IA, incluant les sections "Scaffold" et "Guardrails".*
 
 ---
 
@@ -633,11 +810,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > You could do things like, hey, max 5% of my portfolio per position. You could have a daily loss cap. You could tell the agent what not to do, like only buy three new positions per week or no options ever, or don't do this, or always do this, because the agent is gonna be autonomous. It's gonna be eager. And if you don't give it guardrails, it might just kind of start to go off the rails. But like I said, even though I'm migrating a system over, I know it's not gonna be perfect.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de présentation ou éditeur de documents (type Notion ou Google Docs).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste détaillée des étapes : "STEP 2: SCAFFOLD" (configuration du projet Claude Code) et "STEP 3: GUARDRAILS" (règles de sécurité comme la limite de 5% par position, plafonds de perte, et instructions explicites pour l'IA).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation conceptuelle des règles de gouvernance à implémenter pour contrôler le comportement d'un agent de trading autonome.
+
+![Une diapositive textuelle structurée présentant les étapes de configuration d'un agent de trading IA, se concentrant particulièrement sur les "Guardrails" (garde-fous).](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001816_seg44.jpg)
+*⏱️ 00:18:16 — Une diapositive textuelle structurée présentant les étapes de configuration d'un agent de trading IA, se concentrant particulièrement sur les "Guardrails" (garde-fous).*
 
 ---
 
@@ -647,11 +827,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So I'm gonna watch every single run, and I'm gonna read through the conversation history of every run. And I'm gonna see if there's things that I needed to tweak in the prompt or things that I needed to tweak in the project settings or the context files. And like I said, just kind of keep building the plane as we're flying it here. And then that's where we also start to develop skills. Because right now we have skills maybe for like a research skill or for a trade skill, but we're going to make sure that we're getting them actually explicitly invoked. And we're going to be making sure that that increases the consistency. And we're going to make sure that the agent is able to give us insights every day of, hey, here's what worked well. And here's what
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Éditeur de présentation ou document structuré (type Notion ou Google Docs).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste détaillée des étapes : "STEP 2: SCAFFOLD" (configuration du projet Claude Code) et "STEP 3: GUARDRAILS" (règles de gestion des risques comme le mode papier par défaut, la limite de perte quotidienne et les instructions restrictives pour l'agent).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique du framework méthodologique pour structurer et sécuriser un agent IA autonome.
+
+![Une diapositive de présentation listant les étapes du workflow pour un agent de trading IA, mettant en avant la configuration (Scaffold) et les règles de sécurité (Guardrails).](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001840_seg45.jpg)
+*⏱️ 00:18:40 — Une diapositive de présentation listant les étapes du workflow pour un agent de trading IA, mettant en avant la configuration (Scaffold) et les règles de sécurité (Guardrails).*
 
 ---
 
@@ -661,11 +844,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > I noticed. And hey, here's where I think that maybe we should update these skills, X, Y, and Z, you know, whatever. So a combination of thinking about the guardrails and thinking about skills is how you can continuously make this thing better over time. And now that we've talked about all that. We will get to the routines and the deployment. Let's check in on our guy right here. And because I turned it off auto mode, it was sitting and waiting for me to do a permission.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (Visual Studio Code).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Commandes Bash pour tester les intégrations ClickUp, Perplexity et Alpaca : `bash scripts/clickup.sh`, `bash scripts/perplexity.sh`, `bash scripts/alpaca.sh`, suivies d'une invite de confirmation utilisateur.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Exécution de tests de robustesse (fallbacks) pour vérifier le comportement des scripts de l'agent lorsque les clés API sont absentes ou mal configurées.
+
+![Capture d'écran de l'éditeur VS Code montrant un terminal interactif avec l'exécution de scripts Bash pour tester des "fallbacks" (mécanismes de secours) d'un agent de trading.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001922_seg46.jpg)
+*⏱️ 00:19:22 — Capture d'écran de l'éditeur VS Code montrant un terminal interactif avec l'exécution de scripts Bash pour tester des "fallbacks" (mécanismes de secours) d'un agent de trading.*
 
 ---
 
@@ -675,11 +861,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > All right. So everything has been migrated. We're looking good, but we're getting a little bit to the point where I like to reset the context. So before we move on, I'm going to say, hey, give me a summary of what we've done. And then I'm going to clear the context and we'll get started again. All right. So here's the session summary that it gave me. Copy that, do a slash clear, paste that in, hit enter. And now we're basically right back at the beginning with a fresh window of context. So this is where it gets pretty cool. You can see on the left-hand side, it has reorganized things. We have our scripts, we have our memory files, we even have some commands in here. And it built all of that just because I told it that I was trying to migrate stuff over.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code avec terminal intégré (utilisant l'agent Opus 4.7).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Documentation technique, étapes de déploiement (rotation des clés, variables d'environnement), état du portfolio (positions ouvertes, performance), et logs d'exécution de l'agent.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Revue de la documentation du projet et vérification de l'état actuel de l'agent avant la réinitialisation du contexte demandée par l'utilisateur.
+
+![Interface VS Code affichant un fichier Markdown listant des instructions de configuration pour des API (Alpaca, ClickUp, Perplexity) et des étapes de finalisation du projet.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001936_seg47.jpg)
+*⏱️ 00:19:36 — Interface VS Code affichant un fichier Markdown listant des instructions de configuration pour des API (Alpaca, ClickUp, Perplexity) et des étapes de finalisation du projet.*
+
+![Interface VS Code affichant un résumé de la session (profil, état du projet, statistiques du portfolio) avec une notification d'erreur d'un serveur MCP.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_001954_seg47.jpg)
+*⏱️ 00:19:54 — Interface VS Code affichant un résumé de la session (profil, état du projet, statistiques du portfolio) avec une notification d'erreur d'un serveur MCP.*
 
 ---
 
@@ -689,11 +881,18 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > It also updated this Claude.md file because now we have Bull back in all of his glory. And we have our Claude.md file that is about 156 lines. So now it's time to start planning out step five, which is the routines. So we basically need to figure out what are the different daily triggers that we actually want. And we also don't maybe want them every day because the market's only open five days a week. So this is kind of like a baseline. This is kind of how it worked with my bull trading agent, but I'm actually just going to come into VS code and we're just going to brainstorm once again. So I'm going to go on plan mode and I'm just going to start asking.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (Éditeur de code Markdown).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image 1 : Contenu Markdown détaillant où écrire les données de trading (Morning research, EOD snapshot, etc.) et une directive sur le re-fetch des données.
+- Image 2 : Liste des tâches automatisées avec horaires (7:00 AM à 3:30 PM CT) et description des actions (recherche, placement d'ordres, réévaluation, reporting).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le créateur passe en revue les fichiers de configuration de l'agent "Bull" et structure le calendrier opérationnel des routines quotidiennes de l'IA.
+
+![Vue de l'éditeur VS Code affichant le fichier 'CLAUDE.md' avec les instructions pour l'agent de trading 'Bull', incluant une table de logs et une règle de sécurité.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002010_seg48.jpg)
+*⏱️ 00:20:10 — Vue de l'éditeur VS Code affichant le fichier 'CLAUDE.md' avec les instructions pour l'agent de trading 'Bull', incluant une table de logs et une règle de sécurité.*
+
+![Capture d'écran montrant la planification de l'étape "STEP 5: ROUTINES" avec la liste des déclencheurs quotidiens (pre-market, market open, midday, EOD) et la contrainte de timing.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002018_seg48.jpg)
+*⏱️ 00:20:18 — Capture d'écran montrant la planification de l'étape "STEP 5: ROUTINES" avec la liste des déclencheurs quotidiens (pre-market, market open, midday, EOD) et la contrainte de timing.*
 
 ---
 
@@ -703,11 +902,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > All right. So now that you know everything about this project and you understand what we did with open claw, I want you to help me figure out what is the best way that we should be setting up these cloud code routines to basically simulate that exact same type of environment. So we have those cron jobs, but each one is kind of doing a bit of a different thing. You know, the pre-market one does a bit of a different job than the mid-market one, and the day close one does a bit of a different job. So you have a better idea of all of our memory files and our skills, and you understand the structure of every time the agent wakes up and the routine is triggered, they need
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (avec extension de terminal intégrée).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le fichier affiche le statut "Phase 2" du projet de bot de trading au 16 avril 2026, incluant les détails du portefeuille (~9 840 $), les positions ouvertes (DVN, FANG, HAL, WMT, XOM) et les règles de gestion (trailing stops à 10%). En bas, le terminal affiche "Opus 4.7" en "plan mode".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique la structure et le contexte du projet tandis que le fichier de planification ("all-right-so-i-peppy-peacock.md") est affiché à l'écran.
+
+![Une capture d'écran de l'éditeur VS Code affichant un fichier Markdown récapitulant l'état du projet "Trading Routine", avec le présentateur incrusté en bas à gauche.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002042_seg49.jpg)
+*⏱️ 00:20:42 — Une capture d'écran de l'éditeur VS Code affichant un fichier Markdown récapitulant l'état du projet "Trading Routine", avec le présentateur incrusté en bas à gauche.*
 
 ---
 
@@ -717,11 +919,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > to read the files first to, you know, kind of get acclimated with the environment, do what they need to do, research, potentially make a trade, potentially sell something, you know, whatever it is based on their best judgment, and then update all of the memory files so that next time the next agent wakes up, they understand what's going on. So what I want you to do is help me figure out what are the right structure for these cron jobs. And most likely we only want them during the week when the market's actually open. And just like that, I'm able to brain dump and Claude's going to do the heavy lifting for me and propose some ideas. Okay, let's see the plan that it came up
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (éditeur de code) intégrant un terminal Opus 4.7.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Contenu textuel détaillant le statut d'un agent de trading ("Phase 2 status"), incluant le solde du portfolio, les positions ouvertes (DVN, FANG, HAL, WMT, XOM) et les préférences utilisateur (ClickUp, Perplexity). Le terminal indique "plan mode on".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent affiche l'état actuel de la mémoire et du projet pour préparer les prochaines étapes de l'automatisation.
+
+![Interface VS Code affichant un fichier Markdown de documentation de projet et une console terminal avec "Opus 4.7" en cours d'exécution.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002116_seg50.jpg)
+*⏱️ 00:21:16 — Interface VS Code affichant un fichier Markdown de documentation de projet et une console terminal avec "Opus 4.7" en cours d'exécution.*
 
 ---
 
@@ -731,11 +936,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > with. So stand up five recurring clog code scheduled triggers. And we've got these different slash commands that it's going to be able to utilize. So all five triggers will run on the weekdays only except for the weekly review, which is Friday only. So we have a pre-market, which is for research catalysts and draft trade ideas. It won't message me unless it's urgent.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (éditeur de texte).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Documentation technique listant les commandes slash (/pre-market, /market-open, /midday, /daily-summary, /weekly-review) et leur logique d'interaction avec les fichiers de logs (TRADING-STRATEGY.md, TRADE-LOG.md, RESEARCH-LOG.md).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation du design du système d'automatisation des déclencheurs récurrents pour l'agent Claude Code.
+
+![Capture d'écran montrant l'éditeur VS Code avec un fichier markdown ouvert, détaillant la planification et le fonctionnement de cinq déclencheurs automatiques pour un agent trading.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002146_seg51.jpg)
+*⏱️ 00:21:46 — Capture d'écran montrant l'éditeur VS Code avec un fichier markdown ouvert, détaillant la planification et le fonctionnement de cinq déclencheurs automatiques pour un agent trading.*
 
 ---
 
@@ -745,11 +953,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > We have a market open, which is going to execute the planned trades and set 10% trailing stops. that'll go to the trade log. Only if a trade is placed will I get a notification. We have midday, which will cut minus 7% losers and tighten stops on winners. Also go into trade log. So here you guys can see, basically it was able to analyze our strategy and analyze what we have access to and then build me a plan.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (Visual Studio Code).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableau listant les commandes : "/pre-market", "/market-open", "/midday", "/daily-summary", et "/weekly-review", avec leurs fréquences cron, objectifs, fichiers logs associés et conditions de notification.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique la structure de son système de trading automatisé, pointant spécifiquement les lignes concernant l'exécution à l'ouverture du marché et la routine de milieu de journée.
+
+![Un tableau récapitulatif affiché dans VS Code détaillant cinq routines de trading automatisées pilotées par des commandes slash et des jobs cron.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002206_seg52.jpg)
+*⏱️ 00:22:06 — Un tableau récapitulatif affiché dans VS Code détaillant cinq routines de trading automatisées pilotées par des commandes slash et des jobs cron.*
 
 ---
 
@@ -759,11 +970,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And now what I wanna do is basically just have it create those prompts for me so that I can go ahead and go set up those routines in Cloud Code. All right, so those crons look great. So I don't need you to actually create them. What I need you to create for me is the prompts. as if I was going to run one of those commands into a fresh cloud code session and I wanted it to do all the right stuff, what is the exact prompt that I would enter into that session?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (Visual Studio Code)
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableau présentant des commandes (ex: /midday, /daily-summary, /weekly-review), des expressions cron, des descriptions d'actions, et des noms de fichiers cibles (ex: TRADE-LOG.md). Texte explicatif sur la logique des expressions cron et le fuseau horaire (America/Chicago).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur passe en revue les configurations cron générées pour ses routines de trading automatisées avant de demander la création de prompts spécifiques.
+
+![Capture d'écran de l'interface VS Code montrant un tableau de tâches automatisées (crons) pour une routine de trading et une explication technique des expressions cron associées.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002227_seg53.jpg)
+*⏱️ 00:22:27 — Capture d'écran de l'interface VS Code montrant un tableau de tâches automatisées (crons) pour une routine de trading et une explication technique des expressions cron associées.*
 
 ---
 
@@ -773,11 +987,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And the one thing that you need to keep in mind here is reminding it to obviously read the files before it does anything and update the files at the end. And then also when it needs to use an API like Perplexity or ClickUp or Alpaca, that it should be grabbing those keys from the environment variables of that environment, not inside a .env file.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (Visual Studio Code)
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Plan détaillé incluant : 
+- Routine de trading (6 AM, 8:30 AM, 12 PM, 3 PM) et revue hebdomadaire.
+- Pré-requis techniques : clés API pour Alpaca, Perplexity, ClickUp.
+- Options d'interaction avec l'agent : "Yes, use auto mode", "Yes, manually approve edits", etc.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'utilisateur visualise le plan généré par l'agent et s'apprête à valider ou modifier les paramètres d'exécution.
+
+![Interface VS Code affichant un plan d'exécution pour un agent d'automatisation de trading, avec une liste de tâches pour les routines matinales et hebdomadaires, ainsi qu'une invite de commande pour valider l'exécution.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002250_seg54.jpg)
+*⏱️ 00:22:50 — Interface VS Code affichant un plan d'exécution pour un agent d'automatisation de trading, avec une liste de tâches pour les routines matinales et hebdomadaires, ainsi qu'une invite de commande pour valider l'exécution.*
 
 ---
 
@@ -787,11 +1007,19 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > All right, and now with that feedback, it should be able to give us those prompts, and then we should be able to just set up the routines and go ahead and test them out. Okay, so while this is writing up, there is one more thing that I wanted to show you guys that is very important. So in the Cloud Code desktop app, when you go to routines and you go to create a new one, you can see that you can create them locally or remote. So if you create them locally, like some of these I have, this just basically means that it lives in your local directory.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (avec terminal intégré) et interface de bureau Claude.ai/Opus.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image 1 : Journal de bord de l'agent ("Let me verify...", "Updated plan", "Plan written", "Thinking") et indicateurs de consommation de jetons (4.6k tokens).
+- Image 2 : Liste de sessions ("Notification responses", "AI news roundup") sous le nom de projet "nateherkai/Scheduled-Automation".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : - Image 1 : L'agent analyse le code et prépare un plan d'exécution pour automatiser des tâches via des commandes slash.
+- Image 2 : Navigation dans l'historique des sessions et état de préparation des automatisations prêtes à l'emploi.
+
+![Interface VS Code affichant un terminal interactif avec un agent IA en cours de réflexion et de planification.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002310_seg55.jpg)
+*⏱️ 00:23:10 — Interface VS Code affichant un terminal interactif avec un agent IA en cours de réflexion et de planification.*
+
+![Interface de l'application Claude (mode projet) affichant une liste de sessions "Ready" et des automatisations planifiées.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002316_seg55.jpg)
+*⏱️ 00:23:16 — Interface de l'application Claude (mode projet) affichant une liste de sessions "Ready" et des automatisations planifiées.*
 
 ---
 
@@ -801,11 +1029,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > It can still talk to the internet and do all those things, but it lives in your machine, essentially. and that means if you closed out of this desktop app, that local routine would not fire off. And that's why these remote routines are so cool because your computer can be off, but they're still running because they run in the cloud. But what that means is when you do a remote run, you have to have a GitHub repository to have this run in, which is why I have this trading routine repo set up.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de bureau de gestion d'automatisation d'agents IA (interface utilisateur sombre).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste des routines : "Skool wins engagement", "AI news roundup", "Notification responses", "Youtube comment replies", "Trade Test", "Testing Skool Wins", "Testing YT Comments", "Testing ClickUp API". Indicateurs de statut « Local » ou « Remote » et « Paused ».
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Visualisation et gestion de la configuration des routines d'automatisation, mettant en évidence la différence entre l'exécution locale et distante.
+
+![Une vue de l'interface logicielle montrant une liste de « Routines » classées en types « Local » et « Remote », avec le présentateur en médaillon en bas à gauche.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002334_seg56.jpg)
+*⏱️ 00:23:34 — Une vue de l'interface logicielle montrant une liste de « Routines » classées en types « Local » et « Remote », avec le présentateur en médaillon en bas à gauche.*
 
 ---
 
@@ -815,11 +1046,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And so when they run via a cloud routine, it basically clones that repo in the cloud. It spins up a copy. it works out of it, it does what it needs to do. And then it basically like destroys that cloud environment. So if you want them to run remotely and you want those files to persist every session, you just have to talk to cloud code and say, hey, make sure, you know, because we're doing a routine, make sure that all of these files that it's actually updating, it's able to push back and commit back to that main actual branch, back to that main.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web de gestion d'agents IA (probablement une plateforme d'automatisation basée sur Claude/Opus).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Formulaire de saisie : "Name", "Describe what Claude should do", sélecteur de modèle "Opus 4.7 Adaptive", bouton "Select a repository" et option "Nate Herk Cloud". Sections de configuration des déclencheurs ("Trigger") par cron, webhook GitHub ou requête POST.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Configuration d'une nouvelle routine d'automatisation incluant la sélection d'un dépôt GitHub et la définition du mode d'exécution cloud.
+
+![Une fenêtre modale de configuration d'une routine automatisée, avec des champs pour nommer la routine, décrire la tâche pour Claude, sélectionner un dépôt GitHub et choisir un environnement d'exécution.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002401_seg57.jpg)
+*⏱️ 00:24:01 — Une fenêtre modale de configuration d'une routine automatisée, avec des champs pour nommer la routine, décrire la tâche pour Claude, sélectionner un dépôt GitHub et choisir un environnement d'exécution.*
 
 ---
 
@@ -829,11 +1063,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And we just got a notification from my trading bot because it was market close. But anyways, I was saying, make sure that it's able to push those changes back to the main repo. Otherwise, the next agent's not going to pick it up. And then what's even the point? So you can start local if you want, and then you can sort of graduate to the cloud if you want. But I definitely just wanted to make sure you guys understood that difference there.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web de configuration d'automatisation (potentiellement une plateforme de gestion d'agents Claude).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Formulaire avec les champs : "Name", "Describe what Claude should do", sélection du modèle ("Opus 4.7 Adaptive"), option "Select a repository" et paramètres de "Trigger" (schedule, webhook event, POST request).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Configuration d'une nouvelle routine ou automatisation liée à un dépôt GitHub pour qu'un agent IA exécute des tâches programmées ou événementielles.
+
+![Interface de configuration d'une routine d'agent IA, montrant les champs pour définir le nom, la description des tâches pour Claude, la sélection du dépôt GitHub et les options de déclenchement (trigger).](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002427_seg58.jpg)
+*⏱️ 00:24:27 — Interface de configuration d'une routine d'agent IA, montrant les champs pour définir le nom, la description des tâches pour Claude, la sélection du dépôt GitHub et les options de déclenchement (trigger).*
 
 ---
 
@@ -843,11 +1080,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > Okay, so that's done. You can see it created this new folder right here called routines. And this is basically the prompt that we'd be feeding into each of the different routines that we make in order to make sure that Bull actually understands what to do. And the last thing we need to do is actually push all of these new changes to this GitHub repo, because right now here's my trading routine private repo.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (Image 1), GitHub (Image 2).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Code Markdown du prompt pour l'agent "Bull" (rôle, gestion du compte Alpaca, workflow de fin de journée, lecture de logs) dans Image 1 ; structure du dépôt "trading-routine" avec un fichier README dans Image 2.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique la structure des fichiers de routines dans l'IDE avant de basculer sur l'interface GitHub pour montrer le déploiement du dépôt.
+
+![L'éditeur VS Code affichant le fichier "daily-summary.md" situé dans le dossier "routines", contenant le prompt système pour le bot de trading "Bull".](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002448_seg59.jpg)
+*⏱️ 00:24:48 — L'éditeur VS Code affichant le fichier "daily-summary.md" situé dans le dossier "routines", contenant le prompt système pour le bot de trading "Bull".*
+
+![Interface GitHub montrant le dépôt privé "trading-routine" nouvellement créé par l'utilisateur "nateherkai".](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002458_seg59.jpg)
+*⏱️ 00:24:58 — Interface GitHub montrant le dépôt privé "trading-routine" nouvellement créé par l'utilisateur "nateherkai".*
 
 ---
 
@@ -857,11 +1100,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > All that's in there is a readme and I don't think there's anything in here. So we need to get all of these files that we just created, you know, these commands, these scripts, these memory files. We just have to get all of this into that repo so that our routine can actually access it. So all I have to do is say, hey, push all of these changes, commit everything to the repo. By the way, if you've never done that before, it's super, super simple.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (avec extension de terminal/assistant IA de type Opus).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Arborescence du projet (dossiers : .claude, commands, memory, routines, scripts ; fichiers : settings.local.json, divers fichiers .md) et texte explicatif sur la configuration des permissions de push pour les routines dans Claude.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique la nécessité de pousser les fichiers locaux créés (scripts, routines) vers le répertoire distant pour qu'ils soient accessibles par les routines.
+
+![L'éditeur VS Code affichant l'arborescence du projet dans la barre latérale gauche et un fichier de documentation Markdown ouvert dans l'éditeur principal, avec le présentateur visible en incrustation.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002507_seg60.jpg)
+*⏱️ 00:25:07 — L'éditeur VS Code affichant l'arborescence du projet dans la barre latérale gauche et un fichier de documentation Markdown ouvert dans l'éditeur principal, avec le présentateur visible en incrustation.*
 
 ---
 
@@ -871,11 +1117,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > You go to github.com, create an account. It's free to create an account. And GitHub is really just like, it's like working on a Microsoft Word on your computer. And that's like local. And if you wanted to share it with someone, you would have to put it into like the shared drive or, you know, a Google drive or something. It just means that you could grab a code base from a different machine because you've uploaded it somewhere on the cloud.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web affichant l'interface des paramètres utilisateur de GitHub.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Champs de formulaire pour le profil public : nom ("Nate Herk"), email, bio, et pronoms. Barre de navigation latérale des paramètres (Access, Account, Appearance, etc.).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation dans les paramètres du compte GitHub après la création/connexion, illustrant la configuration initiale du profil par l'utilisateur.
+
+![Capture d'écran montrant la page des paramètres du profil public sur GitHub, avec le présentateur incrusté en bas à droite.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002526_seg61.jpg)
+*⏱️ 00:25:26 — Capture d'écran montrant la page des paramètres du profil public sur GitHub, avec le présentateur incrusté en bas à droite.*
 
 ---
 
@@ -885,11 +1134,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So that's kind of why we're doing this whole thing with the routines in the cloud. So when you get to GitHub, you come here, you create a new repository or the easiest way to do it is you just come to your cloud code and you say, hey, help me turn this into a GitHub repo. And it will say, okay, I need to authenticate you. Can I use the CLI? and you say, yes, go ahead and do that. And then it will basically open up a tab and it will say, hey, can you sign in with your GitHub?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : GitHub (navigateur web), Visual Studio Code (avec extension Claude Code).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Menu contextuel GitHub (New repository, New codespace, etc.) ; Arborescence de fichiers VS Code (routines, daily-summary.md, .env).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation dans les menus de création de dépôt sur GitHub et visualisation du projet local dans VS Code avant initialisation Git.
+
+![Interface des paramètres du compte GitHub montrant le menu déroulant "New" ouvert dans la barre de navigation supérieure, listant des options comme "New repository".](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002548_seg62.jpg)
+*⏱️ 00:25:48 — Interface des paramètres du compte GitHub montrant le menu déroulant "New" ouvert dans la barre de navigation supérieure, listant des options comme "New repository".*
+
+![Interface de Visual Studio Code avec le terminal "Claude Code" actif, affichant une structure de fichiers orientée vers les "routines" dans l'explorateur latéral.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002554_seg62.jpg)
+*⏱️ 00:25:54 — Interface de Visual Studio Code avec le terminal "Claude Code" actif, affichant une structure de fichiers orientée vers les "routines" dans l'explorateur latéral.*
 
 ---
 
@@ -899,11 +1154,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > You sign in and now your Cloud Code just has your GitHub credentials. And whenever you need to push changes or clone a repo or whatever you need to do with GitHub, it can just take care of it because GitHub has been around for a long time. So it knows it way better than you probably do. It knows it way better than I do. So when in doubt, just ask Cloud Code. All right, so if I give this puppy a refresh, we should say we now have all of these files popped in here.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Visual Studio Code, extension Claude Code.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Arborescence de fichiers du projet (dossiers .claude, routines, scripts), logo Claude Code au centre, zone d'input avec le message "Ctrl esc to focus or unfocus Claude".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Démonstration de l'intégration de l'agent Claude Code au sein de l'éditeur de code.
+
+![Capture d'écran de l'interface VS Code affichant l'extension "Claude Code" dans un environnement de travail nommé "Trading Routine".](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002610_seg63.jpg)
+*⏱️ 00:26:10 — Capture d'écran de l'interface VS Code affichant l'extension "Claude Code" dans un environnement de travail nommé "Trading Routine".*
 
 ---
 
@@ -913,11 +1171,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > We've got bold trading routine. Awesome. So let's head over to the Cloud Desktop app now and start getting set up. So what you're gonna do is you're gonna click on new session and you want to open up the local projects right here of whichever thing you just set up there. So right here, you can see that I'm in the folder called trading routine, which we were just working in in VS Code.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de bureau de gestion d'automatisations (Cloud Desktop/Agent framework).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste de routines : "Skool wins engagement", "AI news roundup", "Notification responses", "Youtube comment replies", "Trade Test", et autres tests d'API. Menu latéral avec "New session", "Routines", "Customize", "Dispatch".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le curseur de la souris survole la routine "Trade Test" dans l'interface de gestion.
+
+![L'interface de l'application de bureau montrant la section "Routines" avec une liste d'automatisations planifiées, avec une fenêtre incrustée du présentateur en bas à droite.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002632_seg64.jpg)
+*⏱️ 00:26:32 — L'interface de l'application de bureau montrant la section "Routines" avec une liste d'automatisations planifiées, avec une fenêtre incrustée du présentateur en bas à droite.*
 
 ---
 
@@ -927,11 +1188,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And if you guys remember in VS Code, we had these five different routine prompts. And inside of each of these, they had the cron, they had the actual like steps, and then they had like any of the skills or commands that they need to run. And this is in a folder once again called routines. So before we start talking to our new project, we need to set up an actual environment for this.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (Image 1) ; Interface web/application de gestion de routines (Image 2).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Code source markdown contenant des définitions Cron, des prompts système pour un bot ("You are Bull"), des variables d'environnement et des étapes de flux de travail.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation de la structure de fichiers pour la gestion des routines automatisées et démonstration de l'interface de contrôle des tâches programmées.
+
+![L'éditeur VS Code affichant le fichier "daily-summary.md" situé dans le dossier "routines", avec une configuration cron et des instructions détaillées pour un bot de trading autonome.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002650_seg65.jpg)
+*⏱️ 00:26:50 — L'éditeur VS Code affichant le fichier "daily-summary.md" situé dans le dossier "routines", avec une configuration cron et des instructions détaillées pour un bot de trading autonome.*
+
+![Une interface utilisateur de type tableau de bord montrant une liste de "Routines" automatisées avec leurs horaires, types (Local/Remote) et statuts (en cours/en pause).](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002700_seg65.jpg)
+*⏱️ 00:27:00 — Une interface utilisateur de type tableau de bord montrant une liste de "Routines" automatisées avec leurs horaires, types (Local/Remote) et statuts (en cours/en pause).*
 
 ---
 
@@ -941,11 +1208,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So if I go to new routine and I go to remote and I go over here to my cloud environments, you can see that you can add one. And so just add one and I'm gonna pull up my trading once you guys can see. But here, this is where we set up things like our API keys and our network access. So I called mine trading, I gave it full network access and this is where I'm gonna put in my API keys for Alpaca and for Perplexity and for ClickUp.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface de gestion de routines/environnements pour un outil d'automatisation (potentiellement une plateforme de développement avec agents IA).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Champs de formulaire : Nom de l'environnement, accès réseau (Full), variables d'environnement, et script Bash (npm install).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation dans les environnements cloud pour la sélection et la configuration des paramètres d'accès et d'exécution d'une routine.
+
+![Interface de configuration montrant le menu déroulant "Cloud environments" avec les options : Trading, Scheduled Automations, Nate Herk Cloud et Add environment.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002710_seg66.jpg)
+*⏱️ 00:27:10 — Interface de configuration montrant le menu déroulant "Cloud environments" avec les options : Trading, Scheduled Automations, Nate Herk Cloud et Add environment.*
+
+![Fenêtre modale "Update cloud environment" permettant de configurer le nom ("Trading"), l'accès réseau ("Full"), les variables d'environnement (floutées) et un script de démarrage bash ("npm install").](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002715_seg66.jpg)
+*⏱️ 00:27:15 — Fenêtre modale "Update cloud environment" permettant de configurer le nom ("Trading"), l'accès réseau ("Full"), les variables d'environnement (floutées) et un script de démarrage bash ("npm install").*
 
 ---
 
@@ -955,11 +1228,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And then you basically just go ahead and save the changes of that environment. And this is the one that you want your actual routines to be scheduled inside of. I am going to basically just talk to it right here to help us get these remote routines set up. Look inside the routines folder inside of this project and help me set up all of these different schedule routine runs.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web de gestion de cloud / plateforme de développement (type AI Agent platform).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Dans l'image 1, on voit le champ "Name: Trading", "Network access: Full", et un script de configuration `# !/bin/bash npm install`. Dans l'image 2, on voit la liste des sessions "Notification responses" et "AI news roundup".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Configuration et mise à jour des paramètres d'un environnement cloud, suivie d'une navigation dans l'interface pour interagir avec les routines.
+
+![Fenêtre modale "Update cloud environment" affichant les paramètres de configuration d'un environnement nommé "Trading", incluant l'accès réseau et un script d'installation Bash.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002732_seg67.jpg)
+*⏱️ 00:27:32 — Fenêtre modale "Update cloud environment" affichant les paramètres de configuration d'un environnement nommé "Trading", incluant l'accès réseau et un script d'installation Bash.*
+
+![Interface principale de la plateforme avec une liste de sessions "Ready" et une barre de saisie en bas pour interagir avec l'IA.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002738_seg67.jpg)
+*⏱️ 00:27:38 — Interface principale de la plateforme avec une liste de sessions "Ready" et une barre de saisie en bas pour interagir avec l'IA.*
 
 ---
 
@@ -969,11 +1248,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > They should all have a cron job in there. They should all have a prompt in there already. And we will be working out of this GitHub repo and scheduling off these routines. So let me know if you have any questions. Do not exit the planning phase until you're 95% confident that you know exactly what to do and exactly what I'm looking for. So now I'll shoot that off and it should be able to come back with a plan to actually go create all of those cron jobs for us. Okay, now you can see it's coming back and asking us some questions. So the first one is which cloud environment should they run in? We're going to do trading. That's the one you guys saw me set up. We want to use cloud opus 4.7. And we're going to use this GitHub repo. Yes, trading routine. All right, so it's set up all of those routines for us. You see that all I had to do was
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de type IDE orienté agent IA (interface propriétaire typique de type Cursor ou similaire).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste de sessions (Notification responses, AI news roundup), questions de configuration système (choix entre claude-opus-4-7, claude-sonnet-4-6, ou Mixed), et variables d'environnement (ALPACA, PERPLEXITY, CLICKUP).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation et configuration des paramètres d'exécution pour une routine automatisée (trading routine) avant validation par l'utilisateur.
+
+![Interface principale d'une application de gestion d'automatisation IA (type agent-based IDE), affichant un historique de sessions "Ready" et une barre de saisie pour de nouvelles instructions.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002758_seg68.jpg)
+*⏱️ 00:27:58 — Interface principale d'une application de gestion d'automatisation IA (type agent-based IDE), affichant un historique de sessions "Ready" et une barre de saisie pour de nouvelles instructions.*
+
+![Interface de planification ("Plan mode") de l'agent IA, listant des questions de configuration technique (choix du modèle, variables d'environnement, repo GitHub) avec un menu de sélection pour le modèle d'IA à utiliser.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002817_seg68.jpg)
+*⏱️ 00:28:17 — Interface de planification ("Plan mode") de l'agent IA, listant des questions de configuration technique (choix du modèle, variables d'environnement, repo GitHub) avec un menu de sélection pour le modèle d'IA à utiliser.*
 
 ---
 
@@ -983,11 +1268,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > talk to it. It set up these crons because I don't know what exactly this means, but basically that means 6 a.m. Monday through Friday for all of these. Monday through Friday, 8.30 a.m. noon, 3 p.m. And then this one is just 4 p.m. on Friday. So if I go over here to my routines and I scroll down, you can see that we have these new five routines for bull and these are all remote. If I click in, this one, for example, says every Friday at 4 p.m. Central. We're in the right repo.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Claude Code (CLI) avec une interface de ligne de commande interactive.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Un tableau répertoriant 5 déclencheurs automatiques ("Bull — Pre-market research", "Market-open execution", etc.) avec leurs expressions Cron, leur conversion en heure locale, et leurs identifiants uniques. Le texte mentionne également la mise à jour de fichiers (`CLAUDE.md`, `routines/README.md`) et la configuration du canal ClickUp.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le système affiche le résumé d'une exécution réussie après avoir configuré les tâches planifiées (cron jobs) pour l'environnement de trading de l'utilisateur.
+
+![Une interface de terminal Claude Code affichant un tableau récapitulatif des tâches planifiées (cron jobs) pour des routines de trading.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002833_seg69.jpg)
+*⏱️ 00:28:33 — Une interface de terminal Claude Code affichant un tableau récapitulatif des tâches planifiées (cron jobs) pour des routines de trading.*
 
 ---
 
@@ -997,11 +1285,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > If I click into here, we should see we see this entire prompt, which is correct. And we're in the right environment, which is my trading cloud environment. And then one other important thing that you have to do is inside of your actual routine, what you want to do is go to permissions and you want to turn on allow unrestricted branch pushes. This removes the branch push restrictions and Claude will be able to actually push to any branch, not just the Claude slash branches. So turn that on for all five of these routines here. So I'm going to turn that on for all five of these routines here. So let's just pretend that it is Friday. I'm going to do a run now to see if this
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface de gestion de routine Claude (Projet/Agent).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte du prompt "STEP 7 -- COMMIT AND PUSH", configuration du trigger "Runs every Friday at 4:00 PM CDT", et onglets "Connectors" / "Permissions".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'utilisateur visualise les paramètres d'une routine d'automatisation de trading, s'apprêtant à accéder aux permissions.
+
+![Une fenêtre modale de configuration d'une routine sur Claude (ou outil similaire) montrant les paramètres du prompt, l'environnement "Trading" et les options de déclenchement (trigger).](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002858_seg70.jpg)
+*⏱️ 00:28:58 — Une fenêtre modale de configuration d'une routine sur Claude (ou outil similaire) montrant les paramètres du prompt, l'environnement "Trading" et les options de déclenchement (trigger).*
 
 ---
 
@@ -1011,11 +1302,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > is able to actually work. And when you run these, you can actually click right here and you can watch them actually work in real time. And best practice with routines is that every single time you build a new one, you should always do a run now, at least a few times to make sure that they are working as expected. And exactly why we test out, you can see what happened is when it tried to hit Alpaca, it wasn't able to find the API key because for some reason, once again, it thought it was going to be in a .env.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web de l'outil "Opus" (4.7).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Notification système "Workflow run started" en haut à droite, barre de saisie de commandes en bas, menu latéral avec les options "Routines", "Code", et "Dispatch".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Exécution d'un workflow nommé "Bull - Weekly review" suite à l'activation par l'utilisateur.
+
+![Capture d'écran montrant l'interface d'un outil d'automatisation IA avec une notification de démarrage de workflow et le présentateur en médaillon.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002928_seg71.jpg)
+*⏱️ 00:29:28 — Capture d'écran montrant l'interface d'un outil d'automatisation IA avec une notification de démarrage de workflow et le présentateur en médaillon.*
 
 ---
 
@@ -1025,11 +1319,18 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > But as you guys know, we don't have a .env because we don't put that into GitHub. So I'm coming back into this session that set up these five and I'm just going to say, remember all of the API keys are going to be stored in the environment variables. So all of the prompts must explicitly state that. Okay. So the issue was they weren't spelled exactly word for word, letter for letter. So I fixed that. And you can even see, for example, this one, they're all now coming through. But for example, in this one, I have the word API right here between alpaca and secret. So they have to be matching one for one. Otherwise it will think that they're not there. But anyways, now that that has been figured out, it's actually able to look
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Claude Code (environnement de développement assisté par IA)
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image #1 : Liste de variables d'environnement (CLICKUP_WORKSPACE_ID, CLICKUP_CHANNEL_ID, ALPACA_API_KEY, PERPLEXITY_API_KEY, CLICKUP_API_KEY) et commandes de configuration git.
+- Image #2 : Journal d'exécution ("Ran 5 commands, read 5 files") et panneau latéral des exécutions ("Runs").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique la nécessité de définir les clés API dans les variables d'environnement de l'outil plutôt que dans un fichier .env non versionné, tout en supervisant le lancement des routines automatisées.
+
+![Interface de l'outil Claude Code affichant des instructions de configuration pour des variables d'environnement (ClickUp, Alpaca, Perplexity) dans un dépôt nommé "trading-routine".](../screenshots/6MC1XqZSltw/6MC1XqZSltw_002953_seg72.jpg)
+*⏱️ 00:29:53 — Interface de l'outil Claude Code affichant des instructions de configuration pour des variables d'environnement (ClickUp, Alpaca, Perplexity) dans un dépôt nommé "trading-routine".*
+
+![Interface de Claude Code affichant l'historique d'exécution des routines ("Bull — Weekly review") avec le statut des commandes et des fichiers lus.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_003001_seg72.jpg)
+*⏱️ 00:30:01 — Interface de Claude Code affichant l'historique d'exécution des routines ("Bull — Weekly review") avec le statut des commandes et des fichiers lus.*
 
 ---
 
@@ -1039,11 +1340,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > through all of these things. It's able to look through the memory and it's going to execute our weekly review here. And there we go. Just like that, the weekly review has been ran. I also told it that I fixed the Alpaca secret key. So now all of that's been updated. And if you go over to my GitHub, you can see that it was able to push these actual commits to this repo. This one was just a test one that it was running on the background as well, but it was able to actually give us the weekly review and you can see it was committed by Claude and it made changes to this actual MD file.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Opus 4.7 (interface de développement/automatisation par IA).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Historique de discussion montrant : "I fixed the alpaca secret key", réponse de l'IA confirmant la prise en compte de "ALPACA_SECRET_KEY" et le succès du commit/push, avec un panneau latéral affichant les exécutions ("Runs").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA a terminé l'exécution de la "Weekly review" et a validé la mise à jour de la variable d'environnement pour la clé secrète Alpaca, avec les changements poussés vers le dépôt distant.
+
+![Capture d'écran de l'interface Opus 4.7 montrant l'exécution d'une routine hebdomadaire ("Bull — Weekly review") et la confirmation de la correction de la clé secrète Alpaca.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_003024_seg73.jpg)
+*⏱️ 00:30:24 — Capture d'écran de l'interface Opus 4.7 montrant l'exécution d'une routine hebdomadaire ("Bull — Weekly review") et la confirmation de la correction de la clé secrète Alpaca.*
 
 ---
 
@@ -1053,11 +1357,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So now the next time it actually will be able to pick it up and we have our stuff all synced up and alongside that weekly review You can see that in my internal automations channel sandwiched between two youtube notifications We have the weekly review that the run just sent us. We have our portfolio We have versus the s&p and we have any trades that we were making and then you know some best and worst And also it graded itself a c for the week. So we'll see how this is able to improve So I just spun up this test so you guys can see that we are able to talk to alpaca right now you can see that we were able to get the current balance.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Uppit AI (application de communication interne)
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Rapports automatisés : statistiques sur les commentaires YouTube ("Total comments: 96", "Replies posted: 0") et résumé financier hebdomadaire ("Week ending Apr 16", "Portfolio: $9,860.03", "Grade: C").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Visualisation du flux de notifications générées par les automatisations internes dans le canal "Internal Automations".
+
+![Interface de messagerie collaborative (Uppit AI / Slack-like) affichant des notifications automatisées sur les commentaires YouTube et un résumé hebdomadaire de portefeuille boursier.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_003053_seg74.jpg)
+*⏱️ 00:30:53 — Interface de messagerie collaborative (Uppit AI / Slack-like) affichant des notifications automatisées sur les commentaires YouTube et un résumé hebdomadaire de portefeuille boursier.*
 
 ---
 
@@ -1067,11 +1374,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > And if I go into here, we should see 9.859 and back in cloud desktop where it pulled it, 9.859. And just like that, we have set up a 24 seven AI agent trade system with Opus 4.7. We've got our 6 a.m., our 8.30 a.m. We've got our noon and our 3 p.m. And then on Fridays, we have our actual weekly review as well.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Cloud Desktop / IDE spécialisé pour les routines automatisées.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Historique des commandes exécutées (Fetch Alpaca account balance) et données financières : Equity (9,859.01), Cash (924.81), Portfolio value (9,859.01), Buying power (10,783.82) et Daytrade count (0).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Validation du succès de la récupération des données en temps réel via l'agent IA après exécution des commandes.
+
+![Une interface de bureau cloud affichant les résultats d'exécution d'un agent de trading nommé "trading-routine" avec un résumé détaillé du compte Alpaca.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_003122_seg75.jpg)
+*⏱️ 00:31:22 — Une interface de bureau cloud affichant les résultats d'exécution d'un agent de trading nommé "trading-routine" avec un résumé détaillé du compte Alpaca.*
 
 ---
 
@@ -1081,11 +1391,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > Now, of course, like I talked about earlier, it is on you to now keep testing, keep iterating, making sure that everything's working and upgrading your strategy as you go. and maybe you want to add some more crons in. Maybe you want to take some away. Maybe you want to add one on just like a Sunday night to do some more research to prep for the week. However, you would actually want to set up your trading strategy if you were doing it manually. Now, I know you guys are thinking like, I have four automations per day basically plugged in now with Claude routines, and that's going to eat away at my session limits, right?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de gestion de routines (type interface de contrôle d'automatisation locale).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste de tâches automatisées ("Bull - Pre-market research", "Ai news roundup", "Skool wins engagement", etc.) programmées à des heures spécifiques de la journée.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Visualisation et gestion du calendrier d'exécution des tâches automatisées.
+
+![Interface d'un gestionnaire de routines automatisées montrant un calendrier hebdomadaire et une liste de tâches planifiées (cron jobs) avec le présentateur en incrustation.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_003142_seg76.jpg)
+*⏱️ 00:31:42 — Interface d'un gestionnaire de routines automatisées montrant un calendrier hebdomadaire et une liste de tâches planifiées (cron jobs) avec le présentateur en incrustation.*
 
 ---
 
@@ -1095,11 +1408,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > I mean, yes and no. I'm definitely going to be watching it, obviously. But keep in mind, when I did this with my OpenClaw agent for 30 days, I was also plugged into my Claude subscription and I was still doing my own workflows and I was never really hitting my limits. It's all about managing your context. And I'm gonna have a full video dropping about that, another one coming out soon. But I can tell you for certain that if I were to set up all of these crons and have the same sort of autonomy and agentic workflow-ness, and I was just doing this via API, then that would 100% be way more expensive than what I've got set up here.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de gestion de routines automatisées (type tableau de bord d'agent).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste de routines : "Bull - Pre-market research", "Bull - Market-open execution", "Ai news roundup", "Skool wins engagement", "Bull - Midday scan", "Bull - Daily summary (EOD)".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Visualisation et gestion du planning d'exécution des agents automatisés ("Routines") avec distinction entre tâches "REMOTE" (distantes) et "LOCAL" (locales).
+
+![Interface d'une application d'automatisation de routine affichant un calendrier quotidien avec des tâches planifiées liées au trading et à l'IA.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_003210_seg77.jpg)
+*⏱️ 00:32:10 — Interface d'une application d'automatisation de routine affichant un calendrier quotidien avec des tâches planifiées liées au trading et à l'IA.*
 
 ---
 
@@ -1109,11 +1425,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > We have now deployed and now we just go ahead and track. And what is the hidden lesson here? The hidden lesson is that files aren't just memory, but they're essentially the agent's full personality and discipline. Like with OpenClaw, you set up your soul.md file and you've got your agents.md file and you've got all these different files. So it's really about how do you make sure that you orchestrate this in the right way so that it can access the right ones when it needs to.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Éditeur de texte (type éditeur de notes ou Markdown).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le texte explique que les fichiers de configuration (comme `weekly-review.md` ou `strategy.md`) servent de "mémoire émotionnelle" ou de "discipline" pour l'agent, remplaçant l'intuition humaine par des règles strictes basées sur les expériences passées (ex: "NO OPTIONS").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation théorique illustrant conceptuellement le rôle des fichiers de configuration dans la gestion du comportement d'un agent IA.
+
+![Une diapositive de présentation explicative intitulée "STEP 6: DEPLOY + TRACK" détaillant la philosophie de conception des agents autonomes, avec le présentateur incrusté en bas à droite.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_003238_seg78.jpg)
+*⏱️ 00:32:38 — Une diapositive de présentation explicative intitulée "STEP 6: DEPLOY + TRACK" détaillant la philosophie de conception des agents autonomes, avec le présentateur incrusté en bas à droite.*
 
 ---
 
@@ -1123,11 +1442,17 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > So anyways, I hope by the end of this video, you guys are able to follow along and set this up. I'm gonna be giving away this document and it's gonna have way more information in there, but basically about everything that we've gone over today. And I'll drop that in my free school community. The link for that is down in the description. Once again, completely free. But that is gonna do it for today. So if you enjoyed the video or you learned something new, please give it a like, it helps me out a ton.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Éditeur de documents textuels / application de prise de notes.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Plan du cours : "What we're building", "The stack", "The mental model: files are the brain", "The context budget", et "STEP 1: STRATEGY" (conseils pour définir une stratégie de trading avec une IA).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur affiche une synthèse textuelle (roadmap) de la méthodologie utilisée pour configurer un agent de trading IA.
+
+![Une capture d'écran d'un document texte structuré présentant les étapes d'un projet de développement avec IA, incluant des sections sur la "stratégie", le "mental model" et le "stack". Le texte est partiellement surligné en bleu.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_003257_seg79.jpg)
+*⏱️ 00:32:57 — Une capture d'écran d'un document texte structuré présentant les étapes d'un projet de développement avec IA, incluant des sections sur la "stratégie", le "mental model" et le "stack". Le texte est partiellement surligné en bleu.*
+
+![Une capture d'écran du même document texte, sans le surlignage bleu, affichant les étapes détaillées pour définir une stratégie de trading automatisée avec Claude Code.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_003302_seg79.jpg)
+*⏱️ 00:33:02 — Une capture d'écran du même document texte, sans le surlignage bleu, affichant les étapes détaillées pour définir une stratégie de trading automatisée avec Claude Code.*
 
 ---
 
@@ -1137,11 +1462,14 @@ Dans cette vidéo intitulée **I Turned Claude Into a 24/7 Trader**, Nate Herk d
 > and as always, I appreciate you guys making it to the end and I'll see you in the next one. Thanks everyone.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de présentation (type diaporama).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste structurée : "What we're building", "The stack", "The mental model: files are the brain", "The context budget". Section détaillée "STEP 1: STRATEGY" avec des conseils sur la définition d'une stratégie de trading pour un agent IA (ex: définir les déclencheurs d'achat/vente, la tolérance au risque).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation conceptuelle et théorique des étapes préalables au codage avec Claude Code.
+
+![Une diapositive de présentation listant les étapes de conception d'un agent de trading IA, avec le présentateur en médaillon dans le coin inférieur droit.](../screenshots/6MC1XqZSltw/6MC1XqZSltw_003312_seg80.jpg)
+*⏱️ 00:33:12 — Une diapositive de présentation listant les étapes de conception d'un agent de trading IA, avec le présentateur en médaillon dans le coin inférieur droit.*
 
 ---
 
