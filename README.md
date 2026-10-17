@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `154 / 358` (`43.0%`)
+- **Vidéos traitées** : `155 / 358` (`43.3%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -171,6 +171,7 @@
 | 2026-04-14 | [ehg4fhydTgs](https://www.youtube.com/watch?v=ehg4fhydTgs) | **How to Build 24/7 Claude Agents. Easy.** | [2026-04-14_YT-[ehg4fhydTgs]_How to Build 247 Claude Agents. Easy._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-14_YT-[ehg4fhydTgs]_How to Build 247 Claude Agents. Easy._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-14_YT-[ehg4fhydTgs]_How to Build 247 Claude Agents. Easy._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `48` |
 | 2026-04-13 | [99VHENEKA9o](https://www.youtube.com/watch?v=99VHENEKA9o) | **100 Hours Testing Claude Code vs Antigravity (honest results)** | [2026-04-13_YT-[99VHENEKA9o]_100 Hours Testing Claude Code vs Antigravity (honest results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-13_YT-[99VHENEKA9o]_100 Hours Testing Claude Code vs Antigravity (honest results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-13_YT-[99VHENEKA9o]_100 Hours Testing Claude Code vs Antigravity (honest results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `78` |
 | 2026-04-12 | [4XqVR6xI6Kw](https://www.youtube.com/watch?v=4XqVR6xI6Kw) | **This One Plugin Just 10x’d Claude Code** | [2026-04-12_YT-[4XqVR6xI6Kw]_This One Plugin Just 10x’d Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-12_YT-[4XqVR6xI6Kw]_This One Plugin Just 10x’d Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-12_YT-[4XqVR6xI6Kw]_This One Plugin Just 10x’d Claude Code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-04-11 | [NvxiSG34mPU](https://www.youtube.com/watch?v=NvxiSG34mPU) | **Seedance 2.0 + Claude Code Creates $10k Websites in Minutes** | [2026-04-11_YT-[NvxiSG34mPU]_Seedance 2.0 + Claude Code Creates $10k Websites in Minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-11_YT-[NvxiSG34mPU]_Seedance 2.0 + Claude Code Creates $10k Websites in Minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-11_YT-[NvxiSG34mPU]_Seedance 2.0 + Claude Code Creates $10k Websites in Minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
