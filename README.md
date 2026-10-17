@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `142 / 358` (`39.7%`)
+- **Vidéos traitées** : `143 / 358` (`39.9%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -159,6 +159,7 @@
 | 2026-04-22 | [GY-kAiZGLOw](https://www.youtube.com/watch?v=GY-kAiZGLOw) | **OpenAI Image 2 is Nuts. Here are 10 Ways to Use it.** | [2026-04-22_YT-[GY-kAiZGLOw]_OpenAI Image 2 is Nuts. Here are 10 Ways to Use it._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-22_YT-[GY-kAiZGLOw]_OpenAI Image 2 is Nuts. Here are 10 Ways to Use it._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-22_YT-[GY-kAiZGLOw]_OpenAI Image 2 is Nuts. Here are 10 Ways to Use it._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `57` |
 | 2026-04-21 | [TcFeSjwTo7g](https://www.youtube.com/watch?v=TcFeSjwTo7g) | **Claude Design crée de superbes sites web 3D en un instant (tutoriel complet)** | [2026-04-21_YT-[TcFeSjwTo7g]_Claude Design crée de superbes sites web 3D en un instant (tutoriel complet)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-21_YT-[TcFeSjwTo7g]_Claude Design crée de superbes sites web 3D en un instant (tutoriel complet)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-21_YT-[TcFeSjwTo7g]_Claude Design crée de superbes sites web 3D en un instant (tutoriel complet)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `135` |
 | 2026-04-20 | [_qZvORxGqI0](https://www.youtube.com/watch?v=_qZvORxGqI0) | **Comment ne plus jamais atteindre la limite de vos sessions Claude** | [2026-04-20_YT-[_qZvORxGqI0]_Comment ne plus jamais atteindre la limite de vos sessions Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-20_YT-[_qZvORxGqI0]_Comment ne plus jamais atteindre la limite de vos sessions Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-20_YT-[_qZvORxGqI0]_Comment ne plus jamais atteindre la limite de vos sessions Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `50` |
+| 2026-01-01 | [gNMN-7D9130](https://www.youtube.com/watch?v=gNMN-7D9130) | **Claude Opus 5.5 is my video editor** | [2026-01-01_YT-[gNMN-7D9130]_Claude Opus 5.5 is my video editor_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-01-01_YT-[gNMN-7D9130]_Claude Opus 5.5 is my video editor_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-01-01_YT-[gNMN-7D9130]_Claude Opus 5.5 is my video editor_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
