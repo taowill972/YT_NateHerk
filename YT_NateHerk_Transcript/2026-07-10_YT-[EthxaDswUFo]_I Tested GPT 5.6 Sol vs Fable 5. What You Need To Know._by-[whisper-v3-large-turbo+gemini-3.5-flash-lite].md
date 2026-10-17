@@ -25,801 +25,894 @@ Dans cette vidéo intitulée **I Tested GPT 5.6 Sol vs Fable 5. What You Need To
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:18]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> So we finally have GBT 5.6, Sol, Terra, and Luna. And the benchmarks are insanely impressive because it basically shows that Sol blows Opus and Fable out of the water and is significantly cheaper. So I'm gonna quickly flash a few of these benchmarks on screen right now, but I don't wanna just talk about the benchmarks. I think that's extremely boring.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Page web de type "OpenAI Research" (simulée ou conceptuelle) présentant une visualisation de données de benchmark.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Graphique de performance comparant les modèles GPT-5.6 (Sol, Terra, Luna) avec Claude Fable 5, Claude Opus 4.8 et Gemini 3.1 Pro Preview. L'axe des ordonnées affiche le "Score" et l'axe des abscisses le "API cost (USD)".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle et comparaison des performances des modèles IA cités dans le discours audio.
+
+![Une capture d'écran montrant le présentateur incrusté à gauche devant une page web OpenAI affichant un graphique comparatif intitulé "Agents' Last Exam" illustrant le score en fonction du coût API pour différents modèles IA.](../screenshots/EthxaDswUFo/EthxaDswUFo_000005_seg1.jpg)
+*⏱️ 00:00:05 — Une capture d'écran montrant le présentateur incrusté à gauche devant une page web OpenAI affichant un graphique comparatif intitulé "Agents' Last Exam" illustrant le score en fonction du coût API pour différents modèles IA.*
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:19 - 00:00:41]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> I've been playing around with these models all day long. I've been putting them side by side, meaning GBT 5.6 and Fable 5. And I've been driving my day-to-day work with these two models. So I can actually tell you which model do I like for which use cases and why. So don't want to waste any of your time. Let's just get straight into today's video. Now, real quick before we hop in, I did want to call out that I do think that this landing page is pretty awesome. I love the Sol and the Terra and the Luna back here.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (site OpenAI) et outil de tableau blanc/mindmapping.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte comparatif des capacités des modèles "Fable" et "Sol" ; page de présentation produit "GPT-5.6".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation comparative des rôles d'agents IA et démonstration de la documentation officielle d'un nouveau modèle.
+
+![Tableau comparatif sur fond sombre divisant les rôles entre "Fable" (manager, créativité) et "Sol" (worker, vitesse, débogage).](../screenshots/EthxaDswUFo/EthxaDswUFo_000030_seg2.jpg)
+*⏱️ 00:00:30 — Tableau comparatif sur fond sombre divisant les rôles entre "Fable" (manager, créativité) et "Sol" (worker, vitesse, débogage).*
+
+![Capture d'écran du site officiel d'OpenAI annonçant le lancement de GPT-5.6 avec le slogan "Frontier intelligence that scales with your ambition".](../screenshots/EthxaDswUFo/EthxaDswUFo_000035_seg2.jpg)
+*⏱️ 00:00:35 — Capture d'écran du site officiel d'OpenAI annonçant le lancement de GPT-5.6 avec le slogan "Frontier intelligence that scales with your ambition".*
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:41 - 00:01:15]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> And you can see that there's little fives and sixes kind of like drifting all over and inside of these planets as well, which I thought was a nice touch. But anyways, let's get into what I actually did today. All right. So I'm just going to walk you guys through some of the experiments I did. And then at the end, I'm going to actually talk about like the pros and cons of each and my overall consensus. So the first thing I did, I have Claude on the left here with Fable 5. I've got Codex on the right here with GBT 5.6, Sol, and I gave them both the exact same prompts. So I gave them both the slash goal and I told them to build a genuinely fun, playable, open world byte game that runs in the browser. I gave them these other rules. I'm not going to read off this
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code avec interface d'agent de développement IA (type Cursor ou outil similaire).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Spécifications techniques pour le développement d'un jeu de vélo en monde ouvert, journaux de recherche web, logs JSON détaillant l'utilisation des jetons (input/output tokens) et les coûts en crédits (API usage).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Supervision d'un processus de développement autonome par un agent, avec consultation de documentation et analyse de logs de consommation de jetons en temps réel.
+
+![Éditeur de code (VS Code ou environnement similaire) avec un panneau de discussion/agent IA affichant des instructions système, des journaux d'exécution et des logs de requêtes API.](../screenshots/EthxaDswUFo/EthxaDswUFo_000058_seg3.jpg)
+*⏱️ 00:00:58 — Éditeur de code (VS Code ou environnement similaire) avec un panneau de discussion/agent IA affichant des instructions système, des journaux d'exécution et des logs de requêtes API.*
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:15 - 00:01:47]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> whole prompts, but if you want to take a look, feel free. I gave them creative freedom and I just wanted to see what they could come up with. Okay. So I haven't played any of these yet, but I'm not going to tell you which one's which. We're going to see them both and then I'll reveal. So WASD to steer, space to bunny hop, Q and E for air tricks, shift for boost. Okay, let's go ahead and drop in. Nice. Okay, so we can move around. We have a city here. The camera is a little bit hard to maneuver with. You can't drive through the building, so that's good to know. Okay, just got a little trick in the air there. So this is honestly working pretty well. I don't love
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (jeu vidéo généré ou développé par IA).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Interface utilisateur de jeu : titre "NEON SPOKES", instructions de contrôle, compteur de score "002650" et interface de navigation urbaine.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur teste un jeu vidéo généré par IA, passant de l'écran de configuration au gameplay actif.
+
+![Écran de démarrage du jeu web "Neon Spokes", présentant le titre du jeu et les contrôles clavier (WASD, SPACE, Q/E, SHIFT) avec un bouton "DROP IN".](../screenshots/EthxaDswUFo/EthxaDswUFo_000123_seg4.jpg)
+*⏱️ 00:01:23 — Écran de démarrage du jeu web "Neon Spokes", présentant le titre du jeu et les contrôles clavier (WASD, SPACE, Q/E, SHIFT) avec un bouton "DROP IN".*
+
+![Vue de dessus (top-down) d'un jeu vidéo dans un navigateur, montrant un personnage à vélo naviguant dans une ville stylisée aux formes géométriques colorées, avec un score en haut et une mini-map en bas à droite.](../screenshots/EthxaDswUFo/EthxaDswUFo_000139_seg4.jpg)
+*⏱️ 00:01:39 — Vue de dessus (top-down) d'un jeu vidéo dans un navigateur, montrant un personnage à vélo naviguant dans une ville stylisée aux formes géométriques colorées, avec un score en haut et une mini-map en bas à droite.*
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:47 - 00:02:06]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> the actual way that this works. Like the top down bird's eye view, I don't think I like. It's a little bit hard to control. But hey, functionality wise, the coins are working, the controls work. I just jumped over a building and I can bunny hop. Okay, cool. And it doesn't look too bad either, considering this didn't take it very long. So that was the first game.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Jeu vidéo "Neon Spokes" (environnement de développement de jeu).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Éléments de HUD (Score, vitesse en km/h, mini-map, notifications de figures/tricks comme "WALL TAP" et "360 SPIN").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Démonstration du gameplay : le joueur navigue dans la ville, réalise des figures acrobatiques et collecte des items (pièces).
+
+![Vue de dessus (top-down) d'un jeu vidéo nommé "Neon Spokes" où le personnage effectue un "WALL TAP" dans un environnement urbain stylisé.](../screenshots/EthxaDswUFo/EthxaDswUFo_000152_seg5.jpg)
+*⏱️ 00:01:52 — Vue de dessus (top-down) d'un jeu vidéo nommé "Neon Spokes" où le personnage effectue un "WALL TAP" dans un environnement urbain stylisé.*
+
+![Vue de jeu montrant le personnage réalisant une figure de style "360 SPIN" avec un compteur de temps affiché à 0.9s au milieu de l'écran.](../screenshots/EthxaDswUFo/EthxaDswUFo_000157_seg5.jpg)
+*⏱️ 00:01:57 — Vue de jeu montrant le personnage réalisant une figure de style "360 SPIN" avec un compteur de temps affiché à 0.9s au milieu de l'écran.*
+
+![Vue de jeu montrant le personnage circulant dans les rues de la ville, avec le score 025921 et la vitesse affichés en haut de l'interface.](../screenshots/EthxaDswUFo/EthxaDswUFo_000201_seg5.jpg)
+*⏱️ 00:02:01 — Vue de jeu montrant le personnage circulant dans les rues de la ville, avec le score 025921 et la vitesse affichés en haut de l'interface.*
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:02:06 - 00:02:41]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> All right. And now here is the other version. Let's go ahead and see. It's pretty similar controls. So let's hop in here. Okay. So this one is more like a 3D, almost more of like a POV sort of style. I can jump, I can spin. Oh, I don't know what just happened there. But I'm in the city. I've got the coin still. Let's see if I can go try to get on this ramp and see what the physics of that look like. Wait, am I on the wrong side of the ramp? Yep, that was the wrong side of the ramp. But this definitely has more of like that, I don't know, like more of a GTA vibe, like an open world game that you can actually like, I don't know, explore. It feels like the
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web affichant une application de jeu 3D générée.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Interface utilisateur de jeu incluant un score (40, 85, 337), un compteur de pièces, une mini-carte en haut à droite et une barre de vitesse (54-58 km/h) avec indication "TURBO - HOLD SHIFT".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Démonstration en temps réel du gameplay (pilotage du personnage) dans l'environnement généré.
+
+![Vue à la troisième personne d'un jeu vidéo de style arcade 3D où un personnage à vélo roule sur une avenue urbaine au crépuscule.](../screenshots/EthxaDswUFo/EthxaDswUFo_000215_seg6.jpg)
+*⏱️ 00:02:15 — Vue à la troisième personne d'un jeu vidéo de style arcade 3D où un personnage à vélo roule sur une avenue urbaine au crépuscule.*
+
+![Le personnage continue d'avancer dans l'environnement 3D, collectant des pièces dorées alignées sur la route.](../screenshots/EthxaDswUFo/EthxaDswUFo_000224_seg6.jpg)
+*⏱️ 00:02:24 — Le personnage continue d'avancer dans l'environnement 3D, collectant des pièces dorées alignées sur la route.*
+
+![Le personnage arrive devant une rampe sur un terrain dégagé au sein de l'environnement de jeu urbain.](../screenshots/EthxaDswUFo/EthxaDswUFo_000233_seg6.jpg)
+*⏱️ 00:02:33 — Le personnage arrive devant une rampe sur un terrain dégagé au sein de l'environnement de jeu urbain.*
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:41 - 00:03:11]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> map is much bigger. I mean, this is definitely a clear winner. So I think that we've decided that. All right. So in this example, the second one, which is the one I thought was the winner here was Fable 5. So that's on the left-hand side here. This took 21 minutes and 37 seconds, whereas the other side, GBT Sol, took 23 minutes. So similar on the timing here, but let's look at cost. So this Fable run would have costed me about $14.22, whereas the GBT Sol run would have costed $4.5.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (avec extension de terminal intégrée/agent IA).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Rapports d'exécution, logs de build, statistiques de performance (temps de 21m 37s pour Fable 5), instructions de contrôle ("WASD/arrows", "Shift"), et prompts d'audit de consommation de tokens (JSON-L logs).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Analyse comparative et audit de performance de deux modèles d'IA différents pour la génération de code et le déploiement d'un projet de jeu.
+
+![Interface VS Code en mode écran divisé affichant une comparaison côte à côte des résultats d'exécution entre "Fable 5" (gauche) et "GPT Sol 5.6" (droite) pour le développement d'un jeu BMX en navigateur.](../screenshots/EthxaDswUFo/EthxaDswUFo_000249_seg7.jpg)
+*⏱️ 00:02:49 — Interface VS Code en mode écran divisé affichant une comparaison côte à côte des résultats d'exécution entre "Fable 5" (gauche) et "GPT Sol 5.6" (droite) pour le développement d'un jeu BMX en navigateur.*
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:03:11 - 00:03:32]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> Now what I think is really interesting here is the output tokens. Fable outputted about 90,000, and Sol only outputted about 31,000. So we've consistently seen that Codex and GBT are way more token efficient. And sometimes that's better and sometimes that's not. In this case, I would say that it wasn't better because Fable's output, in my opinion, was like not just a little bit better, it was significantly better.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (éditeur de texte avec affichage divisé en deux colonnes).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableaux comparatifs de consommation de tokens, coûts associés (en dollars), détails sur le cache des prompts, et calculs de facturation pour les modèles Fable 5 et GPT-5.6 Sol.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Analyse et comparaison visuelle des logs d'exécution et des métriques de coût d'utilisation de l'IA.
+
+![Capture d'écran de l'interface VS Code montrant un document Markdown comparant les coûts en jetons (tokens) et les statistiques d'utilisation de l'API entre "Fable" et "Sol".](../screenshots/EthxaDswUFo/EthxaDswUFo_000316_seg8.jpg)
+*⏱️ 00:03:16 — Capture d'écran de l'interface VS Code montrant un document Markdown comparant les coûts en jetons (tokens) et les statistiques d'utilisation de l'API entre "Fable" et "Sol".*
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:32 - 00:03:51]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> All right, so let's move on to the second test. So this one was kind of similar. I just said, hey, slash goal, build me the most impressive interactive scroll stopping website that you can imagine. So I gave him complete creative freedom. I just wanted to see what the models did with that. So let me pull up both versions once again. All right, so once again, I'm not gonna tell you which one is which. I want you to try to form your own opinion.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Éditeur de code Cursor (avec terminal Claude Code v2.1.205 intégré).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Prompt utilisateur visible dans le terminal : "/goal Build the most impressive, interactive, scroll-stopping website you can imagine." et les règles du workspace associées. À droite, les étapes de construction et les instructions de lancement (npm run dev).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Exécution d'une requête de développement web par l'agent IA Claude Code pour générer un site web complexe selon une consigne créative libre.
+
+![Interface de l'éditeur de code Cursor affichant une session active de "Claude Code" dans le terminal intégré, avec le prompt utilisateur pour le test créatif.](../screenshots/EthxaDswUFo/EthxaDswUFo_000337_seg9.jpg)
+*⏱️ 00:03:37 — Interface de l'éditeur de code Cursor affichant une session active de "Claude Code" dans le terminal intégré, avec le prompt utilisateur pour le test créatif.*
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:03:51 - 00:04:12]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> This one also has sound with it. So I'll make sure the sound is turned on. So what you can see here is 10 billion years. And as we scroll down, we're gonna get like kind of a journey, but everything in the background is pretty interactive. So it's very like 3D. So watch as I scroll down here. We start off with the cloud, not too much, but you can still see that there's, you know, like responsiveness to my mouse movements.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (site interactif de visualisation de données).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte à l'écran : "TEN BILLION YEARS", sous-titre : "THE LIFE OF A STAR, COMPRESSED INTO ONE SCROLL".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Démonstration d'une interface web interactive basée sur le défilement (scrollytelling) pour visualiser des données temporelles à grande échelle.
+
+![Une page web interactive au design minimaliste affichant le titre "TEN BILLION YEARS" sur un fond spatial sombre, avec le présentateur incrusté en bas à gauche de l'écran.](../screenshots/EthxaDswUFo/EthxaDswUFo_000356_seg10.jpg)
+*⏱️ 00:03:56 — Une page web interactive au design minimaliste affichant le titre "TEN BILLION YEARS" sur un fond spatial sombre, avec le présentateur incrusté en bas à gauche de l'écran.*
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:04:12 - 00:04:30]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> Then we have the collapse. And once again, we've got some cool like galaxy looking, very 3D. And basically that's the theme of this whole thing. It's telling the story, I guess, of like, you know, how we got to where we are. This is a pretty cool effect. First light and the swelling.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Aucune interface logicielle ou outil de développement n'est visible. Il s'agit d'une interface de narration narrative ou d'une expérience web interactive axée sur le design visuel.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte à l'écran concernant des concepts cosmologiques ("Ten Billion Years", "The Collapse", "First Light", "The Swelling").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation au sein d'une présentation visuelle animée illustrant l'évolution de l'univers, sans démonstration technique ou opérationnelle.
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:04:30 - 00:04:50]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> So the fuel starts to run out. And then we had a big boom. So that was a big noise here for basically the supernova. This is a nice effect as well. And then, like I said, we just kind of keep going through with this sort of feel up until the very end where we are just at us. So we have the word you. Pretty cool. So that is what one of the models decided to do.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web affichant un site interactif de narration astronomique.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte affiché : "Stardust", "You are the afterlife of a star".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation à travers une expérience web interactive illustrant l'évolution stellaire et la formation de la vie.
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:04:50 - 00:05:26]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> Let's take a look at the other one. We have Vesper Archive. And as we go down, we have a similar sort of thing with sound. And it's kind of interesting because they had like a similar feel, right? Like a 3D sort of background that's interactive with my mouse. And it's telling some sort of story. It's telling some sort of journey. But they're both not bad. So far, I definitely think that the first one was a little bit, had more of a wow factor for sure. It was a bit more immersive. This one tells a nice story and it still has some impressive features, but I think the first one so far was definitely on a different level. So which one was Fable? Fable was the first one. So once again, I think
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Site web interactif (Vesper Archive).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte narratif : "Not every memory belongs to the past. In 2020, a signal was recovered from beneath a dry lake bed..." et représentation visuelle d'une sphère en maillage 3D.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation sur une page web immersive où l'utilisateur interagit avec des éléments visuels 3D réactifs au mouvement de la souris.
+
+![Interface interactive du site "Vesper Archive" présentant un graphique 3D central entouré de particules, avec une typographie élégante et un texte narratif sur le côté droit.](../screenshots/EthxaDswUFo/EthxaDswUFo_000459_seg13.jpg)
+*⏱️ 00:04:59 — Interface interactive du site "Vesper Archive" présentant un graphique 3D central entouré de particules, avec une typographie élégante et un texte narratif sur le côté droit.*
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:05:26 - 00:06:02]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> that Fable did a better job here. What you can see is Fable took 23 minutes, whereas Sol took almost seven minutes. And if we go down to the actual cost, Fable was 19 bucks and 24 cents with 80,000 output tokens. And Sol was only a little over a dollar and output 20,000 tokens. So it's interesting. Like if we had Sol working enough to spend as much as Fable did, would Sol's output have been just as good, if not better? Maybe. Sol is significantly cheaper on top of the fact that it typically spends less tokens in general, just because of the harness and because of the way the model is trained, I guess. But yeah, I mean, this was almost 20 times cheaper for Fable. But the
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (avec extension de chat/agent IA intégrée).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableau comparatif des tokens et coûts (Uncached input, Cache writes, Cache reads, Output) totalisant 19,24 $ pour Fable, suivi d'une analyse des coûts pour "gpt-5.6-sol" totalisant environ 1,24 $.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Analyse et comparaison détaillée des données d'utilisation de l'API et des coûts de session entre deux modèles différents.
+
+![Une capture d'écran de l'interface VS Code affichant un document Markdown comparatif des coûts entre "Fable" et "Sol", incluant des tableaux de consommation de tokens et des notes techniques sur les tarifs des API.](../screenshots/EthxaDswUFo/EthxaDswUFo_000535_seg14.jpg)
+*⏱️ 00:05:35 — Une capture d'écran de l'interface VS Code affichant un document Markdown comparatif des coûts entre "Fable" et "Sol", incluant des tableaux de consommation de tokens et des notes techniques sur les tarifs des API.*
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:06:02 - 00:06:31]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> question is, is Fable's output, was that 20 times better? And I don't necessarily think that it was. But just because we're going off of like the actual quality, I'm going to say that I would have taken Fable's output in this one as well. All right. So I did one more side-by-side experiment. This one's interesting. I gave it a different goal prompt and I said, design me five fundamentally different visual elements. They can be games, presentations, websites, simulations, whatever you want. I really wanted to see once again, what does the model do with a super ambiguous prompt?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (utilisant l'interface de Claude Code / CLI).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image #1 : Analyse de coûts ("API-equivalent cost"), décompte de tokens (input/output) et logs d'exécution.
+- Image #2 : Prompt "/goal" demandant la création de cinq expériences visuelles interactives, suivi de logs "PASS" pour la vérification du code et rapports d'erreurs.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : - Image #1 : Revue technique des performances et de la facturation liée à l'usage du modèle Fable 5.
+- Image #2 : Exécution d'une requête de développement créatif et vérification automatisée de la structure des fichiers générés.
+
+![Une vue de l'éditeur de code affichant un rapport détaillé de consommation de tokens et de coûts financiers associés à une session d'agent IA.](../screenshots/EthxaDswUFo/EthxaDswUFo_000609_seg15.jpg)
+*⏱️ 00:06:09 — Une vue de l'éditeur de code affichant un rapport détaillé de consommation de tokens et de coûts financiers associés à une session d'agent IA.*
+
+![Une vue de l'interface de Claude Code affichant un prompt complexe de conception de sites web ainsi que les résultats d'exécution et les rapports de vérification de code.](../screenshots/EthxaDswUFo/EthxaDswUFo_000616_seg15.jpg)
+*⏱️ 00:06:16 — Une vue de l'interface de Claude Code affichant un prompt complexe de conception de sites web ainsi que les résultats d'exécution et les rapports de vérification de code.*
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:06:31 - 00:07:08]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
+> So let me open up the different outputs right here and we'll go ahead and compare this time. I will go ahead and tell you which one is which as we're looking at them. All right. So this one is fable and this one is soul. So they each output one site and then we've got five different kind of like simulations or sister sites to go through. So let's just start with fable and go through all of them and then we'll go to soul. So this is what we got so far. The gallery five self-contained worlds. Let's look at singularity. So I don't really know what's going on here. It says move to warp space time, hold to feed it, I guess. And then you hit space to detonate. So if I hit space,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (site interactif "Impossible Objects").
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Interface utilisateur de sites web hautement graphiques et expérimentaux, titres textuels ("IMPOSSIBLE OBJECTS", "AURORA ORCHESTRA", "SINGULARITY"), paramètres de simulation spatiale.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation et démonstration des capacités visuelles et interactives des sites générés ou testés par le présentateur.
+
+![Page d'accueil du site web "Impossible Objects" affichant le titre en grand et la section "Aurora Orchestra".](../screenshots/EthxaDswUFo/EthxaDswUFo_000640_seg16.jpg)
+*⏱️ 00:06:40 — Page d'accueil du site web "Impossible Objects" affichant le titre en grand et la section "Aurora Orchestra".*
+
+![Détail de la section "Aurora Orchestra" avec une sphère lumineuse bleue sur fond sombre, le présentateur en médaillon.](../screenshots/EthxaDswUFo/EthxaDswUFo_000649_seg16.jpg)
+*⏱️ 00:06:49 — Détail de la section "Aurora Orchestra" avec une sphère lumineuse bleue sur fond sombre, le présentateur en médaillon.*
+
+![Visualisation interactive d'un trou noir ("Singularity") avec des effets de particules, appartenant à l'expérience web présentée.](../screenshots/EthxaDswUFo/EthxaDswUFo_000658_seg16.jpg)
+*⏱️ 00:06:58 — Visualisation interactive d'un trou noir ("Singularity") avec des effets de particules, appartenant à l'expérience web présentée.*
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:07:09 - 00:07:37]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> we just blew something up, I guess. So I'm not really sure what they're going for here, but that's number one. We have second one, which is called Terra, where we kind of like have this flight simulator almost where we can steer with our mouse. We use W or S to speed up or speed down. We can go up or down. We can change the time of day. So as far as like the physics on this, it's not too bad. Everything is kind of rendering in a bit strange. I'm not sure if they were doing that intentionally. Maybe that's like the vibe of this, but pretty cool. You know, not too bad.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (application de simulation interactive).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Textes descriptifs des démos : "Infinite voxel terrain flight", "Software-rendered flight over an endless procedural landscape". Données de télémétrie en haut à droite (Altitude, Vitesse, Cap).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation dans le menu des démos, puis vol piloté par l'utilisateur au sein de la simulation 3D "Terra".
+
+![Interface de sélection de projets/démos interactives listant "Singularity", "Terra", "Orbit", et "Inkflow".](../screenshots/EthxaDswUFo/EthxaDswUFo_000716_seg17.jpg)
+*⏱️ 00:07:16 — Interface de sélection de projets/démos interactives listant "Singularity", "Terra", "Orbit", et "Inkflow".*
+
+![Vue immersive du simulateur de vol "Terra" avec un paysage procedural en voxels et un coucher de soleil.](../screenshots/EthxaDswUFo/EthxaDswUFo_000723_seg17.jpg)
+*⏱️ 00:07:23 — Vue immersive du simulateur de vol "Terra" avec un paysage procedural en voxels et un coucher de soleil.*
+
+![Continuation du vol dans "Terra", montrant les changements de couleurs du ciel et des reliefs générés.](../screenshots/EthxaDswUFo/EthxaDswUFo_000730_seg17.jpg)
+*⏱️ 00:07:30 — Continuation du vol dans "Terra", montrant les changements de couleurs du ciel et des reliefs générés.*
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:07:38 - 00:08:12]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> I don't love it, but I mean, for the fact that Fable just kind of wanted to do this and did it, it's all right. Okay. We've got Orbit, which is an arcade game, two rings, one input. So I think it looks like we just click to switch rings we're trying to collect the coins okay we're trying to avoid those things is what it looks like um and that's how you get shattered so i mean it plays fine it feels very responsive i'm not sure this is a bit of a bug though huh um the menu is like taking over me actually playing so i'm playing right now but the menu isn't going away so
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (plateforme de démonstration Fable).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste de titres de projets : SINGULARITY, TERRA, ORBIT, INKFLOW, THE DESCENT, accompagnée de leurs descriptions techniques respectives.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur parcourt la liste des jeux disponibles sur le site web.
+
+![Une interface web sombre présentant une liste de projets interactifs nommés "Fable", avec notamment l'option "03 ORBIT" sélectionnée, décrite comme un jeu d'arcade à une touche.](../screenshots/EthxaDswUFo/EthxaDswUFo_000746_seg18.jpg)
+*⏱️ 00:07:46 — Une interface web sombre présentant une liste de projets interactifs nommés "Fable", avec notamment l'option "03 ORBIT" sélectionnée, décrite comme un jeu d'arcade à une touche.*
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:08:12 - 00:08:33]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> that's a bit of a bug let's go ahead to number four we've got ink flow um click for new piece I can change the palette. I can save them as a PNG. I think this is just a weird, like a board button sort of thing. I don't know if you guys ever did board button, but that's what this reminds me of, like just some very random thing.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application web Inkflow (art génératif).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Commandes textuelles en bas de l'écran : "CLICK CANVAS OR [N] - NEW PIECE", "[P] PALETTE: PORCELAIN", "[S] SAVE PNG", et un identifiant "SEED C8OIYN".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur démontre l'interface en interagissant avec la toile et en commentant les options de changement de palette et d'exportation en PNG.
+
+![Une interface web minimaliste intitulée "INKFLOW" affichant une œuvre d'art générative composée de traits fluides aux tons roses et bleus sur fond crème.](../screenshots/EthxaDswUFo/EthxaDswUFo_000817_seg19.jpg)
+*⏱️ 00:08:17 — Une interface web minimaliste intitulée "INKFLOW" affichant une œuvre d'art générative composée de traits fluides aux tons roses et bleus sur fond crème.*
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:08:33 - 00:08:54]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> And the last one is the descent. So scroll from sunlit surface to challenge. Okay. So this is kind of like a story again. It's like an interactive story where we're actually going underwater. The background's changing. We're seeing different creatures go through deeper than the Titanic. The pressure, the sunlight, the temperature, all of that's changing.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web de narration interactive (scrollytelling) sur la profondeur océanique.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Affichage dynamique de compteurs : profondeur (mètres), pression atmosphérique, pourcentage de lumière solaire et température.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation par défilement (scroll) simulant une plongée interactive à travers différentes strates océaniques.
+
+![Interface web interactive montrant une descente sous-marine à 18 mètres, avec des données en temps réel sur la pression (2 ATM) et la lumière (92%).](../screenshots/EthxaDswUFo/EthxaDswUFo_000838_seg20.jpg)
+*⏱️ 00:08:38 — Interface web interactive montrant une descente sous-marine à 18 mètres, avec des données en temps réel sur la pression (2 ATM) et la lumière (92%).*
+
+![Poursuite de la descente à 739 mètres sous la surface, l'interface affiche une méduse et des paramètres mis à jour (pression 78 ATM, lumière 0.05%).](../screenshots/EthxaDswUFo/EthxaDswUFo_000843_seg20.jpg)
+*⏱️ 00:08:43 — Poursuite de la descente à 739 mètres sous la surface, l'interface affiche une méduse et des paramètres mis à jour (pression 78 ATM, lumière 0.05%).*
+
+![Vue à 4 793 mètres de profondeur, illustrant la pression extrême (480 ATM) et l'absence totale de lumière (0% sunlight).](../screenshots/EthxaDswUFo/EthxaDswUFo_000849_seg20.jpg)
+*⏱️ 00:08:49 — Vue à 4 793 mètres de profondeur, illustrant la pression extrême (480 ATM) et l'absence totale de lumière (0% sunlight).*
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:08:54 - 00:09:13]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> So kind of just another little journey experience. So that was Fable. I will say nothing overwhelmingly impressive there, right? Let's go to Seoul, which already, I think this looks better. This honestly kind of looks like a Claude design sort of output. But anyways, impossible objects, five tiny worlds, no frameworks. The first one is Aurora Orchestra.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web affichant les sites "The Gallery" et "Impossible Objects".
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte descriptif des projets ("Five self-contained worlds", "Five experiments / built to be felt") et titres des sections.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation et présentation visuelle de portfolios ou sites web de démonstration technologique par le présentateur.
+
+![Interface web "The Gallery" présentant une liste d'expérimentations interactives comme "Singularity", "Terra" et "Orbit".](../screenshots/EthxaDswUFo/EthxaDswUFo_000859_seg21.jpg)
+*⏱️ 00:08:59 — Interface web "The Gallery" présentant une liste d'expérimentations interactives comme "Singularity", "Terra" et "Orbit".*
+
+![Interface web du site "Impossible Objects" mettant en avant des expériences créatives avec une sphère stylisée en bas à droite.](../screenshots/EthxaDswUFo/EthxaDswUFo_000904_seg21.jpg)
+*⏱️ 00:09:04 — Interface web du site "Impossible Objects" mettant en avant des expériences créatives avec une sphère stylisée en bas à droite.*
+
+![Vue statique de la page d'accueil "Impossible Objects" avec le titre en grandes typographies et une sphère lumineuse partiellement visible.](../screenshots/EthxaDswUFo/EthxaDswUFo_000909_seg21.jpg)
+*⏱️ 00:09:09 — Vue statique de la page d'accueil "Impossible Objects" avec le titre en grandes typographies et une sphère lumineuse partiellement visible.*
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:09:14 - 00:09:46]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> So I guess we're just kind of playing here with the northern lights. yeah not sure exactly what's happening but we can change the voice we can change the sky we can hold for intensity we've got other ones in here so we can change like the color of the northern lights i suppose not sure what's going on here that might be a bit of a bug it seems like three and four don't actually work but two and oh now two and one don't work at all either okay so another little bug there let's go back to the gallery let's go to number two atlas of lost echoes
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application web interactive "AURORA / ORCHESTRA" (expérience immersive de visualisation générative).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Menu de sélection de modes : "#1 / VEIL", "#2 / BLOOM", "#3 / COMET", "#4 / CHEER".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur interagit avec les boutons de contrôle en bas de l'écran pour modifier les paramètres visuels (effets, intensité et style des aurores).
+
+![Interface interactive nommée "AURORA / ORCHESTRA" affichant une visualisation dynamique de style aurore boréale avec des volutes bleues et vertes, accompagnée d'un sélecteur de mode en bas.](../screenshots/EthxaDswUFo/EthxaDswUFo_000922_seg22.jpg)
+*⏱️ 00:09:22 — Interface interactive nommée "AURORA / ORCHESTRA" affichant une visualisation dynamique de style aurore boréale avec des volutes bleues et vertes, accompagnée d'un sélecteur de mode en bas.*
+
+![La même interface après sélection du mode "#3 / COMET", où les visuels précédents ont disparu pour laisser place à une animation plus minimaliste focalisée sur un point lumineux.](../screenshots/EthxaDswUFo/EthxaDswUFo_000930_seg22.jpg)
+*⏱️ 00:09:30 — La même interface après sélection du mode "#3 / COMET", où les visuels précédents ont disparu pour laisser place à une animation plus minimaliste focalisée sur un point lumineux.*
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:09:46 - 00:10:10]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> I've got a map. My cursor is showing where north is. What happens if I click on this? Sleeping sea. Okay. I'm not really sure what we're doing here. In the bottom right, you can see it says echoes recovered. I guess I have to recover all five of these echoes. So let's see if anything happens. Every place that misses us. Atlas complete. Keep exploring.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web interactive ou application de type jeu narratif/jeu de rôle.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Carte stylisée de type fantasy avec des points d'intérêt cliquables et une barre de progression pour les "échos" récupérés.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur survole ou clique sur le point nommé "The Sleeping Sea" sur la carte.
+
+![Une carte interactive intitulée "Atlas of Lost Echoes" affichée en plein écran, présentant plusieurs lieux nommés (The Rain Library, Bellweather, The Sleeping Sea, Mothlight City, The Last Orchard) reliés par des pointillés. En bas à droite, un compteur indique "ECHOES RECOVERED 0 / 5". Une incrustation vidéo du présentateur apparaît en bas à gauche.](../screenshots/EthxaDswUFo/EthxaDswUFo_000952_seg23.jpg)
+*⏱️ 00:09:52 — Une carte interactive intitulée "Atlas of Lost Echoes" affichée en plein écran, présentant plusieurs lieux nommés (The Rain Library, Bellweather, The Sleeping Sea, Mothlight City, The Last Orchard) reliés par des pointillés. En bas à droite, un compteur indique "ECHOES RECOVERED 0 / 5". Une incrustation vidéo du présentateur apparaît en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:10:10 - 00:10:46]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> Okay. So not really sure what that is. Let's go ahead and go to the next one. The glyph heist. so the grid is hiding contraband words type every signal before the trace completes okay so this is just like a typing game i guess um am i getting points oh yeah the points are in the top left whoa that's not even a word okay so this is just like a typing game i guess i don't really see much like feedback i'm just kind of typing and those that's not a word either i mean i guess that's a point is it's trying to trip me up. Oops. Yeah. That's kind of the point I guess. Okay.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Jeu web (navigateur) "Glyph Heist" (A Kinetic Typography Arcade).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte affiché : "GLYPH HEIST", "BREACH THE GRID", "FEVER", "x5 COMBO!", "SECURITY LEVEL 04".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur interagit avec l'interface web, passant de l'écran de lancement au gameplay actif de frappe au clavier (typing game).
+
+![Écran d'accueil du jeu web "Glyph Heist" avec un bouton central jaune "BREACH THE GRID".](../screenshots/EthxaDswUFo/EthxaDswUFo_001019_seg24.jpg)
+*⏱️ 00:10:19 — Écran d'accueil du jeu web "Glyph Heist" avec un bouton central jaune "BREACH THE GRID".*
+
+![Interface de jeu montrant le mot "FEVER" au centre, avec un compteur de combo "x5 COMBO!" et le niveau de sécurité à "04".](../screenshots/EthxaDswUFo/EthxaDswUFo_001028_seg24.jpg)
+*⏱️ 00:10:28 — Interface de jeu montrant le mot "FEVER" au centre, avec un compteur de combo "x5 COMBO!" et le niveau de sécurité à "04".*
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:10:47 - 00:11:16]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. Okay. So we have like little sound bites. I can chat with people. The tool war panel settled a few debates for me. Nice. Good perspective there. We're outside again. We have these different banners, although they're all the same. They don't say like different people's names. So big AIS live logo. Workshop wing is over here. And let's go through the sliding glass doors and see what we've got. So we've got the AIS cafe. The map is in the bottom right, and it's not too descriptive.
+> That's all right. Um, I mean kind of a cool vibe, right? Like the actual aesthetics. I don't think you're losing lives though. Like I don't know how this ever ends. Also, I already had a high score in here. So definitely kind of buggy. Um, and let's go ahead and go to, I guess we got two left. So this one, this is just a slide deck. It looks like it looks like there are five slides. Not bad though. I actually think that these are designed pretty well. This is interesting though, because this definitely looks like a claw design to me.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (le chemin de fichier local `file:///.../index.html` est visible en bas de l'image #2).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Interface utilisateur interactive de style arcade/dossier narratif intitulée "Glyph Heist" et "Solaris Archive", contenant des compteurs de score et des récits textuels.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur navigue dans une application web interactive, probablement un projet de développement qu'il teste, en interagissant avec l'interface pour explorer les différents modules du jeu/dossier.
+
+![Interface de jeu web nommée "Glyph Heist" affichant un score, un niveau de sécurité et le mot "GLITCH" au centre avec un effet visuel.](../screenshots/EthxaDswUFo/EthxaDswUFo_001054_seg25.jpg)
+*⏱️ 00:10:54 — Interface de jeu web nommée "Glyph Heist" affichant un score, un niveau de sécurité et le mot "GLITCH" au centre avec un effet visuel.*
+
+![Interface web montrant une sélection de projets ("Glyph Heist" et "Solaris Archive") avec des éléments graphiques abstraits et colorés.](../screenshots/EthxaDswUFo/EthxaDswUFo_001101_seg25.jpg)
+*⏱️ 00:11:01 — Interface web montrant une sélection de projets ("Glyph Heist" et "Solaris Archive") avec des éléments graphiques abstraits et colorés.*
+
+![Interface de navigation dans un dossier numérique intitulée "Solaris Archive", avec une mise en page typographique axée sur une narration textuelle.](../screenshots/EthxaDswUFo/EthxaDswUFo_001108_seg25.jpg)
+*⏱️ 00:11:08 — Interface de navigation dans un dossier numérique intitulée "Solaris Archive", avec une mise en page typographique axée sur une narration textuelle.*
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:11:16 - 00:11:36]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> Like this definitely looks like something that Fable would whip up. I don't know why. The font and the color scheme just feels like a clawed thing. Anyways, the last one we got here is a tide pool. So life is waiting. Touch the water to begin. Okay, I just dropped in a bunch of seeds. We've got a population of 320, diversity of two.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (Google Chrome) affichant une application web interactive locale (index.html).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte affiché : "Life is waiting. Touch the water to begin.", avec une barre latérale proposant des options comme "Add Life", "Sunlight", "Fresh Rain", "Current".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Démonstration de l'interface utilisateur de l'application "Tidepool God" qui réagit aux interactions de l'utilisateur.
+
+![Une interface web interactive intitulée "Tidepool God", présentant une expérience visuelle immersive sur le thème de la vie, avec des éléments interactifs sur le côté droit.](../screenshots/EthxaDswUFo/EthxaDswUFo_001126_seg26.jpg)
+*⏱️ 00:11:26 — Une interface web interactive intitulée "Tidepool God", présentant une expérience visuelle immersive sur le thème de la vie, avec des éléments interactifs sur le côté droit.*
 
 ---
 
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
+### ⏱️ `[00:11:36 - 00:11:55]` | Segment #27
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
+> I can give them sunlight. I can give them fresh rain. So this is very much like a simulation. This one already feels like it's like slowing down my computer. so I don't know how much is going on back here, but not too bad. I like the ones that are simulations. I think they're kind of fun. So yeah, honestly, I don't even know what to say here.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application web interactive / Simulation "Tidepool God".
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Interface utilisateur avec des contrôles de simulation : "Seed Life", "Sunlight", "Fresh Rain", "Current". Texte affiché au centre : "The tide turns...".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur interagit avec les paramètres de l'environnement (Sunlight) pour influencer la simulation en temps réel.
+
+![Vue d'une interface de simulation interactive nommée "Tidepool God" avec des éléments flottants lumineux. Le menu latéral droit est actif sur l'option "Current".](../screenshots/EthxaDswUFo/EthxaDswUFo_001141_seg27.jpg)
+*⏱️ 00:11:41 — Vue d'une interface de simulation interactive nommée "Tidepool God" avec des éléments flottants lumineux. Le menu latéral droit est actif sur l'option "Current".*
+
+![La même interface de simulation. Le curseur est positionné au centre, sur l'un des éléments de la simulation.](../screenshots/EthxaDswUFo/EthxaDswUFo_001146_seg27.jpg)
+*⏱️ 00:11:46 — La même interface de simulation. Le curseur est positionné au centre, sur l'un des éléments de la simulation.*
+
+![L'interface de simulation "Tidepool God" où l'option "Sunlight" est maintenant sélectionnée dans le menu latéral droit, illustrant l'interaction mentionnée dans l'audio.](../screenshots/EthxaDswUFo/EthxaDswUFo_001151_seg27.jpg)
+*⏱️ 00:11:51 — L'interface de simulation "Tidepool God" où l'option "Sunlight" est maintenant sélectionnée dans le menu latéral droit, illustrant l'interaction mentionnée dans l'audio.*
 
 ---
 
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
+### ⏱️ `[00:11:55 - 00:12:14]` | Segment #28
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
+> Like, I don't know which one to say I'm gonna hand the crown to. I think I'm just gonna go with Soul for this one because I think in general, it had a bit of a better idea of like diversity and experience. The interesting thing here is when we take a look at the speed and the cost. So I thought that this run would take the longest out of all of them because I was saying, hey, five very different things.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (pour les interfaces visuelles) et éditeur de code (type Cursor/VS Code) pour la partie développement.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Code source JavaScript manipulé, logs de vérification de scripts ("PASS sol-output/index.html"), et rapport de fin d'exécution de l'agent.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Revue visuelle des résultats produits par l'IA et analyse du code source généré pour valider l'intégrité des fichiers HTML et des interactions.
+
+![Interface web interactive intitulée "Tidepool God", affichant un environnement graphique fluide avec des éléments lumineux en suspension.](../screenshots/EthxaDswUFo/EthxaDswUFo_001200_seg28.jpg)
+*⏱️ 00:12:00 — Interface web interactive intitulée "Tidepool God", affichant un environnement graphique fluide avec des éléments lumineux en suspension.*
+
+![Page d'accueil du site "Impossible Objects" présentant une interface minimaliste avec un titre en typographie grasse et une sphère 3D animée.](../screenshots/EthxaDswUFo/EthxaDswUFo_001205_seg28.jpg)
+*⏱️ 00:12:05 — Page d'accueil du site "Impossible Objects" présentant une interface minimaliste avec un titre en typographie grasse et une sphère 3D animée.*
+
+![Éditeur de code (probablement Cursor) affichant des différences de code (diffs) en vert/rouge et une section de terminal montrant le journal d'exécution d'un agent.](../screenshots/EthxaDswUFo/EthxaDswUFo_001210_seg28.jpg)
+*⏱️ 00:12:10 — Éditeur de code (probablement Cursor) affichant des différences de code (diffs) en vert/rouge et une section de terminal montrant le journal d'exécution d'un agent.*
 
 ---
 
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
+### ⏱️ `[00:12:14 - 00:12:39]` | Segment #29
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
+> I thought it would take maybe five times as long as the earlier ones, but this one was actually like the quickest on both fronts, which I thought was really interesting. This one took 15 minutes for Fable. And for Sol, this took seven minutes, which I thought was really, really fast. And on the cost side, this costed Fable about 15 bucks with 65,000 output tokens. And on Sol, it took, once again, about a dollar and 22,000 output tokens. So very, very interesting to me. All right.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : VS Code (avec une extension de type agent IA/Claude).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Code source JavaScript, logs d'exécution de l'agent, résumé de "Goal achieved" (15m 17s), et une liste de vérification des tâches (Updated Plan) concernant la création d'expériences web.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent affiche les résultats de la génération, les statistiques de consommation de tokens et le statut de validation des scripts (0 erreur, 0 lien brisé).
+
+![Une capture d'écran de l'interface VS Code montrant un flux de travail d'agent IA, avec le présentateur incrusté en bas à gauche.](../screenshots/EthxaDswUFo/EthxaDswUFo_001220_seg29.jpg)
+*⏱️ 00:12:20 — Une capture d'écran de l'interface VS Code montrant un flux de travail d'agent IA, avec le présentateur incrusté en bas à gauche.*
 
 ---
 
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
+### ⏱️ `[00:12:39 - 00:12:57]` | Segment #30
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
+> So those agentic experiments with Cloud Code and with Codex, that was one thing. And that's typically how I'm going to be actually driving these two models. So it was important for me to play around with stuff. And of course, all day I used it for just my general work. But I also wanted to try just explicitly over the API, just talking to the models.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web (page de résultats/rapports d'analyse).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Métriques comparatives incluant le record de victoires (24-3), les coûts totaux (16.07$ vs 63.40$), le taux de livraison (100% vs 78%) et des scores de qualité avec graphiques à barres.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation des résultats d'une analyse comparative entre les modèles "Sol" (GPT-5.6) et "Fable" (Claude Fable 5) basée sur des tests d'agents IA.
+
+![Un tableau de bord comparatif intitulé "Sol vs Fable: The Complete Scoreboard" affichant des statistiques de performance entre deux modèles d'IA.](../screenshots/EthxaDswUFo/EthxaDswUFo_001243_seg30.jpg)
+*⏱️ 00:12:43 — Un tableau de bord comparatif intitulé "Sol vs Fable: The Complete Scoreboard" affichant des statistiques de performance entre deux modèles d'IA.*
 
 ---
 
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
+### ⏱️ `[00:12:57 - 00:13:19]` | Segment #31
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
+> And a lot of these were kind of like a one-shot, hey, what's this? Give me an answer. What's this? Give me an answer. Rather than like an agentic loop with multi-step reasoning. But I wanted to see what it looked like for speed and cost as well. So the record here, which is really interesting, is that Sol won 24 times and Fable won three times. There were also a lot of times when Fable refused to answer, like literally just wouldn't submit an answer.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web affichant une page de résultats d'analyse comparative (benchmark).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Métriques détaillées : score global (24-3 pour Sol), coût total ($16.07 vs $63.40), taux de livraison (100% vs 78%), et score de qualité (graphiques à barres comparatifs).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle des résultats de tests de performance (API calls et builds agentiques) pour justifier l'efficacité et la rentabilité du modèle Sol par rapport à Fable.
+
+![Un tableau de bord comparatif intitulé "Sol vs Fable: The Complete Scoreboard" affichant les statistiques de performance entre GPT-5.6 Sol et Claude Fable 5.](../screenshots/EthxaDswUFo/EthxaDswUFo_001302_seg31.jpg)
+*⏱️ 00:13:02 — Un tableau de bord comparatif intitulé "Sol vs Fable: The Complete Scoreboard" affichant les statistiques de performance entre GPT-5.6 Sol et Claude Fable 5.*
 
 ---
 
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
+### ⏱️ `[00:13:19 - 00:13:41]` | Segment #32
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
+> It refused, which I thought was interesting because, you know, the security guardrails are baked in pretty hard. But also look at the spend. I mean, Sol won 24 to 3 for these kind of quick one-off tasks. And Sol costed 16 bucks while Fable costed 63 bucks. But as far as like the actual capability, when Fable actually answered, it was pretty even. The reason why Sol dominated apparently is because Fable failed to answer a lot of the calls.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface de type dashboard web / rapport de performance.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le tableau affiche le score global (Sol 24-3 vs Fable), le coût total ($16.07 vs $63.40), le taux de réussite (100% vs 78%), et des graphiques à barres comparant la qualité ("Score as deployed" et "Score when it answered").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle des données analytiques comparatives pour justifier la supériorité en efficience du modèle Sol.
+
+![Un tableau de bord comparatif intitulé "Sol vs Fable: The Complete Scoreboard" affichant les statistiques de performance et de coût entre deux modèles d'IA (Sol et Fable).](../screenshots/EthxaDswUFo/EthxaDswUFo_001325_seg32.jpg)
+*⏱️ 00:13:25 — Un tableau de bord comparatif intitulé "Sol vs Fable: The Complete Scoreboard" affichant les statistiques de performance et de coût entre deux modèles d'IA (Sol et Fable).*
 
 ---
 
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
+### ⏱️ `[00:13:42 - 00:14:14]` | Segment #33
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
+> But as you can see over here, score one answering, Sol had 0.98 and Fable had 0.966. So they are very similar models. And I think it's just a perfect example of like the unit economics. Based on this task, let's say the task is a five. Do you need a model that is a 10? Probably not. You only need a model that's maybe like a five or a six. So in this case, with these quick one-shot, you know, API requests, probably stateless. Sol seems to crush Fable here. And from an input output tokens perspective, Sol is basically half the cost of Fable, you know, half on the input and then a
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web de type dashboard analytique/comparatif.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Métriques clés : score de réponse (0.982 vs 0.966), coût total ($16.07 vs $63.40), taux de livraison (100% vs 78%), et graphiques à barres comparant la qualité ("Score, as deployed" et "Score, when it answered").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle des données de performance pour illustrer l'argument économique sur le choix des modèles en fonction de la complexité de la tâche.
+
+![Un tableau de bord comparatif intitulé "Sol vs Fable: The Complete Scoreboard" affichant les performances, les coûts et la fiabilité entre deux modèles IA.](../screenshots/EthxaDswUFo/EthxaDswUFo_001350_seg33.jpg)
+*⏱️ 00:13:50 — Un tableau de bord comparatif intitulé "Sol vs Fable: The Complete Scoreboard" affichant les performances, les coûts et la fiabilité entre deux modèles IA.*
 
 ---
 
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
+### ⏱️ `[00:14:14 - 00:14:37]` | Segment #34
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
+> little over half on the output, but it's basically half. And if you compare Sol to like Opus 4.8, they're pretty much the same, same on the input and then very similar on the output. So that's pretty interesting to me. And it honestly feels like a better head to head comparison would have been Sol 5.6 versus Opus 4.8 rather than comparing Sol 5.6 and Fable five. Like I just think that they're not even on the same level as far as like a next gen model.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Plateforme OpenRouter (comparateur de modèles) et rapport de benchmarking analytique personnalisé.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image 1 : Tableaux de prix (Input/Output par million de tokens), latence (p50) et débit (throughput).
+- Image 2 : Statistiques de réussite (24-3 en faveur de Sol), dépenses totales comparées (16,07 $ vs 63,40 $), taux de livraison (100% vs 78%) et scores de qualité.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur illustre ses propos sur la rentabilité et l'efficacité opérationnelle des modèles en comparant les données chiffrées affichées à l'écran.
+
+![Comparaison côte à côte des tarifs et des performances techniques entre le modèle "Claude Opus 4.8" et "GPT-5.6 Sol" via l'interface OpenRouter.](../screenshots/EthxaDswUFo/EthxaDswUFo_001420_seg34.jpg)
+*⏱️ 00:14:20 — Comparaison côte à côte des tarifs et des performances techniques entre le modèle "Claude Opus 4.8" et "GPT-5.6 Sol" via l'interface OpenRouter.*
+
+![Tableau de bord récapitulatif comparant les scores de performance globale ("Scoreboard") entre "GPT-5.6 Sol" et "Claude Fable 5", incluant des statistiques sur les coûts et le taux de réussite.](../screenshots/EthxaDswUFo/EthxaDswUFo_001425_seg34.jpg)
+*⏱️ 00:14:25 — Tableau de bord récapitulatif comparant les scores de performance globale ("Scoreboard") entre "GPT-5.6 Sol" et "Claude Fable 5", incluant des statistiques sur les coûts et le taux de réussite.*
 
 ---
 
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
+### ⏱️ `[00:14:37 - 00:15:10]` | Segment #35
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
+> Think about the fact that Fable jumps to a five. Soul, which is apparently their most capable model, why would it not have been Soul 6? Like why are we 5.6? Doesn't a model that should be so, so good deserve a full step up if there's, you know, fundamentally something so different that makes it like a really powerful, scary model. But they decided to only bump it up to Soul 5.6, which makes me wonder like what are they cooking back there and what are they maybe waiting to drop as their next GPT-6, because I think that's when we have the next-gen model that I truly think actually goes head-to-head with Fable, because right now I do not think that Sol does. I'll talk
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Dashboard web analytique (type rapport de performance).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Comparaison détaillée entre "Sol" et "Fable" : statistiques de victoires (24-3), dépenses totales ($16.07 vs $63.40), taux de délivrabilité (100% vs 78%), et scores de qualité (0.982 vs 0.966 en mode "answering").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation de données comparatives pour illustrer l'écart d'efficacité et de fiabilité entre les deux modèles d'IA.
+
+![Un tableau de bord comparatif intitulé "Sol vs Fable: The Complete Scoreboard" affichant les performances du modèle GPT-5.6 Sol face au modèle Claude Fable 5, incluant des statistiques sur les coûts, les taux de réussite et les scores de qualité.](../screenshots/EthxaDswUFo/EthxaDswUFo_001445_seg35.jpg)
+*⏱️ 00:14:45 — Un tableau de bord comparatif intitulé "Sol vs Fable: The Complete Scoreboard" affichant les performances du modèle GPT-5.6 Sol face au modèle Claude Fable 5, incluant des statistiques sur les coûts, les taux de réussite et les scores de qualité.*
 
 ---
 
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
+### ⏱️ `[00:15:10 - 00:15:47]` | Segment #36
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
+> about that a little bit more once we get into the next section, but let's look at this. So score, obviously Sol won here, but score when answered, obviously it was much closer. So that's kind of like the reliability thing. Now on the cost side, the API calls, Sol was much cheaper, obviously, nine bucks to about 14 bucks. But then what's interesting is the gap here is not that big, right? The gap here is about five bucks. And if you think percentage wise relative, it's even less like a smaller percentage than how wide this gap is. When we get to the actual agentic reasoning with Cloud Code as the harness and Codex as the harness, the gap in cost was just much, much bigger, which is really interesting. And overall, Fable is much more expensive than Sol.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web de type rapport d'analyse comparative ou benchmark (format document/dashboard).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Graphiques à barres horizontales comparant les scores, les taux de non-réponse (Sol: 0/130 vs Fable: 29/130) et les coûts API (Sol: $9.01 vs Fable: $14.72 pour les benchmarks, et écarts plus importants sur les "Agentic builds").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur commente les données affichées à l'écran, soulignant la supériorité de "Sol" en termes de fiabilité et de coût.
+
+![Un tableau de bord comparatif présentant des métriques de performance ("Reliability") et de coût ("Cost") entre deux modèles nommés "Sol" et "Fable".](../screenshots/EthxaDswUFo/EthxaDswUFo_001520_seg36.jpg)
+*⏱️ 00:15:20 — Un tableau de bord comparatif présentant des métriques de performance ("Reliability") et de coût ("Cost") entre deux modèles nommés "Sol" et "Fable".*
 
 ---
 
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
+### ⏱️ `[00:15:47 - 00:16:20]` | Segment #37
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
+> And I think the token thing is just so interesting because let's say that Fable and Sol costed the exact same from an input and output token perspective. Sol would have still been meaningfully cheaper because it just was more efficient with tokens. I don't know exactly why that is, but it just seems to be so much more efficient with tokens. It's probably has a lot to do with Codex too, because when I've done Codex and Cloud Code comparisons in the past, Codex has always been faster and more efficient with tokens. But anyways, just something I think is pretty interesting. This is also interesting on the speed side. So over API, the median API
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface analytique web de type tableau de bord de performance d'IA.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Graphiques à barres comparant la consommation totale de tokens (Sol : 3.53M vs Fable : 14.68M) et tableaux de répartition des tokens par type (input, cache, output). Inclut des métriques de latence (8.2s vs 10.0s).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Visualisation des données comparatives pour illustrer l'efficacité opérationnelle et le coût des agents IA.
+
+![Tableau de bord comparatif affichant l'utilisation des tokens entre les modèles 'Sol' et 'Fable', détaillant la consommation par canal (API benchmarks, Agentic builds) et les sections 'Tokens' et 'Speed'.](../screenshots/EthxaDswUFo/EthxaDswUFo_001555_seg37.jpg)
+*⏱️ 00:15:55 — Tableau de bord comparatif affichant l'utilisation des tokens entre les modèles 'Sol' et 'Fable', détaillant la consommation par canal (API benchmarks, Agentic builds) et les sections 'Tokens' et 'Speed'.*
 
 ---
 
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
+### ⏱️ `[00:16:20 - 00:16:43]` | Segment #38
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
+> latency from Sol was quicker than Fable, but the mean, so the average was Fable being quicker. So that means like Sol is a little bit more all over the board. Some runs were super, super long. Some runs might've been really, really quick. Whereas Fable was more consistently just kind of hovering around like the 22nd mark. And that's why its median was still higher than Sol, but its mean was lower than Sol, which I just think is pretty interesting.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Page web de résultats de benchmark (Dashboard d'analyse comparative).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Données chiffrées : Median API latency (Sol 8.2s vs Fable 10.0s), Mean API latency (Sol 34.1s vs Fable 23.4s), et temps de build 'Agentic builds' (Sol 36:59 vs Fable 59:00). Section 'Verdict' détaillant les avantages et limites de chaque modèle.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Visualisation et explication des données statistiques pour comparer la cohérence et l'efficacité des deux modèles IA.
+
+![Un tableau comparatif des performances de latence et de temps de build entre les systèmes 'Sol' et 'Fable', affichant des graphiques à barres horizontales.](../screenshots/EthxaDswUFo/EthxaDswUFo_001625_seg38.jpg)
+*⏱️ 00:16:25 — Un tableau comparatif des performances de latence et de temps de build entre les systèmes 'Sol' et 'Fable', affichant des graphiques à barres horizontales.*
 
 ---
 
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
+### ⏱️ `[00:16:44 - 00:17:03]` | Segment #39
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
+> But then when we see the agentic builds, Fable was pretty much always going to be slower. So after running these different types of tests, some were fun, some were for design, some were just via API. and then of course my actual driving this on the day-to-day, here's where I landed. Overall, I feel like Fable is a better manager and that's how I think of it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Application de prise de notes ou tableau blanc virtuel (type Obsidian Canvas ou similaire).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image #1 : Données chiffrées sur la "Median API latency", "Mean API latency" et "Agentic builds, wall clock". Texte explicatif sous les graphiques sur le verdict final ("Sol wins the aggregate").
+- Image #2 : Liste de mots-clés par agent. Fable : "manager", "Creativity", "Advising", etc. Sol : "worker", "Price", "Computer use", "Finding bugs", etc.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation des résultats de tests de performance et synthèse comparative des capacités des modèles IA pour guider le choix de l'utilisateur.
+
+![Analyse comparative des performances entre deux agents IA ("Sol" et "Fable") sous forme de graphiques à barres mesurant la latence API et le temps de build agentique.](../screenshots/EthxaDswUFo/EthxaDswUFo_001649_seg39.jpg)
+*⏱️ 00:16:49 — Analyse comparative des performances entre deux agents IA ("Sol" et "Fable") sous forme de graphiques à barres mesurant la latence API et le temps de build agentique.*
+
+![Tableau comparatif conceptuel affiché sur une interface de type tableau blanc (canvas) distinguant les cas d'usage optimaux pour "Fable" et "Sol".](../screenshots/EthxaDswUFo/EthxaDswUFo_001659_seg39.jpg)
+*⏱️ 00:16:59 — Tableau comparatif conceptuel affiché sur une interface de type tableau blanc (canvas) distinguant les cas d'usage optimaux pour "Fable" et "Sol".*
 
 ---
 
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
+### ⏱️ `[00:17:04 - 00:17:28]` | Segment #40
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
+> I think of it as a co-founder, I think of it as a manager. Soul is just a really, really good worker, really good worker. Like I think that having Fable orchestrate a bunch of Soul agents would be amazing. I gave them each their other things that I would say like they are better than the other end. So Soul is obviously better on price. It's much better on computer use. It's much better at playing devil's advocate because it feels like it's just a little more careful at finding the bugs and looking at things from different angles.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de tableau blanc virtuel ou outil de prise de notes (type Excalidraw ou similaire).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Colonne Fable : "manager", Creativity, Advising, Knowledge work, Video, Not over-engineering, Pure capability. Colonne Sol : "worker", Price, Computer use, Devil's advocate, Finding bugs, Verification, Speed.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Comparaison conceptuelle et structuration des rôles des agents IA dans un workflow de travail.
+
+![Un tableau comparatif sur fond noir illustrant les rôles respectifs de Fable (manager) et Sol (worker) avec une liste de leurs points forts et caractéristiques.](../screenshots/EthxaDswUFo/EthxaDswUFo_001710_seg40.jpg)
+*⏱️ 00:17:10 — Un tableau comparatif sur fond noir illustrant les rôles respectifs de Fable (manager) et Sol (worker) avec une liste de leurs points forts et caractéristiques.*
 
 ---
 
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
+### ⏱️ `[00:17:28 - 00:17:49]` | Segment #41
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
+> I also gave it the verification because of the computer use and because of this whole devil's advocate and just like really being careful and really thinking about what did they say? What did the user tell me to do? And what am I gonna do? And I'm gonna do exactly that. Whereas sometimes Fable's a bit more like it'll push back a little bit more. And it's almost like sometimes sassier, you know? Like sometimes it's not just like I want to take a request and action it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc numérique type Miro ou FigJam.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableau comparatif : Fable (rôle "manager", créativité, advising, knowledge work, vidéo, pas d'over-engineering, pure capability) vs Sol (rôle "worker", prix, utilisation de l'ordinateur, avocat du diable, recherche de bugs, vérification, vitesse).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle et comparaison des capacités fonctionnelles de deux agents IA pour illustrer les différences dans leur approche de l'exécution des tâches.
+
+![Un diagramme comparatif sur fond noir présentant les caractéristiques distinctes des agents IA "Fable" et "Sol".](../screenshots/EthxaDswUFo/EthxaDswUFo_001733_seg41.jpg)
+*⏱️ 00:17:33 — Un diagramme comparatif sur fond noir présentant les caractéristiques distinctes des agents IA "Fable" et "Sol".*
 
 ---
 
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
+### ⏱️ `[00:17:49 - 00:18:10]` | Segment #42
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
+> I want to push back and be like a consultant here, which is a good thing, right? That's why I said it's a manager. There's pros and cons to that. And then of course I gave soul the speed. Now fable, I said, it's just much more creative. It feels more creative. It feels like it's better at writing. It feels like it's better at brainstorming. It feels like it's better at advising. It's really strategic. The knowledge work all day. I still prefer fable, but you know, it's just not the cost.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de tableau blanc numérique de type FigJam ou Excalidraw.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste des attributs pour Fable : "manager", Creativity, Advising, Knowledge work, Video, Not over-engineering, Pure capability. Liste des attributs pour Sol : "worker", Price, Computer use, Devil's advocate, Finding bugs, Verification, Speed.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle des points de comparaison entre les deux agents IA pour étayer l'argumentation du présentateur.
+
+![Tableau comparatif sur fond sombre présentant les forces respectives de deux agents IA nommés "Fable" et "Sol".](../screenshots/EthxaDswUFo/EthxaDswUFo_001754_seg42.jpg)
+*⏱️ 00:17:54 — Tableau comparatif sur fond sombre présentant les forces respectives de deux agents IA nommés "Fable" et "Sol".*
 
 ---
 
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
+### ⏱️ `[00:18:10 - 00:18:28]` | Segment #43
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
+> I can't always justify it. It felt like it was better at making videos. If you saw, I made two videos recently on YouTube. One was called like fable five made this entire video. And the other one I just dropped earlier today, which was called soul made this entire video. So go watch both of those. They each created YouTube videos for me completely from scratch. And just see which one you thought was better. I liked Fables better.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Logiciel de tableau blanc numérique ou outil de prise de notes visuelles (type Excalidraw ou Miro).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Tableau comparatif :
+- Colonne "Fable" : "manager", Creativity, Advising, Knowledge work, Video, Not over-engineering, Pure capability.
+- Colonne "Sol" : "worker", Price, Computer use, Devil's advocate, Finding bugs, Verification, Speed.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation comparative des rôles et fonctionnalités de deux agents IA distincts pour illustrer le flux de travail de création vidéo.
+
+![Une comparaison côte à côte sous forme de tableau affiché sur un canevas numérique, illustrant les forces respectives de "Fable" et "Sol".](../screenshots/EthxaDswUFo/EthxaDswUFo_001814_seg43.jpg)
+*⏱️ 00:18:14 — Une comparaison côte à côte sous forme de tableau affiché sur un canevas numérique, illustrant les forces respectives de "Fable" et "Sol".*
 
 ---
 
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
+### ⏱️ `[00:18:29 - 00:18:48]` | Segment #44
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
+> I also said that Fables better at not over-engineering because Sol runs so many tests, which also is interesting when you think about the token thing, right? Like, how can it be so efficient with tokens if it writes so many tests? And sometimes it will overthink, especially when I had Sol on Ultra. It was just going and going and going and going, which, you know, sometimes good, sometimes bad.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc numérique ou logiciel de présentation de type canevas (probablement Excalidraw ou similaire).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Colonne Fable : "manager", Creativity, Advising, Knowledge work, Video, Not over-engineering, Pure capability. Colonne Sol : "worker", Price, Computer use, Devil's advocate, Finding bugs, Verification, Speed.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Comparaison conceptuelle des rôles et forces opérationnelles des deux agents IA à travers une liste structurée.
+
+![Tableau comparatif sur fond noir présentant les caractéristiques distinctes des agents IA "Fable" et "Sol".](../screenshots/EthxaDswUFo/EthxaDswUFo_001834_seg44.jpg)
+*⏱️ 00:18:34 — Tableau comparatif sur fond noir présentant les caractéristiques distinctes des agents IA "Fable" et "Sol".*
 
 ---
 
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
+### ⏱️ `[00:18:48 - 00:19:09]` | Segment #45
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
+> There's always pros and cons, but just pure capability. I mean, you can't even argue. Fable 5 is in another tier. It's just on another level. And Sol is really good. I think it's more comparable to Opus 4.8. It's definitely better than GPT 5.5, but it's not a Fable 5. And honestly, I think if it was Fable 5 tier, it would be charged at Fable 5 tier.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc numérique (type Miro ou FigJam).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste de caractéristiques pour Fable : "manager", "Creativity", "Advising", "Knowledge work", "Video", "Not over-engineering", "Pure capability". Liste pour Sol : "worker", "Price", "Computer use", "Devil's advocate", "Finding bugs", "Verification", "Speed".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation comparative des rôles et fonctionnalités spécifiques attribués à chaque modèle d'IA.
+
+![Un tableau comparatif sur fond sombre, réalisé sur un outil de type tableau blanc, opposant les capacités de "Fable" à celles de "Sol".](../screenshots/EthxaDswUFo/EthxaDswUFo_001853_seg45.jpg)
+*⏱️ 00:18:53 — Un tableau comparatif sur fond sombre, réalisé sur un outil de type tableau blanc, opposant les capacités de "Fable" à celles de "Sol".*
 
 ---
 
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
+### ⏱️ `[00:19:09 - 00:19:43]` | Segment #46
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
+> Like it would be priced that high. And it's not. It's priced like Opus. So overall, what I'd say is Fable is good for my reasoning and my judging. And then Sol is just a shipping and executing AI model. And just so we kind of like put it into perspective, I kind of tried to like map out where I think that these top four models that, you know, we're talking about right now sit. I've got GBT 5.5 and Opus just very, very similar. I would say because I drive most of my work with Opus, I would put GBT 5.5 just like a little bit behind. Soul is definitely in front of both of these. Like that's very clear. It's a very, very good model, but I still think there's a pretty large gap right here
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Canevas de brainstorming ou outil de diagramme en ligne.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le diagramme compare Fable ("Not over-engineering", "Pure capability", "Reasons and judges") à Sol ("Finding bugs", "Verification", "Speed", "Ships and executes").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle servant de support à la comparaison des forces respectives des deux modèles IA lors de l'explication du présentateur.
+
+![Une capture d'écran montrant un canevas numérique (type Miro ou similaire) comparant les capacités de deux modèles IA nommés "Fable" et "Sol" à travers une matrice de texte.](../screenshots/EthxaDswUFo/EthxaDswUFo_001917_seg46.jpg)
+*⏱️ 00:19:17 — Une capture d'écran montrant un canevas numérique (type Miro ou similaire) comparant les capacités de deux modèles IA nommés "Fable" et "Sol" à travers une matrice de texte.*
 
 ---
 
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
+### ⏱️ `[00:19:43 - 00:20:18]` | Segment #47
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
+> between, you know, Soul actually being to be on Fable's level. Like there is still a pretty big gap here. So that's the way I feel about it. Hopefully all of this makes sense to you guys. Like I said, it's definitely one thing to look at the benchmarks, but really what you have to do is you have to get your hands dirty. You have to do actual work that you do on your day to day. And it's a feel thing because some people will probably come out the gate and say soul is better than fable hands down. And some people will not agree with that at all. It's all about your use case and your feel and the way that you instruct it and the way that you've got your harness and your skill set up. So everyone's a little different, but that is kind of my opinions after playing around with this model all day long. But as always, if you guys enjoy the video,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Outil de tableau blanc numérique de type Excalidraw ou similaire.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte affichant : "Gpt 5.5", "Opus 4.8", et une flèche partant de "Sol" pointant vers "Fable".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle d'un diagramme conceptuel comparant la performance ou la hiérarchie entre les modèles Sol et Fable.
+
+![Une vue d'un tableau blanc numérique (canvas) montrant une comparaison schématique entre différents modèles d'IA, avec une flèche indiquant la progression vers "Fable".](../screenshots/EthxaDswUFo/EthxaDswUFo_001952_seg47.jpg)
+*⏱️ 00:19:52 — Une vue d'un tableau blanc numérique (canvas) montrant une comparaison schématique entre différents modèles d'IA, avec une flèche indiquant la progression vers "Fable".*
 
 ---
 
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
+### ⏱️ `[00:20:18 - 00:20:24]` | Segment #48
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
+> where you learned something new, please give it a like, it helps me out a ton. And as always, I appreciate you guys making it to the end of the video. I'll see you on the next one. Thanks everyone.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Tableau blanc numérique (Excalidraw).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte affichant les noms "Gpt 5.5", "Opus 4.8", et une relation fléchée indiquant "Sol -> Fable".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur conclut sa vidéo sur une vue statique du schéma comparatif des technologies d'IA abordées.
 
----
-
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+![Une capture d'écran montrant l'interface d'un tableau blanc numérique (type Excalidraw) où est dessiné un schéma conceptuel comparant des modèles d'IA.](../screenshots/EthxaDswUFo/EthxaDswUFo_002020_seg48.jpg)
+*⏱️ 00:20:20 — Une capture d'écran montrant l'interface d'un tableau blanc numérique (type Excalidraw) où est dessiné un schéma conceptuel comparant des modèles d'IA.*
 
 ---
 
