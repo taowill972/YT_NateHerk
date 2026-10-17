@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `152 / 358` (`42.5%`)
+- **Vidéos traitées** : `153 / 358` (`42.7%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -17,6 +17,7 @@
 
 | Date | Réf. Vidéo | Titre Français / Sujet | Fiche Markdown | Fiche Interactive HTML | Captures |
 | :--- | :--- | :--- | :--- | :--- | :---: |
+| 2026-10-17 | [NmN6jn6IiMA](https://www.youtube.com/watch?v=NmN6jn6IiMA) | **Clay's AI Agent Builds Your Outbound From One Prompt** | [2026-10-17_YT-[NmN6jn6IiMA]_Clay's AI Agent Builds Your Outbound From One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-17_YT-[NmN6jn6IiMA]_Clay's AI Agent Builds Your Outbound From One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-17_YT-[NmN6jn6IiMA]_Clay's AI Agent Builds Your Outbound From One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-10-16 | [gNMN-7D9130](https://www.youtube.com/watch?v=gNMN-7D9130) | **Claude Opus 5.5 is my video editor** | [2026-10-16_YT-[gNMN-7D9130]_Claude Opus 5.5 is my video editor_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-16_YT-[gNMN-7D9130]_Claude Opus 5.5 is my video editor_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-16_YT-[gNMN-7D9130]_Claude Opus 5.5 is my video editor_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `103` |
 | 2026-10-16 | [Z8lf5oWKfj0](https://www.youtube.com/watch?v=Z8lf5oWKfj0) | **Matt Pocock: The Most Valuable Skill to Learn in the Age of AI** | [2026-10-16_YT-[Z8lf5oWKfj0]_Matt Pocock The Most Valuable Skill to Learn in the Age of AI_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-16_YT-[Z8lf5oWKfj0]_Matt Pocock The Most Valuable Skill to Learn in the Age of AI_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-16_YT-[Z8lf5oWKfj0]_Matt Pocock The Most Valuable Skill to Learn in the Age of AI_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-10-16 | [8kH03pGq4V0](https://www.youtube.com/watch?v=8kH03pGq4V0) | **Why I let my Grok Bot doomscroll on TikTok** | [2026-10-16_YT-[8kH03pGq4V0]_Why I let my Grok Bot doomscroll on TikTok_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-16_YT-[8kH03pGq4V0]_Why I let my Grok Bot doomscroll on TikTok_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-16_YT-[8kH03pGq4V0]_Why I let my Grok Bot doomscroll on TikTok_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
