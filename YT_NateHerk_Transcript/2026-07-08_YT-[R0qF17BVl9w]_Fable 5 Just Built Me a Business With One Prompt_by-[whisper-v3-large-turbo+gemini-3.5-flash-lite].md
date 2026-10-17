@@ -25,804 +25,490 @@ Dans cette vidéo intitulée **Fable 5 Just Built Me a Business With One Prompt*
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:20]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:18]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5, Opus 5.5. This model is literally everywhere and for very good reason. It's smart, it's cheap, it has amazing taste, it is an incredible AI model. But with every AI model, you have a choice of effort, whether that be low, medium, high, extra, max, or ultra code.
+> So I just gave Claude Fable this one slash goal prompt right here. And when it finished, I had a whole company. It spun up hundreds of agents, did a ton of verification, did a ton of research, made videos. And by the end, I got a landing page, a product, launch videos, a business plan, market research, brand guidelines, so much stuff to get a business off the ground.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web affichant une application web de gestion d'agents IA (Claude Fable / Interface de pilotage).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Prompt "/goal", statistiques de production (tokens, vérifications), et liens vers des fichiers de projet (.md, .json).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation des résultats finaux d'une automatisation complète : de l'idée à la création d'une entreprise avec ses actifs opérationnels.
+
+![Interface montrant le prompt initial "/goal" envoyé à l'IA pour démarrer le processus de création d'entreprise.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000005_seg1.jpg)
+*⏱️ 00:00:05 — Interface montrant le prompt initial "/goal" envoyé à l'IA pour démarrer le processus de création d'entreprise.*
+
+![Tableau de bord récapitulatif affichant les statistiques de performance : 150+ vérifications, 38 attaques red-team, 3 vidéos générées et 9M de tokens consommés.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000009_seg1.jpg)
+*⏱️ 00:00:09 — Tableau de bord récapitulatif affichant les statistiques de performance : 150+ vérifications, 38 attaques red-team, 3 vidéos générées et 9M de tokens consommés.*
+
+![Liste exhaustive des livrables générés par les agents, classés par catégories (Site, Vidéo, Recherche, Business, Brand, Record) avec des liens vers les fichiers Markdown.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000014_seg1.jpg)
+*⏱️ 00:00:14 — Liste exhaustive des livrables générés par les agents, classés par catégories (Site, Vidéo, Recherche, Business, Brand, Record) avec des liens vers les fichiers Markdown.*
 
 ---
 
-### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+### ⏱️ `[00:00:18 - 00:00:59]` | Segment #02
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So in this video, I gave Opus 5.5 the same exact prompt and I ran it on every single effort level and we're gonna be comparing the results. We will look at the quality of all of the different actual outputs, But then we're also going to look at how long each one of these ran, how much it cost us if it was API billing, the total tokens, how many checks they ran, and how many questions they actually asked me throughout the process.
+> So I'm going to walk through all of this that just happened and explain the prompt to you guys. But let's real quick take a look at this landing page. If I open this up real quick, you can see that we have counter brief, when the disputes templates lose. Now this landing page isn't anything extraordinary, but some of this stuff is pretty cool. Take a look at this launch video that it made for me. Okay, that like dubstep ending is a little bit interesting,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Site web vitrine de Counterbrief (landing page) et interface utilisateur interne du logiciel de gestion de litiges.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Détails financiers et logistiques de litiges de paiement : codes de motif (Visa 10.4), preuves de livraison avec GPS, recommandations de réponse ("FIGHT") et valeur attendue.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation du fonctionnement du logiciel qui automatise la constitution de dossiers de preuves pour contester les rétrofacturations (chargebacks) sur Shopify.
+
+![Page d'accueil de la plateforme "Counterbrief" présentant une interface SaaS pour les marchands Shopify, avec une vignette illustrant un exemple de litige et ses preuves.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000028_seg2.jpg)
+*⏱️ 00:00:28 — Page d'accueil de la plateforme "Counterbrief" présentant une interface SaaS pour les marchands Shopify, avec une vignette illustrant un exemple de litige et ses preuves.*
+
+![Interface applicative détaillée montrant un tableau de bord de gestion de litiges ("The Pitch"), avec le détail d'un dossier spécifique (CB-2481) et une recommandation de réponse.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000039_seg2.jpg)
+*⏱️ 00:00:39 — Interface applicative détaillée montrant un tableau de bord de gestion de litiges ("The Pitch"), avec le détail d'un dossier spécifique (CB-2481) et une recommandation de réponse.*
 
 ---
 
-### ⏱️ `[00:00:39 - 00:00:58]` | Segment #03
+### ⏱️ `[00:00:59 - 00:01:18]` | Segment #03
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And the results that we got are not what I expected at all, so I can't wait to share this with you guys. Let's not waste any time and just get straight into this one. Okay, so let's jump right into this one. I want to start off just by showing you guys the actual prompt that we used that we gave to every single one of these different agents. I'm going to go into the files over here, and we're going to open up this prompt markdown file, and I'll show you what we got. So here is the slash goal that I fed in.
+> but what's cool about that is the UI that you guys saw right here, not only did it feel like it was a little bit syncing to the music, which I thought was a nice touch, this is the actual product that it built. This is CounterBrief. This is the dashboard where you can see the different disputes, you can open them up, you can see if you should fight them or fold them, and you can like look at all the evidence, you can do all this, right?
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Dashboard web propriétaire "CounterBrief" spécialisé dans la gestion des litiges (chargebacks).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Analyse de risques transactionnels ("OrderRiskAssessment: LOW", "AVS: full match", "CVV: match"), historique des commandes ("This is their fourth order") et correspondance client liée à des demandes de remboursement.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Démonstration de l'interface de reporting de litiges générée par l'outil, montrant comment les preuves sont structurées pour contester des fraudes.
+
+![Interface utilisateur de l'application "CounterBrief" présentant une liste de preuves (exhibits) détaillées pour des litiges de paiement, avec des indicateurs de solidité du dossier ("STRONG").](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000104_seg3.jpg)
+*⏱️ 00:01:04 — Interface utilisateur de l'application "CounterBrief" présentant une liste de preuves (exhibits) détaillées pour des litiges de paiement, avec des indicateurs de solidité du dossier ("STRONG").*
 
 ---
 
-### ⏱️ `[00:00:58 - 00:01:34]` | Segment #04
+### ⏱️ `[00:01:18 - 00:01:53]` | Segment #04
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I said, you need to create me a 3D world that is a realistic tech conference that I can walk around in third-person view. You will look at this folder, which is my event recording assets from AIS Live. And this folder is a frame IO folder of 105 gigabytes of video recordings. This was a completely virtual event. Everything was recorded and all of the recordings are right here. I said, your goal is to take this event and turn it into a 3D explorable world that makes me feel like I actually went to a real in-person conference with different rooms, different tracks, different stages, blah, blah, blah. Feel free to use key.ai if you need to generate any images or videos. And you can also use anything else inside of my Herc 2 project, which is like my AI operating system. I said,
+> But what that tells me is that Fable had to go in here and it had to come to some of these disputes and it had to click around. And obviously it verified that it worked, but it was like recording the screen or at least taking screenshots and then snipped all that together with the music, with the other motion graphics, with the mouse, with the sound effects. And it created us that demo. If we keep going down through the page here, obviously, like I said, none of this is anything extraordinary. We really could have had Fable do better on the design here, but the elements that were worked in, not too bad. If we go all the way down to the bottom after the pricing, you can see that we also have a why this exists message. And this is straight from
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface web de la plateforme Counterbrief (tableau de bord de gestion de litiges bancaires/e-commerce).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Détails du litige CB-2469 ($41.20) incluant le calcul de la valeur attendue (EV), des recommandations ("Fold" ou "Fight"), et des preuves exposées.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Visualisation d'une recommandation automatique fournie par l'IA pour traiter un litige client, avec mise en évidence du gain/perte financier attendu.
+
+![Capture d'écran montrant l'interface de gestion de litiges "Counterbrief" avec une analyse détaillée d'un litige spécifique (CB-2469) et une recommandation stratégique.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000127_seg4.jpg)
+*⏱️ 00:01:27 — Capture d'écran montrant l'interface de gestion de litiges "Counterbrief" avec une analyse détaillée d'un litige spécifique (CB-2469) et une recommandation stratégique.*
 
 ---
 
-### ⏱️ `[00:01:34 - 00:02:08]` | Segment #05
+### ⏱️ `[00:01:53 - 00:02:28]` | Segment #05
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you'll be judged on creativity, design, physics, and the overall feel as I explore the 3D world that you built. And that was basically the end of the instructions. So as you can see on this left-hand side, I ran this through all of the different effort levels. Let's start off with low and work our way up to ultra code. All right. So here we have the result from low. Let's open this up and take a look. So we have AIS live, AI services summit in person finally, and we were able to click around. First of all, this doesn't feel very branded. Like this isn't the IS Live logo. It's not even our colors. So I don't love that, but let's get in here. Okay. This is way too bright. Um, we have a map in the top, right? We have a city back here. I can't tell what city
+> me, a note from the founder. So obviously I didn't film this, but let's go ahead and see what this actually says. Hey, I'm Nate. So I kept seeing Shopify store owners lose chargebacks. They should have won because the tool they were paying just sent the bank a template. So I built counter brief. It pulls the real evidence from your store, tracking emails, order history, and you read the exact packet before the bank does. 19 bucks flat. You keep everything you win. If that's you, come check it out. So what's cool about that is it was able to obviously go through my project and look what we had available, what API keys, and it pulled my HeyGen avatar and my 11 Labs voice clone
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface de l'outil d'agent IA (style client de développement ou IDE basé sur l'IA).
+**Interface & Outils** : Site web de Counterbrief (application SaaS).
 
-**Contenu textuel & Code** : Texte de prompt concernant la construction d'un monde 3D ("build a walkable third-person 3D world of the AIS Live conference...") et options de niveaux d'effort dans le menu de gauche ("Hello", "Extra", "High", "Max", "Ultracode", "Medium", "Low").
+**Contenu textuel & Code** : En-tête de site avec le logo "Counterbrief" et un bouton d'appel à l'action "Try the demo".
 
-**Action / Démonstration** : Le curseur de la souris survole l'option "Low" dans la liste des sessions de test d'effort.
+**Action / Démonstration** : Navigation sur la page de présentation du produit où la vidéo de témoignage/présentation est affichée.
 
-![Interface d'une application d'agent IA montrant un panneau latéral avec différents niveaux d'effort (Low, Medium, High, Max) et une conversation avec l'assistant.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000142_seg5.jpg)
-*⏱️ 00:01:42 — Interface d'une application d'agent IA montrant un panneau latéral avec différents niveaux d'effort (Low, Medium, High, Max) et une conversation avec l'assistant.*
+![Interface web du site "Counterbrief" montrant une vidéo intégrée du fondateur présentant le produit.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000202_seg5.jpg)
+*⏱️ 00:02:02 — Interface web du site "Counterbrief" montrant une vidéo intégrée du fondateur présentant le produit.*
 
 ---
 
-### ⏱️ `[00:02:08 - 00:02:40]` | Segment #06
+### ⏱️ `[00:02:28 - 00:02:48]` | Segment #06
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> this is. Okay. This is Chicago, which is kind of cool because you know, I live in Chicago, but anyways, on the top, right, we can see a map. We have a lobby. We have an expo hall. We have VIP lounge main stage. Also the map shows where every other person is and that's sinking live. So we can see registration. We can see day one, hyper agent keynote, live debrief. Cool. So it actually does know the agenda and then there's day two. So it found that that's good. We have these little balls in here that I can hopefully kick around. Okay. The face, Oh, look at this. If I go over here, all the people just disappear. Very bad. Very bad. Okay. So let's see. Can I sprint? Okay.
+> and then just made that message from a founder video. It also created a different launch video. You can see we have one that was the viral one, which is the one that we just saw, right? You know, super kind of like more fast paced. It called it the viral one and it was more of like a SaaS product demo. But then this other one that it created, let's go ahead and watch it real quick. I think this was more of like a voiceover. It felt slower, but anyways, let's take a look.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Counterbrief (interface web SaaS de gestion de litiges), interface de documentation de projet (Deliverables Map).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Données de litiges financiers, calculs d'espérance de gain (EV), recommandations automatisées ("Fight" ou "Fold"), fichiers Markdown (ex: launch-plan.md, founder-script.md).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation des capacités d'un agent IA pour l'analyse décisionnelle et la génération automatisée d'assets marketing et business.
+
+![Une interface web intitulée "Deliverables Map" listant divers livrables de projet organisés par catégories (vidéo, recherche, business, etc.), incluant des liens vers des fichiers markdown.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000233_seg6.jpg)
+*⏱️ 00:02:33 — Une interface web intitulée "Deliverables Map" listant divers livrables de projet organisés par catégories (vidéo, recherche, business, etc.), incluant des liens vers des fichiers markdown.*
+
+![Gros plan sur une interface SaaS appelée "Counterbrief" montrant le détail d'un litige financier (CB-2481) avec une recommandation IA ("FIGHT") et l'analyse associée.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000238_seg6.jpg)
+*⏱️ 00:02:38 — Gros plan sur une interface SaaS appelée "Counterbrief" montrant le détail d'un litige financier (CB-2481) avec une recommandation IA ("FIGHT") et l'analyse associée.*
+
+![Vue complète du tableau de bord "Counterbrief" montrant la gestion des litiges, avec une analyse détaillée justifiant pourquoi l'IA recommande de "plier" (fold) un dossier spécifique.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000243_seg6.jpg)
+*⏱️ 00:02:43 — Vue complète du tableau de bord "Counterbrief" montrant la gestion des litiges, avec une analyse détaillée justifiant pourquoi l'IA recommande de "plier" (fold) un dossier spécifique.*
 
 ---
 
-### ⏱️ `[00:02:40 - 00:03:04]` | Segment #07
+### ⏱️ `[00:02:48 - 00:03:23]` | Segment #07
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can move a little faster. I'll first go over here. There's some swag, um, AIS plus certified glido. Okay. So it's got the actual booths that we had in the virtual event. We had booths. So that's pretty cool. A little place to take pictures. Room C. Right now we have Tangy Frederick doing a workshop. Okay. But this isn't a video. As you can see, it's just an image. She's not moving. So that's just an image. These people are disappearing. They must be ghosts. Let's go over here to room A.
+> A chargeback just hit your store. The bank already believes the customer and most tools respond with a template. Counter brief builds the case instead. Tracking, fraud analysis, order history, the customer's own emails assembled into evidence you read before the bank does. You approve it. $19 flat. Keep everything you win. Counter brief. When the disputes, templates lose. There you go. That is the other launch video that it made. Okay. So let's first take a look at the prompt and then we'll kind of walk through what it actually did here and why this is pretty cool. So the prompt that I gave it was read this file. So I'll pull up this full
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Site web de la plateforme Counterbrief.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte descriptif : "The evidence desk for Shopify chargebacks", "FOR: Shopify stores with 3+ disputes/mo", "PRICE: $19 flat per approved response".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation de la valeur ajoutée de l'outil et de ses fonctionnalités de constitution de dossiers de preuves automatisés pour contrer les chargebacks.
+
+![Interface présentant deux blocs d'analyse : "Delivery tracking" avec les détails UPS, et "Fraud analysis" indiquant un niveau de risque faible.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000256_seg7.jpg)
+*⏱️ 00:02:56 — Interface présentant deux blocs d'analyse : "Delivery tracking" avec les détails UPS, et "Fraud analysis" indiquant un niveau de risque faible.*
+
+![Page d'accueil de la plateforme "Counterbrief" décrivant son rôle d'assistant pour la gestion des litiges Shopify et son modèle tarifaire à 19$.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000314_seg7.jpg)
+*⏱️ 00:03:14 — Page d'accueil de la plateforme "Counterbrief" décrivant son rôle d'assistant pour la gestion des litiges Shopify et son modèle tarifaire à 19$.*
 
 ---
 
-### ⏱️ `[00:03:04 - 00:03:30]` | Segment #08
+### ⏱️ `[00:03:23 - 00:03:59]` | Segment #08
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have Liberty White. Okay. Very cool. Your first 30 days in automation. Once again, it's just a still image and the people are glitchy. So not very good here. I'm going to go over to the main stage and see what we've got going. Okay, cool. So we have a main looking stage. The people are glitching. Really bad. That's not very good at all. Our video is actually moving. Like I saw my face here and I saw Devin's, but now they're gone. So I'm not sure what happened. Okay. It's, it looks like it's more of a slideshow. Nothing is actually being played still. Anyways, let's come in here.
+> file in a sec and execute everything below the divider line as your goal. That file is your full instruction set. So mission, guardrails, phases, deliverables, definition of done, follow it exactly, including the never ask rule. Do not report back to me until the definition of done is met, start now. So the reason that I did this is because if you guys didn't know, the slash goal has a character limit of like 4,000. So if you have way more than that, then you can just throw it in a file and tell it in the prompt to read it. So there's really no character limit. But anyways, let me open up this file real quick. Okay, so here is the prompt. I said, build me a complete company from scratch. Start with nothing but the open internet. Find a real painful underserved
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface de type chat ou gestionnaire de projet (probablement une plateforme de collaboration type GitHub Copilot ou interface d'agent autonome).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le prompt : "/goal Read projects/company-builder-experiment/master-prompt.md and execute everything below the divider line as your goal. That file is your full instruction set: mission, guardrails, phases, deliverables, and definition of done. Follow it exactly, including the never-ask rule. Do not report back to me until the definition of done is met. Start now."
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Envoi d'une directive système exhaustive à un agent IA pour automatiser une mission basée sur un fichier externe.
+
+![Une interface de discussion ou de gestion de tâches où une instruction complexe est donnée à un agent IA pour lire un fichier de configuration nommé 'master-prompt.md'.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000332_seg8.jpg)
+*⏱️ 00:03:32 — Une interface de discussion ou de gestion de tâches où une instruction complexe est donnée à un agent IA pour lire un fichier de configuration nommé 'master-prompt.md'.*
 
 ---
 
-### ⏱️ `[00:03:30 - 00:03:58]` | Segment #09
+### ⏱️ `[00:03:59 - 00:04:34]` | Segment #09
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have more booths. We have hyper agent. We have Claude Code. We have more swag. Room B is Dave Ebelor. I'm assuming it's the same exact thing. We've got coffee. And then I'm assuming VIP lounge, VIP access only. That's pretty cool, but there's really nothing going on right here. That screen's way too bright. Okay. So I think you guys understand the vibe that we're getting here from Opus 5.5 on low effort. And here's where things get interesting. How much do you guys think that this ran for? How long? This one ran for 16 minutes and 43 seconds. How much do you think this cost?
+> problem that real people are complaining about right now and design a business around it. So build the product and the brand and the website and hand me a finished package that I could take to market this month. Then prove to me why it would work. This is a test of how far you can go on your own. I am not going to answer questions mid run. Make every call yourself, write down why you made it and keep moving. Within the guardrails below, you have total creative freedom. Do whatever you want. Surprise me. I want to see your best work, not your safest work. So I gave it some guardrails, like no new spending. I said, Hey, anything that's in the API keys or sorry, anything that's in my dotny and v fair game i said publish nothing just this is create me all these things locally i said
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Éditeur de texte/code (type VS Code).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte Markdown détaillant la "Mission" (créer une entreprise de A à Z) et les 5 "Guardrails" (règles de contrainte budgétaire, de confidentialité, de vérification des sources, de localisation des données et d'autonomie totale).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur affiche le prompt système structuré qui sert de base au test de l'agent IA pour la construction de l'entreprise.
+
+![Capture d'écran montrant un fichier Markdown ouvert dans un éditeur de code, contenant le "Master Prompt" qui définit la mission et les contraintes opérationnelles pour l'IA.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000407_seg9.jpg)
+*⏱️ 00:04:07 — Capture d'écran montrant un fichier Markdown ouvert dans un éditeur de code, contenant le "Master Prompt" qui définit la mission et les contraintes opérationnelles pour l'IA.*
 
 ---
 
-### ⏱️ `[00:03:58 - 00:04:26]` | Segment #10
+### ⏱️ `[00:04:34 - 00:05:06]` | Segment #10
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> $3.91 if this was API billing. I'm obviously using my subscription here, but we're just going to calculate this in API billing. Total tokens was 191,000. It did 22 checks. So the verification, 22 times it opened up the browser and ran different sorts of checks. So 22 categories of checks. And how many questions did it ask me? It asked me a total of zero questions throughout this slash goal prompt. Okay. So let's open up medium effort and see what we've got. Okay, here we go. Medium effort. We've got Nate Herc. We've got my badge. This is AI's life branded.
+> invent nothing so you must do research and verify every fact every stat work inside this project right here and never ask me anything then i said what does orchestrate means it means to use multi-agent workflows aggressively fan out parallel researchers across different sources and angles run tournaments where independent agents pitch competing business ideas and judge panels score them adversarily verify every important claim with skeptic agents whose only job is to refute it. Use the completeness critic before you call any phase done. Design whatever orchestration shapes the work calls for. The patterns above are a floor, not a ceiling. I truly think that this
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Éditeur de code (type VS Code ou interface de gestion de projet type Cursor/Obsidian).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte structuré définissant les règles de fonctionnement : "Work inside projects/company-builder-experiment/run-1/", "Never ask me anything", et une section "What 'orchestrate' means here" décrivant des workflows multi-agents, des tournois d'idées et une vérification contradictoire. Une section "The arc" liste 8 étapes de développement, de "Hunt for pain" à "Try to kill it".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation visuelle du prompt système ou du fichier de configuration régissant le comportement de l'agent automatisé.
+
+![Éditeur de texte affichant un document Markdown intitulé "master-prompt.md", détaillant des instructions pour un projet de construction d'entreprise assisté par IA.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000442_seg10.jpg)
+*⏱️ 00:04:42 — Éditeur de texte affichant un document Markdown intitulé "master-prompt.md", détaillant des instructions pour un projet de construction d'entreprise assisté par IA.*
 
 ---
 
-### ⏱️ `[00:04:26 - 00:04:46]` | Segment #11
+### ⏱️ `[00:05:06 - 00:05:41]` | Segment #11
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So this is already looking a little bit better. This feels like our color schemes that used our brand guidelines. Day one build, day two earn, VIP. Cool. Okay. I'm going to enter the venue. Okay. Wow. So similar sort of vibe. It's sitting in the background. This doesn't look like Chicago though, does it? No, this looks like a, honestly, this looks like a made up city. Either way, it's funny that they decided to do that. Let's see if I can move a little faster. Oh, wow.
+> paragraph right here did so much heavy lifting because after I let this run and I watched it and then I checked in at the end, this hardly even moved my Fable limit. So I mean, look at this. If I close out of this real quick, I'll come back. This used about 500,000 tokens. Those are the only tokens that Fable really used here because every single sub agent that it spun up was Opus or Sonnet. And that's what is so cool about this. If you guys watch my video from like a few days ago where I said, Hey, this is how I make Opus think like Fable, then check that out. If you haven't, I'll tag that right up here. But basically I wanted to take those principles and put that here
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Éditeur de code (apparence de Cursor ou VS Code).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Le "master-prompt.md" détaille une méthodologie d'agent IA : "What 'orchestrate' means here", "The arc" (Hunt for pain, Pick the winner, Design the business, etc.). La popup affiche : "Context window 543.3k / 1.0M (54%)" et "Weekly - Fable 86%".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur illustre la complexité du prompt utilisé pour piloter l'agent et montre la consommation de tokens résultante pour démontrer l'efficacité de son approche par rapport aux limites du plan.
+
+![L'éditeur de code affiche un document intitulé "master-prompt.md" contenant des instructions détaillées pour un agent IA, notamment sur l'orchestration multi-agents et les étapes d'un processus de création d'entreprise.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000515_seg11.jpg)
+*⏱️ 00:05:15 — L'éditeur de code affiche un document intitulé "master-prompt.md" contenant des instructions détaillées pour un agent IA, notamment sur l'orchestration multi-agents et les étapes d'un processus de création d'entreprise.*
+
+![Une fenêtre contextuelle ("Context window") superposée à l'interface affiche les statistiques de consommation de tokens (543.3k / 1.0M) et les limites d'utilisation du plan, confirmant la consommation de ressources de l'agent.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000524_seg11.jpg)
+*⏱️ 00:05:24 — Une fenêtre contextuelle ("Context window") superposée à l'interface affiche les statistiques de consommation de tokens (543.3k / 1.0M) et les limites d'utilisation du plan, confirmant la consommation de ressources de l'agent.*
 
 ---
 
-### ⏱️ `[00:04:46 - 00:05:21]` | Segment #12
+### ⏱️ `[00:05:41 - 00:06:15]` | Segment #12
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> The people are interacting with me. Watch. If I go up to this guy, he just like raised his arm. Well, now he doesn't want anything to do with me at all. But all of these little robots here must be making decisions. I'm not sure if they're using Jev. They're definitely not. I didn't tell it to. Actually, my Jev key is in the back. I don't know. Maybe it did use it. Anyways, we can see here we have Workshop Room C, Agents Lab. Nice. So this one is actually being run. You can see that is a real video being played by Tangy. Everyone here is actually like working on a laptop. They're not glitching. This is pretty cool. Also, my badge is on my chest, which is pretty cool. I can come this way. We have a map up in the top right, as you guys can see, but I can come this way. We have an
+> and show how Fable is able to not only plan things out, but figure out what works and what doesn't. And then it is the manager. It is the orchestrator that just says, Hey, Opus do this, this and this and this. And when you're done, I'll check it. And if it's not good enough, I'm going to tell you to do it better. And that is the way that Fable was able to orchestrate all of this. And it only used like maybe 15% of this weekly Fable budget. I don't know. I mean, I guess it's a lot, but it didn't blow through as much up here as I thought it would. And it didn't spin up any Fable workers. So that's pretty good. As far as my actual five hour limit that literally just reset, but this is what it did eat up a decent chunk of. This was probably,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Tableau de bord d'administration ou interface système de l'agent Fable.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Statistiques de consommation : "Context window 543.3k / 1.0M (54%)", "Weekly - Fable 86%", et "Usage credits $71.43 of $1,000.00".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Visualisation des ressources consommées par l'agent et du suivi des limites d'utilisation hebdomadaires et financières.
+
+![Une fenêtre contextuelle d'interface utilisateur affichant les métriques d'utilisation en temps réel d'un agent IA (Fable), incluant la fenêtre de contexte et les limites de crédit.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000549_seg12.jpg)
+*⏱️ 00:05:49 — Une fenêtre contextuelle d'interface utilisateur affichant les métriques d'utilisation en temps réel d'un agent IA (Fable), incluant la fenêtre de contexte et les limites de crédit.*
 
 ---
 
-### ⏱️ `[00:05:21 - 00:05:47]` | Segment #13
+### ⏱️ `[00:06:15 - 00:06:47]` | Segment #13
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> expo hall. This is where we have the Glido booth. And this is actually playing. Yeah, it's playing the video of us talking about Glido. It's playing the video of Ed and I talking about our certification program. We've got the AIS Plus logo back here, which is kind of in a weird spot. This is a speaker slides and takeaways. So wow, this is all the resources that we gave out after the event. They're all sitting right there as well. We can see we've got a community spotlight. So this is Aiden talking about his deal that he landed and it's playing live. These people are watching.
+> I don't know, at least 30 or 40% of my five hour limit here with my max $200 a month plan. So I'm not sitting here saying that this was super cheap to run, but I'm saying this is pretty impressive if you consider the fact that Fable didn't actually build anything. All Fable did was plan, delegate, review. That was basically it. Because I'm sure this would have been even better if every single worker that Fable spun up was also Fable, but it would have been a hundred times more expensive. Anyways, back to the master prompt, the arc. I said, hunt for pain, pick the winner, design the business, build the brand, build the thing, make the launch video, make the founder
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface de travail de l'agent IA Fable (ou environnement de développement intégré similaire).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Prompt de mission : "Read projects/company-builder-experiment/master-prompt.md and execute everything below the divider line...". Statistiques affichées : fenêtre de contexte (543.3k / 1.0M), limites d'utilisation hebdomadaires (59% et 86%) et crédits consommés (71.43$ sur 1000$).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA est en phase d'exécution d'instructions basées sur un fichier de prompt maître, avec suivi en temps réel de la consommation des ressources et de la fenêtre contextuelle.
+
+![Interface de l'agent IA "Fable" affichant une instruction de lecture de projet, avec une fenêtre contextuelle de suivi d'utilisation des limites et des crédits, accompagnée du présentateur en incrustation.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000623_seg13.jpg)
+*⏱️ 00:06:23 — Interface de l'agent IA "Fable" affichant une instruction de lecture de projet, avec une fenêtre contextuelle de suivi d'utilisation des limites et des crédits, accompagnée du présentateur en incrustation.*
 
 ---
 
-### ⏱️ `[00:05:47 - 00:06:21]` | Segment #14
+### ⏱️ `[00:06:47 - 00:07:10]` | Segment #14
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> They're pretty engaged. We've got hyper agent. That was, that's what I meant. If you guys saw those people like raising their arms saying hi, that was kind of funny. Look, look, there he goes again. Anyways. Okay. Where am I now? Now I'm in the main lobby. We've got a coffee bar. We've got a big logo, which is the real logo. It's too bright, but we have the logo. We can see if we can come in here to the foundation track. We've got Sabrina Romanov and Liberty White. So different trainings right there. We can come into this room. This is the advanced track. So what's going on here. We've got Dave Ebelar and Saman talking about some different stuff in there. And now let's go take a look at the main stage. Oh, wait, there's a video of me up there. Is that like a VIP
+> video, try to kill it, and then package it. And then once again, that is a floor, not a ceiling. So if you want to do more stuff, do more stuff. And it did obviously a few more things. Then I gave it kind of a subjective definition of done, which is a stranger should be able to open the recap HTML and understand the business, watch the video, run the site, demo it, all this kind of stuff. Now go build me a company. So this is the HTML recap that I was just referring to there.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Éditeur de texte type Obsidian ou interface d'agent IA (type interface notebook).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste numérotée de 1 à 9 étapes de création d'entreprise ("Hunt for pain", "Pick the winner", etc.) et texte explicatif sur les livrables attendus pour le projet.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur explique le workflow de construction d'entreprise utilisé par son agent IA, illustré par le document markdown à l'écran.
+
+![Interface d'édition markdown montrant une liste de tâches intitulée "The arc" et une section "The deliverables list is a floor, not a ceiling" avec une fenêtre vidéo incrustée du présentateur.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000653_seg14.jpg)
+*⏱️ 00:06:53 — Interface d'édition markdown montrant une liste de tâches intitulée "The arc" et une section "The deliverables list is a floor, not a ceiling" avec une fenêtre vidéo incrustée du présentateur.*
 
 ---
 
-### ⏱️ `[00:06:21 - 00:06:50]` | Segment #15
+### ⏱️ `[00:07:11 - 00:07:47]` | Segment #15
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> section? Yeah, we'll go check that out in a sec. But anyways, this is the main stage. This looks very, very nice. We've got a big stage. We've got like four people sitting up here. We've got the the three screens of Alex up there with hyper agent. Am I allowed to get on stage? Oh, and lets me up on stage. Okay. That's pretty nice. All right, guys, let's take a selfie. Let me get everyone in the background. Get in here. Anyways, that is pretty, pretty cool. Not every seat is filled though. So we need to work on that. But anyways, I'm going to run back over and see what that VIP section was. Okay. VIP lounge. I feel like this is like a worth the airport or something.
+> This was the end deliverable that has everything else linked down here on the bottom. So let's go through some of this. It decided to come up with a company called Counterbrief. It designed the brand guidelines. It designed this logo, obviously. It designed all of it. It's for Shopify stores with three plus disputes a month. It's priced at $19 flat per month or per approved response. And then no success fees. You keep 100% of your wins. So that's what we have. So here's what actually happened. From open internet to launch package in nine phases. First was the pain hunt. So 10 research agents swept Reddit and Hacker News, G2, blah, blah, blah. They found 35 raw problems
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (site vitrine généré par une IA).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte descriptif : "The evidence desk for Shopify chargebacks", explications méthodologiques des agents IA (recherche sur Reddit, Hacker News, évaluation par des juges-personnages).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Défilement de la page (scroll) pour présenter le résultat final d'une automatisation complète par une IA.
+
+![Page d'accueil du site "Counterbrief" présentant le nom, le logo, une description du service pour les litiges Shopify et les tarifs.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000720_seg15.jpg)
+*⏱️ 00:07:20 — Page d'accueil du site "Counterbrief" présentant le nom, le logo, une description du service pour les litiges Shopify et les tarifs.*
+
+![Suite de la page d'accueil montrant la section "The Journey" expliquant le processus de création en neuf phases.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000729_seg15.jpg)
+*⏱️ 00:07:29 — Suite de la page d'accueil montrant la section "The Journey" expliquant le processus de création en neuf phases.*
+
+![Gros plan sur la section "The Journey" détaillant les phases 01 (The pain hunt) et 02 (The tournament) menées par des agents IA.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000738_seg15.jpg)
+*⏱️ 00:07:38 — Gros plan sur la section "The Journey" détaillant les phases 01 (The pain hunt) et 02 (The tournament) menées par des agents IA.*
 
 ---
 
-### ⏱️ `[00:06:51 - 00:07:14]` | Segment #16
+### ⏱️ `[00:07:47 - 00:08:22]` | Segment #16
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Okay, cool. So now we've got the VIP sessions up here. VIP Q and a with Nate live video playback right here. Very, very cool. And we've got like a bar or something. Awesome. I would say that this is a pretty good output. Now, as far as the stats here, this one took one hour and 13 minutes to run. It would have cost us $12 and 44 cents. It used 490,000 tokens and it did 23 checks.
+> merged into 18 candidates and 18 independent verifies refetched every key quote. All 18 survived. Then we entered a tournament where five judge personas scored all of those 18 opportunities on pain, urgency, reachability, willingness to pay, buildability, and incumbent weakness. The top four got an advocate and a skeptic each, three fresh judges voted, and chargeback evidence one, three to zero. Now from there, we had researchers start to design. So competitor pricing pages, platform docs, Visa's own rule PDFs and API references. Then the brand started getting built out. So we had counter brief.com. It's available. It checked. It didn't buy and it's
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface de type éditeur de texte/notes (style Notion).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte structuré en étapes : "01 The pain hunt" (détails sur la recherche Reddit/Hacker News), "02 The tournament" (méthode de notation des 18 opportunités, annonce du gagnant "Chargeback evidence" et des finalistes "MSP invoice reconciliation", "tenant-fraud detection"), et "03 The design".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le contenu présente une synthèse textuelle du workflow de validation des idées de business utilisées par l'IA.
+
+![Capture d'écran montrant un document textuel structuré (type Notion ou Obsidian) détaillant le processus de recherche et de sélection d'idées de business par des agents IA.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000756_seg16.jpg)
+*⏱️ 00:07:56 — Capture d'écran montrant un document textuel structuré (type Notion ou Obsidian) détaillant le processus de recherche et de sélection d'idées de business par des agents IA.*
 
 ---
 
-### ⏱️ `[00:07:14 - 00:07:48]` | Segment #17
+### ⏱️ `[00:08:22 - 00:08:44]` | Segment #17
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And it asked us a grand total of zero questions once again. All right, let's move on to high. This was already a pretty decent output and Anthropic themselves in their how to prompt Opus 5.5 video, or sorry, not video, article. They said to just start on medium and scale it up or down if you need. So that was a medium output. Let's move over to high and see what we got. Real quick, guys, I need to take a second to tell you about the sponsor of today's video, Hostinger. So both of these models just built me a working version of the same thing. And now I'm right where I always end up with something finished sitting on my laptop and no quick way to get it online. And that's the gap that Hostinger's connector closes. It's a free extension
+> collision clean. The logo went through six AI generations and a critique loop. Then the winner was hand vectorized. So it's crisp from favicon to billboard. Serif carries the argument. Mono carries the evidence. Then we had the build landing page with the offer with all this kind of stuff. Then it made the videos. And then we had the red team. So six skeptic agents attacked the market size, all of these different things.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web (page de documentation projet).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Texte descriptif des étapes du projet, notamment les détails sur le branding ("Six AI generations", "hand-vectorized") et la construction de la landing page ("landing page with the full offer", "interactive demo").
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Défilement de la page web pour illustrer les différentes phases du workflow de création de marque et de développement technique.
+
+![Capture d'écran montrant une page web de type documentation ou rapport de projet divisée en sections numérotées ("The design", "The brand", "The build", "The videos"), avec le présentateur visible en médaillon dans le coin inférieur droit.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000828_seg17.jpg)
+*⏱️ 00:08:28 — Capture d'écran montrant une page web de type documentation ou rapport de projet divisée en sections numérotées ("The design", "The brand", "The build", "The videos"), avec le présentateur visible en médaillon dans le coin inférieur droit.*
 
 ---
 
-### ⏱️ `[00:07:48 - 00:08:23]` | Segment #18
+### ⏱️ `[00:08:44 - 00:09:05]` | Segment #18
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> for your editor that pulls your Hostinger account into whatever you're already coding in. So VS Code, cursor, cloud code, codex, you name it. You sign in once with a single click, and from there, your agent can deploy the site, point a domain at it, set the DNS records, and check on your VPS without you ever having to leave the editor. So whichever one of these you end up liking better, the thing it built is a couple minutes away from a real URL on managed hosting. Connector is free on every hosting or plan, so if you still need the hosting underneath it, grab the unlimited plan with the link in the description and use code NATEHERK for 10% off. That also comes with a free domain and business email for the year. And it's still the cheapest way that I found to get something
+> And the verdict was that it's viable with fixes. Zero kills, 38 attacks ruled on. Every fix was applied to the plan and the site. We got these honesty artifacts and then it was packaged up below and it verified all this, right? And now everything that we can click through and look at exists right here. We have site stuff, we have video stuff, research, the business, brand, and the record.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Navigateur web affichant un portail de documentation technique/projet.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Documentation de projet structurée, noms de fichiers (ex: `market-research.md`, `build-log.md`), et commande d'exécution locale : `python -m http.server 8974 --directory site`.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Présentation du système de déploiement local et de l'accessibilité des artefacts du projet en un clic.
+
+![Capture d'une interface web présentant des aperçus visuels du produit "Counterbrief", incluant des captures d'écran d'applications et de tableaux de bord financiers.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000854_seg18.jpg)
+*⏱️ 00:08:54 — Capture d'une interface web présentant des aperçus visuels du produit "Counterbrief", incluant des captures d'écran d'applications et de tableaux de bord financiers.*
+
+![Vue d'une "carte des livrables" (Deliverables Map) sous forme de grille organisée par catégories (Site, Vidéo, Recherche, Business, Brand, Record) pointant vers des fichiers Markdown.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000900_seg18.jpg)
+*⏱️ 00:09:00 — Vue d'une "carte des livrables" (Deliverables Map) sous forme de grille organisée par catégories (Site, Vidéo, Recherche, Business, Brand, Record) pointant vers des fichiers Markdown.*
 
 ---
 
-### ⏱️ `[00:08:23 - 00:08:47]` | Segment #19
+### ⏱️ `[00:09:05 - 00:09:40]` | Segment #19
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> you built onto a real URL. So let's get back to the video. Okay. Once again, very, very branded. This is even better of a loading screen than the previous one. We've got this nice little effect in the background. We've got the logo. We'll enter the venue. Okay. Here we are. This looks pretty nice. We start outside and you can see that we have these flags for all the speakers, Wyatt, Casper, Alex, Ed, Aiden, Sabrina, Liberty. This is pretty cool. We got live blocks here.
+> So right here in my file explorer, you can see this was a company builder experiment. This was the master prompt we just looked at, and this was run one. Here's basically everything that it did in this run. If I go to the brand, you can see we have the voiceover, we have the scripts, we have the logos, we have brand guidelines, avatar, logo candidates. It generated a bunch of different versions and tested them out. We have exports. It has a bunch of different versions as well, like some PNGs and different sizes and stuff like that. If I go back out one more time, we have research. So this is where we got the business design, the candidates, the condensed candidates, red team tournament. So this was, I think like kind of its internal experiments.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Explorateur de fichiers Windows (Windows 11).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Liste de dossiers (brand, research, scripts, site) et de fichiers Markdown (build-log, business-plan, decision-memo, launch-plan, market-research, pmf-thesis, README) générés par le processus.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Le présentateur navigue dans le dossier racine du projet pour montrer l'organisation des livrables générés par l'IA.
+
+![Une vue de l'Explorateur de fichiers Windows affichant le répertoire « run-1 » contenant les résultats d'une expérience de construction d'entreprise automatisée par IA.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000914_seg19.jpg)
+*⏱️ 00:09:14 — Une vue de l'Explorateur de fichiers Windows affichant le répertoire « run-1 » contenant les résultats d'une expérience de construction d'entreprise automatisée par IA.*
 
 ---
 
-### ⏱️ `[00:08:47 - 00:09:23]` | Segment #20
+### ⏱️ `[00:09:40 - 00:10:15]` | Segment #20
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> it took this picture from me, your host, Nate Herc, John, Dave, Nate Herc. There we go. Okay. The doors. Awesome. They're automatic sliding glass doors. I love that. We can see VIP check-in. We can see GA. We can come over here and we can check out the expo with different booths, community spotlight. You can also see that in the top left, I have a passport. So it's like, it will be showing how many of the places I've visited. All of these are real playback. We've got a resource wall with all of the different speakers. They've also got a networking session over here. So I'm going to come over real quick and see what that's all about. So we've got the AIS cold brew bar. We've got different community members that were spotlighted or highlighted.
+> So these are kind of more of like the deliverables. This is our brand, our business plan, launch plan, market research. So I'm not going to go through all of that because I think that would be really boring, but I guess let's just open up a few to make sure that they do look pretty legit. Okay. So here's the business plan. It goes over the actual problem, the ideal customer profile. It goes over the product itself. It goes over the offer and pricing and the unit economics of it. So it clearly went pretty deep. It went to the business model, channels, and positioning, moat, risks. This stuff is pretty in depth. What else do we have here? We have the market research,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : - Image 1 : Navigateur web (serveur local Python)
+- Image 2 : Éditeur de code "Cursor" (AI Code Editor)
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image 1 : Liste de fichiers Markdown (.md) et JSON incluant "market-research.md", "business-plan.md", "build-log.md".
+- Image 2 : Contenu textuel d'un business plan détaillant le profil client idéal (ICP), les taux de litiges et l'analyse de données e-commerce.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : - Image 1 : Présentation de l'arborescence des livrables de projet.
+- Image 2 : Ouverture et consultation du fichier de plan d'affaires dans l'éditeur pour vérification.
+
+![Une page web intitulée "Deliverables Map" listant divers documents de projet (site, vidéo, recherche, business, marque) sous forme de carte interactive.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000949_seg20.jpg)
+*⏱️ 00:09:49 — Une page web intitulée "Deliverables Map" listant divers documents de projet (site, vidéo, recherche, business, marque) sous forme de carte interactive.*
+
+![Interface de l'outil "Cursor" montrant l'ouverture d'un fichier Markdown intitulé "business-plan.md" au sein d'un projet de développement.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_000958_seg20.jpg)
+*⏱️ 00:09:58 — Interface de l'outil "Cursor" montrant l'ouverture d'un fichier Markdown intitulé "business-plan.md" au sein d'un projet de développement.*
 
 ---
 
-### ⏱️ `[00:09:23 - 00:09:56]` | Segment #21
+### ⏱️ `[00:10:15 - 00:10:38]` | Segment #21
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We've got the VIP wing. Wait, what? Pick up a wristband. Oh, I have to actually go get the wristband. Okay. Let me check in real quick. Wristband's already on. Wait, what? Okay. Oh, okay. Now the doors have opened for me. Cool. I can come into here. Oh, that just goes to the main stage. VIP lounge. This is a Q and A going on. It looks like very cool. I mean, I'm very impressed by how it's able to do this. Wow. Okay. So this is really good. What we did is we had VIP breakout rooms with different people. You can see that there's different rooms, different members of the AIS team going into stuff. This is really cool. This is very cool. That's a much better VIP
+> which was them trying to figure out what the business opportunity was. So we can see all the candidates. We can see all the evidence. We can see basically how it was able to get to a place where it narrowed these down. And then from there, it narrowed them down even further. Really the point that I was trying to prove and make in this video is that, first of all, from here, this only took, I think, a little over, this took like three or four hours.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Environnement de développement intégré (probablement une interface basée sur VS Code/Cursor avec un panneau latéral de fichiers).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Contenu textuel d'un document Markdown : analyse de la "volonté de payer" (willingness-to-pay), étude des concurrents (HubSpot, Pipedrive, HoneyBook), timing du marché ("Why now"), faisabilité technique ("Buildability") et description d'une opportunité spécifique liée à l'automatisation de la comptabilité avec QuickBooks.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation dans les fichiers du projet et lecture du document de recherche de marché détaillant les opportunités commerciales identifiées par l'agent IA.
+
+![Interface d'un environnement de développement type IDE affichant un document Markdown de recherche de marché ("market-research.md") analysant des opportunités d'affaires.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_001021_seg21.jpg)
+*⏱️ 00:10:21 — Interface d'un environnement de développement type IDE affichant un document Markdown de recherche de marché ("market-research.md") analysant des opportunités d'affaires.*
 
 ---
 
-### ⏱️ `[00:09:56 - 00:10:30]` | Segment #22
+### ⏱️ `[00:10:39 - 00:11:07]` | Segment #22
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> experience than what was shown in the first piece. Okay. VIP after party. Look at this. We've got a dance floor. We've got all these elements in here. We have the actual VIP after party playback right here. And there's a DJ booth. That is so funny. There's a bit of a bug right here, a glitch right there, but this is awesome. Oh, cool. So when I'm in here in the main stage, we get closed captions. You can see right here in the bottom of my screen, we're getting these closed captions of Wyatt actually talking up here. We've got lights. We've got the panel. Very cool. Nice main stage. I'm going to go over here. We can go to the foundation,
+> So in three or four hours, we got to a place that would have taken me weeks and weeks to do by myself. Now, looking back at this, what I would have put more emphasis on is probably the upfront idea, like figuring out how viable is the idea and really, really stress testing that before we build everything out. Because I think we all agree we're at the point now where with Fable and even with Opus, if you use it right, even GPT 5.5, these things can build basically anything for you as long as you have a good idea and you can clearly define what is good.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface de l'éditeur de code Cursor (mode agent IA).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : On peut lire une instruction système : "/goal Read projects/company-builder-experiment/master-prompt.md et execute everything below...". Le terminal affiche l'état de l'agent : "Reading the master prompt now", "Now launching the Phase 1 pain-hunt workflow", et mentionne l'utilisation du modèle "Fable 5".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA est en cours d'exécution autonome, lisant des instructions complexes, lançant un flux de travail de recherche de problèmes ("pain-hunt workflow") et communiquant son statut dans le terminal de l'éditeur.
+
+![Une vue de l'interface de développement "Cursor" (ou environnement similaire basé sur LLM) montrant une session de travail nommée "COMPANY" où un agent IA exécute des instructions basées sur un fichier "master-prompt.md".](../screenshots/R0qF17BVl9w/R0qF17BVl9w_001046_seg22.jpg)
+*⏱️ 00:10:46 — Une vue de l'interface de développement "Cursor" (ou environnement similaire basé sur LLM) montrant une session de travail nommée "COMPANY" où un agent IA exécute des instructions basées sur un fichier "master-prompt.md".*
 
 ---
 
-### ⏱️ `[00:10:30 - 00:11:06]` | Segment #23
+### ⏱️ `[00:11:07 - 00:11:31]` | Segment #23
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> advanced, and the enterprise tracks over here. So let's see. We have anatomy of a three real deals. We've got hyper agent. We've got the evals with Nate and Ed in here. We've got Dave going on in the advanced stuff. This is really nice. I mean, obviously each, each of these outputs so far, low was okay. Medium was better. High has been even better. Let's see if that trend continues and let's go ahead and see what this cost us. So high ran for one hour and seven minutes. So a little bit quicker than medium, it would have cost us $16 and 31 cents. It used half a million tokens, 509,000. It did 22 checks. And it also asked us, well, actually, no, I was wrong. This
+> I was really impressed by the creativity it used here, the thoroughness that it used here, and how it was able to actually understand what does it look like for me to take this goal that's pretty ambiguous with a definition of done that's also pretty ambiguous and just figure out my own path to get there. You know, I think it's really important that we allow the model to actually be creative and we get out of its way so that it can do what it does really well.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface propriétaire d'agent IA (type Cursor ou IDE intégré avec IA).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Prompt de mission : "Read projects/company-builder-experiment/master-prompt.md and execute everything...". Texte de statut : "Reading the master prompt now", "Now launching the Phase 1 pain-hunt workflow". Métriques : "Herk-2.0 master", "+58,895 -1,629", "Fable 5 is the most capable model".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA analyse un fichier de configuration, exécute des commandes et initialise un workflow (Phase 1 pain-hunt) en toute autonomie.
+
+![Interface d'un agent IA nommé "Herk-2.0" montrant une interaction textuelle où l'IA détaille l'exécution d'un workflow complexe basé sur un "master-prompt" pour un projet de construction d'entreprise.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_001113_seg23.jpg)
+*⏱️ 00:11:13 — Interface d'un agent IA nommé "Herk-2.0" montrant une interaction textuelle où l'IA détaille l'exécution d'un workflow complexe basé sur un "master-prompt" pour un projet de construction d'entreprise.*
 
 ---
 
-### ⏱️ `[00:11:06 - 00:11:25]` | Segment #24
+### ⏱️ `[00:11:31 - 00:11:50]` | Segment #24
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> one asked me one question and spoiler, it was the only one that asked us a question throughout all of this. So let's see, we've got three left extra max and ultra code. Let me pull open extra and we'll see what we got. Okay. So this one looks pretty good. I would honestly say so far, the loading screen high was the best. The one that we just saw, but anyways, let's enter AIS live.
+> So anyways, I know this video was quicker and it's not like a super, super practical tutorial. This is more about just being able to experiment with stuff like this and have takeaways and have lessons from seeing what's possible when you do stuff like that. There's a lot, a lot of things that I would come in here and fix, but functionality wise, this works pretty well.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : - Image #1 : Interface type IDE IA (Windsurf/Cursor).
+- Image #2 : Interface SaaS web (Dashboard de Counterbrief).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : - Image #1 : Prompt système demandant à l'agent de lire "master-prompt.md" et d'exécuter des phases de travail, suivi d'un log d'exécution mentionnant le lancement d'un "Phase 1 pain-hunt workflow".
+- Image #2 : Statistiques de litiges (Net recovered, Win rate, Fees paid), liste des litiges en attente de revue (CB-2469, CB-2481, CB-2477) et graphique des revenus récupérés par mois.
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : - Image #1 : L'agent traite les instructions de projet et initialise des workflows autonomes de recherche de marché ("pain-hunt").
+- Image #2 : Présentation de l'interface utilisateur finale d'un outil de gestion automatisée des litiges clients.
+
+![Interface de l'éditeur IA (probablement Windsurf ou Cursor) montrant un agent "Herk-2.0" en train d'exécuter un workflow automatisé lié à un projet "company-builder".](../screenshots/R0qF17BVl9w/R0qF17BVl9w_001136_seg24.jpg)
+*⏱️ 00:11:36 — Interface de l'éditeur IA (probablement Windsurf ou Cursor) montrant un agent "Herk-2.0" en train d'exécuter un workflow automatisé lié à un projet "company-builder".*
+
+![Tableau de bord d'une application web SaaS nommée "Counterbrief", affichant des métriques financières, des taux de réussite de litiges et une activité récente.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_001145_seg24.jpg)
+*⏱️ 00:11:45 — Tableau de bord d'une application web SaaS nommée "Counterbrief", affichant des métriques financières, des taux de réussite de litiges et une activité récente.*
 
 ---
 
-### ⏱️ `[00:11:26 - 00:11:51]` | Segment #25
+### ⏱️ `[00:11:50 - 00:12:24]` | Segment #25
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Whoa. Okay. So we have like little sound bites. I can chat with people. The tool war panel settled a few debates for me. Nice. Good perspective there. We're outside again. We have these different banners, although they're all the same. They don't say like different people's names. So big AIS live logo. Workshop wing is over here. And let's go through the sliding glass doors and see what we've got. So we've got the AIS cafe. The map is in the bottom right, and it's not too descriptive.
+> I don't like the way it looks. And I think that there's a lot of improvement to be done here and also on the actual landing page itself. But like, come on, the launch video I thought was really impressive. The ideas behind it and the research that went into this upfront, I thought was pretty impressive. And now, you know, maybe we're 50% of the way there and we can just continue to iterate. What happens if I did another goal prompt like this after V1 and we went into run two and we gave it all the feedback from this first run and we said, okay, let's just make all this better now. So that is going to do it for today. I hope you guys enjoyed the video or you learned something new. And if you did, please give it a like, it helps me out a ton. And as always,
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Image #1 : Site web (Landing page Counterbrief). Image #2 : Éditeur d'agent IA (interface de type Cursor/IDE spécialisé).
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Image #1 : Textes sur les litiges e-commerce (exhibits A, B, C). Image #2 : Prompt "Read projects/company-builder-experiment/master-prompt.md", logs d'exécution ("Reading the master prompt now"), et indicateur du modèle "Fable 5".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Image #1 : Présentation visuelle de la proposition de valeur et des preuves sociales. Image #2 : Initialisation et lancement du workflow "Phase 1 pain-hunt" par l'agent IA.
+
+![Vue d'ensemble de la page d'accueil de "Counterbrief", mettant en avant une section de témoignages clients sous forme d'exhibits juridiques et une vidéo de démonstration.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_001158_seg25.jpg)
+*⏱️ 00:11:58 — Vue d'ensemble de la page d'accueil de "Counterbrief", mettant en avant une section de témoignages clients sous forme d'exhibits juridiques et une vidéo de démonstration.*
+
+![Interface de l'outil "Herk-2.0" montrant l'exécution d'un prompt complexe visant à automatiser un flux de travail de "pain-hunt" (recherche de problèmes clients) avec des logs d'actions système.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_001215_seg25.jpg)
+*⏱️ 00:12:15 — Interface de l'outil "Herk-2.0" montrant l'exécution d'un prompt complexe visant à automatiser un flux de travail de "pain-hunt" (recherche de problèmes clients) avec des logs d'actions système.*
 
 ---
 
-### ⏱️ `[00:11:51 - 00:12:26]` | Segment #26
+### ⏱️ `[00:12:24 - 00:12:27]` | Segment #26
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I like how the other maps have told us what, like where things were, but this one looks very professional. We can see here's the main stage. Let's hop in here real quick. They've all got these balls flying around, which I think is pretty funny. The AIS beach balls. We have me up there speaking. I think I was introing one of the days. Let's keep on moving here to the workshop room on this left side. Okay. So here we've got the Hyper Agent Theater. We've got this sponsored session in here by Hyper Agent, but it's showing us what's coming up in here as well. It's really funny that we can chat to people. Salmon built a voice sales rep live. The price it right room was packed. Did you grab the VIP companion guide? That's so funny. We have the advanced track in
+> I appreciate you guys making it to the end of the video and I'll see you on the next one. Thanks guys.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Interface de travail type "AI Agent" / Environnement de développement intégré.
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Prompt système : "Read projects/company-builder-experiment/master-prompt.md...", logs : "Reading the master prompt now", "Now launching the Phase 1 pain-hunt workflow", et statut du modèle : "Fable 5 is the most capable model".
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : L'agent IA exécute un workflow structuré (Phase 1 pain-hunt) basé sur des instructions contenues dans un fichier projet.
 
----
-
-### ⏱️ `[00:12:26 - 00:12:58]` | Segment #27
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> here. Once again, we've got live playback. Is that live playback? Oh, okay. It started once I got in, but I can take a seat. Oh my. I can watch this. I can stand up. I want to sit in the front. That's pretty cool. That's very nice. I like that. And you know what I noticed so far? The actual character that I'm playing kind of looks like me. I think it modeled it off of my thumbnail pictures or something. Anyways, we have Sabrina in here, room host here, grab any open seat. Okay, cool. And I really liked the sitting functionality. It's kind of funny. Like we could actually attend this workshop and participate. Anyways, it's showing us the speakers. It's showing us the
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:12:58 - 00:13:31]` | Segment #28
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> agenda. There's a little red carpet here to take some pictures. We can strike a pose. Oh, wow. That's pretty cool. Resource library, get AIS Plus certified, Glido, Hyper Agent, AIS Plus, three real deals. Awesome. I mean, I would definitely say so far, each one is getting better. And we didn't even check out the VIP section yet, the VIP lounge. Let's go up here real quick. Hopefully I can get in. Nice. We've got tooling reset. These are the different rooms we could go in. So once again, I could grab the worksheet and I could try to understand how to price my stuff. This is so cool. This is definitely better than the previous one where we kind of just
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:13:31 - 00:13:59]` | Segment #29
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> like looked at stuff. Awesome. I can get behind the bar and come in here. This is very nice. Okay. So as far as statistics go, this one ran for an hour and a half. It costs 25.92 bucks. I don't know why I say point $25, 92 cents. It was 733,000 tokens and 34 checks. So it had the most checks so far by far. And it asked us zero questions. I can't wait to see what we got here from max and ultra code. Okay. Here is max loading screens, boring, but it's on brand and it has our logo.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:14:00 - 00:14:35]` | Segment #30
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was good. I like that. We will go ahead and enter AIS live. Ooh, nice little animation here that brings us in. Once again, the character looks like me. They've all looked like me. I mean, sort of, we have sitting in the background. This looks like Chicago. Like I mentioned earlier, a lot of these are playing sounds and I'm not including that because it would be very distracting for you guys to try to listen to what's going on as well as me speaking. So there is like some slight music in all these. I hate how this is walking. This walking is really, really bad. I mean, the walking, yeah, I don't like this at all. So that's not great. But besides that, let's go in and explore. Notice these shadows when I walk in, they like really switch. I'm not sure why that is,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:14:35 - 00:15:11]` | Segment #31
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> but anyways, we can chat with people in here too. Hyperagent booth is right where you walk into the expo. All good. Okay, cool. I can keep clicking E to make them change what they say. We've got the speakers right here. That looks pretty good. Although we definitely had everyone's profile picture. So I'm not sure why that's not included there. We see people taking pictures right here. I love that. And it saves a little picture. Okay. The map also isn't super, like doesn't give me a great explanation of what's going on, but I like these booths. These are cool. I think these booths are the best that I've seen so far. Like they just look nice. They've got reps. There's nice like slides behind them. Yeah. These booths are cool. Okay. We have a little featured theater
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:15:11 - 00:15:35]` | Segment #32
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> going on over here. It's Casper. Although why is this not playing? I feel like this should be playing, right? Like in the other ones, they were always playing. We can talk to some other people over here. Coffee's free. Blah, blah, blah. Amy Simpson, Matt Wolf. Nice. Okay. This is just the networking area that we're in right now, but we can see in the top right. We can also see what's live on the main stage right now. It is a tool war panel. So let's head in here. We've got Devin, Cole, Dave, and Russ chatting in here. We've got sort of AV, some light stuff going on back here.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:15:36 - 00:15:55]` | Segment #33
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Switch the main stage to what actually matters right now. So I can switch the topic. Cool. So I just switched to me and Matt. We can go to anatomy of three real deals. That's pretty cool. The stage looks good. We've got a nice little panel up here. Can I get on the stage? Nice. Nice. Well, I can't go too far, actually. All right, everyone, let me take the selfie. Everyone get in this. I can also take a seat in this audience over here and just enjoy the session.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:15:55 - 00:16:14]` | Segment #34
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Very cool, very cool. Okay, let's go over here. I see an upstairs section. So it's funny how they all choose to put the VIP section upstairs. I mean, I don't hate it. Oh my gosh, they have an escalator. No way. I'm gonna chat with this guy on the escalator. Glenn has 15 years of agency experience. His land and expand stuff was gold. Great work, Glenn. Cool, so I'm gonna, I can't even get past this guy though.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:16:14 - 00:16:48]` | Segment #35
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Oh, I had to jump over him. Okay, VIP level, badge required. Oh my gosh. Are you kidding me? I have to go get my badge. Okay, cool. Now it shows that I'm an actual VIP and I can go up here to the VIP section. We have nice little working sessions back there, which we can hop in. I wonder if it'll let me like sit down in here. I can just chat. Can I participate? It's not letting me sit and participate. That's okay. We've got the pricing war room. Oh, this might be the after party. Let's go see what's going on back here. Or maybe I just have to enter from over here. Okay. That's weird. I just had to enter from over here. This after party is not as cool as the other one. But anyways, let's go see what's going on back here
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:16:48 - 00:17:07]` | Segment #36
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> in the workshops. Okay. That was not good. Look at this. You can see everything and I just glitched and now boom. So that's not good. I would say overall, I mean, you guys are getting the vibe of how this works, but I would say that the one before, which was, I believe high, I liked that one better. I can't sit in these chairs either. Yeah. So I don't like the walking in this one.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:17:07 - 00:17:43]` | Segment #37
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I don't like the vibe as much and there's some bugs. So, so far, if we want to go to our list, I like extra extra was the one that I liked the most so far. But anyways, this one was max. This one was max right here. So let's see how long this ran for two hours and 28 minutes. So it ran for a long time, $50 and 38 cents, 1.18 million tokens. So it actually hit a compaction and had to auto compact. And then it did 51 checks. Did it really though? Cause there was a lot of bugs in there. And anyways, this one asked us zero questions. So, so far each time pretty much has gotten more expensive and took longer besides right here. But these basically
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:17:43 - 00:18:17]` | Segment #38
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> took like very similar amount of time, but every time it's used more tokens because they've been thinking more. And then, you know, those tokens are going to cost more. But anyways, let's move on to the final one, which is ultra code. So we would really hope that this one is the best one. So let's hop into this local host and see what we've got. Okay, cool. Look at this badge. It's a nice badge host all access. We've got a nice little visual right here. We'll go ahead and enter AIS Live. Cool. Okay. Welcome in, Nate. I like the walking. It feels realistic. I like the logo, although it's missing the little red dot that makes it look like live. The map in the top right
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:18:17 - 00:18:49]` | Segment #39
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> is labeled a little bit better, so I can see what's going on. I'm going to come in here and collect my VIP wristband real quick. Okay, nice. It's also telling me what to do. So in the top left, it says scan in at the VIP gate at the lobby east wall. So I believe east would be this way, right? Never eat soggy waffles. Yeah. VIP wings, scan wristband. Okay, cool. Now I'm in the VIP section. I can see these different rooms. The tooling reset. Live video is being played. I'm able to see the closed captions right there of what's being talked about. It's also playing the sounds, but I'm just not playing the audio for you guys because I don't want to overwhelm.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:18:50 - 00:19:08]` | Segment #40
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Once again, this one's working with Cody and Mustafa in there. That's awesome. Live video. The video doesn't play until you walk in though. So honestly, I think that's a good call. As soon as I walk in though, the video starts. Nice. Nice touch. All these rooms. Awesome. Yeah. I mean, this feels very premium. Here's a pricing war room. Let's hop in here. Me and John in there.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:19:08 - 00:19:42]` | Segment #41
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And then we have nice the after party. This after party is not as busy yet. And we have more beach balls for some reason, but this after party is cool. I mean, it gives us the good vibe and there's the playback right here of our after party Q and a, this is all live as well. Sweet. Okay. Let's head into the main stage. It's also prompting me to grab an aisle seat at the main stage, which is straight through the expo. So actually let's go through the expo first. What are you building. There's a lot of people talking about different things over here. Wow. There's also like a little, a basketball thing. Can I throw it? I can. Do I have to look up to throw it up? Okay.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:19:42 - 00:20:08]` | Segment #42
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Well, not great. But anyways, we have an AIS plus booth. We have the Glido booth. Is that playing live? Yeah, that definitely is playing live. Nice. We have the hyper agent booth. We have other stuff over here. Okay, cool. I'm going to go into the main stage and see if we can grab an aisle seat. As soon as we walk in, everything starts playing. We've got a very nice stage vibe. How do I grab an aisle seat though. There we go. I had to find the right one. Grab the aisle seat. There's no one on the stage, which is weird. I liked when they had people on the stage in the past versions.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:20:08 - 00:20:31]` | Segment #43
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> Let's take a quick selfie. Anyways, we got me and Pat up there. Pat is all dressed up like a construction worker. As you can see, we were doing a little mock discovery call in that example. I'm going to come back through the expo and we're going to go out here to the workshop wing and just check out if these rooms basically are the exact same as they should. Now I can't actually chat with people. I used to be able to, in the previous versions, chat with people, which I thought was a really nice touch. And we have workshop a foundation track. Can I sit down?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:20:32 - 00:21:04]` | Segment #44
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't sit down. I don't know. We do have Liberty actually talking right now and she is speaking and we can hear it. So that's nice, but it's not letting me sit down. And look at this. I'm getting pretty glitchy right here. That was glitching the way I was walking. It like wasn't letting me walk. That's not good. Same thing. We got this advanced track in there. Awesome. So overall, they have a very similar vibe. I will say I'm impressed by the way they were able to tell a story out of what we were doing. Speaker takeaways library. Okay. This is cool. I don't think we saw this from different places, but these are like the resources and showing some cool stuff. Oh, wow. I
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:04 - 00:21:41]` | Segment #45
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> can actually open all of these things and we can take pictures right here as well. Nice. Take a photo. I can save this as well. Like I can actually download this. And now we have this photo that we just took at this AIS live event. All right. Well, I think it is time for me to make some conclusions, but first let us see what this run cost us. This took a one hour and 35 minutes. So it was much faster than max. It only took $18 and 69 cents. Wow. So it was a little bit more expensive than high, cheaper than extra and much cheaper than max. It also ran 606,000 tokens and 42 checks with zero questions. Now, one other thing that's interesting to note is that all of
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:21:41 - 00:22:13]` | Segment #46
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> these runs, none of them used a sub agent. I looked through and I made sure none of them used sub agents. They didn't want to delegate any work around, which was interesting. So these tokens are what was reflected inside of that session. Obviously, like I said, this one went over, you know, 950K, so, or whatever the compaction window is. I never usually let it get that high, but because this was a slash goal and I wasn't involved, this one had to compact, but the rest of them just ran in this one session. And these are the overall stats. And also real quick on the UltraCode stuff, guys, I don't know if you've been noticing this, but when I've been running UltraCode lately, it's just felt weird. It's felt a little buggy. I, a couple of times I've ran it
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:13 - 00:22:34]` | Segment #47
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> and been like, is it even running UltraCode? It did quite a few more checks than these other ones, but for some reason it just didn't feel right because essentially what UltraCode is, is it's extra effort and then it's just like using more dynamic workflows in order to do things. And so through all my digging on the session logs and even when I was watching this thing build in UltraCode, it wasn't spinning up any of these dynamic workflows and I tried this a few times.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:22:35 - 00:23:00]` | Segment #48
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I don't know if that's a bug right now in the CloudCode harness or if it's just with Opus 5.5, it's a little bit worse with UltraCode right now or something, but either way, these are the actual bulk effort levels and this all seems to make a lot of sense when you kind of look through how they progress. So let's take a look at this. Max cost versus low, we had 12.9X on the cheapest run compared to the most expensive run, which I believe was $3.98 to $50.38.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:01 - 00:23:19]` | Segment #49
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So that was low and max. As far as max checks versus low, we had a 2.3X multiple. The total across all six was 127 bucks and ultra code was $18.69. Let's look at speed versus cost here. So let me zoom out a little bit so we can see this whole thing. So on the X axis, we have runtime. In the Y axis, we have cost.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:19 - 00:23:42]` | Segment #50
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> So I feel like what the best would be is in the bottom left, but not really. So anyways, you can see that low was cheap and fast. Max was slow and expensive. But this sort of chart typically makes sense. As you increase in effort, it's gonna cost more and it's gonna run a little bit longer. That makes sense. Now let's see growth relative to low. So we have runtime in blue, API costs in orange, tokens in green, and checks in yellowish gold, mustard.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:23:42 - 00:24:01]` | Segment #51
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> And by the way, the reason why UltraCode shows up like this is because it actually uses extra effort level. It's just incentivized and it uses more like dynamic workflows and things like that, which is why this, you know, this makes sense because it basically was using extra under the hood. That's also why Claude tagged it here in orange. Anyways, if we continue back down here, this typically makes sense, right?
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:02 - 00:24:21]` | Segment #52
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> As the effort level increases, once again, these metrics are gonna increase. Runtime, API costs, tokens, and checks. Same thing here with runtime. It's just kind of giving us more individual line charts now for each of these different metrics, like API cost, checks, total tokens, cost per check, and all the numbers in one spot. So pretty cool data.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:21 - 00:24:40]` | Segment #53
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I will say nothing here is too shocking. What was more shocking to me was those results. My top two contenders were high, which is this one, and extra, which is this one. So I need to go back in here and just remember what I thought about them. I really liked this feel. This one also just feels the smoothest. The physics were nice. The sliding glass door was nice. I didn't really notice many bugs in this one, which is what I really liked.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:24:40 - 00:25:13]` | Segment #54
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> I can't remember if this one was one where, oh, I couldn't talk to people though. I could just walk right through them. I couldn't sit in this one either. Here is another little visual thing where I basically just walk right through this wall. So don't love that. But I think, was this the one where I could sit in these sessions? No. Okay. So I don't think this was my winner then. This is extra high. I think this is the winner. Yeah. I think this was the one that I liked the most. I loved this whole vibe. I loved that I could chat to people. This was definitely the one where we could come in here and we could sit wherever we wanted, take a seat, stand up. I could read these three deals and I could chat with them. I also realized that there was little sections to mock discovery calls in here too.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:13 - 00:25:51]` | Segment #55
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> We have some swag and totes, which is real physics. I like that. This was the one where we could sit down everywhere. Yeah, I really, really liked this one. Although I think the one downside about this one was that it didn't have like a VIP after party because I think this was the lounge. And I think this was the only piece of the VIP section, which was these being the different rooms that you could come in and sit in. But besides that, it didn't have a great VIP experience compared to some of the other ones that we saw. So my winner here is definitely going to be Extra. Extra did a phenomenal job. It was about half the runtime and half the cost of Max. So Max, I think, was just way too much for not enough good. I think that highs was decent. It could have,
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:25:51 - 00:26:25]` | Segment #56
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> with maybe one or two more prompts, gotten to where I really liked it. But for a slash goal, Extra delivered an amazing result here. I didn't love Medium. And for a lot of my knowledge work and stuff I'm doing, Medium works just fine. But for this task specifically, I needed a lot of reasoning. It had to go through tons of stuff. It had to go through tons of videos. It had to find a lot of things inside of my projects. It had to create an experience and tell a story out of everything. I think Extra did a phenomenal job. In general, though, I liked a lot of these outputs, but Extra is the one that I'd want to start from right now. If I wanted to really make that like a super, super polished and cool app and world, I would start with Extra's output and probably
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
-
----
-
-### ⏱️ `[00:26:25 - 00:26:37]` | Segment #57
-
-**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> keep iterating with Extra. So anyways, guys, that was the experiment. I hope that you found that insightful. I hope that you learned something new. And if you did, please give it a like. It helps me out a ton. And as always, I appreciate you guys making it to the end of the video, and I'll see you on the next one. Thanks, everyone.
-
-**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
-
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
-
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+![Interface de l'agent IA "Herk-2.0" montrant une exécution de workflow en cours avec un prompt système, des logs d'actions et le présentateur en incrustation vidéo.](../screenshots/R0qF17BVl9w/R0qF17BVl9w_001225_seg26.jpg)
+*⏱️ 00:12:25 — Interface de l'agent IA "Herk-2.0" montrant une exécution de workflow en cours avec un prompt système, des logs d'actions et le présentateur en incrustation vidéo.*
 
 ---
 
