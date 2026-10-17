@@ -227,11 +227,17 @@ Dans cette vidéo intitulée **Planning In Claude Code Just Got a Huge Upgrade**
 > stats like mrr annual run rate total customers churn rate we can change this between all time 30 days, 90 days, six months, one year. We have different tabs on the left. We can do revenue and see different tiers. We can also see enterprise and pro top 20 accounts. Obviously all this is mock data. We've got our customers here with a nice chart and by tier. And then we have support.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+**Interface & Outils** : Dashboard SaaS analytique nommé "PulseBoard".
 
-**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+**Contenu textuel & Code** : Données métier simulées (MRR, taux de désabonnement, rétention nette, revenus par segment, analyse de cohorte).
 
-**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+**Action / Démonstration** : Navigation entre les onglets de l'interface (Overview vers Revenue) pour démontrer les capacités de visualisation de données de l'application.
+
+![Interface "PulseBoard" affichant le tableau de bord "Overview" avec des statistiques clés (MRR, Annual Run Rate, Total Customers, Churn Rate) et des sélecteurs de période temporelle.](../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000701_seg15.jpg)
+*⏱️ 00:07:01 — Interface "PulseBoard" affichant le tableau de bord "Overview" avec des statistiques clés (MRR, Annual Run Rate, Total Customers, Churn Rate) et des sélecteurs de période temporelle.*
+
+![Interface "PulseBoard" sur l'onglet "Revenue", montrant un graphique d'évolution des revenus par tiers (Enterprise vs Pro) et un tableau des "Top 20 Accounts".](../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000712_seg15.jpg)
+*⏱️ 00:07:12 — Interface "PulseBoard" sur l'onglet "Revenue", montrant un graphique d'évolution des revenus par tiers (Enterprise vs Pro) et un tableau des "Top 20 Accounts".*
 
 ---
 
