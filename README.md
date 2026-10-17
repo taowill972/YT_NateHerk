@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `146 / 358` (`40.8%`)
+- **Vidéos traitées** : `147 / 358` (`41.1%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -163,6 +163,7 @@
 | 2026-04-17 | [gAoZ95kqG7w](https://www.youtube.com/watch?v=gAoZ95kqG7w) | **Claude Design Just Became Unstoppable** | [2026-04-17_YT-[gAoZ95kqG7w]_Claude Design Just Became Unstoppable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-17_YT-[gAoZ95kqG7w]_Claude Design Just Became Unstoppable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-17_YT-[gAoZ95kqG7w]_Claude Design Just Became Unstoppable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-04-17 | [6MC1XqZSltw](https://www.youtube.com/watch?v=6MC1XqZSltw) | **I Turned Claude Into a 24/7 Trader** | [2026-04-17_YT-[6MC1XqZSltw]_I Turned Claude Into a 247 Trader_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-17_YT-[6MC1XqZSltw]_I Turned Claude Into a 247 Trader_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-17_YT-[6MC1XqZSltw]_I Turned Claude Into a 247 Trader_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-04-16 | [NiMc2PoTiXo](https://www.youtube.com/watch?v=NiMc2PoTiXo) | **Claude Opus 4.7 Just Dropped... Or Did It Really?** | [2026-04-16_YT-[NiMc2PoTiXo]_Claude Opus 4.7 Just Dropped... Or Did It Really_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-16_YT-[NiMc2PoTiXo]_Claude Opus 4.7 Just Dropped... Or Did It Really_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-16_YT-[NiMc2PoTiXo]_Claude Opus 4.7 Just Dropped... Or Did It Really_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-04-15 | [EbJu9T30nfI](https://www.youtube.com/watch?v=EbJu9T30nfI) | **Claude + HeyGen Just Changed Content Creation Forever** | [2026-04-15_YT-[EbJu9T30nfI]_Claude + HeyGen Just Changed Content Creation Forever_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-04-15_YT-[EbJu9T30nfI]_Claude + HeyGen Just Changed Content Creation Forever_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-04-15_YT-[EbJu9T30nfI]_Claude + HeyGen Just Changed Content Creation Forever_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `63` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
