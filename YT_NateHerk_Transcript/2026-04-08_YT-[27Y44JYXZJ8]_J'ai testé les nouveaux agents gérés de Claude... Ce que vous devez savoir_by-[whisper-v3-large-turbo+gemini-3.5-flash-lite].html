@@ -1,0 +1,2476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 J&#x27;ai testé les nouveaux agents gérés de Claude... Ce que vous devez savoir — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 J&#x27;ai testé les nouveaux agents gérés de Claude... Ce que vous devez savoir</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-08</span>
+                <span class="badge">⏱️ 00:16:32</span>
+                <span class="badge">🆔 <code>27Y44JYXZJ8</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=27Y44JYXZJ8" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo signée Nate Herk explore le lancement par Anthropic des « agents gérés » (Managed Agents) au sein de la console Claude, une fonctionnalité conçue pour permettre aux équipes de déployer des agents IA autonomes en production beaucoup plus rapidement en s'affranchissant des complexités d'infrastructure. L'analyse met en lumière la stratégie d'Anthropic visant à simplifier l'hébergement cloud sécurisé, la gestion des environnements bac à sable (sandboxes) et l'intégration d'outils tiers via des serveurs MCP (Model Context Protocol). L'auteur détaille un cas pratique de création d'un agent de veille concurrentielle, depuis la configuration initiale via une interface conversationnelle ou des modèles, jusqu'à l'authentification OAuth et le paramétrage des coffres-forts d'identifiants partagés.<br><br>Au fil du test, l'analyste soulève des nuances importantes concernant l'ergonomie et la rigueur nécessaire dans la gestion des versions d'agents. Bien que la solution s'adresse en priorité aux utilisateurs de Claude Chat peu familiers avec les environnements de développement complexes comme Claude Code, elle offre une interface visuelle épurée pour suivre l'exécution des tâches en temps réel (recherches web, scripts Bash, outils de manipulation de code). Le modèle économique repose sur un coût de session horaire actif combiné à la consommation de jetons API, rendant l'approche flexible mais nécessitant une surveillance attentive des flux de travail automatisés.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Claude (Agents gérés)** : Nouvelle solution d'Anthropic permettant d'héberger, configurer et exécuter des agents IA autonomes sur une infrastructure cloud gérée sans effort d'infrastructure préalable.<br>* **Claude Code / SDK d'agent** : Environnement de développement avancé pour les ingénieurs, partageant les mêmes capacités sous-jacentes (bash, grep, lectures, écritures) que les agents gérés, mais destiné à un public technique.<br>* **Opus 4.6 (et mentions d'Opus 5.5)** : Modèles de pointe d'Anthropic sélectionnés pour exécuter des tâches complexes de raisonnement et d'analyse concurrentielle au sein des agents.<br>* **Sonnet 4.6** : Modèle intermédiaire d'Anthropic utilisé pour des agents secondaires ou des configurations de test plus légères.<br>* **Notion** : Plateforme tierce illustrant l'intégration native des agents gérés, permettant aux équipes de déléguer du travail à Claude directement via des statuts de tâches.<br>* **ClickUp** : Outil de gestion de projet connecté aux agents via des serveurs MCP et une authentification OAuth sécurisée stockée dans des coffres-forts d'équipe.<br>* **OpenClaw** : Interface tierce mentionnée dans le contexte des restrictions d'abonnement et de l'évolution des usages des modèles Anthropic.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Démocratisation du déploiement d'agents** : Les agents gérés permettent de s'affranchir de mois de travail d'infrastructure en encapsulant l'exécution dans des conteneurs cloud bac à sable préconfigurés.<br>* **Modèle d'accès simplifié** : Aucun abonnement spécifique n'est requis ; il suffit de configurer une clé API avec un dépôt initial d'environ cinq dollars pour accéder à la création d'agents.<br>* **Expérience utilisateur conversationnelle** : L'interface de démarrage rapide permet de décrire simplement un objectif en langage naturel pour générer automatiquement la configuration, le nom, la description et le prompt système.<br>* **Séparation des rôles selon l'expertise** : Les utilisateurs évoluant déjà dans Claude Code jugeront l'outil redondant, tandis que les utilisateurs de Claude Chat y trouvent un pont puissant et accessible vers l'automatisation.<br>* **Isolation et sécurité des environnements** : Chaque agent opère dans un conteneur cloud dédié (environnement) avec des règles de réseau personnalisables (ex. accès sans restriction pour la veille web).<br>* **Intégration fluide via MCP et OAuth** : La connexion aux outils SaaS (comme ClickUp) s'effectue en quelques clics via des flux OAuth sécurisés et centralisés dans des coffres-forts d'équipe (Vaults).<br>* **Nécessité d'une révision rigoureuse des prompts** : Lors des modifications itératives (comme l'ajout de contexte métier), il est primordial de vérifier la bonne mise à jour des versions de prompts système pour garantir la pertinence des livrables.<br>* **Observabilité en temps réel** : La console offre une vue séquentielle détaillée (barre horizontale et journaux d'exécution) permettant de suivre chaque étape de l'agent (recherches web, appels d'outils).<br>* **Parallélisme technologique** : Les agents gérés partagent la même boîte à outils technique que Claude Code (commandes bash, lectures, greps, requêtes web), garantissant une puissance d'exécution équivalente.<br>* **Modèle de tarification transparent** : La facturation dissocie les environnements (inactifs et gratuits au repos) des sessions actives, facturées à l'heure (0,08 $ par heure) en sus de la consommation réelle de jetons API.<br>* **Assistance contextuelle intégrée** : Le bouton « Demander à Claude » permet d'interagir directement avec l'assistant pour auditer la configuration, comprendre le comportement de l'agent ou ajuster les paramètres.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude (Agents gérés)</span><span class="tool-tag">Claude Code / SDK d&#x27;agent</span><span class="tool-tag">Opus 4.6 (et mentions d&#x27;Opus 5.5)</span><span class="tool-tag">Sonnet 4.6</span><span class="tool-tag">Notion</span><span class="tool-tag">ClickUp</span><span class="tool-tag">OpenClaw</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Démocratisation du déploiement d&#x27;agents** : Les agents gérés permettent de s&#x27;affranchir de mois de travail d&#x27;infrastructure en encapsulant l&#x27;exécution dans des conteneurs cloud bac à sable préconfigurés.</span></li><li><span class="point-bullet">✦</span><span>Modèle d&#x27;accès simplifié** : Aucun abonnement spécifique n&#x27;est requis ; il suffit de configurer une clé API avec un dépôt initial d&#x27;environ cinq dollars pour accéder à la création d&#x27;agents.</span></li><li><span class="point-bullet">✦</span><span>Expérience utilisateur conversationnelle** : L&#x27;interface de démarrage rapide permet de décrire simplement un objectif en langage naturel pour générer automatiquement la configuration, le nom, la description et le prompt système.</span></li><li><span class="point-bullet">✦</span><span>Séparation des rôles selon l&#x27;expertise** : Les utilisateurs évoluant déjà dans Claude Code jugeront l&#x27;outil redondant, tandis que les utilisateurs de Claude Chat y trouvent un pont puissant et accessible vers l&#x27;automatisation.</span></li><li><span class="point-bullet">✦</span><span>Isolation et sécurité des environnements** : Chaque agent opère dans un conteneur cloud dédié (environnement) avec des règles de réseau personnalisables (ex. accès sans restriction pour la veille web).</span></li><li><span class="point-bullet">✦</span><span>Intégration fluide via MCP et OAuth** : La connexion aux outils SaaS (comme ClickUp) s&#x27;effectue en quelques clics via des flux OAuth sécurisés et centralisés dans des coffres-forts d&#x27;équipe (Vaults).</span></li><li><span class="point-bullet">✦</span><span>Nécessité d&#x27;une révision rigoureuse des prompts** : Lors des modifications itératives (comme l&#x27;ajout de contexte métier), il est primordial de vérifier la bonne mise à jour des versions de prompts système pour garantir la pertinence des livrables.</span></li><li><span class="point-bullet">✦</span><span>Observabilité en temps réel** : La console offre une vue séquentielle détaillée (barre horizontale et journaux d&#x27;exécution) permettant de suivre chaque étape de l&#x27;agent (recherches web, appels d&#x27;outils).</span></li><li><span class="point-bullet">✦</span><span>Parallélisme technologique** : Les agents gérés partagent la même boîte à outils technique que Claude Code (commandes bash, lectures, greps, requêtes web), garantissant une puissance d&#x27;exécution équivalente.</span></li><li><span class="point-bullet">✦</span><span>Modèle de tarification transparent** : La facturation dissocie les environnements (inactifs et gratuits au repos) des sessions actives, facturées à l&#x27;heure (0,08 $ par heure) en sus de la consommation réelle de jetons API.</span></li><li><span class="point-bullet">✦</span><span>Assistance contextuelle intégrée** : Le bouton « Demander à Claude » permet d&#x27;interagir directement avec l&#x27;assistant pour auditer la configuration, comprendre le comportement de l&#x27;agent ou ajuster les paramètres.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:31</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il y a quatre jours, Claude est sorti et a dit, hé, vous n&#x27;avez plus le droit d&#x27;utiliser votre abonnement dans des interfaces tierces comme OpenClaw. Et les gens étaient contrariés parce que maintenant ils payent beaucoup plus cher pour l&#x27;IA à moins d&#x27;utiliser quelque chose de local. Et puis hier, Anthropics dit, hé, nous avons littéralement un modèle qui est trop dangereux pour être publié. Il écrase Opus 4.6. Alors aujourd&#x27;hui, ils sortent un truc appelé Agents gérés avec le slogan d&#x27;arriver en production 10 fois plus vite. Et honnêtement, j&#x27;ai passé les trois dernières heures à jouer avec, et je suis un peu déçu. Parce qu&#x27;après avoir annoncé ça et après avoir annoncé ça, on se dit, ok, ils s&#x27;attaquent vraiment à OpenClaw cette fois-ci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec captures d&#x27;écran de communiqués et publications textuelles.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte d&#x27;annonces officielles d&#x27;Anthropic et graphiques de performance comparative (SWE-bench).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation chronologique des actualités récentes de Claude par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000008_seg1.jpg" alt="Capture d&#x27;écran montrant un message de notification de Claude daté de 4 jours auparavant concernant les limites d&#x27;utilisation des abonnements dans les interfaces tierces." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000008_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:08</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un message de notification de Claude daté de 4 jours auparavant concernant les limites d&#x27;utilisation des abonnements dans les interfaces tierces.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000016_seg1.jpg" alt="Capture d&#x27;écran montrant une publication d&#x27;Anthropic de la veille introduisant le projet Glasswing et le modèle Claude Mythos Preview avec ses performances sur SWE-bench Verified." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000016_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:16</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une publication d&#x27;Anthropic de la veille introduisant le projet Glasswing et le modèle Claude Mythos Preview avec ses performances sur SWE-bench Verified.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000023_seg1.jpg" alt="Capture d&#x27;écran affichant l&#x27;annonce d&#x27;aujourd&#x27;hui concernant &quot;Claude Managed Agents&quot; pour accélérer le développement vers la production." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000023_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:23</span>
+                        <span class="caption-text">Capture d&#x27;écran affichant l&#x27;annonce d&#x27;aujourd&#x27;hui concernant &quot;Claude Managed Agents&quot; pour accélérer le développement vers la production.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:32 - 00:00:53</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il s&#x27;agit fondamentalement pour eux de dire, hé, nous vous permettons désormais d&#x27;héberger un agent sur notre cloud et notre propre infrastructure, afin que vous n&#x27;ayez pas à passer tout ce temps à configurer tout cela. Déployer un agent en production signifiait auparavant des mois de travail d&#x27;infrastructure d&#x27;abord, mais maintenant les agents gérés s&#x27;en occupent pour vous, où vous définissez simplement les tâches, les outils et les garde-fous de votre agent. Et ensuite, ils configurent une sorte d&#x27;environnement de bac à sable cloud pour que tout cela puisse s&#x27;exécuter.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de X (Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du tweet officiel de Claude et diagramme technique illustrant l&#x27;infrastructure des agents gérés.
+[DESC_IMAGE_2] Le présentateur commente l&#x27;annonce des agents managés de Claude sur le cloud et l&#x27;infrastructure d&#x27;Anthropic.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000037_seg2.jpg" alt="Capture d&#x27;écran montrant un tweet de Claude annonçant &quot;Introducing Claude Managed Agents: everything you need to build and deploy agents at scale.&quot;" loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000037_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:37</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un tweet de Claude annonçant &quot;Introducing Claude Managed Agents: everything you need to build and deploy agents at scale.&quot;</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000042_seg2.jpg" alt="Capture d&#x27;écran montrant la suite du thread Twitter de Claude avec un diagramme explicatif sur l&#x27;architecture des Managed Agents (Harness, Sandbox, Tools, Session, Orchestration)." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000042_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:42</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant la suite du thread Twitter de Claude avec un diagramme explicatif sur l&#x27;architecture des Managed Agents (Harness, Sandbox, Tools, Session, Orchestration).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:53 - 00:01:16</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est pour cela qu&#x27;ils disent fondamentalement de construire et de déployer des agents 10 fois plus rapidement. Maintenant, ils font vraiment des choses très cool pour certaines entreprises. Nous pouvons voir que Notion propose une configuration d&#x27;agent géré où les équipes peuvent déléguer du travail à Claude directement à l&#x27;intérieur de Notion même. Elles font fondamentalement glisser certaines tâches vers un statut différent, puis l&#x27;agent Claude les récupère et les traite. Et si vous venez dans la documentation, vous pouvez voir beaucoup d&#x27;autres preuves concrètes de ce que les équipes construisent avec des agents gérés.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site web de Claude (Anthropic).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif sur les agents gérés de Claude, incluant des mentions sur Notion et Rakuten.
+[SCROLLING] Le présentateur fait défiler la page web du blog pour illustrer les cas d&#x27;utilisation des agents.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000059_seg3.jpg" alt="Capture d&#x27;écran du blog de Claude montrant les fonctionnalités des agents gérés (Managed Agents Includes)." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000059_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:59</span>
+                        <span class="caption-text">Capture d&#x27;écran du blog de Claude montrant les fonctionnalités des agents gérés (Managed Agents Includes).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000105_seg3.jpg" alt="Capture d&#x27;écran du blog de Claude détaillant l&#x27;utilisation par Notion et Rakuten des agents gérés." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000105_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:05</span>
+                        <span class="caption-text">Capture d&#x27;écran du blog de Claude détaillant l&#x27;utilisation par Notion et Rakuten des agents gérés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:17 - 00:01:39</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, dans la vidéo d&#x27;aujourd&#x27;hui, je vais faire une brève analyse sur la façon dont ils fonctionnent réellement, ce qu&#x27;ils coûtent, quand vous devriez les utiliser, et un peu mes avis honnêtes et pourquoi c&#x27;est un peu décevant pour moi. Donc, si vous vous rendez dans la console Claude, vous pouvez voir sur ce côté gauche que nous avons quelque chose appelé des agents gérés ici. Et si je clique simplement sur démarrage rapide, nous pouvons essentiellement voir une petite interface où nous avons des modèles parmi lesquels choisir, ou nous avons une interface semblable à un chat où nous pouvons simplement décrire le type d&#x27;agent que nous voulons et il va simplement le construire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Console Claude (interface web) et Twitter/X.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu latéral de la console Claude avec les sections Build, Managed Agents (Quickstart, Agents, Sessions, Environments, Credential vaults), Analytics, Claude Code.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la console Claude par le présentateur en lien avec le sujet des agents gérés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000128_seg4.jpg" alt="Capture d&#x27;écran de l&#x27;interface de la console Claude affichant le tableau de bord avec le menu latéral &#x27;Managed Agents&#x27;." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000128_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:28</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface de la console Claude affichant le tableau de bord avec le menu latéral &#x27;Managed Agents&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:39 - 00:01:58</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, la bonne nouvelle, c&#x27;est que vous n&#x27;avez pas vraiment besoin d&#x27;abonnement. Donc, ceux d&#x27;entre vous qui n&#x27;ont peut-être pas d&#x27;abonnement Cloud Code, tout ce que vous avez à faire, c&#x27;est de venir ici et de configurer simplement une clé API, pour laquelle vous devez déposer environ cinq dollars pour commencer. Disons donc que je veux créer un agent capable d&#x27;analyser les concurrents et qui fera essentiellement des recherches, puis me donnera une analyse sur ce que nous pouvons faire différemment en tantentreprise afin de garder une longueur d&#x27;avance.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant Claude Console (Anthropic)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec des options de configuration d&#x27;agents (« Quickstart », « Agents », « Sessions », « Credential vaults »), une barre de recherche de templates et une boîte de saisie « Describe your agent... ».</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de la console Claude pour présenter les différentes options de création d&#x27;agents sans nécessité d&#x27;abonnement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000144_seg5.jpg" alt="Capture d&#x27;écran de la console Claude affichant l&#x27;interface Quickstart pour configurer ou créer un agent IA, avec le présentateur visible en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000144_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:44</span>
+                        <span class="caption-text">Capture d&#x27;écran de la console Claude affichant l&#x27;interface Quickstart pour configurer ou créer un agent IA, avec le présentateur visible en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:59 - 00:02:21</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce qui se passe, c&#x27;est qu&#x27;automatiquement ici sur ce côté droit, ça rédige ce prompt. Vous pouvez voir que nous avons un nom, une description, un modèle, un prompt système, et ensuite nous avons d&#x27;autres choses comme un serveur MCP et quelques outils. Nous avons aussi la possibilité de donner à ces agents des compétences, ce qui est génial, bien sûr. Maintenant, je pourrais aller de l&#x27;avant et créer cet agent ou continuer à l&#x27;affiner. Donc si je clique dessus, ça dira du genre, hé, qu&#x27;est-ce que tu veux ajouter d&#x27;autre ? Ici, ce que je fais, c&#x27;est lui demander de changer le modèle pour Opus 4.6 au lieu de Sonnet 4.6.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code YAML contenant la configuration d&#x27;un agent (`name: Competitor Intelligence Agent`, `description`, `model`, `system`, `mcp_servers`, `tools`).</p>
+                        <p><strong>Action / Démonstration :</strong> Génération automatique du prompt YAML et de la configuration de l&#x27;agent dans le panneau de droite suite à la demande textuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000204_seg6.jpg" alt="Interface de Claude Console montrant un panneau de configuration YAML avec un prompt système pour un agent d&#x27;intelligence concurrentielle." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000204_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:04</span>
+                        <span class="caption-text">Interface de Claude Console montrant un panneau de configuration YAML avec un prompt système pour un agent d&#x27;intelligence concurrentielle.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:22 - 00:02:57</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et vous pouvez voir que ça change juste cette configuration juste là. Et maintenant je vais cliquer sur créer cet agent. Donc ce que je veux que vous pensiez pendant qu&#x27;on avance là-dedans, c&#x27;est votre point de vue si vous êtes quelqu&#x27;un qui vit déjà dans cloud code, alors ça ne vous paraît pas vraiment grand-chose et ce n&#x27;est pas super utile, mais si vous êtes quelqu&#x27;un qui vit principalement dans cloud chat et que vous n&#x27;avez jamais utilisé co-work ou code, alors c&#x27;est un énorme, énorme apport de valeur pour vous et vous pouvez créer des agents vraiment très rapidement en décrivant simplement un objectif. Et c&#x27;est littéralement juste un processus en cinq étapes. Vous pouvez voir qu&#x27;on vient juste de finir l&#x27;étape un qui était de créer l&#x27;agent réel et maintenant nous devons créer l&#x27;environnement qui est notre conteneur cloud qu&#x27;Anthropic héberge,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console et Claude API Docs (interfaces web de la plateforme Anthropic).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code de configuration YAML définissant le nom, la description, le modèle (claude-opus-4-6), le prompt système, les serveurs MCP (ClickUp) et les outils d&#x27;un agent, ainsi qu&#x27;une requête cURL POST vers l&#x27;API.
+[DESC_IMAGE_2] La documentation officielle montrant les étapes clés de création et d&#x27;exécution d&#x27;un agent managé.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et création d&#x27;un agent via l&#x27;interface de la console Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000230_seg7.jpg" alt="L&#x27;interface de la Claude Console affichant la création d&#x27;un agent nommé &quot;Competitor Intelligence Agent&quot; avec un panneau de configuration YAML à droite et un aperçu cURL à gauche." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000230_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:30</span>
+                        <span class="caption-text">L&#x27;interface de la Claude Console affichant la création d&#x27;un agent nommé &quot;Competitor Intelligence Agent&quot; avec un panneau de configuration YAML à droite et un aperçu cURL à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000248_seg7.jpg" alt="La page de documentation &quot;Claude API Docs&quot; décrivant le fonctionnement des agents gérés (How it works : Create an agent, Create an environment, Start a session)." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000248_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:48</span>
+                        <span class="caption-text">La page de documentation &quot;Claude API Docs&quot; décrivant le fonctionnement des agents gérés (How it works : Create an agent, Create an environment, Start a session).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:57 - 00:03:18</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et il a des paquets préinstallés. Donc nous donnons fondamentalement à cet agent son propre petit ordinateur sur le web. Donc il est dit ici, ensuite, nous devons configurer l&#x27;environnement. Super, nous allons continuer et cliquer sur suivant. Un environnement est comme un conteneur cloud, bla, bla, bla. Il définit les règles de réseau et dit fondamentalement, qu&#x27;est-ce que votre agent peut réellement faire ? J&#x27;ai donc trois environnements configurés, mais je vais simplement continuer et dire, d&#x27;accord, créons un nouvel environnement pour cet agent spécifique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web d&#x27;Anthropic)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code de configuration YAML définissant un agent de veille concurrentielle (Competitor Intelligence Agent) avec son modèle, son prompt système et ses serveurs MCP (ClickUp).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre la création et la configuration de l&#x27;agent, en survolant le bouton pour configurer l&#x27;environnement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000302_seg8.jpg" alt="Capture d&#x27;écran de l&#x27;interface Claude Console montrant la configuration rapide (Quickstart) d&#x27;un agent de veille concurrentielle avec un panneau de code YAML à droite et le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000302_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:02</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface Claude Console montrant la configuration rapide (Quickstart) d&#x27;un agent de veille concurrentielle avec un panneau de code YAML à droite et le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:18 - 00:03:43</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc c&#x27;est ce que j&#x27;ai dit. Il est écrit, quel accès réseau cet agent a-t-il besoin ? Je vais simplement continuer pour les besoins de la démo et dire sans restriction. Et maintenant, il crée cet environnement super rapidement pour nous. Encore une fois, nous ne faisons rien. Tout ce que j&#x27;ai à faire maintenant, c&#x27;est de cliquer sur démarrer la session. Donc il est dit qu&#x27;une session est en direct, mais avant de tester réellement, nous devons nous connecter à ClickUp. Maintenant, c&#x27;est là que ça devient intéressant. Tout ce que vous avez to faire pour vous connecter, c&#x27;est un peu comme une connexion OAuth parce que cela utilise des serveurs MCP et des choses comme ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web d&#x27;Anthropic pour la gestion d&#x27;agents)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code YAML de configuration de l&#x27;agent (Competitor Intelligence Agent) et requêtes cURL pour la création d&#x27;environnements d&#x27;agents managés.</p>
+                        <p><strong>Action / Démonstration :</strong> Création automatique de l&#x27;environnement d&#x27;agent avec accès réseau sans restriction suite à la sélection dans la console.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000324_seg9.jpg" alt="Image montrant Claude Console avec la question sur l&#x27;accès réseau de l&#x27;agent et la requête cURL générée pour la création d&#x27;environnement." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000324_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:24</span>
+                        <span class="caption-text">Image montrant Claude Console avec la question sur l&#x27;accès réseau de l&#x27;agent et la requête cURL générée pour la création d&#x27;environnement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000331_seg9.jpg" alt="Image montrant Claude Console avec la confirmation que l&#x27;environnement &#x27;competitor-intel-env&#x27; est prêt avec un accès réseau sans restriction." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000331_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:31</span>
+                        <span class="caption-text">Image montrant Claude Console avec la confirmation que l&#x27;environnement &#x27;competitor-intel-env&#x27; est prêt avec un accès réseau sans restriction.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:43 - 00:04:05</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc encore une fois, la proposition de valeur ici, si vous n&#x27;avez jamais construit d&#x27;agent et que vous êtes sur Cloud Code ou quelque chose du genre, vous pourriez vous perdre quand vous commencez à penser aux clés API ou aux accès. Mais ici, c&#x27;est aussi simple que de se connecter, et ensuite c&#x27;est stocké dans votre coffre. Nous avons donc un coffre qui peut être partagé entre différentes personnes de votre équipe. J&#x27;en ai créé un appelé Test Vault. Pour les besoins de la démonstration, disons que je veux créer un nouveau coffre afin de stocker cette différente information d&#x27;identification ClickUp.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web d&#x27;Anthropic pour la gestion d&#x27;agents et de coffres d&#x27;identifiants)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration YAML d&#x27;un &quot;Competitor Intelligence Agent&quot; (nom, description, modèle claude-opus-4-6, prompt système et mcp_servers pour ClickUp) ainsi qu&#x27;un assistant de configuration interactif pour les identifiants ClickUp.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des identifiants (Credential vaults) pour l&#x27;agent géré (Managed Agent) via l&#x27;assistant de démarrage rapide (Quickstart).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000349_seg10.jpg" alt="Capture d&#x27;écran de l&#x27;interface Claude Console montrant le panneau de configuration Quickstart avec la sélection des coffres d&#x27;identifiants (Credential vaults) et un éditeur de configuration YAML sur le côté droit." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000349_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:49</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface Claude Console montrant le panneau de configuration Quickstart avec la sélection des coffres d&#x27;identifiants (Credential vaults) et un éditeur de configuration YAML sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:05 - 00:04:27</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il est indiqué qu&#x27;une autorisation est requise pour utiliser ce MCP. Je pourrais utiliser un jeton d&#x27;accès, ou des identifiants OAuth. Ou bien ici, cela m&#x27;a simplement invité à effectuer l&#x27;authentification unique, et ensuite nous devrions être parés. Je vais cliquer sur Connecter, comme vous pouvez le voir. Et ensuite, tout ce que j&#x27;ai à faire, c&#x27;est de choisir l&#x27;espace de travail auquel je veux réellement me connecter. Je choisis donc « up at AI ». C&#x27;est aussi simple que cela. N&#x27;importe qui peut pratiquement suivre cette procédure et créer un agent, et voilà, c&#x27;est déjà fait.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration YAML d&#x27;un agent de veille concurrentielle (Competitor Intelligence Agent) utilisant un serveur MCP clickup, et invite d&#x27;autorisation pour ClickUp.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration de l&#x27;authentification et des identifiants requis pour connecter l&#x27;agent au service ClickUp via un serveur MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000411_seg11.jpg" alt="L&#x27;interface de Claude Console affichant une invite d&#x27;autorisation pour utiliser le MCP ClickUp, avec des options pour ajouter des identifiants, un jeton d&#x27;accès ou des informations d&#x27;identification OAuth." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000411_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:11</span>
+                        <span class="caption-text">L&#x27;interface de Claude Console affichant une invite d&#x27;autorisation pour utiliser le MCP ClickUp, avec des options pour ajouter des identifiants, un jeton d&#x27;accès ou des informations d&#x27;identification OAuth.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:28 - 00:04:52</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc il est dit que notre session est en direct et nous pouvons commencer à discuter ici, mais la seule chose que je viens de réaliser c&#x27;est que ceci n&#x27;a aucune idée de notre véritable entreprise, alors comment pourrait-il nous donner un bon rapport ? Donc maintenant je lui donne un peu plus de contexte sur notre véritable entreprise et cela va nous aider à changer la façon dont cet agent est programmé. Donc si je bascule ici vers l&#x27;onglet des agents, vous pouvez voir que nous avons cet agent mais vous devez être vraiment prudent ici parce que dans l&#x27;onglet des agents nous pouvons voir que j&#x27;ai deux versions, n&#x27;est-ce pas ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web Claude Console (Quickstart, Managed Agents)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande cURL pour l&#x27;API Anthropic (/v1/sessions) et prompt de test : &quot;Analyze Notion as a competitor and post report to our ClickUp team chat&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et test en direct d&#x27;un agent géré dans la console Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000434_seg12.jpg" alt="Interface de la console Claude affichant le panneau Quickstart d&#x27;un agent géré avec un bloc de code cURL et une zone de test en bas à droite où le présentateur tape un prompt." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000434_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:34</span>
+                        <span class="caption-text">Interface de la console Claude affichant le panneau Quickstart d&#x27;un agent géré avec un bloc de code cURL et une zone de test en bas à droite où le présentateur tape un prompt.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:52 - 00:05:10</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voici le prompt système pour la version un, et voici le prompt système pour la version deux. Ils n&#x27;ont même pas changé. Je ne pense donc pas que cela ait réellement implémenté cette connaissance. Donc ce que je ferais ici, c&#x27;est que je viendrais et je cliquerais sur modification guidée. Et ensuite, je pourrais essentiellement dire, vous devez ajouter au prompt système que nous dirigeons une entreprise de plateforme de codage par IA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web d&#x27;agents IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt système pour l&#x27;agent de veille concurrentielle (&quot;You are a competitive intelligence analyst...&quot;) et les options de configuration.</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation et révision des configurations et des prompts système des versions v1 et v2 de l&#x27;agent dans la console.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000457_seg13.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de la console Claude avec les détails d&#x27;un agent de veille concurrentielle (Competitor Intelligence Agent), affichant sa version active (v2), le modèle utilisé (claude-opus-4-6) et le prompt système correspondant." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000457_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:57</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de la console Claude avec les détails d&#x27;un agent de veille concurrentielle (Competitor Intelligence Agent), affichant sa version active (v2), le modèle utilisé (claude-opus-4-6) et le prompt système correspondant.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:11 - 00:05:29</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc tout notre objectif est d&#x27;aider les gens à transformer une requête en langage naturel en logiciels ou en agents IA ou en sites web, des choses comme ça. C&#x27;est important pour que vous puissiez réellement me donner une bonne analyse. Et maintenant vous pouvez voir qu&#x27;il a effectivement été capable de modifier les invites système ici. Les sorties de l&#x27;agent devraient donc être beaucoup mieux maintenant. Allons-y donc et cliquons sur test d&#x27;exécution.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web &quot;Claude Console&quot;</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier de configuration YAML d&#x27;un agent nommé &quot;Competitor Intelligence Agent&quot; définissant son rôle d&#x27;analyste de veille stratégique, son prompt système et l&#x27;intégration du serveur MCP ClickUp.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et visualisation des paramètres d&#x27;un agent IA spécialisé dans l&#x27;analyse de la concurrence.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000515_seg14.jpg" alt="Interface de la console Claude affichant la configuration YAML d&#x27;un agent de veille concurrentielle (Competitor Intelligence Agent), avec le présentateur en médaillon en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000515_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:15</span>
+                        <span class="caption-text">Interface de la console Claude affichant la configuration YAML d&#x27;un agent de veille concurrentielle (Competitor Intelligence Agent), avec le présentateur en médaillon en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:29 - 00:05:50</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous devons choisir l&#x27;environnement réel pour exécuter cette chose. Nous allons donc faire de la veille concurrentielle. Et maintenant, je pourrais insérer un message du genre &quot;analyser le code cloud&quot; et cela lancerait et démarrerait réellement cette session. Maintenant, ce que nous pouvons faire ici, c&#x27;est voir étape par étape ce qui se passe et combien de temps prend réellement chaque étape. Si je clique sur &quot;voir la session&quot;, nous obtenons une vue d&#x27;ensemble un peu meilleure car nous avons cette barre horizontale, qui nous montre en quelque sorte le chemin réel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt &quot;Analyze Claude Code&quot; saisi dans le panneau de test d&#x27;un agent de veille concurrentielle.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;apprête à envoyer le prompt pour lancer la session de l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000535_seg15.jpg" alt="Capture d&#x27;écran de l&#x27;interface Claude Console montrant le panneau d&#x27;un agent de veille concurrentielle avec une zone de saisie contenant le texte &quot;Analyze Claude Code&quot;." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000535_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:35</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface Claude Console montrant le panneau d&#x27;un agent de veille concurrentielle avec une zone de saisie contenant le texte &quot;Analyze Claude Code&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:50 - 00:06:12</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez voir en ce moment, il vient de faire quatre recherches web différentes. Et il a fondamentalement tous les mêmes outils que CloudCode. Donc, quand vous pensez à vos bashes, vos lectures, vos greps, vos recherches ou vos récupérations, c&#x27;est fondamentalement ce que font ces agents. C&#x27;est essentiellement, vous savez, CloudCode, vous savez, le SDK d&#x27;agent, mais il a juste une belle interface autour. Mais cela offre aux personnes qui ont peur de regarder quelque chose comme CloudCode, une interface Cloud régulière beaucoup plus agréable.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web d&#x27;administration et de supervision d&#x27;agents IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Journal de session affichant des erreurs MCP (ClickUp), un prompt utilisateur « Analyze Claude Code », une réponse d&#x27;agent et l&#x27;exécution d&#x27;une recherche web (Web Search x4).</p>
+                        <p><strong>Action / Démonstration :</strong> Suivi et visualisation des événements d&#x27;une session d&#x27;agent en cours d&#x27;exécution dans la console.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000556_seg16.jpg" alt="Capture d&#x27;écran de l&#x27;interface Claude Console montrant une session active d&#x27;agent avec l&#x27;historique des actions et des erreurs d&#x27;initialisation MCP." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000556_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:56</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface Claude Console montrant une session active d&#x27;agent avec l&#x27;historique des actions et des erreurs d&#x27;initialisation MCP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:13 - 00:06:34</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et nous avons aussi la possibilité d&#x27;utiliser ce bouton Demander à Claude, ce qui signifie que nous pouvons discuter avec Claude pour comprendre comment tout cela est configuré, ou ce que nous regardons, ou ce que nous devons faire pour apporter des modifications. Bref, pendant que ça s&#x27;exécute, parlons de ce que nous avons d&#x27;autre par ici. Nous venons de voir le démarrage rapide où nous pouvions utiliser des modèles ou simplement utiliser une conversation pour démarrer un agent. Évidemment, tous ces modèles ne sont fondamentalement que des invites avec peut-être quelques serveurs connectés auxquels nous devrions relier nos identifiants.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude Console (Managed Agents, Sessions)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Journaux de session, erreurs de serveur MCP, transcriptions d&#x27;actions d&#x27;agent et options de discussion &#x27;Ask Claude&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de la console Claude et interaction avec le panneau d&#x27;assistance contextuelle &#x27;Ask Claude&#x27;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000618_seg17.jpg" alt="Vue de Claude Console montrant le panneau latéral, la session active avec des journaux d&#x27;événements et le panneau latéral &#x27;Ask Claude&#x27; ouvert à droite." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000618_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:18</span>
+                        <span class="caption-text">Vue de Claude Console montrant le panneau latéral, la session active avec des journaux d&#x27;événements et le panneau latéral &#x27;Ask Claude&#x27; ouvert à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000624_seg17.jpg" alt="Vue de Claude Console montrant la session d&#x27;agent active et les options du menu latéral gauche." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000624_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:24</span>
+                        <span class="caption-text">Vue de Claude Console montrant la session d&#x27;agent active et les options du menu latéral gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:35 - 00:07:09</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais ensuite, nous avons nos agents. Donc ici, vous pouvez voir que j&#x27;en ai lancé quatre différents. J&#x27;ai celui sur la veille concurrentielle qui utilise Opus. J&#x27;ai ces trois autres qui utilisent Sonnet, et quelques autres que j&#x27;ai déjà supprimés. Mais chaque agent doit essentiellement travailler dans un environnement. Et c&#x27;est pourquoi, dans ce cas, j&#x27;ai essentiellement un environnement pour chacun de ces agents. Maintenant, ce sur quoi vous êtes facturé, ce ne sont pas ces environnements, vous êtes en fait facturé sur les sessions qui sont actives. Donc toutes celles-ci sont inactives. Elles ne me coûtent rien, même si les environnements fonctionnent. Et ce sur quoi vous êtes facturé, c&#x27;est 0,08 $ par heure où ces sessions sont réellement actives et en cours d&#x27;exécution, ainsi que pour l&#x27;un quelconque des</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web de gestion d&#x27;agents)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des agents : &#x27;Competitor Intelligence Agent&#x27; (claude-opus-4-6, statut Actif), &#x27;Field monitor&#x27; (claude-sonnet-4-6, statut Actif), &#x27;ClickUp Research Agent&#x27; (claude-sonnet-4-6, statut Actif), et &#x27;Deep researcher&#x27; (claude-sonnet-4-6, statut Actif).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et visualisation des différents agents IA en cours d&#x27;exécution dans la console.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000643_seg18.jpg" alt="Tableau de bord Claude Console montrant une liste de quatre agents IA actifs avec leurs identifiants, noms et modèles associés." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000643_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:43</span>
+                        <span class="caption-text">Tableau de bord Claude Console montrant une liste de quatre agents IA actifs avec leurs identifiants, noms et modèles associés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:09 - 00:07:32</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les coûts réels des jetons que vous acquérez via l&#x27;API. Et puis bien sûr, en bas, vous avez votre coffre-fort d&#x27;identifiants réel où vous pouvez les partager avec différentes personnes. Et dans chacun de ces coffres-forts, vous avez différentes connexions. Comme ici, vous pouvez voir que j&#x27;ai fait l&#x27;OAuth pour me connecter à ClickUp. En cliquant sur ajouter un identifiant, nous avons tous ces autres exemples qui sont déjà configurés. Et la plupart d&#x27;entre eux sont plutôt standard où vous avez fondamentalement juste à vous connecter. Vous pouvez voir que cette session est maintenant inactive. Donc si nous cliquons dedans, nous pouvons voir ce qui s&#x27;est passé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de la Claude Console (gestion des coffres-forts d&#x27;identifiants et registres MCP).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Listes des coffres-forts avec ID, nom, statut (Active) et date de création, suivies d&#x27;une liste de registres MCP Anthropic.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des options de configuration des coffres-forts d&#x27;identifiants et des connexions MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000714_seg19.jpg" alt="Vue d&#x27;ensemble de la section &#x27;Credential vaults&#x27; dans la Claude Console, montrant deux coffres-forts existants : &#x27;Competitor Intel Vault&#x27; et &#x27;Test Vault&#x27;." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000714_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:14</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de la section &#x27;Credential vaults&#x27; dans la Claude Console, montrant deux coffres-forts existants : &#x27;Competitor Intel Vault&#x27; et &#x27;Test Vault&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000726_seg19.jpg" alt="Affichage d&#x27;une fenêtre modale de sélection de services MCP (Model Context Protocol) avec une liste déroulante proposant des intégrations comme Airtable, Asana, Amplitude, etc." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000726_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:26</span>
+                        <span class="caption-text">Affichage d&#x27;une fenêtre modale de sélection de services MCP (Model Context Protocol) avec une liste déroulante proposant des intégrations comme Airtable, Asana, Amplitude, etc.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:32 - 00:07:51</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez voir que cela a pris environ trois minutes. Cela a utilisé ce nombre de jetons. Et nous pouvons voir en quelque sorte chaque étape individuelle que l&#x27;agent a prise ici. Nous avons donc notre véritable résumé de veille concurrentielle sur Cloud Code. Comme vous pouvez le voir en bas, cela aborde des éléments tels que l&#x27;échelle et les revenus, les points forts clés. Mais gardez à l&#x27;esprit que l&#x27;ensemble de ces instructions système a été créé par Cloud lui-même, nous devrions donc probablement intervenir et le rendre un peu plus spécifique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web) et incrustation vidéo du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique des actions de l&#x27;agent (Transcript), métriques d&#x27;utilisation (durée d&#x27;environ 3 minutes, nombre de jetons), et message de l&#x27;agent affichant le résumé de la veille concurrentielle sur Claude Code.</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation de l&#x27;historique d&#x27;exécution et des étapes de l&#x27;agent par l&#x27;utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000737_seg20.jpg" alt="Capture d&#x27;écran de l&#x27;interface Claude Console montrant le détail d&#x27;une session d&#x27;agent IA, incluant la chronologie des étapes, la consommation de jetons et le rapport de synthèse sur la veille concurrentielle." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000737_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:37</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface Claude Console montrant le détail d&#x27;une session d&#x27;agent IA, incluant la chronologie des étapes, la consommation de jetons et le rapport de synthèse sur la veille concurrentielle.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:52 - 00:08:11</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, ce que vous remarquerez, cependant, c&#x27;est que cela n&#x27;a même pas été envoyé à ClickUp, même si nous avions réellement connecté ceci. C&#x27;est donc un autre cas où moi, l&#x27;utilisateur, je devrais y retourner et le corriger là-bas. Laissez-moi donc vous parler d&#x27;autres choses que j&#x27;ai essayées. J&#x27;en ai fait un appelé Field Monitor, qui, essentiellement, examine ce qui se passe dans le secteur technologique et m&#x27;envoie ensuite un signal dans mon canal ClickUp. Et voici à quoi ressemblait ce résultat.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de session, journalisation des appels d&#x27;outils et recommandations d&#x27;actions d&#x27;agent (« Top Recommended Actions »)</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et analyse des journaux d&#x27;exécution d&#x27;une session d&#x27;agent d&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000756_seg21.jpg" alt="Interface de Claude Console affichant l&#x27;historique des sessions et un panneau de message avec des actions recommandées, ainsi que la vidéo du présentateur en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000756_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:56</span>
+                        <span class="caption-text">Interface de Claude Console affichant l&#x27;historique des sessions et un panneau de message avec des actions recommandées, ainsi que la vidéo du présentateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:11 - 00:08:44</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Celle-ci m&#x27;a pris environ deux minutes à configurer. Je clique sur exécuter et c&#x27;est plutôt bien, non ? J&#x27;obtiens toutes ces informations de la semaine. Cela me donne différents groupes d&#x27;informations avec toutes ces sources. Et cela a effectivement été capable de me l&#x27;envoyer dans mon ClickUp. Et puis j&#x27;en ai fait un autre juste ici appelé l&#x27;agent de recherche ClickUp, dont toute l&#x27;idée était que je serais fondamentalement capable d&#x27;arriver dans cette zone de file d&#x27;attente de recherche dans mon ClickUp. Je serais capable de créer une nouvelle tâche à faire ici en bas pour un type différent de fournisseur d&#x27;IA vocale. Et puis quand je la déplace vers à faire, l&#x27;agent géré prendrait la tâche et ensuite il ferait des recherches et il me laisserait un commentaire par ici. Comme vous pouvez le voir, j&#x27;ai un résumé, des conclusions clés, des informations comme celle-ci, et</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de gestion de projet (ClickUp / outil de notes)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de synthèse sur les architectures d&#x27;inférence (DualPath, PLENA), sources web et tableau &quot;Who to Follow This Week&quot; avec les noms de Sean Goedecke et Simon Willison.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des résultats agrégés et structurés automatiquement par l&#x27;automatisation IA dans l&#x27;outil de gestion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000819_seg22.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application (semblable à ClickUp ou un outil de gestion de projet) affichant des informations synthétisées avec des sources et un tableau de personnalités à suivre, tandis que le présentateur apparaît en bas à gauche de la vidéo." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000819_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:19</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application (semblable à ClickUp ou un outil de gestion de projet) affichant des informations synthétisées avec des sources et un tableau de personnalités à suivre, tandis que le présentateur apparaît en bas à gauche de la vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:44 - 00:09:17</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ensuite je récupère toutes les sources en bas et ensuite ça passe à complet. Maintenant, le truc avec ça, c&#x27;est que comme nos agents doivent être déclenchés par un appel à leur API, ce n&#x27;est tout simplement pas super automatique et cela demande beaucoup de bricolage pour mettre réellement l&#x27;infrastructure en place. Parce que ce que j&#x27;ai dû faire ici, c&#x27;est que j&#x27;ai dû aller dans l&#x27;agent et dire, hé, va vérifier ClickUp et ensuite vois si tu as des tâches à faire et ensuite exécute-les. Et parfois, ça va. Mais ce que je voulais vraiment faire, c&#x27;est que je voudrais qu&#x27;il récupère les tâches automatiquement, ce qui signifie que j&#x27;aurais besoin de quelque chose de ClickUp pour dire à quelque chose d&#x27;envoyer un appel API à mon agent de recherche ClickUp. Et je me suis dit,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web de gestion d&#x27;agents).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau répertoriant plusieurs agents (ex: &quot;Competitor Intelligence Agent&quot;, &quot;Field monitor&quot;, &quot;ClickUp Research Agent&quot;) utilisant les modèles &quot;claude-opus-4-6&quot; et &quot;claude-sonnet-4-6&quot; avec un statut &quot;Active&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans le panneau de gestion des agents pour visualiser et surveiller l&#x27;état opérationnel des différents agents déployés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000852_seg23.jpg" alt="Capture d&#x27;écran de l&#x27;interface &quot;Claude Console&quot; montrant la liste des agents autonomes créés, avec leurs IDs, noms, modèles utilisés et statuts respectifs." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000852_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:52</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface &quot;Claude Console&quot; montrant la liste des agents autonomes créés, avec leurs IDs, noms, modèles utilisés et statuts respectifs.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:17 - 00:09:50</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">D&#x27;accord, super. Donc si je ne peux pas faire ça via les webhooks ClickUp, alors je vais peut-être simplement faire une automatisation planifiée. Donc je vais peut-être simplement faire en sorte que cet agent de recherche ClickUp se réveille toutes les 30 minutes, vérifie les tâches à faire. S&#x27;il y en a une, il la traitera. S&#x27;il n&#x27; y en a pas, il se rendormira tout simplement et c&#x27;est très bien. Mais il ne peut même pas faire ça. Il ne peut même pas se réveiller sur une tâche cron. Et c&#x27;est donc cela qui m&#x27;a fait réaliser que ce truc d&#x27;agent géré, ça sert vraiment un objectif pour un type de personne spécifique. Pour moi personnellement, je ne vais probablement jamais utiliser ça parce que je peux simplement utiliser du code cloud et rendre les choses meilleures et plus personnalisées pour mes besoins. Parce que si je voulais exactement ce type d&#x27;agent, ce que j&#x27;ai d&#x27;ailleurs déjà fait et j&#x27;ai fait une vidéo à ce sujet, j&#x27;utiliserais simplement trigger.dev. Et si</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface de gestion d&#x27;agents IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt système définit le rôle de l&#x27;agent : rechercher des sujets via des tâches ClickUp et poster un résumé structuré en commentaire. Le workflow étape par étape est détaillé (lecture via cURL, extraction d&#x27;URLs, recherche web, analyse et publication du commentaire).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et explication de la configuration de l&#x27;agent IA par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000925_seg24.jpg" alt="Interface de la &quot;Claude Console&quot; affichant la configuration et le prompt système du &quot;ClickUp Research Agent&quot;." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000925_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:25</span>
+                        <span class="caption-text">Interface de la &quot;Claude Console&quot; affichant la configuration et le prompt système du &quot;ClickUp Research Agent&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:50 - 00:10:22</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vous voulez regarder cette vidéo, allez simplement la voir ici en haut. Parce que trigger.dev me permet tout simplement d&#x27;héberger mon code sur le cloud et il peut configurer des tâches cron et des choses comme ça. Et il peut déléguer à différents scripts. Donc je préfère largement utiliser trigger.dev plutôt que d&#x27;utiliser cet environnement d&#x27;agent géré. Et c&#x27;est aussi beaucoup moins cher sur trigger.dev. Parce que je veux dire, vous me dites qu&#x27;Anthropic a un modèle qui est si bon qu&#x27;il ne peut pas être publié, mais ils ne peuvent pas simplement nous donner des tâches cron planifiées dans le cloud ? Parce qu&#x27;à ce stade, je pourrais littéralement assembler le tout en ayant un déclencheur planifié dans nnn ou en ayant un déclencheur clickup dans nnn, et ensuite simplement faire en sorte que cela envoie une requête HTTP</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console, Trigger.dev</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow d&#x27;agent IA (lecture de tâche ClickUp, extraction d&#x27;URL, recherche web, analyse, publication de commentaire) ; configuration de déclencheurs d&#x27;automatisation (ClickUp, planification temporelle).</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration d&#x27;un agent de recherche dans la console Claude et visualisation de la structure d&#x27;automatisation dans Trigger.dev.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000958_seg25.jpg" alt="Interface de &quot;Claude Console&quot; affichant la configuration d&#x27;un &quot;ClickUp Research Agent&quot; avec son prompt système détaillant un flux de travail en 5 étapes." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_000958_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:58</span>
+                        <span class="caption-text">Interface de &quot;Claude Console&quot; affichant la configuration d&#x27;un &quot;ClickUp Research Agent&quot; avec son prompt système détaillant un flux de travail en 5 étapes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001014_seg25.jpg" alt="Éditeur de workflow de la plateforme Trigger.dev montrant deux types de déclencheurs : &quot;ClickUp Trigger&quot; et &quot;Schedule Trigger&quot; (tâche cron)." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001014_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:14</span>
+                        <span class="caption-text">Éditeur de workflow de la plateforme Trigger.dev montrant deux types de déclencheurs : &quot;ClickUp Trigger&quot; et &quot;Schedule Trigger&quot; (tâche cron).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:22 - 00:10:58</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">à mon agent géré sur le cloud d&#x27;Anthropic. Mais c&#x27;est un peu de la suringénierie. Pourquoi est-ce qu&#x27;on ne peut pas simplement avoir un déclencheur ClickUp de manière native ici, ou un déclencheur planifié de manière native ici. Je sais juste qu&#x27;il y a d&#x27;autres choses qui arrivent, et je pense que ça va rendre ça un peu plus sympa. Il y a trois fonctionnalités qui ont été teasées, mais tout cela n&#x27;est pas encore disponible. Il faut en gros faire une demande pour l&#x27;accès anticipé. Il va donc y avoir les &quot;outcomes&quot;, ce qui consiste à définir des critères de réussite spécifiques pour une tâche. Et l&#x27;agent va auto-évaluer son travail et itérer jusqu&#x27;à ce qu&#x27;il réponde aux critères. C&#x27;est donc un peu comme utiliser l&#x27;auto-recherche de Karpathy, mais intégré directement dans la phase de construction. Et je trouve que c&#x27;est plutôt cool. Il va y avoir aussi</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> - Image 1 : Plateforme d&#x27;automatisation de workflow (type n8n).
+- Image 2 : Éditeur de code (VS Code) affichant un fichier Markdown.</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Nœuds de workflow &quot;ClickUp Trigger&quot;, &quot;HTTP Request&quot; et &quot;Schedule Trigger&quot;.
+- Image 2 : Texte descriptif sur les fonctionnalités &quot;Outcomes&quot;, &quot;Multi-agent orchestration&quot; (mention de `callable_agents`) et &quot;Memory&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> - Image 1 : Visualisation de l&#x27;architecture d&#x27;un processus d&#x27;automatisation.
+- Image 2 : Consultation de la documentation technique pour expliquer les prochaines évolutions des agents gérés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001031_seg26.jpg" alt="Interface de conception de workflow montrant deux déclencheurs (ClickUp Trigger et Schedule Trigger) avec des icônes d&#x27;avertissement, et un nœud HTTP Request." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001031_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:31</span>
+                        <span class="caption-text">Interface de conception de workflow montrant deux déclencheurs (ClickUp Trigger et Schedule Trigger) avec des icônes d&#x27;avertissement, et un nœud HTTP Request.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001040_seg26.jpg" alt="Éditeur de texte affichant une documentation technique intitulée &quot;managed-agents-guide.md&quot; détaillant les futures fonctionnalités de recherche d&#x27;Anthropic (Outcomes, Multi-agent orchestration, Memory)." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001040_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:40</span>
+                        <span class="caption-text">Éditeur de texte affichant une documentation technique intitulée &quot;managed-agents-guide.md&quot; détaillant les futures fonctionnalités de recherche d&#x27;Anthropic (Outcomes, Multi-agent orchestration, Memory).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:58 - 00:11:33</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">être une orchestration multi-agents où un agent peut appeler d&#x27;autres agents via un outil d&#x27;agents appelables et un agent coordinateur délègue des sous-tâches à des agents spécialisés. Et c&#x27;est le modèle d&#x27;essaim multi-agents qui est géré par l&#x27;infrastructure d&#x27;Anthropix. Et ensuite, ce qui me semble également très cool, c&#x27;est la mémoire persistante. Donc, une mémoire qui survit d&#x27;une session à l&#x27;autre. En gros, cela signifie que si je vais dans mes sessions, disons que, vous savez, nous avons ces deux-là qui ont été exécutées par l&#x27;agent d&#x27;intelligence concurrentielle. Chaque fois que l&#x27;agent d&#x27;intelligence concurrentielle se réveille à nouveau, il est complètement sans état. Tout ce qu&#x27;il regarde, c&#x27;est son invite système. Mais ce qu&#x27;ils vont faire, c&#x27;est en gros dire, cet agent aura une mémoire à travers toutes les sessions qu&#x27;il exécute. Et cela va être</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de code (VS Code / interface web) et Claude Console (Managed Agents)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation Markdown sur l&#x27;orchestration multi-agents et prompt système d&#x27;un agent de recherche configuré sur Claude Console.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans la documentation technique et consultation des paramètres d&#x27;un agent géré dans la console Anthropic.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001106_seg27.jpg" alt="Visualisation d&#x27;un fichier Markdown dans un éditeur montrant la section sur l&#x27;orchestration multi-agents et les &#x27;callable_agents&#x27;." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001106_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:06</span>
+                        <span class="caption-text">Visualisation d&#x27;un fichier Markdown dans un éditeur montrant la section sur l&#x27;orchestration multi-agents et les &#x27;callable_agents&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001115_seg27.jpg" alt="Interface de la console Claude affichant les détails, le modèle et le prompt système d&#x27;un agent de recherche nommé &#x27;ClickUp Research Agent&#x27;." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001115_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:15</span>
+                        <span class="caption-text">Interface de la console Claude affichant les détails, le modèle et le prompt système d&#x27;un agent de recherche nommé &#x27;ClickUp Research Agent&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:33 - 00:12:06</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Plutôt cool. Maintenant, je pense vraiment qu&#x27;il y a un moyen de bricoler ça en l&#x27;état si vous lui donnez simplement les bonnes choses à examiner et que vous lui faites écrire des journaux de ce qu&#x27;il fait. Mais avoir ça comme fonctionnalité native sera plutôt sympa. Mais ne vous inquiétez pas, j&#x27;ai déjà postulé pour ça. J&#x27;ai postulé pour ça dès que j&#x27;ai vu le formulaire, il y a plusieurs heures. Donc si j&#x27;obtiens l&#x27;accès, je ferai certainement une vidéo sur la façon dont tout cela fonctionne. Maintenant, l&#x27;autre chose qui est intéressante et qui vaut la peine d&#x27;être mentionnée, c&#x27;est l&#x27;interface en ligne de commande, car elle vous permet de créer et d&#x27;utiliser vos agents gérés directement depuis CloudCode. Il y a donc peut-être aussi une certaine valeur là-dedans, car dans certains cas, ce que vous pourriez faire, c&#x27;est non seulement créer un agent géré</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude Console et page de documentation/plateforme Claude Managed Agents.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de sessions avec ID, statuts (&quot;Idle&quot;), noms d&#x27;agents (&quot;Competitor Intelligence&quot;, &quot;Field monitor&quot;, &quot;ClickUp Research Agent&quot;, &quot;Deep researcher&quot;) et texte de présentation de la plateforme.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des sessions de débogage et des fonctionnalités de Claude Managed Agents par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001141_seg28.jpg" alt="L&#x27;interface de la console Claude affichant l&#x27;onglet &quot;Sessions&quot; avec le suivi et le débogage des agents gérés (Claude Managed Agents), montrant différents identendants de sessions, statuts au repos et agents associés." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001141_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:41</span>
+                        <span class="caption-text">L&#x27;interface de la console Claude affichant l&#x27;onglet &quot;Sessions&quot; avec le suivi et le débogage des agents gérés (Claude Managed Agents), montrant différents identendants de sessions, statuts au repos et agents associés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001149_seg28.jpg" alt="La page web officielle de Claude présentant &quot;Claude Managed Agents&quot; et mentionnant l&#x27;aperçu de recherche limité pour les fonctionnalités d&#x27;orchestration multi-agents et de mémoire." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001149_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:49</span>
+                        <span class="caption-text">La page web officielle de Claude présentant &quot;Claude Managed Agents&quot; et mentionnant l&#x27;aperçu de recherche limité pour les fonctionnalités d&#x27;orchestration multi-agents et de mémoire.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:06 - 00:12:41</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">agent dans CloudCode dans un projet qui contient déjà une tonne d&#x27;informations sur vous, mais vous pourriez aussi ensuite créer des interfaces pour celui-ci parce qu&#x27;il comprend déjà la configuration et ce dont il a besoin. Et cela signifie aussi que si vous vouliez déléguer certaines choses à des sous-agents, vous pourriez le faire depuis Cloud Code et ne pas les stocker ici. Vous savez, parfois si vous avez un dossier point Cloud et un dossier d&#x27;agents, cela va consommer un peu de contexte et peut-être qu&#x27;ils ne sont pas invoqués de la bonne manière. Mais si vous avez chaque agent pointé vers un point de terminaison d&#x27;API spécifique que vous pourriez ensuite appeler depuis Cloud Code, il y a peut-être un certain intérêt. Mais de toute façon, ce que j&#x27;ai fait dans ce projet, c&#x27;est que j&#x27;ai essentiellement configuré un agent géré dans les agents gérés. Donc disons que je voulais construire ceci</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec le terminal intégré Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande `/clear` exécutée, mention du modèle Opus 4.6 (1M context) et indicateur de mode plan activé (`plan mode on`).</p>
+                        <p><strong>Action / Démonstration :</strong> Nettoyage de l&#x27;historique du terminal avec la commande `/clear` dans l&#x27;interface de l&#x27;agent Claude Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001214_seg29.jpg" alt="Interface de Visual Studio Code affichant l&#x27;explorateur de fichiers à gauche et un terminal intégré exécutant l&#x27;outil Claude Code v2.1.96." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001214_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:14</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant l&#x27;explorateur de fichiers à gauche et un terminal intégré exécutant l&#x27;outil Claude Code v2.1.96.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:41 - 00:13:16</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;automatisation, n&#x27;est-ce pas ? Et je suis dans Cloud Code, donc je lance simplement ceci et je lui dis d&#x27;utiliser l&#x27;interface en ligne de commande d&#x27;Anthropic pour me construire un agent géré. Le but de ceci serait de pouvoir insérer la transcription d&#x27;une vidéo YouTube et ensuite de pouvoir lui faire faire des choses pour moi dans mon ClickUp, comme m&#x27;envoyer un résumé ainsi que potentiellement des tâches à accomplir à partir de cette vidéo si je découvre, hé tu sais, je veux implémenter certaines de ces stratégies dans mon flux de travail ou peu importe. C&#x27;est génial parce que je pourrais insérer la transcription ici. Elle pourrait envoyer cet appel d&#x27;API à mon agent géré dans le Cloud d&#x27;Anthropic. Et ensuite, là-bas, il s&#x27;occuperait de tout ce qui concerne ClickUp. Et je pourrais juste continuer à coder dans Cloud Code ici même. Et comme je l&#x27;ai dit, il peut aussi utiliser tout le contexte.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Claude Code CLI (v2.1.96)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande `/clear`, prompt utilisateur demandant de créer un agent géré pour analyser des transcriptions YouTube et créer des tâches sur ClickUp, chargement de compétence de brainstorming et statut du modèle Opus 4.6.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie d&#x27;un prompt dans l&#x27;interface en ligne de commande de Claude Code pour initialiser la création d&#x27;un agent géré d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001249_seg30.jpg" alt="Interface de Visual Studio Code affichant Claude Code (CLI) dans un terminal intégré avec un prompt textuel détaillé et le présentateur visible en incrustation vidéo en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001249_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:49</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant Claude Code (CLI) dans un terminal intégré avec un prompt textuel détaillé et le présentateur visible en incrustation vidéo en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:16 - 00:13:49</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, disons que j&#x27;ai une tonne d&#x27;informations en ce moment sur mon entreprise, sur mes objectifs trimestriels, sur nos projets actuels. Il serait fondamentalement capable de les utiliser dans les instructions système lors de la création de cet agent géré, de sorte que l&#x27;agent géré réel soit beaucoup plus spécifique et adapté à nous. C&#x27;est donc là que je vois une grande partie de cette valeur avec l&#x27;interface en ligne de commande. Maintenant, une chose à laquelle vous devez faire très attention si vous développez dans Cloud Code, ce sont les identifiants, car il pourrait essayer par défaut d&#x27;envoyer, potentiellement dans les instructions système, les clés d&#x27;API pour certains points de terminaison dont vous avez besoin. Plutôt que si vous le construisez à l&#x27;intérieur de cet environnement ici, c&#x27;est fondamentalement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, terminal intégré Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande `/clear`, puis un prompt demandant de créer un agent géré via l&#x27;interface en ligne de commande d&#x27;Anthropic pour analyser une transcription YouTube, créer des tâches dans ClickUp et envoyer un résumé.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie d&#x27;un prompt détaillé pour la création et la configuration d&#x27;un agent géré personnalisé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001324_seg31.jpg" alt="Interface de Visual Studio Code affichant un terminal Claude Code (v2.1.96) avec une invite de commande et le présentateur visible en incrustation vidéo en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001324_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:24</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant un terminal Claude Code (v2.1.96) avec une invite de commande et le présentateur visible en incrustation vidéo en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:49 - 00:14:17</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vont par défaut utiliser des serveurs MCP. Donc gardez simplement cela à l&#x27;esprit et faites attention lorsque vous faites des choses comme ça, car d&#x27;autres personnes pourraient être capables de voir ces clés. Et bien sûr, si c&#x27;est hébergé par Anthropic et dans l&#x27;historique de conversation, alors c&#x27;est là aussi. Mais vraiment, si vous êtes curieux, ce que je ferais, et fondamentalement la manière dont je m&#x27;apprends tout, c&#x27;est que j&#x27;ai créé un projet de code Claude pour ça. Ça m&#x27;a créé ce guide principal sur ce que sont les agents gérés par Claude, comment ils fonctionnent. Et je lui ai juste fait faire des recherches par lui-même afin qu&#x27;il puisse m&#x27;expliquer les choses et m&#x27;aider à comprendre comment l&#x27;utiliser. Et ensuite dire simplement, Hé, vous savez, genre, j&#x27;ai aussi utilisé trigger.dev.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Console (interface web) et Visual Studio Code (éditeur de code avec terminal intégré).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste d&#x27;agents IA dans la console Claude et plan d&#x27;exécution étape par étape dans un terminal VS Code avec des tâches cochées ou en cours.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et gestion des agents autonomes dans l&#x27;interface Claude Console, puis suivi de l&#x27;exécution de tâches de développement dans le terminal VS Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001356_seg32.jpg" alt="La console Claude affichant une liste d&#x27;agents autonomes gérés avec leurs identifiants, noms, modèles associés et statuts actifs." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001356_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:56</span>
+                        <span class="caption-text">La console Claude affichant une liste d&#x27;agents autonomes gérés avec leurs identifiants, noms, modèles associés et statuts actifs.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001403_seg32.jpg" alt="L&#x27;interface de Visual Studio Code affichant un terminal intégré où un agent exécute un plan de développement avec des étapes validées." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001403_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:03</span>
+                        <span class="caption-text">L&#x27;interface de Visual Studio Code affichant un terminal intégré où un agent exécute un plan de développement avec des étapes validées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:17 - 00:14:53</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;ai aussi utilisé, vous savez, les automatisations planifiées sur le bureau et Claude Code. Quel est réellement le meilleur ensemble technologique pour moi selon les objectifs X, Y, Z que je souhaite atteindre, parce qu&#x27;il ne s&#x27;agit jamais de savoir quel outil est le meilleur. Il s&#x27;agit de savoir quel outil est le meilleur pour ce cas d&#x27;utilisation spécifique. Et je pense que c&#x27;est tout simplement la mentalité la plus saine à avoir concernant la création d&#x27;automations et d&#x27;agents. Et maintenant, vous pouvez voir que nous venons de créer cet agent dans notre tableau de bord d&#x27;agents gérés, qui est l&#x27;analyseur de transcription YouTube. Et je peux cliquer ici et je peux voir le prompt système réel qui a été créé, que vous remarquerez être beaucoup plus robuste que ceux que la version de démarrage rapide nous a fait créer. Donc, quelques petites choses avant de conclure ici,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Terminal de commande intégré, Console web Claude (Managed Agents).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence du projet dans VS Code, liste des étapes de création d&#x27;un script de démonstration, et règles de configuration d&#x27;agent dans la console Claude (v1, summary task, rules, MCPs).</p>
+                        <p><strong>Action / Démonstration :</strong> Développement et configuration guidée d&#x27;un agent IA géré via l&#x27;environnement de code et l&#x27;interface console de Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001426_seg33.jpg" alt="Interface de VS Code avec un terminal interactif affichant l&#x27;exécution de l&#x27;agent Claude Code et une liste de tâches en cours." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001426_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:26</span>
+                        <span class="caption-text">Interface de VS Code avec un terminal interactif affichant l&#x27;exécution de l&#x27;agent Claude Code et une liste de tâches en cours.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001444_seg33.jpg" alt="Interface de la console Claude affichant les détails d&#x27;un agent configuré pour l&#x27;analyse de transcriptions YouTube (YouTube Transcript Analyzer)." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001444_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:44</span>
+                        <span class="caption-text">Interface de la console Claude affichant les détails d&#x27;un agent configuré pour l&#x27;analyse de transcriptions YouTube (YouTube Transcript Analyzer).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:53 - 00:15:27</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">quand vous comparez cet agent managé au SDK d&#x27;agent plus trigger.dev ou quelque chose comme OpenClaw, c&#x27;est là que vous remarquerez qu&#x27;il y a tellement de différences. Et je ne vais pas tout lire, mais si vous voulez mettre sur pause et y jetter un œil, n&#x27;hésitez pas. Mais comme je l&#x27;ai dit, il y a vraiment deux choses dans OpenClaw que j&#x27;adore et qui font que je l&#x27;utilise encore personnellement, ce sont les Heartbeats et la possibilité de lui parler depuis Telegram si facilement. Et je pense que c&#x27;est exactement ce qu&#x27;Anthropic devrait faire avec Claude Code, ça en ferait une véritable machine de guerre. Heartbeats signifie simplement un cron toutes les 30 minutes, toutes les cinq minutes, vous pouvez faire en sorte qu&#x27;OpenClaw se réveille et fasse des choses. Et c&#x27;est essentiellement pour cela qu&#x27;on a l&#x27;impression qu&#x27;il est toujours actif</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de code ou de documents avec arborescence de fichiers et panneau de prévisualisation Markdown.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Document Markdown &#x27;managed-agents-guide.md&#x27; comparant l&#x27;infrastructure, la planification, les modèles et les coûts de différentes architectures d&#x27;agents IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le tableau comparatif affiché à l&#x27;écran concernant les différentes options d&#x27;agents managés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001502_seg34.jpg" alt="Un tableau comparatif détaillé dans un fichier Markdown affichant les différences entre &#x27;Managed Agents&#x27;, &#x27;Agent SDK + Trigger.dev&#x27; et &#x27;OpenClaw&#x27;." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001502_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:02</span>
+                        <span class="caption-text">Un tableau comparatif détaillé dans un fichier Markdown affichant les différences entre &#x27;Managed Agents&#x27;, &#x27;Agent SDK + Trigger.dev&#x27; et &#x27;OpenClaw&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001510_seg34.jpg" alt="La suite du fichier Markdown présentant les sections &#x27;OpenClaw&#x27;s Heartbeat&#x27; et &#x27;Trigger.dev -- The Power User&#x27;s Scheduling Layer&#x27;." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001510_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:10</span>
+                        <span class="caption-text">La suite du fichier Markdown présentant les sections &#x27;OpenClaw&#x27;s Heartbeat&#x27; et &#x27;Trigger.dev -- The Power User&#x27;s Scheduling Layer&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:27 - 00:16:00</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">assistant. Outre le fait qu&#x27;à chaque fois que vous envoyez un message, il se réactive également automatiquement. Maintenant, bien sûr, vous pouvez planifier des tâches dans l&#x27;application de bureau de CloudCode, ce que je fais. Et j&#x27;en ai des tonnes en cours d&#x27;exécution et j&#x27;en ai d&#x27;autres sur mon autre compte également, mais ce n&#x27;est tout simplement pas la même chose que de pouvoir effectuer une vérification de type &quot;heartbeat&quot; toutes les cinq minutes pour simplement surveiller quelque chose. Et c&#x27;est pourquoi je disais plus tôt, à ce stade, je préférerais utiliser CloudCode pour me construire quelque chose avec le SDK d&#x27;agent, ce qui est très similaire. Et ensuite, je dirais simplement, hé, trigger.dev, exécute ceci toutes les cinq minutes. Donc, pour ce qui est de savoir qui doit utiliser quoi, si vous débutez tout juste avec les agents IA, c&#x27;est là que vous voudrez peut-être essayer les agents gérés, tellement plus faciles, non</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de bureau et éditeur de code de type VS Code / IDE.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de tâches planifiées (Skool wins engagement, AI news roundup, Notification responses, Youtube comment replies) et documentation sur les agents et le scheduling (OpenClaw&#x27;s Heartbeat, Trigger.dev).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des options de planification de tâches et des guides de gestion d&#x27;agents par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001535_seg35.jpg" alt="Interface de l&#x27;application montrant la section des tâches planifiées (Scheduled tasks) avec plusieurs automatisations configurées." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001535_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:35</span>
+                        <span class="caption-text">Interface de l&#x27;application montrant la section des tâches planifiées (Scheduled tasks) avec plusieurs automatisations configurées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001544_seg35.jpg" alt="Éditeur de code affichant un fichier Markdown (managed-agents-guide.md) détaillant la gestion des agents et la planification par cron." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001544_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:44</span>
+                        <span class="caption-text">Éditeur de code affichant un fichier Markdown (managed-agents-guide.md) détaillant la gestion des agents et la planification par cron.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:00 - 00:16:32</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">infrastructure à laquelle s&#x27;occuper. Presque aucune clé d&#x27;API à laquelle s&#x27;occuper. Mais si vous avez déjà commencé à construire, alors il n&#x27;y a peut-être pas autant de valeur que vous pourriez le penser. Mais de toute façon, tout ce document que nous avons examiné ici, il fait des recherches et des comparaisons assez approfondies sur la valeur réelle des agents gérés. Et je vais le mettre dans ma communauté School gratuite tout à fait gratuitement. Le lien pour cela sera en bas dans la description. Tout ce que vous aurez à faire, c&#x27;est de trouver la publication associée à cette vidéo, et il y aura le PDF complet juste là-dedans. Mais de toute façon, j&#x27;espère que vous avez apprécié la vidéo, si vous avez appris quelque chose de nouveau, alors veuillez lui donner un J&#x27;aime, ça m&#x27;aide énormément et, comme toujours, je vous remercie d&#x27;être arrivés jusqu&#x27;à la fin de la vidéo et je vous vois dans la prochaine, merci tout le monde.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de code (VS Code ou similaire) et outil de présentation visuelle (type canvas/miro).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation Markdown sur les agents managés Claude, Trigger.dev, OpenClaw et les approches d&#x27;architecture d&#x27;agents IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le document de recherche comparant les différentes solutions d&#x27;agents gérés et leur infrastructure.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001608_seg36.jpg" alt="Vue d&#x27;un éditeur de texte avec le fichier Markdown `managed-agents-guide.md` ouvert, comparant les approches Claude Managed Agents, Agent SDK + Trigger.dev et OpenClaw." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001608_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:08</span>
+                        <span class="caption-text">Vue d&#x27;un éditeur de texte avec le fichier Markdown `managed-agents-guide.md` ouvert, comparant les approches Claude Managed Agents, Agent SDK + Trigger.dev et OpenClaw.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001616_seg36.jpg" alt="Gros plan sur la barre latérale et l&#x27;arborescence de fichiers de l&#x27;éditeur de code, montrant le projet Herk-2.0." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001616_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:16</span>
+                        <span class="caption-text">Gros plan sur la barre latérale et l&#x27;arborescence de fichiers de l&#x27;éditeur de code, montrant le projet Herk-2.0.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001624_seg36.jpg" alt="Présentation visuelle sur fond sombre intitulée &quot;Today&quot; avec le titre &quot;Claude Managed Agents: get to production 10x faster&quot;." loading="lazy" onclick="openLightbox('../screenshots/27Y44JYXZJ8/27Y44JYXZJ8_001624_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:24</span>
+                        <span class="caption-text">Présentation visuelle sur fond sombre intitulée &quot;Today&quot; avec le titre &quot;Claude Managed Agents: get to production 10x faster&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
