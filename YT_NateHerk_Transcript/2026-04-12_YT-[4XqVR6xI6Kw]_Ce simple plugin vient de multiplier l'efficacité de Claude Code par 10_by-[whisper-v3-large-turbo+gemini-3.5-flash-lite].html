@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Ce simple plugin vient de multiplier l&#x27;efficacité de Claude Code par 10 — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Ce simple plugin vient de multiplier l&#x27;efficacité de Claude Code par 10</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-12</span>
+                <span class="badge">⏱️ 00:15:14</span>
+                <span class="badge">🆔 <code>4XqVR6xI6Kw</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=4XqVR6xI6Kw" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo de la chaîne Nate Herk | AI Automation explore l'impact révolutionnaire du plugin open-source **Superpowers** sur l'efficacité de l'outil de développement **Claude Code**, affirmant qu'il multiplie par dix la productivité et la qualité des livrables. Créé par Jesse Vincent, ce plugin d'ingénierie logicielle introduit un cadre de compétences agentiques structuré qui force l'IA à adopter une démarche rigoureuse et disciplinée, s'opposant à l'écriture impulsive de code généralement observée avec les agents conversationnels. Au lieu de répondre instantanément à une requête par de l'implémentation brute, le système orchestre un workflow méthodique en plusieurs phases : clarification, conception, planification, codage et vérification.<br><br>La démonstration pratique présentée dans la vidéo met en lumière la phase de découverte interactive. Grâce à l'utilisation de compétences de remue-méninges (*brainstorming*), l'agent génère un compagnon visuel local permettant de comparer plusieurs approches de design (comme un graphe de forces interactif ou une grille de cartes recherchables) avec leurs avantages et inconvénients respectifs. Cette interface visuelle permet à l'utilisateur de valider, corriger ou orienter l'architecture logicielle *avant* que de lourds volumes de jetons ne soient consommés sur des fonctionnalités non désirées. Le processus intègre également des mécanismes de questionnement ciblé pour combler les angles morts du cahier des charges initial.<br><br>Au-delà de la simple planification, Superpowers orchestre l'exécution des tâches à travers des sous-agents spécialisés, des lancements en parallèle pour des problématiques indépendantes et des portes de qualité rigoureuses. Bien que ce niveau de raffinement puisse s'avérer initialement gourmand en jetons, les gains en termes de pertinence fonctionnelle, d'alignement avec les attentes du développeur et de réduction des boucles de correction erronées justifient pleinement son adoption. Le plugin s'installe en quelques secondes et fonctionne en arrière-plan comme un répartiteur autonome, transformant Claude Code en un véritable ingénieur logiciel méthodique.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Claude Code** : Outil de développement assisté par IA d'Anthropic conçu pour concevoir, planifier et écrire du code directement depuis l'environnement de travail.<br>* **Superpowers** : Plugin open-source gratuit créé par Jesse Vincent, agissant comme un cadre de compétences agentiques pour structurer et discipliner le flux de travail des agents de code.<br>* **Opus 5.5** : Modèle linguistique de pointe d'Anthropic (mentionné dans le contexte de l'ingénierie et des performances globales de la chaîne).<br>* **FreeSchool** : Communauté en ligne de Nate Herk servant de plateforme de partage pour documenter gratuitement les ressources et configurations présentées.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Transition de l'impulsion à la méthode** : Le principal écueil des agents de code est leur tendance à coder immédiatement après une requête ; Superpowers impose une discipline de fer en bloquant l'implémentation tant que les phases de clarification et de conception ne sont pas validées.<br>* **Architecture du plugin en 14 compétences** : Le système repose sur un répartiteur principal (*Superpowers Use*) qui évalue dynamiquement et en arrière-plan la compétence requise parmi 14 modules spécialisés selon l'état d'avancement du projet.<br>* **Phase de découverte et de clarification proactive** : Plutôt que d'attendre passivement des instructions, l'agent pose une série de questions stratégiques pour extraire de l'esprit du développeur les spécifications implicites et les besoins cachés.<br>* **Prototypage visuel interactif** : L'utilisation d'un serveur local pour afficher des options de design visuel (ex. : graphes, cartes de recherche) permet à l'humain de valider concrètement l'approche ergonomique et fonctionnelle avant toute génération de code de production.<br>* **Planification granulaire et traçable** : Les plans d'implémentation sont découpés en micro-tâches de deux à cinq minutes associées à des chemins de fichiers précis, avec des tests de blocs de code et des sauvegardes d'états.<br>* **Développement piloté par des sous-agents** : Le système délègue des tâches spécifiques à des sous-agents dédiés et déclenche des exécutions en parallèle lorsque les problèmes techniques identifiés sont totalement indépendants.<br>* **Portes de qualité et TDD (Test-Driven Development)** : L'intégration rigoureuse du développement piloté par les tests garantit que l'agent rédige d'abord les tests (en les observant échouer), puis implémente le code minimal nécessaire pour valider le succès.<br>* **Débogage systématique en 4 phases** : Face à une anomalie, l'agent applique une méthodologie structurée : enquête sur la cause racine, analyse des symptômes, formulation d'hypothèses et mise en œuvre chirurgicale du correctif.<br>* **Optimisation du ratio jetons/valeur** : Bien que l'approche multi-agents et les phases de design interactif augmentent la consommation initiale de jetons, elle réduit drastiquement les coûts cachés liés aux réécritures massives de code non conforme.<br>* **Méta-compétence et extensibilité** : Le système intègre des compétences rédactionnelles permettant à l'utilisateur d'étendre les capacités de Superpowers en écrivant de nouveaux modules testés selon les principes du développement dirigé par les tests.<br>* **Fonctionnement « Configurer et Oublier »** : Hormis pour des cas hautement situationnels de débogage ou de tests, le framework s'exécute de manière totalement autonome sans nécessiter de mémorisation complexe des commandes par le développeur.<br>* **Sécurité des points d'arrêt** : Le plugin s'interrompt immédiatement et demande l'assistance humaine en cas de blocage technique, évitant ainsi aux modèles de s'enfermer dans des boucles d'hallucination ou de suppositions erronées.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude Code</span><span class="tool-tag">Superpowers</span><span class="tool-tag">Opus 5.5</span><span class="tool-tag">FreeSchool</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Transition de l&#x27;impulsion à la méthode** : Le principal écueil des agents de code est leur tendance à coder immédiatement après une requête ; Superpowers impose une discipline de fer en bloquant l&#x27;implémentation tant que les phases de clarification et de conception ne sont pas validées.</span></li><li><span class="point-bullet">✦</span><span>Architecture du plugin en 14 compétences** : Le système repose sur un répartiteur principal (*Superpowers Use*) qui évalue dynamiquement et en arrière-plan la compétence requise parmi 14 modules spécialisés selon l&#x27;état d&#x27;avancement du projet.</span></li><li><span class="point-bullet">✦</span><span>Phase de découverte et de clarification proactive** : Plutôt que d&#x27;attendre passivement des instructions, l&#x27;agent pose une série de questions stratégiques pour extraire de l&#x27;esprit du développeur les spécifications implicites et les besoins cachés.</span></li><li><span class="point-bullet">✦</span><span>Prototypage visuel interactif** : L&#x27;utilisation d&#x27;un serveur local pour afficher des options de design visuel (ex. : graphes, cartes de recherche) permet à l&#x27;humain de valider concrètement l&#x27;approche ergonomique et fonctionnelle avant toute génération de code de production.</span></li><li><span class="point-bullet">✦</span><span>Planification granulaire et traçable** : Les plans d&#x27;implémentation sont découpés en micro-tâches de deux à cinq minutes associées à des chemins de fichiers précis, avec des tests de blocs de code et des sauvegardes d&#x27;états.</span></li><li><span class="point-bullet">✦</span><span>Développement piloté par des sous-agents** : Le système délègue des tâches spécifiques à des sous-agents dédiés et déclenche des exécutions en parallèle lorsque les problèmes techniques identifiés sont totalement indépendants.</span></li><li><span class="point-bullet">✦</span><span>Portes de qualité et TDD (Test-Driven Development)** : L&#x27;intégration rigoureuse du développement piloté par les tests garantit que l&#x27;agent rédige d&#x27;abord les tests (en les observant échouer), puis implémente le code minimal nécessaire pour valider le succès.</span></li><li><span class="point-bullet">✦</span><span>Débogage systématique en 4 phases** : Face à une anomalie, l&#x27;agent applique une méthodologie structurée : enquête sur la cause racine, analyse des symptômes, formulation d&#x27;hypothèses et mise en œuvre chirurgicale du correctif.</span></li><li><span class="point-bullet">✦</span><span>Optimisation du ratio jetons/valeur** : Bien que l&#x27;approche multi-agents et les phases de design interactif augmentent la consommation initiale de jetons, elle réduit drastiquement les coûts cachés liés aux réécritures massives de code non conforme.</span></li><li><span class="point-bullet">✦</span><span>Méta-compétence et extensibilité** : Le système intègre des compétences rédactionnelles permettant à l&#x27;utilisateur d&#x27;étendre les capacités de Superpowers en écrivant de nouveaux modules testés selon les principes du développement dirigé par les tests.</span></li><li><span class="point-bullet">✦</span><span>Fonctionnement « Configurer et Oublier »** : Hormis pour des cas hautement situationnels de débogage ou de tests, le framework s&#x27;exécute de manière totalement autonome sans nécessiter de mémorisation complexe des commandes par le développeur.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:21</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce seul plugin a véritablement multiplié par 10 mon code Cloud ces derniers mois alors que je jouais avec. Donc dans la vidéo d&#x27;aujourd&#x27;hui, je vais passer en revue absolument tout ce que vous devez savoir à ce sujet, ce que c&#x27;est, comment il fonctionne, comment vous les configurez, tout ce genre de choses. Et je ne vais pas seulement parler, je vais vous montrer de vraies comparaisons, de vrais résultats comme vous pouvez le voir ici, et vous montrer comment il a réellement pu m&#x27;économiser des jetons et augmenter la qualité de mes résultats.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code, navigateur web et interface de tableau de bord analytique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes bash (`find`, `ls -la`), blocs de texte Markdown et graphiques comparatifs de coûts et d&#x27;utilisation de tokens.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;éditeur de code, présentation du sommaire des sujets et affichage de graphiques de performance.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000005_seg1.jpg" alt="Interface VS Code affichant un fichier Markdown de guide visuel avec des blocs de commandes Bash exécutées." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Interface VS Code affichant un fichier Markdown de guide visuel avec des blocs de commandes Bash exécutées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000016_seg1.jpg" alt="Tableau de bord analytique sombre affichant les résultats d&#x27;une expérience sur l&#x27;utilisation des tokens avec le plugin Superpowers." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000016_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:16</span>
+                        <span class="caption-text">Tableau de bord analytique sombre affichant les résultats d&#x27;une expérience sur l&#x27;utilisation des tokens avec le plugin Superpowers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:21 - 00:00:40</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je ne veux pas perdre de temps, je veux creuser tout ça, alors allons directement dans la vidéo. Donc le plugin que nous examinons aujourd&#x27;hui s&#x27;appelle Superpowers, et il donne vraiment des super-pouvoirs à Claude Code. Vous pouvez voir ici, il est écrit un cadre de compétences agentiques et une méthodologie de développement logiciel qui fonctionne vraiment. Alors allons-y directement. Tout ce document va être joint gratuitement dans ma communauté FreeSchool.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant GitHub.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des dossiers du projet (.claude-plugin, .codex, .cursor-plugin, agents, commands, docs) et description &quot;An agentic skills framework &amp; software development methodology that works.&quot; dans la section About.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur la page GitHub du dépôt open-source pour présenter le plugin.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000026_seg2.jpg" alt="Capture d&#x27;écran montrant la page du dépôt GitHub du projet &quot;superpowers&quot; (obra/superpowers), affichant l&#x27;arborescence des fichiers et la description du projet." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000026_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:26</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant la page du dépôt GitHub du projet &quot;superpowers&quot; (obra/superpowers), affichant l&#x27;arborescence des fichiers et la description du projet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:40 - 00:01:00</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je ne vais pas lire chaque mot qui est ici. Donc si vous voulez le récupérer, allez là-bas et obtenez-le gratuitement, mais je vais passer en revue ce qui me semble important. Alors, qu&#x27;est-ce que c&#x27;est ? Superpowers est un plugin open source gratuit créé par Jesse Vincent qui installe un ensemble de compétences dans votre Cloud Code. Donc au lieu de laisser Cloud Code commencer simplement à coder quand vous lui demandez de construire quelque chose, il passe par un ensemble de phases hyper, hyper discipliné.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Page de présentation textuelle avec incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte décrivant &#x27;Superpowers&#x27;, un plugin open-source par Jesse Vincent, et listant des sections comme &#x27;How Does It Work?&#x27;, &#x27;The 14 Skills and What They Do&#x27;, &#x27;Do They Invoke Automatically?&#x27;, et &#x27;The Full Chain for Building Something New&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit les concepts clés du plugin en affichant la page de documentation à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000045_seg3.jpg" alt="Une page de présentation contenant du texte explicatif sur le plugin &#x27;Superpowers&#x27; pour Claude Code, avec le présentateur en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000045_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:45</span>
+                        <span class="caption-text">Une page de présentation contenant du texte explicatif sur le plugin &#x27;Superpowers&#x27; pour Claude Code, avec le présentateur en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:01 - 00:01:24</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, nous savons tous dans Cloud Code combien il est important de planifier avant de commencer à construire quoi que ce soit, mais c&#x27;est bien plus que de l&#x27;aider simplement pour la planification. C&#x27;est également l&#x27;aider pour la mise en œuvre réelle. Les phases sont donc essentiellement : clarifier, concevoir, planifier, coder, puis vérifier. Pensez donc à cela comme à l&#x27;embauche d&#x27;un développeur qui fait une bonne phase de découverte avant de toucher à quoi que ce soit et de construire quoi que ce soit, par opposition à quelqu&#x27;un qui prend simplement votre demande et se met à écrire du code immédiatement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Page web de documentation / Présentation textuelle</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte expliquant le plugin Superpowers, développé par Jesse Vincent, et ses phases de développement (clarify first, design second, plan third, code fourth, verify fifth).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique du fonctionnement du plugin et des différentes étapes du processus de développement guidé par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000107_seg4.jpg" alt="Capture d&#x27;écran montrant une page de documentation ou de présentation expliquant ce qu&#x27;est le plugin Superpowers pour Claude Code, avec du texte décrivant les différentes phases (clarify, design, plan, code, verify) et le présentateur visible en incrustation vidéo dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000107_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:07</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une page de documentation ou de présentation expliquant ce qu&#x27;est le plugin Superpowers pour Claude Code, avec du texte décrivant les différentes phases (clarify, design, plan, code, verify) et le présentateur visible en incrustation vidéo dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:25 - 00:01:49</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">D&#x27;accord, alors comment est-ce que ça fonctionne ? Il y a une compétence principale appelée l&#x27;utilisation de super-pouvoirs et celle-ci se déclenche au début de chaque conversation et agit en quelque sorte comme un répartiteur. Donc avant de commencer à faire quoi que ce soit, elle examine toutes les autres compétences de super-pouvoirs, qui, comme vous pouvez le voir, sont au nombre de 14, et elle décide lesquelles utiliser. C&#x27;est donc littéralement comme si vous installiez le plugin, ce qui prend cinq secondes, et ensuite vous n&#x27;avez même plus à y penser. Il s&#x27;exécute simplement en arrière-plan et il vous aide pour tout. Alors maintenant vous vous demandez quelles sont ces 14 compétences ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de présentation ou document texte à l&#x27;écran.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titres et texte explicatif en anglais : &quot;What Is It?&quot;, &quot;How Does It Work?&quot;, &quot;The master skill (using-superpowers) fires at the start of every conversation and acts as a dispatcher...&quot;, &quot;The 14 Skills and What They Do&quot;, &quot;Do They Invoke Automatically?&quot;, &quot;The Full Chain for Building Something New&quot;, &quot;What a Beginner Needs to Know&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique le fonctionnement de la compétence principale (&quot;using-superpowers&quot;) qui agit comme un répartiteur au début de chaque conversation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000131_seg5.jpg" alt="Une diapositive de présentation avec du texte explicatif sur le fonctionnement des compétences, avec la vidéo du présentateur incrustée en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000131_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:31</span>
+                        <span class="caption-text">Une diapositive de présentation avec du texte explicatif sur le fonctionnement des compétences, avec la vidéo du présentateur incrustée en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:50 - 00:02:10</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avons quelques types ou catégories de compétences différents. Nous avons l&#x27;orchestrateur qui utilise des super-pouvoirs comme nous en avons parlé, nous avons la phase de conception, qui est une compétence de remue-méninges. Et si nous retournons dans ce prompt qui s&#x27;exécutait tout à l&#x27;heure, vous pouvez voir qu&#x27;il a commencé par utiliser la compétence de remue-méninges des super-pouvoirs afin d&#x27;avoir une bonne compréhension de ce que nous devons faire. Et maintenant, il est descendu ici et il dit : d&#x27;accord, laissez-moi configurer la liste de contrôle du remue-méninges.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation textuelle (Image 1) et éditeur de code VS Code avec affichage d&#x27;un agent IA en cours d&#x27;exécution (Image 2).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste détaillée des compétences d&#x27;IA (using-superpowers, brainstorming, writing-plans) et interface de chat/terminal dans VS Code exécutant une tâche de brainstorming.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les différentes catégories de compétences puis bascule vers l&#x27;éditeur de code pour montrer le prompt et l&#x27;agent en action.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000155_seg6.jpg" alt="Présentation textuelle listant les 14 compétences, montrant les sections &#x27;The Orchestrator&#x27; avec &#x27;using-superpowers&#x27; et &#x27;The Design Phase&#x27; avec &#x27;brainstorming&#x27;." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000155_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:55</span>
+                        <span class="caption-text">Présentation textuelle listant les 14 compétences, montrant les sections &#x27;The Orchestrator&#x27; avec &#x27;using-superpowers&#x27; et &#x27;The Design Phase&#x27; avec &#x27;brainstorming&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000200_seg6.jpg" alt="Interface de VS Code montrant l&#x27;exécution d&#x27;un prompt Markdown avec la compétence &#x27;superpowers:brainstorming&#x27; en action sur un projet de transcription YouTube." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000200_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:00</span>
+                        <span class="caption-text">Interface de VS Code montrant l&#x27;exécution d&#x27;un prompt Markdown avec la compétence &#x27;superpowers:brainstorming&#x27; en action sur un projet de transcription YouTube.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:10 - 00:02:31</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et vous pouvez voir qu&#x27;il y a tellement de tâches différentes par rapport à un plan ordinaire. Cela doit offrir un compagnon visuel, ce qui est super cool. Une partie de ce sur quoi nous travaillons pourrait être plus facile à expliquer si je peux vous le montrer dans un navigateur web. Combien de fois avez-vous essayé de construire quelque chose et Cloud Code le fait ? Et puis vous vous dites, ce n&#x27;est pas du tout ce que je voulais. Donc, ce que fait le brainstorming et ce que font les super-pouvoirs, c&#x27;est que cela le met réellement dans un tableau de bord à regarder et dit, hé, est-ce que tu veux l&#x27;option A, B ou C ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code) avec l&#x27;extension Claude.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt dans l&#x27;interface de l&#x27;assistant : &quot;take a look inside of my YouTube transcript project...&quot; et une liste de tâches détaillée incluant &quot;Explore project context&quot;, &quot;Offer visual companion&quot;, &quot;Ask clarifying questions&quot;, etc.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;interface de développement et la liste des tâches en cours de traitement dans l&#x27;éditeur de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000215_seg7.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code montrant un fichier Markdown (experiment-summary.md) avec une liste de tâches pour un projet YouTube et une conversation avec l&#x27;assistant Claude." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000215_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:15</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code montrant un fichier Markdown (experiment-summary.md) avec une liste de tâches pour un projet YouTube et une conversation avec l&#x27;assistant Claude.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:31 - 00:02:49</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Genre, lequel résonne le plus avec vous ? Maintenant, gardez à l&#x27;esprit que cette fonctionnalité est encore nouvelle et qu&#x27;elle peut être gourmande en jetons. Je vais parler beaucoup plus des jetons plus tard, mais je pense que c&#x27; vraiment génial. Alors pardonnez-moi, je vais continuer à faire des va-et-vient entre cet exemple et ce qui se passe dans ce document. Mais j&#x27;espère que vous arrivez à suivre. Ensuite, nous avons la phase de planification. Donc, il commence à rédiger le plan.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code / Éditeur de texte markdown.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif des phases de développement assistées par IA et interactions textuelles avec Claude.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et explication des différentes étapes et fonctionnalités de l&#x27;outil d&#x27;IA (mentionnant l&#x27;aspect gourmand en jetons).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000236_seg8.jpg" alt="Interface de VS Code montrant un échange avec Claude Code dans l&#x27;éditeur, avec un avertissement sur l&#x27;utilisation des tokens." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000236_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:36</span>
+                        <span class="caption-text">Interface de VS Code montrant un échange avec Claude Code dans l&#x27;éditeur, avec un avertissement sur l&#x27;utilisation des tokens.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000245_seg8.jpg" alt="Un document Markdown affiché à l&#x27;écran détaillant les différentes phases du workflow d&#x27;un agent IA (Orchestrator, Design, Planning, Execution)." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000245_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:45</span>
+                        <span class="caption-text">Un document Markdown affiché à l&#x27;écran détaillant les différentes phases du workflow d&#x27;un agent IA (Orchestrator, Design, Planning, Execution).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:49 - 00:03:22</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il crée des plans d&#x27;implémentation hyper détaillés où chaque tâche représente environ deux à cinq minutes de travail avec des chemins de fichiers exacts. Il teste des blocs de code et il sauvegarde le plan afin que vous puissiez y revenir si nécessaire. Ensuite, nous avons la phase d&#x27;exécution, ce qui est vraiment cool parce que, comme je l&#x27;ai dit, cela va au-delà de la simple planification, et oui, cette petite ligne bleue ondulée allait me déranger pendant toute la vidéo. Nous avons donc un outil appelé exécution des plans, qui passe en revue tâche par tâche avec des arrêts de sécurité. Il s&#x27;arrête immédiatement en cas de blocage au lieu de deviner. Nous avons le développement piloté par des sous-agents, ce qui est vraiment cool. Il envoie essentiellement de nouveaux sous-agents pour chaque tâche, et ils ont des révisions.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document textuel ou présentation listant les phases d&#x27;un framework d&#x27;automatisation IA, avec incrustation vidéo du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte décrivant les étapes : The Design Phase, The Planning Phase (writing-plans, 2-5 minutes of work with exact file paths), The Execution Phase (executing-plans, subagent-driven-development, dispatching-parallel-agents), The Quality Gates (test-driven-development, systematic-debugging).</p>
+                        <p><strong>Action / Démonstration :</strong> Le document défile pour présenter les différentes phases et règles du processus d&#x27;implémentation automatisé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000257_seg9.jpg" alt="Capture montrant les phases de design, de planification et d&#x27;exécution avec des listes à puces détaillées décrivant les étapes du workflow de développement par IA." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000257_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:57</span>
+                        <span class="caption-text">Capture montrant les phases de design, de planification et d&#x27;exécution avec des listes à puces détaillées décrivant les étapes du workflow de développement par IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000306_seg9.jpg" alt="Capture montrant les phases d&#x27;exécution et de contrôle qualité (Quality Gates) avec les règles de développement dirigé par les tests (TDD) et de débogage systématique." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000306_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:06</span>
+                        <span class="caption-text">Capture montrant les phases d&#x27;exécution et de contrôle qualité (Quality Gates) avec les règles de développement dirigé par les tests (TDD) et de débogage systématique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:22 - 00:03:43</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et puis il y en a un autre appelé le déclenchement d&#x27;agents en parallèle. Quand Superpowers réalise que vous avez des problèmes indépendants qui n&#x27;ont pas besoin de se produire de manière séquentielle, il lance simplement des agents en parallèle pour travailler sur chacun d&#x27;eux. Ensuite, nous avons les portes de qualité. Celui-ci est donc le développement piloté par les tests, ce qui est souvent appelé TDD, ce qui signifie qu&#x27;il va d&#x27;abord écrire les tests, le regarder échouer, puis écrire le code minimum pour s&#x27;assurer qu&#x27;il réussit réellement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document texte ou page web listant les fonctionnalités et phases du système d&#x27;agents.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte listant les différentes étapes : The Planning Phase, The Execution Phase (avec &#x27;dispatching-parallel-agents&#x27;), The Quality Gates, et The Review Phase.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et commente les différentes fonctionnalités du workflow d&#x27;agents, notamment le déclenchement d&#x27;agents en parallèle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000327_seg10.jpg" alt="L&#x27;écran affiche une liste de phases et de fonctionnalités, avec en surbrillance le point 6 sur le &#x27;dispatching-parallel-agents&#x27;, tandis que le présentateur apparaît en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000327_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:27</span>
+                        <span class="caption-text">L&#x27;écran affiche une liste de phases et de fonctionnalités, avec en surbrillance le point 6 sur le &#x27;dispatching-parallel-agents&#x27;, tandis que le présentateur apparaît en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000332_seg10.jpg" alt="L&#x27;écran fait défiler le document pour présenter &#x27;The Quality Gates&#x27; et &#x27;The Review Phase&#x27; (points 7 à 11), avec toujours le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000332_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:32</span>
+                        <span class="caption-text">L&#x27;écran fait défiler le document pour présenter &#x27;The Quality Gates&#x27; et &#x27;The Review Phase&#x27; (points 7 à 11), avec toujours le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:43 - 00:04:07</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avons le débogage systématique, qui est une approche de débogage en quatre phases, qui consiste à enquêter sur la cause racine, à analyser les problèmes, à formuler une hypothèse, puis à mettre en œuvre un correctif. Nous avons la vérification avant la fin et tout cela commence maintenant à devenir un peu plus technique. C&#x27;est donc là que je vais m&#x27;arrêter et que je vais vous laisser aller lire le document si vous le voulez. Encore une fois, c&#x27;est gratuit. Mais la méta-compétence, qui s&#x27;appelle les compétences rédactionnelles, apprend à Claude comment créer de nouvelles compétences de super-pouvoir en utilisant les principes de déploiement piloté par les tests.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document texte ou éditeur affichant des spécifications techniques et des listes de contrôle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte décrivant des processus de développement logiciel automatisés, des règles de qualité et des méta-compétences.</p>
+                        <p><strong>Action / Démonstration :</strong> Défilement du document et surbrillance de lignes textuelles spécifiques (debugging, writing-skills).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000349_seg11.jpg" alt="Capture montrant une liste de règles de qualité incluant le débogage systématique et la vérification avant achèvement, avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000349_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:49</span>
+                        <span class="caption-text">Capture montrant une liste de règles de qualité incluant le débogage systématique et la vérification avant achèvement, avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000355_seg11.jpg" alt="Capture montrant la phase de revue et l&#x27;infrastructure de développement, avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000355_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:55</span>
+                        <span class="caption-text">Capture montrant la phase de revue et l&#x27;infrastructure de développement, avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000401_seg11.jpg" alt="Capture montrant la méta-compétence et les alias obsolètes, avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000401_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:01</span>
+                        <span class="caption-text">Capture montrant la méta-compétence et les alias obsolètes, avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:07 - 00:04:29</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ou désolé, le développement dirigé par les tests. Où vous écririez d&#x27;abord un scénario de test qui échoue, puis vous écririez une compétence pour le faire réussir, et ensuite vous fermez la faille. Vous pouvez donc fondamentalement vraiment personnaliser le système de super-pouvoirs et l&#x27;étendre. D&#x27;accord, donc je voulais revenir sur cet exemple. Donc il disait, d&#x27;accord, le compagnon visuel est en cours d&#x27;exécution, mais d&#x27;abord, laissez-moi commencer par vous poser quelques questions. Voici donc ce que j&#x27;ai rassemblé jusqu&#x27;à présent, et voici ce que vous voulez, mais j&#x27;ai besoin de vous poser des questions.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code</p>
+                        <p><strong>Contenu textuel & Code :</strong> Document Markdown &#x27;experiment-summary.md&#x27; détaillant un projet avec Obsidian, des scripts, et un outil de visualisation locale sur http://localhost:60012.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et affichage d&#x27;un document de synthèse de projet au sein de VS Code pendant l&#x27;explication sur le développement dirigé par les tests et les compétences.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000418_seg12.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur de code VS Code affichant un document Markdown de résumé d&#x27;expérimentation et une discussion avec un assistant IA, avec la vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000418_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:18</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur de code VS Code affichant un document Markdown de résumé d&#x27;expérimentation et une discussion avec un assistant IA, avec la vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:29 - 00:04:52</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc il ne m&#x27;en a pas seulement posé une. Il m&#x27;a posé une, deux, trois, quatre, cinq questions, et ces questions étaient vraiment, vraiment bonnes. Elles ont extrait de ma tête une grande partie des informations concernant ce que j&#x27;imagine ici, sans que j&#x27;aie à les communiquer, car il a réalisé qu&#x27;il pouvait y avoir des lacunes et qu&#x27;il avait besoin d&#x27;obtenir des réponses à ces questions. Voici donc le serveur local. Laissez-moi ouvrir ceci. Maintenant, nous pouvons voir trois approches pour l&#x27;Explorateur de connaissances, et c&#x27;est fondamentalement ce qui nous montre ce que nous recherchons.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code) et Google Docs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier Markdown montrant les étapes de développement (&#x27;Update Todos&#x27;, &#x27;Explore project context&#x27;, &#x27;Offer visual companion&#x27;, &#x27;Propose 2-3 approaches&#x27;) et la liste des tâches cochées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le déroulement des tâches et l&#x27;interaction avec l&#x27;agent de code dans l&#x27;interface de l&#x27;éditeur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000435_seg13.jpg" alt="L&#x27;éditeur de code VS Code affichant un fichier de résumé d&#x27;expérience avec une liste de tâches (To-Do list) mise à jour par l&#x27;agent." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000435_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:35</span>
+                        <span class="caption-text">L&#x27;éditeur de code VS Code affichant un fichier de résumé d&#x27;expérience avec une liste de tâches (To-Do list) mise à jour par l&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:52 - 00:05:15</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Bon, maintenant ce n&#x27;est pas exactement la démo que je pensais vous montrer. Parfois, ça vous montre genre de vrais éléments ou, vous savez, des modèles de design visuel. Donc je ferai ça à nouveau dans un autre exemple plus tard, mais cela vous prouve juste que c&#x27;est capable de vous montrer les choses d&#x27;une manière différente et d&#x27;essayer de vraiment s&#x27;assurer qu&#x27;il comprend ce que vous voulez avant de passer à autre chose. Et nous savons tous à quel point cette étape est importante lorsqu&#x27;il s&#x27;agit de faire des trucs avec CloudCode ou tout simplement n&#x27;importe quel outil de codage agentique d&#x27;ailleurs.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web / Interface de brainstorming en ligne</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparatif divisé en sections (Pros et Cons) pour différentes approches de design d&#x27;interface (ex: Interactive Force Graph, Searchable Card Grid).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication visuelle des différentes options de design générées par l&#x27;outil.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000458_seg14.jpg" alt="Interface web sombre présentant trois approches comparatives pour un projet (« Three Approaches for the Knowledge Explorer »), avec le présentateur visible en vignette dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000458_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:58</span>
+                        <span class="caption-text">Interface web sombre présentant trois approches comparatives pour un projet (« Three Approaches for the Knowledge Explorer »), avec le présentateur visible en vignette dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:16 - 00:05:35</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous pourrions avoir un graphe de forces interactif, nous pourrions avoir une grille de cartes recherchables, ou nous pourrions avoir un graphe principal avec des détails de cartes. Cela nous donne les pour et les contre pour chacune de ces options. Et maintenant, nous pourrions cliquer là-dessus et notre agent dans CloudCode verrait laquelle nous avons choisie et il pourrait continuer pour nous. Vous pouvez voir ici qu&#x27;il recommande cette approche. Donc je vais simplement aller de l&#x27;avant et cliquer dessus et dire, d&#x27;accord, ça me va.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web / Interface de brainstorming</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte listant les options (Searchable Card Grid + Relationship Sidebar, Hybrid: Graph Hero + Card Detail Pages) avec une analyse des avantages et inconvénients.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des différentes options de design et de leurs caractéristiques par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000521_seg15.jpg" alt="Interface web &#x27;Superpowers Brainstorming&#x27; affichant des options de conception avec leurs avantages (Pros) et inconvénients (Cons)." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000521_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:21</span>
+                        <span class="caption-text">Interface web &#x27;Superpowers Brainstorming&#x27; affichant des options de conception avec leurs avantages (Pros) et inconvénients (Cons).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:36 - 00:06:10</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, continuons à parcourir ce document ici. Est-ce qu&#x27;ils s&#x27;activent automatiquement ? Oui. Fondamentalement, celui qui est toujours automatique, ce sont les super-pouvoirs, celui pour le brainstorming va pratiquement toujours se déclencher lorsqu&#x27;il s&#x27;agit de planification, et puis quand vous arrivez aux endroits où vous devez réellement commencer à construire, il va fondamentalement en activer un de développement. Donc, si nous revenons ici en haut, il va parfois simplement exécuter celui-ci automatiquement, parfois il va prendre celui-ci automatiquement ou celui-ci, et cela dépend un peu de la situation, mais au fond, la morale de l&#x27;histoire ici, c&#x27;est oui, c&#x27;est un peu du genre « on configure et on oublie », à moins d&#x27;avoir des cas super, super situationnels comme le débogage systématique ou le développement piloté par les tests, ou si vous</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document texte / Éditeur de notes ou de documentation (type Notion ou Google Docs).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau détaillant les 14 compétences (&quot;The 14 Skills and What They Do&quot;) et leurs types de déclenchement (Always automatic, Auto-chains from other skills, Situational auto-trigger, User-chosen).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur parcourt et lit le document à l&#x27;écran pour expliquer le fonctionnement automatique des compétences.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000544_seg16.jpg" alt="Document affichant un tableau intitulé &quot;The 14 Skills and What They Do&quot; avec la section &quot;Do They Invoke Automatically?&quot; et le présentateur dans un encadré vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000544_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:44</span>
+                        <span class="caption-text">Document affichant un tableau intitulé &quot;The 14 Skills and What They Do&quot; avec la section &quot;Do They Invoke Automatically?&quot; et le présentateur dans un encadré vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000553_seg16.jpg" alt="Vue rapprochée du document textuel montrant les sections &quot;What Is It?&quot;, &quot;How Does It Work?&quot; et &quot;The 14 Skills and What They Do&quot;." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000553_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:53</span>
+                        <span class="caption-text">Vue rapprochée du document textuel montrant les sections &quot;What Is It?&quot;, &quot;How Does It Work?&quot; et &quot;The 14 Skills and What They Do&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000602_seg16.jpg" alt="Gros plan sur le tableau détaillé des 14 compétences avec les types de déclenchement (Always automatic, Auto-chains, Situational, User-chosen)." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000602_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:02</span>
+                        <span class="caption-text">Gros plan sur le tableau détaillé des 14 compétences avec les types de déclenchement (Always automatic, Auto-chains, Situational, User-chosen).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:10 - 00:06:44</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">voulons faire des choses comme des avis. Mais l&#x27;idée clé, c&#x27;est que vous n&#x27;avez pas besoin de mémoriser chacune de ces compétences. Vous pouvez l&#x27;interroger à leur sujet, ou vous pouvez aussi simplement vaquer à votre planification habituelle, et elle devrait les invoquer aux bons moments. Vous pouvez également dire à la fin de votre invite quelque chose comme, hé, assurez-vous d&#x27;utiliser toutes les compétences de super-pouvoir qui pourraient être pertinentes ici, juste au cas où vous voudriez une assurance supplémentaire. La chaîne complète est fondamentalement que vous envoyez une requête, les super-pouvoirs en choisissent une, elle passe par les différentes compétences, puis elle commence à s&#x27;exécuter. Donc, comme je l&#x27;ai dit, vous n&#x27;avez pas à y penser. Très bien, alors en revenant à cet exemple. Maintenant que nous avons choisi en quelque sorte la manière dont nous cherchons à construire ceci, cela nous donne un exemple. Donc je vais ouvrir ceci, et ce</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Document textuel ou présentation avec des tableaux et des diagrammes de flux textuels.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau classant les déclencheurs en &quot;Always automatic&quot;, &quot;Auto-chains from other skills&quot;, &quot;Situational auto-trigger&quot;, et &quot;User-chosen&quot;, suivi d&#x27;un diagramme de flux textuel montrant l&#x27;enchaînement des actions pour &quot;Add a dark mode toggle&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des mécanismes d&#x27;invocation automatique des compétences et de la chaîne de développement d&#x27;un agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000619_seg17.jpg" alt="Tableau montrant les différents types de déclenchement des compétences (Trigger Type) avec les compétences associées (Skills) et le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000619_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:19</span>
+                        <span class="caption-text">Tableau montrant les différents types de déclenchement des compétences (Trigger Type) avec les compétences associées (Skills) et le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000636_seg17.jpg" alt="Schéma textuel représentant la chaîne complète d&#x27;événements pour la création d&#x27;une nouvelle fonctionnalité (The Full Chain for Building Something New), avec le présentateur en encadré." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000636_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:36</span>
+                        <span class="caption-text">Schéma textuel représentant la chaîne complète d&#x27;événements pour la création d&#x27;une nouvelle fonctionnalité (The Full Chain for Building Something New), avec le présentateur en encadré.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:44 - 00:07:19</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">est vraiment bien parce que disons que c&#x27;était complètement à côté de la plaque là-dessus. Ce n&#x27;est pas du tout ce qu&#x27;on voulait voir ou construire. C&#x27;est là qu&#x27;on corrigerait ça avant que ça ne brûle tous ces jetons, en nous donnant quelque chose dont on ne veut pas vraiment. Donc vous pouvez voir que ça imagine ce tableau de bord avec des outils, des techniques, des concepts. On aurait la possibilité de les parcourir, et ensuite ça montre qu&#x27;on pourrait survoler un nœud, le mettre en surbrillance. On pourrait cliquer sur un nœud, faire glisser un nœud, barre de recherche, puces de filtrage, tailles de nœuds, épaisseur des arêtes. Donc à ce stade, disons que je suis totalement en phase avec ça. Je retournerais dans le flux de travail et je dirais oui, ou je dirais non. Maintenant, la seule chose que je dirais, c&#x27;est que ça a l&#x27;air un peu bon marché. Donc je pourrais revenir ici et dire, oui, dans l&#x27;ensemble, ça a l&#x27;air bien.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application interactive et éditeur de code VS Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphe de données interactif avec des nœuds reliés, spécifications textuelles de design et code source Markdown.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;interface utilisateur et du code source du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000653_seg18.jpg" alt="Interface web montrant un modèle de disposition et d&#x27;interaction de graphe (Knowledge Explorer) avec des nœuds colorés interconnectés." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000653_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:53</span>
+                        <span class="caption-text">Interface web montrant un modèle de disposition et d&#x27;interaction de graphe (Knowledge Explorer) avec des nœuds colorés interconnectés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000702_seg18.jpg" alt="Interface web listant les comportements d&#x27;interaction détaillés (Hover, Click, Drag, Search, Filter) associés au graphe de connaissances." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000702_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:02</span>
+                        <span class="caption-text">Interface web listant les comportements d&#x27;interaction détaillés (Hover, Click, Drag, Search, Filter) associés au graphe de connaissances.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000711_seg18.jpg" alt="Éditeur de code (VS Code / Cursor) affichant un document Markdown décrivant le guide visuel du modèle d&#x27;interaction." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000711_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:11</span>
+                        <span class="caption-text">Éditeur de code (VS Code / Cursor) affichant un document Markdown décrivant le guide visuel du modèle d&#x27;interaction.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:19 - 00:07:53</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;aime bien l&#x27;idée. Je trouve quand même que ça fait un peu bas de gamme. Et je veux que ça ait l&#x27;air un peu plus moderne. Je veux que ce soit soigné et en mode sombre. Alors, pendant que ça tourne, je veux vous montrer un autre exemple. Voici donc un projet où je lui demande de nous créer un site. Vous pouvez voir qu&#x27;il dit : « D&#x27;accord, une partie de ce sur quoi nous travaillons serait peut-être plus facile à expliquer si je peux vous le montrer dans un navigateur web. Je peux concevoir des maquettes, des diagrammes, des comparaisons. Voulez-vous faire cela ? » Alors allons-y et disons oui ici, pour voir si cela nous donne un autre type de visuel. Au passage, désolé si vous n&#x27;aimez pas regarder la version terminal par rapport à quand nous sommes vraiment</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur de code avec terminal intégré Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de l&#x27;assistant IA listant l&#x27;exploration du contexte, l&#x27;analyse du site existant, et une liste de 9 tâches de développement (dont l&#x27;exploration, l&#x27;offre d&#x27;un compagnon visuel, et des questions de clarification).</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un agent IA en mode plan (plan mode on) qui analyse le projet et liste les étapes de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000728_seg19.jpg" alt="Interface de Visual Studio Code affichant une session de Claude Code (CLI) listant des tâches de brainstorming et un plan d&#x27;exploration de projet." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000728_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:28</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant une session de Claude Code (CLI) listant des tâches de brainstorming et un plan d&#x27;exploration de projet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:53 - 00:08:14</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en utilisant par exemple l&#x27;extension VS Code. Je sais que l&#x27;extension VS Code a l&#x27;air un peu plus normale, mais croyez-moi, commencez à utiliser le terminal. C&#x27;est tellement mieux. Vous avez beaucoup plus de visibilité, surtout lorsque vous configurez cette ligne d&#x27;état comme vous avez vu que j&#x27;ai, c&#x27;est tout simplement mieux. Mais encore une fois, avant que cela n&#x27;ouvre ce localhost, nous devons répondre à quelques questions de clarification. Et cela va encore une fois aider à s&#x27;assurer que c&#x27;est aligné avec nous avant qu&#x27;il ne dépense plus de jetons.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de tâches interactives (&quot;9 tasks (2 done, 1 in progress, 6 open)&quot;) et questionnaire à choix multiples (Product landing page, Company / brand site, Portfolio, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans un fichier de tâches et de questions géré par l&#x27;assistant Claude dans l&#x27;éditeur de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000758_seg20.jpg" alt="Interface de Visual Studio Code affichant un fichier Markdown interactif avec Claude, listant des tâches (tasks) et posant des questions de clarification à choix multiples." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000758_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:58</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant un fichier Markdown interactif avec Claude, listant des tâches (tasks) et posant des questions de clarification à choix multiples.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:14 - 00:08:33</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais simplement aller de l&#x27;avant et répondre à ceux-ci, et ensuite je vais vous montrer le tableau de bord qu&#x27;il génère pour nous. D&#x27;accord, donc maintenant il a poussé trois concepts différents vers ce localhost. Ouvrons ceci et voyons. Donc c&#x27;est de ça que je parle. Vous pouvez voir que ça va nous donner un exemple de l&#x27;ambiance, du style et de la palette de couleurs du site web avant que nous ne partions réellement le créer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, terminal intégré et navigateur web affichant une application locale sur localhost.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code HTML de maquette, messages de l&#x27;agent listant trois options de design (A - Cinematic Full-Bleed Hero, B - Split-Screen Hero, C - Centered Text + Floating Video Card) et liste des tâches du projet.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des concepts de mise en page générés par l&#x27;IA sur le serveur local.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000819_seg21.jpg" alt="Visualisation de l&#x27;interface de l&#x27;éditeur de code VS Code montrant un terminal intégré où l&#x27;assistant IA liste les concepts de mise en page proposés et les tâches en cours." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000819_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:19</span>
+                        <span class="caption-text">Visualisation de l&#x27;interface de l&#x27;éditeur de code VS Code montrant un terminal intégré où l&#x27;assistant IA liste les concepts de mise en page proposés et les tâches en cours.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000824_seg21.jpg" alt="Affichage dans le navigateur du tableau de bord interactif &#x27;Superpowers Brainstorming&#x27; présentant les trois concepts de design (A, B, C) pour la page de destination." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000824_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:24</span>
+                        <span class="caption-text">Affichage dans le navigateur du tableau de bord interactif &#x27;Superpowers Brainstorming&#x27; présentant les trois concepts de design (A, B, C) pour la page de destination.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:33 - 00:08:55</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, il se passe manifestement quelque chose d&#x27;bizarre ici. Je ne sais pas trop ce que c&#x27;est, mais nous pouvons voir que nous pouvons obtenir soit un &quot;hero&quot; cinématique en plein écran, soit un &quot;hero&quot; en écran partagé, soit du texte centré et une vidéo flottante. Donc maintenant, je pourrais lui donner une réponse ici quant à celui que je préfère. Et maintenant, il va continuer à nous poser des questions. Il va probablement nous donner quelques autres éléments différents. Quand je construisais un autre site web avec ça, il affichait littéralement un tableau de bord pour les différents types de boutons.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de brainstorming et éditeur de code Visual Studio Code avec terminal intégré (Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Options de design de landing page SaaS (Cinematic, Split-Screen, Centered Text) et interface de commande interactive de l&#x27;agent IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des maquettes de design générées par l&#x27;IA dans le navigateur et interaction avec l&#x27;agent dans le terminal VS Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000838_seg22.jpg" alt="Interface web montrant un brainstorming avec trois options de design pour une page d&#x27;accueil de SaaS : A - Cinematic Full-Bleed Hero, B - Split-Screen Hero, et C - Centered Text + Floating Video." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000838_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:38</span>
+                        <span class="caption-text">Interface web montrant un brainstorming avec trois options de design pour une page d&#x27;accueil de SaaS : A - Cinematic Full-Bleed Hero, B - Split-Screen Hero, et C - Centered Text + Floating Video.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000844_seg22.jpg" alt="Éditeur VS Code affichant un terminal interactif avec Claude Code (mode plan, tâches en cours et questions de clarification) et l&#x27;arborescence du projet dans la barre latérale." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000844_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:44</span>
+                        <span class="caption-text">Éditeur VS Code affichant un terminal interactif avec Claude Code (mode plan, tâches en cours et questions de clarification) et l&#x27;arborescence du projet dans la barre latérale.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:55 - 00:09:18</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et les différents types d&#x27;options de menu, et les différents types de cartes. Maintenant, oui, je sais que ces exemples que je vous montre sont plutôt d&#x27;ordre visuel, mais c&#x27;est tellement, tellement utile pour vous aider réellement à créer des rapports ou à créer des automatisations en raison des questions de clarification qu&#x27;il pose, et aussi en raison de l&#x27;exécution. Parce que je sais que beaucoup de gens vont demander, du genre, bon, quelle est la différence entre utiliser ceci et utiliser, disons, Ultraplan, qui est l&#x27;une des autres fonctionnalités que Claude Code vient de lancer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Claude CLI</p>
+                        <p><strong>Contenu textuel & Code :</strong> Propositions textuelles de mise en page (Cinematic Full-Bleed Hero, Split-Screen Hero, Centered Text) et liste de tâches de clarification (&quot;Ask clarifying questions&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection d&#x27;une option de design via le terminal et déroulement des étapes de planification par l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000901_seg23.jpg" alt="Interface de Visual Studio Code affichant un terminal interactif avec Claude proposant différentes options de design et de mise en page." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000901_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:01</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant un terminal interactif avec Claude proposant différentes options de design et de mise en page.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:18 - 00:09:38</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais Ultraplan vous aide seulement pour la planification. Genre, je pense même que le brainstorming de Superpowers est peut-être meilleur qu&#x27;Ultraplan quand il s&#x27;agit de la planification. Mais ensuite, si vous utilisez Ultraplan, eh bien, c&#x27;est pratiquement juste que vous êtes livré à vous-même à nouveau une fois que vous commencez à mettre en œuvre ce plan. Mais Superpowers est avec vous tout du long. Mais regardez, comme vous pouvez le voir encore, ça a fait the surgir un autre local host et maintenant ça nous donne encore plus de choses parmi lesquelles choisir.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Terminal intégré, arborescence de fichiers du projet Seedance Demo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de tâches (9 tasks : 2 done, 1 in progress, 6 open) incluant &#x27;Explore project context&#x27;, &#x27;Offer visual companion&#x27;, &#x27;Ask clarifying questions&#x27;, ainsi que des propositions de styles visuels (Dark &amp; Technical, Light &amp; Warm Luxury, Bold &amp; Minimal).</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un outil en mode plan (plan mode on) dans le terminal de l&#x27;éditeur montrant l&#x27;avancement des tâches et l&#x27;URL locale du serveur de test.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000923_seg24.jpg" alt="Interface de Visual Studio Code affichant le projet &#x27;Seedance Demo&#x27; avec un terminal intégré montrant l&#x27;exécution d&#x27;un plan de tâches et l&#x27;arborescence des fichiers à gauche." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000923_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:23</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant le projet &#x27;Seedance Demo&#x27; avec un terminal intégré montrant l&#x27;exécution d&#x27;un plan de tâches et l&#x27;arborescence des fichiers à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:38 - 00:09:56</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Bon, et je sais que je saute un peu partout, mais on revient en quelque sorte à la première carte mentale et ça a changé certaines choses. Et maintenant, on pourrait cliquer dessus, l&#x27;examiner à nouveau, et enfin s&#x27;assurer qu&#x27;on l&#x27;aime bien avant de l&#x27;envoyer. Donc de toute façon, je vais arrêter de sauter partout pendant un petit moment. Parlons de la façon dont vous installez réellement ceci parce que c&#x27;est super, super simple.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code et application Web personnalisée &#x27;Knowledge Explorer&#x27;</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation Markdown (experiment-summary.md) détaillant une refonte de design et l&#x27;interface de carte mentale interactive.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation entre l&#x27;éditeur de code et la première carte mentale interactive mise à jour.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000943_seg25.jpg" alt="VS Code affichant un fichier Markdown de résumé d&#x27;expérience avec des instructions de design frontend." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000943_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:43</span>
+                        <span class="caption-text">VS Code affichant un fichier Markdown de résumé d&#x27;expérience avec des instructions de design frontend.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000947_seg25.jpg" alt="Interface web &#x27;Knowledge Explorer by Nate Herk&#x27; montrant un graphique interactif de nœuds colorés interconnectés." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_000947_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:47</span>
+                        <span class="caption-text">Interface web &#x27;Knowledge Explorer by Nate Herk&#x27; montrant un graphique interactif de nœuds colorés interconnectés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:56 - 00:10:16</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais ouvrir très rapidement une nouvelle session Claude dans mon terminal VS Code ici. Et vous pouvez voir que tout ce que j&#x27;ai à faire, c&#x27;est d&#x27;aller ici et de faire plugin. Et vous pouvez voir que je l&#x27;ai déjà installé juste ici, le plugin superpowers. Maintenant, voici le dépôt GitHub. Je laisserai un lien vers celui-ci dans la description en bas, mais c&#x27;est tellement simple. Tout ce que vous avez réellement à faire, c&#x27;est de venir ici et d&#x27;installer le plugin depuis le marketplace Claude code.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code, terminal intégré, interface GitHub (README)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface terminal avec Claude Code v2.1.104 et texte du README GitHub concernant les super-pouvoirs des agents de codage.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation entre l&#x27;interface de développement dans VS Code et la documentation du plugin superpowers sur GitHub.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001001_seg26.jpg" alt="Interface VS Code avec l&#x27;explorateur de fichiers à gauche et un terminal intégré affichant Claude Code v2.1.104." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001001_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:01</span>
+                        <span class="caption-text">Interface VS Code avec l&#x27;explorateur de fichiers à gauche et un terminal intégré affichant Claude Code v2.1.104.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001011_seg26.jpg" alt="Page de documentation GitHub (README) du dépôt superpowers décrivant le fonctionnement du processus de développement piloté par sous-agents." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001011_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:11</span>
+                        <span class="caption-text">Page de documentation GitHub (README) du dépôt superpowers décrivant le fonctionnement du processus de développement piloté par sous-agents.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:16 - 00:10:51</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc vous pouvez simplement copier cette ligne juste ici. Je vais retourner dans ce terminal VS Code, coller ça dedans, et il va dire que je l&#x27;ai déjà installé globalement, mais c&#x27;est exactement comme ça que vous l&#x27;isseriez. Il vous demanderait ensuite, est-ce que vous voulez ceci au niveau de chaque projet, ou au niveau de votre utilisateur ? Je l&#x27;installerais définitivement de manière globale au niveau de l&#x27;utilisateur, parce qu&#x27;ainsi vous n&#x27;avez pas à vous soucier de chaque projet qui dit, oh mince, j&#x27;ai besoin de récupérer la compétence super-pouvoir. Ça fonctionne tout simplement tout le temps, pour n&#x27;importe quel projet de code cloud. C&#x27;est donc ce que je recommanderais de faire. Maintenant, ce qui est particulier avec ça, c&#x27;est que je pensais que ça utiliserait plus de jetons parce que ça fait des analyses plus approfondies. Et parfois c&#x27;est le cas. Mais si vous y pensez de cette façon. Quand vous faites la phase de planification et, vous savez, le brainstorming,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code, terminal Claude Code v2.1.104, tableau de bord analytique web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes terminal `/plugin install superpowers@claude-plugins-official` et messages de confirmation ; graphiques de performance et métriques (-9.1% d&#x27;économies de coûts).</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;une commande d&#x27;installation de plugin dans le terminal de l&#x27;éditeur de code, puis présentation de graphiques comparatifs de performance.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001025_seg27.jpg" alt="Interface VS Code avec le terminal Claude Code affichant la commande d&#x27;installation globale du plugin superpowers." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001025_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:25</span>
+                        <span class="caption-text">Interface VS Code avec le terminal Claude Code affichant la commande d&#x27;installation globale du plugin superpowers.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001043_seg27.jpg" alt="Tableau de bord d&#x27;expérimentation affichant les statistiques d&#x27;utilisation des tokens et de coûts avec le plugin Superpowers." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001043_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:43</span>
+                        <span class="caption-text">Tableau de bord d&#x27;expérimentation affichant les statistiques d&#x27;utilisation des tokens et de coûts avec le plugin Superpowers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:52 - 00:11:14</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tu veux qu&#x27;il utilise plus de jetons s&#x27;il peut y arriver plus rapidement. Parce que sinon, à long terme, tu utilises plus de jetons si tu dois faire quatre ou cinq révisions plutôt que de prendre plus de temps et plus de jetons pour planifier et ensuite réussir du premier coup. J&#x27;ai donc décidé de mener ces expériences où j&#x27;ai fait, tu sais, différents essais avec des super-pouvoirs et sans super-pouvoirs. Nous avons fait 12 essais au total. Nous avons réalisé une variété de types de tâches, simples, moyennes et complexes. Et c&#x27;est vraiment intéressant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau de bord d&#x27;analyse de données (UI web sur fond sombre)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphiques statistiques comparant &#x27;Without Superpowers&#x27; et &#x27;With Superpowers&#x27; sur le coût moyen, le total des jetons et la durée des tâches.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation des performances et des économies de jetons et de coûts générées par l&#x27;utilisation du plugin.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001057_seg28.jpg" alt="Un tableau de bord comparatif des résultats d&#x27;une expérience sur l&#x27;utilisation des jetons avec un plugin &#x27;Superpowers&#x27;, affichant des graphiques sur le coût, le nombre de jetons, et la durée des tâches." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001057_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:57</span>
+                        <span class="caption-text">Un tableau de bord comparatif des résultats d&#x27;une expérience sur l&#x27;utilisation des jetons avec un plugin &#x27;Superpowers&#x27;, affichant des graphiques sur le coût, le nombre de jetons, et la durée des tâches.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:15 - 00:11:33</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Globalement, nous avons constaté que nous avons obtenu environ 9 % d&#x27;économies sur les coûts, environ 14 % de tokens totaux en moins, et voilà à quoi cela ressemble. Pour les cas simples, &quot;avec des super-pouvoirs&quot; utilisait plus de tokens. Et cela est tout à fait logique, car quand c&#x27;est si simple, vous n&#x27;avez pas besoin de sur-concevoir et vous n&#x27;avez pas besoin de toutes ces questions s&#x27;il s&#x27;agit d&#x27;une requête très, très simple.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau de bord analytique web personnalisé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphiques statistiques comparant les performances &quot;Without Superpowers&quot; et &quot;With Superpowers&quot; (coûts, tokens, tours API, durée).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur survole les graphiques pour détailler les performances sur les tâches simples.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001119_seg29.jpg" alt="Tableau de bord affichant les résultats de l&#x27;expérience d&#x27;utilisation des tokens avec le plugin Superpowers, montrant un graphique des coûts moyens par tâche." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001119_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:19</span>
+                        <span class="caption-text">Tableau de bord affichant les résultats de l&#x27;expérience d&#x27;utilisation des tokens avec le plugin Superpowers, montrant un graphique des coûts moyens par tâche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001124_seg29.jpg" alt="Le même tableau de bord avec une info-bulle interactive survolant les données pour les tâches simples." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001124_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:24</span>
+                        <span class="caption-text">Le même tableau de bord avec une info-bulle interactive survolant les données pour les tâches simples.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:34 - 00:11:57</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais ensuite, quand nous sommes passés à des tâches plus moyennes et complexes, nous avons vu que l&#x27;utilisation de super-pouvoirs nous donnait en fait des exécutions moins chères et moins de jetons. Maintenant, gardez à l&#x27;esprit que, quand je dis complexe, je ne dis pas genre, vous savez, ça a codé pendant cinq heures d&#x27;affilée et ça nous a construit un produit SaaS entier. Je voulais dire, vous savez, relativement complexe. Et à mesure que vous devenez de plus en plus complexe, je suppose que vous commencez à voir cette tendance où les super-pouvoirs vous font économiser plus de temps et de jetons.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau de bord personnalisé affichant des statistiques de performance d&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphiques à barres comparant &quot;Without Superpowers&quot; (en rouge) et &quot;With Superpowers&quot; (en vert) selon la complexité des tâches (Simple, Medium, Complex) pour le coût ($USD) et le nombre total de tokens.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle des résultats statistiques comparatifs par le présentateur pour illustrer l&#x27;efficacité et la réduction des coûts sur les tâches moyennes et complexes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001139_seg30.jpg" alt="Un tableau de bord analytique présentant des graphiques comparatifs sur les coûts, les tokens et les performances d&#x27;exécutions automatisées avec ou sans &quot;super-pouvoirs&quot;." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001139_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:39</span>
+                        <span class="caption-text">Un tableau de bord analytique présentant des graphiques comparatifs sur les coûts, les tokens et les performances d&#x27;exécutions automatisées avec ou sans &quot;super-pouvoirs&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:57 - 00:12:33</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">L&#x27;autre chose à garder à l&#x27;esprit ici, c&#x27;est que Superpowers est en quelque sorte censé impliquer un humain dans la boucle et être un processus itératif, car il vous pose énormément de questions. Mais quand j&#x27;ai utilisé Superpowers ici, j&#x27;ai fait en sorte que Cloud Code automatise toute cette expérience. Elle a tourné pendant quelques heures. Et ce qui a fini par se produire, c&#x27;est que je n&#x27;étais pas du tout dans la boucle. C&#x27;est pourquoi certains de ces résultats doivent être pris avec des pincettes. Mais vous pouvez voir ici que le nombre total moyen de jetons est nettement plus élevé sans Superpowers. Vous pouvez voir en bas que nous avions un nombre de tours moyen, c&#x27;est-à-dire des allers-retours avec l&#x27;API, et une fois de plus, avec Superpowers, nous en avions moins, et la durée moyenne a varié en quelque sorte. Je dirais que rien de tout cela n&#x27;est suffisamment super, super concluant pour que je puisse faire une déclaration définitive.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard d&#x27;analyse de données (type interface de reporting web).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphiques en barres comparatifs (&quot;Without Superpowers&quot; vs &quot;With Superpowers&quot;) pour les tâches simples, moyennes et complexes. Données chiffrées : économies de coûts (-9,1%), réduction de tokens (-13,8%), 12 exécutions au total.</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse visuelle des performances du plugin &quot;Superpowers&quot; automatisé via Cloud Code, illustrant l&#x27;optimisation des ressources par rapport à un processus manuel ou standard.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001206_seg31.jpg" alt="Tableau de bord analytique présentant les résultats de l&#x27;expérience &quot;Superpowers Plugin : Token Usage Experiment&quot;, comparant les coûts et la consommation de tokens avec et sans le plugin." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001206_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:06</span>
+                        <span class="caption-text">Tableau de bord analytique présentant les résultats de l&#x27;expérience &quot;Superpowers Plugin : Token Usage Experiment&quot;, comparant les coûts et la consommation de tokens avec et sans le plugin.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001224_seg31.jpg" alt="Suite du tableau de bord affichant les métriques de performance : nombre moyen d&#x27;allers-retours API (&quot;Average Turns&quot;) et durée d&#x27;exécution des tâches selon leur complexité." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001224_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:24</span>
+                        <span class="caption-text">Suite du tableau de bord affichant les métriques de performance : nombre moyen d&#x27;allers-retours API (&quot;Average Turns&quot;) et durée d&#x27;exécution des tâches selon leur complexité.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:33 - 00:12:52</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais je pense tout de même que c&#x27;est important et plutôt intéressant à examiner, et puis bien sûr, nous avons la qualité réelle. Il a donc fait une évaluation sur les points de terminaison, l&#x27;exactitude du code et des choses de ce genre. Et vous pouvez voir qu&#x27;globalement, avec les super-pouvoirs, nous obtenons un résultat de bien meilleure qualité en ce qui concerne l&#x27;exactitude, la structure du code, la couverture des tests et la gestion des erreurs.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau de bord d&#x27;analyse comparative et de visualisation de données.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphique radar comparant &#x27;Without Superpowers&#x27; (rouge) et &#x27;With Superpowers&#x27; (vert) selon les critères de Correctness, Code Structure, Test Coverage, Error Handling et Robustness.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des résultats d&#x27;évaluation de la qualité du code et des performances des modèles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001238_seg32.jpg" alt="Un graphique en barres en haut et un graphique radar en bas montrant les scores de qualité du code avec et sans les « super-pouvoirs »." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001238_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:38</span>
+                        <span class="caption-text">Un graphique en barres en haut et un graphique radar en bas montrant les scores de qualité du code avec et sans les « super-pouvoirs ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:53 - 00:13:19</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et la seule fois où il semble ici que sans super-pouvoirs bat les super-pouvoirs, c&#x27;est la robustesse, dont je ne sais pas exactement comment cela a été évalué. C&#x27;est peut-être un peu subjectif, mais dans l&#x27;ensemble, le pentagone vert occupe une surface plus grande que le pentagone rouge. Je choisirais donc le vert plutôt que le rouge tous les jours, surtout si cela nous fait économiser des jetons. Et pendant que j&#x27;étais en train de monter cette vidéo, j&#x27;ai eu l&#x27;impression que vous seriez peut-être curieux de savoir comment j&#x27;ai réellement obtenu ces résultats ici et comment j&#x27;ai exécuté cette expérience de manière automatisée avec CloudCode.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard de données personnalisé (web), Visual Studio Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Graphique en radar : axes &quot;Correctness&quot;, &quot;Code Structure&quot;, &quot;Test Coverage&quot;, &quot;Error Handling&quot;, &quot;Robustness&quot;.
+- Fichier markdown : commandes `claude --disable-slash-commands` (sans super-pouvoirs) vs `claude -p` (avec super-pouvoirs), explication du workflow d&#x27;automatisation des tests.</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse visuelle comparative des scores de qualité de code (Image 1) et revue de la documentation technique sur la méthodologie de test (Image 2).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001259_seg33.jpg" alt="Un tableau de bord affichant un graphique à barres comparant les performances et un graphique en radar intitulé &quot;Code Quality Scores (Manual Review)&quot; qui compare &quot;Without Superpowers&quot; (rouge) et &quot;With Superpowers&quot; (vert)." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001259_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:59</span>
+                        <span class="caption-text">Un tableau de bord affichant un graphique à barres comparant les performances et un graphique en radar intitulé &quot;Code Quality Scores (Manual Review)&quot; qui compare &quot;Without Superpowers&quot; (rouge) et &quot;With Superpowers&quot; (vert).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001312_seg33.jpg" alt="L&#x27;interface de Visual Studio Code affichant un fichier Markdown nommé &quot;experiment-summary.md&quot; qui explique méthodiquement l&#x27;exécution des tests via Claude Code en ligne de commande." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001312_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:12</span>
+                        <span class="caption-text">L&#x27;interface de Visual Studio Code affichant un fichier Markdown nommé &quot;experiment-summary.md&quot; qui explique méthodiquement l&#x27;exécution des tests via Claude Code en ligne de commande.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:20 - 00:13:44</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors je suis entré ici et j&#x27;ai dit, hé, donne-moi juste une brève explication de ce que nous venions réellement de faire. Et ça m&#x27;a fondamentalement juste créé ces différents scripts pour moi qui ont appelé CloudCode, l&#x27;un d&#x27;eux avec des super-pouvoirs et l&#x27;un d&#x27;eux sans. Et ensuite, ça les a simplement exécutés à travers toutes ces différentes tâches. Et ça se passe réellement ici même dans ce terminal bash que j&#x27;ai ouvert et j&#x27;ai exécuté le script et ensuite vous pouvez voir que ça a commencé à exécuter cette expérience et ça a plafonné le budget à 2 dollars par exécution pour chacune des exécutions.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de code VS Code avec explorateur de fichiers, panneau Markdown et terminal intégré, ainsi qu&#x27;une incrustation webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier Markdown expliquant l&#x27;appel à Claude Code avec et sans super-pouvoirs, et commandes bash pour lancer l&#x27;expérience avec affichage des résultats par lots (Batch ID, budget cap, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Explication et exécution de scripts automatisés pour comparer les performances de Claude Code avec et sans fonctionnalités activées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001326_seg34.jpg" alt="L&#x27;éditeur VS Code affichant un fichier Markdown &#x27;experiment-summary.md&#x27; décrivant les scripts de test Claude Code, avec le présentateur en incrustation vidéo en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001326_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:26</span>
+                        <span class="caption-text">L&#x27;éditeur VS Code affichant un fichier Markdown &#x27;experiment-summary.md&#x27; décrivant les scripts de test Claude Code, avec le présentateur en incrustation vidéo en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001338_seg34.jpg" alt="Le terminal intégré de VS Code montrant l&#x27;exécution d&#x27;un script Bash &#x27;run_experiment.sh&#x27; pour lancer l&#x27;expérience sur les super-pouvoirs des jetons." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001338_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:38</span>
+                        <span class="caption-text">Le terminal intégré de VS Code montrant l&#x27;exécution d&#x27;un script Bash &#x27;run_experiment.sh&#x27; pour lancer l&#x27;expérience sur les super-pouvoirs des jetons.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:44 - 00:14:10</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voici donc le premier essai sur 12. Celui-ci était sans super-pouvoirs. Nous avions le coût, nous avions les jetons d&#x27;entrée, nous avions la lecture de cache, tout ce genre de choses, la durée de l&#x27;API. Et puis, à mesure que nous devenons plus complexes, vous pouvez voir que le coût et les jetons commencent à augmenter et à augmenter. Mais c&#x27;est comme ça que je l&#x27;ai fait. C&#x27;était super, super simple. Donc, en gros, juste un tout petit récapitulatif rapide. Nous avons exécuté 12 sessions de code dans le cloud, six avec des super-pouvoirs, six sans, mêmes instructions, même modèle, Opus 4.1 6 et zéro interaction humaine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (Terminal Bash)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes bash exécutées (`bash run_experiment.sh --runs 2`) et métriques d&#x27;exécution de l&#x27;IA (Coût, jetons d&#x27;entrée/sortie, lecture/création de cache, durée de l&#x27;API).</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un script de test mesurant les performances d&#x27;un modèle d&#x27;IA sans super-pouvoirs (premier essai).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001350_seg35.jpg" alt="Capture d&#x27;écran montrant un terminal Bash intégré à Visual Studio Code affichant les résultats d&#x27;un script d&#x27;expérimentation d&#x27;IA, avec le présentateur en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001350_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:50</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un terminal Bash intégré à Visual Studio Code affichant les résultats d&#x27;un script d&#x27;expérimentation d&#x27;IA, avec le présentateur en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:10 - 00:14:44</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avions des tâches simples, des tâches moyennes et des tâches complexes. Encore une fois, je voulais juste insister sur le fait que ceci n&#x27;est pas concluant. 12 exécutions sur trois petites tâches ne constituent que des données indicatives, pas une preuve. Mais ce qui est important, c&#x27;est que la plupart des gens pensent probablement que l&#x27;utilisation d&#x27;une telle compétence entraîne une surcharge massive de jetons, mais ce n&#x27;est en fait pas du tout le cas. La valeur ne réside pas dans les étapes supplémentaires. Elle réside dans la prévention des nouvelles tentatives coûteuses et des retours en arrière. La cohérence importe, bien que sans les super-pouvoirs, les exécutions aient présenté deux à trois fois plus de variance dans l&#x27;utilisation des jetons, tandis que les exécutions avec les super-pouvoirs étaient beaucoup plus resserrées. La structure du code et la gestion des erreurs étaient nettement meilleures avec les super-pouvoirs sur la tâche moyenne. Connaissance du domaine</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (Visual Studio Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier Markdown contenant des points de synthèse : &quot;This is not conclusive&quot;, &quot;12 runs across 3 small tasks&quot;, &quot;What we can say&quot;, incluant 6 conclusions numérotées sur l&#x27;efficacité des &quot;Superpowers&quot; en termes de gestion de tokens, de structure de code et de gestion d&#x27;erreurs.</p>
+                        <p><strong>Action / Démonstration :</strong> Lecture et présentation des conclusions de l&#x27;expérience par l&#x27;utilisateur à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001419_seg36.jpg" alt="Une vue de l&#x27;éditeur VS Code montrant un fichier Markdown nommé &quot;experiment-summary.md&quot; détaillant les conclusions d&#x27;une expérimentation sur l&#x27;utilisation des tokens par un agent IA." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001419_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:19</span>
+                        <span class="caption-text">Une vue de l&#x27;éditeur VS Code montrant un fichier Markdown nommé &quot;experiment-summary.md&quot; détaillant les conclusions d&#x27;une expérimentation sur l&#x27;utilisation des tokens par un agent IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:44 - 00:15:11</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et le respect des spécifications n&#x27;a pas été amélioré. Cela dépend toujours du modèle. Et pour les tâches simples, n&#x27;hésitez pas à passer cette étape. Le surcoût de 8 % ne fait pas vraiment grand-chose avec les super-pouvoirs. Ce sera tout pour aujourd&#x27;hui. Si vous souhaitez approfondir un peu plus ce document, vous pouvez l&#x27;obtenir tout à fait gratuitement dans ma communauté Skool gratuite. Le lien se trouve ci-dessous dans la description et vous pourrez le trouver ici. Quand vous trouverez ce post, allez simplement jeter un œil à toutes mes ressources YouTube à cet endroit. Mais si vous avez apprécié la vidéo ou si vous avez appris quelque chose de nouveau, laissez un j&#x27;aime s&#x27;il vous plaît. Ça m&#x27;aide énormément. Et comme toujours, je vous remercie d&#x27;être allés jusqu&#x27;à la fin de la vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code et le navigateur web affichant la plateforme Skool.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier Markdown contenant des conclusions sur l&#x27;utilisation des super-pouvoirs (&quot;For simple tasks, skip it...&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur conclut sa présentation en montrant le résumé textuel de l&#x27;expérience puis sa communauté en ligne.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001451_seg37.jpg" alt="VS Code ouvert sur un fichier Markdown résumant l&#x27;expérience sur les super-pouvoirs de Claude." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001451_seg37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:51</span>
+                        <span class="caption-text">VS Code ouvert sur un fichier Markdown résumant l&#x27;expérience sur les super-pouvoirs de Claude.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001458_seg37.jpg" alt="Interface web de la communauté &quot;AI Automation Society&quot; sur Skool." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001458_seg37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:58</span>
+                        <span class="caption-text">Interface web de la communauté &quot;AI Automation Society&quot; sur Skool.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:11 - 00:15:13</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vous dis à la prochaine. Merci à tous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau de bord analytique web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphiques en barres comparant les coûts, le nombre de tokens et la durée des tâches avec et sans le plugin Superpowers.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des résultats finaux de l&#x27;expérience et conclusion de la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001512_seg38.jpg" alt="Tableau de bord affichant les résultats d&#x27;une expérimentation sur l&#x27;utilisation des tokens avec le plugin Superpowers." loading="lazy" onclick="openLightbox('../screenshots/4XqVR6xI6Kw/4XqVR6xI6Kw_001512_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:12</span>
+                        <span class="caption-text">Tableau de bord affichant les résultats d&#x27;une expérimentation sur l&#x27;utilisation des tokens avec le plugin Superpowers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
