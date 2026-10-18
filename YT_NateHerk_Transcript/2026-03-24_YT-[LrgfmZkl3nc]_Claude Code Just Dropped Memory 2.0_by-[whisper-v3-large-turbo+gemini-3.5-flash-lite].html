@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Claude Code Just Dropped Memory 2.0 — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Claude Code Just Dropped Memory 2.0</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-03-24</span>
+                <span class="badge">⏱️ 00:08:30</span>
+                <span class="badge">🆔 <code>LrgfmZkl3nc</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=LrgfmZkl3nc" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Claude Code Just Dropped Memory 2.0**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So Anthropic just silently released this feature called AutoDream. And based on people&#x27;s discussions, it basically runs a sub-agent periodically that consolidates Claude&#x27;s memory files for better long-term storage. And I saw this tweet from Anthony here that said, it&#x27;s pretty crazy because that&#x27;s basically how humans actually store long-term memories, is by sleeping. So you can see right here in this project, I was playing around with the AutoDream.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme X (anciennement Twitter) et interface terminal (CLI) de Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le tweet mentionne la fonctionnalité &quot;Auto-dream&quot; pour la consolidation de la mémoire. L&#x27;interface CLI affiche : &quot;Auto-memory: on&quot;, &quot;Auto-dream: off&quot;, et les chemins des fichiers &quot;User memory&quot; (~/.claude/CLAUDE.md) et &quot;Project memory&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation d&#x27;une démonstration technique via une capture de réseau social illustrant les réglages internes de l&#x27;agent Claude Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000005_seg1.jpg" alt="Capture d&#x27;écran montrant un post X (Twitter) présentant une interface en ligne de commande de Claude Code affichant les paramètres de gestion de mémoire &quot;/memory&quot;." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un post X (Twitter) présentant une interface en ligne de commande de Claude Code affichant les paramètres de gestion de mémoire &quot;/memory&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:21 - 00:00:41</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And so because this is still being rolled out and it&#x27;s like an experimental feature, I tried running this right here in my project. And it is working, as you can see, it&#x27;s dreaming. because right here in my status line, you can see that it says dreaming. And then I basically go down and I enter it to view the tasks and you can see what it&#x27;s doing. It starts off by saying, let me search for more user feedback, preferences and new project relevant information across recent sessions.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de ligne de commande (CLI) type Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affichant &quot;Memory consolidation&quot;, &quot;Status: running&quot;, et plusieurs lignes de réflexion de l&#x27;agent comme &quot;Let me search for more user feedback&quot; ou &quot;The issue is likely the quote escaping&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA est en cours d&#x27;exécution active, effectuant une consolidation de mémoire et analysant des sessions précédentes pour résoudre un problème de code lié à l&#x27;échappement de guillemets.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000026_seg2.jpg" alt="Une interface de terminal affichant l&#x27;exécution d&#x27;un processus d&#x27;agent IA appelé &quot;Memory consolidation&quot;, avec des logs détaillant ses étapes de recherche et d&#x27;analyse." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000026_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:26</span>
+                        <span class="caption-text">Une interface de terminal affichant l&#x27;exécution d&#x27;un processus d&#x27;agent IA appelé &quot;Memory consolidation&quot;, avec des logs détaillant ses étapes de recherche et d&#x27;analyse.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:41 - 00:01:01</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And it&#x27;s basically looked through all of our messages and all of our different things that we&#x27;ve asked it to do. And then it gets to phase three where it&#x27;s consolidating stuff. So here are all of the key findings that it needs to update the memory files with since the last time it ran. And you can see that this is a pretty comprehensive task. It&#x27;s running for almost 10 minutes now. It&#x27;s reviewed 13 sessions and it&#x27;s touching different memory files.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de ligne de commande (CLI) d&#x27;un agent IA (probablement Claude Code ou outil similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Journal d&#x27;exécution affichant « Phase 3 - Consolidate » et une liste de 5 conclusions (« Key findings ») basées sur l&#x27;analyse de fichiers de mémoire et de sessions utilisateur.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse les logs des sessions passées et prépare la mise à jour des fichiers de mémoire du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000046_seg3.jpg" alt="Une interface de terminal affichant le processus d&#x27;un agent IA en phase de consolidation de mémoire, avec une liste de conclusions extraites de sessions précédentes." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000046_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:46</span>
+                        <span class="caption-text">Une interface de terminal affichant le processus d&#x27;un agent IA en phase de consolidation de mémoire, avec une liste de conclusions extraites de sessions précédentes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:02 - 00:01:21</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And basically the whole point of this is to be an automatic background cleanup and organization system for your Cloud memories so that each time you start up a new session, it feels sharp instead of kind of fuzzy or cluttered. Now Cloud Code does already have auto memory, which lets it remember things about your project in a memory.md file. And that usually gets injected at the beginning of your sessions and your conversations.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation graphique (diapositive style tutoriel).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte expliquant le système &#x27;Autodream&#x27; de Claude Code et un diagramme illustrant les interactions entre le fichier &#x27;MEMORY.md&#x27; et les sessions de travail de l&#x27;IA (représentées par des icônes de sommeil, de projet, et d&#x27;utilisateur).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation conceptuelle du workflow de nettoyage automatique des mémoires contextuelles de l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000107_seg4.jpg" alt="Une diapositive explicative montrant un schéma conceptuel sur le fonctionnement de la mémoire dans Claude Code, avec le fichier &#x27;MEMORY.md&#x27; au centre." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000107_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:07</span>
+                        <span class="caption-text">Une diapositive explicative montrant un schéma conceptuel sur le fonctionnement de la mémoire dans Claude Code, avec le fichier &#x27;MEMORY.md&#x27; au centre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:21 - 00:01:55</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And that&#x27;s what allows Cloud Code currently to feel like it understands a little bit more contextually about what&#x27;s going on. But the Autodream is a little bit different because rather than just kind of like flooding in some information, it&#x27;s consistently compacting and pruning and making that file better and better. It&#x27;s keeping everything feeling a lot more fresh because it basically takes all of this different information that goes into your memory.md file. When it does its Autodream, it merges them, it prunes them, it refreshes them, and it compacts things. And then all of the different memory files are a lot cleaner. So if I switch back into this project, you can see that it improved five memories that took about 10 minutes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diagramme de workflow personnalisé (style dessin à la main).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le schéma décompose le flux : &quot;Raw Notes&quot; (entrées brutes) → &quot;Auto Dream&quot; (processus de merge, prune, refresh) → &quot;Clean Index&quot; (données structurées). Une ligne temporelle en bas montre la progression entre Session 1, 2 et 3. Un texte explicatif en bas à droite détaille le rôle du &quot;sub-agent&quot; Claude.</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration conceptuelle du mécanisme de &quot;pruning&quot; (élagage) et de &quot;compaction&quot; des fichiers de contexte mémoire utilisés par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000130_seg5.jpg" alt="Schéma explicatif intitulé &quot;Auto Dream&quot; illustrant le processus de nettoyage de données en arrière-plan pour les sessions de codage." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000130_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:30</span>
+                        <span class="caption-text">Schéma explicatif intitulé &quot;Auto Dream&quot; illustrant le processus de nettoyage de données en arrière-plan pour les sessions de codage.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:55 - 00:02:14</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It improved all of these different MD files, which the project will now be able to use and they&#x27;re a lot more clean and up to date. And so the way that you get here is you go to slash memory. You can see right here, we have edit Claude memory files. And when you open that up, you&#x27;ll notice right here, we see auto dream on. This was last ran 11 minutes ago, as you guys just saw, and we can use slash dream to run it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de ligne de commande (Claude Code/CLI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des fichiers &quot;Improved 5 memories&quot; : feedback_prompt_deliverables.md, feedback_notification_hooks.md, user_profile.md, agent-teams-reference.md, MEMORY.md ; et invite de commande active.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent affiche le résultat d&#x27;une opération de mise à jour sur les fichiers de mémoire du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000200_seg6.jpg" alt="Interface de terminal (Claude Code) affichant une liste de fichiers Markdown récemment mis à jour et une invite de commande interactive." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000200_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:00</span>
+                        <span class="caption-text">Interface de terminal (Claude Code) affichant une liste de fichiers Markdown récemment mis à jour et une invite de commande interactive.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:14 - 00:02:34</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, when you open this up, this will be off. All you have to do is hover over it, hit enter and it will change to being on. And by default, your auto memory for your Claude will probably already be on as well. And what you&#x27;ll notice about the memory is that it&#x27;s turned on globally across all of your different projects, but each AutoDream has its own files that it plays with. So in this other session, you can see that AutoDream is on.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal interactif au sein de l&#x27;éditeur VS Code (Claude Code CLI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de mémoire : &#x27;Auto-memory: on&#x27;, &#x27;Auto-dream: off&#x27;, ainsi que les emplacements de stockage des fichiers &#x27;Project memory&#x27; et &#x27;User memory&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et configuration des options de mémoire de l&#x27;agent IA via l&#x27;interface de commande.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000219_seg7.jpg" alt="Interface de configuration du module &#x27;memory&#x27; dans l&#x27;environnement Claude Code, affichant les réglages &#x27;Auto-memory&#x27; et &#x27;Auto-dream&#x27;." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000219_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:19</span>
+                        <span class="caption-text">Interface de configuration du module &#x27;memory&#x27; dans l&#x27;environnement Claude Code, affichant les réglages &#x27;Auto-memory&#x27; et &#x27;Auto-dream&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:34 - 00:02:59</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It last ran 11 minutes ago. And now if I go over to my Herc 2 project, which I&#x27;ve never turned on the AutoDream feature, and I go ahead and do memory, the AutoDream feature is already turned on, but you can see that it says that it has never been ran yet. And of course, the memory files are different because in here I&#x27;ve got all these different files. And then back in this other project, which was kind of more of a demo, you can see that we only have these main three, which are project, user, and the auto memory folder.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec le terminal intégré Claude Code (version 2.1.81).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes terminal : `/memory`. Texte affiché : &quot;Auto-memory: on&quot;, &quot;Auto-dream: on - last ran 11m ago&quot;, &quot;Project memory Saved in ./.CLAUDE.md&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution de la commande &#x27;/memory&#x27; pour vérifier l&#x27;état et l&#x27;historique d&#x27;exécution de la fonctionnalité Auto-dream au sein du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000240_seg8.jpg" alt="Interface VS Code affichant un terminal Claude Code dans lequel l&#x27;utilisateur a saisi la commande &#x27;/memory&#x27;." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000240_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:40</span>
+                        <span class="caption-text">Interface VS Code affichant un terminal Claude Code dans lequel l&#x27;utilisateur a saisi la commande &#x27;/memory&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000253_seg8.jpg" alt="Interface VS Code montrant le résultat de la commande &#x27;/memory&#x27;, avec l&#x27;état &#x27;Auto-dream: on&#x27; et la mention &#x27;last ran 11m ago&#x27;." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000253_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:53</span>
+                        <span class="caption-text">Interface VS Code montrant le résultat de la commande &#x27;/memory&#x27;, avec l&#x27;état &#x27;Auto-dream: on&#x27; et la mention &#x27;last ran 11m ago&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:59 - 00:03:17</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So now if I&#x27;m in my Herc2 project and I know that my auto dream has been turned on, it says that I can use slash dream to run. So if I come in here and I do slash dream, what&#x27;s gonna happen? It basically just says unknown skill and we don&#x27;t see anything going on. So right now you can kind of invoke this using natural language, even though Claude code itself might be a little confused about what you&#x27;re trying to do.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (éditeur) intégrant le terminal Claude Code (CLI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes terminal affichant : &quot;Auto-memory: on&quot;, &quot;Auto-dream: on - never - /dream to run&quot;, et une liste de fichiers contextuels (me.md, work.md, team.md, current-priorities.md).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur vérifie l&#x27;état de la configuration de l&#x27;agent dans le terminal avant d&#x27;essayer de lancer la commande &quot;/dream&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000303_seg9.jpg" alt="Interface VS Code affichant un terminal Claude Code actif, montrant les paramètres de configuration &quot;Auto-memory&quot; et &quot;Auto-dream&quot; ainsi que les fichiers de contexte importés." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000303_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:03</span>
+                        <span class="caption-text">Interface VS Code affichant un terminal Claude Code actif, montrant les paramètres de configuration &quot;Auto-memory&quot; et &quot;Auto-dream&quot; ainsi que les fichiers de contexte importés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:17 - 00:03:39</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m just gonna say, run your auto dream and we&#x27;ll see what it does with that information. So right now it says I don&#x27;t have the Autodream skill and it&#x27;s kind of confused, but right here you can see in the status line, we do see that it&#x27;s streaming. And if I go down here and I enter the tasks, we can see that it&#x27;s running this stream consolidation. It&#x27;s gonna orient itself with the environment. And then we&#x27;re gonna see the list of, I&#x27;m grabbing this file, I&#x27;m looking at these sessions.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (éditeur de code) avec le terminal intégré Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique du terminal : &quot;/memory&quot; (Cancelled memory editing), &quot;Unknown skill: dream&quot;, commande saisie &quot;run your autodream&quot;, réponse de l&#x27;agent : &quot;I don&#x27;t have an &#x27;autodream&#x27; skill or script set up...&quot;. En bas, l&#x27;indicateur de statut affiche &quot;dreaming&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent Claude Code traite une commande non reconnue et indique un état de &quot;dreaming&quot; dans la barre de statut du terminal.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000323_seg10.jpg" alt="Interface VS Code affichant un terminal Claude Code dans lequel l&#x27;utilisateur a envoyé la commande &quot;run your autodream&quot; et reçoit une réponse d&#x27;erreur de l&#x27;agent." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000323_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:23</span>
+                        <span class="caption-text">Interface VS Code affichant un terminal Claude Code dans lequel l&#x27;utilisateur a envoyé la commande &quot;run your autodream&quot; et reçoit une réponse d&#x27;erreur de l&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:39 - 00:03:57</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And right now, because this is a bigger project for me, you can see that it&#x27;s reviewing 285 sessions. So this will probably take longer than eight to 10 minutes. So while we&#x27;re letting this run, let&#x27;s talk a little bit more about why this matters. So obviously this just came out and I haven&#x27;t had time to really, really test it and see if it&#x27;s worth it or not. But based on what I&#x27;m seeing, I definitely think it is.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de ligne de commande (Claude Code) et présentation visuelle (diapositive/diagramme).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : &quot;Memory consolidation&quot;, &quot;Status: running&quot;, &quot;reviewing 285 sessions&quot;, &quot;Starting dream consolidation&quot;.
+- Image 2 : Schéma expliquant le fonctionnement de &quot;Auto Dream&quot; comme un &quot;Nightly Brain Cleanup&quot;, comparant un état &quot;BEFORE&quot; (notes éparpillées) à un état &quot;AFTER&quot; (notes consolidées).</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un processus automatisé de consolidation de mémoire (&quot;Auto Dream&quot;) par l&#x27;agent IA, suivi d&#x27;une explication conceptuelle de la fonctionnalité.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000344_seg11.jpg" alt="Interface en ligne de commande affichant le processus &quot;Memory consolidation&quot; avec une progression en cours (reviewing 285 sessions)." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000344_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:44</span>
+                        <span class="caption-text">Interface en ligne de commande affichant le processus &quot;Memory consolidation&quot; avec une progression en cours (reviewing 285 sessions).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000353_seg11.jpg" alt="Diagramme conceptuel intitulé &quot;Why Auto Dream?&quot; illustrant les bénéfices du nettoyage de mémoire pour &quot;Claude Code&quot; (Less Repetition, Less Bloat, Better Recall, Like sleep)." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000353_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:53</span>
+                        <span class="caption-text">Diagramme conceptuel intitulé &quot;Why Auto Dream?&quot; illustrant les bénéfices du nettoyage de mémoire pour &quot;Claude Code&quot; (Less Repetition, Less Bloat, Better Recall, Like sleep).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:57 - 00:04:22</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And let&#x27;s talk about why that is. So the first big point is that you have less repetition. Even with auto memory, I still feel like sometimes I&#x27;m re-explaining things or I&#x27;m trying to carry over context from one session to another and less repetition is obviously a good thing. Another thing that we have that kind of floats behind the scenes is less bloat because part of the system is that it&#x27;s compacting and pruning stuff, pruning basically just meaning like eliminating things that are unnecessary, trimming the fat.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation graphique (diagramme conceptuel).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du diagramme : &quot;Why Auto Dream?&quot;, &quot;Nightly Brain Cleanup for Claude Code&quot;, listant les bénéfices (Less Repetition, Less Bloat, Better Recall, Like Sleep) et comparant le processus de mémoire avant et après l&#x27;activation.</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration pédagogique visant à montrer comment l&#x27;outil synthétise et nettoie les données contextuelles pour éviter la redondance.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000403_seg12.jpg" alt="Un schéma explicatif présentant les avantages de la fonctionnalité &quot;Auto Dream&quot; pour Claude Code, illustrant la transition d&#x27;un état encombré (&quot;Before&quot;) vers un état optimisé et structuré (&quot;After&quot;)." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000403_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:03</span>
+                        <span class="caption-text">Un schéma explicatif présentant les avantages de la fonctionnalité &quot;Auto Dream&quot; pour Claude Code, illustrant la transition d&#x27;un état encombré (&quot;Before&quot;) vers un état optimisé et structuré (&quot;After&quot;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:22 - 00:04:41</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And when we&#x27;re getting rid of all of that excess fat and excess tokens, it obviously helps us with our bloat and helps us with our context management. We also have better recall. Because it&#x27;s getting rid of things that we don&#x27;t actually need, it&#x27;s easier to find things. So just picture an example of like, you know, you&#x27;ve got a hundred different balls in a ball pit and you&#x27;re looking for one pink one out of all the blue. Well, what if we take away half of the blue?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Schéma graphique (infographie de présentation).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes explicatifs : &quot;Why Auto Dream?&quot;, &quot;Nightly Brain Cleanup for Claude Code&quot;, listes des avantages, et comparaison visuelle &quot;BEFORE&quot; (post-its confus) vs &quot;AFTER&quot; (information consolidée).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation conceptuelle des avantages techniques d&#x27;un système de nettoyage automatique de la mémoire pour un agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000427_seg13.jpg" alt="Un schéma explicatif illustrant le concept &quot;Auto Dream&quot; pour Claude Code, montrant les bénéfices du nettoyage de contexte (moins de répétition, moins de bloat, meilleur rappel, effet &quot;sommeil&quot;) et une comparaison avant/après de la gestion de l&#x27;information." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000427_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:27</span>
+                        <span class="caption-text">Un schéma explicatif illustrant le concept &quot;Auto Dream&quot; pour Claude Code, montrant les bénéfices du nettoyage de contexte (moins de répétition, moins de bloat, meilleur rappel, effet &quot;sommeil&quot;) et une comparaison avant/après de la gestion de l&#x27;information.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:41 - 00:05:18</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s gonna be easier to find that pink. And then what I think is really cool is it&#x27;s basically just like sleep. So whatever cadence that this runs on, which we&#x27;ll talk about a little bit later, when it hits that point, it basically just resets. So it&#x27;s like a checkpoint. Every time you get to a new checkpoint, you&#x27;re basically saving yourself. So before it would have all of these different files, right? You&#x27;d have these huge bloated context files, MD files, but now Autodream takes all of that and just keeps the important information that you need, which may only be, you know, a couple of different bullet points rather than having hundreds of lines. So the way that it actually works is step one, once it&#x27;s activated, it will gather session info. After that, it will read the current existing memory files,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Schéma conceptuel/diagramme de workflow.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme avec des cases colorées : &quot;Less Repetition&quot;, &quot;Less Bloat&quot;, &quot;Better Recall&quot;, &quot;Like Sleep&quot;. Section &quot;BEFORE&quot; montrant des notes éparses et &quot;AFTER&quot; montrant une synthèse structurée.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre visuellement le fonctionnement théorique du mécanisme de &quot;nettoyage nocturne&quot; de l&#x27;IA (Auto Dream).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000451_seg14.jpg" alt="Un schéma explicatif illustrant le concept &quot;Why Auto Dream?&quot; pour Claude Code, montrant une centralisation des bénéfices (mémoire, réduction du bruit) et une comparaison &quot;Before/After&quot; du traitement de l&#x27;information." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000451_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:51</span>
+                        <span class="caption-text">Un schéma explicatif illustrant le concept &quot;Why Auto Dream?&quot; pour Claude Code, montrant une centralisation des bénéfices (mémoire, réduction du bruit) et une comparaison &quot;Before/After&quot; du traitement de l&#x27;information.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:18 - 00:05:54</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and then it will load it into a sub-agent, which does the actual dream prompt. So I don&#x27;t know for certain, but I&#x27;m imagining that the dream prompt is something like this. You are performing a dream, a reflective pass over your memory files. Synthesize what you&#x27;ve learned recently into durable, well-organized memories so future sessions can orient quickly. Keep memory.md under a line limit. It&#x27;s an index, not a dump. Link to memory files with one-line descriptions do not copy full memory into it. After it&#x27;s ran that prompt, it goes through the consolidation and pruning, which like I said, is just cleaning things up. And then it goes ahead and it stores all of the results. And then whenever it wakes up the next time to do a dream, it</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation visuelle (slide) sur fond noir.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt : &quot;You are performing a dream, a reflective pass over your memory files.&quot; suivi de &quot;Synthesize what you&#x27;ve learned recently into durable, well-organized memories so future sessions can orient quickly.&quot; et &quot;Keep MEMORY.md under a line limit; it&#x27;s an index, not a dump. Link to memory files with one-line descriptions; do not copy full memory into it.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre le contenu conceptuel du prompt système envoyé au sous-agent responsable de la gestion et de la synthèse des mémoires de l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000527_seg15.jpg" alt="Une diapositive sur fond noir affichant un prompt système structuré en trois parties, utilisé pour diriger le processus de &quot;rêve&quot; (auto-réflexion) d&#x27;un agent IA." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000527_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:27</span>
+                        <span class="caption-text">Une diapositive sur fond noir affichant un prompt système structuré en trois parties, utilisé pour diriger le processus de &quot;rêve&quot; (auto-réflexion) d&#x27;un agent IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:54 - 00:06:26</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">basically just repeats that process every time. So once you have auto memory turned on and auto dream turned on, how does the auto dreaming actually take place besides you invoking it with slash dream or telling it to? Well, basically two different types of triggers or both. It could be based on hours, which means like, hey, every 12 hours, I&#x27;m just going to do my auto dream, or it could be based off of sessions. So maybe once you hit 300 sessions, it automatically does a dream. Now, this isn&#x27;t confirmed with official documentation. This is just basically what it seems like after some X discussions and some Reddit discussions. But just keep that in mind.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diagramme logique (schéma conceptuel).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte structuré : &quot;Prerequisites&quot; (Auto-memory ON, Auto-dream ON), &quot;Triggers&quot; (minHours, minSessions), &quot;Safety&quot; (Memory files only, No code touched, Line limit) et &quot;Status&quot; (running, never, last ran, idle /dream).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle et pédagogique des conditions logiques régissant le déclenchement automatique du mode &quot;dream&quot; de l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000602_seg16.jpg" alt="Schéma explicatif sur fond noir détaillant le fonctionnement de la fonctionnalité &quot;Autodream&quot; pour un agent IA, incluant les prérequis, les déclencheurs (triggers) et les paramètres de sécurité." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000602_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:02</span>
+                        <span class="caption-text">Schéma explicatif sur fond noir détaillant le fonctionnement de la fonctionnalité &quot;Autodream&quot; pour un agent IA, incluant les prérequis, les déclencheurs (triggers) et les paramètres de sécurité.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:26 - 00:06:45</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">That is likely how this works, but I don&#x27;t know for certain. Now, once that&#x27;s running, you&#x27;ll basically be able to see a couple different statuses. You can either see that it&#x27;s running, you can see that it&#x27;s never ran before, you can see when it was last ran, or you can see basically just nothing and it will be idle. And what&#x27;s important to know here is that it&#x27;s only going to touch memory files. As you guys saw in that first example, it said I&#x27;d updated five files.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:46 - 00:07:05</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Those were all context files. So all of these right here that said I improved five memories, all of these are MDs. None of these are code or scripts or anything like that. So how do we think about the different layers between these different types of systems within cloud code? So for normal sessions, we basically just have the ability to code, to debug, to refactor, to talk to cloud code.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de commande (probablement Claude Code) et présentation graphique (slide de cours).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Liste de fichiers Markdown (`feedback_prompt_deliverables.md`, `user_profile.md`, etc.), commandes `/btw` et `/memory`, état de configuration (`auto-memory: on`, `auto-dream: on`).
+- Image 2 : Schéma montrant le flux entre &quot;Normal Sessions&quot; (code, debug), &quot;Auto-Memory&quot; (décisions et patterns) et &quot;Autodream&quot; (nettoyage et indexation).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre les fichiers de contexte (Markdown) générés par le système d&#x27;IA, puis explique théoriquement la structure hiérarchique des couches de mémoire de l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000650_seg18.jpg" alt="Interface de terminal (Claude Code) affichant une liste de fichiers Markdown (.md) mis à jour sous la section &quot;Improved 5 memories&quot;." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000650_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:50</span>
+                        <span class="caption-text">Interface de terminal (Claude Code) affichant une liste de fichiers Markdown (.md) mis à jour sous la section &quot;Improved 5 memories&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000655_seg18.jpg" alt="Diagramme explicatif intitulé &quot;Memory Layers&quot; illustrant trois niveaux de gestion de la mémoire : Normal Sessions, Auto-Memory et Autodream." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000655_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:55</span>
+                        <span class="caption-text">Diagramme explicatif intitulé &quot;Memory Layers&quot; illustrant trois niveaux de gestion de la mémoire : Normal Sessions, Auto-Memory et Autodream.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:05 - 00:07:38</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Then in the middle we have that auto memory which records decisions patterns important things about the actual project or about you But there&#x27;s not a great method for cleaning that up consistently unless you frankenstein your own solution to do that So basically what autodream does is in the background without you having to manually go in there and prompt it to Looks through everything cleans everything up and fixes a lot of stuff And so that&#x27;s why having these three layers work together It creates a really powerful system that likely is going to help you scale better and keep all of your sessions feeling cleaner and way more like a human who can remember things about you</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de présentation/schéma (style tableau blanc type Excalidraw).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte et icônes décrivant les couches : 1. Normal Sessions (code, debug, refactor), 2. Auto-Memory (records decisions &amp; patterns), 3. Autodream (cleans &amp; indexes memory). Flèches indiquant le processus de &quot;captures&quot; et &quot;organizes&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation conceptuelle et visuelle de l&#x27;architecture du système de mémoire pour automatisation par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000713_seg19.jpg" alt="Schéma explicatif intitulé &quot;Memory Layers&quot; illustrant trois niveaux de gestion de mémoire pour les agents IA : &quot;Normal Sessions&quot; (surface), &quot;Auto-Memory&quot; (middle) et &quot;Autodream&quot; (background), montrant le flux de capture et d&#x27;organisation des données." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000713_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:13</span>
+                        <span class="caption-text">Schéma explicatif intitulé &quot;Memory Layers&quot; illustrant trois niveaux de gestion de mémoire pour les agents IA : &quot;Normal Sessions&quot; (surface), &quot;Auto-Memory&quot; (middle) et &quot;Autodream&quot; (background), montrant le flux de capture et d&#x27;organisation des données.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:38 - 00:07:56</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">rather than a chat bot. So this has been running now for over six minutes. I&#x27;ll just check with you guys when this is done and we can see what memory files it went ahead and updated. So this one actually only took eight minutes, which was interesting, even though it had to look through way more sessions, 285 compared to about 13, but it was able to update these three different memory files.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec une extension de type terminal/agent Claude).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique des logs de l&#x27;agent : &quot;Memory consolidation&quot;, &quot;reviewing 285 sessions&quot;, statut &quot;running&quot;, et liste des tâches en cours (recherche de corrections utilisateur, analyse des logs de décisions, validation des mémoires).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent exécute un processus automatisé de consolidation de mémoire en analysant 285 sessions, tâche qui dure depuis 6 minutes et 32 secondes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000742_seg20.jpg" alt="Une capture d&#x27;écran de l&#x27;interface VS Code montrant un agent IA en train d&#x27;effectuer une tâche de &quot;Memory consolidation&quot; avec une barre de progression temporelle et l&#x27;historique des actions entreprises." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000742_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:42</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface VS Code montrant un agent IA en train d&#x27;effectuer une tâche de &quot;Memory consolidation&quot; avec une barre de progression temporelle et l&#x27;historique des actions entreprises.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:56 - 00:08:20</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And you can now see that there are no background tasks currently running. And if you want a little bit more visibility, you can see what it actually did explicitly. So it added these couple entries and it removed these sections. And now if I wanted to restore those or add some more insights, I could. And I could also go view the file, of course, if I wanted to make sure that it was all accurate. And the cool thing about this is as you use the AutoDream more and more, it&#x27;s going to get better and better at understanding what type of context is important to you and what is not.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec l&#x27;interface de terminal/chat Claude intégrée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion affichant une liste d&#x27;entrées ajoutées (projets, contexte d&#x27;équipe) et d&#x27;entrées supprimées (sections sur ClickUp, Google Workspace, règles de sécurité) dans le fichier &#x27;memory.md&#x27;, avec une question de l&#x27;agent proposant une restauration.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur a demandé à l&#x27;agent d&#x27;expliciter les changements effectués dans la mémoire du projet, et l&#x27;agent répond avec un résumé clair des modifications textuelles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000802_seg21.jpg" alt="Une capture d&#x27;écran de l&#x27;éditeur VS Code montrant l&#x27;interaction avec l&#x27;agent Claude, détaillant les modifications apportées au fichier &#x27;memory.md&#x27;." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000802_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:02</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;éditeur VS Code montrant l&#x27;interaction avec l&#x27;agent Claude, détaillant les modifications apportées au fichier &#x27;memory.md&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:20 - 00:08:30</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But anyways, that is going to do it for today. So if you guys enjoyed the video or learned something new, please give it a like. Helps me out a ton. And as always, I appreciate you guys making it to the end of the video. I&#x27;ll see you on the next one. Thanks, everyone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Excalidraw (tableau blanc collaboratif).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le diagramme détaille les étapes : 1. Gather Sessions, 2. Read Memory, 3. Dream Prompt, 4. Consolidate &amp; Prune, 5. Store Results, avec une boucle de répétition.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation statique du workflow architectural du système &quot;Autodream&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000822_seg22.jpg" alt="Un schéma explicatif intitulé &quot;How Autodream Works&quot; présenté sur un tableau blanc numérique, illustrant un processus cyclique en 5 étapes pour la gestion de la mémoire et des prompts d&#x27;un agent IA." loading="lazy" onclick="openLightbox('../screenshots/LrgfmZkl3nc/LrgfmZkl3nc_000822_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:22</span>
+                        <span class="caption-text">Un schéma explicatif intitulé &quot;How Autodream Works&quot; présenté sur un tableau blanc numérique, illustrant un processus cyclique en 5 étapes pour la gestion de la mémoire et des prompts d&#x27;un agent IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
