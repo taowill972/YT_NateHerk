@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Claude Code Just Got Another Huge Upgrade — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Claude Code Just Got Another Huge Upgrade</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-03-24</span>
+                <span class="badge">⏱️ 00:08:10</span>
+                <span class="badge">🆔 <code>X6EGzi9qm3E</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=X6EGzi9qm3E" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Claude Code Just Got Another Huge Upgrade**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:34</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anthropic just dropped another new feature which lets CloudCode actually control your computer, which means it can natively use your mouse, your keyboard, and take screenshots and do things for you. Right now it is in research preview in both CloudCodeWork and CloudCode and on macOS only, which is why you guys might notice in this video I&#x27;m on my laptop. But the whole idea is that you can basically do anything on your desktop, no matter if you are sitting there or if you&#x27;re out to lunch. Because you can also pair it with the new dispatch feature, so you can literally reach reach your desktop from your pocket, shoot off a text, and it will control the computer locally and do what you need to do. Or when it&#x27;s time to check the build, but you&#x27;re on the train,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme X (anciennement Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tweet d&#x27;Anthropic : &quot;You can now enable Claude to use your computer to complete tasks. It opens your apps, navigates your browser, fills in spreadsheets—anything you&#x27;d do sitting at your desk. Research preview in Claude Cowork and Claude Code, macOS only.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation informative du communiqué officiel d&#x27;Anthropic sur les capacités de &quot;Computer Use&quot; de l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000009_seg1.jpg" alt="Capture d&#x27;écran montrant le compte Twitter (X) officiel d&#x27;Anthropic annonçant la nouvelle fonctionnalité de contrôle d&#x27;ordinateur par Claude." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le compte Twitter (X) officiel d&#x27;Anthropic annonçant la nouvelle fonctionnalité de contrôle d&#x27;ordinateur par Claude.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:34 - 00:01:09</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">once again, shoot off a message and it will do what it needs to do on your actual local computer. So today I&#x27;m going to show you guys a few demos, talk about when it&#x27;s useful, and then I&#x27;m going to talk about the limitations as well. So let&#x27;s get into it. So this is the official post from Claude that just dropped about two hours ago and already has over 4 million views, which is insane. And just as a little intro teaser, I actually had Claude Code start up this recording for me. So you can see here I said use computer use to open up OBS and start recording and what we&#x27;re going to see is that it basically moves its screen over to the right. It has to navigate through my desktop and has to open up OBS and now it&#x27;s going to take a screenshot of this interface to understand where</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de ligne de commande &quot;Computer Claude&quot; (Opus 4.6).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Journal de logs de l&#x27;agent : &quot;Download cute puppy images from Safari&quot;, &quot;Took a screenshot of the current screen&quot;, &quot;I can see Loom was hidden&quot;, &quot;Attempted to click on disallowed application&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;agent IA tentant d&#x27;interagir avec le système d&#x27;exploitation et rencontrant une restriction d&#x27;interface.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000052_seg2.jpg" alt="Interface de &quot;Computer Claude&quot; en action, affichant un journal d&#x27;exécution montrant l&#x27;agent tentant de manipuler une application (Loom) et analysant des captures d&#x27;écran pour effectuer des clics." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000052_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:52</span>
+                        <span class="caption-text">Interface de &quot;Computer Claude&quot; en action, affichant un journal d&#x27;exécution montrant l&#x27;agent tentant de manipuler une application (Loom) et analysant des captures d&#x27;écran pour effectuer des clics.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:09 - 00:01:43</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">is the start recording button. You can see it just took a screenshot and now it&#x27;s going to say okay it&#x27;s right here in the blue and then it&#x27;s going to click on it and that is the video that you&#x27;re watching right now. The recording was started by CloudCode. So once again you can use this in Cowork and in CloudCode. So today I&#x27;m going to be showing how you use it in CloudCode. Now the only way right now is within the desktop app, which is not a huge deal. You basically just come down to your settings, you go over to the general settings down here in desktop app, and you can see at the bottom we have computer use, which lets Claude take screenshots and control your keyboard and mouse in apps that you allow. You will have to give it some accessibility like screen</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;agent AI &quot;Opus&quot; (mode Code) au sein d&#x27;une application de bureau.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de confirmation de l&#x27;agent : &quot;OBS is now recording! I can confirm: The button now says &#x27;Stop Recording&#x27; (highlighted in blue)...&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Confirmation par l&#x27;agent IA du lancement réussi de l&#x27;enregistrement écran via OBS Studio.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000126_seg3.jpg" alt="Interface de l&#x27;agent &quot;Opus 4.6&quot; affichant une confirmation textuelle de l&#x27;état de l&#x27;enregistrement OBS (bouton &quot;Stop Recording&quot;, temps écoulé et FPS)." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000126_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:26</span>
+                        <span class="caption-text">Interface de l&#x27;agent &quot;Opus 4.6&quot; affichant une confirmation textuelle de l&#x27;état de l&#x27;enregistrement OBS (bouton &quot;Stop Recording&quot;, temps écoulé et FPS).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:43 - 00:02:19</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">recording and other things like that. So let&#x27;s just start off with a quick demo here where I&#x27;m saying use computer use to find the how to use the ROI calculator PDF in my downloads and send it in ClickUp as a DM. So what you&#x27;ll see here is that first, I don&#x27;t have those two apps open. I don&#x27;t have Finder open or ClickUp. So what I have to do real quick is I have to allow Claude to use these things. So it&#x27;s going to allow it to use the downloads folder, and then I&#x27;m going to have to allow it to use ClickUp as well. Now you want to do that every time, but in that session, you may have to give it access. Now what it&#x27;s doing here is it&#x27;s pulled up ClickUp, and it has to actually take screenshots and navigate through it. So the first thing that it did is it found my DM. So there</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude.ai (Desktop app), ClickUp, macOS Permission Dialog.</p>
+                        <p><strong>Contenu textuel & Code :</strong> &quot;use computer use to find the &#x27;How to use the ROI calculator&#x27; pdf...&quot;, &quot;Glob **/*ROI*.pdf&quot;, &quot;/Users/nathanherkelman/Downloads/How to Use Your Automated ROI Calculator.pdf&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Initialisation d&#x27;une tâche d&#x27;agent, gestion des permissions d&#x27;accès aux fichiers, et exécution d&#x27;une recherche de répertoire par l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000152_seg4.jpg" alt="Interface de l&#x27;agent Claude affichant le prompt de l&#x27;utilisateur demandant la recherche d&#x27;un fichier PDF spécifique et son envoi via ClickUp." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000152_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:52</span>
+                        <span class="caption-text">Interface de l&#x27;agent Claude affichant le prompt de l&#x27;utilisateur demandant la recherche d&#x27;un fichier PDF spécifique et son envoi via ClickUp.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000201_seg4.jpg" alt="Capture d&#x27;écran montrant une fenêtre de permissions système macOS demandant l&#x27;autorisation pour que &quot;Claude&quot; accède aux fichiers du dossier Téléchargements." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000201_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:01</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une fenêtre de permissions système macOS demandant l&#x27;autorisation pour que &quot;Claude&quot; accède aux fichiers du dossier Téléchargements.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000210_seg4.jpg" alt="Interface divisée montrant ClickUp à gauche et l&#x27;agent Claude à droite, exécutant une recherche de fichier (Glob) et affichant les résultats trouvés dans le dossier Downloads." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000210_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:10</span>
+                        <span class="caption-text">Interface divisée montrant ClickUp à gauche et l&#x27;agent Claude à droite, exécutant une recherche de fichier (Glob) et affichant les résultats trouvés dans le dossier Downloads.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:19 - 00:02:44</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">it is, there&#x27;s Nate Herc, this is where it&#x27;s going to send that file. And now it has to figure out how to actually send an attachment. So you can see what&#x27;s going on on the right hand side is it&#x27;s continuously taking screenshots and then it&#x27;s going to press different buttons and figure out what to do. Right here you can see that it&#x27;s zoomed in on the bar and now it sees that it needs to click on this paperclip in order to attach a file. And just to be sure it even zoomed in even more, it&#x27;s going to take another screenshot and then it should click on the right button for us.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (ClickUp) et fenêtre d&#x27;agent IA (avec un aperçu visuel en temps réel de l&#x27;écran principal).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface ClickUp affichant un menu de suggestions contextuel et une fenêtre d&#x27;agent IA à droite indiquant &quot;Discombobulating...&quot; avec un compteur de jetons (348 tokens).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse visuellement l&#x27;interface ClickUp pour identifier le bouton permettant d&#x27;ajouter une pièce jointe à un message.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000226_seg5.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface d&#x27;agent IA effectuant des recherches et interagissant avec l&#x27;application ClickUp dans une fenêtre séparée." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000226_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:26</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface d&#x27;agent IA effectuant des recherches et interagissant avec l&#x27;application ClickUp dans une fenêtre séparée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:44 - 00:03:15</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And now that it&#x27;s in our downloads, it&#x27;s going to have to search for that correct PDF. So you guys didn&#x27;t see that but it just clicked on the search bar on the top right. Now it&#x27;s searching and you can see that the files that popped up have changed and hopefully it&#x27;s going to choose the right one. There we go. So it found the right one. It&#x27;s going to have to double click, open it up. Now you can see it&#x27;s attached in our click up message and hopefully it&#x27;s going to be able to send that. It did come back and ask for confirmation because it was doing a send action. So I&#x27;m just going to go ahead and say yes and it should open the computer back up, hit send and then tell us that it has been sent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Agent IA (probablement utilisant le framework d&#x27;automatisation Opus), interface macOS native (Finder/Recherche).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de l&#x27;agent : &quot;I can see the search results. I need to narrow it to Downloads. Let me click &#x27;Downloads&#x27; in the search scope bar, then select the correct file &#x27;How to Use Your Aut...d ROI Calculator.pdf&#x27;&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent automatise la navigation dans le système de fichiers, effectue une recherche textuelle, sélectionne un fichier PDF spécifique et confirme la préparation de la pièce jointe pour l&#x27;envoi.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000252_seg6.jpg" alt="L&#x27;interface de l&#x27;agent IA affiche une fenêtre contextuelle de recherche de fichiers macOS en superposition, listant des documents PDF dans le dossier &quot;Downloads&quot;." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000252_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:52</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;agent IA affiche une fenêtre contextuelle de recherche de fichiers macOS en superposition, listant des documents PDF dans le dossier &quot;Downloads&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000307_seg6.jpg" alt="L&#x27;interface de l&#x27;agent IA affiche le journal d&#x27;exécution où l&#x27;IA détaille son raisonnement pour filtrer les résultats de recherche, sélectionner un PDF spécifique et le préparer en pièce jointe." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000307_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:07</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;agent IA affiche le journal d&#x27;exécution où l&#x27;IA détaille son raisonnement pour filtrer les résultats de recherche, sélectionner un PDF spécifique et le préparer en pièce jointe.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:15 - 00:03:33</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">As you can see, that has now been sent to myself. So a couple of things. If you&#x27;re having trouble getting this to activate or when you&#x27;re telling it to use computer use, it&#x27;s trying to use like a Cloud and Chrome extension or something like Playwright, then you have to be more explicit in the prompts. The other thing to check on is make sure that your Cloud desktop app is fully updated.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de messagerie ClickUp, interface de l&#x27;agent IA Opus (Computer Use).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de chat confirmant : &quot;Done! The &#x27;How to Use Your Automated ROI Calculator&#x27; PDF has been sent as a DM to Nate Herk in ClickUp at 7:12 PM.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;agent IA effectuant une action automatisée (envoi de fichier) dans une interface web, avec interaction utilisateur validant l&#x27;étape.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000319_seg7.jpg" alt="Interface de discussion (type ClickUp) montrant l&#x27;envoi récent d&#x27;un fichier PDF, avec une fenêtre d&#x27;agent IA ouverte sur la droite traitant la tâche." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000319_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:19</span>
+                        <span class="caption-text">Interface de discussion (type ClickUp) montrant l&#x27;envoi récent d&#x27;un fichier PDF, avec une fenêtre d&#x27;agent IA ouverte sur la droite traitant la tâche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000324_seg7.jpg" alt="Fenêtre de l&#x27;agent IA (Opus 4.6) affichant l&#x27;historique de la conversation où l&#x27;agent confirme l&#x27;envoi réussi du fichier PDF à l&#x27;utilisateur." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000324_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:24</span>
+                        <span class="caption-text">Fenêtre de l&#x27;agent IA (Opus 4.6) affichant l&#x27;historique de la conversation où l&#x27;agent confirme l&#x27;envoi réussi du fichier PDF à l&#x27;utilisateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:34 - 00:03:56</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So, you know, delete it, maybe download it again. And then when you enable the setting, quit out of desktop app and then open it back up again. And then you should see you&#x27;re able to use it. And now that I&#x27;ve already allowed those certain tools like Finder and ClickUp in this session, next time it uses them, it won&#x27;t have to ask me again for permission. Now what gets really cool is when you pair this computer use functionality with the new dispatch feature, which is also available right over here as you can see.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application de bureau Opus 4.6 (Computer Use).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de conversation montrant l&#x27;envoi du fichier &quot;How to Use Your Automated ROI Calculator.pdf&quot; en tant que message direct à Nate Herk dans ClickUp.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA confirme l&#x27;exécution de l&#x27;envoi d&#x27;un fichier après avoir analysé l&#x27;état de l&#x27;écran et obtenu la validation utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000339_seg8.jpg" alt="Une fenêtre d&#x27;application d&#x27;IA (Opus 4.6) affichant une interaction où l&#x27;agent confirme l&#x27;envoi d&#x27;un fichier PDF via ClickUp." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000339_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:39</span>
+                        <span class="caption-text">Une fenêtre d&#x27;application d&#x27;IA (Opus 4.6) affichant une interaction où l&#x27;agent confirme l&#x27;envoi d&#x27;un fichier PDF via ClickUp.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:57 - 00:04:21</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">This lets you control Claude from anywhere. So I can control it right here from my phone, which means if I&#x27;m out and about and I realize, oh shoot, I left that file locally in my downloads folder and, you know, XYZ person needs it, I can just text Cloud Code to open up my browser, grab the file, and send it to them. Okay, so here&#x27;s an example. I&#x27;ve got a message typed up in Dispatch right here, and I&#x27;m going to shoot it off, and you guys will see it pops through right there on my actual local machine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle &quot;Dispatch&quot; (application Claude ou outil associé).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif de l&#x27;outil : &quot;Dispatch to Claude and check in from anywhere&quot;, avec des exemples de cas d&#x27;usage comme trouver un fichier dans les téléchargements, vérifier le statut d&#x27;une commande ou scanner Slack pour des rapports de bugs.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;interface de contrôle à distance de Claude, illustrant la possibilité d&#x27;interagir avec ses fichiers locaux et ses applications via mobile.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000403_seg9.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface utilisateur de &quot;Dispatch&quot;, une fonctionnalité intégrée à Claude permettant le contrôle à distance des tâches et sessions de code." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000403_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:03</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface utilisateur de &quot;Dispatch&quot;, une fonctionnalité intégrée à Claude permettant le contrôle à distance des tâches et sessions de code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:21 - 00:04:58</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m saying use computer use to calculate 726 times 800, or not 800, 83,729, and it&#x27;s going to open the calculator app and then the notes app. So once again, because this is a new session, I have to allow it. And now it took control of the computer. As you can see, it opened up my calculator, it&#x27;s going to have to clear out this current search and it&#x27;s going to have to type in the new numbers as you can see. And now it&#x27;s going to have to open up the notes app and store those results. So there&#x27;s the notes app. You can see that it just added in a calculation result, which has our calculator function right there. And once again, as long as my computer is awake, which we</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> macOS, application Dispatch (interface d&#x27;agent IA), Calculatrice native macOS, Application Notes native macOS.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur : &quot;Use computer use to calculate 726 x 83729 and then create a new note to store the results&quot;. Réponse de l&#x27;agent : &quot;On it — I&#x27;ll open Calculator to do the math, then save the result in Notes.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA prend le contrôle du système d&#x27;exploitation pour automatiser l&#x27;ouverture d&#x27;applications, effectuer un calcul complexe et archiver le résultat dans une note.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000430_seg10.jpg" alt="Interface de l&#x27;application &quot;Dispatch&quot; montrant une demande d&#x27;autorisation pour que Claude prenne le contrôle de la calculatrice et des notes." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000430_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:30</span>
+                        <span class="caption-text">Interface de l&#x27;application &quot;Dispatch&quot; montrant une demande d&#x27;autorisation pour que Claude prenne le contrôle de la calculatrice et des notes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000440_seg10.jpg" alt="Bureau macOS où Claude a ouvert la calculatrice et affiche le résultat d&#x27;une opération mathématique en cours." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000440_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:40</span>
+                        <span class="caption-text">Bureau macOS où Claude a ouvert la calculatrice et affiche le résultat d&#x27;une opération mathématique en cours.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000449_seg10.jpg" alt="Bureau macOS où l&#x27;application Notes est ouverte, affichant le résultat final du calcul précédemment effectué par l&#x27;agent." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000449_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:49</span>
+                        <span class="caption-text">Bureau macOS où l&#x27;application Notes est ouverte, affichant le résultat final du calcul précédemment effectué par l&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:58 - 00:05:18</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">can actually turn on natively with Claude Dispatch, then I can be anywhere from my phone and I can use Claude Dispatch to start a new session, use computer use and do whatever I need. Okay, so before we talk about some other cool use cases here, I did want to talk about the limitations. So obviously right now, this is in research preview. So sometimes it may feel a little slow or a little buggy.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Dispatch (interface de bureau de type agent IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Chat avec Claude : « Use computer use to calculate 726 x 83729 and then create a new note to store the results » ; réponse de Claude : « Done! I calculated 726 x 83729 = 60,787,254 in Calculator and saved it in a new note ».</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent effectue une tâche via « computer use » (calcul mathématique dans l&#x27;application Calculatrice et enregistrement dans l&#x27;application Notes) pilotée via l&#x27;interface Dispatch.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000503_seg11.jpg" alt="Interface de l&#x27;application « Dispatch » affichant une conversation avec l&#x27;agent Claude, incluant une option « Keep awake » et une démonstration de calcul mathématique effectuée par l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000503_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:03</span>
+                        <span class="caption-text">Interface de l&#x27;application « Dispatch » affichant une conversation avec l&#x27;agent Claude, incluant une option « Keep awake » et une démonstration de calcul mathématique effectuée par l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:18 - 00:05:37</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And right now, it&#x27;s only available for macOS within the desktop app for Cowork or Cloud Code. So it&#x27;s going to be coming to Windows in just a few weeks here. Now, really the biggest one in my mind is the fact that it has native limitations for browser use. So in an actual browser, it doesn&#x27;t click around or type, and that&#x27;s for security reasons.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de bureau &quot;Computer Use&quot; (Opus 4.6).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique d&#x27;une session &quot;General coding session&quot; montrant l&#x27;envoi réussi du fichier &quot;How to Use Your Automated ROI Calculator&quot; à Nate Herk via ClickUp.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA confirme avoir terminé l&#x27;envoi d&#x27;un message direct contenant un fichier PDF et demande une confirmation utilisateur (&quot;yes&quot; cliqué).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000523_seg12.jpg" alt="Une capture d&#x27;écran de l&#x27;interface de l&#x27;application de bureau &quot;Computer Use&quot; (Opus 4.6) montrant une session de codage en cours où l&#x27;IA confirme l&#x27;envoi d&#x27;un fichier PDF via ClickUp." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000523_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:23</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface de l&#x27;application de bureau &quot;Computer Use&quot; (Opus 4.6) montrant une session de codage en cours où l&#x27;IA confirme l&#x27;envoi d&#x27;un fichier PDF via ClickUp.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:37 - 00:06:11</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But locally within any of your apps it can use those really well So even if you have different connectors like your Gmail app or your Slack app or ClickUp app as you guys saw It can use all of those perfectly fine So let me just show you guys what I mean by that use your computer use to open up Safari Search for images of cute dogs and save them to my downloads folder So I&#x27;ll shoot this one off and what we&#x27;re gonna see is it&#x27;s able to open up Safari, but then it can&#x27;t actually type or click And you can see here, it actually even says, Safari is restricted to read-only access on the system.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;agent &quot;Computer Claude&quot; (Opus 4.6) affichée au-dessus d&#x27;une application de bureau.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de conversation montrant l&#x27;agent confirmant l&#x27;envoi d&#x27;un fichier PDF nommé &quot;How to Use Your Automated ROI Calculator&quot; via ClickUp.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent a capturé l&#x27;état actuel de l&#x27;écran pour confirmer l&#x27;envoi réussi du message direct (DM) à Nate Herk.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000545_seg13.jpg" alt="Une interface de chat d&#x27;un agent IA (Opus 4.6) en train d&#x27;exécuter une tâche d&#x27;envoi de fichier." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000545_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:45</span>
+                        <span class="caption-text">Une interface de chat d&#x27;un agent IA (Opus 4.6) en train d&#x27;exécuter une tâche d&#x27;envoi de fichier.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:11 - 00:06:30</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">However, I can use Google Chrome extension to do this. So basically what that means is if you want to do legit browser automation on the web, you would need to use Chrome extension or potentially like a Playwright CLI. But this is still super exciting because what&#x27;s happening is Anthropic is shipping a new feature like every day.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Claude Desktop (session &quot;General coding session&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un message système JSON indiquant les permissions accordées (&quot;granted&quot;) à Google Chrome, précisant les limitations : lecture de l&#x27;écran possible mais interdiction de naviguer, cliquer ou taper directement sans passer par le MCP &quot;Claude-in-Chrome&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur teste les capacités d&#x27;interaction de l&#x27;agent avec le navigateur et reçoit une notification de restriction de contrôle direct.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000616_seg14.jpg" alt="Une interface de chat d&#x27;un agent IA (type Claude Desktop) montrant une interaction système concernant l&#x27;accès aux permissions de Google Chrome." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000616_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:16</span>
+                        <span class="caption-text">Une interface de chat d&#x27;un agent IA (type Claude Desktop) montrant une interaction système concernant l&#x27;accès aux permissions de Google Chrome.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:30 - 00:06:51</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And what this shows us is that they&#x27;re moving towards having all of these features natively within Cloud Code. So at some point, Cloud Code will be able to do this in the web and all this kind of other stuff. It&#x27;s just going to take a little bit more time. But they&#x27;re still shipping at an insane pace. But people are still having really great results with this already. You can use your connected apps first, so Slack, Calendar, other integrations.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> - Image #1 : Interface de chat &quot;General coding session&quot; (Opus 4.6).
+- Image #2 : Navigateur Web affichant la plateforme X (Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image #1 : Texte expliquant les restrictions d&#x27;accès en lecture seule sur Safari/Chrome et la proposition d&#x27;utiliser `curl` pour télécharger des images.
+- Image #2 : Publication de @claudeai expliquant l&#x27;autorisation de contrôle d&#x27;ordinateur, avec une image montrant la fenêtre de permission système (Finder, Chrome, Presse-papiers).</p>
+                        <p><strong>Action / Démonstration :</strong> - Image #1 : L&#x27;agent propose une résolution de problème technique via des commandes système en réponse aux limitations du navigateur.
+- Image #2 : Présentation visuelle des capacités de contrôle d&#x27;interface utilisateur (UI) et des permissions accordées à l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000636_seg15.jpg" alt="Interface de discussion d&#x27;un agent IA (Opus 4.6) détaillant les limitations d&#x27;accès aux navigateurs et proposant des alternatives en ligne de commande." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000636_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:36</span>
+                        <span class="caption-text">Interface de discussion d&#x27;un agent IA (Opus 4.6) détaillant les limitations d&#x27;accès aux navigateurs et proposant des alternatives en ligne de commande.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000646_seg15.jpg" alt="Capture d&#x27;écran du réseau social X (Twitter) montrant une publication officielle de Claude (Anthropic) sur les fonctionnalités de contrôle d&#x27;ordinateur (Computer Use)." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000646_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:46</span>
+                        <span class="caption-text">Capture d&#x27;écran du réseau social X (Twitter) montrant une publication officielle de Claude (Anthropic) sur les fonctionnalités de contrôle d&#x27;ordinateur (Computer Use).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:51 - 00:07:11</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">If there&#x27;s no connector for the tool you need, it will ask for permission to open the app on your screen directly. You can assign a task from your phone, you can turn your attention to something else, and you can come back to finished work on your computer. So you can tell Cloud once to scan your email every morning or pull a report every Friday, and it would handle it from there. Now, another way that you could actually use this is you could pair it with the scheduled tasks.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme X (Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du tweet : &quot;Assign a task from your phone, turn your attention to something else, and come back to finished work on your computer. Tell Claude once to scan your email every morning or pull a report every Friday, and it handles it from there.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle (infographie intégrée au tweet) du flux de travail entre un smartphone et un ordinateur pour l&#x27;exécution de tâches automatisées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000656_seg16.jpg" alt="Une capture d&#x27;écran de Twitter (X) montrant un tweet officiel de Claude AI illustrant le concept d&#x27;automatisation cross-device (téléphone vers ordinateur)." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000656_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:56</span>
+                        <span class="caption-text">Une capture d&#x27;écran de Twitter (X) montrant un tweet officiel de Claude AI illustrant le concept d&#x27;automatisation cross-device (téléphone vers ordinateur).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000706_seg16.jpg" alt="La même vue de l&#x27;interface Twitter (X) présentant le tweet promotionnel de Claude AI sur ses capacités d&#x27;automatisation." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000706_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:06</span>
+                        <span class="caption-text">La même vue de l&#x27;interface Twitter (X) présentant le tweet promotionnel de Claude AI sur ses capacités d&#x27;automatisation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:11 - 00:07:37</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So you could actually have a scheduled task kick off computer use. So it&#x27;s pretty much gonna be as if you have a real human working on your laptop. And of course, right now in the research preview, it is only available on Pro and Macs, not on the Teams or Enterprise plans. But like I said, there&#x27;s a lot of unlocks here if you think about the different use cases, like maybe legacy apps that don&#x27;t have an API and you can just actually click around to do things, to download reports, you know, look at different information.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (X/Twitter), interface de démonstration visuelle de Claude (intégration mobile/bureau).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du tweet : &quot;Assign a task from your phone... and come back to finished work on your computer&quot; et &quot;Available on Pro and Max&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage informatif de l&#x27;annonce officielle d&#x27;Anthropic sur l&#x27;automatisation par ordinateur (Computer Use) via l&#x27;interface X.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000717_seg17.jpg" alt="Une capture d&#x27;écran de Twitter montrant un tweet officiel de @claudeai illustrant les capacités d&#x27;automatisation de Claude (&quot;Computer Use&quot;) avec un visuel présentant une interface mobile et un ordinateur." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000717_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:17</span>
+                        <span class="caption-text">Une capture d&#x27;écran de Twitter montrant un tweet officiel de @claudeai illustrant les capacités d&#x27;automatisation de Claude (&quot;Computer Use&quot;) avec un visuel présentant une interface mobile et un ordinateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000724_seg17.jpg" alt="La même page Twitter, montrant le tweet de @claudeai avec le texte spécifique précisant la disponibilité du service &quot;Available on Pro and Max&quot;." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000724_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:24</span>
+                        <span class="caption-text">La même page Twitter, montrant le tweet de @claudeai avec le texte spécifique précisant la disponibilité du service &quot;Available on Pro and Max&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:37 - 00:07:58</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Of course, pairing it with scheduled tasks or something like dispatch is a huge unlock as well. And if you have certain things that you want to test, like maybe you&#x27;re building out some sort of app and you&#x27;re pulling that up in a sandbox environment and you&#x27;re just having Cloud Code click around, find the bugs, test features, rather than you having to sit there and do that manually. I hope you guys are having as much fun as I am playing around with Cloud Code and exploring all of these new features.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site X.com (Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un mème viral représentant un chat au centre d&#x27;un cycle avec le texte &quot;I wake up&quot; et &quot;there is a new technological advancement&quot;, ainsi que la barre latérale &quot;What&#x27;s happening&quot; de X.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle servant d&#x27;illustration humoristique au discours sur le rythme effréné des nouveautés technologiques dans le domaine de l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000742_seg18.jpg" alt="Capture d&#x27;écran montrant le présentateur devant une page du réseau social X (Twitter) affichant un mème humoristique sur les avancées technologiques rapides." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000742_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:42</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur devant une page du réseau social X (Twitter) affichant un mème humoristique sur les avancées technologiques rapides.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:58 - 00:08:10</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s definitely not been a boring few weeks if you&#x27;re in the AI space. So if you enjoyed, if you learned something new, please give it a like helps me out a ton and as always i appreciate you guys making it to the end of the video i&#x27;ll see you on the next one thanks everyone</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme X (Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un mème illustré montrant un cycle répétitif avec le texte &quot;I wake up&quot; et &quot;there is a new technological advancement&quot; autour d&#x27;une photo de chat, reflétant le rythme effréné de l&#x27;actualité IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;un contenu social illustrant le contexte de l&#x27;actualité IA rapide mentionné par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000801_seg19.jpg" alt="Capture d&#x27;écran du réseau social X (Twitter) montrant un mème viral sur les avancées technologiques rapides dans le domaine de l&#x27;IA, avec le présentateur en incrustation vidéo dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/X6EGzi9qm3E/X6EGzi9qm3E_000801_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:01</span>
+                        <span class="caption-text">Capture d&#x27;écran du réseau social X (Twitter) montrant un mème viral sur les avancées technologiques rapides dans le domaine de l&#x27;IA, avec le présentateur en incrustation vidéo dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
