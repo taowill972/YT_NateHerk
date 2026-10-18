@@ -1,0 +1,2627 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Andrej Karpathy vient de multiplier par 10 le Claude Code de tout le monde — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Andrej Karpathy vient de multiplier par 10 le Claude Code de tout le monde</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-05</span>
+                <span class="badge">⏱️ 00:17:46</span>
+                <span class="badge">🆔 <code>sboNwYmH3AY</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=sboNwYmH3AY" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Andrej Karpathy vient de multiplier par 10 le Claude Code de tout le monde**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:32</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce que vous regardez juste ici, ce sont 36 de mes vidéos YouTube les plus récentes organisées en un véritable système de connaissances qui a du sens. Et dans la vidéo d&#x27;aujourd&#x27;hui, je vais vous montrer comment vous pouvez mettre cela en place en cinq minutes. C&#x27;est super, super facile. Vous pouvez voir ici comment nous avons ces différents nœuds et différents schémas qui émergent. Et à mesure que nous zoomons, nous pouvons voir ce que chacun de ces petits points représente. Donc par exemple, voici l&#x27;une de mes vidéos, « Workflows agentiques à 10 000 $ ». On peut voir qu&#x27;elle comporte des tags, qu&#x27;elle a le lien de la vidéo, qu&#x27;elle a le fichier brut, et elle donne une explication de ce dont parle cette vidéo et de ce qu&#x27;il faut en retenir. Et le plus cool, c&#x27;est que je peux suivre les backlinks</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (logiciel de prise de notes/gestion de connaissances).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de dossiers (raw, wiki, comparisons, concepts, people, sources, techniques, tools, index, log, overview) et une vue graphique complexe représentant les relations entre les différentes notes.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du système de connaissances organisé, montrant la vue en graphe des connexions entre les vidéos et les concepts.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000008_seg1.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface d&#x27;Obsidian (ou un éditeur basé sur Markdown similaire) affichant une visualisation en graphe des notes du présentateur, avec une barre latérale de gestion de fichiers à gauche." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000008_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:08</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface d&#x27;Obsidian (ou un éditeur basé sur Markdown similaire) affichant une visualisation en graphe des notes du présentateur, avec une barre latérale de gestion de fichiers à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:32 - 00:01:05</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pour arriver là où je veux. Il y a un backlink pour le framework WAT. Il y a un backlink pour Claude Code. Il y a un backlink pour tous ces différents outils que j&#x27;ai mentionnés comme Perplexity, Visual Studio Code, Nano Banana, N8N. Il comporte également des techniques comme le framework WAT, le mode de contournement des autorisations ou le point de contrôle de révision humaine. Donc, au fur et à mesure que cela continue de se remplir, nous pouvons commencer à voir des schémas et des relations entre chaque outil, chaque compétence ou chaque serveur MCP dont j&#x27;ai pu parler dans une vidéo YouTube. Et je peux simplement l&#x27;interroger de manière vraiment efficace maintenant que nous avons mis en place ce système concret. Et le plus fou, c&#x27;est que j&#x27;ai dit : « Hé, Claude Code, va récupérer les transcriptions »</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (logiciel de prise de notes).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste détaillée d&#x27;outils comprenant : Claude Code, Visual Studio Code, Perplexity, Nano Banana, Gmail, Google Sheets, n8n, Zapier, Trigger.dev, Modal, Vercel, Beehive, Github. Chaque entrée contient une brève description de son rôle dans l&#x27;automatisation.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de la documentation du workflow, mettant en évidence les interconnexions entre les différents outils logiciels cités par le narrateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000040_seg2.jpg" alt="Une capture d&#x27;écran de l&#x27;interface Obsidian montrant une note intitulée &quot;10k-agentic-workflows&quot; qui liste et décrit les différents outils technologiques utilisés dans le cadre du projet." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000040_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:40</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface Obsidian montrant une note intitulée &quot;10k-agentic-workflows&quot; qui liste et décrit les différents outils technologiques utilisés dans le cadre du projet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:05 - 00:01:27</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">de mes vidéos récentes et tout organiser. Je n&#x27;ai littéralement eu aucune création de liens manuelle à faire ici. Il a simplement tout trouvé par lui-même. Et puis juste ici, j&#x27;en ai un beaucoup plus petit, mais c&#x27;est plutôt mon cerveau personnel. Donc ce sont des choses qui se passent dans ma vie personnelle. Ce sont des choses qui se passent avec, vous savez, Up at AI ou ma chaîne YouTube ou mes différentes entreprises et mes employés et nos initiatives du deuxième trimestre et des choses comme ça, c&#x27;est davantage mon propre deuxième cerveau.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (logiciel de prise de notes avec visualisation en graphe).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds connectés représentant des concepts tels que &quot;Claude-code&quot;, &quot;Agentic workflows&quot;, &quot;LLMs&quot;, &quot;Automation&quot;, &quot;Youtube-tutorial&quot;, et diverses structures de données de projet.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et visualisation de la structure des connexions automatiques entre les notes et les projets de l&#x27;utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000111_seg3.jpg" alt="Vue d&#x27;ensemble d&#x27;un graphe de connaissances complexe affichant des liens entre divers concepts, outils et projets liés à l&#x27;automatisation IA dans l&#x27;interface Obsidian." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000111_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:11</span>
+                        <span class="caption-text">Vue d&#x27;ensemble d&#x27;un graphe de connaissances complexe affichant des liens entre divers concepts, outils et projets liés à l&#x27;automatisation IA dans l&#x27;interface Obsidian.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:28 - 00:01:47</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;ai donc un second cerveau ici, et ensuite j&#x27;ai en gros un système de connaissances YouTube, et je pourrais les combiner ou je pourrais les garder séparés, et je peux simplement continuer à créer d&#x27;autres systèmes de connaissances et les connecter tous à d&#x27;autres agents IA dont j&#x27;ai besoin qu&#x27;ils aient ce contexte. C&#x27;est juste super cool. Donc Andre Karpathy vient de publier ce petit post sur les bases de connaissances LLM et d&#x27;expliquer ce qu&#x27;il fait avec.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (logiciel de prise de notes) et X (anciennement Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds et liens (Graphe de connaissances) dans Obsidian ; texte théorique sur l&#x27;ingestion de données et la compilation de wikis via LLM dans le post d&#x27;Andrej Karpathy.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation visuelle dans l&#x27;arborescence du &quot;second cerveau&quot; et lecture de recommandations sur la gestion de bases de connaissances basées sur l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000132_seg4.jpg" alt="Vue graphique (Graph view) dans Obsidian montrant un réseau complexe de nœuds interconnectés représentant une base de connaissances personnelle." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000132_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:32</span>
+                        <span class="caption-text">Vue graphique (Graph view) dans Obsidian montrant un réseau complexe de nœuds interconnectés représentant une base de connaissances personnelle.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000142_seg4.jpg" alt="Publication sur X (Twitter) d&#x27;Andrej Karpathy concernant les &quot;LLM Knowledge Bases&quot;, détaillant l&#x27;utilisation de fichiers Markdown et d&#x27;outils d&#x27;indexation pour structurer les connaissances." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000142_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:42</span>
+                        <span class="caption-text">Publication sur X (Twitter) d&#x27;Andrej Karpathy concernant les &quot;LLM Knowledge Bases&quot;, détaillant l&#x27;utilisation de fichiers Markdown et d&#x27;outils d&#x27;indexation pour structurer les connaissances.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:47 - 00:02:05</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et en l&#x27;espace de seulement quelques jours, ça a eu énormément de succès sur X. Alors faisons une analyse rapide, et ensuite je vais vous montrer comment vous pouvez mettre ça en place en gros en cinq minutes. C&#x27;est bien plus simple que vous ne le pensez. Quelque chose que j&#x27;ai trouvé très utile récemment, c&#x27;est d&#x27;utiliser des LLM pour créer des bases de connaissances personnelles pour divers sujets de recherche d&#x27;intérêt. Il y a donc différentes étapes. La première partie, c&#x27;est l&#x27;ingestion de données.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme X (anciennement Twitter) affichée dans un navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du tweet : &quot;LLM Knowledge Bases. Something I&#x27;m finding very useful recently: using LLMs to build personal knowledge bases... Data ingest: I index source documents... into a raw/ directory, then I use an LLM to incrementally &#x27;compile&#x27; a wiki...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du tweet source servant de base à l&#x27;explication technique du vidéaste sur l&#x27;automatisation de la gestion de connaissances.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000151_seg5.jpg" alt="Capture d&#x27;écran montrant un tweet d&#x27;Andrej Karpathy sur X, expliquant sa méthode pour créer des bases de connaissances personnelles avec des LLM." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000151_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:51</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un tweet d&#x27;Andrej Karpathy sur X, expliquant sa méthode pour créer des bases de connaissances personnelles avec des LLM.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:05 - 00:02:33</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En gros, il met des documents sources. Donc, en gros, il prend un PDF et le met dans Cloud Code, puis Cloud Code fait le reste. Il utilise Obsidian comme IDE. Donc, ce n&#x27;est vraiment rien de très révolutionnaire. Obsidian vous permet juste de voir visuellement vos fichiers markdown. Mais par exemple, ce projet Obsidian juste ici avec tout ce truc de transcriptions YouTube. Ça se trouve en fait juste ici. C&#x27;est exactement la même chose. Voici les transcriptions YouTube brutes. Et voici ce wiki que je vous ai montré les gars, avec les différents dossiers pour ce que CloudCo a fait avec mes transcriptions YouTube.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (logiciel de prise de notes/gestion de connaissances).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Structure de dossiers (raw, wiki/comparisons, concepts, sources, techniques), vue en graphe interactive montrant les interconnexions de données, texte sur l&#x27;automatisation LLM.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;arborescence des fichiers du projet et visualisation graphique de la base de connaissances liée au projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000219_seg6.jpg" alt="Capture d&#x27;écran de l&#x27;interface Obsidian affichant la &quot;Graph view&quot; (vue en graphe) montrant les connexions entre de nombreuses notes et dossiers structurés." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000219_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:19</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface Obsidian affichant la &quot;Graph view&quot; (vue en graphe) montrant les connexions entre de nombreuses notes et dossiers structurés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:33 - 00:02:55</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then there&#x27;s a Q&amp;A phase where you basically can ask questions about YouTube or about the research. And it can look through the entire wiki in a much more efficient way. And it can give you answers that are super intelligent. He said here, I thought that I had to reach for fancy rag, but the LLM has been pretty good about auto-maintaining index files and brief summaries of all documents, and it reads all the important related data fairly easily at this small scale.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> X (anciennement Twitter) affichant un texte de blog ou une réflexion technique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte traitant de l&#x27;utilisation d&#x27;Obsidian, de l&#x27;automatisation par LLM pour la maintenance de données, de la gestion de RAG (Retrieval-Augmented Generation) et de la génération de sorties visuelles (Markdown, Marp, Matplotlib).</p>
+                        <p><strong>Action / Démonstration :</strong> Lecture d&#x27;un témoignage utilisateur sur l&#x27;intégration d&#x27;agents IA dans un flux de travail de recherche basé sur Obsidian.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000238_seg7.jpg" alt="Une capture d&#x27;écran d&#x27;un post sur X (Twitter) expliquant l&#x27;utilisation d&#x27;Obsidian comme interface pour gérer une base de connaissances (wiki) maintenue par un LLM." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000238_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:38</span>
+                        <span class="caption-text">Une capture d&#x27;écran d&#x27;un post sur X (Twitter) expliquant l&#x27;utilisation d&#x27;Obsidian comme interface pour gérer une base de connaissances (wiki) maintenue par un LLM.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:55 - 00:03:16</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc en ce moment, il fait environ 100 articles et environ un demi-million de mots. Donc il y a quelques autres choses que nous aborderons plus tard, mais le TLDR c&#x27;est que vous donnez des données brutes à CloudCode, il les compare, il les organise, puis il les place aux bons endroits avec des relations, et ensuite vous pouvez l&#x27;interroger sur n&#x27;importe quoi. Et cela peut vous aider à identifier où il y a des lacunes dans ce nœud ou dans cette relation, et il peut faire des recherches et combler ces lacunes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme de réseau social (X / Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte technique décrivant un workflow : collecte de données brutes -&gt; compilation par LLM en wiki Markdown -&gt; interaction via CLI pour Q&amp;A -&gt; consultation dans Obsidian -&gt; finetuning de modèles pour intégration des connaissances.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur utilise ce post comme support visuel pour illustrer le concept de &quot;données brutes organisées et automatisées par un agent&quot; (CloudCode).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000301_seg8.jpg" alt="Une capture d&#x27;écran d&#x27;une publication sur la plateforme X (anciennement Twitter) détaillant le processus d&#x27;automatisation de données via LLM, incluant la compilation en wiki .md et l&#x27;usage d&#x27;Obsidian." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000301_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:01</span>
+                        <span class="caption-text">Une capture d&#x27;écran d&#x27;une publication sur la plateforme X (anciennement Twitter) détaillant le processus d&#x27;automatisation de données via LLM, incluant la compilation en wiki .md et l&#x27;usage d&#x27;Obsidian.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000311_seg8.jpg" alt="La suite du même texte sur X, mettant en avant le concept de &quot;finetuning&quot; et l&#x27;automatisation totale du wiki par des LLM plutôt que par des scripts manuels." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000311_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:11</span>
+                        <span class="caption-text">La suite du même texte sur X, mettant en avant le concept de &quot;finetuning&quot; et l&#x27;automatisation totale du wiki par des LLM plutôt que par des scripts manuels.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:17 - 00:03:36</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">D&#x27;accord, alors pourquoi est-ce si important ? Parce que les conversations d&#x27;IA normales sont éphémères, ce qui signifie que les connaissances disparaissent après la conversation. Mais cette méthode, qui utilise le wiki LLM de Karpathy, fait fructifier les connaissances comme des intérêts à la banque. Les gens sur X qualifient cela de véritable révolution parce que cela donne enfin l&#x27;impression que l&#x27;IA est un collègue infatigable qui se souvient vraiment de tout et qui reste organisé. C&#x27;est aussi super simple.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation (diapositives).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste à puces expliquant que les chats IA classiques sont éphémères tandis que la méthode de Karpathy permet une accumulation des connaissances (&quot;compound like interest in a bank&quot;) et une meilleure organisation.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique des concepts fondamentaux derrière l&#x27;automatisation proposée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000322_seg9.jpg" alt="Une diapositive de présentation textuelle illustrant les avantages de la méthode de Wiki LLM par rapport aux chats IA traditionnels, avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000322_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:22</span>
+                        <span class="caption-text">Une diapositive de présentation textuelle illustrant les avantages de la méthode de Wiki LLM par rapport aux chats IA traditionnels, avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:36 - 00:03:56</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela vous prendra cinq minutes à configurer. Je vais vous montrer, les gars. Vous n&#x27;avez pas besoin d&#x27;une base de données vectorielle sophistiquée, d&#x27;embeddings ou d&#x27;une infrastructure complexe. C&#x27;est littéralement juste un dossier avec des fichiers Markdown. C&#x27;est tout. Vous avez littéralement juste un coffre en haut. Donc dans cet exemple, il s&#x27;appelle MyWiki. Vous avez un dossier « raw » où vous mettez toutes vos données, et ensuite vous avez un dossier wiki, qui est ce que le LLM prend depuis votre dossier « raw » et met dans le wiki.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation de type &quot;Slide&quot; avec annotations graphiques manuelles.</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Arborescence : `my-wiki/` contenant `raw/` (read-only) et `wiki/` (géré par LLM).
+- Fichiers clés dans `wiki/` : `index.md` (sommaire), `log.md` (historique), `*.md` (pages).
+- Fichier racine : `CLAUDE.md` (règles et schéma).</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration conceptuelle de l&#x27;organisation des fichiers pour un système de gestion de connaissances autonome par un LLM.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000346_seg10.jpg" alt="Diagramme structuré présentant l&#x27;arborescence de fichiers (&quot;LLM Wiki File Tree&quot;) pour organiser une base de connaissances locale pilotée par IA." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000346_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:46</span>
+                        <span class="caption-text">Diagramme structuré présentant l&#x27;arborescence de fichiers (&quot;LLM Wiki File Tree&quot;) pour organiser une base de connaissances locale pilotée par IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:56 - 00:04:30</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ici, vous avez toutes les pages wiki qu&#x27;il va créer, mais vous avez aussi un index et vous avez un journal. Donc par exemple, dans mon coffre de transcriptions YouTube, voici l&#x27;index. Vous pouvez voir que j&#x27;ai tous ces différents outils, sur lesquels je pourrais évidemment cliquer et cela m&#x27;amènerait directement sur cette page. Ou après cela, j&#x27;ai toutes les différentes techniques : équipes d&#x27;agents, sous-agents, modes d&#x27;autorisation, le framework WAT. Et puis nous avons différents concepts : serveurs MCP, RAG, Vibe coding. Nous avons toutes ces différentes sources, qui sont, vous savez, les vidéos YouTube. Et puis quand j&#x27;ai des personnes ou quand j&#x27;ai des comparaisons, elles seront mises ici dans l&#x27;index. Et puis nous avons aussi un journal, qui est l&#x27;historique des opérations. Donc dans ce cas, dans le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (éditeur de notes Markdown)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste d&#x27;outils comprenant : claude-code, n8n, cursor, trigger-dev, firecrawl, perplexity, nano-banana-2, antigravity, pinecone, google-workspace-cli, clickup, vercel, playwright, pixel-agents, key-ai, openrouter, 21st-dev.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;arborescence des fichiers du coffre (vault) Obsidian, avec le fichier « index » sélectionné et affiché à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000405_seg11.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface d&#x27;Obsidian affichant une page intitulée « Wiki Index », qui répertorie divers outils technologiques et d&#x27;IA avec une brève description pour chacun." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000405_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:05</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface d&#x27;Obsidian affichant une page intitulée « Wiki Index », qui répertorie divers outils technologiques et d&#x27;IA avec une brève description pour chacun.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:30 - 00:05:05</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">YouTube project, the log isn&#x27;t huge because I only ran one huge batch of the initial 36 YouTube videos. But now every time I have one, I say, hey, can you go ahead and ingest the new YouTube video into the wiki and then we&#x27;ll see every single time we update this. And then of course, you need your Claude.md to explain how the project works and how to search through things and how to, you know, update things. It&#x27;s also a big deal from a cost perspective, token efficiency and long-term value. One ex-user turned 383 scattered files and over 100 meeting transcripts into a compact wiki and dropped token usage by 95% when querying with Claude. And obviously token management</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (éditeur Markdown), Slides de présentation graphique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Structure de fichiers : &#x27;raw/&#x27;, &#x27;wiki/&#x27; (index.md, log.md), &#x27;CLAUDE.md&#x27;. Logs d&#x27;opérations : &quot;[2026-04-05] ingest | Initial batch ingest of 36 YouTube transcripts&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la structure de données &quot;Wiki&quot; utilisée pour optimiser le contexte pour les modèles de langage (LLM).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000439_seg12.jpg" alt="Une capture d&#x27;écran de l&#x27;interface de l&#x27;éditeur Obsidian montrant le fichier &quot;Wiki Log&quot; qui détaille l&#x27;historique des opérations, notamment l&#x27;ingestion initiale de 36 transcriptions YouTube." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000439_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:39</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface de l&#x27;éditeur Obsidian montrant le fichier &quot;Wiki Log&quot; qui détaille l&#x27;historique des opérations, notamment l&#x27;ingestion initiale de 36 transcriptions YouTube.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000448_seg12.jpg" alt="Une infographie schématique intitulée &quot;LLM Wiki File Tree&quot; illustrant l&#x27;organisation des répertoires d&#x27;un projet, incluant les dossiers &#x27;raw/&#x27; et &#x27;wiki/&#x27;, ainsi que le fichier central &#x27;CLAUDE.md&#x27;." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000448_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:48</span>
+                        <span class="caption-text">Une infographie schématique intitulée &quot;LLM Wiki File Tree&quot; illustrant l&#x27;organisation des répertoires d&#x27;un projet, incluant les dossiers &#x27;raw/&#x27; et &#x27;wiki/&#x27;, ainsi que le fichier central &#x27;CLAUDE.md&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:05 - 00:05:28</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and efficiency is a huge conversation right now and will always be. The other thing that&#x27;s really cool about this is there&#x27;s not really like a GitHub repo, you go copy, or there&#x27;s not a complicated setup. You literally just say, Hey, Cloud Code, read this idea from Andre Karpathy and implement it. And people on X are now talking about like, this is how 2026 AI agentic software and products will be made. You just give it a high level idea and it goes and builds it out.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation type diaporama (Slide deck).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;Why is this a big deal? • Idea files &gt; code. Karpathy&#x27;s follow-up post today emphasized sharing high-level &quot;idea files&quot; (prompts/specs) instead of code. • Your agent&#x27;s job is to implement and customize. This is blowing up because it fits the new agent era perfectly. PRs become &quot;prompt requests.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique et conceptuelle du changement de paradigme dans le développement logiciel assisté par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000511_seg13.jpg" alt="Une diapositive de présentation avec un fond abstrait numérique, expliquant pourquoi le passage des fichiers de code vers les &quot;fichiers d&#x27;idées&quot; (idea files) est important pour l&#x27;ère des agents IA." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000511_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:11</span>
+                        <span class="caption-text">Une diapositive de présentation avec un fond abstrait numérique, expliquant pourquoi le passage des fichiers de code vers les &quot;fichiers d&#x27;idées&quot; (idea files) est important pour l&#x27;ère des agents IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:28 - 00:06:01</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And Karpathy even said, Hey, you know, I left this prompt vague so that you guys can customize it. And I&#x27;ll show you the ways in my two different vaults right now that it changed things a little bit based on the context and understanding of what the project is actually for. Okay, so this was the original tweet I just showed you guys. And then he followed up and said, hey, this one went viral. So here is the idea in a gist format. So if you open this up, this is basically just another explanation of the core idea of how this works and why the architecture, indexing, all this kind of stuff. And by the way, this is the part where he says, hey, this is left vague so that you can hack it and customize it to your own project. So we&#x27;re going to come right back to this in a sec,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme X (Twitter), GitHub Gist (via navigateur web).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur les agents LLM, lien vers un Gist, et contenu technique sur l&#x27;automatisation de la gestion de connaissances (Obsidian, CLI tools, dataview).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et lecture commentée de la documentation théorique et technique partagée par Karpathy pour illustrer le concept de &quot;prompt/spec&quot; orienté agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000545_seg14.jpg" alt="Capture d&#x27;écran d&#x27;un post Twitter (X) d&#x27;Andrej Karpathy expliquant le concept de partage d&#x27;idées plutôt que de code spécifique." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000545_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:45</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un post Twitter (X) d&#x27;Andrej Karpathy expliquant le concept de partage d&#x27;idées plutôt que de code spécifique.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000553_seg14.jpg" alt="Vue détaillée du contenu textuel d&#x27;un GitHub Gist rédigé par Karpathy, détaillant des outils CLI et des conseils techniques pour l&#x27;utilisation d&#x27;Obsidian avec des LLM." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000553_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:53</span>
+                        <span class="caption-text">Vue détaillée du contenu textuel d&#x27;un GitHub Gist rédigé par Karpathy, détaillant des outils CLI et des conseils techniques pour l&#x27;utilisation d&#x27;Obsidian avec des LLM.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:01 - 00:06:36</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">but the first prereq that we&#x27;re going to do, it&#x27;s not necessary, but I like to have a nice little front end to see the relationships is we&#x27;re going to go to Obsidian and download it. So if you just go to obsidian.md, you can see this is the completely free tool and you&#x27;re going to go ahead and download it. So just for your operating system, download this and then open up the wizard and open up the app. So when you open up the app, it&#x27;ll look like this. And what we&#x27;re going to do here is we&#x27;re going to create a new vault. So down here, you can see I have HercBrain and I have YouTube transcripts. I&#x27;ll just make a little bigger. I&#x27;m going to go to manage vaults. I&#x27;m going to create a new one. And now we just have to give this a name. So I&#x27;m just going to call this</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Obsidian.md), Application de bureau Obsidian.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du site web, structure de dossiers dans la barre latérale, nœuds et liens de la vue graphique (&quot;Graph view&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;outil de gestion de connaissances et visualisation d&#x27;un graphe de notes interconnectées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000610_seg15.jpg" alt="Page d&#x27;accueil du site web Obsidian montrant le bouton de téléchargement et une prévisualisation de l&#x27;interface du logiciel." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000610_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:10</span>
+                        <span class="caption-text">Page d&#x27;accueil du site web Obsidian montrant le bouton de téléchargement et une prévisualisation de l&#x27;interface du logiciel.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000627_seg15.jpg" alt="Capture d&#x27;écran de l&#x27;application Obsidian ouverte, affichant la &quot;Graph view&quot; (vue graphique) montrant les connexions entre différentes notes et projets." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000627_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:27</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;application Obsidian ouverte, affichant la &quot;Graph view&quot; (vue graphique) montrant les connexions entre différentes notes et projets.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:36 - 00:06:54</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">one demo vault. And you&#x27;re going to choose a location where you want to put this. So I&#x27;m just throwing this on my desktop. And I&#x27;m going to go ahead and create this vault. Then what you&#x27;re going to do is go to wherever you like to run cloud code. So in this case, I&#x27;m doing it in VS code. And I open up that folder. So demo vault, we get an obsidian, and then we get a welcome.md.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (version 1.12.7)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champs de saisie : &quot;Vault name&quot; (demo vault) et &quot;Location&quot; (chemin OneDrive), avec un avertissement système concernant la synchronisation de fichiers.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et création d&#x27;un nouveau répertoire local (vault) dans Obsidian avant son utilisation dans un éditeur de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000640_seg16.jpg" alt="Fenêtre de création d&#x27;un nouveau coffre (&quot;vault&quot;) dans l&#x27;application Obsidian, affichant les champs pour le nom du coffre (&quot;demo vault&quot;) et son emplacement sur le bureau via OneDrive." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000640_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:40</span>
+                        <span class="caption-text">Fenêtre de création d&#x27;un nouveau coffre (&quot;vault&quot;) dans l&#x27;application Obsidian, affichant les champs pour le nom du coffre (&quot;demo vault&quot;) et son emplacement sur le bureau via OneDrive.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:55 - 00:07:31</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m going to open up cloud. So I&#x27;m going to do it in my terminal. I&#x27;m going to run cloud. And lately I&#x27;ve been liking using my terminal better for Claude. I like to do it inside of VS Code, but the reason is just because I like to see the status line and I have a little bit more functionality. So anyways, now that we have Claude Code open, here&#x27;s what we&#x27;re going to do. We&#x27;re going to go back over to the LLM wiki thing that we got from Andre Carpathie. We&#x27;re going to copy all of this and we&#x27;re going to go back into Claude Code and then just paste it in there. So that is the prompt from Carpathie that&#x27;s going to build out everything we need. And then before we send that off. We&#x27;re dropping this in, which you guys can screenshot and then just throw into yours.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Claude Code CLI, navigateur web (GitHub).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes terminal liées à &quot;Claude Code v2.1.92&quot;, indicateurs &quot;Opus 4.6 (1M context)&quot;, paramètre &quot;bypass permissions on&quot;, et texte inséré &quot;[Pasted text #1 +62 lines]&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution et interaction avec l&#x27;outil Claude Code dans un terminal VS Code, incluant le collage d&#x27;un bloc de texte pour traitement par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000704_seg17.jpg" alt="Interface de terminal Claude Code v2.1.92 au sein de l&#x27;éditeur VS Code, affichant un message de bienvenue." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000704_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:04</span>
+                        <span class="caption-text">Interface de terminal Claude Code v2.1.92 au sein de l&#x27;éditeur VS Code, affichant un message de bienvenue.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000722_seg17.jpg" alt="Terminal Claude Code dans VS Code après l&#x27;insertion (paste) d&#x27;un contenu de 62 lignes." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000722_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:22</span>
+                        <span class="caption-text">Terminal Claude Code dans VS Code après l&#x27;insertion (paste) d&#x27;un contenu de 62 lignes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:31 - 00:08:03</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But I&#x27;m saying you are now my LLM wiki agent. Implement this exact idea file as my complete second brain. Guide me step by step. Create the cloud.md schema, blah, blah, blah. So this is just telling it what it needs to do with this idea that we just got from Karpathy. So anyways, on the right, we have this cloud code running. And on the left, we have our Obsidian Vault. And you can see it just created those two folders. So it created the raw and it created the wiki, as you can see. Now, by default, it threw in four folders. It threw in analysis, concepts, entities, and sources. Once we start to populate stuff, we can talk to it to see if that&#x27;s actually the way we want to do it or not.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code) avec l&#x27;extension terminal Claude Code (v2.1.92).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt affiché est : &quot;You are now my LLM Wiki agent. Implement this exact idea file as my complete second brain. Guide me step-by-step: create the CLAUDE.md schema file with full rules, set up index.md and log.md, define folder conventions, and show me the first ingest example. From now on, every interaction follows the schema.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur soumet ses instructions à l&#x27;agent Claude Code pour initialiser une structure de répertoire (vault) destinée à devenir un &quot;second cerveau&quot; piloté par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000739_seg18.jpg" alt="L&#x27;interface de VS Code montrant le terminal Claude Code en cours d&#x27;exécution avec un prompt complexe adressé à l&#x27;IA pour configurer un système de gestion de connaissances &quot;second brain&quot;." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000739_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:39</span>
+                        <span class="caption-text">L&#x27;interface de VS Code montrant le terminal Claude Code en cours d&#x27;exécution avec un prompt complexe adressé à l&#x27;IA pour configurer un système de gestion de connaissances &quot;second brain&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:03 - 00:08:37</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Because it&#x27;s interesting, in my personal kind of second brain, the wiki is literally just markdown files. There&#x27;s no structure to it. And in some cases, that&#x27;s good. Karpathy actually said, sometimes I like to keep it really simple and really flat, which means like no subfolders and not a bunch of over organizing. But then you guys did see in my YouTube transcript one, there were different subfolders. And I think that in this case, it actually makes more sense. But you can see that it went ahead and it created a claw.md. It created an index and a log and then a few different folders in our wiki. But now it&#x27;s saying, hey, let&#x27;s go ahead and try it out. Drop in your first source into the raw folder and tell me to ingest it. Okay, so I&#x27;m at this website called</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (logiciel de prise de notes).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de fichiers Markdown dans le dossier &quot;wiki&quot; (ex: _index-personal, _index-business, 2026-04-05-claude-code-sub-agents) et une représentation visuelle interconnectée des notes (nœuds) dans la vue graphique.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;explorateur de fichiers de l&#x27;espace de travail &quot;Herk Brain&quot;, avec survol de la souris sur le fichier &quot;_index-personal&quot; affichant ses métadonnées de création et de modification.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000811_seg19.jpg" alt="Capture d&#x27;écran de l&#x27;interface Obsidian affichant la &quot;Graph view&quot; (vue graphique) d&#x27;un second cerveau numérique, avec une arborescence de fichiers Markdown dans la barre latérale gauche." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000811_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:11</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface Obsidian affichant la &quot;Graph view&quot; (vue graphique) d&#x27;un second cerveau numérique, avec une arborescence de fichiers Markdown dans la barre latérale gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:37 - 00:09:06</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">AI 2027. If you guys haven&#x27;t read this before, it&#x27;s kind of an interesting read. So go check it out. And now let&#x27;s say I want to get this into my vault. What I could do is just copy the whole page, right? And it might just come through a little weird. Or we can just get an obsidian extension, which lets us basically take articles right from the web and just put it right into our vault. Super easy. So search for this extension called Obsidian Web Clipper. You would go ahead and add this to Chrome. So then when you&#x27;re in the article that you want, you basically just click on your extensions, you open up Obsidian Web Clipper, and then you can just chuck it into your vault.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google Chrome).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes informatifs sur l&#x27;évolution de l&#x27;IA (rapport AI 2027) ; interface de l&#x27;extension de navigateur Obsidian Web Clipper.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation d&#x27;outils pour capturer du contenu web vers un coffre-fort (vault) personnel Obsidian.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000845_seg20.jpg" alt="Page web du rapport &quot;AI 2027&quot; présentant des analyses prospectives sur l&#x27;IA, incluant des graphiques de tendances et des sections sur les agents IA." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000845_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:45</span>
+                        <span class="caption-text">Page web du rapport &quot;AI 2027&quot; présentant des analyses prospectives sur l&#x27;IA, incluant des graphiques de tendances et des sections sur les agents IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000859_seg20.jpg" alt="Page de téléchargement de l&#x27;extension &quot;Obsidian Web Clipper&quot; dans le Chrome Web Store, illustrant l&#x27;outil pour capturer des pages web vers Obsidian." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000859_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:59</span>
+                        <span class="caption-text">Page de téléchargement de l&#x27;extension &quot;Obsidian Web Clipper&quot; dans le Chrome Web Store, illustrant l&#x27;outil pour capturer des pages web vers Obsidian.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:07 - 00:09:41</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then right here, you&#x27;re going to want to set this to raw because this is the actual folder that it&#x27;s going to put it in. So you can go ahead and click add to Obsidian, open Obsidian. And then now you can see in my raw section, we have this AI 2027 source with the title, the source, and it&#x27;s not super, super populated yet because the LLM and cloud code is going to do that. So here is our file. I&#x27;m going to open up cloud code and say, awesome. I just threw in an article called AI 2027 into the raw. Can you please go ahead and ingest that? It might ask you some questions. It might also be helpful to, before you start ingesting stuff, say, Hey, by the way, this project is specifically</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian, VS Code (ou éditeur compatible avec les extensions Claude/Opus).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Propriétés de note (Titre : AI 2027, Source : ai-2027.com), texte descriptif sur l&#x27;IA, et instructions de l&#x27;agent &quot;Claude&quot; pour traiter les sources ingérées.</p>
+                        <p><strong>Action / Démonstration :</strong> Organisation de notes de recherche dans un dossier &quot;raw&quot; et interaction avec un agent IA pour la gestion de connaissances (Knowledge Management).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000915_seg21.jpg" alt="L&#x27;interface d&#x27;Obsidian affichant une note nommée &quot;AI 2027&quot; avec ses propriétés et un contenu texte, dans le dossier &quot;raw&quot;." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000915_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:15</span>
+                        <span class="caption-text">L&#x27;interface d&#x27;Obsidian affichant une note nommée &quot;AI 2027&quot; avec ses propriétés et un contenu texte, dans le dossier &quot;raw&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000932_seg21.jpg" alt="Une vue en écran divisé montrant à gauche la note &quot;AI 2027&quot; dans Obsidian, et à droite une interface de chat IA nommée &quot;Claude&quot; intégrée dans un éditeur de code." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000932_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:32</span>
+                        <span class="caption-text">Une vue en écran divisé montrant à gauche la note &quot;AI 2027&quot; dans Obsidian, et à droite une interface de chat IA nommée &quot;Claude&quot; intégrée dans un éditeur de code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:41 - 00:10:13</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">for my second brain. So personal things, business things, whatever. Or this is just a research project. This is where I&#x27;m going to chuck you all of the articles and all the things that I want to learn about and all the things that I know. So there&#x27;s different ways that you can set up the project as you saw with mine, one for YouTube, one for just personal second brain. So now what it&#x27;s doing is it&#x27;s going to read through this article and then it&#x27;s going to figure out where should I chuck everything into the wiki. It&#x27;s not just going to create one MD file for this. It might create five or it might create 10. And there&#x27;s going to be relationships between each of the different sections that it creates. So it&#x27;s kind of doing its own method of chunking. Now, one thing</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (panneau de gauche) et VS Code avec Claude Code (panneau de droite).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans Obsidian : note &quot;AI 2027&quot; avec métadonnées et texte sur les prédictions d&#x27;IA. Dans Claude Code : logs d&#x27;exécution indiquant &quot;Cogitated for 1m 24s&quot;, lecture du fichier &quot;raw\AI 2027.md&quot; et message d&#x27;état &quot;Pontificating...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur demande à l&#x27;agent IA de lire et d&#x27;ingérer un article nommé &quot;AI 2027&quot; préalablement ajouté au dossier &quot;raw&quot; du projet, afin de traiter son contenu pour le &quot;second brain&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_000949_seg22.jpg" alt="Capture d&#x27;écran montrant un environnement de travail scindé en deux : à gauche, l&#x27;application Obsidian affichant une note sur &quot;AI 2027&quot; ; à droite, le terminal de VS Code exécutant Claude Code." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_000949_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:49</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un environnement de travail scindé en deux : à gauche, l&#x27;application Obsidian affichant une note sur &quot;AI 2027&quot; ; à droite, le terminal de VS Code exécutant Claude Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:13 - 00:10:49</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I want to call out real quick is with this extension, if you go here and you open up the options for it, you can see that you can actually change where by default the folders are dropped, which is in the location section. By default, it&#x27;ll be going to a place called clippings, but just go ahead and change that to raw. Okay. So here it came back with all these questions, right? It said, here are my key takeaways from this article, blah, blah, blah. And now it&#x27;ll ask you, what do you want to emphasize from this article? What&#x27;s your focus? How granular do you want to be? What&#x27;s your plan? So I&#x27;m just going to say, I want this to be extremely thorough. This is my passion looking at where AI is going to go. And this whole project, by the way, that you&#x27;re</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de paramètres d&#x27;extension de navigateur (Web Clipper).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champs de configuration pour &quot;Note name&quot; ([title]), &quot;Note location&quot; (valeur réglée sur &quot;raw&quot;), et propriétés de métadonnées (title, source, author, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans les options de configuration de l&#x27;extension pour modifier le chemin de stockage par défaut des notes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001022_seg23.jpg" alt="Menu de configuration d&#x27;une extension de prise de notes (probablement Obsidian Web Clipper) montrant les paramètres &quot;Location&quot; et &quot;Content&quot;." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001022_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:22</span>
+                        <span class="caption-text">Menu de configuration d&#x27;une extension de prise de notes (probablement Obsidian Web Clipper) montrant les paramètres &quot;Location&quot; et &quot;Content&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:49 - 00:11:17</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">setting up in this vault is basically just going to be my place to dump in research about AI. So help me keep all that organized so that I can query it and that I can, you know, keep my thoughts related. So that&#x27;s just a quick example of what it might look like for you to give it some more context to continuously build your project. So I&#x27;m going to switch over over here to the graph view because I think it&#x27;ll be interesting to see as it is starting to go through and create those different wiki files, it&#x27;s gonna go ahead and it&#x27;s gonna create all those relationships and we&#x27;ll be able to watch it in real time.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (pour la gestion de notes) et VS Code (avec une extension de chat IA, probablement Claude).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dans Obsidian : note intitulée &quot;AI 2027&quot; avec des métadonnées (propriétés) et un texte de recherche. Dans VS Code : un message de l&#x27;IA demandant des précisions sur le focus de la recherche (&quot;What&#x27;s your focus?&quot;) et la granularité souhaitée pour les pages wiki, avec une mention &quot;Opus 4.6&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre comment il utilise son &quot;vault&quot; (coffre-fort) Obsidian pour centraliser la recherche sur l&#x27;IA, tout en utilisant une IA dans VS Code pour générer et structurer la documentation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001056_seg24.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface d&#x27;Obsidian (à gauche) et une fenêtre d&#x27;interaction avec une IA (à droite) intégrée dans VS Code." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001056_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:56</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface d&#x27;Obsidian (à gauche) et une fenêtre d&#x27;interaction avec une IA (à droite) intégrée dans VS Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:17 - 00:11:39</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right, so it&#x27;s creating all of the wiki pages now and you can see that it said it&#x27;s gonna make about 25 because there&#x27;s so much stuff going on in the original AI 2027 article. Okay, so our first one just popped in here and there a second one just came through and now you can understand, you&#x27;re starting to see where do you have hubs or where do you just have little individual nodes? So this is a major hub, someone named Eli, someone named Thomas, Daniel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (vue graphique) et VS Code (avec une extension de chat IA/agent).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le terminal affiche un plan de travail listant 25 pages wiki à générer, avec des tâches comme &quot;Create entity pages for people&quot;, &quot;Create concept pages&quot;, et &quot;Update index.md&quot;. Le statut indique &quot;Writing source summary...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA exécute une séquence automatisée de création et d&#x27;indexation de fichiers Markdown basés sur l&#x27;article &quot;AI 2027&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001123_seg25.jpg" alt="Interface divisée en deux volets : à gauche, une vue graphique des nœuds de données dans Obsidian ; à droite, une fenêtre VS Code montrant l&#x27;interaction avec un agent IA en train de planifier la création de pages wiki." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001123_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:23</span>
+                        <span class="caption-text">Interface divisée en deux volets : à gauche, une vue graphique des nœuds de données dans Obsidian ; à droite, une fenêtre VS Code montrant l&#x27;interaction avec un agent IA en train de planifier la création de pages wiki.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:40 - 00:11:59</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And you can see all the different relationships here with things like AI governance, with things like OpenBrain, Superhuman Coder. Okay, so that ingest took about 10 minutes. So sometimes you have to be a little patient with reading through everything and organizing everything, but it does a lot of heavy lifting, of course. When I uploaded the 36 YouTube transcripts in batch, it took about 14 minutes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec une extension de gestion de connaissances type Obsidian ou Markdown) et une vue en graphe intégrée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier Markdown contenant des tags (`person`, `ai-researcher`), des sources et une liste de tâches (&quot;Writing people entity pages...&quot;, &quot;Create entity pages for people&quot;, &quot;Create entity pages for organizations&quot;, etc.). On observe également la mention &quot;Opus 4.6 (1M context)&quot; dans la barre d&#x27;état.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent automatise la création de pages d&#x27;entités et l&#x27;organisation de données structurées, tout en visualisant les connexions entre ces éléments dans un graphe dynamique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001144_seg26.jpg" alt="Une vue scindée en deux : à gauche, une vue en graphe interactive montrant les relations entre différentes entités (superhuman-coder, src-ai-2027) ; à droite, l&#x27;interface de VS Code affichant un fichier Markdown avec des métadonnées (frontmatter) et une liste de tâches (checklist) en cours d&#x27;exécution par un agent." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001144_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:44</span>
+                        <span class="caption-text">Une vue scindée en deux : à gauche, une vue en graphe interactive montrant les relations entre différentes entités (superhuman-coder, src-ai-2027) ; à droite, l&#x27;interface de VS Code affichant un fichier Markdown avec des métadonnées (frontmatter) et une liste de tâches (checklist) en cours d&#x27;exécution par un agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:59 - 00:12:34</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it kind of just depends. But it created 23 wiki pages. We have the source, we have six people, five organizations and one AI systems page, different concepts of technical alignment and geopolitical, and then an analysis. And then it asks some questions about it so that it can help make the relationships and make the structure even better. Now let&#x27;s just open this one up a little bit deeper and see what it actually did in here with this stuff. So we have, this is the source with all the main relationships. So as we start to add other articles, we will see other big kind of like nodes. And maybe in some cases we&#x27;ll have relationships between like compute scaling with</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (vue graphique) et VS Code (éditeur de texte).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste détaillée des entités : &quot;Scott Alexander&quot;, &quot;Yoshua Bengio&quot;, 5 organisations (OpenBrain, DeepCent, OpenAI, Anthropic, Google DeepMind), 1 page &quot;AI systems&quot; (Agent-0 à Agent-5), et diverses catégories de concepts (Technique, Alignement, Géopolitique).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de la structure de connaissances générée par un agent, montrant les connexions entre différents concepts liés à l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001208_seg27.jpg" alt="Une capture d&#x27;écran divisée en deux colonnes : à gauche, une vue graphique (nœuds et liens) d&#x27;un wiki Obsidian ; à droite, un éditeur de texte dans VS Code listant le contenu structuré du wiki (organisations, systèmes IA, concepts techniques, alignement et géopolitique)." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001208_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:08</span>
+                        <span class="caption-text">Une capture d&#x27;écran divisée en deux colonnes : à gauche, une vue graphique (nœuds et liens) d&#x27;un wiki Obsidian ; à droite, un éditeur de texte dans VS Code listant le contenu structuré du wiki (organisations, systèmes IA, concepts techniques, alignement et géopolitique).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:34 - 00:12:56</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">different articles that we upload as well. So let&#x27;s just see if I click into the main source, we can see the tags that it got, we can see the authors, and we can click around. So here&#x27;s a link to OpenAI. Okay, what&#x27;s OpenAI? Here&#x27;s references in AI 2027. Here&#x27;s some other connections with OpenAI, like model spec. Okay, we&#x27;re in model spec. Let&#x27;s take a look. We can see other things about model spec. And we could also go to how the LLM psychology model works.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de prise de notes Obsidian (vue &quot;vault&quot; avec arborescence latérale).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métadonnées de document : tags (&quot;ai-forecasting&quot;, &quot;superintelligence&quot;, etc.), liste d&#x27;auteurs, URL source et paragraphe d&#x27;introduction du rapport AI 2027.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation au sein d&#x27;une base de connaissances personnelle (Knowledge Management) pour consulter les propriétés et le contenu d&#x27;un article spécifique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001240_seg28.jpg" alt="Une interface Obsidian affichant la fiche de métadonnées &quot;src-ai-2027&quot; avec ses propriétés (titre, tags, auteurs) et un résumé du rapport &quot;AI 2027 — Scenario Forecast&quot;." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001240_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:40</span>
+                        <span class="caption-text">Une interface Obsidian affichant la fiche de métadonnées &quot;src-ai-2027&quot; avec ses propriétés (titre, tags, auteurs) et un résumé du rapport &quot;AI 2027 — Scenario Forecast&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:56 - 00:13:31</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So this is just super, super cool, all the relationships that we get. And once again, all of this stuff that we&#x27;re looking at was derived from one article and automatically organized and related. So the question now is like, what do we do from here? Do we query it inside of this environment? Do we query it from somewhere else? And that&#x27;s completely up to the way that you want to use this. So for example, with my YouTube project, I&#x27;m probably just going to keep this here. And whenever I want to ask questions about YouTube, or if I want to turn this into like a website, I can just do that from here. Or if I need to, I can point a different project at this folder since everything&#x27;s here and it can crawl through the wiki it can read the index and it</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (logiciel de gestion de connaissances).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphe de relations nodal avec des nœuds représentant des sujets (ex: &quot;ai-governance&quot;, &quot;alignment-techniques&quot;, &quot;yoshua-bengio&quot;) reliés par des lignes de connexion.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et visualisation de la structure de connaissances générée automatiquement à partir d&#x27;un article, avec une mise en avant interactive des nœuds.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001305_seg29.jpg" alt="Une vue graphique interactive dans Obsidian montrant les connexions sémantiques entre différents concepts liés à l&#x27;IA (comme &quot;AI 2027&quot;, &quot;agent-models&quot;, &quot;OpenAI&quot;, &quot;Anthropic&quot;)." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001305_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:05</span>
+                        <span class="caption-text">Une vue graphique interactive dans Obsidian montrant les connexions sémantiques entre différents concepts liés à l&#x27;IA (comme &quot;AI 2027&quot;, &quot;agent-models&quot;, &quot;OpenAI&quot;, &quot;Anthropic&quot;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:31 - 00:14:00</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">knows how this stuff works because you can give it the claw.md so it understands the project as well so for example in this one which is just my second brain where we have all of the different things about like i drop in my meeting recordings i drop in you know click up channels summaries and things like that this is something that i want to use in my executive assistant so what i did in my executive assistant here called herc2 if i go to this claw.md you can see that we have a wiki path So whenever you need to read things about me and my business that you don&#x27;t have already, you would basically go to my HercBrain vault.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code) avec l&#x27;extension Claude Code intégrée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Texte explicatif sur le rôle du fichier `_hot.md` (cache de 500 tokens pour les threads actifs et chiffres clés).
+- Image 2 : Documentation `CLAUDE.md` incluant le chemin vers le wiki Obsidian et les étapes du protocole : 1. Hot cache, 2. Master index, 3. Domain sub-index, 4. Grep fallback, 5. Page limit.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;arborescence de fichiers du projet &quot;Herk Brain&quot; pour illustrer la structure du second cerveau et les instructions de contexte données à l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001338_seg30.jpg" alt="Interface VS Code affichant le contenu du fichier `_hot.md` qui sert de cache de mémoire de travail pour l&#x27;agent IA." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001338_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:38</span>
+                        <span class="caption-text">Interface VS Code affichant le contenu du fichier `_hot.md` qui sert de cache de mémoire de travail pour l&#x27;agent IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001353_seg30.jpg" alt="Interface VS Code affichant le fichier `CLAUDE.md`, détaillant le protocole de récupération (Retrieval Protocol) pour l&#x27;assistant IA." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001353_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:53</span>
+                        <span class="caption-text">Interface VS Code affichant le fichier `CLAUDE.md`, détaillant le protocole de récupération (Retrieval Protocol) pour l&#x27;assistant IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:00 - 00:14:25</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You would go to that directory and then you would read through the wiki. You can read the hot cache, which I&#x27;ll explain in just a sec. You can read the index. You can read the domain subindex. And then you can also just search through everything here. And I said, don&#x27;t read from the wiki unless you actually need it. Here are some things that you might do that you don&#x27;t need to go read the wiki for. And all of this is my business knowledge. Now, if you guys remember, if you watch my video on setting up an executive assistant, I used to do this with context files inside of this project.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un fichier Markdown listant une stratégie de recherche : &quot;Hot cache first&quot; (_hot.md), &quot;Master index&quot; (_index.md), &quot;Domain sub-index&quot; (_index-{domain}.md), &quot;Grep fallback&quot; (recherche par mots-clés) et une limite de lecture de pages. Le chemin du répertoire &quot;Herk Brain\wiki&quot; est également visible.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la structure de son système de fichiers &quot;Knowledge Base&quot; (Wiki) et met en surbrillance la ligne concernant le &quot;Master index&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001406_seg31.jpg" alt="L&#x27;éditeur Visual Studio Code affiche un fichier Markdown nommé &quot;CLAUDE.md&quot; détaillant un protocole de récupération de connaissances pour un assistant exécutif." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001406_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:06</span>
+                        <span class="caption-text">L&#x27;éditeur Visual Studio Code affiche un fichier Markdown nommé &quot;CLAUDE.md&quot; détaillant un protocole de récupération de connaissances pour un assistant exécutif.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:25 - 00:14:52</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And when I changed over to this method, I actually saw a reduction in tokens that I was actually calling in this project. So the thing about the hot cache, right? I didn&#x27;t actually have this in my YouTube one. So if I go to YouTube, you can see there&#x27;s no hot cache. But if I go to the Herc brain in the wiki, you can see there&#x27;s a hot.md right here. And this is basically just a cache of like 500 words or 500 characters that it saves, which is like, what is the most recent thing that Nate just gave me or that we talked about.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image #1 : Instructions du protocole de récupération incluant &quot;Hot cache first&quot;, &quot;Master index&quot;, &quot;Domain sub-index&quot;, &quot;Grep fallback&quot; et &quot;Page limit&quot;.
+- Image #2 : Structure du fichier &#x27;_hot.md&#x27; avec des métadonnées et une liste de sujets actifs (Active Threads) concernant l&#x27;ingénierie contextuelle et des projets spécifiques.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre sa méthode d&#x27;optimisation des tokens en montrant la hiérarchie de lecture des fichiers de configuration pour ses agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001432_seg32.jpg" alt="Visualisation dans VS Code du fichier &#x27;CLAUDE.md&#x27; qui détaille le protocole de recherche de la base de connaissances (Knowledge Base), avec le point 1 sur le &quot;Hot cache&quot; mis en surbrillance." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001432_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:32</span>
+                        <span class="caption-text">Visualisation dans VS Code du fichier &#x27;CLAUDE.md&#x27; qui détaille le protocole de recherche de la base de connaissances (Knowledge Base), avec le point 1 sur le &quot;Hot cache&quot; mis en surbrillance.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001445_seg32.jpg" alt="Visualisation du contenu du fichier &#x27;_hot.md&#x27; dans VS Code, présentant les &quot;Active Threads&quot; (fils de discussion actifs) du projet &quot;Herk Brain&quot;." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001445_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:45</span>
+                        <span class="caption-text">Visualisation du contenu du fichier &#x27;_hot.md&#x27; dans VS Code, présentant les &quot;Active Threads&quot; (fils de discussion actifs) du projet &quot;Herk Brain&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:52 - 00:15:17</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">In the context of my executive assistant, this is really helpful. You know, it might save me from having to crawl different wiki pages, but in something like the YouTube transcript project, I don&#x27;t really need a hot cash. So another thing that I alluded to, but didn&#x27;t really cover was the idea of linting. So Carpathie says that he runs some LLM health checks over the wiki to find inconsistent data, impute missing data with web searches, find interesting connections for new article candidates, things like that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (Image 1), Interface web (Image 2).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Image 1 : Contenu Markdown avec des notes sur &quot;Claude Code&quot;, &quot;Claude-Agent&quot; et des références à des projets comme &quot;Upitt-leadership-sync&quot;. Image 2 : Texte expliquant l&#x27;automatisation de &quot;health checks&quot; par LLM sur un wiki et le développement d&#x27;outils de recherche personnalisés.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;organisation de la base de connaissances (Second Brain) dans VS Code et lecture des réflexions stratégiques sur l&#x27;usage des agents IA pour la maintenance des données.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001458_seg33.jpg" alt="Interface de Visual Studio Code affichant un fichier Markdown nommé &quot;_hot.md&quot; qui liste des fils de discussion et des notes de travail (&quot;Active Threads&quot;)." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001458_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:58</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant un fichier Markdown nommé &quot;_hot.md&quot; qui liste des fils de discussion et des notes de travail (&quot;Active Threads&quot;).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001504_seg33.jpg" alt="Capture d&#x27;écran d&#x27;une plateforme de microblogging (type X/Twitter) affichant un long post textuel détaillant l&#x27;utilisation d&#x27;LLM pour le &quot;linting&quot; et le traitement de données d&#x27;un wiki." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001504_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:04</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;une plateforme de microblogging (type X/Twitter) affichant un long post textuel détaillant l&#x27;utilisation d&#x27;LLM pour le &quot;linting&quot; et le traitement de données d&#x27;un wiki.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:17 - 00:15:37</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it basically helps you run a lint, every day, every week, whenever you want, which helps make sure that everything is scalable and structured in the right way. And it might even come back and say, hey, I don&#x27;t fully understand this. Can you give me some more info or can you grab some more articles that might help me out here? So now the final question about this that I wanted to cover is like, does this kill semantic search rag?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation textuelle (post) et tableau comparatif (diapositive éducative).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte technique sur l&#x27;automatisation des &quot;health checks&quot; pour wiki, et tableau comparatif technique (Retrieval quality, Relationship awareness, Cost, Maintenance, Scalability).</p>
+                        <p><strong>Action / Démonstration :</strong> Explication théorique et démonstration comparative des stratégies de structuration de bases de connaissances pour agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001522_seg34.jpg" alt="Une capture d&#x27;écran d&#x27;un post (type réseau social/article) détaillant le concept de &quot;Linting&quot; appliqué à un wiki personnel via des LLM pour maintenir l&#x27;intégrité des données." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001522_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:22</span>
+                        <span class="caption-text">Une capture d&#x27;écran d&#x27;un post (type réseau social/article) détaillant le concept de &quot;Linting&quot; appliqué à un wiki personnel via des LLM pour maintenir l&#x27;intégrité des données.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001532_seg34.jpg" alt="Un tableau comparatif intitulé &quot;LLM Wiki vs. RAG&quot; détaillant les différences de qualité, de coût et de maintenance entre une approche par graphe de wiki et le RAG traditionnel." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001532_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:32</span>
+                        <span class="caption-text">Un tableau comparatif intitulé &quot;LLM Wiki vs. RAG&quot; détaillant les différences de qualité, de coût et de maintenance entre une approche par graphe de wiki et le RAG traditionnel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:37 - 00:16:03</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And the answer is no, but kind of yes. And it all depends on the goal of the project and the goal of the context, how much context you have. So here&#x27;s a really quick chart that I had my cloud code make. I was in my Herc brain where I dumped in a bunch of information about Karpathy&#x27;s LLM knowledge. And I just said, hey, can you please explain Karpathy knowledge as simple as possible, keep it super concise, and compare it to typical semantic search rag.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> - Image 1 : Présentation graphique (diapositive).
+- Image 2 : Visual Studio Code (éditeur de texte/code) avec terminal intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Tableau comparatif technique (Wiki Graph vs RAG).
+- Image 2 : Structure de fichiers Obsidian, notes sur le fichier &quot;_hot.md&quot; (cache de contexte à 500 tokens), terminal indiquant &quot;Opus 4.6 (1M context)&quot; et &quot;bypass permissions on&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> - Image 1 : Illustration conceptuelle pour comparer les méthodes de gestion de contexte.
+- Image 2 : Navigation dans l&#x27;arborescence des fichiers du &quot;Cerveau&quot; de l&#x27;IA et démonstration du fonctionnement du mécanisme de cache de session &quot;_hot.md&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001544_seg35.jpg" alt="Un tableau comparatif intitulé &quot;LLM Wiki vs. RAG&quot; détaillant les différences de qualité, de connaissance des relations, de coût, de maintenance et d&#x27;échelle entre les deux approches." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001544_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:44</span>
+                        <span class="caption-text">Un tableau comparatif intitulé &quot;LLM Wiki vs. RAG&quot; détaillant les différences de qualité, de connaissance des relations, de coût, de maintenance et d&#x27;échelle entre les deux approches.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001550_seg35.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code montrant l&#x27;arborescence du projet &quot;HERK BRAIN&quot; avec divers fichiers Markdown (.md) et le contenu du fichier &quot;_hot.md&quot; ouvert dans l&#x27;éditeur." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001550_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:50</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code montrant l&#x27;arborescence du projet &quot;HERK BRAIN&quot; avec divers fichiers Markdown (.md) et le contenu du fichier &quot;_hot.md&quot; ouvert dans l&#x27;éditeur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:03 - 00:16:25</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it found Karpathy&#x27;s idea. Instead of a database, you just give the LLM well-organized markdown files, and it compares it here to the actual semantic search rag. So actually, I might as well just read it off from here. So it finds it by reading indexes and follows links rather than using similarity search. So we&#x27;re getting a deeper understanding of relationships because they&#x27;re links rather than just saying, hey, these chunks seem similar.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif Markdown comparant l&#x27;approche basée sur les index/liens de Karpathy (fichiers Markdown) face à la méthode RAG traditionnelle (vectorisation/DB).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle et comparaison théorique de l&#x27;architecture de gestion de connaissances utilisée par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001609_seg36.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code affichant un tableau comparatif entre le &quot;Karpathy Knowledge Wiki&quot; et le &quot;Semantic Search RAG&quot;, avec une structure de fichiers Markdown dans la barre latérale gauche." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001609_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:09</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code affichant un tableau comparatif entre le &quot;Karpathy Knowledge Wiki&quot; et le &quot;Semantic Search RAG&quot;, avec une structure de fichiers Markdown dans la barre latérale gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:25 - 00:16:44</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">As far as infrastructure, it is literally just markdown. So like I said, you don&#x27;t even need the Obsidian. You just need these markdown files. Whereas with semantic search, you need an embedding model. You need a vector database and a chunking pipeline. The cost over here is basically free. Your only cost is going to be tokens. Whereas over here, you might have ongoing compute and storage. And for maintenance, you just run a lint.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif Markdown détaillant les différences entre une méthode basée sur des liens (Karpathy Knowledge Wiki) et le RAG (Semantic Search), abordant les points : recherche d&#x27;info, compréhension des relations, infrastructure, coût, maintenance et faiblesses.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation d&#x27;une structure de projet &quot;Herk Brain&quot; composée uniquement de fichiers `.md` dans l&#x27;explorateur de fichiers.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001630_seg37.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code montrant un fichier Markdown comparant les approches &quot;Karpathy Knowledge Wiki&quot; et &quot;Semantic Search RAG&quot;." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001630_seg37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:30</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code montrant un fichier Markdown comparant les approches &quot;Karpathy Knowledge Wiki&quot; et &quot;Semantic Search RAG&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:44 - 00:17:10</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You clean up things, you add more articles, you give it more context rather than having to re-embed when things change. But right now, the weakness, of course, with the LLM Knowledge Wiki is that it doesn&#x27;t scale huge across enterprises, right? Because it&#x27;s just a bunch of files. And that is where the cost will probably get more and more expensive than going to something like standard Semantic Search or Knowledge Graph or LightRag or whatever other tool is out there for that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (thème sombre), structure de dossiers &quot;HERK BRAIN&quot; visible dans la barre latérale.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif détaillé : &quot;How it finds info&quot;, &quot;Understands relationships&quot;, &quot;Infrastructure&quot;, &quot;Cost&quot;, &quot;Maintenance&quot;, et &quot;Weakness&quot; (pointant spécifiquement le manque de scalabilité pour le Wiki).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre visuellement les limites du RAG traditionnel versus l&#x27;approche Wiki (Knowledge Base structurée) en utilisant un document comparatif au sein de son environnement de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001650_seg38.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code montrant un fichier Markdown comparant les approches &quot;Karpathy Knowledge Wiki&quot; et &quot;Semantic Search RAG&quot;." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001650_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:50</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code montrant un fichier Markdown comparant les approches &quot;Karpathy Knowledge Wiki&quot; et &quot;Semantic Search RAG&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:10 - 00:17:29</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So here you can see if you have hundreds of pages with good indexes, you&#x27;re fine with Wikigraph. but if you were getting up to the millions of documents, then you&#x27;re gonna wanna actually do more of a traditional RAG pipeline, at least for now with how the current models are and everything we know right now in April, 2026. So that is going to do it for today. I hope you guys learned something new or enjoyed the video.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation graphique (diapositive pédagogique).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparant 5 critères :
+- Retrieval quality (High/Structured vs Medium/Similarity-based)
+- Relationship awareness (Built in vs Mostly lost)
+- Cost (Near zero vs Embedding + vector DB)
+- Maintenance (Requires curation vs Automatic but dumb)
+- Scales to (Hundreds of pages vs Millions of documents)</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration visuelle du point soulevé par le présentateur concernant les limites de scalabilité de Wiki Graph par rapport au RAG traditionnel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001715_seg39.jpg" alt="Tableau comparatif entre « Wiki Graph » et « RAG » illustrant les différences de qualité de recherche, de gestion des relations, de coût, de maintenance et de passage à l&#x27;échelle." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001715_seg39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:15</span>
+                        <span class="caption-text">Tableau comparatif entre « Wiki Graph » et « RAG » illustrant les différences de qualité de recherche, de gestion des relations, de coût, de maintenance et de passage à l&#x27;échelle.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:29 - 00:17:46</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And if you did, please give it a like, it helps me out a ton. Now, after this video, if you&#x27;re interested in learning how you can create your own sort of executive assistant and then plug it into this Obsidian Vault, then definitely check out this video up here where I go over how I built my executive assistant and the way that you should be thinking about it. So hopefully I&#x27;ll see you guys over there, but if not, I&#x27;ll see you in the next one.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Obsidian (logiciel de prise de notes).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Structure de dossiers (raw, wiki, comparisons, concepts, people, sources, techniques, tools, index, log, overview, Claude, YouTube Transcripts) et visualisation réseau des notes.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation ou visualisation de la base de connaissances connectée du présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/sboNwYmH3AY/sboNwYmH3AY_001733_seg40.jpg" alt="Vue globale du &quot;Graph view&quot; dans Obsidian, affichant une constellation dense de nœuds et de connexions, avec une barre latérale listant la structure des dossiers du vault (wiki, raw, youtube transcripts)." loading="lazy" onclick="openLightbox('../screenshots/sboNwYmH3AY/sboNwYmH3AY_001733_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:33</span>
+                        <span class="caption-text">Vue globale du &quot;Graph view&quot; dans Obsidian, affichant une constellation dense de nœuds et de connexions, avec une barre latérale listant la structure des dossiers du vault (wiki, raw, youtube transcripts).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
