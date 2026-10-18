@@ -1,0 +1,2384 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 La planification dans Claude Code vient de recevoir une mise à niveau majeure — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 La planification dans Claude Code vient de recevoir une mise à niveau majeure</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-06</span>
+                <span class="badge">⏱️ 00:15:48</span>
+                <span class="badge">🆔 <code>T4fXb3sbJIo</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=T4fXb3sbJIo" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **La planification dans Claude Code vient de recevoir une mise à niveau majeure**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:36</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc juste ici, j&#x27;ai Cloud Code classique qui me prépare un plan, et il tourne depuis près de quatre minutes maintenant. Et dans ce terminal, il fait exactement le même plan, mais cette fois-ci, il le fait avec le mode Ultra Plan. Vous pouvez voir qu&#x27;il est écrit Suivre la progression dans Cloud Code sur le web, et juste ici, il est écrit Ultra Plan Prêt. Donc si je passe la souris dessus, que je clique sur Entrée, je peux examiner cela sur le web, et ça s&#x27;est terminé en environ une minute, alors que celui-ci est toujours en train de tourner et ça fait plus de quatre minutes maintenant. Et quand je vais sur cette session web, nous pouvons voir le plan réel. J&#x27;ai le contexte, j&#x27;ai ce qui existe déjà, la nouvelle approche avec de nouveaux fichiers à créer, les modifications, ainsi qu&#x27;une simple vérification finale. Cela me donne le plan d&#x27;une manière beaucoup plus structurée. J&#x27;obtiens aussi parfois</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (Terminal intégré), Interface web Claude Code (Claude.ai).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes terminal : `/ultraplan I need to figure out the best way to be able to analyze my YouTube comments...`. Plan détaillé : étapes d&#x27;automatisation (Daily 8am trigger, scripts Python, analyse de signaux, cross-ref).</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;une commande d&#x27;agent IA, activation du mode Ultra Plan, et revue visuelle d&#x27;un plan de développement généré par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000009_seg1.jpg" alt="Interface du terminal dans VS Code montrant l&#x27;activation du mode &quot;ultraplan&quot; dans Claude Code (v2.1.92) avec une requête utilisateur sur l&#x27;analyse des commentaires YouTube." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Interface du terminal dans VS Code montrant l&#x27;activation du mode &quot;ultraplan&quot; dans Claude Code (v2.1.92) avec une requête utilisateur sur l&#x27;analyse des commentaires YouTube.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000027_seg1.jpg" alt="Interface web &quot;Review Claude&#x27;s plan&quot; affichant un récapitulatif détaillé d&#x27;un plan généré, incluant &quot;What Already Exists&quot; et une approche structurée pour un nouveau script automatisé." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000027_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:27</span>
+                        <span class="caption-text">Interface web &quot;Review Claude&#x27;s plan&quot; affichant un récapitulatif détaillé d&#x27;un plan généré, incluant &quot;What Already Exists&quot; et une approche structurée pour un nouveau script automatisé.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:36 - 00:01:10</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des diagrammes basés sur ce qu&#x27;il est réellement en train de planifier. Et ici, je peux aller de l&#x27;avant et laisser des réactions avec des émojis à certains endroits, ce qui, je trouve, est une touche agréable. Ou je pourrais aller de l&#x27;avant et commenter des éléments spécifiques. Comme vous pouvez le voir juste ici, je pourrais ajouter un commentaire. Et ensuite, quand je veux envoyer ces commentaires, Claude va revenir en arrière et faire une autre itération du plan. Ou je pourrais cliquer sur ce bouton, qui est d&#x27;approuver le plan et de me téléporter de retour vers le terminal. Donc je fais ça et maintenant il va l&#x27;renvoyer. Et si je retourne dans cette session juste ici, nous pouvons maintenant voir que le plan a été reçu et nous pouvons soit l&#x27;implémenter ici, soit nous pourrions commencer une nouvelle conversation et l&#x27;implémenter là-bas. Donc si je clique simplement là-dessus, nous avons maintenant ce plan complet que Claude Code sur le web a effectivement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude et Visual Studio Code (extension Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Plan détaillé de l&#x27;agent d&#x27;analyse de commentaires YouTube (&quot;Daily Comment Analysis Feedback Loop&quot;), commandes de Claude Code et options de validation du plan (&quot;Implement here&quot;, &quot;Start new session&quot;, &quot;Cancel&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Examen du plan généré par Claude et sélection de l&#x27;option d&#x27;implémentation pour l&#x27;automatisation quotidienne.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000044_seg2.jpg" alt="Interface web de Claude affichant le plan détaillé du projet avec le contexte et les objectifs d&#x27;analyse des commentaires YouTube." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000044_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:44</span>
+                        <span class="caption-text">Interface web de Claude affichant le plan détaillé du projet avec le contexte et les objectifs d&#x27;analyse des commentaires YouTube.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000101_seg2.jpg" alt="Éditeur VS Code affichant le terminal intégré avec l&#x27;interface de Claude Code et les options d&#x27;implémentation du plan (Ultraplan)." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000101_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:01</span>
+                        <span class="caption-text">Éditeur VS Code affichant le terminal intégré avec l&#x27;interface de Claude Code et les options d&#x27;implémentation du plan (Ultraplan).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:10 - 00:01:34</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">construit pour nous et il est en train d&#x27;être développé ici même, localement. Et pendant tout ce temps, cette section originale continue de planifier. Elle continue de me poser des questions et elle avance tout simplement très lentement. Maintenant, je ne dis pas que la vitesse est toujours la chose la plus importante, mais si vous obtenez de la vitesse et une plus haute qualité, alors c&#x27;est une bonne combinaison. Et ce que vous remarquerez également, c&#x27;est que dans cette session du cloud, où elle envoie mes requêtes pour être ultra-planifiées, elle est toujours capable de voir ce qui se trouve à l&#x27;intérieur de notre répertoire parce qu&#x27;elle se synchronise avec Git.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (terminal intégré) et interface web de planification d&#x27;agent (Nate Herk Cloud / Ultraplan).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte interactif d&#x27;un agent IA listant les pièces existantes d&#x27;un projet, identifiant les lacunes et posant des choix multiples pour concevoir une automatisation d&#x27;analyse de commentaires YouTube.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse le répertoire de travail, élabore un plan d&#x27;architecture et pose des questions à l&#x27;utilisateur pour affiner la stratégie de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000116_seg3.jpg" alt="Interface de VS Code montrant un terminal avec une conversation d&#x27;agent IA interactif (Opus 4.6) posant des questions de conception sur l&#x27;analyse des commentaires YouTube." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000116_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:16</span>
+                        <span class="caption-text">Interface de VS Code montrant un terminal avec une conversation d&#x27;agent IA interactif (Opus 4.6) posant des questions de conception sur l&#x27;analyse des commentaires YouTube.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000128_seg3.jpg" alt="Interface d&#x27;une application web de planification (« ultraplan ») affichant le déroulement d&#x27;une planification d&#x27;agent IA avec des questions interactives sur l&#x27;automatisation des commentaires." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000128_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:28</span>
+                        <span class="caption-text">Interface d&#x27;une application web de planification (« ultraplan ») affichant le déroulement d&#x27;une planification d&#x27;agent IA avec des questions interactives sur l&#x27;automatisation des commentaires.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:35 - 00:02:09</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc juste ici, ça commence par explorer ce qu&#x27;il y a dans le répertoire pour voir sur quoi il peut s&#x27;appuyer. Et il a été capable de trouver des compétences et des scripts existants et a juste pu les exploiter et les utiliser dans le plan. Donc en gros, tout cela est grâce au nouveau genre de fonctionnalité secrète appelée ultraplan. Planifiez dans le cloud avec ultraplan. Vous démarrez un plan depuis votre CLI, vous le rédigez sur le web, puis vous l&#x27;envoyez de nouveau vers le terminal, ou vous pouvez simplement l&#x27;exécuter à distance également. Et c&#x27;est vraiment intéressant. J&#x27;ai fait une tonne de tests différents entre les mêmes invites localement et les mêmes invites pour être ultraplanifié. Et non seulement ultraplanifié est plus rapide pour planifier, mais pour une certaine raison, c&#x27;est beaucoup plus rapide pour exécuter aussi. Et je pense que c&#x27;est juste</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;ultraplan et documentation Claude Code</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt demandant d&#x27;analyser les commentaires YouTube et journaux d&#x27;exploration du répertoire par l&#x27;IA</p>
+                        <p><strong>Action / Démonstration :</strong> Exploration des fichiers du répertoire et interaction de l&#x27;utilisateur avec l&#x27;interface de planification cloud</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000143_seg4.jpg" alt="Interface web &#x27;ultraplan&#x27; montrant l&#x27;agent d&#x27;IA en train d&#x27;explorer le répertoire et de poser des questions interactives sur l&#x27;analyse de commentaires YouTube." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000143_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:43</span>
+                        <span class="caption-text">Interface web &#x27;ultraplan&#x27; montrant l&#x27;agent d&#x27;IA en train d&#x27;explorer le répertoire et de poser des questions interactives sur l&#x27;analyse de commentaires YouTube.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000152_seg4.jpg" alt="Page de documentation officielle &#x27;Claude Code Docs&#x27; expliquant la fonctionnalité &#x27;Plan in the cloud with ultraplan&#x27;." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000152_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:52</span>
+                        <span class="caption-text">Page de documentation officielle &#x27;Claude Code Docs&#x27; expliquant la fonctionnalité &#x27;Plan in the cloud with ultraplan&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:09 - 00:02:27</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">parce que le plan est si clair que les agents ont beaucoup plus de facilité localement à l&#x27;exécuter et à tout construire. Et je vais vous montrer un exemple de cela dans un moment. C&#x27;est utile lorsque vous voulez une surface de révision plus riche que ce que le terminal offre en matière de commentaires ciblés, parce que vous pouvez commenter sur des sections individuelles. Vous obtenez également un plan de style document plutôt sympa, plutôt que dans le terminal.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la documentation de Claude Code Docs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de documentation décrivant la planification cloud avec &quot;ultraplan&quot;, les modes de planification, ainsi qu&#x27;un encadré d&#x27;avertissement sur sa version en préversion de recherche.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et lecture de la documentation officielle présentant la surface de révision web pour les plans d&#x27;agents.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000213_seg5.jpg" alt="Capture d&#x27;écran de la documentation officielle de Claude Code affichant la page sur la fonctionnalité &quot;Plan in the cloud with ultraplan&quot;." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000213_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:13</span>
+                        <span class="caption-text">Capture d&#x27;écran de la documentation officielle de Claude Code affichant la page sur la fonctionnalité &quot;Plan in the cloud with ultraplan&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:27 - 00:02:51</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parfois, ça peut juste ressembler à des lignes de texte. C&#x27;est un peu brouillon de voir la structure. Vous avez aussi la rédaction mains libres et une exécution flexible. Donc c&#x27;est vraiment simple. Vous faites juste un slash ultra plan, puis votre invite. Ou si vous avez juste le mot ultra plan dedans, il vous demandera si vous voulez faire un ultra plan. Donc si je reviens juste ici et que vous voyez que j&#x27;ai littéralement just tapé le mot ultra plan, ça s&#x27;allume de la même manière que ça s&#x27;allumerait si vous faites quelque chose comme UltraThink.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Documentation web Claude Code et éditeur de code / interface en ligne de commande.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de documentation sur &#x27;Launch ultraplan from the CLI&#x27; et interface de terminal affichant &#x27;plan mode on&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans la documentation officielle et présentation des options du mode plan et de l&#x27;interface en ligne de commande.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000233_seg6.jpg" alt="Documentation officielle de Claude Code affichant les fonctionnalités de l&#x27;outil &#x27;ultraplan&#x27; avec des puces explicatives sur les retours ciblés et la rédaction mains libres." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000233_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:33</span>
+                        <span class="caption-text">Documentation officielle de Claude Code affichant les fonctionnalités de l&#x27;outil &#x27;ultraplan&#x27; avec des puces explicatives sur les retours ciblés et la rédaction mains libres.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000245_seg6.jpg" alt="Interface d&#x27;un éditeur ou terminal affichant du texte généré par l&#x27;IA et le mode plan activé avec le modèle Opus 4.6." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000245_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:45</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur ou terminal affichant du texte généré par l&#x27;IA et le mode plan activé avec le modèle Opus 4.6.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:51 - 00:03:10</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc peut-être que vous utilisez UltraThink et UltraPlan, vous consommez toute votre session en une seule invite. Parce qu&#x27;évidemment, l&#x27;UltraPlan utilise un tout petit peu plus de jetons. Je vous montrerai un exemple de cela plus tard. Nous ne savons pas exactement combien, mais de la manière dont il se lance et qu&#x27;il utilise beaucoup plus de ressources de calcul dans le cloud, il va utiliser plus de jetons que si vous faites simplement un plan normal ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de code (probablement VS Code ou similaire) avec une interface de ligne de commande ou de prompt intégrée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte listant des options de signaux et retours (A, B, C, D), suivi d&#x27;une invite de commande saisie : &#x27;ultraplan ultrathink&#x27;, et d&#x27;informations sur le modèle &#x27;Opus 4.6 (1M context) | plan mode on&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie des commandes ultraplan et ultrathink dans l&#x27;interface de l&#x27;éditeur pour configurer le mode d&#x27;exécution de l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000256_seg7.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un éditeur de code sombre avec une zone de texte de commande contenant les mots &#x27;ultraplan ultrathink&#x27; et des options de modèle en bas." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000256_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:56</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un éditeur de code sombre avec une zone de texte de commande contenant les mots &#x27;ultraplan ultrathink&#x27; et des options de modèle en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:10 - 00:03:48</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais encore une fois, la planification est tellement, tellement importante. Elle met toute la structure et le chemin de votre projet sur la bonne voie. Donc, parfois, cela vaut vraiment la peine de dépenser plus de jetons au départ afin de le lancer. Je pense toujours à cette citation d&#x27;Abraham Lincoln : « Donnez-moi six heures pour abattre un arbre, et je passerai les quatre premières à aiguiser la hache. » C&#x27;est donc fondamentalement notre planification. Il est également important de savoir que cela doit être fait dans l&#x27;interface en ligne de commande. Si nous sommes ici dans l&#x27;application de bureau et que nous essayons de faire quelque chose comme un plan ultra, construis-moi un guide d&#x27;entraînement de cinq jours. Si nous lançons cela, nous n&#x27;allons pas obtenir toute cette fonctionnalité de plan ultra dans le nuage. En fait, cela ne fait tout simplement rien. Et c&#x27;est exactement la même chose si nous passons à</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de code (type VS Code ou interface similaire) avec mode plan et modèle Opus 4.6.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à options (A, B, C, D) et ligne de commande avec &quot;ultraplan ultrathink&quot; sur l&#x27;image 1 ; invite de commande &quot;Find a small todo in the codebase and do it&quot; sur l&#x27;image 2.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie d&#x27;une commande de planification et de réflexion pour configurer l&#x27;exécution d&#x27;un agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000320_seg8.jpg" alt="Interface d&#x27;un éditeur de code affichant du texte généré avec des options de planification et de réflexion (&quot;ultraplan ultrathink&quot;)." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000320_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:20</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de code affichant du texte généré avec des options de planification et de réflexion (&quot;ultraplan ultrathink&quot;).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000329_seg8.jpg" alt="Interface de l&#x27;application montrant l&#x27;onglet &quot;Code&quot; avec un champ de saisie de prompt et une icône de petit personnage pixelisé." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000329_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:29</span>
+                        <span class="caption-text">Interface de l&#x27;application montrant l&#x27;onglet &quot;Code&quot; avec un champ de saisie de prompt et une icône de petit personnage pixelisé.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:48 - 00:04:20</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">to VS Code, if we&#x27;re doing it in the extension rather than in the terminal, UltraPlan, and then we just, let&#x27;s just copy in the exact same thing. It&#x27;s basically just going to do nothing. So you have to use it in the CLI. Okay, so quick explanation of how this actually works. And then we&#x27;re going to jump into an actual example that I ran and show you guys what it looks like. So we start talking to Cloud Code on our machine. Push an UltraPlan, it sends that to the cloud where that&#x27;s where Cloud will spin up, you know, different agents there using Opus and it will do a really in-depth plan. Once that&#x27;s ready, we&#x27;re able to review and we have this kind of feedback loop,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (extension Claude), Schéma explicatif (Slide).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt : &quot;/ultraplan build me a five-day workout guide.&quot; / Schéma : Flux &quot;CLI (Launch) -&gt; Cloud (Plan Mode) -&gt; Browser (Review) -&gt; Teleport (Execute)&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;utilisation de l&#x27;outil via une interface d&#x27;extension VS Code, suivie d&#x27;une explication conceptuelle du fonctionnement du pipeline.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000356_seg9.jpg" alt="Interface de Visual Studio Code affichant une zone de saisie pour l&#x27;extension Claude, avec une requête utilisateur en attente." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000356_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:56</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant une zone de saisie pour l&#x27;extension Claude, avec une requête utilisateur en attente.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000404_seg9.jpg" alt="Diagramme illustratif intitulé &quot;How UltraPlan Works&quot; expliquant le flux de travail entre la CLI, le Cloud et le navigateur." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000404_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:04</span>
+                        <span class="caption-text">Diagramme illustratif intitulé &quot;How UltraPlan Works&quot; expliquant le flux de travail entre la CLI, le Cloud et le navigateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:20 - 00:04:43</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">but then we can teleport it all the way back to our machine if we want that to happen there. Like I said, you can launch it by doing slash ultra plan. You can just have the keyword in there, or you could, you know, from an existing plan, like you already have one written up in locally, you could say, actually, I want to revise this in the cloud with ultra plan. And then of course, you have that review loop. You can do comments and you can do emojis, which is a nice touch.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diagramme explicatif (type tableau blanc/infographie).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;/ultraplan&quot;, &quot;Keyword&quot;, &quot;From Plan&quot;, &quot;Cloud Session&quot;, &quot;Drafting&quot;, &quot;Needs Input&quot;, &quot;Ready&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle du concept théorique et des étapes de lancement du processus UltraPlan par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000426_seg10.jpg" alt="Un schéma illustrant le flux de travail &quot;Launch UltraPlan&quot;, montrant trois méthodes d&#x27;activation (commande, mot-clé, ou plan existant) menant à une &quot;Cloud Session&quot;, suivie de trois états de processus possibles : Drafting, Needs Input, et Ready." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000426_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:26</span>
+                        <span class="caption-text">Un schéma illustrant le flux de travail &quot;Launch UltraPlan&quot;, montrant trois méthodes d&#x27;activation (commande, mot-clé, ou plan existant) menant à une &quot;Cloud Session&quot;, suivie de trois états de processus possibles : Drafting, Needs Input, et Ready.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:43 - 00:05:11</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right. So let me show you guys an example of this. So I have ultra plan on the right. I have a regular plan on the left and I gave both of these a huge spec about building us a dashboard. So I used ultra plan over here, paste it in. I said, do not use super power skill because I didn&#x27;t want the local version to use that. I wanted to just get raw, you know, keep the variables the same. And then I wanted to give it to us on a local host. So I&#x27;m going to shoot this off. You see on the right hand side, it says, do you want to do this in the cloud? I said, yes. On the left hand side, it just goes straight into plan mode. And once again, they got the exact same prompts.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (fenêtre divisée en deux terminaux), Claude Code CLI.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes saisies : &quot;/clear&quot; puis &quot;/ultraplan&quot; avec le prompt spécifiant &quot;Do not use superpowers skill&quot; et &quot;Serve on localhost:5112&quot;. Informations sur le modèle utilisé (Opus 4.6).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur exécute une comparaison de performance entre un plan standard et le mode &quot;ultraplan&quot; de l&#x27;agent Claude Code pour la création d&#x27;un tableau de bord.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000450_seg11.jpg" alt="Comparaison côte à côte de deux instances de terminal dans VS Code utilisant Claude Code, l&#x27;une en mode standard à gauche et l&#x27;autre avec la commande &quot;/ultraplan&quot; à droite." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000450_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:50</span>
+                        <span class="caption-text">Comparaison côte à côte de deux instances de terminal dans VS Code utilisant Claude Code, l&#x27;une en mode standard à gauche et l&#x27;autre avec la commande &quot;/ultraplan&quot; à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:11 - 00:05:48</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So here is the link I open this up and it takes me to the cloud where it&#x27;s actually going to start building out the plan right here As you can see it&#x27;s checking the directory to see what&#x27;s available and then over here It&#x27;s just you know kind of doing the same thing getting acclimated with the environment Okay So at this point we&#x27;re about two minutes in right and you can see that I got the plan already on this right hand side So I click through it a bit. We have different tabs We also have like a little diagram and it looks really good So what I do is I end up sending this back to the terminal as you can see right here and then it gets brought back into our local session right here. Okay, so now we&#x27;re at the 14 minute mark and the ultra plan version is already done. The local host is spun up, so not only did</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension Claude Code), Navigateur web (Ultraplan).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Spécifications techniques pour &quot;PulseBoard&quot; (React, Vite, Tailwind, Node.js, SQLite), commandes Bash pour vérifier les versions de Node et npm, et logs d&#x27;exploration de répertoire.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse le répertoire de travail et prépare l&#x27;architecture du projet avant de commencer le développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000521_seg12.jpg" alt="Interface divisée en deux colonnes : à gauche l&#x27;éditeur VS Code avec une interface de discussion (Claude Code), à droite une interface web de planification (Ultraplan) détaillant la construction d&#x27;un tableau de bord SaaS." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000521_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:21</span>
+                        <span class="caption-text">Interface divisée en deux colonnes : à gauche l&#x27;éditeur VS Code avec une interface de discussion (Claude Code), à droite une interface web de planification (Ultraplan) détaillant la construction d&#x27;un tableau de bord SaaS.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:48 - 00:06:21</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">it create the plan, but it also built everything out. Whereas this regular plan mode has been going for 12 minutes and still hasn&#x27;t even given me a plan to review yet. Then finally, a few minutes later, we&#x27;re at the 15 minute mark. This is when we actually finally get the plan from the local session. But you can see at the 26, 27 minute mark, it is still being built out. So I end up stopping this recording to just wait until it&#x27;s actually done. So now I&#x27;m going to switch over to the actual live reaction of me looking at the differences in the two dashboards to see which one really built it out better. Okay. So just the regular plan mode is finally done. It&#x27;s really</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (fenêtre divisée avec terminaux intégrés).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes bash, logs d&#x27;exécution (utilisation d&#x27;outils, jetons consommés, temps écoulé), et instructions pour lancer l&#x27;application (npm run dev).</p>
+                        <p><strong>Action / Démonstration :</strong> Comparaison de la vitesse d&#x27;exécution entre deux sessions, l&#x27;une en attente de plan (&quot;plan mode on&quot;) et l&#x27;autre ayant déjà lancé le serveur local.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000556_seg13.jpg" alt="Comparaison côte à côte de deux instances de terminal dans VS Code montrant l&#x27;exécution et la progression d&#x27;un agent IA (Opus 4.6)." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000556_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:56</span>
+                        <span class="caption-text">Comparaison côte à côte de deux instances de terminal dans VS Code montrant l&#x27;exécution et la progression d&#x27;un agent IA (Opus 4.6).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:21 - 00:06:56</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">weird. I normally stand in these videos, but I had to sit because this took honestly like 45 minutes. I&#x27;m not sure what was going on, but this thing on the right side, we did ultra plan, the plan finished in like five and then it executed everything and built everything in, you know like another five minutes so about 10 to 15 minutes total over here and on this side it literally took half the time to plan and then half the time to build like it took a long time so anyways we have the two dashboards here let&#x27;s open up the regular plan mode dashboard so let me open this up you can see we have our pulse board we have a nice little graphic here we have some</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec l&#x27;interface de l&#x27;agent de développement IA &quot;Opus 4.6&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Scripts Bash (kill-port, npm run dev, curl santé), modifications de fichiers de configuration (port 5173 vers 5174), et statuts d&#x27;exécution de serveur local.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent exécute le déploiement du projet &quot;PulseBoard&quot;, tue les processus existants sur les ports 5111/5173, met à jour la configuration du serveur et vérifie la disponibilité de l&#x27;API via curl.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000630_seg14.jpg" alt="Une capture d&#x27;écran montrant une interface VS Code divisée en deux volets, utilisant l&#x27;outil &quot;Opus&quot; (agent de développement IA). À gauche, le journal d&#x27;exécution d&#x27;un workflow, et à droite, une modification de configuration de port et des commandes bash en cours d&#x27;exécution." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000630_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:30</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant une interface VS Code divisée en deux volets, utilisant l&#x27;outil &quot;Opus&quot; (agent de développement IA). À gauche, le journal d&#x27;exécution d&#x27;un workflow, et à droite, une modification de configuration de port et des commandes bash en cours d&#x27;exécution.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:56 - 00:07:18</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">stats like mrr annual run rate total customers churn rate we can change this between all time 30 days, 90 days, six months, one year. We have different tabs on the left. We can do revenue and see different tiers. We can also see enterprise and pro top 20 accounts. Obviously all this is mock data. We&#x27;ve got our customers here with a nice chart and by tier. And then we have support.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application SaaS de reporting et d&#x27;analytique financière appelée &quot;PulseBoard&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Données simulées incluant : Monthly Recurring Revenue ($74,328), Annual Run Rate ($891.9K), Total Customers (1,226), Churn Rate (3.3%), et liste de comptes clients avec MRR et LTV associés.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans le menu latéral gauche pour basculer entre les sections &quot;Overview&quot; et &quot;Revenue&quot; et démonstration des filtres temporels (30 jours à All Time).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000701_seg15.jpg" alt="Tableau de bord &quot;PulseBoard&quot; montrant une vue d&#x27;ensemble (Overview) avec des indicateurs clés (MRR, taux de désabonnement, clients) et des filtres temporels." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000701_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:01</span>
+                        <span class="caption-text">Tableau de bord &quot;PulseBoard&quot; montrant une vue d&#x27;ensemble (Overview) avec des indicateurs clés (MRR, taux de désabonnement, clients) et des filtres temporels.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000712_seg15.jpg" alt="Interface &quot;PulseBoard&quot; sur la page Revenue, affichant l&#x27;évolution des revenus par niveau (Pro vs Enterprise), une heatmap de rétention de cohorte et une liste des 20 comptes principaux." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000712_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:12</span>
+                        <span class="caption-text">Interface &quot;PulseBoard&quot; sur la page Revenue, affichant l&#x27;évolution des revenus par niveau (Pro vs Enterprise), une heatmap de rétention de cohorte et une liste des 20 comptes principaux.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:18 - 00:07:49</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So resolution time, tickets by category, distribution. We can do light mode or dark mode. And that all looks pretty decent. These charts look a little bit weird in light mode. But anyways, that is the plan version. Let&#x27;s open up the ultra plan version on a different local host. This one, obviously, they&#x27;re going to have very similar features as far as what we&#x27;re looking at with the data. Similar statistics up here, similar charts, everything like that. If we go to 30 days, 90 days, six months, one year, that all loads in good.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web &quot;PulseBoard&quot; (Tableau de bord SaaS).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques : CSAT (3.6/5), tickets ouverts (1448), temps moyen de résolution (20.6h), graphiques de tendance, distribution CSAT et feed de tickets en direct. Métriques financières : MRR (141.6K), ARR (1.7M), taux de désabonnement, graphiques de croissance des revenus et revenus par plan (Enterprise, Pro).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration du tableau de bord PulseBoard, passage du mode clair au mode sombre et comparaison des vues &quot;Plan&quot; vs &quot;Ultra Plan&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000726_seg16.jpg" alt="Interface tableau de bord &quot;PulseBoard&quot; en mode clair affichant les métriques de support client (CSAT, temps de résolution, tickets par catégorie)." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000726_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:26</span>
+                        <span class="caption-text">Interface tableau de bord &quot;PulseBoard&quot; en mode clair affichant les métriques de support client (CSAT, temps de résolution, tickets par catégorie).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000741_seg16.jpg" alt="Interface tableau de bord &quot;PulseBoard&quot; en mode sombre affichant une vue d&#x27;ensemble financière (MRR, ARR, churn) et les revenus par plan." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000741_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:41</span>
+                        <span class="caption-text">Interface tableau de bord &quot;PulseBoard&quot; en mode sombre affichant une vue d&#x27;ensemble financière (MRR, ARR, churn) et les revenus par plan.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:49 - 00:08:11</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">If we go down to revenue, we can see we also have a cohort retention. We have enterprise and pro and we got some our 20 accounts there Customers, obviously we&#x27;ve got the same exact type of layout And the support Over here if we go to light mode, let&#x27;s see what these look like These all still look Very very solid. So I mean it&#x27;s not a huge difference, right?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard analytique web nommé &quot;PulseBoard&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques SaaS : rétention de cohortes, données clients (noms, emails, niveaux d&#x27;abonnement), entonnoir de conversion (Signup, Activation, Paid Conversion, Expansion), graphiques de croissance nette (New vs Churned).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans les différentes sections du dashboard (Revenue vs Customers) et démonstration du changement de thème visuel (Dark Mode vers Light Mode).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000755_seg17.jpg" alt="Interface sombre &quot;PulseBoard&quot; affichant un tableau de rétention des cohortes et une liste détaillée des &quot;Top 20 Accounts&quot; avec les colonnes Nom, Email, Tier (Pro/Enterprise), Revenu et Statut (Active/Churned)." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000755_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:55</span>
+                        <span class="caption-text">Interface sombre &quot;PulseBoard&quot; affichant un tableau de rétention des cohortes et une liste détaillée des &quot;Top 20 Accounts&quot; avec les colonnes Nom, Email, Tier (Pro/Enterprise), Revenu et Statut (Active/Churned).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000805_seg17.jpg" alt="Interface claire (Light Mode) &quot;PulseBoard&quot; montrant une page &quot;Customers&quot; avec un entonnoir de conversion, un graphique à barres sur la croissance nette des clients et un diagramme en arc pour la répartition par niveau." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000805_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:05</span>
+                        <span class="caption-text">Interface claire (Light Mode) &quot;PulseBoard&quot; montrant une page &quot;Customers&quot; avec un entonnoir de conversion, un graphique à barres sur la croissance nette des clients et un diagramme en arc pour la répartition par niveau.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:11 - 00:08:43</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And for something like a dashboard like this from an aesthetic point of view It&#x27;s kind of hard to tell like which one objectively between these two did better if we wanted to look at things like how accurate the data is being pulled in or reflected or how quick things load up or how buggy it is we&#x27;d have to do some deeper investigating but also take a look at this in the local plan version it took 131 000 tokens the ultra plan version took 82 000 tokens now of course the bulk of the planning work was done in the cloud so those tokens don&#x27;t count you guys saw earlier when i was doing this this is the section where we did our</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (utilisant l&#x27;extension Claude Code / Opus 4.6).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Scripts de déploiement (Bash), commandes `kill-port`, logs d&#x27;exécution du serveur (`npm run dev`), modifications de ports réseau (5173 vers 5174), et état du health check de l&#x27;API.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution et débogage de processus d&#x27;agent IA pour tester la mise en ligne d&#x27;une application dashboard.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000819_seg18.jpg" alt="Comparaison côte à côte de deux instances de l&#x27;interface Claude Code dans Visual Studio Code, affichant des logs d&#x27;exécution, des modifications de fichiers de configuration (ports) et des interactions système pour le lancement d&#x27;un dashboard nommé PulseBoard." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000819_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:19</span>
+                        <span class="caption-text">Comparaison côte à côte de deux instances de l&#x27;interface Claude Code dans Visual Studio Code, affichant des logs d&#x27;exécution, des modifications de fichiers de configuration (ports) et des interactions système pour le lancement d&#x27;un dashboard nommé PulseBoard.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:43 - 00:09:17</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ultra plan on the web and I tried to run a slash cost to see how much this took but it wasn&#x27;t working so we don&#x27;t know exactly but I will say it&#x27;s using more tokens than the local so it looks like this is using 50,000 more tokens I&#x27;m assuming that the planning section for the ultra plan took at least 50k but it&#x27;s hard for me to say exactly but I think that the plan was so much better because for some reason it was able to execute on the plan so much quicker and better and they were both using obviously the exact same model. In all the other tests that I&#x27;ve done, Ultraplan has always been quicker. I mean, in the cloud, there&#x27;s so much more compute compared to what might be going on</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec l&#x27;interface Claude Code (CLI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes bash pour le nettoyage des ports (npx kill-port), exécution de serveurs de développement (npm run dev), vérification de santé via curl, et modification de configuration de port (port 5174). Affichage des statistiques de contexte (Opus 4.6, 1M context, utilisation en tokens).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent exécute le cycle de vie complet de l&#x27;application : arrêt des anciens processus, lancement du serveur de développement et validation du déploiement via un appel API local.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000852_seg19.jpg" alt="Une vue scindée (split-screen) de l&#x27;interface VS Code montrant deux sessions de Claude Code en interaction avec un terminal pour la gestion de processus et le déploiement d&#x27;une application SaaS." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000852_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:52</span>
+                        <span class="caption-text">Une vue scindée (split-screen) de l&#x27;interface VS Code montrant deux sessions de Claude Code en interaction avec un terminal pour la gestion de processus et le déploiement d&#x27;une application SaaS.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:17 - 00:09:52</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">here on my device. But yeah, like this was a noticeable difference, not only with the plan, but when it came to the actual execution. Like I said, the execution over here was maybe maybe 10 minutes. The execution over here was upwards of 30 minutes. Okay. So I tried running some experiments for you guys. I did a session with API billing and I ran a local plan, as you can see. And this ended up costing me about 1.5 million tokens in and 23,000 tokens out and a mix between Haiku and Opus. Now, unfortunately, it doesn&#x27;t let you do the ultra plan with API billing</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code, terminal Claude Code (CLI), interface web Claude Console.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Scripts de déploiement (bash), logs d&#x27;exécution, requêtes textuelles de design de workflow, métriques de consommation de tokens (Total tokens in/out).</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution de scripts de déploiement, analyse des performances des agents et visualisation des données d&#x27;utilisation de l&#x27;API.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000926_seg20.jpg" alt="Interface VS Code affichant des logs d&#x27;exécution de flux de travail agentique et des interactions terminal avec Claude Code." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000926_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:26</span>
+                        <span class="caption-text">Interface VS Code affichant des logs d&#x27;exécution de flux de travail agentique et des interactions terminal avec Claude Code.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000935_seg20.jpg" alt="Interface VS Code avec Claude Code exécutant une requête pour automatiser une veille quotidienne sur l&#x27;IA et les réseaux sociaux." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000935_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:35</span>
+                        <span class="caption-text">Interface VS Code avec Claude Code exécutant une requête pour automatiser une veille quotidienne sur l&#x27;IA et les réseaux sociaux.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000943_seg20.jpg" alt="Interface &quot;Claude Console&quot; montrant un tableau de bord analytique de l&#x27;utilisation des tokens par les modèles IA." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000943_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:43</span>
+                        <span class="caption-text">Interface &quot;Claude Console&quot; montrant un tableau de bord analytique de l&#x27;utilisation des tokens par les modèles IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:52 - 00:10:17</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">because you need basically a pro or max subscription in order to do the cloud code on the web. I tried. It wasn&#x27;t letting me do that. So anyways, I did do this though. When it came back, what I did is I just checked how much of my usage did it actually go up and it went up 1%. So we don&#x27;t have an explicit number of tokens that we get allotted within this max 20x plan. So I don&#x27;t know how many exact tokens it was, but I&#x27;m going to estimate that it was more than 1.5 in and 23,000 out.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Terminal Claude Code, Interface Web Claude (Settings/Usage).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Commande `/ultraplan` avec une requête complexe sur la veille technologique et l&#x27;analyse de chaîne YouTube.
+- Image 2 : Statistiques de limites (&quot;Current session: 41% used&quot;, &quot;All models: 21% used&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> - Image 1 : Exécution d&#x27;un agent via CLI pour monitorer une session web Claude.
+- Image 2 : Vérification du compteur de consommation après l&#x27;exécution d&#x27;une tâche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000958_seg21.jpg" alt="Interface de terminal intégrée dans VS Code exécutant Claude Code, montrant une commande utilisateur pour analyser du contenu IA." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_000958_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:58</span>
+                        <span class="caption-text">Interface de terminal intégrée dans VS Code exécutant Claude Code, montrant une commande utilisateur pour analyser du contenu IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001005_seg21.jpg" alt="Page des paramètres d&#x27;utilisation de l&#x27;interface Claude affichant les limites du plan &quot;Max&quot; et la consommation actuelle en pourcentage." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001005_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:05</span>
+                        <span class="caption-text">Page des paramètres d&#x27;utilisation de l&#x27;interface Claude affichant les limites du plan &quot;Max&quot; et la consommation actuelle en pourcentage.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:18 - 00:10:50</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And it was about 1% of my 20x max plan. So hopefully that gives you guys a little bit of context and just at least gives you a nice baseline. Okay, so let&#x27;s talk about a few of the things that you need to know about how this works under the hood and what you need to know. So first I&#x27;m going to start off with like your project if you want to ultra plan It has to have some sort of git or github, you know Repo synced to it because it has to be pushed to the cloud somehow So if you try to run ultra plan in a project that&#x27;s only local, it&#x27;s going to say hey You can&#x27;t do this on the web yet. It&#x27;s as simple as just initializing that git pushing it super easy</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Console de gestion Anthropic) et logiciel de création de schémas (type Excalidraw).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image #1 : Statistiques d&#x27;utilisation (41% session actuelle, 21% hebdomadaire, 0% Sonnet only), dépenses supplémentaires et dates de réinitialisation.
+- Image #2 : Diagramme de flux montrant les étapes : /ultraplan -&gt; Cloud VM -&gt; Clones Repo -&gt; Full Context. Section &quot;No Git?&quot; montrant les étapes bloquées et &quot;Min Setup&quot; listant les prérequis (git init, push to GitHub, connect account).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation contextuelle des limites de consommation du compte et explication pédagogique des prérequis techniques (Git) pour l&#x27;utilisation de l&#x27;outil Ultraplan.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001026_seg22.jpg" alt="Interface des paramètres de compte Anthropic montrant les limites d&#x27;utilisation (« Plan usage limits ») pour un plan Max (20x)." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001026_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:26</span>
+                        <span class="caption-text">Interface des paramètres de compte Anthropic montrant les limites d&#x27;utilisation (« Plan usage limits ») pour un plan Max (20x).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001034_seg22.jpg" alt="Schéma explicatif intitulé « Why Ultraplan Needs Git », détaillant le workflow d&#x27;intégration nécessaire au bon fonctionnement de l&#x27;outil." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001034_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:34</span>
+                        <span class="caption-text">Schéma explicatif intitulé « Why Ultraplan Needs Git », détaillant le workflow d&#x27;intégration nécessaire au bon fonctionnement de l&#x27;outil.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:50 - 00:11:24</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then you can do it because obviously in the cloud When it&#x27;s doing the ultra plan it needs to look through everything that you have and it needs to be able to Actually work on your code base. Otherwise, it&#x27;s going to be a very very generic plan Now after that sometimes i&#x27;ve noticed that it&#x27;s not calling my skills Even though it looks through the skills are things that get invoked So if you&#x27;re not specific enough on your plan for the ultra plan Then it may not use the skills the first time and actually all of these visualizations here that I made I made using ultra plan so i&#x27;ll put up a clip here where i&#x27;m showing how that worked And what you&#x27;ll notice is that I had to give it correction on using</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diagrammes conceptuels (type mind-map/workflow) sur fond noir utilisés pour expliquer l&#x27;architecture technique d&#x27;un agent IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte technique incluant : &quot;/ultraplan&quot;, &quot;Cloud VM&quot;, &quot;Clones Repo&quot;, &quot;git init + commit&quot;, &quot;Deep Planning&quot;, &quot;Skill Gap&quot;, &quot;CLAUDE.md&quot;, &quot;git push first!&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation didactique sous forme de schémas explicatifs (flowcharts) pour détailler le fonctionnement interne et les limitations de l&#x27;outil Ultraplan.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001059_seg23.jpg" alt="Schéma explicatif sur fond noir illustrant pourquoi &quot;Ultraplan&quot; nécessite Git pour fonctionner (clonage de dépôt, contexte complet)." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001059_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:59</span>
+                        <span class="caption-text">Schéma explicatif sur fond noir illustrant pourquoi &quot;Ultraplan&quot; nécessite Git pour fonctionner (clonage de dépôt, contexte complet).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001107_seg23.jpg" alt="Schéma détaillant le &quot;Skill Gap&quot; d&#x27;Ultraplan, montrant comment les compétences inactives (&quot;Dormant&quot;) affectent le mode &quot;Deep Planning&quot;." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001107_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:07</span>
+                        <span class="caption-text">Schéma détaillant le &quot;Skill Gap&quot; d&#x27;Ultraplan, montrant comment les compétences inactives (&quot;Dormant&quot;) affectent le mode &quot;Deep Planning&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001115_seg23.jpg" alt="Suite du schéma sur le &quot;Skill Gap&quot;, mettant en avant la recommandation &quot;git push first!&quot; pour résoudre les problèmes de synchronisation des compétences." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001115_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:15</span>
+                        <span class="caption-text">Suite du schéma sur le &quot;Skill Gap&quot;, mettant en avant la recommandation &quot;git push first!&quot; pour résoudre les problèmes de synchronisation des compétences.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:24 - 00:11:56</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">My visualization skill because it wasn&#x27;t pulling that up for some reason Okay, so here is that clip now It says I want you to ultra plan and research cloud codes new feature ultra plan And I kept saying ultra plan because I love when it when it lights up like that But anyways, we shot this off, right? And it goes to the web and now it&#x27;s doing a fetch on our project and getting an understanding of what we wanted to do But what you&#x27;ll notice here is that it doesn&#x27;t actually create the excaljaw style diagrams using my visualization skill Which uses nano banana and it has like a prompting guide and a style guide but it thought that I just wanted like markdown,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (Terminal Claude Code), Application/Interface web d&#x27;agent IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur : &quot;I want you to ultraplan and research Claude Code&#x27;s new feature UltraPlan... generate a Claude Code Excalidraw-style visualization&quot;. Réponses de l&#x27;agent : &quot;Searched the web&quot;, &quot;Now I have a thorough understanding of UltraPlan... let me write the plan&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;une recherche web et structuration d&#x27;un plan détaillé pour générer des visualisations (diagrammes) basées sur la documentation officielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001132_seg24.jpg" alt="Interface VS Code affichant un terminal interactif avec Claude Code (Opus 4.6) où l&#x27;utilisateur a soumis une requête complexe concernant la nouvelle fonctionnalité &quot;UltraPlan&quot;." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001132_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:32</span>
+                        <span class="caption-text">Interface VS Code affichant un terminal interactif avec Claude Code (Opus 4.6) où l&#x27;utilisateur a soumis une requête complexe concernant la nouvelle fonctionnalité &quot;UltraPlan&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001140_seg24.jpg" alt="Interface web type application IA affichant les étapes de réflexion et d&#x27;exécution du modèle suite à la requête précédente (recherche web, analyse de la documentation, planification)." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001140_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:40</span>
+                        <span class="caption-text">Interface web type application IA affichant les étapes de réflexion et d&#x27;exécution du modèle suite à la requête précédente (recherche web, analyse de la documentation, planification).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:56 - 00:12:16</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">you know, mermaid style diagrams, which is what it built as you can see here. So I realized that it was creating these not the right way. I added a comment right here that says, hey, I already have a skill set up that does this. So I want you to do it that way. And then when I shoot off that comment, it basically comes back and says, okay, I didn&#x27;t see that skill. What&#x27;s the name of that skill? So I had to tell it explicitly right here, which is the skill that it&#x27;s looking for.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude (session &quot;Review Claude&#x27;s plan&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte structuré incluant &quot;Context&quot;, &quot;What gets created&quot;, et &quot;Section 1: Architecture Overview&quot;. On peut y lire des directives sur la création de fichiers avec des diagrammes Mermaid dans un répertoire `/ultraplan-docs/`.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et revue du plan de travail généré par l&#x27;IA avant approbation pour exécution.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001201_seg25.jpg" alt="Une interface de planification de projet Claude affichant un document structuré avec des sections détaillant la création de fichiers de documentation et de diagrammes Mermaid." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001201_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:01</span>
+                        <span class="caption-text">Une interface de planification de projet Claude affichant un document structuré avec des sections détaillant la création de fichiers de documentation et de diagrammes Mermaid.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:16 - 00:12:41</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it asked me this question and then I say it&#x27;s called visualizations. And then once I said that it was able to find it and it was able to use it, which is good. But just something to keep in mind, even though it can see your whole project, sometimes you still have to prompt it in the right way. And once again, this is just in research preview. But anyways, then it came back the right way. So I send it back to the terminal and then I was able to actually have everything be built out from my session here because the plan had been approved.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude.ai (mode Opus).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion : prompt initial de planification de documentation, logs de recherche web, liste des compétences disponibles de l&#x27;agent (update-config, simplify, etc.), et question de l&#x27;agent demandant où trouver l&#x27;outil de génération de diagrammes.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur interagit avec l&#x27;IA pour lui fournir le contexte nécessaire (nom du dossier &quot;visualizations&quot;) afin que l&#x27;agent puisse localiser et utiliser les outils de visualisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001222_seg26.jpg" alt="Interface de discussion avec une IA (Claude Code/Opus) montrant un échange où l&#x27;agent explique qu&#x27;il ne trouve pas la compétence de visualisation avant que l&#x27;utilisateur ne le guide vers le dossier &quot;visualizations&quot;." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001222_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:22</span>
+                        <span class="caption-text">Interface de discussion avec une IA (Claude Code/Opus) montrant un échange où l&#x27;agent explique qu&#x27;il ne trouve pas la compétence de visualisation avant que l&#x27;utilisateur ne le guide vers le dossier &quot;visualizations&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:41 - 00:13:13</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then I just go ahead and implement it locally. Okay, so now let&#x27;s talk about what is actually happening because we&#x27;re sending it to the cloud and it only works in the cloud. So that makes you think, why? So obviously it&#x27;s getting more compute, but I wanted to understand why and like what that even means. So I had this agent here do a deep dive into the Ultraplan feature. It looked at source code, it looked at community forums, and it looked at the actual documentation. And here&#x27;s what it came up with. Ultraplan offloads your planning session to a cloud hosted instance running Opus 4.6. It uses multi-agent exploration to build a deeper plan than the local mode can. Then it</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur de texte).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Document Markdown technique intitulé &quot;Ultra Plan: How It Actually Works Under the Hood&quot;. Tableau comparatif des différences : &quot;Where it runs&quot;, &quot;Model&quot;, &quot;Planning approach&quot;, &quot;Max compute time&quot;, &quot;Your terminal&quot;, &quot;Review interface&quot;, &quot;Execution options&quot;, &quot;Requirements&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation comparative et explication technique des différences architecturales entre l&#x27;exécution locale et l&#x27;utilisation de l&#x27;Ultra Plan dans le Cloud via Anthropic.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001249_seg27.jpg" alt="Vue d&#x27;un éditeur VS Code affichant un document Markdown détaillant le fonctionnement interne de la fonctionnalité &quot;Ultra Plan&quot; de Claude Code, avec un tableau comparatif." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001249_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:49</span>
+                        <span class="caption-text">Vue d&#x27;un éditeur VS Code affichant un document Markdown détaillant le fonctionnement interne de la fonctionnalité &quot;Ultra Plan&quot; de Claude Code, avec un tableau comparatif.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001305_seg27.jpg" alt="Vue agrandie du même document Markdown mettant en évidence le tableau comparatif complet entre &quot;Local /plan&quot; et &quot;Ultra Plan&quot;." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001305_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:05</span>
+                        <span class="caption-text">Vue agrandie du même document Markdown mettant en évidence le tableau comparatif complet entre &quot;Local /plan&quot; et &quot;Ultra Plan&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:13 - 00:13:36</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">either executes in the cloud or it goes back to your terminal. So what I thought was interesting is the multi-agent exploration. So here&#x27;s a quick comparison table. When you do local plan, it runs in your terminal. When you do ultra plan, it runs in Anthropix Cloud Container Runtime. The model is whatever session you&#x27;re using. Ultra plan always uses Opus 4.6. The planning approach is a single agent and it&#x27;s linear thinking, whereas ultra plan is multi-agent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur de texte).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif détaillé listant les différences sur : lieu d&#x27;exécution (terminal local vs Anthropic Cloud Container Runtime), modèle utilisé (session vs Opus 4.6), approche de planification (agent unique vs multi-agents), temps de calcul, état du terminal, interface de revue et options d&#x27;exécution.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation informative des spécificités techniques et de l&#x27;architecture du mode &quot;Ultra Plan&quot; via un document texte ouvert dans l&#x27;éditeur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001319_seg28.jpg" alt="Un tableau comparatif affiché dans VS Code présentant les différences techniques entre le mode &quot;Local /plan&quot; et le mode &quot;Ultra Plan&quot; pour l&#x27;assistant Claude." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001319_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:19</span>
+                        <span class="caption-text">Un tableau comparatif affiché dans VS Code présentant les différences techniques entre le mode &quot;Local /plan&quot; et le mode &quot;Ultra Plan&quot; pour l&#x27;assistant Claude.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:36 - 00:13:54</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It is three parallel exploration agents plus one critique agent. So obviously this is gonna use more tokens, but like we talked about, if you use more tokens upfront, it&#x27;s definitely worth it. if it&#x27;s faster and higher quality. Now the max compute time over here is bounded by your session, but on the cloud, it&#x27;s 30 minutes as a cap.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur de texte).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif détaillant les spécifications : exécution, modèle (Opus 4.6), approche de planification (3 agents parallèles + 1 critique), temps de calcul (30 minutes), interface de revue, options d&#x27;exécution et prérequis.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle et explicative des capacités du mode &quot;Ultra Plan&quot; en opposition au mode &quot;Local&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001340_seg29.jpg" alt="Un tableau comparatif affiché dans VS Code présentant les différences techniques entre le mode &quot;Local /plan&quot; et le nouveau mode &quot;Ultra Plan&quot; de Claude Code." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001340_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:40</span>
+                        <span class="caption-text">Un tableau comparatif affiché dans VS Code présentant les différences techniques entre le mode &quot;Local /plan&quot; et le nouveau mode &quot;Ultra Plan&quot; de Claude Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:54 - 00:14:30</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I&#x27;ve never hit that and I don&#x27;t think I will because of how quick it&#x27;s been, but there is a cap on it there. Now the other interesting thing is your terminal gets blocked while you&#x27;re in plan mode because your session is focusing on that. But in Ultraplan, if you send your plan to the web, you can continue talking to that terminal session and wait for it to get teleported back. now truthfully I don&#x27;t know exactly when I would do that I&#x27;d probably just spin up a different session because I&#x27;d want to keep that context clean so that I can just execute when it comes back but that is something that is a difference and then the review interface you basically get text dialogue in your terminal if you&#x27;re using VS code with cloud code and you&#x27;re using like this</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur de texte).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif technique incluant les colonnes « Local /plan » et « Ultra Plan » avec des lignes sur le lieu d&#x27;exécution, le modèle (Opus 4.6), l&#x27;approche de planification (multi-agents), les limites de temps (timeout), l&#x27;état du terminal, l&#x27;interface de revue et les options d&#x27;exécution.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique des capacités et du fonctionnement d&#x27;Ultra Plan via un fichier texte affiché dans l&#x27;éditeur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001403_seg30.jpg" alt="Un tableau comparatif affiché dans VS Code détaillant les différences techniques entre le mode « Local /plan » et « Ultra Plan »." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001403_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:03</span>
+                        <span class="caption-text">Un tableau comparatif affiché dans VS Code détaillant les différences techniques entre le mode « Local /plan » et « Ultra Plan ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:30 - 00:14:57</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">extension rather than the terminal then you do get a nice like dock and it looks a little bit better you can leave comments on it but if you&#x27;re not using that and you&#x27;re using the terminal then it&#x27;s definitely going to be better in the ultra plan version. And really the only requirement here is that you have to have it synced to some sort of repo so that cloud code with your web account can actually log in and look at your project before it starts planning things out. So I&#x27;m sure that this is going to evolve as more people use it, as more people start to give feedback about it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion affichant &quot;Ultraplan stopped&quot;, des logs d&#x27;exécution de 3 agents (&quot;claude-code-guide&quot;, &quot;researcher&quot;, &quot;Explore&quot;) et leurs statistiques de tokens/utilisation d&#x27;outils.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur visualise les résultats de recherche et l&#x27;exécution d&#x27;agents IA via le terminal intégré de VS Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001437_seg31.jpg" alt="Interface de VS Code montrant une session active de Claude Code dans le panneau de gauche et une fenêtre de discussion vide avec le logo de Claude sur la droite." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001437_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:37</span>
+                        <span class="caption-text">Interface de VS Code montrant une session active de Claude Code dans le panneau de gauche et une fenêtre de discussion vide avec le logo de Claude sur la droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:58 - 00:15:23</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">When I was testing it out, I did run into a few issues where I was getting this authentication error. I&#x27;m not sure if that was something internal or something I did wrong, but it just seemed to pop up randomly and then I&#x27;d run it again and it&#x27;d be fine. But it also seems like we&#x27;ll start to get more clarity around how exactly this works soon, why it&#x27;s so much better at executing so much faster and the fact that these are parallel exploration agents. So I&#x27;d be curious how they&#x27;re prompted differently. So they&#x27;re not just duplicating work or maybe they are, maybe that&#x27;s the point.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude et éditeur VS Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Message d&#x27;erreur d&#x27;authentification et tableau technique comparatif des fonctionnalités de Claude Code (Modèle Opus 4.6, approche multi-agents, limites de temps).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur illustre les erreurs aléatoires rencontrées lors de l&#x27;utilisation de la fonctionnalité Ultra Plan et présente une documentation technique comparative.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001504_seg32.jpg" alt="Interface web de Claude affichant un prompt utilisateur sur la fonctionnalité &quot;Ultra Plan&quot; et un message d&#x27;erreur : &quot;Authentication error · This may be a temporary network issue, please try again&quot;." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001504_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:04</span>
+                        <span class="caption-text">Interface web de Claude affichant un prompt utilisateur sur la fonctionnalité &quot;Ultra Plan&quot; et un message d&#x27;erreur : &quot;Authentication error · This may be a temporary network issue, please try again&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001510_seg32.jpg" alt="Éditeur VS Code affichant un tableau comparatif détaillé entre le mode &quot;/plan&quot; local et &quot;Ultra Plan&quot;, soulignant les différences techniques, les modèles utilisés et les exigences système." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001510_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:10</span>
+                        <span class="caption-text">Éditeur VS Code affichant un tableau comparatif détaillé entre le mode &quot;/plan&quot; local et &quot;Ultra Plan&quot;, soulignant les différences techniques, les modèles utilisés et les exigences système.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:23 - 00:15:43</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I don&#x27;t assume that this is some sort of agent team that they can talk to each other and share a task list. And what I&#x27;d be curious to know is if we could get more visibility on how many tokens are actually being used in that plan. But yeah, it would be nice to be able to see, hey, the Ultra Plan is finished. And by the way, here&#x27;s how many tokens it just ran. Anyways, that is going to do it for this one. So if you guys enjoyed the video or learned something new, please give it a like.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur de texte ouvert sur un fichier markdown ou texte).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau structuré détaillant les différences techniques : localisation de l&#x27;exécution, modèle utilisé (Opus 4.6), approche de planification (Multi-agent), temps de calcul, gestion du terminal, interface de revue et prérequis techniques.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation informative et théorique des capacités de l&#x27;Ultra Plan via un tableau de comparaison technique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001528_seg33.jpg" alt="Tableau comparatif affiché dans un éditeur de code, opposant le mode &quot;Local /plan&quot; au &quot;Ultra Plan&quot; pour l&#x27;utilisation de l&#x27;outil Claude Code." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001528_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:28</span>
+                        <span class="caption-text">Tableau comparatif affiché dans un éditeur de code, opposant le mode &quot;Local /plan&quot; au &quot;Ultra Plan&quot; pour l&#x27;utilisation de l&#x27;outil Claude Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:43 - 00:15:48</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It helps me out a ton. And as always, I appreciate you guys making it to the end of the video. I&#x27;ll see you on the next one. Thanks, everyone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Schéma conceptuel / Diagramme de workflow.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le diagramme détaille trois étapes : &quot;CLI (Your Machine)&quot;, &quot;Cloud (Plan Mode)&quot; et &quot;Browser (Review)&quot;. Les flux sont indiqués par des flèches intitulées &quot;Launch&quot;, &quot;Plan Ready&quot;, &quot;Execute&quot; et &quot;Teleport&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du flux de travail logique (architecture système) de l&#x27;outil UltraPlan.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001544_seg34.jpg" alt="Schéma illustrant le workflow &quot;UltraPlan&quot; montrant l&#x27;interaction entre une interface CLI locale, un traitement dans le Cloud et une revue via navigateur." loading="lazy" onclick="openLightbox('../screenshots/T4fXb3sbJIo/T4fXb3sbJIo_001544_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:44</span>
+                        <span class="caption-text">Schéma illustrant le workflow &quot;UltraPlan&quot; montrant l&#x27;interaction entre une interface CLI locale, un traitement dans le Cloud et une revue via navigateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
