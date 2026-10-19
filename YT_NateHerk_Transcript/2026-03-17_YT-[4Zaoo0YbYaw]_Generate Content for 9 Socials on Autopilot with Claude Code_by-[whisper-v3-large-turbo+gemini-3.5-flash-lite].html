@@ -1,0 +1,2560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Generate Content for 9 Socials on Autopilot with Claude Code — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Generate Content for 9 Socials on Autopilot with Claude Code</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-03-17</span>
+                <span class="badge">⏱️ 00:17:29</span>
+                <span class="badge">🆔 <code>4Zaoo0YbYaw</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=4Zaoo0YbYaw" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Generate Content for 9 Socials on Autopilot with Claude Code**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:28</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You can see right here, all I said was, hey, Claude, I want you to take this YouTube video and repurpose it into a LinkedIn, X, and Instagram post. Then I dropped in the link to the YouTube video and shot it off. Not only did it create all of these assets, but it also found bugs in its own code and fixed those. And then we have this folder over here called drafts. And if I open it up, you can see that we have building beautiful websites with Claude Code, which is the video I gave it. And then in here, we have Instagram with our actual post text and five visuals. We&#x27;ve got LinkedIn with our post text and a visual and then same exact thing for X.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension Claude (Agent IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur : &quot;hey Claude, I want you to take this YouTube video and repurpose it into a LinkedIn X and Instagram post...&quot;. Réflexion de l&#x27;IA : &quot;Let me start by gathering everything I need - the video content, your brand assets, and the skill instructions.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur soumet une requête à Claude pour transformer une vidéo YouTube en contenu pour les réseaux sociaux, et l&#x27;agent commence à planifier les étapes de travail.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000007_seg1.jpg" alt="Une capture d&#x27;écran de l&#x27;interface VS Code montrant l&#x27;extension Claude en pleine interaction avec l&#x27;utilisateur, affichant le prompt envoyé et la réflexion initiale de l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000007_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:07</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface VS Code montrant l&#x27;extension Claude en pleine interaction avec l&#x27;utilisateur, affichant le prompt envoyé et la réflexion initiale de l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:28 - 00:00:51</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So that exact workflow right there took me from having one long-form YouTube video to having a finished LinkedIn post, a finished Instagram post, and a finished X post. And if I wanted to ask it to generate posts for six other social platforms, it could because it can use all of them and understands how they all work. So today I&#x27;m going to be showing you guys how you can basically 9x your content game using a combination of Cloud Code and Blotato.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciels de conception de diagrammes (type FigJam ou Canva) utilisés pour présenter les workflows d&#x27;automatisation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schémas de processus, texte expliquant les avantages de l&#x27;IA pour la création de sites web (&quot;Building Beautiful Websites with Claude Code&quot;) et icônes de réseaux sociaux.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de la stratégie de contenu automatisée, illustrant comment une source unique est transformée en posts pour multiples plateformes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000034_seg2.jpg" alt="Capture d&#x27;écran d&#x27;un post LinkedIn présentant un guide en 3 étapes pour utiliser &quot;Claude Code&quot; avec un schéma illustré." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000034_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:34</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un post LinkedIn présentant un guide en 3 étapes pour utiliser &quot;Claude Code&quot; avec un schéma illustré.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000040_seg2.jpg" alt="Capture d&#x27;écran d&#x27;un post type X (Twitter) illustrant l&#x27;efficacité du workflow avec le message &quot;me before vs me after&quot; et un texte promotionnel." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000040_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:40</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un post type X (Twitter) illustrant l&#x27;efficacité du workflow avec le message &quot;me before vs me after&quot; et un texte promotionnel.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000046_seg2.jpg" alt="Schéma illustrant un moteur de contenu alimenté par &quot;Claude Code + Blotato&quot; se diffusant vers diverses plateformes sociales (X, Instagram, LinkedIn, etc.)." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000046_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:46</span>
+                        <span class="caption-text">Schéma illustrant un moteur de contenu alimenté par &quot;Claude Code + Blotato&quot; se diffusant vers diverses plateformes sociales (X, Instagram, LinkedIn, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:52 - 00:01:17</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So right now when you&#x27;re creating content, you know it takes a lot of time. And when you put all that time into creating, let&#x27;s just say, a YouTube video, it&#x27;d be really nice to be able to repurpose that content into different platforms as well. So what Botato can help you do is it can create the source. So it can look through transcripts, websites, PDFs, it can find inspiration. It can then create visuals for you. So infographics, carousels, or videos, and then it can actually go ahead and schedule that stuff. So it can post it to nine platforms.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface logicielle réelle n&#x27;est montrée ; il s&#x27;agit de diapositives de présentation sous forme de dessins (style tableau blanc).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte expliquant le processus : étapes 1 (Transcriptions, sites web, PDF, audio), 2 (images, infographies, carrousels, vidéos), 3 (9 plateformes, calendrier, auto-programmation).</p>
+                        <p><strong>Action / Démonstration :</strong> Aucune action technique ou démonstration de logiciel n&#x27;est effectuée.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:17 - 00:01:48</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It can create the stories. It can create the content calendar, and we can do all of that using Blotato and automate it with Cloud Code. So you guys saw a demo earlier, but I&#x27;m literally going to set up a brand new account today. I&#x27;m going to walk you through the exact steps that you need to do. And basically all we have to do is get our API key, add our MCP config for Blotato, and then just connect our accounts. And we&#x27;re already ready to start creating content in less than five minutes. All right. So the way that I like to use Cloud Code is within an IDE called Visual Studio Code. Now you could use this in anti-gravity. You could use it in the terminal.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu de démarrage avec accès aux fichiers récents (Blotato, Herk 2.0) et section de tutoriels interactifs.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit l&#x27;environnement de développement pour configurer l&#x27;automatisation avec Claude Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000140_seg4.jpg" alt="L&#x27;interface d&#x27;accueil de Visual Studio Code affichant des options de démarrage et des tutoriels (&quot;Walkthroughs&quot;), incluant spécifiquement &quot;Get started with Claude Code&quot;." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000140_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:40</span>
+                        <span class="caption-text">L&#x27;interface d&#x27;accueil de Visual Studio Code affichant des options de démarrage et des tutoriels (&quot;Walkthroughs&quot;), incluant spécifiquement &quot;Get started with Claude Code&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:48 - 00:02:24</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">you could use it in cursor, but I like to use Visual Studio Code. So if you don&#x27;t have this, then just go to your browser, type in Visual Studio Code. You can download this for both Windows or Mac or whatever operating system that you&#x27;re on. Now, once you&#x27;re in here, this is what it should look like. And I&#x27;m going to walk you through everything you need to click on and everywhere you need to type. So don&#x27;t get overwhelmed. If you&#x27;d rather watch like kind of an intro video and then come back, then I&#x27;ll tag this one right up here and then hop on back over here. And by the way, if you&#x27;ve been watching my channel for a while, then you&#x27;ve known about Blotato. I showed it in N8N in this video. And also in all of my kind of like faceless shorts videos, we use Blotato to do the auto posting and scheduling. But now I&#x27;m just showing you how it&#x27;s</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google Chrome/Edge), Éditeur de code (Visual Studio Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de téléchargement de VS Code, liens de projet récents (Blotato, Herk 2.0), et tutoriels intégrés (Python, Claude Code).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation web pour accéder au téléchargement de l&#x27;éditeur, puis ouverture de l&#x27;application VS Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000157_seg5.jpg" alt="Page officielle de téléchargement de Visual Studio Code affichée dans un navigateur web." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000157_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:57</span>
+                        <span class="caption-text">Page officielle de téléchargement de Visual Studio Code affichée dans un navigateur web.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000206_seg5.jpg" alt="Interface de bienvenue (Welcome Screen) de l&#x27;éditeur Visual Studio Code montrant les options de démarrage et les tutoriels (walkthroughs)." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000206_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:06</span>
+                        <span class="caption-text">Interface de bienvenue (Welcome Screen) de l&#x27;éditeur Visual Studio Code montrant les options de démarrage et les tutoriels (walkthroughs).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:24 - 00:02:58</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">actually a lot easier to use with Cloud Code. So that&#x27;s exactly why once we&#x27;re in here, we&#x27;re going to go over to this left hand side and click on the extensions button. And all you have to do is type in Cloud Code. It&#x27;ll be this one right here that&#x27;s verified from Anthropic. And then you&#x27;ll just go ahead and install this. When you install it, it will prompt you to sign in with your paid Claude subscription. Now this does have to be the pro or max plan because if you&#x27;re on just the free you don&#x27;t have access to Claude code. Now once you&#x27;ve installed this what it will do is give you this little orange button in the top right which lets you open up Claude code and this is kind of like your typical Claude or ChatGPT interface where you get to talk to an agent right here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de l&#x27;extension &quot;Claude Code for VS Code&quot; éditée par Anthropic (version 2.1.52), avec les boutons &quot;Disable&quot; et &quot;Uninstall&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation de la fiche descriptive de l&#x27;extension Claude Code dans le panneau des extensions de VS Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000232_seg6.jpg" alt="Interface de Visual Studio Code affichant la page de détail de l&#x27;extension &quot;Claude Code for VS Code&quot; dans le marketplace, avec le présentateur visible en médaillon en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000232_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:32</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant la page de détail de l&#x27;extension &quot;Claude Code for VS Code&quot; dans le marketplace, avec le présentateur visible en médaillon en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:58 - 00:03:33</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And now what we need to do is open up a project or a folder. So I&#x27;m going to go over to this top left button that says explore and it will say you have not yet opened a folder go ahead and open one up. And that&#x27;s where we&#x27;ll be working inside for this specific, you know, AI social media poster project. So I just went ahead and I created a brand new one. I just called it Blotato. There&#x27;s absolutely nothing in here. And this is what your screen should look like. And now what we want to do is just basically close out of the welcome thing. We can go ahead and double click and then hit the cloud code button. And now we just have our files, which will be on the left. We don&#x27;t have any yet. And then we have our cloud code agent right here that we are going to be able to</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec l&#x27;extension ou l&#x27;intégration Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de gestion de fichiers VS Code montrant les options « Open Folder » et « Clone Repository ». Dans la partie centrale, le logo « Claude Code » est affiché.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment initialiser le projet en ouvrant un dossier local dans l&#x27;éditeur de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000307_seg7.jpg" alt="Interface de Visual Studio Code affichant le panneau « Explorer » avec le message « No folder opened » et des boutons pour ouvrir ou cloner un répertoire." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000307_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:07</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant le panneau « Explorer » avec le message « No folder opened » et des boutons pour ouvrir ou cloner un répertoire.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:33 - 00:04:09</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">talk to. So what I&#x27;m going to do in the chat is paste in this prompt that says, create me a new skill called repurpose YouTube video. It&#x27;s going to create an AI social media manager that makes social media posts for LinkedIn, Instagram, and X. The user will input a YouTube video URL and wants it, I misspelled this here, to be turned into a LinkedIn post, Instagram post, X post, and each one should have a visual that&#x27;s optimized for that platform. So Potato is basically going to take this video and do everything for us. I end this prompt by saying, ask me clarifying questions one at a time until you are 95% confident that you can complete the task successfully. And I kind of used this templated prompt from Sabrina, so shout out Sabrina. You guys can all copy and paste this</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code) avec l&#x27;extension/terminal Claude Code intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt détaillé : &quot;create a new skill &#x27;repurpose-youtube-video&#x27;... create an AI social media manager that makes social media posts for linkedin, instagram, and X... use Blotato for extraction... Create a .env file for me to upload my BLOTATO_API_KEY.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie et envoi d&#x27;une instruction (prompt) à l&#x27;agent Claude Code pour initialiser la création d&#x27;une automatisation de repurposing de contenu vidéo YouTube.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000342_seg8.jpg" alt="Capture d&#x27;écran de l&#x27;interface Claude Code au sein de VS Code, montrant le prompt saisi par l&#x27;utilisateur pour créer une nouvelle compétence d&#x27;automatisation." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000342_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:42</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface Claude Code au sein de VS Code, montrant le prompt saisi par l&#x27;utilisateur pour créer une nouvelle compétence d&#x27;automatisation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:09 - 00:04:34</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">exact prompt from my FreeSchool community, or you can just copy it by looking at it right here. So now that this is running, it&#x27;s going to start going through that process. The first thing that it&#x27;s doing is it&#x27;s researching about Bloatato to figure out what it&#x27;s actually able to do. And it&#x27;s basically going to help us build out this flow where we drop in a video, Bloatato extracts the transcript, adapts the content for these different media platforms, and then it creates everything. And then we&#x27;re able to review it and then just basically approve it manually.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension d&#x27;agent IA) et schéma explicatif illustré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes et logs d&#x27;exécution : &quot;Let me start by understanding the BloTato API capabilities&quot;, &quot;Web Fetch&quot;, &quot;Bash: List project directory contents&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse la documentation API de BloTato pour démarrer la construction de l&#x27;outil d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000415_seg9.jpg" alt="Interface de Visual Studio Code affichant un assistant IA en pleine réflexion sur la création d&#x27;une nouvelle compétence &quot;repurpose-youtube-video&quot;." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000415_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:15</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant un assistant IA en pleine réflexion sur la création d&#x27;une nouvelle compétence &quot;repurpose-youtube-video&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000422_seg9.jpg" alt="Diagramme de workflow illustrant le processus automatisé : saisie d&#x27;URL YouTube, extraction par BloTato, adaptation du contenu pour LinkedIn, X et Instagram, puis validation." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000422_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:22</span>
+                        <span class="caption-text">Diagramme de workflow illustrant le processus automatisé : saisie d&#x27;URL YouTube, extraction par BloTato, adaptation du contenu pour LinkedIn, X et Instagram, puis validation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:35 - 00:05:10</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And before I start going through this flow of answering questions, I wanted to explain what is a skill because you&#x27;ll notice I asked it to create a new skill. Just think of a skill like a recipe. If you tell your agent to write a LinkedIn post, it would look at the LinkedIn post skill, and that would have the name of the dish, the ingredients, the steps, and then the finished output. That way the agent could read the recipe and make sure that every single time you ask it to make that dish, it comes out perfect. So because we&#x27;re turning this process into a skill, every single time we use it, it&#x27;s only going to get better and more consistent. But anyways, now we&#x27;re going to come back into Cloud Code and answer the clarifying questions. So it&#x27;s asking me what</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Illustration graphique / Schéma conceptuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le schéma montre : à gauche, un utilisateur demandant « Write a LinkedIn post » ; au centre, une fiche « linkedin-post » détaillant les ingrédients (YouTube link ou topic) et les étapes (1. Get transcript, 2. Write post) ; à droite, un robot cuisinier lisant la fiche pour produire un résultat standardisé.</p>
+                        <p><strong>Action / Démonstration :</strong> Explication pédagogique utilisant une métaphore visuelle pour définir le fonctionnement technique d&#x27;une compétence d&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000444_seg10.jpg" alt="Schéma explicatif illustrant le concept de « skill » (compétence) d&#x27;un agent IA sous forme de recette de cuisine pour créer un post LinkedIn." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000444_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:44</span>
+                        <span class="caption-text">Schéma explicatif illustrant le concept de « skill » (compétence) d&#x27;un agent IA sous forme de recette de cuisine pour créer un post LinkedIn.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:10 - 00:05:42</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">program language to build this in. I don&#x27;t really know what I want to do here, and you may not either. So what I&#x27;m just going to say is whatever you think is best. It decides to go with Python because it&#x27;s the cleanest for this kind of API-driven tool. So then it asks, should the tool auto-publish or do preview and approval, I want you to always make sure I review it before you ever publish anything on my social media accounts. And if you guys are curious about how I&#x27;m talking and words are appearing, then check out the description for the tool. Anyways, for the AI-generated post copy, do you want to use Claude to write the tailored posts, or should the tool just reformat</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension Claude intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de la conversation : &quot;I&#x27;ll go with Python — it&#x27;s the cleanest for this kind of API-driven CLI tool...&quot;, suivi d&#x27;une question sur le choix entre &quot;Auto-publish&quot; et &quot;Review first&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA propose une architecture technique et interroge l&#x27;utilisateur sur la logique métier de l&#x27;outil en cours de création.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000518_seg11.jpg" alt="Interface de l&#x27;éditeur VS Code montrant une conversation active avec l&#x27;agent Claude, où celui-ci justifie son choix d&#x27;utiliser Python et pose une question sur le flux de travail de publication." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000518_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:18</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur VS Code montrant une conversation active avec l&#x27;agent Claude, où celui-ci justifie son choix d&#x27;utiliser Python et pose une question sur le flux de travail de publication.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:42 - 00:06:06</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">the extracted YouTube content without an LLM? I definitely want to use Claude to rewrite the text content for the different platforms. Cool, so we&#x27;ll eventually have to give it an Anthropic API key as well as the Blotato API key. Now it asks about the tone of voice that we want. So in this case, if you had like a custom GPT or Claude project already that helps you write LinkedIn posts or Instagram posts, you could just go ahead and grab the instructions from that and put that here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur de code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un message de l&#x27;IA détaillant les options de configuration : choix entre utiliser Claude (Anthropic API) pour rédiger des posts sur mesure ou reformater le contenu sans LLM, avec une explication sur la nécessité d&#x27;une clé API supplémentaire.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA propose une interaction textuelle pour définir les préférences de l&#x27;utilisateur concernant le workflow d&#x27;automatisation (utilisation de Claude vs traitement brut).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000548_seg12.jpg" alt="Une capture d&#x27;écran de l&#x27;éditeur Visual Studio Code montrant une interface de dialogue avec un agent IA configurant un nouveau skill nommé &quot;repurpose-youtube-video&quot;." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000548_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:48</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;éditeur Visual Studio Code montrant une interface de dialogue avec un agent IA configurant un nouveau skill nommé &quot;repurpose-youtube-video&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:06 - 00:06:38</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But for now, I&#x27;m just going to keep this really simple for the sake of the demo and just say platform adapted, professional on LinkedIn. And on X, you can be casual and maybe even a little bit humorous. Now it&#x27;s asking for Instagram, what type of post should it create? I would like you to create a educational carousel that looks like I am writing tweets. And now it asks about the visuals for LinkedIn and X. For LinkedIn, let&#x27;s do a key takeaway graphic. It should be clean, and it should have some text that explains the value in the video. And for X, yeah, let&#x27;s just</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension de chat IA intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de l&#x27;IA proposant trois options de ton : &quot;Professional/thought-leader&quot;, &quot;Platform-adapted&quot; (LinkedIn, X, Instagram) ou &quot;A specific brand voice&quot;. Zone de saisie utilisateur en bas pour interagir avec Claude.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur utilise l&#x27;assistant IA intégré dans VS Code pour configurer les paramètres de ton d&#x27;une nouvelle &quot;compétence&quot; (skill) visant à repurposer du contenu vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000614_seg13.jpg" alt="Interface de Visual Studio Code affichant une fenêtre de chat interactive où l&#x27;IA (Claude) demande de définir le ton et la voix souhaités pour la création de posts sur les réseaux sociaux." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000614_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:14</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant une fenêtre de chat interactive où l&#x27;IA (Claude) demande de définir le ton et la voix souhaités pour la création de posts sur les réseaux sociaux.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:38 - 00:06:57</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">do something eye-catching, maybe a cool quote. Next question is, how do you want to review the stuff? Let&#x27;s just go ahead and save everything to the drafts folder so I can take a look at it myself. When publishing, should you be able to selectively approve which platforms to post to? Yeah, I will tell you one by one which ones have been approved. I think I nearly have everything.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec une extension d&#x27;interface conversationnelle (probablement Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt de l&#x27;utilisateur définit les objectifs de contenu (« key takeaway graphic » pour LinkedIn, « cool quote » pour X). L&#x27;IA propose deux options de workflow pour la validation : « Interactive CLI » ou « Draft files » (sauvegarde dans un dossier drafts).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA est en train de consulter l&#x27;utilisateur sur la manière dont il souhaite structurer l&#x27;étape de revue et d&#x27;approbation avant publication.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000642_seg14.jpg" alt="Une session d&#x27;interaction avec un agent IA (Claude) à l&#x27;intérieur de VS Code, discutant des options de flux de travail pour la création de contenu (LinkedIn/X) et les méthodes de validation des brouillons." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000642_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:42</span>
+                        <span class="caption-text">Une session d&#x27;interaction avec un agent IA (Claude) à l&#x27;intérieur de VS Code, discutant des options de flux de travail pour la création de contenu (LinkedIn/X) et les méthodes de validation des brouillons.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:57 - 00:07:23</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">One last question. Should the tool let you edit the draft text files before publishing and have the publish command pick up your changes? Absolutely. Okay, so it looks like we&#x27;re done with the question stage now. Now, you might notice that there&#x27;s still some stuff that we might want to give to this platform, like maybe some more information about our business that doesn&#x27;t really know anything about what we do, and maybe things like the colors we like to use or our logo or something like that so that it can be on the visuals.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec une extension ou un plugin d&#x27;IA conversationnelle intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion détaillant les fonctionnalités d&#x27;un outil de publication : gestion multi-plateformes, validation sélective, et édition manuelle des fichiers dans le dossier `/drafts/` avant la publication finale.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA pose une question de clarification à l&#x27;utilisateur sur le workflow d&#x27;édition des brouillons, avec une zone de saisie en bas pour répondre.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000703_seg15.jpg" alt="Interface de l&#x27;éditeur Visual Studio Code affichant une conversation active avec un agent IA (probablement Claude) concernant le développement d&#x27;une compétence pour automatiser la publication de contenus." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000703_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:03</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur Visual Studio Code affichant une conversation active avec un agent IA (probablement Claude) concernant le développement d&#x27;une compétence pour automatiser la publication de contenus.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:23 - 00:07:48</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So now what it&#x27;s gonna do is it&#x27;s going to build up those different tools. As you can see, it makes a to-do list and it&#x27;s gonna go through one by one and finish all that. And also what you&#x27;re gonna notice is on the left-hand side, we&#x27;re gonna start to get files and folders in our project setup. And that&#x27;s really important because if your Cloud Code workspace isn&#x27;t organized and it doesn&#x27;t understand where files are, and if you don&#x27;t understand where files are, then it&#x27;s just going to get messy and it might be hard to manage the context.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec une extension de type Claude Code ou agent IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Une liste de &quot;Todos&quot; détaillant les étapes de création d&#x27;un projet : récupération d&#x27;API, création de la structure, fichiers Python (draft.py, publish.py), et tests de workflow.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA est en train de planifier et d&#x27;exécuter la construction automatisée du projet, avec le statut &quot;Ruminating...&quot; affiché en bas.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000729_seg16.jpg" alt="Interface VS Code affichant une liste de tâches générée par une IA, avec le présentateur en médaillon en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000729_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:29</span>
+                        <span class="caption-text">Interface VS Code affichant une liste de tâches générée par une IA, avec le présentateur en médaillon en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:49 - 00:08:23</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Okay, so that has finished up. You can see that we have a new project structure. So over here we have a PyCache. We&#x27;ve got .clawed with our commands. So this is essentially the exact same thing as skills. So this is the repurpose YouTube video skill that it created. You can see that it created some actual Python scripts to draft, to post, to publish. And so maybe we would want to clean this up and put this in a different folder called scripts or something like that. But the action item on us now is to actually set up our API keys. So if I go into the .env, you can see that we have a Blotato API key and an Anthropic API key that we need to set up. The first step would be to use the</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence du projet comprenant les dossiers .pycache et .claude/commands, ainsi que les fichiers .env, blotato_client.py, draft.py, post_generator.py, publish.py, published_posts_log.md et requirements.txt. Le document ouvert présente une description fonctionnelle de ces fichiers.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la nouvelle structure du projet créée par l&#x27;outil d&#x27;automatisation, mettant en évidence l&#x27;ajout du skill &#x27;repurpose-youtube-video&#x27;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000757_seg17.jpg" alt="L&#x27;éditeur Visual Studio Code affiche l&#x27;arborescence du projet &#x27;Blotato&#x27; dans la barre latérale gauche, avec un document Markdown ouvert dans l&#x27;éditeur principal détaillant la structure des fichiers et les responsabilités de chaque composant du projet." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000757_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:57</span>
+                        <span class="caption-text">L&#x27;éditeur Visual Studio Code affiche l&#x27;arborescence du projet &#x27;Blotato&#x27; dans la barre latérale gauche, avec un document Markdown ouvert dans l&#x27;éditeur principal détaillant la structure des fichiers et les responsabilités de chaque composant du projet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:23 - 00:08:56</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">link in the description and go to Blotato, and that will help you get 30% off for six months. Now once you get that set up, all you&#x27;ll have to do is go over to the bottom left and go to your settings, and then click on right here, API. And this is where it will ask you to just basically make sure that this is a paid feature. So if you enable it, you will be on a paid plan. And then you&#x27;ll go ahead and copy this API key right there. And then in the .env, you&#x27;ll paste this in and then you will save it. And then it&#x27;s also asking for an Anthropic API key. I&#x27;m actually going to go ahead and use OpenRouter instead because you can access all the models there. So I wanted to OpenRouter,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web Blotato et éditeur de code VS Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Variables d&#x27;environnement : `BLOTATO_API_KEY=`, `ANTHROPIC_API_KEY=`, ainsi que des templates ID pour LinkedIn, Instagram et X.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des comptes sociaux sur la plateforme web et saisie des clés API dans le fichier de configuration du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000831_seg18.jpg" alt="Interface web de Blotato affichant la section &quot;Settings&quot; avec les options de connexion aux réseaux sociaux (Twitter, LinkedIn, Facebook, TikTok)." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000831_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:31</span>
+                        <span class="caption-text">Interface web de Blotato affichant la section &quot;Settings&quot; avec les options de connexion aux réseaux sociaux (Twitter, LinkedIn, Facebook, TikTok).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000848_seg18.jpg" alt="Éditeur VS Code ouvert sur un fichier &quot;.env&quot; contenant des variables pour les clés API (BLOTATO_API_KEY, ANTHROPIC_API_KEY) et des IDs de templates visuels." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000848_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:48</span>
+                        <span class="caption-text">Éditeur VS Code ouvert sur un fichier &quot;.env&quot; contenant des variables pour les clés API (BLOTATO_API_KEY, ANTHROPIC_API_KEY) et des IDs de templates visuels.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:56 - 00:09:33</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I created a new key and I&#x27;m going to copy this and paste it into Visual Studio Code. And I&#x27;m just going to tell Cloud Code that I am using OpenRouter with Cloud models instead of Anthropic, but you can use whatever you want here. So I just cleared the context and we&#x27;re about to do a test run. But before that, I just wanted to show you guys something that we can do that&#x27;s pretty cool real quick. So I&#x27;m going to go over here and I&#x27;m going to drop in a new folder and I&#x27;m going to call this brand underscore assets. Now what I&#x27;m going to do is drag in a profile picture of myself in the brand assets. It&#x27;s this profile picture right here, because I wanted to be able to use this in the tweet style infographics or carousels that we told it we want to make. So what I can do</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Claude Code (extension d&#x27;interface)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation du projet incluant des instructions de configuration (variables d&#x27;environnement BLOTATO_API_KEY et ANTHROPIC_API_KEY), des commandes d&#x27;installation (pip install) et la commande d&#x27;exécution du workflow (/repurpose-youtube-video).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur prépare l&#x27;environnement de travail dans VS Code, en consultant le fichier README/documentation avant d&#x27;insérer sa nouvelle clé API dans le fichier .env.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000905_seg19.jpg" alt="Interface de Visual Studio Code affichant un fichier Markdown de documentation pour un projet intitulé &quot;repurpose-youtube-video&quot; et la barre de saisie de l&#x27;assistant Claude Code en bas." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000905_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:05</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant un fichier Markdown de documentation pour un projet intitulé &quot;repurpose-youtube-video&quot; et la barre de saisie de l&#x27;assistant Claude Code en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:33 - 00:09:52</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">now is go to YouTube. I&#x27;ve got this video I made a few days ago about building websites and cloud code, copy the link, come back into Visual Studio Code and say, hey, Claude, I want you to take this YouTube video and repurpose it into a LinkedIn X and Instagram post. I&#x27;ve given you in the brand assets folder, a profile picture of myself to use in these, you know, different visual posts.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (YouTube), Visual Studio Code (avec l&#x27;extension Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Image 1 : URL YouTube &quot;https://youtu.be/8GHM8RUWhCk?si=vLI0jnXQyS2b&quot;. Image 2 : Invite de commande &quot;ctrl esc to focus or unfocus Claude&quot;, arborescence de fichiers incluant des dossiers &quot;.claude&quot; et &quot;brand_assets&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Copie d&#x27;un lien YouTube en vue de son intégration ultérieure dans Claude Code pour effectuer une automatisation de contenu.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000938_seg20.jpg" alt="Une interface de navigateur affichant une vidéo YouTube en arrière-plan avec la fenêtre de dialogue &quot;Share&quot; ouverte, permettant de copier l&#x27;URL de la vidéo." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000938_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:38</span>
+                        <span class="caption-text">Une interface de navigateur affichant une vidéo YouTube en arrière-plan avec la fenêtre de dialogue &quot;Share&quot; ouverte, permettant de copier l&#x27;URL de la vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000943_seg20.jpg" alt="L&#x27;éditeur Visual Studio Code ouvert avec l&#x27;extension &quot;Claude Code&quot; active, affichant une zone de saisie pour interagir avec l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_000943_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:43</span>
+                        <span class="caption-text">L&#x27;éditeur Visual Studio Code ouvert avec l&#x27;extension &quot;Claude Code&quot; active, affichant une zone de saisie pour interagir avec l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:53 - 00:10:27</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Let me know when you&#x27;ve got some stuff ready to review and make sure you&#x27;re updating your skill document with your findings from this first test run. So now it&#x27;s going to read through the skill. It&#x27;s going to execute these different Python scripts right here. And if it runs into any issues or anything that we told it, like using our profile picture, it will update that skill document with. And here&#x27;s an example of it already needing to make an adjustment is because it said YouTube is blocked by the web fetch tool. Let me try alternative approaches. So that just finished up. You can see that it started off by reading the skill. It goes through and it tries different things. It made a to-do list and it was able to create the actual text-based posts.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec l&#x27;extension Claude ou outil d&#x27;IA intégré).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur demandant de transformer une vidéo YouTube en posts LinkedIn/X/Instagram, avec des fichiers de projet visibles (`repurpose-youtube-video.md`, `brand_assets/`, `blotato_client.py`, `post_generator.py`).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA est en train de traiter la requête (« Concocting... ») et s&#x27;apprête à lire les fichiers du projet et à utiliser la compétence (skill) définie dans le fichier Markdown.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001001_seg21.jpg" alt="Interface de VS Code montrant une interaction avec l&#x27;agent Claude, avec l&#x27;arborescence des fichiers du projet « Blotato » sur la gauche et la fenêtre de dialogue de l&#x27;IA en cours de traitement sur la droite." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001001_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:01</span>
+                        <span class="caption-text">Interface de VS Code montrant une interaction avec l&#x27;agent Claude, avec l&#x27;arborescence des fichiers du projet « Blotato » sur la gauche et la fenêtre de dialogue de l&#x27;IA en cours de traitement sur la droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:28 - 00:10:47</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But what happened was it actually failed on the visuals. So what it did is it added a known issues and finding section to the actual skill itself, but we&#x27;re gonna go ahead and try it again, and we&#x27;re gonna see if it can fix it. So I just said, try to create the visuals again, make sure they are images, not videos, and we aren&#x27;t worried about posting yet, we just want you to create the assets.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec l&#x27;extension Claude intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des problèmes identifiés : échec de l&#x27;API Blotato pour les visuels, réseaux sociaux (LinkedIn/Instagram) non connectés, et absence de paramètre pour l&#x27;image de profil dans `create_visual()`. Confirmation de la mise à jour du document `repurpose-youtube-video.md` avec une section &quot;Known Issues &amp; Findings&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent présente un rapport d&#x27;état technique sur les échecs de processus et demande à l&#x27;utilisateur quelle priorité corriger en premier.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001032_seg22.jpg" alt="Interface de Visual Studio Code affichant une conversation avec l&#x27;agent Claude, détaillant les erreurs de génération de visuels (&quot;Visuals failed&quot;) et les problèmes de connexion API dans le projet &quot;Blotato&quot;." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001032_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:32</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant une conversation avec l&#x27;agent Claude, détaillant les erreurs de génération de visuels (&quot;Visuals failed&quot;) et les problèmes de connexion API dans le projet &quot;Blotato&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:47 - 00:11:07</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it&#x27;s once again gonna dive into everything, it is going to investigate the templates, and then it&#x27;s gonna come back hopefully with something that we can review. So visuals have been created this time, and apparently they&#x27;re looking great, and you can see once again, it&#x27;s updating the skill document so that that never happens again. Okay, so these have been created successfully. We&#x27;ve got our LinkedIn with a whiteboard infographic.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec une extension de chat/agent IA type Claude).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande Bash : `cd &quot;c:\Users\nateh\OneDrive\Documents\Agentic Workflows\Blotato&quot; &amp;&amp; python draft.py --list-tem`. Résultat affiché : `Available Blotato visual templates (36): ID: /base/v2/ai-story-video/5903fe43-514d-40ee-a060-0d6628c5f8fd/v1`.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse les templates disponibles dans le projet &quot;Blotato&quot; pour préparer la création de visuels.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001052_seg23.jpg" alt="Une capture d&#x27;écran de Visual Studio Code affichant l&#x27;interface d&#x27;un agent IA (Claude) en train d&#x27;exécuter une commande Bash pour lister des modèles visuels disponibles." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001052_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:52</span>
+                        <span class="caption-text">Une capture d&#x27;écran de Visual Studio Code affichant l&#x27;interface d&#x27;un agent IA (Claude) en train d&#x27;exécuter une commande Bash pour lister des modèles visuels disponibles.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:07 - 00:11:28</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Let me go ahead and open that up real quick. It&#x27;s putting all of this stuff in the drafts folder and you can see we&#x27;ve got Instagram, LinkedIn, and X. And this is all for the YouTube video, which is called Building Beautiful Websites. So it&#x27;s keeping our stuff organized. So for LinkedIn, here&#x27;s our visual. We&#x27;ve got a whiteboard that says Building Beautiful Websites with Cloud Code, three key steps. We&#x27;ve got cloud.md, frontend design skill, and then adding your brand assets to a folder.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de projet sous le dossier &quot;drafts&quot;, tableau récapitulatif des livrables (LinkedIn, Instagram, X), liste de correctifs techniques (bugs fixés) et rendu final de l&#x27;infographie de marque.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans le système de fichiers du projet pour montrer l&#x27;organisation des assets générés automatiquement et prévisualisation d&#x27;un fichier image final.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001112_seg24.jpg" alt="Interface VS Code affichant l&#x27;arborescence des fichiers &quot;drafts&quot; avec une synthèse des résultats générés par IA pour les plateformes LinkedIn, Instagram et X, ainsi qu&#x27;une liste de bugs corrigés." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001112_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:12</span>
+                        <span class="caption-text">Interface VS Code affichant l&#x27;arborescence des fichiers &quot;drafts&quot; avec une synthèse des résultats générés par IA pour les plateformes LinkedIn, Instagram et X, ainsi qu&#x27;une liste de bugs corrigés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001123_seg24.jpg" alt="Visualisation du fichier &quot;visual_0.jpg&quot; dans VS Code, montrant une infographie détaillée intitulée &quot;Building Beautiful Websites with Claude Code: 3 Key Steps&quot;." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001123_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:23</span>
+                        <span class="caption-text">Visualisation du fichier &quot;visual_0.jpg&quot; dans VS Code, montrant une infographie détaillée intitulée &quot;Building Beautiful Websites with Claude Code: 3 Key Steps&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:29 - 00:12:05</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And you can see at the bottom, it also says full walkthrough on YouTube at Nate Herc. And then we also have the actual post right here, which is the text-based copy of the LinkedIn post. So let&#x27;s say we like that one. Let&#x27;s go ahead and look at Instagram. We&#x27;ve got the same thing. We&#x27;ve got the post right here with the different, you know, slides, and then we have the actual visuals. So here&#x27;s number one, your cloud.md file is everything. It is a system prompt that runs before every session. We&#x27;ve got the next one, which is the front end design skill. And then pretty much all of these I&#x27;m assuming are the same. We&#x27;ve got brand assets. We&#x27;ve got, you don&#x27;t need to be a developer. And then we&#x27;ve got the difference between vibe coded and professional. So the one thing I will say about these are that</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier Markdown de conseil technique pour Claude Code, visuels textuels pour réseaux sociaux (Instagram/LinkedIn) sur le design web assisté par IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;arborescence du projet (&quot;Explorer&quot;) et bascule entre différents fichiers de contenu (textuels et visuels) destinés à la publication.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001138_seg25.jpg" alt="Interface VS Code affichant un fichier texte (post.txt) contenant le brouillon d&#x27;une publication LinkedIn sur l&#x27;optimisation de sites web avec Claude Code." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001138_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:38</span>
+                        <span class="caption-text">Interface VS Code affichant un fichier texte (post.txt) contenant le brouillon d&#x27;une publication LinkedIn sur l&#x27;optimisation de sites web avec Claude Code.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001147_seg25.jpg" alt="Interface VS Code affichant un fichier image (visual_0.jpg) qui présente un contenu textuel sous forme de &quot;carrousel Instagram&quot; sur l&#x27;importance du fichier CLAUDE.md." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001147_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:47</span>
+                        <span class="caption-text">Interface VS Code affichant un fichier image (visual_0.jpg) qui présente un contenu textuel sous forme de &quot;carrousel Instagram&quot; sur l&#x27;importance du fichier CLAUDE.md.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001156_seg25.jpg" alt="Interface VS Code affichant deux fichiers images côte à côte (visual_1.jpg et visual_2.jpg) contenant du texte promotionnel pour les compétences &quot;Front-End Design&quot; et l&#x27;utilisation de ressources de marque dans Claude." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001156_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:56</span>
+                        <span class="caption-text">Interface VS Code affichant deux fichiers images côte à côte (visual_1.jpg et visual_2.jpg) contenant du texte promotionnel pour les compétences &quot;Front-End Design&quot; et l&#x27;utilisation de ressources de marque dans Claude.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:05 - 00:12:38</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I think this would look a lot better if we had our profile picture as well as like a blue check mark, verified badge. So that&#x27;s something that we&#x27;ll probably want to change. And then real quick, just to look at the X post, we&#x27;ve got the actual text itself, which is very casual and it&#x27;s kind of more like a meme. And then for the visual, we just have a very simple quote. But as you guys no, I want to make those carousels have the profile picture in there. So I just asked CloudCode to put our profile picture in the carousel slides, as well as adding a blue check mark. So we&#x27;ll see if we can get the job done. All right, so look how cool this is. It fixed that workflow, so it now</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec extension Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de templates, logs de correction de bugs, contenu textuel d&#x27;un post X, et prompt utilisateur concernant l&#x27;ajout de branding (pfp + badge vérifié).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans les fichiers du projet, prévisualisation d&#x27;un fichier image, et soumission d&#x27;un prompt d&#x27;amélioration à l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001213_seg26.jpg" alt="Interface VS Code affichant un tableau récapitulatif des plateformes (LinkedIn, Instagram, X) et une liste de bugs corrigés dans le projet &quot;Blotato&quot;." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001213_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:13</span>
+                        <span class="caption-text">Interface VS Code affichant un tableau récapitulatif des plateformes (LinkedIn, Instagram, X) et une liste de bugs corrigés dans le projet &quot;Blotato&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001221_seg26.jpg" alt="Visualisation d&#x27;un fichier image généré (&quot;visual_0.jpg&quot;) dans VS Code, contenant une citation textuelle centrée sur un fond blanc." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001221_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:21</span>
+                        <span class="caption-text">Visualisation d&#x27;un fichier image généré (&quot;visual_0.jpg&quot;) dans VS Code, contenant une citation textuelle centrée sur un fond blanc.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001229_seg26.jpg" alt="Interface de chat Claude Code montrant une instruction utilisateur demandant l&#x27;ajout d&#x27;une photo de profil et d&#x27;une coche bleue pour améliorer le professionnalisme des visuels." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001229_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:29</span>
+                        <span class="caption-text">Interface de chat Claude Code montrant une instruction utilisateur demandant l&#x27;ajout d&#x27;une photo de profil et d&#x27;une coche bleue pour améliorer le professionnalisme des visuels.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:38 - 00:13:14</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">should have new carousel slides for us. But what it did is it actually had to resize our image because it realized that the potato API wouldn&#x27;t take it if it was too big. So this was the original, and then it resized it to make it smaller, but it still obviously looks the same. And now every single time that we run this for Instagram carousels, it should be able to make it the way we want it. So let&#x27;s take a look. All right, here is the new Instagram carousel. We&#x27;ve got our name, we&#x27;ve got the verified badge, as well as our profile picture. And so now it would just be a matter of optimizing the actual content that&#x27;s put in here if we don&#x27;t think that this was prompted well enough. And maybe adding one more at the end, which would be a CTA that says like follow for more</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec l&#x27;extension Claude (interface de chat intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion technique sur l&#x27;injection automatique d&#x27;images de profil, le chargement de données en base64 et le redimensionnement d&#x27;image pour l&#x27;API Blotato.</p>
+                        <p><strong>Action / Démonstration :</strong> Revue des modifications du pipeline automatisé et visualisation du résultat final (slide de carrousel) généré par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001247_seg27.jpg" alt="Interface VS Code affichant le chat avec l&#x27;assistant Claude détaillant les modifications apportées aux slides du carrousel Instagram et l&#x27;optimisation de la taille d&#x27;image." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001247_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:47</span>
+                        <span class="caption-text">Interface VS Code affichant le chat avec l&#x27;assistant Claude détaillant les modifications apportées aux slides du carrousel Instagram et l&#x27;optimisation de la taille d&#x27;image.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001305_seg27.jpg" alt="Interface VS Code affichant le fichier image généré &quot;visual_0.jpg&quot;, une slide de carrousel montrant un tweet avec la photo de profil de Nate Herk et un badge de vérification bleu." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001305_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:05</span>
+                        <span class="caption-text">Interface VS Code affichant le fichier image généré &quot;visual_0.jpg&quot;, une slide de carrousel montrant un tweet avec la photo de profil de Nate Herk et un badge de vérification bleu.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:14 - 00:13:35</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">or something like that. But keep in mind, all I said was take this YouTube video and repurpose it. We didn&#x27;t give it any context about our business, about previous Instagram or LinkedIn posts. We didn&#x27;t give it anything, but literally just said, make us content. And the only reason I&#x27;m telling you this is because think about how much better this will be as you start to add more business context, add more brand guidelines, and then iterate and refine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec extension Claude Code intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur demandant de repurposer une vidéo YouTube en posts LinkedIn/Instagram, incluant un lien URL et la mention de fichiers de &quot;brand assets&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un agent IA (Claude) analysant une requête de contenu et planifiant les étapes de collecte d&#x27;informations (vidéo, actifs de marque).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001319_seg28.jpg" alt="Interface de VS Code montrant une interaction avec Claude Code, où l&#x27;utilisateur demande la réutilisation d&#x27;un lien YouTube pour créer des posts sur les réseaux sociaux." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001319_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:19</span>
+                        <span class="caption-text">Interface de VS Code montrant une interaction avec Claude Code, où l&#x27;utilisateur demande la réutilisation d&#x27;un lien YouTube pour créer des posts sur les réseaux sociaux.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:36 - 00:13:56</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We&#x27;ve ran this workflow twice, I think, at this point, and it&#x27;s gotten better each time. What would happen if we ran this 10 times? And every time we gave it more feedback and more feedback so that by the time we&#x27;re ready to host it, so that if we want it to run automatically, every time I post a new YouTube video, it automatically gives us this stuff. By the time we do that automatically, it&#x27;s already like a really rock solid or battle tested skill.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diagramme graphique de type présentation (diapositive).</p>
+                        <p><strong>Contenu textuel & Code :</strong> La liste comporte quatre étapes : 1) &quot;Add business context&quot;, 2) &quot;Add brand guidelines&quot;, 3) &quot;Iterate and refine&quot;, 4) &quot;Host it (optional) (runs automatically)&quot;. Chaque étape est accompagnée d&#x27;une icône illustrative (mallette, palette, flèches de recyclage, nuage avec engrenage).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation conceptuelle des étapes nécessaires pour itérer et automatiser un workflow IA via un feedback continu.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001341_seg29.jpg" alt="Une liste de contrôle visuelle illustrant les étapes de développement d&#x27;un workflow d&#x27;automatisation IA, avec le présentateur en médaillon dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001341_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:41</span>
+                        <span class="caption-text">Une liste de contrôle visuelle illustrant les étapes de développement d&#x27;un workflow d&#x27;automatisation IA, avec le présentateur en médaillon dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:56 - 00:14:22</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And by the way, in Blotato, if you go to my videos, you can see all of the ones that you&#x27;ve generated and you can also go to the API dashboard to see all of the requests that you had been making to Blotato. But at this point, the only thing left to do is schedule these out or just instantly post them now that we&#x27;ve reviewed them. So what you do is you go to your settings and you have to log in with your different accounts. And it&#x27;s literally like, let&#x27;s say we wanted to log in with Instagram, we&#x27;d click on this and it would just bring us to a sign-in page in Instagram and it would connect everything very easy for us.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de la plateforme Blotato.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Logs de requêtes API (POST /v2/videos/from-templates) et boutons d&#x27;authentification OAuth pour les réseaux sociaux.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de l&#x27;application pour la gestion des accès API et la configuration des comptes sociaux.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001403_seg30.jpg" alt="Dashboard Blotato affichant les requêtes API récentes sous forme de tableau (méthode, route, statut, durée)." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001403_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:03</span>
+                        <span class="caption-text">Dashboard Blotato affichant les requêtes API récentes sous forme de tableau (méthode, route, statut, durée).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001409_seg30.jpg" alt="Page des paramètres du compte Blotato montrant une liste de boutons pour connecter divers réseaux sociaux (Twitter, LinkedIn, Facebook, etc.)." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001409_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:09</span>
+                        <span class="caption-text">Page des paramètres du compte Blotato montrant une liste de boutons pour connecter divers réseaux sociaux (Twitter, LinkedIn, Facebook, etc.).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001416_seg30.jpg" alt="Vue prolongée des paramètres de connexion aux comptes sociaux sur Blotato, avec la section des comptes déjà connectés visible en bas." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001416_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:16</span>
+                        <span class="caption-text">Vue prolongée des paramètres de connexion aux comptes sociaux sur Blotato, avec la section des comptes déjà connectés visible en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:22 - 00:14:42</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then after we&#x27;ve done that, you can see here I&#x27;ve only connected to my X account. It lets you copy your account ID. So basically it associates an account ID in here with Blotato to actually post on your behalf. But Claude Code using the right API endpoints should be able to grab all those IDs for us. So there&#x27;s really nothing manual here. So just as an example, let&#x27;s make sure that it can actually post to X for us.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Blotato (interface web), Visual Studio Code (avec extension/outil Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Image 1 : Boutons &quot;Login with...&quot;, &quot;Copy Account ID&quot;, &quot;Connected accounts (@nateherk)&quot;. Image 2 : Résumé technique de modifications de code (post_generator.py, draft.py, gestion de base64 data URIs).</p>
+                        <p><strong>Action / Démonstration :</strong> Image 1 : L&#x27;utilisateur montre comment copier l&#x27;ID de compte pour une intégration API. Image 2 : L&#x27;agent Claude affiche les changements effectués dans le pipeline de génération de posts.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001427_seg31.jpg" alt="L&#x27;interface web de Blotato montrant une liste de boutons de connexion pour divers réseaux sociaux et une section &quot;Connected accounts&quot; où le compte X est actif." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001427_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:27</span>
+                        <span class="caption-text">L&#x27;interface web de Blotato montrant une liste de boutons de connexion pour divers réseaux sociaux et une section &quot;Connected accounts&quot; où le compte X est actif.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001437_seg31.jpg" alt="L&#x27;interface de l&#x27;éditeur VS Code avec une fenêtre de chat active (Claude Code) affichant un résumé des modifications apportées au code pour l&#x27;automatisation." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001437_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:37</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;éditeur VS Code avec une fenêtre de chat active (Claude Code) affichant un résumé des modifications apportées au code pour l&#x27;automatisation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:43 - 00:15:04</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cool, that output looks great. can you go ahead and post our content on X for us? All right, so that post is live. If I open this up, we should see on X that I did just make this tweet, which I&#x27;m going to delete right now. But just wanted to prove to you guys that that endpoint does in fact work. So at this point, now that we know this works, we could just build different skills within this kind of blowtado environment.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension Claude Code) et navigateur web (X/Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Scripts Python via API Blotato, logs de publication, et texte du tweet publié.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un script d&#x27;automatisation via terminal intégré, vérification du résultat sur X, puis réinitialisation de l&#x27;outil.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001448_seg32.jpg" alt="Interface VS Code affichant la confirmation de publication du post X via l&#x27;API Blotato." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001448_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:48</span>
+                        <span class="caption-text">Interface VS Code affichant la confirmation de publication du post X via l&#x27;API Blotato.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001454_seg32.jpg" alt="Capture de l&#x27;interface X montrant le tweet effectivement publié sur le profil de Nate Herk." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001454_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:54</span>
+                        <span class="caption-text">Capture de l&#x27;interface X montrant le tweet effectivement publié sur le profil de Nate Herk.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001459_seg32.jpg" alt="Interface VS Code après la publication, montrant l&#x27;écran d&#x27;accueil de l&#x27;extension Claude Code." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001459_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:59</span>
+                        <span class="caption-text">Interface VS Code après la publication, montrant l&#x27;écran d&#x27;accueil de l&#x27;extension Claude Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:05 - 00:15:25</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So we could build one for getting inspiration. We could build one for creating TikTok videos, whatever we wanna do. But before you start scaling this up, it&#x27;s really important to have some structure to this project because we&#x27;ve got our Claude with our skills, we&#x27;ve got our brand assets, we&#x27;ve got our drafts, but we also have some scripts right here that are just kind of in the middle of nowhere. And we also don&#x27;t have a Claude.md file yet.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Claude Code CLI extension.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence du projet contenant les dossiers `brand_assets`, `drafts` et les fichiers Python `blotato_client.py`, `draft.py`, `post_generator.py`, `publish.py`, ainsi que `requirements.txt`. Le chat Claude Code affiche un invité de commande : &quot;ctrl esc to focus or unfocus Claude&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans la structure de fichiers du projet pour démontrer l&#x27;organisation nécessaire avant la mise à l&#x27;échelle de l&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001510_seg33.jpg" alt="Interface de Visual Studio Code affichant l&#x27;extension Claude Code avec l&#x27;arborescence du projet &quot;BLOTATO&quot; dans la barre latérale." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001510_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:10</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant l&#x27;extension Claude Code avec l&#x27;arborescence du projet &quot;BLOTATO&quot; dans la barre latérale.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:25 - 00:15:54</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m just going to go ahead and do slash init, which basically just reads through the current project structure and creates a Claude.md file around what we have right here. And I assume at this point, everyone&#x27;s aware of what the Claude.md file is, but if you&#x27;re not, it&#x27;s basically the overall system prompt for this specific project, meaning every time before you shoot off a message to Cloud Code or before Cloud Code reads it, it&#x27;s going to read the Cloud.md file first to understand the direction, what tools it has at its disposal, what rules it needs to follow, things like that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension Claude Code/Terminal) pour l&#x27;image 1 ; Diagramme conceptuel (type dessin à la main) pour l&#x27;image 2.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande terminal &quot;/init&quot; et état &quot;Thinking/Herding&quot; pour l&#x27;image 1 ; Flux de données entre &quot;Project Instructions (CLAUDE.md)&quot;, &quot;System Prompt&quot;, &quot;User Message&quot; et &quot;Claude Code Agent&quot; pour l&#x27;image 2.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution de la commande d&#x27;initialisation de l&#x27;agent pour analyser la structure du projet et créer le fichier de configuration de contexte CLAUDE.md.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001532_seg34.jpg" alt="Interface VS Code affichant l&#x27;exécution de la commande &quot;/init&quot; dans le terminal de l&#x27;agent IA, avec une arborescence de projet sur la gauche." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001532_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:32</span>
+                        <span class="caption-text">Interface VS Code affichant l&#x27;exécution de la commande &quot;/init&quot; dans le terminal de l&#x27;agent IA, avec une arborescence de projet sur la gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001540_seg34.jpg" alt="Diagramme explicatif illustrant le flux de travail de &quot;Claude Code Agent&quot;, montrant comment le fichier CLAUDE.md est injecté dans le système pour fournir du contexte à chaque message." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001540_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:40</span>
+                        <span class="caption-text">Diagramme explicatif illustrant le flux de travail de &quot;Claude Code Agent&quot;, montrant comment le fichier CLAUDE.md est injecté dans le système pour fournir du contexte à chaque message.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:54 - 00:16:14</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Which means you don&#x27;t wanna keep your Cloud.md file very long. I think best practice is to keep it under 150 lines. Otherwise, you&#x27;re just going to fill up your context much quicker. So now you can see that we have a Cloud.md file that goes over the overview, the commands, environment variables, architecture, patterns, things like that, which now, as you can see, gives our project a little bit more structure right here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code) avec l&#x27;extension Claude intégrée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Contenu affiché dans le fichier `CLAUDE.md` : présentation du projet, commandes, variables d&#x27;environnement, architecture des modules Python et intégrations.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de la documentation technique utilisée pour configurer le contexte de l&#x27;agent Claude dans le répertoire `/init`.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001604_seg35.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code montrant le contenu d&#x27;un fichier CLAUDE.md, détaillant la structure du projet, les commandes et les variables d&#x27;environnement." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001604_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:04</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code montrant le contenu d&#x27;un fichier CLAUDE.md, détaillant la structure du projet, les commandes et les variables d&#x27;environnement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:14 - 00:16:34</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But I&#x27;m still not satisfied. What I want to say now is we have four Python scripts that don&#x27;t have a home. Could you throw those into a folder, maybe call it scripts or something like that, and make sure that our other skills and claw.md files are aware of this and can reference it in the future? And that&#x27;s just the way that I decided to set it up, but you could also say, hey, we&#x27;ve got a ton of files here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec extension/intégration Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le fichier CLAUDE.md liste la structure du projet, les commandes, les variables d&#x27;environnement et l&#x27;architecture des quatre modules Python. La barre de saisie indique : &quot;Ctrl esc to focus or unfocus Claude&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur interagit avec l&#x27;agent IA (Claude Code) pour demander une restructuration du projet (déplacement des scripts dans un répertoire dédié).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001619_seg36.jpg" alt="Interface de VS Code montrant le fichier CLAUDE.md dans l&#x27;éditeur et la barre de chat intégrée de Claude Code en bas de l&#x27;écran." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001619_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:19</span>
+                        <span class="caption-text">Interface de VS Code montrant le fichier CLAUDE.md dans l&#x27;éditeur et la barre de chat intégrée de Claude Code en bas de l&#x27;écran.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:34 - 00:16:55</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Can you help me figure out a strategy to clean this up so we can continue to scale this project? So you can see that it made a new folder. It threw all of the Python scripts in there and now it&#x27;s updating other files in here to make sure that the whole project understands where everything is. So that is gonna do it for today. I think that you guys should be in a really good spot now, set up with Cloud Code, set up with Blotato to really improve your content game.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec l&#x27;extension ou le terminal intégré Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence du projet &quot;Blotato&quot; incluant les dossiers &quot;scripts&quot;, &quot;drafts&quot; et &quot;brand_assets&quot;. Log d&#x27;exécution de l&#x27;agent IA mentionnant la mise à jour des références de chemin (Path) pour s&#x27;adapter à la nouvelle structure de fichiers.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse les fichiers du projet et procède automatiquement à la mise à jour des chemins d&#x27;accès (refactoring) suite à la réorganisation des scripts dans un sous-dossier dédié.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001639_seg37.jpg" alt="Interface VS Code affichant l&#x27;explorateur de fichiers à gauche et le terminal d&#x27;interaction avec Claude Code à droite, détaillant les opérations de restructuration des dossiers." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001639_seg37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:39</span>
+                        <span class="caption-text">Interface VS Code affichant l&#x27;explorateur de fichiers à gauche et le terminal d&#x27;interaction avec Claude Code à droite, détaillant les opérations de restructuration des dossiers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:55 - 00:17:28</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Just a reminder that you can access the resources you saw in today&#x27;s video, as well as every other resource I&#x27;ve given out on YouTube for free by joining my FreeSchool community. The link for that is down in the description. And if you wanna go deeper with this kind of stuff, then I definitely recommend checking out my paid community, AI Automation Society Plus. The link for that is also down in the description. We&#x27;ve got over 3000 members who are building businesses with AI every single day. So I&#x27;d love to see you guys in this community But like I said, that is the end of today&#x27;s video So if you learned something new or you enjoyed then please give it a like it definitely helps me out a ton And as always, I appreciate you guys making this the end of the video. I&#x27;ll see you on the next one. Thanks, everyone</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> 1: Plateforme communautaire Skool ; 2: Outil de dessin vectoriel/tableau blanc (type Excalidraw).</p>
+                        <p><strong>Contenu textuel & Code :</strong> 1: Liste de fils de discussion et outils d&#x27;automatisation ; 2: Schéma montrant le flux &quot;Claude Code + Blotato&quot; vers diverses icônes de réseaux sociaux (X, Instagram, LinkedIn, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> 1: Navigation dans la communauté pour accéder aux ressources ; 2: Illustration conceptuelle du workflow d&#x27;automatisation de contenu.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001703_seg38.jpg" alt="Interface de la communauté &quot;AI Automation Society&quot; sur la plateforme Skool, montrant des publications épinglées et des ressources YouTube." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001703_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:03</span>
+                        <span class="caption-text">Interface de la communauté &quot;AI Automation Society&quot; sur la plateforme Skool, montrant des publications épinglées et des ressources YouTube.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001720_seg38.jpg" alt="Diagramme visuel (sur un canevas type Excalidraw) illustrant un moteur de contenu IA combinant &quot;Claude Code&quot; et &quot;Blotato&quot; pour une diffusion multi-plateformes." loading="lazy" onclick="openLightbox('../screenshots/4Zaoo0YbYaw/4Zaoo0YbYaw_001720_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:20</span>
+                        <span class="caption-text">Diagramme visuel (sur un canevas type Excalidraw) illustrant un moteur de contenu IA combinant &quot;Claude Code&quot; et &quot;Blotato&quot; pour une diffusion multi-plateformes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
