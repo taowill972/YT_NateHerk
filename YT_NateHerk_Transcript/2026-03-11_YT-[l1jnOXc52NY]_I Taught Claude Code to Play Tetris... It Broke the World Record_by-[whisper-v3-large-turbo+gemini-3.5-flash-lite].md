@@ -31,14 +31,11 @@ Dans cette vidéo intitulée **I Taught Claude Code to Play Tetris... It Broke t
 > Did you guys know that I'm actually a Tetris world champion? No, I'm just kidding. This is my Cloud Code agent playing both of these at the same time. You know what's crazy is I looked up what is the Tetris world record score and apparently it's 40 million, which as you can see, both of my agents have just surpassed at the exact same time. And I'm pretty sure at this point I could go to sleep and I could wake up and they would still both be playing Tetris. So I've been playing around with browser automation inside of Cloud Code to do things like filling out forms or searching through Best Buy results or downloading reports that might not have an API accessible. So like in this example, just opened up that tab. It's going to
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Navigateur web affichant deux parties de Tetris en local (localhost:3002/tetris/) et incrustation vidéo du présentateur.
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Scores élevés des agents IA sur les deux jeux Tetris (environ 38,7 millions de points, niveau 261, plus de 2600 lignes complétées).
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Exécution simultanée de deux agents IA jouant à Tetris pour démontrer leurs performances.
-
-![Capture d'écran montrant deux instances d'un jeu Tetris côte à côte dans un navigateur web, jouées simultanément par des agents IA, avec le présentateur en médaillon dans le coin inférieur gauche.](../screenshots/l1jnOXc52NY/l1jnOXc52NY_000009_seg1.jpg)
-*⏱️ 00:00:09 — Capture d'écran montrant deux instances d'un jeu Tetris côte à côte dans un navigateur web, jouées simultanément par des agents IA, avec le présentateur en médaillon dans le coin inférieur gauche.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -62,17 +59,11 @@ Dans cette vidéo intitulée **I Taught Claude Code to Play Tetris... It Broke t
 > iPads, laptops, hit search. And now it's gonna be able to pull some specs for me if maybe I was in the market for a new iPad or laptop. And I noticed as I started playing with these more that when you run scripts like this, it has to learn. So it goes in there, it takes a screenshot, it comes back and it thinks, and then it updates its script and it tries again. So I started wondering if I could basically teach it to play games.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Navigateur Web (Chrome/Edge) et éditeur de code Cursor (avec Claude intégré).
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Tableau récapitulatif des spécifications techniques (Prix, CPU, RAM, Stockage) pour des ordinateurs portables et une commande Bash pour lancer le script de recherche.
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Exécution d'un script d'automatisation de navigateur (Node.js) qui effectue des recherches parallèles sur Best Buy pour extraire des données de produits.
-
-![Deux fenêtres de navigateur côte à côte affichant le site de Best Buy, chacune avec une demande d'autorisation de localisation bloquant l'interface.](../screenshots/l1jnOXc52NY/l1jnOXc52NY_000100_seg3.jpg)
-*⏱️ 00:01:00 — Deux fenêtres de navigateur côte à côte affichant le site de Best Buy, chacune avec une demande d'autorisation de localisation bloquant l'interface.*
-
-![Interface de l'éditeur Cursor affichant un récapitulatif textuel et un tableau structuré des produits trouvés (laptops et iPads) après exécution d'un script.](../screenshots/l1jnOXc52NY/l1jnOXc52NY_000105_seg3.jpg)
-*⏱️ 00:01:05 — Interface de l'éditeur Cursor affichant un récapitulatif textuel et un tableau structuré des produits trouvés (laptops et iPads) après exécution d'un script.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
@@ -96,14 +87,11 @@ Dans cette vidéo intitulée **I Taught Claude Code to Play Tetris... It Broke t
 > It's a pretty simple, just, you know, block runner game. So the block is running, I hit space, and I'm able to jump over these obstacles. And each time I get a new point. So obviously I'm gonna just be able to do this forever, but I'm gonna let myself die so that we can come into Cloud Code. And I can say, hey, I want you to open up the block game in a browser and try playing it.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Application web de jeu (navigateur)
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Jeu de plateforme minimaliste avec affichage "Score: 0"
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
 
-**Action / Démonstration** : Démonstration du fonctionnement basique du jeu par le présentateur avant de passer à l'analyse du code.
-
-![Une interface de jeu simple de type « runner » montrant un carré rouge devant éviter des obstacles verticaux bleus, avec un compteur de score en haut.](../screenshots/l1jnOXc52NY/l1jnOXc52NY_000137_seg5.jpg)
-*⏱️ 00:01:37 — Une interface de jeu simple de type « runner » montrant un carré rouge devant éviter des obstacles verticaux bleus, avec un compteur de score en haut.*
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
 
 ---
 
