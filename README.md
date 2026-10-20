@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `197 / 358` (`55.0%`)
+- **Vidéos traitées** : `198 / 358` (`55.3%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -17,6 +17,7 @@
 
 | Date | Réf. Vidéo | Titre Français / Sujet | Fiche Markdown | Fiche Interactive HTML | Captures |
 | :--- | :--- | :--- | :--- | :--- | :---: |
+| 2026-10-20 | [2U8jn2M7g7U](https://www.youtube.com/watch?v=2U8jn2M7g7U) | **This GitHub repo will automate getting you a job** | [2026-10-20_YT-[2U8jn2M7g7U]_This GitHub repo will automate getting you a job_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-20_YT-[2U8jn2M7g7U]_This GitHub repo will automate getting you a job_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-20_YT-[2U8jn2M7g7U]_This GitHub repo will automate getting you a job_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `4` |
 | 2026-10-19 | [hgLI491ajG0](https://www.youtube.com/watch?v=hgLI491ajG0) | **J'ai testé plus de 100 outils IA. Voici les 7 meilleurs** | [2026-10-19_YT-[hgLI491ajG0]_J'ai testé plus de 100 outils IA. Voici les 7 meilleurs_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-19_YT-[hgLI491ajG0]_J'ai testé plus de 100 outils IA. Voici les 7 meilleurs_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-19_YT-[hgLI491ajG0]_J'ai testé plus de 100 outils IA. Voici les 7 meilleurs_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `28` |
 | 2026-10-17 | [NmN6jn6IiMA](https://www.youtube.com/watch?v=NmN6jn6IiMA) | **Clay's AI Agent Builds Your Outbound From One Prompt** | [2026-10-17_YT-[NmN6jn6IiMA]_Clay's AI Agent Builds Your Outbound From One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-17_YT-[NmN6jn6IiMA]_Clay's AI Agent Builds Your Outbound From One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-17_YT-[NmN6jn6IiMA]_Clay's AI Agent Builds Your Outbound From One Prompt_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-10-15 | [KZiF2J83zaY](https://www.youtube.com/watch?v=KZiF2J83zaY) | **J'ai créé une équipe d'agents IA et d'humains qui travaillent ensemble** | [2026-10-15_YT-[KZiF2J83zaY]_J'ai créé une équipe d'agents IA et d'humains qui travaillent ensemble_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-15_YT-[KZiF2J83zaY]_J'ai créé une équipe d'agents IA et d'humains qui travaillent ensemble_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-15_YT-[KZiF2J83zaY]_J'ai créé une équipe d'agents IA et d'humains qui travaillent ensemble_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `90` |
