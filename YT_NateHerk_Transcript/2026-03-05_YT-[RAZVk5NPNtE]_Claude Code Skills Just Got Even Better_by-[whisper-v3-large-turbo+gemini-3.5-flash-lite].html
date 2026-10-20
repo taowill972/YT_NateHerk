@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Claude Code Skills Just Got Even Better — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Claude Code Skills Just Got Even Better</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-03-05</span>
+                <span class="badge">⏱️ 00:16:15</span>
+                <span class="badge">🆔 <code>RAZVk5NPNtE</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=RAZVk5NPNtE" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Claude Code Skills Just Got Even Better**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cloud skills just got 10 times easier to build and stronger to use. So in today&#x27;s video, I&#x27;m going to explain exactly why that is. And then I&#x27;m going to live build a completely new skill right here in front of you guys. So real quick, what is a skill? It&#x27;s basically just a recipe. So that when you ask your agent to make you, for example, a LinkedIn post, it will read the recipe and it will get it right every single time. And when I say recipes, I literally just mean text.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:20 - 00:00:48</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s just text instructions. It&#x27;s like a prompt. So if I go to customize and I go to skills and I click on, let&#x27;s say, for example, the internal comm skill, this says a set of resources to help me write all kinds of internal communication using the format that my company likes to use. And you can see this is the skill itself. It is literally just text that you could read, that an intern could read, anybody could read and understand what&#x27;s going on in the skill. And if you&#x27;re using them in Cloud Code, you can see I&#x27;ve got a ton of skills here. So for example, let&#x27;s look at my idea mining skill.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:48 - 00:01:21</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">This is the markdown file that explains to the agent what this skill actually does. And once again, it&#x27;s all just text. So what did Anthropic actually do that made all these skills better? they updated their skill creator skill which is literally a skill that teaches Claude how to build, test, measure, refine, just make all the skills better and better and better. So let&#x27;s actually cover why that matters and what happened. So the first thing I need you to understand is that there are two different types of skills. We have a capability uplift skill which basically is a prompt. So it teaches Claude how to do something better. For example, design websites with the</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:21 - 00:01:51</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">front-end design skill or create documents or run excel formulas. Things that may be the default model by itself doesn&#x27;t know super well, but with a prompt, it does a much better job. And then we also have encoded preference skills, which means that Claude already understands each of these pieces, but it needs to follow them in a specific order. So these are way more like actual workflows, like actual kind of like step-by-step automations. So quick example, if you ask Claude without a front-end design skill to build you a website, it could do it, but it might just look very generic.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:51 - 00:02:12</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It might look AI slop, as they call it. But if you give it the exact same prompt, but this time you also let it use the front-end design skill, it&#x27;s going to look much better because that skill tells it stuff like good fonts, good color schemes, you know, good background elements, good layouts. And that is a classic capability uplift skill. Now here&#x27;s an example of an encoded preference skill, which is the one we just saw in my cloud code, which I call idea mining.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:13 - 00:02:34</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And this skill is a little bit more sequential and there&#x27;s different steps involved. So first it will look at my YouTube comments. It will look at, you know, some videos in my niche. It will also look at AI trends on X and the web. It will then spin up two different agents. So a YouTube agent that analyzes this stuff and a research agent that analyzes this stuff. And these run in parallel. And then they both send their output back to the main agent, which will score and cross-reference.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:34 - 00:02:53</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then the main agent turns all that information into some video ideas for me, which is why I call it idea mining. So what I could do is I could say, hey, Mr. AI agent, go look at my comments, go look at YouTube, go look at X, you know, analyze that and help me find some video ideas. And every time it would give me different answers. And every time it would sort of do it differently. Or I can just say, hey, do some idea mining.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:53 - 00:03:15</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and it will just call the skill and every time I get an output that I like. And the reason why this is actually important to understand is because capability uplift skills might fade over time. Because, for example, with the front-end design skill, right now we&#x27;re with Opus 4.6, right? What if Opus 5 drops? And default Opus 5 is better at front-end design than Opus 5 with a front-end skill.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:15 - 00:03:38</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So at that point, you might just need to retire that skill completely. But with an encoded preference skill, these will probably stay pretty durable and accurate because the process is very specific usually to you, which Opus 5 won&#x27;t be trained on, most likely. Okay, so those are the two kind of different types of skills. Now we can actually evaluate them. So with this new skill creator skill, which is an official Anthropic skill, this is the one we&#x27;re talking about, it&#x27;s in the repo right here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:38 - 00:04:14</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And if I open up the actual skill MD, you can see this is what it does. It creates new skills, it can modify and improve existing skills, it can measure skill performance. So use this when you wanna create a skill from scratch, if you wanna update or optimize one, if you wanna run evals to test a skill, if you want to do benchmarks, or if you want to optimize a skills description for better trigger accuracy. So I&#x27;m going to talk about what each of these little elements mean. But I just wanted to show you that this is the actual skill creator skill. It&#x27;s basically just all of Anthropix best practices on how to build better skills. They&#x27;ve done things before, like dropped a 33 page PDF, which walks you through fundamentals, planning and design, testing and iteration,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:14 - 00:04:44</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">distribution and sharing, all this kind of stuff, patterns and troubleshooting. This is pretty thorough. So you could either take time and learn this, or you could just give your agent the skill creator skill and all that information is already in there. So what the evals do is it lets your agent actually evaluate the quality of your skill and then make improvements. So let&#x27;s say you have a skill for creating job descriptions. What you could do is give your agent tons of examples of really good job descriptions that you want. And then it will look at your skill. It will test out some prompts and it will compare it to the outputs and it will be able to optimize your skill for you.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:44 - 00:05:14</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">As we&#x27;ve talked about in the past, the more you use a skill, the better and better because you&#x27;re able to give feedback on what you like and what you don&#x27;t. So this basically shortcuts that process. Here&#x27;s a quick example that Anthropic actually ran with this eval. The skill for filling out some PDF stuff was having trouble finding the right spot to put the text. But then after they ran the evaluation on the skill and it was able to improve, now you can see all the text is accurately being placed, whether that is a checkbox or just a fill in some sort of field. So there&#x27;s two reasons that we need to use evals and they sound kind of similar, but they&#x27;re basically the opposite.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:14 - 00:05:32</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So the first one is to catch regressions. So this means let&#x27;s say we have a job description skill. As a model evolves, it might actually use the skill worse because it&#x27;s trained a little different and it thinks a little different. So this would basically be an early signal that you need to evolve your skill. And then the second one is to spot out growth.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:33 - 00:05:58</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So once again, as models improve or evolve, it might be able to just do a better job without a skill at all. And that&#x27;s when you would be able to run the evaluation, say, okay, wow, without a skill, it&#x27;s actually better. And I&#x27;m just gonna go ahead and delete this or maybe just archive it. And then we can also run benchmarks. So when a model updates or when you make an iteration and you change your skill, just run all the evals and run a benchmark, which will give you stuff like a pass rate, a time, and also how many tokens are being used.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:58 - 00:06:34</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So here&#x27;s an example where they said, benchmark the PDF skill with and without the skill loaded and show me side-by-side results so I can see the uplift. And we get all this information about these different evaluation metrics. We get the pass rates, we get the total time and the total tokens. So here you can clearly see that with the skill, you&#x27;re getting much better results. And then the final piece is skill trigger tuning. So once you&#x27;ve got a project filled up with, let&#x27;s just say 10 or more skills, you might notice sometimes that you get false triggers or you get misfires, meaning you wanted it to use a skill and it used the wrong one, or you wanted it to use a skill and it just didn&#x27;t use any at all. Luckily, you could also use</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:34 - 00:07:09</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">them with slash commands, but it&#x27;s so much more convenient to just be able to speak a natural language and make sure that your agent understands you. So using the trigger tuning, the skill creator will basically analyze your skill. It will test out different prompts that you might use to trigger that skill. And then it will edit the description so that that skill gets called more accurately. And this is an actual evaluation that they ran. You can see on the left-hand side and on the right-hand side, we have the test score and the train score. And the green and blue are basically the results after it has been analyzed and fixed with the trigger tuning. So you can see it&#x27;s still not perfect, but it&#x27;s so much better than where we were without this new skill. And</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:09 - 00:07:33</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">What I think is really cool and how I want to end off this section before we get into a live demo is where this is going. And at the bottom, we have a quote from Anthropic themselves that say, over time, a natural language description of what the skill should do may be enough with the model figuring out the rest. And I really think that this word may should actually have been will. And basically what this means is that today, when we&#x27;re telling our agent to build skills for us, or maybe just giving it an SOP, we&#x27;re giving it steps, rules, and format.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:33 - 00:08:09</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But what&#x27;s going to happen in the future is we&#x27;re going to be able to just tell it in way more high level natural language, what we want. And it&#x27;s going to be able to figure out all of that and get there with a spec and basically just cut down the time that it takes for us to get a really good skill or, you know, a really good automation. All right. So I am in my Herc2 project, which is kind of just like my personal assistant in Cloud Code. And I&#x27;m going to show you guys how we can actually get this skill installed. So whether you&#x27;re in VS Code, which is where I am or in the terminal or desktop app, whatever, you just need to do slash plugins. You can click on manage plugins. And then if you just go in here and you can see like all of the kind of anthropic official ones you can just go ahead</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:09 - 00:08:43</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and search for skill dash creator and right here you can see the official one here&#x27;s the github and all you have to do is go ahead and click install you can install this for just you you can install it for your project or you can install it locally and i&#x27;m just going to install it for the whole project so now you can see that&#x27;s installed and i&#x27;m just going to go ahead and restart cloud code so that that actually happens and so just keep in mind if you&#x27;re in cloud code it may not show up right here in your actual dot cloud skills if you did it, you know, in your project. So you can just verify it and say, do you have the skill creator skill? What does it do? And you can see right</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:43 - 00:09:18</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">here that we do in fact have that. So I&#x27;m going to go ahead and switch on to plan mode and I&#x27;m going to see if it can build us a new skill. I need you to create a skill called YouTube Weekly Roundup, where at the end of every week, you will look at the videos that I made that week. You analyze the comments, you analyze the views, engagement, things like that. And you&#x27;ll give me a PDF report on all of the insights, the strengths, the weaknesses, threats, opportunities. So that&#x27;s all I&#x27;m going to send off. And I kept this pretty vague intentionally to see what it&#x27;s going to come back with and how it&#x27;s going to be able to plan this out for us. And this is where the future is going. And this is what Anthropic is talking about because most people that are using skills right</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:18 - 00:09:52</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">now are actual just like executives and managers and operators. They&#x27;re not engineers, which means we&#x27;re really good at being able to explain what we want, the metrics we need to hit and why we need that, but maybe not all of those technical nitty gritty details. All right. So it came back and asked me some questions. The first thing I said is I want it to just be the last seven days. So it&#x27;s a rolling seven day window. It asked about the report sections that it came up with. And I said, those look good. And for the PDF style, I told it to use the brand assets in my folder. So right over here, I&#x27;ve got my brand guidelines. And then this one is the actual logo for AIS. So I&#x27;m telling it to use those and hopefully it can throw all that on there and make it feel really branded. So it&#x27;s going to</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:52 - 00:10:27</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">keep going now with this plan. All right. So at this point, it came back with a plan and keep in I still haven&#x27;t told anything about tech stack or anything else. It&#x27;s writing out everything that it&#x27;s going to do And normally I would read through this and give it some tweaks potentially But I just want to see what this skill creator is able to do with a one-shot prompt And I&#x27;m just gonna go ahead and accept and look at this in its to-do list We can see that it creates all these things But then the last step is to run the test and iterate with the skill creator eval process So I&#x27;m excited to see what it does there so you can see that it created everything and then what it did is It decided to test it to do a final iteration Okay, so I was a little confused. I said, do you have an actual PDF file for me? And it said, yes,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:27 - 00:11:00</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">it is in your projects folder. I was looking in the templates where it created an HTML template, but apparently it actually rendered that as a PDF. So let me go to projects. We&#x27;ll go to YouTube weekly roundup. And right here we have an actual PDF, which this doesn&#x27;t look great. Obviously, this is not a PDF, but if I actually open it up from my files, it is a PDF. So here we have the logo. We have weekly roundup. We have three videos published, and then we got some stats on views, likes, and comments. I&#x27;m going to keep going down. We have our executive summary. So this is for, it actually ran, I think two weeks worth of data just to test this out.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:00 - 00:11:33</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And I will say just by glancing at this, I don&#x27;t think that this data is correct. So keep that in mind here. We can see the per video breakdown right now. We have nothing available in our SWOT analysis, and then we have competitor context and there&#x27;s nothing available here. So now it&#x27;s time to give it some feedback and see what it can do. I&#x27;m first of all, going to clear out this context because it used up 62%. I&#x27;m going to go back into plan mode and just give it some honest feedback. All right. So the report looks great. Like aesthetically, you did a good job on the design. However, the data is all wrong. There was a lot of missing elements. I need you to really look at how you&#x27;re actually scraping this data from my YouTube channel,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:33 - 00:12:07</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">how you&#x27;re actually searching through the comments and competitor videos, and make sure that there&#x27;s actually data going into this report. And before I send this off, it&#x27;s interesting because you can see here, it sent us some JSON data, which is actually the raw information that it was able to find from my YouTube channel. And the thing is, this isn&#x27;t super in depth. So I just don&#x27;t think that it did a good enough job on the research element. And maybe this is exactly what we were talking about earlier over here, where at some point, the AI is going to be able to understand that we want all of this granular data. But maybe right now, it&#x27;s our job to just explain that really clearly. I want to see comments analysis. I want to see what&#x27;s working for other people in the space.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:07 - 00:12:41</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I want to see, you know, other trending videos in AI. And I want you to use all of that and use your brain to figure out what are the strengths my channel has, the weaknesses, and the opportunities and the threats. And then all of this information should be a pretty in-depth research report for me on, you know, my YouTube Weekly Roundup. So while this is running, I thought that we should real quick look at what it actually did. So in my .clawd, we&#x27;ve got my skills folder. If I go all the way down, we&#x27;ve got the YouTube Weekly Roundup, and this is the MD file. So we&#x27;ve got the YAML up top with the name, description, disable model invocation false, which just basically means that CloudCode can call this based on a request.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:41 - 00:13:01</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It doesn&#x27;t have to be explicitly a slash command. And then an argument hint. So basically when CloudCode decides to use this skill, it will send in maybe a hint so that the skill understands like what video we&#x27;re looking at or, you know, the topic. It&#x27;s giving some context, it&#x27;s giving some channel benchmarks, some optional focus, and then step-by-step instructions on what to actually do here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:01 - 00:13:20</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And you can see what it&#x27;s doing is it&#x27;s calling on a script called fetch YouTube data, which if I was to look for that in here, I could probably go down to my scripts. I could see YouTube Weekly Roundup. And right here, we&#x27;ve got some different things. We&#x27;ve got the prepare data. We&#x27;ve got the render report. And we also have a script that I already had in this project that it was able to find and use.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:20 - 00:13:54</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it didn&#x27;t have to create a new one. And this one is called fetch YouTube data. So the skill.md file here basically points to everything that the agent needs in order to do this accurately. Okay, so it&#x27;s come back with another detailed plan. And I&#x27;m gonna go ahead and fire this off. And I love this. Once again, we&#x27;ve got all these to-dos. And then at the end, it says to audit with the skill creator. And this is such a good example of why using a project more and using a skill more makes it stronger Because some of the pieces that I already had in this project It&#x27;s able to reuse like my youtube analyzer agent like my youtube data script And of course it has all the context about my business and my youtube channel in here already</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:54 - 00:14:14</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So all of those changes have been made and now all that&#x27;s left to do is actually run the skill So I just called the skill you can see that it&#x27;s reading it right here And now what it&#x27;s doing is it&#x27;s going to refresh channel data It&#x27;s going to use three agents in parallel prepare the report populate the data and then render the pdf and show it to me. So I&#x27;ll check in with you guys when we get that output. All right, that finished up. We&#x27;ve got some quick hits, top competitor move, biggest opportunity.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:14 - 00:14:46</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Apparently Jack Roberts is my biggest threat. If you see this Jack, keep crushing it. Okay, so here is the report. These stats right off the jump look a little bit more accurate. I might wanna tell it to make this logo a bit bigger, but it did what we asked. Seven videos published. And like I said, these stats look more accurate. We&#x27;ve got the executive summary here with some key takeaways of doubling down on dollar outcome titles, make a dedicated anti-gravity tutorial, fill the chat GPT to Claude migration, watch Jack Roberts closely, and then address VS code versus anti-gravity confusion. We&#x27;ve got the per video breakdown. So now you can see the actual metrics</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:46 - 00:15:19</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">from all the videos, including the one that I literally just dropped like an hour ago. And so all of these look like they&#x27;re doing okay. This one might not be doing the best and similar with this one, but I really like the way that this actually looks. The layout&#x27;s pretty good. It is very clean and professional. For the SWOT analysis, we actually have it on the second page. It still looks good. That&#x27;s obviously just an easy spacing issue that we can fix. So we have some strengths here. We have some weaknesses, we have threats, and we have our opportunities. Top comments and audience signals. Selling shovels in a gold rush, bro. Well played, man. 26 likes. Hi, Nate. 10 days</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:19 - 00:15:52</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">into joining your plus community. I got my first potential client. It&#x27;s all thanks to you and your community. Awesome. And you can see that we see other comments. We see what video they came from and how many likes. And we&#x27;re also getting video requests. We&#x27;re getting pain points. And so that really helps me stay in tune with what you guys are saying. Wow, it just keeps on going. We&#x27;ve got competitor context. So all of these channels, all of these videos, all of these stats, and that comes along with some notable gaps. And then finally, we get what&#x27;s trending in AI this week. So what are skills? The most powerful AI agent I&#x27;ve ever used. All of this stuff with the channel, the views, the views per day, and the topic. So this is amazing. And I was able to build this in 20</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:52 - 00:16:14</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">minutes. And now what I would do is just keep running it. And every time say, hey, I liked this. I didn&#x27;t like this. Use the skill creator to make this better and better. So anyways, appreciate you guys make it to the end of the video. If you enjoyed, please leave a like. And now that you understand this concept of skills and how to make them really good, what you need to do next is build your own executive assistant that you can start to build tons and tons of skills into. So if you want to see how you can do that, then check out this video right up here. I&#x27;ll see you guys over there.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
