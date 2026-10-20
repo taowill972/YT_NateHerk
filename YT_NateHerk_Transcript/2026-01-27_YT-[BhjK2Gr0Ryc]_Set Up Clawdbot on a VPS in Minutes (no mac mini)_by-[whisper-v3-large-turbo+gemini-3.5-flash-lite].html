@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Set Up Clawdbot on a VPS in Minutes (no mac mini) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Set Up Clawdbot on a VPS in Minutes (no mac mini)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-01-27</span>
+                <span class="badge">⏱️ 00:13:12</span>
+                <span class="badge">🆔 <code>BhjK2Gr0Ryc</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=BhjK2Gr0Ryc" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Set Up Clawdbot on a VPS in Minutes (no mac mini)**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:35</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So CloudBot has been taking the internet by storm, and you don&#x27;t have to actually go buy a $600 Mac Mini in order to test it out. So before I bring you guys any content about how I&#x27;m using it and different use cases, I wanted to make sure that you guys could form your own opinions. So I&#x27;m going to be showing you guys step by step how you can actually deploy CloudBot onto a VPS, a virtual private server, and we&#x27;re going to be doing this with Hostinger. So the reason why people are buying Mac Minis is because CloudBot is an open source project. So when you deploy it, it basically has access to everything in its environment. So you don&#x27;t want to just push that onto your own main device because then it has access to like everything. And it essentially can do anything</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (sites Hostinger et Clawdbot).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte marketing, offres promotionnelles (VPS à partir de 4,99$/mois), et slogans publicitaires pour des agents d&#x27;automatisation IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur les sites web respectifs présentant les outils d&#x27;automatisation et de gestion d&#x27;agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000018_seg1.jpg" alt="Page d&#x27;accueil du service Hostinger présentant une offre de gestion de VPS par agent IA (&quot;Manage VPS with your own AI agent&quot;)." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000018_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:18</span>
+                        <span class="caption-text">Page d&#x27;accueil du service Hostinger présentant une offre de gestion de VPS par agent IA (&quot;Manage VPS with your own AI agent&quot;).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000027_seg1.jpg" alt="Page d&#x27;accueil du site Clawdbot, présentant le slogan &quot;The AI that actually does things&quot; et des témoignages utilisateurs." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000027_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:27</span>
+                        <span class="caption-text">Page d&#x27;accueil du site Clawdbot, présentant le slogan &quot;The AI that actually does things&quot; et des témoignages utilisateurs.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:35 - 00:01:08</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">that you could do on a computer. So people are buying Mac minis and they&#x27;re putting the CloudBot just on that little machine and they know that it lives in there and basically contains it. So it&#x27;s mitigating the risk a little bit. And we can essentially do that exact same thing with a virtual private server. So go to hosting your VPS. You can use a link in the description to get there. And let&#x27;s go ahead and get set up. Now there are some terminal commands that we are going to have to run, unfortunately, but I&#x27;m going to give you a document where you can just copy and paste the commands that will also be linked in the description. And you just follow what I&#x27;m doing step-by-step and we should be all set. So I&#x27;m going to go ahead and scroll down. You</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Clawdbot.ai et Hostinger.com).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte promotionnel : &quot;Clawdbot: THE AI THAT ACTUALLY DOES THINGS&quot; et &quot;Manage VPS with your own AI agent&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des outils d&#x27;automatisation et d&#x27;hébergement supportant l&#x27;intégration d&#x27;agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000043_seg2.jpg" alt="Page d&#x27;accueil du site web &quot;Clawdbot&quot;, présentant l&#x27;outil comme une IA capable d&#x27;automatiser des tâches quotidiennes via des applications de messagerie." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000043_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:43</span>
+                        <span class="caption-text">Page d&#x27;accueil du site web &quot;Clawdbot&quot;, présentant l&#x27;outil comme une IA capable d&#x27;automatiser des tâches quotidiennes via des applications de messagerie.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000051_seg2.jpg" alt="Page d&#x27;accueil du service d&#x27;hébergement Hostinger, mettant en avant une offre de VPS managé par une IA (&quot;Manage VPS with your own AI agent&quot;)." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000051_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:51</span>
+                        <span class="caption-text">Page d&#x27;accueil du service d&#x27;hébergement Hostinger, mettant en avant une offre de VPS managé par une IA (&quot;Manage VPS with your own AI agent&quot;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:08 - 00:01:29</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">can see that the options here to set up a virtual private machine, it&#x27;s going to be a lot cheaper than buying actual hardware. So for the sake of the video, I&#x27;m going to be using KVM2, which is going to give us two VCPU cores, eight gigabytes of RAM, a hundred gigabytes of disk space, and eight terabytes of bandwidth, which is going to be more than enough for us to set up CloudBot and do tons of testing. And if you need to scale up or down, you can. So I&#x27;m going to go ahead and choose plan.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Site web Hostinger (page de tarification des serveurs VPS).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif des plans KVM 1, KVM 2 (sélectionné), KVM 4 et KVM 8, détaillant les ressources : CPU, RAM, stockage NVMe et bande passante.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur survole et met en avant le plan &quot;KVM 2&quot; pour expliquer son choix technique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000113_seg3.jpg" alt="Interface web du site Hostinger présentant les différentes options d&#x27;abonnement pour des serveurs VPS (KVM)." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000113_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:13</span>
+                        <span class="caption-text">Interface web du site Hostinger présentant les différentes options d&#x27;abonnement pour des serveurs VPS (KVM).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:30 - 00:02:05</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, when you get here, it&#x27;s going to prompt you to choose either one month, 12 months, or 24 months. And obviously 24 months is going to be the cheapest, the best deal. But what you can do is if you use an annual plan, so 12 or 24 months, you can use code NATEHERC, and that will get you 10% off in addition. So you can really save a huge chunk of change by using hosting your VPS. But from there, you&#x27;re going to want to choose a server location. You&#x27;re going to choose some sort of operating system. So in this case, I&#x27;m going to use Ubuntu and I&#x27;m going to go ahead and do 24.04 LTS and go ahead and confirm that. So you could obviously choose a different one. You could choose a different VPS provider, but if you want to just follow what I&#x27;m doing step-by-step, then here&#x27;s what I am</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;hébergement Hostinger (panier d&#x27;achat et sélection OS).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Détails de facturation : plan 24 mois, sous-total $150.98, code promo &quot;NATEHERK&quot; (-$16.78). Fenêtre modale : Ubuntu 24.04 LTS.</p>
+                        <p><strong>Action / Démonstration :</strong> Application d&#x27;un code de réduction et sélection d&#x27;une distribution Linux pour le serveur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000139_seg4.jpg" alt="Interface de panier Hostinger montrant le récapitulatif de commande pour un plan KVM 2, avec l&#x27;application du code promo &quot;NATEHERK&quot;." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000139_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:39</span>
+                        <span class="caption-text">Interface de panier Hostinger montrant le récapitulatif de commande pour un plan KVM 2, avec l&#x27;application du code promo &quot;NATEHERK&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000156_seg4.jpg" alt="Fenêtre contextuelle de sélection du système d&#x27;exploitation sur Hostinger, affichant les détails pour Ubuntu 24.04 LTS." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000156_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:56</span>
+                        <span class="caption-text">Fenêtre contextuelle de sélection du système d&#x27;exploitation sur Hostinger, affichant les détails pour Ubuntu 24.04 LTS.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:05 - 00:02:40</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">running. Now, after you pay, you&#x27;re going to have to set up a root password. So I&#x27;m going to go ahead and type this in right here. Now, obviously you want to remember what this is because you&#x27;re going to have to use this quite a bit in the setup. You could also add an SSH key right now, if you want to, I&#x27;m not going to do that right now to keep it simple, but you could always add this later. It allows you to choose some other features like malware scanner or Docker manager, and then it&#x27;s going to go ahead and actually initialize and set up. So I&#x27;ll check in with you guys once this is actually all spun up. Okay, now that that is all set up, I&#x27;m going to go ahead and click on manage VPS. And that&#x27;s just going to take us to our dashboard. I&#x27;m going to go ahead and just skip through this questionnaire. And this is what it will look like. This is where</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme de gestion d&#x27;hébergement web Hostinger.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champs de saisie pour &quot;Root password&quot; avec des critères de validation (longueur, chiffres, lettres, symboles) et option &quot;Add key&quot; pour une clé SSH.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie du mot de passe root par l&#x27;utilisateur pour sécuriser l&#x27;accès au VPS avant de cliquer sur &quot;Next&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000214_seg5.jpg" alt="Interface web de Hostinger pour la configuration de la sécurité d&#x27;un serveur VPS, invitant l&#x27;utilisateur à définir un mot de passe root et optionnellement une clé SSH." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000214_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:14</span>
+                        <span class="caption-text">Interface web de Hostinger pour la configuration de la sécurité d&#x27;un serveur VPS, invitant l&#x27;utilisateur à définir un mot de passe root et optionnellement une clé SSH.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:40 - 00:03:04</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">you&#x27;ll be able to see information about your VPS and some metrics and things like that. So now is where we have to actually get into the terminal, unfortunately, but I&#x27;ve got this doc, which I will link right down below in the description. And it&#x27;ll have pretty much all the commands that you need in order to follow along with this video and paste them right in. Okay, so depending on your operating system, you&#x27;re gonna have to open up your command prompt, your terminal, your PowerShell, whatever it&#x27;s called, get in here and then we&#x27;ll get started.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Hostinger Dashboard, Google Docs, Windows PowerShell.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes Linux : `ssh root@YOUR_SERVER_IP` et `adduser clawd`.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans le tableau de bord, consultation du guide d&#x27;installation, ouverture du terminal système.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000246_seg6.jpg" alt="Interface d&#x27;administration Hostinger affichant la vue d&#x27;ensemble (Overview) d&#x27;un serveur VPS Ubuntu 24.04 LTS." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000246_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:46</span>
+                        <span class="caption-text">Interface d&#x27;administration Hostinger affichant la vue d&#x27;ensemble (Overview) d&#x27;un serveur VPS Ubuntu 24.04 LTS.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000252_seg6.jpg" alt="Document Google Docs ouvert en surimpression, contenant des instructions techniques et des commandes pour configurer un serveur VPS (SSH, ajout d&#x27;utilisateur)." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000252_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:52</span>
+                        <span class="caption-text">Document Google Docs ouvert en surimpression, contenant des instructions techniques et des commandes pour configurer un serveur VPS (SSH, ajout d&#x27;utilisateur).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000258_seg6.jpg" alt="Fenêtre Windows PowerShell ouverte en mode administrateur, prête à recevoir des commandes de l&#x27;utilisateur." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000258_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:58</span>
+                        <span class="caption-text">Fenêtre Windows PowerShell ouverte en mode administrateur, prête à recevoir des commandes de l&#x27;utilisateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:04 - 00:03:36</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So the first thing that we have to do is we have our local machine and then we have our VPS. We need to actually get into the VPS so we can install CloudBot there, not on our local machine. So that&#x27;s kind of called like SSHing into that environment. So in Hostinger, you can see that there&#x27;s a root access command right here, which is sshroot at, and then this is like our IP address, essentially. So I&#x27;m going to click copy. I&#x27;m going to go into the terminal and then paste that in there. And basically it says that this is established. Are you sure you want to continue? So I&#x27;m going to say yes. And now it asks for the password that we</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Windows PowerShell, Tableau de bord Hostinger (VPS Overview).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande SSH visible : `ssh root@76.13.103.26`.</p>
+                        <p><strong>Action / Démonstration :</strong> Préparation de la connexion SSH depuis la machine locale vers le serveur VPS distant.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000312_seg7.jpg" alt="Une fenêtre Windows PowerShell ouverte sur le poste local de l&#x27;utilisateur." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000312_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:12</span>
+                        <span class="caption-text">Une fenêtre Windows PowerShell ouverte sur le poste local de l&#x27;utilisateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000320_seg7.jpg" alt="Le tableau de bord Hostinger affichant les informations d&#x27;accès SSH pour un VPS Ubuntu 24.04." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000320_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:20</span>
+                        <span class="caption-text">Le tableau de bord Hostinger affichant les informations d&#x27;accès SSH pour un VPS Ubuntu 24.04.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000328_seg7.jpg" alt="La fenêtre Windows PowerShell prête à recevoir la commande SSH pour se connecter au VPS." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000328_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:28</span>
+                        <span class="caption-text">La fenêtre Windows PowerShell prête à recevoir la commande SSH pour se connecter au VPS.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:36 - 00:03:59</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">set up earlier when we were kind of configuring this VPS in Hostinger. So what you&#x27;re going to do is type in your password, but as you&#x27;re typing it in, just like actually look at the keyboard because it won&#x27;t show up as if you&#x27;re typing. But you can see I&#x27;m going to go ahead and enter. And now I am able to get in there and my password was correct. Now, if you&#x27;re typing it in wrong and you keep getting permission denied and you have to reset it, you would basically just come into here and then change your password right there.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Windows PowerShell</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande `ssh root@76.13.103.26`, suivi de la validation de l&#x27;empreinte de la clé SSH et de l&#x27;invite de saisie du mot de passe (`root@76.13.103.26&#x27;s password:`).</p>
+                        <p><strong>Action / Démonstration :</strong> Connexion sécurisée au serveur VPS distant via SSH, en attente de la saisie du mot de passe par l&#x27;utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000342_seg8.jpg" alt="Une fenêtre Windows PowerShell affichant la tentative de connexion SSH à un serveur distant via une adresse IP." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000342_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:42</span>
+                        <span class="caption-text">Une fenêtre Windows PowerShell affichant la tentative de connexion SSH à un serveur distant via une adresse IP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:59 - 00:04:19</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Okay, so now that we are in that environment, you can see it&#x27;s no longer the directory of users, Nate H. We are now in our server. We&#x27;re going to do this next command, which is add user Claude. And now that we&#x27;re adding this user inside of this VPS, we have to give it a password. So it&#x27;s gonna do the same thing. It&#x27;s not gonna let you see it. So make sure you&#x27;re looking at your keyboard when you&#x27;re typing.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal Windows PowerShell.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de connexion SSH (`ssh root@76.13.103.26`) et affichage des informations système d&#x27;Ubuntu 24.04.3 LTS.</p>
+                        <p><strong>Action / Démonstration :</strong> Connexion réussie à un VPS distant via SSH par l&#x27;utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000404_seg9.jpg" alt="Capture d&#x27;écran montrant un terminal Windows PowerShell dans lequel une connexion SSH a été établie vers un serveur distant sous Ubuntu." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000404_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:04</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un terminal Windows PowerShell dans lequel une connexion SSH a été établie vers un serveur distant sous Ubuntu.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:19 - 00:04:38</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right, so I just set up the password. Now I have to give this user a name. So I&#x27;m just gonna go with Claude. I&#x27;m not gonna give it a room number, work phone, home phone, any of that. And we&#x27;re gonna say that the information is correct. Okay, so the next command we&#x27;re doing here is basically just giving this user permission. So the ability to essentially be an admin and install things, stuff like that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de commande (ligne de commande Ubuntu via interface web/VPS).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande `adduser clawd` suivie des logs de création (UID, GID, dossier personnel) et de l&#x27;invite de saisie des informations utilisateur (Full Name, Room Number, Work Phone).</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;une commande système pour ajouter un nouvel utilisateur et saisie interactive des métadonnées associées au compte.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000424_seg10.jpg" alt="Un terminal Linux affichant le processus de création d&#x27;un nouvel utilisateur système nommé &quot;clawd&quot; et la configuration interactive de ses informations personnelles." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000424_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:24</span>
+                        <span class="caption-text">Un terminal Linux affichant le processus de création d&#x27;un nouvel utilisateur système nommé &quot;clawd&quot; et la configuration interactive de ses informations personnelles.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:38 - 00:05:00</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then what we wanna do is actually become that user. So we&#x27;re gonna do su-claud, which is going to let us in there. And now you can see we have this green Claude, you know, VPS thing, which means that we&#x27;re now making commands as this user. And now what I&#x27;m gonna do is I&#x27;m basically going to use the one line installation from Claudebot itself in order to install Claudebot and all the dependencies that we need.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal SSH (interface web de gestion VPS).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes terminal : `adduser clawd`, `usermod -aG sudo clawd`, `su - clawd`.</p>
+                        <p><strong>Action / Démonstration :</strong> Création de l&#x27;utilisateur &#x27;clawd&#x27;, ajout au groupe sudo et changement de session utilisateur (switch user) vers &#x27;clawd&#x27; pour préparer l&#x27;environnement de l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000444_seg11.jpg" alt="Un terminal Linux en ligne de commande affichant la création et la configuration d&#x27;un nouvel utilisateur nommé &#x27;clawd&#x27; sur un VPS." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000444_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:44</span>
+                        <span class="caption-text">Un terminal Linux en ligne de commande affichant la création et la configuration d&#x27;un nouvel utilisateur nommé &#x27;clawd&#x27; sur un VPS.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:00 - 00:05:20</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m gonna go ahead and paste that in there. This is also in the document that I&#x27;ve attached. We&#x27;re gonna go ahead and enter that. And now what it&#x27;s gonna do is it&#x27;s detecting our operating system. It&#x27;s going to make sure we have everything we need. So it looks like right now it&#x27;s installing node.js. And now it&#x27;s asking for our password. So I&#x27;m going to go ahead and enter that in. And then we should be good to go with the installation. So you&#x27;ll get to this point where it says that it&#x27;s installing it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de ligne de commande (CLI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande `curl -fsSL https://clawd.bot/install.sh | bash` suivie des logs de sortie indiquant la détection du système (Linux) et le début de l&#x27;installation de Node.js via NodeSource.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un script d&#x27;installation automatisé qui détecte les dépendances manquantes (Node.js) et demande le mot de passe sudo pour procéder à l&#x27;installation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000505_seg12.jpg" alt="Capture d&#x27;écran montrant un terminal Linux où le script d&#x27;installation de Clawdbot est en cours d&#x27;exécution." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000505_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:05</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un terminal Linux où le script d&#x27;installation de Clawdbot est en cours d&#x27;exécution.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:20 - 00:05:39</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And this could take, I don&#x27;t know, anywhere from like two to 10 minutes. So if you&#x27;re sitting here for a while and you think it&#x27;s stuck, just be patient. It&#x27;ll finish up. All right. So now that it has been installed, it goes ahead and puts us into this onboarding flow. So we can see that there&#x27;s some security stuff to read. We understand that this is powerful and inherently risky.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de ligne de commande (CLI) sur un système type Debian/Ubuntu.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Journal d&#x27;installation de paquets (Node.js, configuration npm) et lignes d&#x27;état indiquant &quot;Installing Clawdbot 2026.1.24-3...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Installation automatisée de l&#x27;application Clawdbot et de ses prérequis (Node.js/npm) dans l&#x27;environnement système.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000525_seg13.jpg" alt="Un terminal Linux en cours d&#x27;exécution affiche les étapes de mise à jour et d&#x27;installation de dépendances, terminant par l&#x27;installation de &quot;Clawdbot&quot;." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000525_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:25</span>
+                        <span class="caption-text">Un terminal Linux en cours d&#x27;exécution affiche les étapes de mise à jour et d&#x27;installation de dépendances, terminant par l&#x27;installation de &quot;Clawdbot&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:39 - 00:05:57</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So we&#x27;re going to go ahead and continue. We&#x27;re going to go ahead and do the quick start. And now we&#x27;re going to choose model provider. So I&#x27;m going to go ahead and do Anthropic. And I&#x27;m not going to do the actual token because that is actually against their terms of service to be using your plan in here, at least the best of my understanding. So I&#x27;m just going to go ahead and put in my Anthropic API key.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de ligne de commande (CLI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu de sélection &quot;Model/auth provider&quot; listant divers services comme Anthropic, OpenAI, MiniMax, Qwen, Google, etc.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection du fournisseur de modèle (choix d&#x27;Anthropic).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000543_seg14.jpg" alt="Un terminal en ligne de commande affichant le menu de configuration &quot;QuickStart&quot; pour choisir un fournisseur de modèle d&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000543_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:43</span>
+                        <span class="caption-text">Un terminal en ligne de commande affichant le menu de configuration &quot;QuickStart&quot; pour choisir un fournisseur de modèle d&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:58 - 00:06:16</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And it asks you to choose a default model. So in here, I&#x27;m just going to go with Opus 4.5. The next thing is it asks what channel we want to be able to talk to it. So it could be Telegram, WhatsApp, Discord. There&#x27;s so many different options. In this case, I&#x27;m just going to go ahead and choose Telegram bot API. So while this is loading up for us, let me just show you what you actually have to do in Telegram.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de ligne de commande (CLI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste d&#x27;options de messagerie incluant Telegram (sélectionné), WhatsApp, Discord, Google Chat, Slack, Signal, iMessage, etc.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection du canal de communication pour l&#x27;intégration de l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000602_seg15.jpg" alt="Une interface de terminal affichant un menu interactif de sélection de canal de messagerie pour la configuration d&#x27;un agent IA." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000602_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:02</span>
+                        <span class="caption-text">Une interface de terminal affichant un menu interactif de sélection de canal de messagerie pour la configuration d&#x27;un agent IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:16 - 00:06:36</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So you&#x27;re going to go to your bot father and you&#x27;re going to do this command slash new bot. And that lets you actually create a bot. So then I&#x27;m going to go ahead and call it YouTube test. And then it asks for a username for the bot. And I went with Nate YouTube test bot. And then this gives you an actual token. And that&#x27;s what we&#x27;re going to enter into the terminal. So you can see I configured Telegram and now it&#x27;s asking about skills.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Telegram (BotFather).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande saisie : &quot;/newbot&quot;. Réponse du système : &quot;Alright, a new bot. How are we going to call it? Please choose a name for your bot.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Initialisation de la création d&#x27;un nouveau bot via l&#x27;interface de BotFather sur Telegram.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000621_seg16.jpg" alt="Interface de l&#x27;application Telegram montrant la discussion avec le bot officiel &quot;BotFather&quot; où la commande /newbot a été exécutée." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000621_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:21</span>
+                        <span class="caption-text">Interface de l&#x27;application Telegram montrant la discussion avec le bot officiel &quot;BotFather&quot; où la commande /newbot a été exécutée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:36 - 00:06:55</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So let&#x27;s just for now go ahead and click yes so I can show you guys what&#x27;s in here. We can install the homebrew. We can choose NPM. And then there&#x27;s other dependencies that we can install. So you have to click space to select and enter to continue. In this case, you can see that we could do, you know, bird, clodhub. So I&#x27;ll choose that one. I&#x27;ll choose GOG, which is for Google stuff.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de commande (CLI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu interactif incluant des options pour &quot;Configure skills now?&quot;, &quot;Homebrew recommended&quot;, &quot;Show Homebrew install command?&quot; et le choix du &quot;Preferred node manager&quot; (npm, pnpm, bun).</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des dépendances système et sélection du gestionnaire de paquets via une interface interactive dans le terminal.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000641_seg17.jpg" alt="Interface interactive en ligne de commande affichant une procédure de configuration logicielle avec des choix à sélectionner (Homebrew, gestionnaire de paquets Node)." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000641_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:41</span>
+                        <span class="caption-text">Interface interactive en ligne de commande affichant une procédure de configuration logicielle avec des choix à sélectionner (Homebrew, gestionnaire de paquets Node).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:56 - 00:07:14</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You could choose all of these other ones, Nano Banana, Nano PDF. And you can obviously add these later as well. So I&#x27;m going to go ahead and just enter and choose those two for now. And you can see it actually failed installing GOG. so we can obviously go ahead and fix that later. For now, we&#x27;re gonna keep going on. So I&#x27;m not gonna add a Google Places API key for those. And then it asks if I want a Gemini API key for Nano Banana Pro.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal Linux/Unix (interface CLI &quot;Clawd&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de dépendances (ex: lpassword, apple-notes, clamdhub, gog, nano-banana-pro, nano-pdf, obsidian) et le titre &quot;Install missing skill dependencies&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et sélection des outils (skills) à installer dans le terminal via l&#x27;interface interactive de l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000700_seg18.jpg" alt="Interface en ligne de commande (CLI) affichant une liste interactive de dépendances de compétences (&quot;skills&quot;) à installer pour l&#x27;agent IA, avec une sélection active sur plusieurs éléments." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000700_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:00</span>
+                        <span class="caption-text">Interface en ligne de commande (CLI) affichant une liste interactive de dépendances de compétences (&quot;skills&quot;) à installer pour l&#x27;agent IA, avec une sélection active sur plusieurs éléments.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:14 - 00:07:34</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So actually, yeah, I am gonna go ahead and put that in there. Then it asks about OpenAI. I&#x27;m just gonna say no. I&#x27;m gonna say no, no to 11 labs. And then for hooks, we&#x27;re just gonna go ahead and choose skip for now. And now we should be pretty much getting finished up here with the initial onboarding and installation. Okay, so now what it tells us is that we&#x27;re pretty much set up and the dashboard is ready for us.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal (Interface en ligne de commande).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration des clés API : Google Places (No), Gemini (Yes + saisie de clé), OpenAI (No), et ElevenLabs (en attente de sélection Yes/No).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur configure les services tiers en répondant par &#x27;No&#x27; ou &#x27;Yes&#x27; aux différentes étapes d&#x27;initialisation du bot.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000719_seg19.jpg" alt="Interface en ligne de commande affichant le processus d&#x27;installation et de configuration de &#x27;clawdhub&#x27; avec plusieurs requêtes de clés API." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000719_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:19</span>
+                        <span class="caption-text">Interface en ligne de commande affichant le processus d&#x27;installation et de configuration de &#x27;clawdhub&#x27; avec plusieurs requêtes de clés API.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:34 - 00:08:02</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So we can actually view CloudBot in the web on kind of like a web UI and interact with it and see how it works there. We could also add a brave search API key if we wanted to enable web search, we could add later of course, as well. But what happens is it tells us to go to this URL. So if I basically copy this and I go to my browser and paste that in, it&#x27;s gonna come back and just say, this site can&#x27;t be reached because it&#x27;s trying to access a local post that we apparently can&#x27;t hit.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal Linux (SSH/CLI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Instructions de connexion via URL locale/tunnel SSH, et commandes de configuration : `clawdbot configure --section web` pour intégrer la clé API Brave Search.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage des étapes de post-installation et configuration des outils optionnels pour l&#x27;agent Clawdbot.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000741_seg20.jpg" alt="Interface en ligne de commande (CLI) affichant les instructions de configuration pour accéder à l&#x27;interface web de Clawdbot et configurer la recherche web via une clé API Brave Search." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000741_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:41</span>
+                        <span class="caption-text">Interface en ligne de commande (CLI) affichant les instructions de configuration pour accéder à l&#x27;interface web de Clawdbot et configurer la recherche web via une clé API Brave Search.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:02 - 00:08:21</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right, so I&#x27;m gonna open up a new tab. We&#x27;re gonna get back into that same kind of like working environment. So first we have to get into VPS, I&#x27;m gonna put in my password, and then we need to su-clawed, and then it will turn green. And then we&#x27;re gonna actually start the gateway. So I&#x27;m gonna paste in this next one right here. And now it says that the command clawed bot is not found.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Hostinger dashboard) et émulateur de terminal SSH.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Informations système Ubuntu, statistiques de ressources (load, usage mémoire, IP), et ligne de commande : `root@srv1299975:~# su`.</p>
+                        <p><strong>Action / Démonstration :</strong> Connexion au serveur distant via SSH et préparation de l&#x27;élévation de privilèges ou changement d&#x27;utilisateur via la commande &#x27;su&#x27;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000807_seg21.jpg" alt="Interface de gestion de serveur VPS sur la plateforme Hostinger montrant les détails techniques du serveur (Ubuntu 24.04, adresse IP, accès root)." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000807_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:07</span>
+                        <span class="caption-text">Interface de gestion de serveur VPS sur la plateforme Hostinger montrant les détails techniques du serveur (Ubuntu 24.04, adresse IP, accès root).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000812_seg21.jpg" alt="Fenêtre de terminal SSH ouverte, montrant une session active sous Ubuntu 24.04 avec l&#x27;utilisateur root et une invite de commande en attente de saisie." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000812_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:12</span>
+                        <span class="caption-text">Fenêtre de terminal SSH ouverte, montrant une session active sous Ubuntu 24.04 avec l&#x27;utilisateur root et une invite de commande en attente de saisie.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:21 - 00:08:40</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So first of all, let me make sure that I am clawed. So I&#x27;m gonna say, who am I? And it does say clawed, so we&#x27;re in the right spot. And then I wanna make sure we&#x27;re on the right path. So I&#x27;m gonna do this command, which says version. and it looks like we&#x27;re all set there. So now we&#x27;re gonna try to go ahead and start the gateway back up. So there we go. We can see that we have the gateway listening on this port right here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de ligne de commande (SSH) intégré dans une interface web de gestion de serveur VPS.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de commandes incluant &#x27;su - clawd&#x27;, une tentative échouée de lancement de &#x27;clawdbot&#x27;, et la commande &#x27;whoami&#x27; renvoyant &#x27;clawd&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Vérification de l&#x27;identité de l&#x27;utilisateur actuel dans le terminal via la commande &#x27;whoami&#x27; pour confirmer la connexion au bon compte avant de poursuivre les opérations.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000826_seg22.jpg" alt="Capture d&#x27;écran montrant un terminal Linux affichant les informations système et la commande &#x27;whoami&#x27; exécutée avec succès pour vérifier l&#x27;utilisateur courant &#x27;clawd&#x27;." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000826_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:26</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un terminal Linux affichant les informations système et la commande &#x27;whoami&#x27; exécutée avec succès pour vérifier l&#x27;utilisateur courant &#x27;clawd&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:40 - 00:09:00</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So now that this is up and running, I&#x27;m gonna open a new tab. I&#x27;m gonna paste in this command to basically create a tunnel for us. And then at the end, instead of doing host, you&#x27;re gonna actually go grab your IP. So in here, your dashboard for this VPS, you&#x27;re just gonna scroll down and you can choose the IPv4 right there, copy that, and then paste that in.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Windows PowerShell et interface web de gestion VPS (Hostinger).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande SSH : `ssh -N -L 18789:127.0.0.1:18789 clawd@76.13.103.26` ; Détails du VPS : Server location (Boston), OS (Ubuntu 24.04 LTS), IPv4 (76.13.103.26).</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie d&#x27;une commande SSH pour créer un tunnel sécurisé vers le VPS en utilisant l&#x27;adresse IP affichée dans le tableau de bord.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000845_seg23.jpg" alt="Fenêtre Windows PowerShell ouverte par-dessus un tableau de bord, affichant une commande SSH de création de tunnel." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000845_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:45</span>
+                        <span class="caption-text">Fenêtre Windows PowerShell ouverte par-dessus un tableau de bord, affichant une commande SSH de création de tunnel.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000855_seg23.jpg" alt="Vue du tableau de bord de gestion du VPS (Hostinger) détaillant les informations de connexion, notamment l&#x27;adresse IPv4." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000855_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:55</span>
+                        <span class="caption-text">Vue du tableau de bord de gestion du VPS (Hostinger) détaillant les informations de connexion, notamment l&#x27;adresse IPv4.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:00 - 00:09:22</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And once we shoot that off, Got to put in the password for Claude. And this should actually be able to let us go to that URL and it should now work. So now back in that original tab, if I go ahead and copy this link, there you go. We can now see that we have an actual web app with Claudebot. You can see that the health up here is okay. And if I go ahead and say hello, it should be able to actually talk back to us.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Windows PowerShell, Navigateur web (Tableau de bord CLAWDBOT).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande : `ssh -N -L 18789:127.0.0.1:18789 clawd@76.13.103.26` suivie de l&#x27;invite `password:`.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;une commande SSH pour établir une redirection de port (tunneling) afin d&#x27;accéder localement à l&#x27;interface web sécurisée de l&#x27;agent Claudebot.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000905_seg24.jpg" alt="Interface Windows PowerShell affichant une commande SSH pour créer un tunnel, avec une invite de saisie pour le mot de passe." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000905_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:05</span>
+                        <span class="caption-text">Interface Windows PowerShell affichant une commande SSH pour créer un tunnel, avec une invite de saisie pour le mot de passe.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000916_seg24.jpg" alt="Interface web du tableau de bord &quot;CLAWDBOT Gateway&quot; montrant l&#x27;onglet &quot;Chat&quot; actif pour la gestion des interactions de l&#x27;agent." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000916_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:16</span>
+                        <span class="caption-text">Interface web du tableau de bord &quot;CLAWDBOT Gateway&quot; montrant l&#x27;onglet &quot;Chat&quot; actif pour la gestion des interactions de l&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:22 - 00:09:58</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And we can go ahead and start talking to Claudebot and setting him up. So the next step is to actually be able to talk to Claudebot through something like Telegram, which is what we configured earlier. So I&#x27;m going to ask it, are you able to chat with me through Telegram? So it said, yes, I can absolutely connect to you through Telegram. Let me check the setup. So it read the config. There&#x27;s all this stuff. And then it says, good news, it&#x27;s already set up. What we have to do is just give it some sort of pairing code. So if you guys remember in the Botfather, I called this bot Nate YouTube Test Bot. So if I search for that, you can see right here, YouTube Test. I&#x27;m going to click on that and I&#x27;m going to go ahead and click start. And what it&#x27;s going to do is give us a pairing code. And so this is what we need to give to ClaudeBot in order</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard web propriétaire &quot;Clawdbot Gateway&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion : l&#x27;utilisateur a envoyé &quot;hello&quot; et l&#x27;assistant répond : &quot;Hey, I just came online — fresh workspace, no memories yet, completely blank slate. So... who am I? Who are you? Let&#x27;s figure this out together.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur est en train d&#x27;interagir avec l&#x27;interface du tableau de bord pour initialiser ou configurer la session de discussion avec l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000931_seg25.jpg" alt="Interface du tableau de bord &quot;Clawdbot Gateway&quot; montrant une fenêtre de chat active où l&#x27;assistant IA demande une identité et présente ses capacités initiales." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_000931_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:31</span>
+                        <span class="caption-text">Interface du tableau de bord &quot;Clawdbot Gateway&quot; montrant une fenêtre de chat active où l&#x27;assistant IA demande une identité et présente ses capacités initiales.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:58 - 00:10:25</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">for it to actually work. So I&#x27;m going to go ahead and show CloudBot. Here&#x27;s the pairing code that I got, and it should be able to make sure that we&#x27;re actually good to go. And then we&#x27;ll be able to talk to it through Telegram. Cool. So it looks like we&#x27;re all paired up. I&#x27;m going to go ahead and open Telegram and just say, Hey, testing. And hopefully we should be able to see right up here that CloudBot is now typing and it&#x27;s going to come back right here. And it says, Hey, Nate, I can see you loud and clear in Telegram. And then also shows up right here in Telegram as well.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard web Clawdbot (Gateway Dashboard).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Message système confirmant que Telegram est configuré et prêt à l&#x27;emploi. Instructions étape par étape : 1. Ouvrir Telegram, 2. Chercher le bot (créé via BotFather), 3. Envoyer &quot;/start&quot; ou dire &quot;hi&quot;. Message utilisateur : &quot;here is the pairing code I got from Telegram: ZHBAF2TC&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le système confirme que le couplage est actif, permettant la communication bidirectionnelle entre le tableau de bord et l&#x27;application Telegram.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001004_seg26.jpg" alt="Interface du tableau de bord &quot;Clawdbot&quot; montrant la confirmation de couplage avec Telegram et les instructions de démarrage." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001004_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:04</span>
+                        <span class="caption-text">Interface du tableau de bord &quot;Clawdbot&quot; montrant la confirmation de couplage avec Telegram et les instructions de démarrage.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:25 - 00:10:44</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, what&#x27;s important to think about is the fact that the gateway has to be running on the VPS so that we can actually access it through Telegram all the time. So I just went ahead and cleared that out. And now I&#x27;m going to put in this command so that it lets us actually create the file. And so I&#x27;m pasting this in here. And the important things to see are basically that we have the exec start and we have the always option on.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard web propriétaire &quot;Clawdbot&quot; (interface de gestion d&#x27;agents).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de chat montrant un message de confirmation &quot;Done! You&#x27;re paired&quot; et une réponse de l&#x27;agent IA interagissant avec l&#x27;utilisateur (&quot;Hey Nate! 👋&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Validation de la connexion réussie entre le système et Telegram, illustrant le fonctionnement de la &quot;gateway&quot; évoquée dans l&#x27;audio.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001030_seg27.jpg" alt="Interface du tableau de bord &quot;Clawdbot&quot; montrant une session de chat active entre l&#x27;utilisateur et un agent IA, confirmant la connexion via Telegram." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001030_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:30</span>
+                        <span class="caption-text">Interface du tableau de bord &quot;Clawdbot&quot; montrant une session de chat active entre l&#x27;utilisateur et un agent IA, confirmant la connexion via Telegram.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:45 - 00:11:11</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So now I&#x27;m going to go ahead and restart it. And I&#x27;m going to check on the status. And we can see right here we have active, active, and it&#x27;s been running. And just to show you guys that that works, I actually went ahead and closed out of the terminal. So I shut down the local tunnel. You can see in our web app, it says that the health is offline, but we&#x27;re gonna go ahead and check in on Telegram. And you can see, I said, how about now? And it is still typing and it is still able to communicate with us, meaning I&#x27;m on the go, I&#x27;m on vacation, I&#x27;ve got my phone, I&#x27;ve got Telegram, and I can still use CloudBot.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard web Clawdbot et client de messagerie Telegram (desktop).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de chat Telegram (&quot;Hey testing&quot;, &quot;It works - I can see you loud and clear&quot;, &quot;are you still working?&quot;), état de connexion &quot;Health Offline&quot; dans le dashboard.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de la connexion active entre le bot et l&#x27;utilisateur via l&#x27;interface de messagerie.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001052_seg28.jpg" alt="Interface du tableau de bord &quot;Clawdbot&quot; avec une fenêtre Telegram superposée montrant des échanges de messages avec un bot." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001052_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:52</span>
+                        <span class="caption-text">Interface du tableau de bord &quot;Clawdbot&quot; avec une fenêtre Telegram superposée montrant des échanges de messages avec un bot.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:12 - 00:11:37</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I know it&#x27;s a little bit intimidating, but I&#x27;m gonna have the doc down below, which you can go ahead and copy all the commands, follow the video step-by-step, and you should be all set. Now, before we go, I did have to talk about security real quick and I had to sit down for this. So back at the beginning when I talked about why people are throwing this on a Mac Mini, it&#x27;s because of the security aspect. Think of this less like an AI agent, but more like a VA that has access to your email and your files and anything else that you give it passwords or access to.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google Chrome) affichant le site web Clawdbot et Google Docs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur la sécurité : &quot;Clawdbot is more like giving an AI &#x27;remote control&#x27; over a computer&quot;, liste des risques (Full control of the machine, Exposed &#x27;remote control&#x27; door, Secrets on disk, Tricked by bad content, Long-term hijack) et erreurs de débutants.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre les risques de sécurité liés à l&#x27;implémentation de l&#x27;agent Clawdbot en présentant une documentation détaillée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001118_seg29.jpg" alt="Page d&#x27;accueil du site web &quot;Clawdbot&quot; présentant le slogan &quot;The AI that actually does things&quot; et des témoignages d&#x27;utilisateurs." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001118_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:18</span>
+                        <span class="caption-text">Page d&#x27;accueil du site web &quot;Clawdbot&quot; présentant le slogan &quot;The AI that actually does things&quot; et des témoignages d&#x27;utilisateurs.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001124_seg29.jpg" alt="Document Google Docs intitulé &quot;Clawdbot&quot; détaillant des considérations de sécurité liées à l&#x27;utilisation de l&#x27;agent IA, incluant les risques principaux et les erreurs courantes." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001124_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:24</span>
+                        <span class="caption-text">Document Google Docs intitulé &quot;Clawdbot&quot; détaillant des considérations de sécurité liées à l&#x27;utilisation de l&#x27;agent IA, incluant les risques principaux et les erreurs courantes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:37 - 00:12:05</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s autonomous and it&#x27;s an AI and it&#x27;s not deterministic. So you have to be really careful. It can run commands, it can open files, it can browse the web, it can talk to other apps. And if someone else gets control of your CloudBot, they can basically have control of everything that the CloudBot has access to. So if it&#x27;s hacked, the attacker could install programs, read files, and mess things up. Your secrets could get leaked because if all of those are in there and someone grabs them, or if for some reason CloudBot just kind of has all of its data leaked or anything like that, your information&#x27;s at risk.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Docs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le document liste les capacités du &quot;ClawdBot&quot; (exécuter des commandes, ouvrir des fichiers, naviguer sur le web), les risques majeurs de sécurité (contrôle total de la machine, injection de prompts, vol de jetons API) et les erreurs courantes des débutants.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation textuelle des points de vigilance concernant l&#x27;automatisation par IA et la gestion des accès distants.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001144_seg30.jpg" alt="Une capture d&#x27;écran d&#x27;un document Google Docs intitulé &quot;ClawdBot&quot; détaillant les risques de sécurité liés à l&#x27;utilisation d&#x27;agents IA autonomes." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001144_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:44</span>
+                        <span class="caption-text">Une capture d&#x27;écran d&#x27;un document Google Docs intitulé &quot;ClawdBot&quot; détaillant les risques de sécurité liés à l&#x27;utilisation d&#x27;agents IA autonomes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:05 - 00:12:28</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You also want to be aware of prompt injections. So if it&#x27;s reading emails and stuff, it may confuse if you&#x27;re giving it commands or if someone random with malicious intent is asking for prompts or asking for certain access or passwords, things like that. So thinking about common beginner mistakes, that&#x27;s why we wanted to set it up on a VPS. That&#x27;s why I probably am not gonna give this access to my main email or my main calendar and all my password vaults.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Docs</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte structuré avec des listes à puces détaillant &quot;The big idea&quot;, &quot;Main risks in plain language&quot; (incluant le risque d&#x27;injection de prompt et d&#x27;accès aux fichiers) et &quot;Common beginner mistakes&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique et éducative des dangers liés à l&#x27;automatisation par IA et aux erreurs courantes lors de l&#x27;implémentation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001211_seg31.jpg" alt="Un document Google Docs présentant les risques de sécurité associés à &quot;ClawdBot&quot;, un agent IA avec accès au contrôle à distance d&#x27;un ordinateur." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001211_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:11</span>
+                        <span class="caption-text">Un document Google Docs présentant les risques de sécurité associés à &quot;ClawdBot&quot;, un agent IA avec accès au contrôle à distance d&#x27;un ordinateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:28 - 00:13:01</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I&#x27;m gonna give it its own email, its own environments, and I&#x27;m gonna give it a bunch of read-only access permissions. So really, there&#x27;s all this information and you can do more research if you want to. But the moral of the story here is, I think right now, this tool is a great experiment. It&#x27;s super cool. And it should be for power users who actually understand the risks of how these AI systems work and security and privacy and things like that. If you&#x27;re just kind of getting your feet wet and you want to play around with it, go for it. But just be careful what you actually give it access to. And don&#x27;t forget that I&#x27;m doing this on Hostinger VPS, which you</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Docs</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur les risques de sécurité (ex: &quot;Full control of the machine&quot;, &quot;Exposed remote control door&quot;, &quot;Secrets on disk&quot;) et une liste des &quot;Common beginner mistakes&quot; lors de la configuration d&#x27;un agent IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le document sert de support visuel pour illustrer les précautions et les dangers potentiels liés à l&#x27;automatisation par IA évoqués par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001236_seg32.jpg" alt="Une page Google Docs intitulée &quot;ClawdBot&quot; détaillant les risques de sécurité associés à l&#x27;utilisation d&#x27;agents IA ayant un accès de type &quot;télécommande&quot; à un ordinateur." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001236_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:36</span>
+                        <span class="caption-text">Une page Google Docs intitulée &quot;ClawdBot&quot; détaillant les risques de sécurité associés à l&#x27;utilisation d&#x27;agents IA ayant un accès de type &quot;télécommande&quot; à un ordinateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:01 - 00:13:11</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">guys can once again, go ahead and use the link in the description and get 10% off when you use code NateHerc. Anyways, that&#x27;s going to do it for today. Hope you guys enjoyed. If you learned something new, please give it a like. It helps me out a ton. And I&#x27;ll see you guys in the next one.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Hostinger checkout, Site web Clawdbot).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code de réduction &quot;NATEHERK&quot;, description des fonctionnalités de Clawdbot (gestion d&#x27;emails, calendrier, vols).</p>
+                        <p><strong>Action / Démonstration :</strong> Promotion d&#x27;un service d&#x27;hébergement via un lien d&#x27;affiliation et présentation visuelle d&#x27;un projet d&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001303_seg33.jpg" alt="Page de paiement Hostinger montrant le récapitulatif d&#x27;une commande &quot;KVM 2&quot; avec l&#x27;application du code promotionnel &quot;NATEHERK&quot;." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001303_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:03</span>
+                        <span class="caption-text">Page de paiement Hostinger montrant le récapitulatif d&#x27;une commande &quot;KVM 2&quot; avec l&#x27;application du code promotionnel &quot;NATEHERK&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001306_seg33.jpg" alt="Page d&#x27;accueil du site web &quot;Clawdbot&quot;, présentant un assistant IA personnel, des témoignages d&#x27;utilisateurs et une section &quot;Quick Start&quot;." loading="lazy" onclick="openLightbox('../screenshots/BhjK2Gr0Ryc/BhjK2Gr0Ryc_001306_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:06</span>
+                        <span class="caption-text">Page d&#x27;accueil du site web &quot;Clawdbot&quot;, présentant un assistant IA personnel, des témoignages d&#x27;utilisateurs et une section &quot;Quick Start&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
