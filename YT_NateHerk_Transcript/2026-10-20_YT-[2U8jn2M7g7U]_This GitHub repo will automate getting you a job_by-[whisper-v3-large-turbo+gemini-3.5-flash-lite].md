@@ -31,20 +31,22 @@ Dans cette vidéo intitulée **This GitHub repo will automate getting you a job*
 > So Claw just got someone 20 interviews and landed them a real job. A geophysicist got laid off in late 2025, so they built a job search system inside ClawdCode and ran it every single week on their own career. It searched job boards, it scored how well each role fit, and it wrote a tailored resume and cover letter for every single application. 69 applications turned into 21st interviews and one signed contract, and they started as an AI engineer this June.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Système de workflow personnalisé basé sur Claude Code / terminal.
+**Interface & Outils** : Interface de terminal ou console d'agent IA, probablement développée via Claude Code.
 
-**Contenu textuel & Code** : Commandes : /setup, /scrape, /apply. Données : Tableau de scoring "Job Fit Evaluation", statistiques de candidatures (69 applications, 20 entretiens).
+**Contenu textuel & Code** : - Commandes : /setup, /scrape, /apply <url>
+- Tableau de scores : Technical Skills (78/100), Experience Match (75/100), Behavioral Fit (70/100), Location (PASS), Career Alignment (68/100).
+- Texte : "Sixty-nine tailored applications, twenty first interviews"
 
-**Action / Démonstration** : Démonstration visuelle du fonctionnement de l'agent d'automatisation de carrière : configuration, recherche, évaluation de correspondance et bilan des résultats obtenus.
+**Action / Démonstration** : Présentation du processus d'automatisation de la recherche d'emploi, de l'analyse des offres (scoring) jusqu'au résultat final (nombre de candidatures et d'entretiens obtenus).
 
-![Un schéma de flux textuel détaillant les commandes d'un système de recherche d'emploi automatisé (/setup, /scrape, /apply) avec les étapes correspondantes.](../screenshots/2U8jn2M7g7U/2U8jn2M7g7U_000005_seg1.jpg)
-*⏱️ 00:00:05 — Un schéma de flux textuel détaillant les commandes d'un système de recherche d'emploi automatisé (/setup, /scrape, /apply) avec les étapes correspondantes.*
+![Un schéma de workflow montrant les commandes CLI (/setup, /scrape, /apply) et les étapes logiques associées pour automatiser la recherche d'emploi.](../screenshots/2U8jn2M7g7U/2U8jn2M7g7U_000005_seg1.jpg)
+*⏱️ 00:00:05 — Un schéma de workflow montrant les commandes CLI (/setup, /scrape, /apply) et les étapes logiques associées pour automatiser la recherche d'emploi.*
 
-![Un tableau d'évaluation de compatibilité pour un poste de "Machine Learning Engineer", affichant des scores numériques par dimension (compétences techniques, expérience, comportement, etc.).](../screenshots/2U8jn2M7g7U/2U8jn2M7g7U_000011_seg1.jpg)
-*⏱️ 00:00:11 — Un tableau d'évaluation de compatibilité pour un poste de "Machine Learning Engineer", affichant des scores numériques par dimension (compétences techniques, expérience, comportement, etc.).*
+![Un tableau de bord d'évaluation de compatibilité pour un poste d'ingénieur en machine learning, notant plusieurs dimensions (compétences techniques, comportement, etc.).](../screenshots/2U8jn2M7g7U/2U8jn2M7g7U_000011_seg1.jpg)
+*⏱️ 00:00:11 — Un tableau de bord d'évaluation de compatibilité pour un poste d'ingénieur en machine learning, notant plusieurs dimensions (compétences techniques, comportement, etc.).*
 
-![Une interface textuelle montrant un bilan de performance : "Sixty-nine tailored applications, twenty first interviews", illustrant le succès du processus.](../screenshots/2U8jn2M7g7U/2U8jn2M7g7U_000016_seg1.jpg)
-*⏱️ 00:00:16 — Une interface textuelle montrant un bilan de performance : "Sixty-nine tailored applications, twenty first interviews", illustrant le succès du processus.*
+![Un extrait de texte d'un rapport de résultats mettant en évidence le succès de l'automatisation : "Sixty-nine tailored applications, twenty first interviews".](../screenshots/2U8jn2M7g7U/2U8jn2M7g7U_000016_seg1.jpg)
+*⏱️ 00:00:16 — Un extrait de texte d'un rapport de résultats mettant en évidence le succès de l'automatisation : "Sixty-nine tailored applications, twenty first interviews".*
 
 ---
 
@@ -54,14 +56,14 @@ Dans cette vidéo intitulée **This GitHub repo will automate getting you a job*
 > Then they open sourced the entire thing, and it's sitting at almost 60,000 stars on GitHub. So just comment Hired, and I'll send you the link to the repo.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : GitHub (interface web de dépôt).
+**Interface & Outils** : GitHub (interface web de dépôt de code).
 
-**Contenu textuel & Code** : Texte descriptif : "The job search that runs on your machine. AI job application framework built on Claude Code...". Liste de fichiers : .agents/skills, .claude, .github, assets/mascot, company_research, cover_letters.
+**Contenu textuel & Code** : Description du dépôt : "The job search that runs on your machine. AI job application framework built on Claude Code...", liste de fichiers (.agents/skills, .claude, .github, etc.), métriques du repo (59.6k stars, 18.7k forks).
 
-**Action / Démonstration** : Navigation et présentation de la structure de fichiers d'un dépôt open-source sur GitHub.
+**Action / Démonstration** : Affichage informatif d'un dépôt GitHub populaire pour illustrer l'aspect open source du projet mentionné.
 
-![Capture d'écran de la page principale d'un dépôt GitHub, affichant la section "About" du projet, le nombre d'étoiles (59.6k) et la liste des dossiers du répertoire source.](../screenshots/2U8jn2M7g7U/2U8jn2M7g7U_000023_seg2.jpg)
-*⏱️ 00:00:23 — Capture d'écran de la page principale d'un dépôt GitHub, affichant la section "About" du projet, le nombre d'étoiles (59.6k) et la liste des dossiers du répertoire source.*
+![Capture d'écran de la page GitHub d'un dépôt open source présentant un framework d'IA pour la recherche d'emploi, incluant la section "About" et la liste des dossiers du projet.](../screenshots/2U8jn2M7g7U/2U8jn2M7g7U_000023_seg2.jpg)
+*⏱️ 00:00:23 — Capture d'écran de la page GitHub d'un dépôt open source présentant un framework d'IA pour la recherche d'emploi, incluant la section "About" et la liste des dossiers du projet.*
 
 ---
 
