@@ -33,15 +33,15 @@ Dans cette vidéo intitulée **Claude Code + Blender = Insane 3D Renders**, Nate
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Adobe After Effects
 
-**Contenu textuel & Code** : Panneaux de composition ("Main Comp"), fichiers sources ("flawd.png", "park.svg") et timeline d'After Effects.
+**Contenu textuel & Code** : N/A (Éléments d'interface utilisateur et rendu 3D)
 
-**Action / Démonstration** : Démonstration du résultat final d'une animation 3D intégrée au sein d'une interface logicielle de composition.
+**Action / Démonstration** : Présentation d'une interface de logiciel de montage vidéo et démonstration d'un rendu 3D personnalisé.
 
-![Capture de l'interface utilisateur d'Adobe After Effects avec un projet ouvert, affichant la timeline et le panneau de composition.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000009_seg1.jpg)
-*⏱️ 00:00:09 — Capture de l'interface utilisateur d'Adobe After Effects avec un projet ouvert, affichant la timeline et le panneau de composition.*
+![L'image présente l'interface complète du logiciel Adobe After Effects, incluant le panneau de composition, la barre d'outils et la timeline active.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000009_seg1.jpg)
+*⏱️ 00:00:09 — L'image présente l'interface complète du logiciel Adobe After Effects, incluant le panneau de composition, la barre d'outils et la timeline active.*
 
-![Gros plan sur une animation 3D d'un objet cubique orange, superposé sur l'interface d'After Effects, illustrant le résultat généré.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000014_seg1.jpg)
-*⏱️ 00:00:14 — Gros plan sur une animation 3D d'un objet cubique orange, superposé sur l'interface d'After Effects, illustrant le résultat généré.*
+![L'image montre un gros plan en 3D d'un objet cubique de couleur orange, superposé visuellement par-dessus l'interface sombre d'un logiciel de montage.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000014_seg1.jpg)
+*⏱️ 00:00:14 — L'image montre un gros plan en 3D d'un objet cubique de couleur orange, superposé visuellement par-dessus l'interface sombre d'un logiciel de montage.*
 
 ---
 
@@ -51,20 +51,20 @@ Dans cette vidéo intitulée **Claude Code + Blender = Insane 3D Renders**, Nate
 > Then, Blender rendered all 360 frames on my GPU in about 15 minutes. And FFmpeg stitched them into the video that you're watching right now. So if you want the full guide with the setup and the exact prompt to just paste into Claude, Comment Blender and I'll send it over.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Terminal (ligne de commande), Blender (logiciel de rendu 3D), Document PDF/Page web de documentation technique.
+**Interface & Outils** : Terminal (ligne de commande), logiciel Blender, navigateur web/éditeur de document.
 
-**Contenu textuel & Code** : Commandes Blender (blender -b scene.blend...), suivi de rendu de frames (211-214), texte explicatif sur la production automatisée du film "Made with Claude".
+**Contenu textuel & Code** : Commandes Blender (`blender -b scene.blend -P gpu.py`), métadonnées de projet, tableaux explicatifs sur l'automatisation avec Claude Opus 5.5, Blender et Python.
 
-**Action / Démonstration** : Exécution d'un rendu automatisé via ligne de commande et présentation visuelle du résultat du workflow de génération de film.
+**Action / Démonstration** : Exécution d'un rendu 3D via script Python dans le terminal et démonstration des étapes de production d'un court-métrage généré par code.
 
-![Un terminal affichant la progression du rendu de frames dans Blender via script Python, indiquant l'utilisation d'une NVIDIA GeForce RTX 5090.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000022_seg2.jpg)
-*⏱️ 00:00:22 — Un terminal affichant la progression du rendu de frames dans Blender via script Python, indiquant l'utilisation d'une NVIDIA GeForce RTX 5090.*
+![Une fenêtre de terminal affichant le processus de rendu de Blender en ligne de commande, indiquant l'utilisation d'un GPU NVIDIA GeForce RTX 5090 et la progression du rendu par frame.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000022_seg2.jpg)
+*⏱️ 00:00:22 — Une fenêtre de terminal affichant le processus de rendu de Blender en ligne de commande, indiquant l'utilisation d'un GPU NVIDIA GeForce RTX 5090 et la progression du rendu par frame.*
 
-![Interface de Blender montrant une scène 3D avec un rendu intitulé "MADE WITH CLAUDE OPUS 5.5" au centre.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000025_seg2.jpg)
-*⏱️ 00:00:25 — Interface de Blender montrant une scène 3D avec un rendu intitulé "MADE WITH CLAUDE OPUS 5.5" au centre.*
+![Une interface utilisateur de Blender affichant une scène 3D avec un texte "MADE WITH CLAUDE OPUS 5.5" au centre, montrant le résultat visuel final avant l'exportation.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000025_seg2.jpg)
+*⏱️ 00:00:25 — Une interface utilisateur de Blender affichant une scène 3D avec un texte "MADE WITH CLAUDE OPUS 5.5" au centre, montrant le résultat visuel final avant l'exportation.*
 
-![Une fiche technique ou un document de projet détaillant le workflow, les outils (Claude Code, Blender, Python, FFMPEG) et le fonctionnement du projet.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000028_seg2.jpg)
-*⏱️ 00:00:28 — Une fiche technique ou un document de projet détaillant le workflow, les outils (Claude Code, Blender, Python, FFMPEG) et le fonctionnement du projet.*
+![Un document de guide technique ou une page web détaillant le workflow, incluant les outils utilisés (Claude Code, Blender, Python), le fonctionnement technique ("How it works") et la liste des prérequis.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000028_seg2.jpg)
+*⏱️ 00:00:28 — Un document de guide technique ou une page web détaillant le workflow, incluant les outils utilisés (Claude Code, Blender, Python), le fonctionnement technique ("How it works") et la liste des prérequis.*
 
 ---
 
