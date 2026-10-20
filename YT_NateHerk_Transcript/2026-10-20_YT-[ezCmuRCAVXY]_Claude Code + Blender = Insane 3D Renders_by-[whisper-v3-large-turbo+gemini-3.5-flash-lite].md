@@ -31,17 +31,17 @@ Dans cette vidéo intitulée **Claude Code + Blender = Insane 3D Renders**, Nate
 > What if I told you that I made this 3D animation without ever opening Blender? And no, this isn't from an AI video model like VO or C-Dance. Claude Opus 5.5 wrote the whole thing as code. It built the After Effects interface as a webpage. It wrote a Python script that builds a 3D scene in Blender. It animated this little guy hopping across the buttons. And it even made the music and every single sound effect from scratch.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Adobe After Effects
+**Interface & Outils** : Adobe After Effects.
 
-**Contenu textuel & Code** : N/A (Éléments d'interface utilisateur et rendu 3D)
+**Contenu textuel & Code** : Noms de fichiers et calques : "clawd.png", "park.svg", "MADE WITH CLAUDE".
 
-**Action / Démonstration** : Présentation d'une interface de logiciel de montage vidéo et démonstration d'un rendu 3D personnalisé.
+**Action / Démonstration** : Démonstration de l'interface utilisateur d'After Effects reconstituée par l'IA et visualisation d'un élément animé 3D.
 
-![L'image présente l'interface complète du logiciel Adobe After Effects, incluant le panneau de composition, la barre d'outils et la timeline active.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000009_seg1.jpg)
-*⏱️ 00:00:09 — L'image présente l'interface complète du logiciel Adobe After Effects, incluant le panneau de composition, la barre d'outils et la timeline active.*
+![Interface du logiciel Adobe After Effects affichée à l'écran, montrant le panneau de composition et le montage d'un projet nommé "MADE WITH CLAUDE".](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000009_seg1.jpg)
+*⏱️ 00:00:09 — Interface du logiciel Adobe After Effects affichée à l'écran, montrant le panneau de composition et le montage d'un projet nommé "MADE WITH CLAUDE".*
 
-![L'image montre un gros plan en 3D d'un objet cubique de couleur orange, superposé visuellement par-dessus l'interface sombre d'un logiciel de montage.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000014_seg1.jpg)
-*⏱️ 00:00:14 — L'image montre un gros plan en 3D d'un objet cubique de couleur orange, superposé visuellement par-dessus l'interface sombre d'un logiciel de montage.*
+![Gros plan sur une animation 3D représentant un petit personnage cubique ou un bouton interactif généré au sein d'une interface de travail.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000014_seg1.jpg)
+*⏱️ 00:00:14 — Gros plan sur une animation 3D représentant un petit personnage cubique ou un bouton interactif généré au sein d'une interface de travail.*
 
 ---
 
@@ -51,20 +51,20 @@ Dans cette vidéo intitulée **Claude Code + Blender = Insane 3D Renders**, Nate
 > Then, Blender rendered all 360 frames on my GPU in about 15 minutes. And FFmpeg stitched them into the video that you're watching right now. So if you want the full guide with the setup and the exact prompt to just paste into Claude, Comment Blender and I'll send it over.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Terminal (ligne de commande), logiciel Blender, navigateur web/éditeur de document.
+**Interface & Outils** : Terminal (ligne de commande), Logiciel Blender, Navigateur web / Document PDF (guide technique).
 
-**Contenu textuel & Code** : Commandes Blender (`blender -b scene.blend -P gpu.py`), métadonnées de projet, tableaux explicatifs sur l'automatisation avec Claude Opus 5.5, Blender et Python.
+**Contenu textuel & Code** : Commandes Blender (blender -b scene.blend...), temps de rendu par frame, détails du workflow technique (HTML, Puppeteer, Python, Blender).
 
-**Action / Démonstration** : Exécution d'un rendu 3D via script Python dans le terminal et démonstration des étapes de production d'un court-métrage généré par code.
+**Action / Démonstration** : Exécution d'un script de rendu via terminal, affichage de la scène 3D dans Blender, et présentation de la documentation du workflow.
 
-![Une fenêtre de terminal affichant le processus de rendu de Blender en ligne de commande, indiquant l'utilisation d'un GPU NVIDIA GeForce RTX 5090 et la progression du rendu par frame.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000022_seg2.jpg)
-*⏱️ 00:00:22 — Une fenêtre de terminal affichant le processus de rendu de Blender en ligne de commande, indiquant l'utilisation d'un GPU NVIDIA GeForce RTX 5090 et la progression du rendu par frame.*
+![Une fenêtre de terminal affichant le processus de rendu Blender en cours de calcul, indiquant l'utilisation d'une NVIDIA GeForce RTX 5090 et la progression par frame.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000022_seg2.jpg)
+*⏱️ 00:00:22 — Une fenêtre de terminal affichant le processus de rendu Blender en cours de calcul, indiquant l'utilisation d'une NVIDIA GeForce RTX 5090 et la progression par frame.*
 
-![Une interface utilisateur de Blender affichant une scène 3D avec un texte "MADE WITH CLAUDE OPUS 5.5" au centre, montrant le résultat visuel final avant l'exportation.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000025_seg2.jpg)
-*⏱️ 00:00:25 — Une interface utilisateur de Blender affichant une scène 3D avec un texte "MADE WITH CLAUDE OPUS 5.5" au centre, montrant le résultat visuel final avant l'exportation.*
+![Interface de Blender montrant une vue de rendu d'un projet intitulé "MADE WITH CLAUDE OPUS 5.5", avec une mascotte en 3D sur le plan de travail.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000025_seg2.jpg)
+*⏱️ 00:00:25 — Interface de Blender montrant une vue de rendu d'un projet intitulé "MADE WITH CLAUDE OPUS 5.5", avec une mascotte en 3D sur le plan de travail.*
 
-![Un document de guide technique ou une page web détaillant le workflow, incluant les outils utilisés (Claude Code, Blender, Python), le fonctionnement technique ("How it works") et la liste des prérequis.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000028_seg2.jpg)
-*⏱️ 00:00:28 — Un document de guide technique ou une page web détaillant le workflow, incluant les outils utilisés (Claude Code, Blender, Python), le fonctionnement technique ("How it works") et la liste des prérequis.*
+![Un document technique ou une page web de guide présentant les détails du projet : "What you're making" et "How it works", listant les outils utilisés comme Claude Code, Blender et FFmpeg.](../screenshots/ezCmuRCAVXY/ezCmuRCAVXY_000028_seg2.jpg)
+*⏱️ 00:00:28 — Un document technique ou une page web de guide présentant les détails du projet : "What you're making" et "How it works", listant les outils utilisés comme Claude Code, Blender et FFmpeg.*
 
 ---
 
