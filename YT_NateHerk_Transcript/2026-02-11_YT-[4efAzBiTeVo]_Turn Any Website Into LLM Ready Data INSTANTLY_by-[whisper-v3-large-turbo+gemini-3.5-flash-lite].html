@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Turn Any Website Into LLM Ready Data INSTANTLY — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Turn Any Website Into LLM Ready Data INSTANTLY</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-02-11</span>
+                <span class="badge">⏱️ 00:11:24</span>
+                <span class="badge">🆔 <code>4efAzBiTeVo</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=4efAzBiTeVo" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Turn Any Website Into LLM Ready Data INSTANTLY**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Today, I&#x27;m going to show you guys how you can take any website and turn it into LLM ready data in seconds. We&#x27;re going to be able to take any website and fully scrape everything from it. We can get all the screenshots, the branding, we can map out the entire site, we can extract the data in any form we want. We can pretty much do it all. And we&#x27;re going to be doing all of this through Cloud Code using a tool called Firecrawl, which I&#x27;m sure you guys might have heard of before.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension d&#x27;agent IA), Microsoft Excel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts de scraping, structure de données CSV (titres, salaires, localisation), et extraits de code Markdown générés par l&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse la structure d&#x27;un site web, extrait les données, les formate en CSV, puis les affiche dans un tableur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000005_seg1.jpg" alt="L&#x27;interface de discussion d&#x27;un agent IA (probablement Claude) au sein de VS Code, montrant une requête pour extraire des données structurées d&#x27;un site web." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">L&#x27;interface de discussion d&#x27;un agent IA (probablement Claude) au sein de VS Code, montrant une requête pour extraire des données structurées d&#x27;un site web.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000010_seg1.jpg" alt="Éditeur VS Code affichant un tableau comparatif de prévisualisation de données et le contenu brut d&#x27;un fichier CSV d&#x27;offres d&#x27;emploi." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000010_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:10</span>
+                        <span class="caption-text">Éditeur VS Code affichant un tableau comparatif de prévisualisation de données et le contenu brut d&#x27;un fichier CSV d&#x27;offres d&#x27;emploi.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000015_seg1.jpg" alt="Visualisation du fichier CSV final importé dans Microsoft Excel, montrant les données structurées prêtes à l&#x27;emploi." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000015_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:15</span>
+                        <span class="caption-text">Visualisation du fichier CSV final importé dans Microsoft Excel, montrant les données structurées prêtes à l&#x27;emploi.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:21 - 00:00:41</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So within Firecrawl, there&#x27;s a lot of different things that we can do. We can scrape content, so get everything from the page. We can map out a site, so get all the different URLs and understand the architecture of that website. We can crawl it, so then explore all of those pages. We can actually search. So do like a web search first and then scrape the data, which means that we can turn pages into structured content for us to use however we want.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Outil de tableau blanc numérique / Canvas (identifié comme &quot;Claude Code / Firecrawl&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma listant les capacités de Firecrawl : Scrape, Map, Crawl, Search, Extract, avec une brève description sous chaque catégorie.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation conceptuelle des capacités de la plateforme pour illustrer les explications de l&#x27;orateur sur les fonctionnalités de scraping et de crawl.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000026_seg2.jpg" alt="Une capture d&#x27;écran montrant une présentation visuelle (type tableau blanc collaboratif) intitulée &quot;Firecrawl: Turn Websites into LLM-Ready Data&quot;, illustrant les cinq fonctionnalités principales de l&#x27;outil avec des icônes." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000026_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:26</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant une présentation visuelle (type tableau blanc collaboratif) intitulée &quot;Firecrawl: Turn Websites into LLM-Ready Data&quot;, illustrant les cinq fonctionnalités principales de l&#x27;outil avec des icônes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:42 - 00:01:05</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, the thing about this is there are a lot of different endpoints to hit if you were doing this through traditional like API calls. So we&#x27;re going to be using the MCP server for Firecrawl. We&#x27;re going to give that to Cloud Code so it can figure out based on Nate&#x27;s natural language request, which of these tools do I invoke and in which order do I use them to actually get the end result that he&#x27;s looking for. So just to start off with a quick example, I&#x27;m going to use Firecrawl in the playground, which is just on the web on firecrawl.dev.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Site web Firecrawl (Interface de documentation/schéma et Playground interactif).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes explicatifs sur la conversion de sites web en données prêtes pour LLM (Markdown, JSON, etc.) et barre d&#x27;entrée URL dans le playground.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique des fonctionnalités de l&#x27;outil, suivie d&#x27;une démonstration de l&#x27;interface de test (Playground) pour configurer une tâche de scraping.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000048_seg3.jpg" alt="Une infographie présentant les capacités de Firecrawl, détaillant cinq fonctions principales : Scrape, Map, Crawl, Search et Extract." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000048_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:48</span>
+                        <span class="caption-text">Une infographie présentant les capacités de Firecrawl, détaillant cinq fonctions principales : Scrape, Map, Crawl, Search et Extract.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000059_seg3.jpg" alt="L&#x27;interface du &quot;Playground&quot; de Firecrawl sur le web, montrant un champ d&#x27;entrée d&#x27;URL et les options pour lancer le scraping de données." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000059_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:59</span>
+                        <span class="caption-text">L&#x27;interface du &quot;Playground&quot; de Firecrawl sur le web, montrant un champ d&#x27;entrée d&#x27;URL et les options pour lancer le scraping de données.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:06 - 00:01:27</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You guys can get here using the link in the description. You can get on the free plan, which is more than enough to just play around. And then when you&#x27;re ready to upgrade, use the link in the description and you can get 10% off a plan. But anyways, I&#x27;m gonna go to UpIt AI and I&#x27;m gonna copy this URL, paste that in here, and I&#x27;m gonna run a scrape. But first we have to choose the format. So by default, it&#x27;ll pretty much say, okay, we&#x27;re gonna turn this website into Markdown for you.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (sites Firecrawl et Uppit AI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL &quot;uppitai.com&quot; saisie dans le champ de recherche, choix du format &quot;Markdown&quot;, et bouton &quot;Start scraping&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation entre le site promotionnel, le site cible Uppit AI, et l&#x27;outil de scraping Firecrawl pour configurer l&#x27;extraction de données.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000111_seg4.jpg" alt="Page de destination de Firecrawl mettant en avant un partenariat avec Nate Herk, incluant une offre promotionnelle et des crédits gratuits." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000111_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:11</span>
+                        <span class="caption-text">Page de destination de Firecrawl mettant en avant un partenariat avec Nate Herk, incluant une offre promotionnelle et des crédits gratuits.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000116_seg4.jpg" alt="Page d&#x27;accueil du site Uppit AI, présentant les services d&#x27;automatisation IA, avec des boutons d&#x27;appel à l&#x27;action pour une consultation." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000116_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:16</span>
+                        <span class="caption-text">Page d&#x27;accueil du site Uppit AI, présentant les services d&#x27;automatisation IA, avec des boutons d&#x27;appel à l&#x27;action pour une consultation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000121_seg4.jpg" alt="Interface &quot;Playground&quot; du site Firecrawl, montrant le champ de saisie d&#x27;URL avec le site &quot;uppitai.com&quot; prêt à être traité." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000121_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:21</span>
+                        <span class="caption-text">Interface &quot;Playground&quot; du site Firecrawl, montrant le champ de saisie d&#x27;URL avec le site &quot;uppitai.com&quot; prêt à être traité.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:27 - 00:01:45</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But what you could also do is get an AI generated summary You get all the links, you get HTML. You can get a screenshot of the full page. You could get the branding scrape so you can understand like the logo and the images and stuff like that. So I&#x27;m gonna go ahead and start the scrape. And what we&#x27;ll see is it&#x27;ll pop up down below and we&#x27;ll get all of this data. So that&#x27;s just finished up. We can see, first of all, we have markdowns.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Firecrawl (plateforme de scraping).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste à cocher des options de format de données : Markdown, Summary, Links, HTML, Screenshot, JSON, Branding, Images. Un bouton &quot;Start scraping&quot; est visible en bas à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole l&#x27;option &quot;HTML&quot; dans le menu déroulant des formats de sortie pour configurer la tâche de scraping avant son lancement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000131_seg5.jpg" alt="Une fenêtre contextuelle (pop-up) sur l&#x27;interface du site web Firecrawl permet de sélectionner les formats de sortie pour le scraping (Markdown, Summary, Links, HTML, Screenshot, JSON, Branding, Images)." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000131_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:31</span>
+                        <span class="caption-text">Une fenêtre contextuelle (pop-up) sur l&#x27;interface du site web Firecrawl permet de sélectionner les formats de sortie pour le scraping (Markdown, Summary, Links, HTML, Screenshot, JSON, Branding, Images).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:45 - 00:02:17</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So we get the actual like hero text. We get all of this stuff up here. We&#x27;ve got the process. We have the testimonials, get in touch, all of this kind of stuff. We have an AI generated summary of what the business aims to do. We&#x27;ve got a screenshot of the entire page, as you can see. We&#x27;ve got branding information, so the OG image, the favicon, the logo, colors, typography, stuff like that. And then we also have the JSON, if for some reason you&#x27;re crazy enough to want to read this. So like I said, we&#x27;re going to get this into CloudCode. So I&#x27;m going to click on the docs and on the right hand side or on the left hand side, we can see MCP server right here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Firecrawl (outil de web scraping et transformation de données).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Résumé textuel généré par IA présentant les services de &#x27;Uppit AI&#x27;, incluant la méthodologie de travail et le parcours du fondateur Nate Herk.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur l&#x27;interface Firecrawl, spécifiquement sur l&#x27;onglet &#x27;Summary&#x27; affichant l&#x27;analyse du site web ciblé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000153_seg6.jpg" alt="Interface de la plateforme Firecrawl affichant un résumé généré par IA du site web &#x27;uppitai.com&#x27;, avec des onglets pour accéder au Markdown, à la capture d&#x27;écran, au branding et au JSON." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000153_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:53</span>
+                        <span class="caption-text">Interface de la plateforme Firecrawl affichant un résumé généré par IA du site web &#x27;uppitai.com&#x27;, avec des onglets pour accéder au Markdown, à la capture d&#x27;écran, au branding et au JSON.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:18 - 00:02:51</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then what we want to look for is running this on CloudCode, as you can see right here. And now this gives us basically just this one line to put into CloudCode and it will be able to install this for us. So I&#x27;m just going to go ahead and copy this. I&#x27;m going to go into VS Code and we&#x27;re going to start up a new project and get everything initialized. So if you&#x27;ve never actually been in VS Code or worked with Cloud Code, then I&#x27;m going to link a video right up here. It&#x27;ll get you caught up and then you can come back over here when you are ready. So what I&#x27;m going to do is open up a folder. So I&#x27;m just going to open up a project called Scraper. There&#x27;s nothing in here. It&#x27;s a completely new project. So this is what your guys&#x27; setup should look like. Left-hand side, nothing.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> - Navigateur web (Documentation Firecrawl)
+- Visual Studio Code (VS Code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Commande terminal : `claude mcp add firecrawl -e FIRECRAWL_API_KEY=your-api-key -- npx ...`
+- Liste des projets récents dans VS Code : &quot;Scraper&quot;, &quot;YouTube Analysis&quot;, &quot;Lead Gen&quot;, &quot;Klaus&quot;, &quot;n8n-builder&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> - Copie d&#x27;une ligne de commande dans la documentation pour une installation ultérieure, suivie du basculement vers l&#x27;éditeur de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000226_seg7.jpg" alt="Page de documentation de Firecrawl affichant les instructions pour ajouter le serveur MCP via la ligne de commande &quot;Claude Code&quot;." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000226_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:26</span>
+                        <span class="caption-text">Page de documentation de Firecrawl affichant les instructions pour ajouter le serveur MCP via la ligne de commande &quot;Claude Code&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000235_seg7.jpg" alt="Interface de l&#x27;éditeur Visual Studio Code au démarrage, affichant la page d&#x27;accueil avec les options de projet récents." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000235_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:35</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur Visual Studio Code au démarrage, affichant la page d&#x27;accueil avec les options de projet récents.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:52 - 00:03:12</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Right-hand side, open up Cloud Code. And I&#x27;m just going to say, hey, Claude, I want to connect to firecrawls.mcp server, and you can do that using this command. But I&#x27;m not going to give you my API key. I&#x27;m just going to put it in a .env. So if you could create that file for me, I will put my API key in there, and then you can go ahead and initialize and connect to firecrawls.mcp server.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (extension Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Zone de saisie de texte avec le message d&#x27;aide &quot;ctrl esc to focus or unfocus Claude&quot; et l&#x27;option &quot;Bypass permissions&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Préparation à la saisie d&#x27;une instruction pour connecter un serveur MCP (Firecrawl) et créer un fichier .env.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000257_seg8.jpg" alt="L&#x27;interface de l&#x27;extension Claude Code ouverte dans VS Code, affichant la zone de saisie du chat." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000257_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:57</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;extension Claude Code ouverte dans VS Code, affichant la zone de saisie du chat.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:12 - 00:03:34</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right, so that&#x27;s going to go ahead and get set up for us. You can see we now have a .env right here, which is a new file, and this is basically the best way for us to securely put in our API keys so that they&#x27;re not being stored in the conversation history. So I&#x27;m going to delete this. I&#x27;m going to go back into Firecrawl. I&#x27;m going to go to my dashboard. And right here, you can see there is an MCP integration, but we wanted to use the Cloud Code version.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le fichier .env contient la ligne : `FIRECRAWL_API_KEY=your-api-key-here`.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre la création et la configuration initiale sécurisée du fichier d&#x27;environnement pour stocker la clé API.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000318_seg9.jpg" alt="L&#x27;interface de l&#x27;éditeur Visual Studio Code affichant le contenu d&#x27;un fichier .env nouvellement créé dans le projet &quot;Scraper&quot;." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000318_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:18</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;éditeur Visual Studio Code affichant le contenu d&#x27;un fichier .env nouvellement créé dans le projet &quot;Scraper&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:34 - 00:03:59</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And now we can see API key. I&#x27;m going to go ahead and copy that, paste in the API key right there. And then I&#x27;m going to do Control S just to save it. You could also go here and click File and then Save right there. And now we can close out of that file. My API key has been added to .env. Go ahead and set up the Firecrawl MCP server. So now everything should have been set up correctly. So I&#x27;m going to hit Control-Shift-P, and I&#x27;m going to say developer reload the window, which is just going to actually let Cloud Code be able to use this now.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> `FIRECRAWL_API_KEY=fc-...`</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie et configuration de la clé API Firecrawl dans le fichier d&#x27;environnement (.env) du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000341_seg10.jpg" alt="L&#x27;interface de Visual Studio Code affichant le contenu du fichier .env où la clé API Firecrawl est en cours de saisie." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000341_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:41</span>
+                        <span class="caption-text">L&#x27;interface de Visual Studio Code affichant le contenu du fichier .env où la clé API Firecrawl est en cours de saisie.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:00 - 00:04:18</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So just sending off a request to make sure that that actually worked. As you can see, it was able to call the tool, and it decided to use the scrape endpoint rather than, you know, like a map or a crawl. So this is the actual, like, full markdown of the website itself. Cool. So the next thing I want to do is give our project a little bit more context as to what it&#x27;s actually doing in here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec l&#x27;extension Claude/Projet).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion affichant l&#x27;appel de l&#x27;outil `firecrawl_scrape` avec l&#x27;URL `uppitai.com` et le résultat retourné au format markdown.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA exécute une requête de scraping sur un site web cible et affiche les données extraites directement dans l&#x27;interface de discussion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000404_seg11.jpg" alt="Une capture d&#x27;écran de l&#x27;interface Claude dans VS Code montrant l&#x27;exécution réussie d&#x27;une fonction de scraping via le serveur MCP Firecrawl." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000404_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:04</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface Claude dans VS Code montrant l&#x27;exécution réussie d&#x27;une fonction de scraping via le serveur MCP Firecrawl.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:18 - 00:04:39</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So first of all, what I want to do is create a FireCrawl MCP guide. so that when we ask it something, it understands what are the tools I have access to and which ones should I use for what scenario. So I said, create a Firecrawl cheat sheet as a markdown file in this project that you can look at. And basically it should tell you about the different tools and how to use them. So it&#x27;s gonna go ahead and create this markdown file for us.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec extension Claude intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affichant des témoignages clients et une biographie de Nate Herkelman, suivi d&#x27;une invite de saisie &quot;ctrl esc to focus or unfocus Claude&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation du résultat d&#x27;une opération de scraping réussie dans l&#x27;environnement de développement, prête à être utilisée pour générer une documentation (cheat sheet).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000423_seg12.jpg" alt="Une capture d&#x27;écran de l&#x27;interface VS Code montrant un panneau de discussion avec Claude intégré, affichant un résumé de scraping et une barre de saisie de prompt en bas." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000423_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:23</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface VS Code montrant un panneau de discussion avec Claude intégré, affichant un résumé de scraping et une barre de saisie de prompt en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:39 - 00:04:58</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right, cool. So it created that cheat sheet as you can see right here. And if I just open up this full screen, you can see that we&#x27;ve got a quick reference guide. We&#x27;ve got the tool overview. And then it goes on to actually break down how you use each tool. So this should hopefully be good enough for now Claude to look at whenever we want it to do something else. It even gave it a quick little decision guide, which is pretty nice.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur de code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier Markdown contenant un tableau comparatif des outils Firecrawl (scrape, map, search, crawl, extract, agent) incluant leurs cas d&#x27;utilisation (Best For) et leurs vitesses (Speed), ainsi qu&#x27;une section détaillée sur l&#x27;outil &quot;Scrape&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage et lecture du document récapitulatif (cheat sheet) généré par l&#x27;IA pour aider l&#x27;utilisateur à naviguer dans les fonctionnalités de Firecrawl.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000444_seg13.jpg" alt="Une capture d&#x27;écran de l&#x27;éditeur Visual Studio Code affichant un fichier Markdown nommé &quot;firecrawl-cheatsheet.md&quot;, qui présente un guide de référence rapide pour les outils Firecrawl MCP." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000444_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:44</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;éditeur Visual Studio Code affichant un fichier Markdown nommé &quot;firecrawl-cheatsheet.md&quot;, qui présente un guide de référence rapide pour les outils Firecrawl MCP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:59 - 00:05:19</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, finally, before we actually start running with this thing is we need a Claude.md file, which is basically the system prompts for this project. Hey, Claude, I need you to help me set up a Claude.md file for this project. I want this to basically explain that this project specifically is for scraping data, whether that is extracting it, getting screenshots, crawling everything, mapping everything.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension Claude intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste détaillée du contenu généré pour le fichier &#x27;firecrawl-cheatseat.md&#x27; : Tool Overview Table, sections pour scrape, map, search, crawl, extract, agent, Quick Decision Guide, Common Patterns, Performance Tips, et Reference Tables.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;assistant Claude a terminé la génération du document et confirme qu&#x27;il peut désormais l&#x27;utiliser comme référence pour ses futures tâches de scraping.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000504_seg14.jpg" alt="Interface de VS Code montrant une interaction avec l&#x27;assistant Claude dans le volet latéral, affichant la création d&#x27;un fichier &#x27;firecrawl-cheatseat.md&#x27; et ses sections détaillées." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000504_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:04</span>
+                        <span class="caption-text">Interface de VS Code montrant une interaction avec l&#x27;assistant Claude dans le volet latéral, affichant la création d&#x27;un fichier &#x27;firecrawl-cheatseat.md&#x27; et ses sections détaillées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:19 - 00:05:43</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">you have access to the Firecrawl MCP server to do everything that you need to do with websites. And you also have the firecrawl-cheatsheet.md which explains how that MCP server works and when to use each tool. So I just shot that off. I just did want to say, this is a demo, right? So I&#x27;m doing this all in bypass permissions mode. But in practice, what I would have done is went to plan mode, brainstormed with Claude a little bit to make sure that it agrees with the way that we&#x27;re setting up all of these files.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension Claude intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le chat montre une synthèse de &quot;firecrawl-cheatsheet.md&quot; détaillant les outils (scrape, map, search, crawl, extract, agent) et les fonctionnalités de ce guide.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la documentation générée (&quot;firecrawl-cheatsheet.md&quot;) qui sert de base de connaissances à l&#x27;agent pour utiliser les outils Firecrawl via MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000525_seg15.jpg" alt="Interface de l&#x27;éditeur Visual Studio Code affichant une conversation avec une IA et le fichier &quot;firecrawl-cheatsheet.md&quot; dans l&#x27;explorateur de fichiers." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000525_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:25</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur Visual Studio Code affichant une conversation avec une IA et le fichier &quot;firecrawl-cheatsheet.md&quot; dans l&#x27;explorateur de fichiers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:43 - 00:06:06</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then we&#x27;d go ahead and implement that plan once we are in alignment. But as you can see, we now have our Claude.md file. And this is basically a scraper project. We have some information about what this project does, how to actually use the tool, what to reference. And this document, as you can see, is a lot more concise than the cheat sheet. And the reason I wanted to separate this is because you don&#x27;t actually need this entire cheat sheet to be in the Claude.md file.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec extension Claude intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le fichier Markdown affiche une documentation de projet incluant &quot;Project purpose&quot;, &quot;What it includes&quot;, ainsi qu&#x27;une description des capacités de &quot;Firecrawl MCP Server&quot; pour l&#x27;extraction de données web. La fenêtre de chat présente un résumé de la création du fichier CLAUDE.md.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la documentation contextuelle du projet au sein de l&#x27;éditeur de code pour configurer les instructions de l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000549_seg16.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code montrant le fichier &#x27;CLAUDE.md&#x27; ouvert, accompagné d&#x27;une interface de chat IA intégrée (Claude) qui détaille les fonctionnalités du projet de scraper." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000549_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:49</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code montrant le fichier &#x27;CLAUDE.md&#x27; ouvert, accompagné d&#x27;une interface de chat IA intégrée (Claude) qui détaille les fonctionnalités du projet de scraper.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:06 - 00:06:26</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But now Claude knows that it&#x27;s there in case it ever needs to use it. Okay, so let&#x27;s think about a cool use case that we might actually wanna do with something like Firecrawl. So let&#x27;s say we&#x27;ve got this remote job website And I searched for content and there&#x27;s about 1700 different job opportunities here. And there&#x27;s also, I&#x27;m assuming not all just on one page. So there&#x27;s two, three, four, maybe even up to 60.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec Claude Code), Navigateur Web (DailyRemote).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de Claude Code avec invite &quot;Ctrl esc to focus or unfocus Claude&quot;, résultats de recherche d&#x27;emploi et filtres de catégories.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du flux de travail : recherche d&#x27;opportunités d&#x27;emploi sur une plateforme, suivie de l&#x27;utilisation de Claude Code pour automatiser le traitement de ces données.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000611_seg17.jpg" alt="Interface de VS Code affichant l&#x27;extension Claude Code en attente d&#x27;interaction utilisateur." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000611_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:11</span>
+                        <span class="caption-text">Interface de VS Code affichant l&#x27;extension Claude Code en attente d&#x27;interaction utilisateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000616_seg17.jpg" alt="Page d&#x27;accueil du site &quot;DailyRemote&quot; affichant une recherche pour le mot-clé &quot;content&quot; avec 1 782 opportunités trouvées." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000616_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:16</span>
+                        <span class="caption-text">Page d&#x27;accueil du site &quot;DailyRemote&quot; affichant une recherche pour le mot-clé &quot;content&quot; avec 1 782 opportunités trouvées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000621_seg17.jpg" alt="Liste détaillée des offres d&#x27;emploi sur le site DailyRemote (Learning Data Analyst, Training Content Creator)." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000621_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:21</span>
+                        <span class="caption-text">Liste détaillée des offres d&#x27;emploi sur le site DailyRemote (Learning Data Analyst, Training Content Creator).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:26 - 00:06:46</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m just gonna go ahead and copy the URL of this first page right here. And we&#x27;re gonna go into Claude and ask it to help us out with this. Hey Claude, so I found this website and I&#x27;ve got about 1700 job opportunities that I wanna look at, but I need help using the Firecall MCP server in order to get all of these listed out. I want these as structured data so I could maybe just throw them into a Google Sheet.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Claude Code CLI.</p>
+                        <p><strong>Contenu textuel & Code :</strong> La barre de saisie affiche le texte &quot;ctrl esc to focus or unfocus Claude&quot; et montre des options pour &quot;Bypass permissions&quot; et le fichier &quot;CLAUDE.md&quot; attaché.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;apprête à interagir avec l&#x27;interface de Claude Code pour envoyer une requête concernant l&#x27;utilisation du serveur MCP Firecrawl.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000631_seg18.jpg" alt="L&#x27;interface de Claude Code intégrée dans l&#x27;éditeur VS Code, avec la barre de saisie de prompt active en bas." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000631_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:31</span>
+                        <span class="caption-text">L&#x27;interface de Claude Code intégrée dans l&#x27;éditeur VS Code, avec la barre de saisie de prompt active en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:46 - 00:07:07</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now in this case, I am gonna go to plan mode because this might take a little bit of thinking as far as understanding the structure of the site and maybe using more than just a scrape. It might have to use a map or a crawl or something else. So we&#x27;ll see what it decides to do here. So I hope you guys see now why I did this. It first decided to scrape, it understood the website, and then it decided to map. And now it&#x27;s creating more of a comprehensive plan about what to find.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt de l&#x27;utilisateur : &quot;hey Claude, I found this website and I&#x27;ve got about 1700 job opportunities... I need help using the Fire Call MCP server to get all of these listed out... I want these as structured data... https://dailyremote.com/?search=content&amp;page=1#main&quot;. On voit également l&#x27;activation du &quot;Plan mode&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur a soumis une requête complexe à l&#x27;agent Claude Code pour scraper et structurer des données d&#x27;un site d&#x27;offres d&#x27;emploi, en passant l&#x27;agent en mode plan (&quot;Plan mode&quot;).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000651_seg19.jpg" alt="Interface de Claude Code intégrée dans Visual Studio Code, affichant une requête utilisateur dans la zone de saisie." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000651_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:51</span>
+                        <span class="caption-text">Interface de Claude Code intégrée dans Visual Studio Code, affichant une requête utilisateur dans la zone de saisie.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:07 - 00:07:25</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s also asking me some questions, which is going to make this job work a lot better. So it asks if we want all 1782. I&#x27;m actually just going to go ahead and say like 200 because I don&#x27;t want this to take forever. For data fields, I&#x27;m going to grab all of them. For description, let&#x27;s just do a summary. And I&#x27;m going to go ahead and submit those answers and it&#x27;s going to keep working on the plan. All right, so it looks like that is all done.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec une interface d&#x27;interaction de type agent IA intégrée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de la fenêtre : &quot;Do you want all ~1,782 &#x27;content&#x27; jobs, or would you like to filter by specific criteria (e.g., only US-based, only Full Time)?&quot;, avec des options sélectionnables : &quot;All jobs&quot;, &quot;Filter by criteria&quot;, et &quot;Other&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur est en train de configurer les paramètres de l&#x27;agent pour restreindre le nombre de données à extraire afin d&#x27;optimiser le processus.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000711_seg20.jpg" alt="Une fenêtre contextuelle interactive s&#x27;affiche au centre de l&#x27;éditeur VS Code, posant une question à l&#x27;utilisateur concernant le volume d&#x27;extraction de données (filtrage des 1782 offres d&#x27;emploi détectées)." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000711_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:11</span>
+                        <span class="caption-text">Une fenêtre contextuelle interactive s&#x27;affiche au centre de l&#x27;éditeur VS Code, posant une question à l&#x27;utilisateur concernant le volume d&#x27;extraction de données (filtrage des 1782 offres d&#x27;emploi détectées).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:25 - 00:07:45</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We&#x27;re going to go ahead and auto accept this plan. So I&#x27;ll check in with you guys when that&#x27;s done. Now right here is the beauty of agentic workflows because it tried to, you know, execute the plan. But once it got into it, it realized that something didn&#x27;t work. So it said that the extract actually returned empty results and the site might require more sophisticated handling. So now it&#x27;s trying out the Firecrawl agent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec une interface d&#x27;agent de type &quot;Claude Code&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Log d&#x27;exécution montrant un échec de &quot;Firecrawl [firecrawl_extract]&quot; suivi d&#x27;une réflexion de l&#x27;agent : &quot;The extract returned empty results - the site likely requires more sophisticated handling.&quot; et le passage à &quot;Firecrawl [firecrawl_agent]&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse un résultat vide, auto-corrige son approche en basculant vers une méthode de scraping plus avancée (Firecrawl agent) pour traiter le contenu dynamique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000730_seg21.jpg" alt="Une interface VS Code utilisant un agent IA (Claude) qui exécute un workflow de scraping, affichant une erreur lors de l&#x27;extraction initiale." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000730_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:30</span>
+                        <span class="caption-text">Une interface VS Code utilisant un agent IA (Claude) qui exécute un workflow de scraping, affichant une erreur lors de l&#x27;extraction initiale.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:45 - 00:08:06</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So just super cool the way that it&#x27;s able to, you know, run into an issue and then fix it. Okay, so that just finished up and it was able to get 200 job listings for us. A few things happened in there, but it was able to just correct itself and change up the plan. And we did get our final output. So let me open up this CSV. You can also see that it dropped it in this project and we could look at it over here, but it&#x27;s not really very nice to look at.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec l&#x27;extension Claude ou intégration IA similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le message de l&#x27;agent indique : &quot;Done! I&#x27;ve extracted 200 job listings and created a CSV file ready for Google Sheets.&quot; ainsi qu&#x27;un résumé de la structure du fichier CSV (colonnes : title, company, job_type, location, salary, experience, category, posted).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA confirme avoir terminé l&#x27;exécution de la tâche de scraping, incluant la lecture du fichier et la finalisation de la structure des données extraites.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000750_seg22.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface de l&#x27;éditeur VS Code avec une conversation active de l&#x27;agent Claude, affichant la confirmation de l&#x27;extraction de 200 offres d&#x27;emploi dans un fichier CSV." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000750_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:50</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface de l&#x27;éditeur VS Code avec une conversation active de l&#x27;agent Claude, affichant la confirmation de l&#x27;extraction de 200 offres d&#x27;emploi dans un fichier CSV.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:06 - 00:08:41</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So here&#x27;s the actual Excel file. We&#x27;ve got title, company, job type, location, salary, experience, category, posted, how long ago, apply URL description and tags, and we do indeed have 200 of these. So now if we wanted to apply to all of these, we&#x27;ve got all the URLs and we have all this info that we need in order to go and do that. So think about how long that would have taken you to build an automation in something like NNN in order to go scrape 200 of these job postings, or if you were to just do this manually, it would have taken a lot longer. And once again, I didn&#x27;t have to think about any of the configuration. I just gave Cloud Code the MCP server and let it run. We&#x27;re going to do two more really quick use cases. The first one I&#x27;m</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Navigateur web (site DailyRemote).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Données tabulaires (titres de postes, localisations, salaires, URLs) ; interface de recherche d&#x27;emploi et call-to-action pour un assistant de candidature automatique.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la base de données de jobs scrappés et démonstration de la source des données (site de recrutement).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000815_seg23.jpg" alt="Capture d&#x27;écran montrant un fichier Excel ouvert dans Visual Studio Code, affichant une liste structurée d&#x27;offres d&#x27;emploi avec des colonnes comme titre, entreprise, salaire et URL de candidature." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000815_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:15</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un fichier Excel ouvert dans Visual Studio Code, affichant une liste structurée d&#x27;offres d&#x27;emploi avec des colonnes comme titre, entreprise, salaire et URL de candidature.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000832_seg23.jpg" alt="Capture d&#x27;écran du site web &quot;DailyRemote&quot;, présentant une interface de recherche d&#x27;emploi filtrée par mot-clé avec des options pour automatiser les candidatures." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000832_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:32</span>
+                        <span class="caption-text">Capture d&#x27;écran du site web &quot;DailyRemote&quot;, présentant une interface de recherche d&#x27;emploi filtrée par mot-clé avec des options pour automatiser les candidatures.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:41 - 00:09:14</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">going to do is grab Claudebot or Moultbot and drop it in here and say, please grab screenshots of this page and help me understand the branding. And I&#x27;m assuming that this is going to use the Firecrawl MCP server. I hope it does. And then I&#x27;m going to grab this website, which is Coffee. And I&#x27;m going to open up a different agent on the right hand side. And for this one, I&#x27;m just going to tell it to map this site. Go ahead and map out this site for me and show me what it looks like. So now we&#x27;ve got two different cloud code agents working at the same time. They&#x27;re both doing different tasks and they&#x27;re using different fire crawl tools. And then I&#x27;ll check in with you guys when we get both of these back. All right. So the map is already done. You can see that it comes</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur), terminal intégré Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt : &quot;please grab screenshots of this page and help me understand the branding. https://clawd.bot/&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Préparation de l&#x27;envoi d&#x27;une instruction à l&#x27;agent Claude Code pour effectuer un scraping et une analyse de site web.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000849_seg24.jpg" alt="Interface de Claude Code ouverte dans Visual Studio Code, affichant un prompt utilisateur demandant l&#x27;analyse visuelle et le branding d&#x27;une URL spécifique." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000849_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:49</span>
+                        <span class="caption-text">Interface de Claude Code ouverte dans Visual Studio Code, affichant un prompt utilisateur demandant l&#x27;analyse visuelle et le branding d&#x27;une URL spécifique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:14 - 00:09:49</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">back and it says, okay, so here are all the main pages and it gives me the links here are all the different categories. So bestsellers, coffee, instant, matcha, all this other stuff. We&#x27;ve got different collections. We&#x27;ve got different locations. We&#x27;ve got tons of different URLs for products, brew guides, all this kind of stuff. And so now that it has that context, I could have it go actually crawl those things if I wanted to, or, you know, extract all of that to a database or whatever we want to do with it. And now it looks like this one is finishing up over here with the MoltBot documentation. So the first thing we have is a screenshot. So if I open this up, we can see right here that we do have a screenshot of that whole landing page for MoltBot. And then</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code avec l&#x27;extension Claude (interface de chat intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste structurée des pages du site web : &quot;Coffee Collections&quot; (Blends, Single Origin, Espresso, etc.), &quot;Cafe Locations&quot; (Northern/Southern California, NY, Chicago, etc.) avec le nombre d&#x27;URLs associées. On aperçoit également des blocs de code Python et des commandes Bash pour l&#x27;extraction de données.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA génère une cartographie détaillée (sitemap) des différentes catégories et emplacements physiques du site web en vue d&#x27;un scraping automatisé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000923_seg25.jpg" alt="Une capture d&#x27;écran de l&#x27;éditeur Visual Studio Code montrant une interface de chat Claude (avec deux onglets ouverts) qui effectue le mapping d&#x27;une structure de site web." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000923_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:23</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;éditeur Visual Studio Code montrant une interface de chat Claude (avec deux onglets ouverts) qui effectue le mapping d&#x27;une structure de site web.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:49 - 00:10:11</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">we also have the branding, like the color palette, the typography, spacing and components. We&#x27;ve got the logo and you can see that all of this was able to be done with FireCrawl super easily. So I wanted to show you guys all of that stuff that we just did together, what that actually costed me. So I&#x27;m going to refresh my dashboard here when we&#x27;re looking at the usage. And you can see that that took me about 30 credits out of my 500 that I get for free.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> - Image 1 : Visual Studio Code
+- Image 2 : Interface web de FireCrawl (portail développeur)</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Spécifications techniques CSS (noms de polices, codes couleurs hexadécimaux, description de la charte graphique).
+- Image 2 : Données de facturation et de monitoring d&#x27;utilisation d&#x27;API (Credit Usage, Detailed Usage).</p>
+                        <p><strong>Action / Démonstration :</strong> - Image 1 : Documentation et structuration des consignes de design pour un projet web.
+- Image 2 : Vérification du coût opérationnel de l&#x27;utilisation de l&#x27;outil FireCrawl.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_000954_seg26.jpg" alt="Éditeur de texte dans VS Code affichant les spécifications de branding : typographie, espacement, composants, détails du logo (mascotte homard) et l&#x27;ambiance globale du site." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_000954_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:54</span>
+                        <span class="caption-text">Éditeur de texte dans VS Code affichant les spécifications de branding : typographie, espacement, composants, détails du logo (mascotte homard) et l&#x27;ambiance globale du site.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_001006_seg26.jpg" alt="Interface de la plateforme FireCrawl montrant le tableau de bord &quot;Usage&quot; avec le suivi de la consommation des crédits API (30 sur 500 utilisés, soit 6%)." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_001006_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:06</span>
+                        <span class="caption-text">Interface de la plateforme FireCrawl montrant le tableau de bord &quot;Usage&quot; avec le suivi de la consommation des crédits API (30 sur 500 utilisés, soit 6%).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:11 - 00:10:31</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So 6% of my 500 credit limit. Now that&#x27;s really the main difference when it comes to pricing. You&#x27;ve got these different plans. You&#x27;ve got a different amount of pages that you can scrape. You&#x27;ve got a different amount of credits. But the other big one is the concurrent requests. So with the free plan, you can only be doing two at a time. with this hobby plan in the middle, you can be doing five. If you scale that up, you can be doing more and more.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (site Firecrawl).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif des plans : Free, Hobby ($16/mois), Standard ($83/mois) et Growth ($333/mois), détaillant les crédits mensuels, le nombre de pages autorisées, les requêtes simultanées et le niveau de support.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle des paliers tarifaires pour illustrer les différences de capacité de scraping entre les plans.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_001016_seg27.jpg" alt="Page de tarification (pricing) du site web Firecrawl présentant les différentes offres d&#x27;abonnement." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_001016_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:16</span>
+                        <span class="caption-text">Page de tarification (pricing) du site web Firecrawl présentant les différentes offres d&#x27;abonnement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:31 - 00:10:53</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And it&#x27;s not really a huge deal because what would happen is Cloud Code would basically just queue them up and wait and retry. But if you did want to do some big operations in bulk, then it may be nice to have more concurrent requests running. And remember, you can use the link in the description to get 10% off your Firecraw plan. So I know this one was quick, but I really thought that it was a useful tool and skill to add to your Cloud Code workflows and projects.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> - Navigateur web (Firecrawl pricing page)
+- Visual Studio Code (avec extension Claude)</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Tableau comparatif avec des options allant de 2 à 100 requêtes simultanées.
+- Image 2 : Documentation sur les composants UI, la typographie (Satoshi, Clash Display) et les codes couleurs hexadécimaux pour un projet de design.</p>
+                        <p><strong>Action / Démonstration :</strong> - Image 1 : Illustration des limites techniques liées aux requêtes simultanées.
+- Image 2 : Utilisation de l&#x27;éditeur de code pour interagir avec une IA via le champ &quot;Ctrl esc to focus or unfocus Claude&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_001037_seg28.jpg" alt="Page de tarification du service Firecrawl montrant les différents paliers d&#x27;abonnement et le nombre de requêtes concurrentes associés." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_001037_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:37</span>
+                        <span class="caption-text">Page de tarification du service Firecrawl montrant les différents paliers d&#x27;abonnement et le nombre de requêtes concurrentes associés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_001048_seg28.jpg" alt="Interface de Visual Studio Code affichant un document de spécifications de design technique et une barre de saisie pour l&#x27;agent IA &quot;Claude&quot;." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_001048_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:48</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant un document de spécifications de design technique et une barre de saisie pour l&#x27;agent IA &quot;Claude&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:54 - 00:11:12</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I hope that you guys enjoyed. If you enjoyed this teaching style, and this way of thinking, then definitely check out my plus community. The link for that will be down in the description. We&#x27;ve got over 3000 members who are building businesses with AI every single day. So it&#x27;s a great place to be if you have similar goals. We&#x27;ve also got a classroom section with full courses and we&#x27;re bringing a ton of material around cloud code and vibe coding.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme communautaire Skool (AI Automation Society Plus).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publications épinglées par Nate Herk sur &quot;Meet Our New AI Instructor: Ines&quot; et &quot;AIS+ 2.0&quot;, ainsi que des statistiques communautaires (3.4k membres, 146 en ligne).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation au sein du forum de la communauté pour présenter l&#x27;écosystème aux utilisateurs.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_001058_seg29.jpg" alt="Capture d&#x27;écran de l&#x27;interface de la plateforme communautaire Skool pour &quot;AI Automation Society Plus&quot;, montrant le flux d&#x27;actualités avec des annonces épinglées, une barre latérale d&#x27;information et un classement des membres." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_001058_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:58</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface de la plateforme communautaire Skool pour &quot;AI Automation Society Plus&quot;, montrant le flux d&#x27;actualités avec des annonces épinglées, une barre latérale d&#x27;information et un classement des membres.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:12 - 00:11:23</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So if you guys are interested, then definitely check it out. But anyways, that&#x27;s gonna do it for today. If you enjoyed the video or you learned something new, please give it a like. It definitely helps me out a ton. And as always, I appreciate you guys making it to the end of the video. I&#x27;ll see you on the next one. Thanks everyone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de document/canevas (probablement Claude Canvas ou un outil de présentation de projet associé à Claude).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Présentation visuelle de &quot;Firecrawl : Turn Websites into LLM-Ready Data&quot; avec des icônes descriptives pour chaque fonctionnalité (scraping, mapping, crawling, recherche et extraction de données JSON).</p>
+                        <p><strong>Action / Démonstration :</strong> Aucune action dynamique, il s&#x27;agit d&#x27;une présentation statique des capacités de Firecrawl utilisée comme support pédagogique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/4efAzBiTeVo/4efAzBiTeVo_001115_seg30.jpg" alt="Une capture d&#x27;écran présentant l&#x27;interface de &quot;Claude Code / Firecrawl&quot; montrant les fonctionnalités principales de l&#x27;outil : Scrape, Map, Crawl, Search et Extract." loading="lazy" onclick="openLightbox('../screenshots/4efAzBiTeVo/4efAzBiTeVo_001115_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:15</span>
+                        <span class="caption-text">Une capture d&#x27;écran présentant l&#x27;interface de &quot;Claude Code / Firecrawl&quot; montrant les fonctionnalités principales de l&#x27;outil : Scrape, Map, Crawl, Search et Extract.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
