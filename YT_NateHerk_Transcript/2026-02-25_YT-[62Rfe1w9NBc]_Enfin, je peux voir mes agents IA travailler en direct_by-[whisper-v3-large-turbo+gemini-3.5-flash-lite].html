@@ -1,0 +1,2231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Enfin, je peux voir mes agents IA travailler en direct — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Enfin, je peux voir mes agents IA travailler en direct</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-02-25</span>
+                <span class="badge">⏱️ 00:11:46</span>
+                <span class="badge">🆔 <code>62Rfe1w9NBc</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=62Rfe1w9NBc" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>La vidéo de la chaîne Nate Herk | AI Automation explore une avancée ergonomique majeure dans le domaine du développement assisté par intelligence artificielle : la visualisation en direct et gamifiée des agents IA en action. L'animateur y fait la démonstration de l'extension VS Code « Pixel Agents », qui métamorphose les terminaux d'exécution de code en un bureau virtuel animé en pixel art. À travers l'utilisation de Claude Code et le lancement de multiples agents et sous-agents fonctionnant en parallèle — par exemple pour effectuer des recherches croisées sur les forces et faiblesses de Google AI face à OpenAI ou pour analyser les commentaires de chaînes YouTube —, la vidéo illustre comment le multitâche technique devient non seulement plus intuitif mais aussi visuellement auditable. <br><br>L'intérêt majeur de cette approche réside dans la résolution d'une friction classique du développement agentique : le manque de visibilité sur les actions sous-jacentes (lecture de fichiers, planification, exécution de code, tests) menées par les assistants de code. Grâce à la synchronisation des journaux d'activité (activity logs) avec un environnement graphique gamifié, les développeurs peuvent suivre l'état d'activité des agents, identifier le lancement de sous-agents, recevoir des notifications sonores et auditer les permissions ou validations requises en temps réel. Cette interface réduit la charge cognitive liée à la supervision de plusieurs flux de travail dans des terminaux textuels épars.<br><br>Au-delà de l'aspect purement ludique et du divertissement qu'apporte la personnalisation d'un bureau virtuel (mobilier, sols, murs, placement des agents), cette configuration s'avère redoutablement efficace pour les ingénieurs pratiquant le travail multitâche sur plusieurs moniteurs. L'extension comble le fossé entre la complexité des exécutions autonomes d'agents en arrière-plan et le besoin humain de contrôle et de surveillance intuitive. Bien que l'outil en soit à ses débuts (limité à l'écosystème Windows dans cette version initiale), il préfigure les standards futurs des interfaces de supervision pour équipes d'agents IA autonomes.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Claude Code** : Assistant de codage avancé intégré directement dans le terminal, capable d'écrire, d'éditer du code, d'analyser une base de code et d'exécuter des commandes de manière autonome.<br>* **Pixel Agents** : Extension pour Visual Studio Code qui transforme les flux de travail des agents de codage en personnages animés en pixel art au sein d'un bureau virtuel personnalisable.<br>* **Visual Studio Code (VS Code)** : Environnement de développement intégré (IDE) hôte sur lequel s'exécutent les extensions de terminal et de visualisation d'agents.<br>* **Opus 5.5 / Modèles Anthropic** : Modèles de langage sous-jacents alimentant les capacités de raisonnement et de génération de code des agents.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Visibilité accrue des processus autonomes** : L'utilisation d'interfaces graphiques ou d'avatars animés permet de matérialiser les tâches invisibles (lectures de fichiers, lancements de tests, génération de plans) effectuées par les agents en arrière-plan.<br>* **Supervision du multitâche en temps réel** : La possibilité d'exécuter plusieurs agents et sous-agents en parallèle nécessite des outils de monitoring visuel centralisés pour éviter de jongler péniblement entre de multiples fenêtres de terminal.<br>* **Audits des sous-agents et notifications** : Le système intégré de notifications sonores et de bulles de dialogue permet d'intervenir immédiatement lorsqu'un sous-agent nécessite une approbation ou une validation humaine.<br>* **Contraintes techniques d'installation** : L'intégration de certains outils de visualisation impose des règles strictes de nommage des dossiers (absence d'espaces ou de points) pour garantir la bonne détection des journaux d'activité.<br>* **Spécificités de compatibilité initiale** : L'adoption de technologies de pointe est souvent soumise à des phases de lancement fragmentées, l'extension Pixel Agents étant initialement restreinte aux environnements Windows.<br>* **Personnalisation et ergonomie de l'espace de travail** : La gamification de l'interface (aménagement de bureaux, modification du mobilier, disposition des écrans) humanise l'environnement de développement et rend la supervision moins austère.<br>* **Dissociation entre résultats et méthodologie** : Si les agents sont capables de produire des livrables structurés (analyses comparatives, visualisations textuelles, synthèses de commentaires), la valeur ajoutée réside surtout dans la fluidité de leur orchestration.<br>* **Gestion des flux de travail asynchrones** : La supervision visuelle aide à identifier instantanément l'état d'un agent (actif, en attente, inactif), facilitant la gestion de projets de développement complexes menés en parallèle.<br>* **Efficacité sur double moniteur** : Ce type d'interface s'intègre parfaitement dans les workflows de type double écran, où un moniteur est dédié au codage actif et l'autre à la surveillance passive des agents autonomes.<br>* **Perspectives de déploiement d'équipes d'agents** : Les feuilles de route de ces extensions prévoient l'évolution vers des équipes d'agents collaboratifs et coordonnés, allant bien au-delà de la simple exécution de tâches parallèles isolées.<br>* **Sécurité et gouvernance** : L'utilisation d'agents autonomes dotés de droits d'exécution dans un terminal nécessite une attention particulière quant à la sécurité des commandes exécutées et à la gestion des habilitations.<br>* **Divertissement et réduction du stress** : Introduire des éléments ludiques dans des environnements de développement complexes contribue à réduire la fatigue cognitive et améliore l'expérience utilisateur globale des ingénieurs IA.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude Code</span><span class="tool-tag">Pixel Agents</span><span class="tool-tag">Visual Studio Code (VS Code)</span><span class="tool-tag">Opus 5.5 / Modèles Anthropic</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Visibilité accrue des processus autonomes** : L&#x27;utilisation d&#x27;interfaces graphiques ou d&#x27;avatars animés permet de matérialiser les tâches invisibles (lectures de fichiers, lancements de tests, génération de plans) effectuées par les agents en arrière-plan.</span></li><li><span class="point-bullet">✦</span><span>Supervision du multitâche en temps réel** : La possibilité d&#x27;exécuter plusieurs agents et sous-agents en parallèle nécessite des outils de monitoring visuel centralisés pour éviter de jongler péniblement entre de multiples fenêtres de terminal.</span></li><li><span class="point-bullet">✦</span><span>Audits des sous-agents et notifications** : Le système intégré de notifications sonores et de bulles de dialogue permet d&#x27;intervenir immédiatement lorsqu&#x27;un sous-agent nécessite une approbation ou une validation humaine.</span></li><li><span class="point-bullet">✦</span><span>Contraintes techniques d&#x27;installation** : L&#x27;intégration de certains outils de visualisation impose des règles strictes de nommage des dossiers (absence d&#x27;espaces ou de points) pour garantir la bonne détection des journaux d&#x27;activité.</span></li><li><span class="point-bullet">✦</span><span>Spécificités de compatibilité initiale** : L&#x27;adoption de technologies de pointe est souvent soumise à des phases de lancement fragmentées, l&#x27;extension Pixel Agents étant initialement restreinte aux environnements Windows.</span></li><li><span class="point-bullet">✦</span><span>Personnalisation et ergonomie de l&#x27;espace de travail** : La gamification de l&#x27;interface (aménagement de bureaux, modification du mobilier, disposition des écrans) humanise l&#x27;environnement de développement et rend la supervision moins austère.</span></li><li><span class="point-bullet">✦</span><span>Dissociation entre résultats et méthodologie** : Si les agents sont capables de produire des livrables structurés (analyses comparatives, visualisations textuelles, synthèses de commentaires), la valeur ajoutée réside surtout dans la fluidité de leur orchestration.</span></li><li><span class="point-bullet">✦</span><span>Gestion des flux de travail asynchrones** : La supervision visuelle aide à identifier instantanément l&#x27;état d&#x27;un agent (actif, en attente, inactif), facilitant la gestion de projets de développement complexes menés en parallèle.</span></li><li><span class="point-bullet">✦</span><span>Efficacité sur double moniteur** : Ce type d&#x27;interface s&#x27;intègre parfaitement dans les workflows de type double écran, où un moniteur est dédié au codage actif et l&#x27;autre à la surveillance passive des agents autonomes.</span></li><li><span class="point-bullet">✦</span><span>Perspectives de déploiement d&#x27;équipes d&#x27;agents** : Les feuilles de route de ces extensions prévoient l&#x27;évolution vers des équipes d&#x27;agents collaboratifs et coordonnés, allant bien au-delà de la simple exécution de tâches parallèles isolées.</span></li><li><span class="point-bullet">✦</span><span>Sécurité et gouvernance** : L&#x27;utilisation d&#x27;agents autonomes dotés de droits d&#x27;exécution dans un terminal nécessite une attention particulière quant à la sécurité des commandes exécutées et à la gestion des habilitations.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:19</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, donc me voici dans Cloud Code, dans le terminal juste ici. Ce que vous remarquerez, c&#x27;est que cet agent est en fait mon agent Cloud Code. Donc, lorsque j&#x27;ai envoyé ce message où je lui demande de lancer deux agents chercheurs, l&#x27;un pour faire des recherches sur Google, l&#x27;autre pour faire des recherches sur OpenAI, puis de créer un diagramme visuel, vous verrez que cet agent reçoit effectivement cette tâche. Et maintenant, vous pouvez voir que nous avons trois agents qui s&#x27;exécutent réellement en ce moment en parallèle.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, terminal Claude Code v2.1.53, extension Pixel Agents.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur : « Spin up two researcher agents. One to research Google, one to research Open AI. Then create a visual diagram to compare their strengths and weaknesses. »</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie et exécution d&#x27;une requête dans le terminal Claude Code pour instancier des agents IA de recherche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000005_seg1.jpg" alt="Vue globale de Visual Studio Code avec une interface de simulation de bureau en pixel art sur la gauche et le terminal Claude Code sur la droite montrant un prompt utilisateur." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Vue globale de Visual Studio Code avec une interface de simulation de bureau en pixel art sur la gauche et le terminal Claude Code sur la droite montrant un prompt utilisateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000009_seg1.jpg" alt="Gros plan sur le terminal Claude Code affichant l&#x27;état « * Considering... » après la soumission du prompt demandant de lancer deux agents chercheurs." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Gros plan sur le terminal Claude Code affichant l&#x27;état « * Considering... » après la soumission du prompt demandant de lancer deux agents chercheurs.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000014_seg1.jpg" alt="Vue centrée sur l&#x27;interface en pixel art montrant les avatars des agents virtuels en mouvement dans le bureau simulé." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000014_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:14</span>
+                        <span class="caption-text">Vue centrée sur l&#x27;interface en pixel art montrant les avatars des agents virtuels en mouvement dans le bureau simulé.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:19 - 00:00:39</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Celui-ci recherche les points forts de Google AI, et celui-là recherche les points forts d&#x27;OpenAI. Et voici le principal qui a délégué les tâches à ces deux agents chercheurs, que vous pouvez également voir sur ce côté droit. C&#x27;est exactement ce qui est exécuté en ce moment. Et si je voulais ouvrir un autre terminal, pour ajouter un autre agent, il en insère un autre ici avec lequel je peux avoir une conversation différente.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code, interface Pixel Agents, et terminal Claude Code v2.1.53.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du terminal indiquant le lancement de deux agents chercheurs (&quot;Research Google AI strengths/weaknesses&quot; et &quot;Research OpenAI strengths/weaknesses&quot;) avec des requêtes de recherche web.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution en parallèle de deux agents IA pour effectuer des recherches sur Google AI et OpenAI, visualisée à la fois sous forme de bureau pixel art et de logs textuels.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000024_seg2.jpg" alt="Interface graphique de Pixel Agents montrant un bureau virtuel avec plusieurs personnages pixelisés représentant des agents IA en activité, avec le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000024_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:24</span>
+                        <span class="caption-text">Interface graphique de Pixel Agents montrant un bureau virtuel avec plusieurs personnages pixelisés représentant des agents IA en activité, avec le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000029_seg2.jpg" alt="Vue de l&#x27;interface VS Code avec une vue des Pixel Agents à gauche et le terminal Claude Code à droite affichant l&#x27;exécution des agents chercheurs." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000029_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:29</span>
+                        <span class="caption-text">Vue de l&#x27;interface VS Code avec une vue des Pixel Agents à gauche et le terminal Claude Code à droite affichant l&#x27;exécution des agents chercheurs.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:39 - 00:01:02</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donne-moi une analyse rapide de ma section de commentaires YouTube des deux dernières vidéos que j&#x27;ai faites. Donc maintenant, j&#x27;envoie ce message à cet agent IA dans Cloud Code, et il va prendre en charge la tâche et commencer à travailler sur d&#x27;autres choses. Comme vous pouvez le voir maintenant, celui-ci recherche des fichiers et découvre ce qu&#x27;il doit faire. Et vous venez d&#x27;entendre ce petit bruit de notification, ce qui signifie que cela a lancé un sous-agent, et vous pouvez voir qu&#x27;il analysait les commentaires, mais maintenant il a besoin d&#x27;une approbation.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Claude Code CLI, extension Pixel Agents.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande `claude` exécutée et prompt utilisateur : &quot;give me a quick analysis of my YouTube comment section from the past couple of videos I&#x27;ve made.&quot; avec le statut &quot;Whirlpooling...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse les commentaires YouTube dans le terminal pendant que la simulation visuelle tourne à gauche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000044_seg3.jpg" alt="Vue partagée de VS Code avec un simulateur d&#x27;agents en pixel art à gauche et le terminal Claude Code à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000044_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:44</span>
+                        <span class="caption-text">Vue partagée de VS Code avec un simulateur d&#x27;agents en pixel art à gauche et le terminal Claude Code à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:02 - 00:01:24</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc en gros, ce que nous avons ici, c&#x27;est une manière visuelle de voir tous les différents terminaux et sous-agents que nous avons en train de travailler dans Cloud Code. Nous recevons des notifications et nous obtenons des éléments visuels comme celui-ci qui nous disent ce qu&#x27;ils font. Donc je peux voir que ces sous-agents sur ce côté gauche sont en train de disparaître, alors je peux revenir sur ce premier terminal et je vais pouvoir voir que ce premier est déjà terminé, et maintenant celui d&#x27;OpenAI est encore en cours de traitement, qui est cet agent juste ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Claude Code CLI, extension Pixel Agents</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur « give me a quick analysis of my YouTube comment section... » et exécution d&#x27;un sous-agent « youtube-analyzer »</p>
+                        <p><strong>Action / Démonstration :</strong> Un agent IA analyse les commentaires de vidéos YouTube et exécute des scripts en arrière-plan.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000108_seg4.jpg" alt="Interface de Visual Studio Code affichant un panneau latéral avec une représentation graphique style pixel art d&#x27;un bureau avec des agents, et à droite un terminal Claude Code montrant l&#x27;exécution d&#x27;un prompt d&#x27;analyse de commentaires YouTube." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000108_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:08</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant un panneau latéral avec une représentation graphique style pixel art d&#x27;un bureau avec des agents, et à droite un terminal Claude Code montrant l&#x27;exécution d&#x27;un prompt d&#x27;analyse de commentaires YouTube.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:24 - 00:01:42</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Bon, je ne sais pas où elle est partie, mais vous pouvez voir maintenant que ces deux agents ont terminé. Ils sont inactifs. Ils ont fini de travailler. Donc, dans le premier terminal, nous pouvons voir ici le visuel. C&#x27;est sorti proprement. Nous avons des éléments sur l&#x27;avantage de Google, les lacunes de Google, l&#x27;avantage d&#x27;OpenAI, les lacunes d&#x27;OpenAI. Donc voici cette visualisation réelle qu&#x27;il a créée. Nous avons les forces et les faiblesses pour Google et pour OpenAI.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur de code), interface Pixel Agents, et terminal intégré (Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de résumé de recherche dans le terminal concernant Google (Gemini 3 Pro, infrastructure TPU, distribution, AlphaFold) et la sortie du fichier image généré.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage des résultats d&#x27;agents IA inactifs ayant terminé leur tâche de recherche et de génération visuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000129_seg5.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code montrant à gauche une interface de simulation d&#x27;agents en pixels (bureau virtuel) et à droite un terminal affichant les résultats de l&#x27;agent avec les points clés sur l&#x27;avantage de Google." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000129_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:29</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code montrant à gauche une interface de simulation d&#x27;agents en pixels (bureau virtuel) et à droite un terminal affichant les résultats de l&#x27;agent avec les points clés sur l&#x27;avantage de Google.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:43 - 00:02:04</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parfois, la génération par IA peut être notoirement mauvaise avec le texte, mais celui-ci a l&#x27;air plutôt correct. Je ne vois que quelques erreurs. Et ensuite, en arrivant sur le deuxième terminal, nous pouvons voir l&#x27;analyse des commentaires au cours des deux dernières semaines. Nous avons donc quelques points de douleur concernant les coûts de l&#x27;API Claude, et cela s&#x27;est terminé dans le code de Claude, obtenir un premier client sans aucune preuve sociale. Nous avons les vidéos les plus demandées, nous avons des tendances notables, puis nous avons un aperçu des performances des vidéos récentes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, affichage d&#x27;un diagramme et d&#x27;un terminal.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de comparaison Google vs OpenAI (forces et faiblesses) et analyse des commentaires des deux dernières semaines (&quot;Top Pain Points&quot;, &quot;Most Requested Videos&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des résultats d&#x27;une analyse de commentaires par un agent IA dans l&#x27;interface de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000148_seg6.jpg" alt="Visualisation d&#x27;un diagramme comparatif généré par IA entre Google et OpenAI affiché dans Visual Studio Code." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000148_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:48</span>
+                        <span class="caption-text">Visualisation d&#x27;un diagramme comparatif généré par IA entre Google et OpenAI affiché dans Visual Studio Code.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000153_seg6.jpg" alt="Affichage d&#x27;une interface de bureau virtuel pixel art à gauche et d&#x27;un rapport textuel d&#x27;analyse des commentaires dans le terminal de droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000153_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:53</span>
+                        <span class="caption-text">Affichage d&#x27;une interface de bureau virtuel pixel art à gauche et d&#x27;un rapport textuel d&#x27;analyse des commentaires dans le terminal de droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:04 - 00:02:26</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais je suis sûr que vous avez compris que le but de cette petite démo n&#x27;était pas vraiment de vous montrer les résultats, c&#x27;était de vous montrer ce que nous étions capables de faire ici et comment nous pouvions voir ces deux agents de terminal différents lancer des sous-agents, et comment nous pouvions garder un œil sur eux visuellement. Donc, malheureusement, je vais dire au revoir à ces agents pour qu&#x27;on puisse continuer la vidéo, et je vais fermer ces sessions de terminal ici même. Pour pouvoir vous expliquer en détail comment tout cela fonctionne et ce que j&#x27;en pense.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, interface Pixel Agents (panneau de gauche), Claude Code CLI (panneau de droite)</p>
+                        <p><strong>Contenu textuel & Code :</strong> &quot;Spin up two researcher agents. One to research Google, one to research Open AI. Then create a visual diagram to compare their strengths and weaknesses.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution de commandes dans Claude Code pour lancer des sous-agents de recherche en parallèle observés via l&#x27;interface pixel art des agents.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000209_seg7.jpg" alt="Interface VS Code affichant un jeu de type pixel art représentant un bureau d&#x27;agents sur la gauche et le panneau Claude Code sur la droite montrant des statistiques de vidéos et commentaires." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000209_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:09</span>
+                        <span class="caption-text">Interface VS Code affichant un jeu de type pixel art représentant un bureau d&#x27;agents sur la gauche et le panneau Claude Code sur la droite montrant des statistiques de vidéos et commentaires.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000220_seg7.jpg" alt="Interface VS Code montrant l&#x27;animation de bureau en pixel art sur la gauche avec un agent étiqueté &#x27;Idle&#x27;, et sur la droite l&#x27;interface Claude Code affichant une invite de commande pour lancer deux agents chercheurs (Google et OpenAI) en parallèle." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000220_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:20</span>
+                        <span class="caption-text">Interface VS Code montrant l&#x27;animation de bureau en pixel art sur la gauche avec un agent étiqueté &#x27;Idle&#x27;, et sur la droite l&#x27;interface Claude Code affichant une invite de commande pour lancer deux agents chercheurs (Google et OpenAI) en parallèle.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:26 - 00:02:50</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">D&#x27;accord, donc la façon dont nous faisons cela, c&#x27;est que nous utilisons Visual Studio Code, et c&#x27;est là que j&#x27;utilise Cloud Code comme extension si vous suivez ma chaîne depuis un moment. Nous utilisons une extension dans VS Code appelée Pixel Agents, qui transforme essentiellement vos agents de codage IA en personnages animés en pixel art dans un bureau virtuel que vous pouvez entièrement personnaliser. J&#x27;ai donc un lien vers cette page ici, et je mettrai un lien vers le dépôt GitHub dans la description, mais je vais aussi vous montrer exactement comment configurer tout cela.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, Visual Studio Marketplace</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation de l&#x27;extension &quot;Pixel Agents&quot; qui transforme les agents de code IA en personnages animés en pixel art dans un bureau virtuel.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface et de la page de téléchargement de l&#x27;extension VS Code Pixel Agents.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000232_seg8.jpg" alt="L&#x27;interface de l&#x27;extension Pixel Agents ouverte dans Visual Studio Code, affichant un bureau virtuel en pixel art." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000232_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:32</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;extension Pixel Agents ouverte dans Visual Studio Code, affichant un bureau virtuel en pixel art.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000238_seg8.jpg" alt="La page de présentation détaillée de l&#x27;extension Pixel Agents sur le Visual Studio Marketplace, montrant la description et des aperçus." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000238_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:38</span>
+                        <span class="caption-text">La page de présentation détaillée de l&#x27;extension Pixel Agents sur le Visual Studio Marketplace, montrant la description et des aperçus.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000244_seg8.jpg" alt="Le haut de la page du Visual Studio Marketplace avec le bouton d&#x27;installation vert pour l&#x27;extension Pixel Agents de Pablo De Lucca." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000244_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:44</span>
+                        <span class="caption-text">Le haut de la page du Visual Studio Marketplace avec le bouton d&#x27;installation vert pour l&#x27;extension Pixel Agents de Pablo De Lucca.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:50 - 00:03:10</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, avant de plonger là-dedans, rapidement, je voulais juste passer en revue ce qu&#x27;on fait ici et qu&#x27;est-ce que Cloud Code ? parce que ce sont les petits agents que nous étions en train de lancer. Eh bien, CloudCode est une IA dans notre terminal. Il peut écrire et éditer du code. Il peut comprendre notre base de code et il peut exécuter des commandes en notre nom. Et ce qui se passe quand vous utilisez un assistant de codage comme CloudCode, c&#x27;est que fondamentalement, vous regardez juste le terminal ou vous regardez ce que le modèle d&#x27;IA est en train de penser et ce qu&#x27;il est en train de faire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique / Outil de schématisation (ex: Excalidraw) avec le présentateur en incrustation vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte et diagrammes illustrant les capacités de Claude Code : AI in Your Terminal, Writes &amp; Edits Code, Understands Your Codebase, Runs Commands, ainsi qu&#x27;un flux séquentiel (Reading Files -&gt; Planning -&gt; Writing Code -&gt; Running Tests).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les concepts et fonctionnalités clés de Claude Code à l&#x27;aide de visuels schématiques.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000255_seg9.jpg" alt="Schéma explicatif dessiné à la main intitulé &quot;What is Claude Code?&quot; montrant les fonctionnalités principales autour d&#x27;un personnage rouge central." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000255_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:55</span>
+                        <span class="caption-text">Schéma explicatif dessiné à la main intitulé &quot;What is Claude Code?&quot; montrant les fonctionnalités principales autour d&#x27;un personnage rouge central.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000305_seg9.jpg" alt="Schéma comparatif dessiné à la main montrant &quot;What You See&quot; (ce qu&#x27;on voit) face à &quot;What&#x27;s Actually Happening&quot; (le processus séquentiel sous-jacent)." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000305_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:05</span>
+                        <span class="caption-text">Schéma comparatif dessiné à la main montrant &quot;What You See&quot; (ce qu&#x27;on voit) face à &quot;What&#x27;s Actually Happening&quot; (le processus séquentiel sous-jacent).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:11 - 00:03:35</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais ce qui se passe réellement en coulisses, c&#x27;est que des fichiers sont lus, des plans sont créés, du code est exécuté et des tests sont lancés. Il y a donc énormément de choses qui se produisent et que nous ne pouvons pas vraiment voir visuellement, surtout lorsque nous commençons à lancer des tonnes d&#x27;agents en parallèle et à faire tourner différents terminaux. Donc, en gros, ce qui se passe, c&#x27;est que CloudCode travaille, il crée un journal d&#x27;activité qui s&#x27;est déjà produit par défaut, et PixelAgents récupère simplement ce journal d&#x27;activité pour l&#x27;afficher ensuite sous une forme ou une autre d&#x27;animation.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique / outil de dessin (ex: Excalidraw ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma avec les sections &#x27;What You See&#x27; (fenêtre avec du texte abstrait) et &#x27;What&#x27;s Actually Happening&#x27; (boîtes : Reading Files, Planning, Writing Code, Running Tests reliées par des flèches).</p>
+                        <p><strong>Action / Démonstration :</strong> Explication visuelle du fonctionnement interne des agents de code et des processus invisibles en arrière-plan.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000317_seg10.jpg" alt="Schéma explicatif dessiné à la main comparant &#x27;What You See&#x27; (ce qu&#x27;on voit) à &#x27;What&#x27;s Actually Happening&#x27; (ce qui se passe réellement en coulisses avec les étapes Reading Files, Planning, Writing Code et Running Tests), avec le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000317_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:17</span>
+                        <span class="caption-text">Schéma explicatif dessiné à la main comparant &#x27;What You See&#x27; (ce qu&#x27;on voit) à &#x27;What&#x27;s Actually Happening&#x27; (ce qui se passe réellement en coulisses avec les étapes Reading Files, Planning, Writing Code et Running Tests), avec le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:35 - 00:03:58</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est honnêtement un flux très similaire si vous regardez la façon dont j&#x27;ai configuré mon assistant personnel OpenClaw, et je pouvais voir sur quoi il travaillait et s&#x27;il lançait des sous-agents. Et comme je l&#x27;ai dit, c&#x27;est plutôt cool de pouvoir surveiller nos différents agents d&#x27;un seul coup d&#x27;œil plutôt que d&#x27;avoir à parcourir différents terminaux, surtout parce que j&#x27;adore faire du multitasking quand j&#x27;utilise CloudCode. Donc sur un moniteur, je code avec des trucs et sur l&#x27;autre moniteur, je travaille sur d&#x27;autres choses et je peux juste jeter un coup d&#x27;œil facilement de l&#x27;un à l&#x27;autre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique / outil de schématisation (type Excalidraw) avec incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma en trois étapes : 1) &#x27;Claude Code / AI works&#x27;, 2) &#x27;Activity Log (JSONL) / Logs actions&#x27;, 3) &#x27;Pixel Agents / Character animates&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique le fonctionnement du flux de suivi des agents IA en s&#x27;appuyant sur le diagramme schématique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000341_seg11.jpg" alt="Schéma explicatif illustrant le flux de données entre Claude Code, un fichier de log JSONL et des Pixel Agents animés, avec le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000341_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:41</span>
+                        <span class="caption-text">Schéma explicatif illustrant le flux de données entre Claude Code, un fichier de log JSONL et des Pixel Agents animés, avec le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:58 - 00:04:17</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, si vous voulez vraiment essayer ça par vous-même, c&#x27;est super facile. Vous avez juste à aller télécharger Visual Studio Code si vous ne l&#x27;avez pas déjà. Malheureusement, pour l&#x27;instant, il y a seulement un support pour Windows. Donc, si vous êtes sur un Mac ou un système d&#x27;exploitation différent, je ne pense pas que vous puissiez utiliser ceci pour l&#x27;instant. C&#x27;est littéralement sorti il y a genre quelques jours. Mais bref, une fois que vous êtes dans une nouvelle instance de VS Code, voilà à quoi ça va ressembler.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site officiel de Visual Studio Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte « The open source AI code editor » et bouton « Download for Windows ».</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du site officiel pour télécharger l&#x27;éditeur de code source.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000403_seg12.jpg" alt="Page web officielle de téléchargement de Visual Studio Code affichant le bouton de téléchargement pour Windows, avec en médaillon la vidéo du présentateur dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000403_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:03</span>
+                        <span class="caption-text">Page web officielle de téléchargement de Visual Studio Code affichant le bouton de téléchargement pour Windows, avec en médaillon la vidéo du présentateur dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:18 - 00:04:37</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ce que vous allez faire, c&#x27;est que sur ce côté gauche, vous allez aller dans extensions et vous allez littéralement taper pixel agents. Et si vous tapez pixel agents, vous pourrez voir juste ici, pixel art office où vos agents Cloud Code prennent vie. C&#x27;est celui que j&#x27;ai installé et que je viens de vous montrer en démo. C&#x27;est assez récent, mais je vais aborder des questions de sécurité vers la fin de la vidéo. Mais vous pouvez lire ceci pour comprendre exactement ce que cela fait.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Recherche d&#x27;extensions, nom de l&#x27;extension &quot;Pixel Agents&quot; par Pablo De Lucca, description et détails.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans le marché des extensions VS Code pour rechercher et sélectionner l&#x27;extension Pixel Agents.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000422_seg13.jpg" alt="Interface de VS Code montrant le panneau des extensions avec une recherche en cours et les extensions installées, dont Pixel Agents." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000422_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:22</span>
+                        <span class="caption-text">Interface de VS Code montrant le panneau des extensions avec une recherche en cours et les extensions installées, dont Pixel Agents.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000427_seg13.jpg" alt="Page de description détaillée de l&#x27;extension Pixel Agents dans le marketplace VS Code avec un aperçu de l&#x27;interface en pixel art." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000427_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:27</span>
+                        <span class="caption-text">Page de description détaillée de l&#x27;extension Pixel Agents dans le marketplace VS Code avec un aperçu de l&#x27;interface en pixel art.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:37 - 00:04:57</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous avez essentiellement un agent par personnage. Vous avez un suivi de l&#x27;activité en direct. Vous pouvez concevoir le bureau avec les étages, les meubles, tout ce genre de choses. Vous pouvez voir des bulles de dialogue. Vous obtenez des notifications sonores, une visualisation des sous-agents, et il y a six personnages différents qui peuvent apparaître. Cela va entrer dans certains détails sur les exigences et cela va aborder certaines choses sur la façon de l&#x27;utiliser réellement. Mais si vous voulez le tester, alors foncez ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (Marketplace des extensions)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de description de l&#x27;extension &#x27;Pixel Agents&#x27; par Pablo De Lucca, listant des fonctionnalités comme le suivi d&#x27;activité en direct, l&#x27;éditeur de disposition de bureau et les bulles de dialogue.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des fonctionnalités de l&#x27;extension VS Code pour visualiser les agents IA en pixel art.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000442_seg14.jpg" alt="VS Code affichant la page de l&#x27;extension &#x27;Pixel Agents&#x27; dans la marketplace, détaillant ses fonctionnalités avec le présentateur en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000442_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:42</span>
+                        <span class="caption-text">VS Code affichant la page de l&#x27;extension &#x27;Pixel Agents&#x27; dans la marketplace, détaillant ses fonctionnalités avec le présentateur en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:57 - 00:05:16</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et voici où, malheureusement, il est indiqué que pour l&#x27;instant, c&#x27;est un test réservé à Windows. Et sur la feuille de route, vous pouvez voir qu&#x27;il y a beaucoup de choses qu&#x27;ils veulent ajouter, comme avoir des équipes d&#x27;agents de code cloud, car pour l&#x27;instant, ce sont juste des agents en parallèle. Donc de toute façon, une fois que vous avez installé ça, ce que vous allez faire, c&#x27;est ouvrir un dossier. Donc disons que vous venez dans l&#x27;Explorateur et que vous ouvrez un projet sur lequel vous voulez travailler.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (Marketplace des extensions)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation de l&#x27;extension Pixel Agents incluant une section &quot;Roadmap&quot; avec des éléments sur l&#x27;amélioration des agents, la détection de statut et les équipes d&#x27;agents.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et consultation de la description et de la feuille de route de l&#x27;extension Pixel Agents dans VS Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000502_seg15.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code montrant le Marketplace des extensions avec la page de l&#x27;extension &quot;Pixel Agents&quot; et sa feuille de route (Roadmap)." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000502_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:02</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code montrant le Marketplace des extensions avec la page de l&#x27;extension &quot;Pixel Agents&quot; et sa feuille de route (Roadmap).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:16 - 00:05:49</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors ici, je viens juste d&#x27;ouvrir mon Herc 2, qui est en gros mon assistant exécutif de type deuxième cerveau. C&#x27;est vraiment bizarre, mais si vous voulez que ce projet fonctionne, votre dossier ne doit pas contenir d&#x27;espace ou de point. Comme vous pouvez le voir en bas, ça s&#x27;appelait avant Herc espace 2.0, puis c&#x27;était Herc 2.0, et maintenant c&#x27;est Herc tiret 2. Assurez-vous donc de ne pas avoir ces éléments là-dedans si vous voulez que les agents Pixel détectent réellement le journal d&#x27;activité et reflètent ce que vous faites. De rien, j&#x27;ai dû l&#x27;apprendre à la dure. Donc, une fois que vous êtes ici, vous allez ouvrir le terminal. Donc si je suis sur Windows, je vais faire contrôle puis le petit tilde, et cela ouvre le terminal.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Structure de dossiers du projet HERK-2 incluant .claude (agents, rules, skills), settings.json, archives, brand-assets, context, decisions, projects, references, scripts, templates, .env, .gitignore, CLAUDE.local.md, CLAUDE.md, google-oauth.json.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;arborescence des dossiers et fichiers du projet d&#x27;assistant exécutif.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000524_seg16.jpg" alt="L&#x27;éditeur de code VS Code affichant l&#x27;explorateur de fichiers du projet HERK-2, avec le présentateur visible en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000524_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:24</span>
+                        <span class="caption-text">L&#x27;éditeur de code VS Code affichant l&#x27;explorateur de fichiers du projet HERK-2, avec le présentateur visible en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:49 - 00:06:23</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, voici où vous pouvez voir que j&#x27;ai un onglet Pixel Agents qui ouvre le petit espace de travail. Maintenant, ce que je veux faire, c&#x27;est voir du 50-50. Donc, je prends essentiellement ceci et je le glisse vers la barre latérale, ce qui me permet de le regarder ici, et ensuite tout ce que j&#x27;ai à faire est de cliquer sur &quot;plus agent&quot;, et cela ouvre fondamentalement un terminal Cloud Code du côté droit, et cela fait apparaître un agent ici, comme vous pouvez le voir. Maintenant, cet agent est inactif parce qu&#x27;il ne travaille sur rien. Donc, si je procède en disant : &quot;S&#x27;il te plaît, lance un agent de recherche et découvre simplement ce qui se passe avec les petites entreprises et l&#x27;adoption de l&#x27;IA&quot;, et que j&#x27;envoie ça, alors cet agent devrait prendre en charge cette tâche et il devrait</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code), interface Pixel Agents, Terminal intégré (Claude Code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de fichiers du projet, interface pixel art d&#x27;un bureau virtuel d&#x27;agents IA, et terminal Claude Code v2.1.53 (Opus 4.6)</p>
+                        <p><strong>Action / Démonstration :</strong> Réorganisation des onglets de VS Code en affichage partagé (split-screen) pour afficher l&#x27;interface Pixel Agents et le terminal simultanément</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000557_seg17.jpg" alt="Vue de VS Code montrant l&#x27;arborescence du projet à gauche et l&#x27;interface graphique Pixel Agents en plein écran à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000557_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:57</span>
+                        <span class="caption-text">Vue de VS Code montrant l&#x27;arborescence du projet à gauche et l&#x27;interface graphique Pixel Agents en plein écran à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000606_seg17.jpg" alt="Réorganisation de l&#x27;espace de travail en mode 50-50 avec Pixel Agents à gauche et le terminal Claude Code à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000606_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:06</span>
+                        <span class="caption-text">Réorganisation de l&#x27;espace de travail en mode 50-50 avec Pixel Agents à gauche et le terminal Claude Code à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000615_seg17.jpg" alt="Affichage final en double panneau de VS Code avec l&#x27;interface Pixel Agents et le terminal Claude Code côte à côte." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000615_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:15</span>
+                        <span class="caption-text">Affichage final en double panneau de VS Code avec l&#x27;interface Pixel Agents et le terminal Claude Code côte à côte.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:23 - 00:06:42</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais aussi lancer un sous-agent. Je vais en ajouter un autre qui ouvre un autre terminal et je peux ajouter de plus en plus d&#x27;agents afin que nous puissions voir que nous pouvons regarder ces cinq terminaux différents fonctionner en même temps. Et ensuite, ce que vous pouvez faire ici, c&#x27;est aller dans votre disposition et modifier les choses. Je pourrais donc déplacer cet élément, par exemple, je peux le déplacer juste ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code) avec une interface graphique de simulation d&#x27;agents en pixel art et un terminal intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface graphique montrant un bureau virtuel en pixel art avec des personnages, un menu bas (boutons &quot;+ Agent&quot;, &quot;Layout&quot;, &quot;Settings&quot;) et un panneau de terminal vide sur la droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente l&#x27;interface visuelle des agents en pixel art intégrée dans l&#x27;éditeur de code, se préparant à ajouter de nouveaux sous-agents.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000628_seg18.jpg" alt="Interface de Visual Studio Code affichant un jeu de simulation de bureau en pixel art sur la gauche (PIXEL AGENTS) avec un bouton &quot;+ Agent&quot;, et un panneau de terminal vide sur la droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000628_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:28</span>
+                        <span class="caption-text">Interface de Visual Studio Code affichant un jeu de simulation de bureau en pixel art sur la gauche (PIXEL AGENTS) avec un bouton &quot;+ Agent&quot;, et un panneau de terminal vide sur la droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:42 - 00:07:08</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je pourrais aller dans mobilier et j&#x27;ai du stockage, j&#x27;ai de la techno, j&#x27;ai de la déco, j&#x27;ai tout ce genre de trucs. Je pourrais littéralement juste mettre un moniteur au milieu du sol de la cuisine si je le voulais, et je pourrais continuer à en rajouter de plus en plus. Donc c&#x27;est plutôt marrant, tu peux entièrement personnaliser l&#x27;apparence de tout ça et les couleurs du genre des sols et des murs et des trucs comme ça. Et l&#x27;autre paramètre avec lequel tu peux vraiment t&#x27;amuser, ce serait d&#x27;ouvrir le dossier des sessions pour voir ce qui se passe, ce qui ouvre un dossier comme celui-ci pour voir le journal d&#x27;activité et tout.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (VS Code), interface web interactive Pixel Agents, Terminal Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface graphique montrant un bureau virtuel en pixel art (Pixel Agents) avec des options de mobilier et de technologie, et un terminal Claude Code exécutant une recherche sur l&#x27;adoption de l&#x27;IA par les PME.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans les menus de personnalisation du bureau virtuel et exécution d&#x27;un agent de recherche dans le terminal.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000648_seg19.jpg" alt="Interface VS Code affichant un jeu de style pixel art représentant des agents IA dans un bureau, avec un panneau de menu pour ajouter du mobilier, de la techno et du stockage." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000648_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:48</span>
+                        <span class="caption-text">Interface VS Code affichant un jeu de style pixel art représentant des agents IA dans un bureau, avec un panneau de menu pour ajouter du mobilier, de la techno et du stockage.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000702_seg19.jpg" alt="Interface VS Code avec le panneau &quot;Settings&quot; ouvert montrant les options de gestion de la disposition (Layout) et des sessions." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000702_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:02</span>
+                        <span class="caption-text">Interface VS Code avec le panneau &quot;Settings&quot; ouvert montrant les options de gestion de la disposition (Layout) et des sessions.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:08 - 00:07:28</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez également vous rendre dans la vue de débogage pour voir sur quoi les agents travaillent réellement, et vous pouvez activer ou désactiver les notifications sonores, ce qui est plutôt sympa. Vous pourriez évidemment utiliser quelque chose comme des webhooks pour faire cela dans les deux cas, mais c&#x27;est bien que ce soit désormais en quelque sorte natif avec cette extension. Donc je ne vais pas passer trop trop de temps ici, vraiment. Je pense que vous comprenez tous exactement ce qui se passe. Vous pouvez voir que cet agent vient juste de terminer, un timing parfait.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code, terminal Claude Code (v2.1.53), extension/interface &quot;Pixel Agents&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Log d&#x27;exécution de Claude Code : &quot;please spin up a research agent...&quot;, suivi de &quot;researcher(Research SMB AI adoption trends)&quot; et du statut &quot;Done&quot; (8 tool uses).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans le menu des paramètres (Image 1) pour configurer les notifications et le mode débogage, puis affichage du monitoring d&#x27;un agent de recherche (Image 2).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000713_seg20.jpg" alt="Menu de paramètres ouvert dans l&#x27;interface &quot;Pixel Agents&quot;, montrant les options pour les notifications sonores et la vue de débogage." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000713_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:13</span>
+                        <span class="caption-text">Menu de paramètres ouvert dans l&#x27;interface &quot;Pixel Agents&quot;, montrant les options pour les notifications sonores et la vue de débogage.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000723_seg20.jpg" alt="Vue principale de l&#x27;interface &quot;Pixel Agents&quot; représentant un bureau virtuel avec des personnages, tandis que Claude Code affiche l&#x27;état d&#x27;avancement de la recherche en cours." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000723_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:23</span>
+                        <span class="caption-text">Vue principale de l&#x27;interface &quot;Pixel Agents&quot; représentant un bureau virtuel avec des personnages, tandis que Claude Code affiche l&#x27;état d&#x27;avancement de la recherche en cours.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:29 - 00:07:50</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je pensais devoir conclure cette vidéo en parlant simplement de, quel est le but de tout ça ? Est-ce que c&#x27;est juste inutile ? Donc mon premier point concerne le divertissement. Je pense qu&#x27;il y a de la valeur à avoir ça comme juste un truc qui est amusant. Et la raison pour laquelle je dis ça est en quelque sorte double. La première est que, pas mal de temps, comme je l&#x27;ai dit tout à l&#x27;heure, j&#x27;ai deux écrans d&#x27;allumés et j&#x27;ai Claude Code qui tourne par ici et je travaille sur d&#x27;autres choses par là.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (Image 1), outil de dessin numérique/tableau blanc type Excalidraw (Image 2).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte détaillé sur l&#x27;évolution de l&#x27;IA (&quot;AI as a tool&quot; vers &quot;AI agents&quot;), projection de marché à 52 milliards de dollars, et note &quot;Watching your agents work is fun!&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle du concept d&#x27;agents autonomes en action suivie d&#x27;une schématisation conceptuelle illustrant la valeur ludique de l&#x27;observation des agents.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000734_seg21.jpg" alt="Interface VS Code affichant une simulation de bureau en style pixel-art (&quot;Pixel Agents&quot;) à gauche et un panneau de texte explicatif sur l&#x27;avenir de l&#x27;IA agentique à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000734_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:34</span>
+                        <span class="caption-text">Interface VS Code affichant une simulation de bureau en style pixel-art (&quot;Pixel Agents&quot;) à gauche et un panneau de texte explicatif sur l&#x27;avenir de l&#x27;IA agentique à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000739_seg21.jpg" alt="Illustration schématique (type tableau blanc numérique) intitulée &quot;The entertainment value is real, and that&#x27;s OK&quot;, montrant une personne observant un terminal et des agents pixelisés avec une bulle de satisfaction." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000739_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:39</span>
+                        <span class="caption-text">Illustration schématique (type tableau blanc numérique) intitulée &quot;The entertainment value is real, and that&#x27;s OK&quot;, montrant une personne observant un terminal et des agents pixelisés avec une bulle de satisfaction.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:50 - 00:08:11</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est plutôt agréable de pouvoir jeter un œil et de voir combien d&#x27;agents sont actifs ou si je dois leur assigner davantage de tâches ? Mais l&#x27;autre aspect, c&#x27;est que je pense que c&#x27;est visuel et que cela pourrait attirer certaines personnes qui ne sont pas super techniques ou qui sont intimidées par l&#x27;idée de regarder un terminal. Je pense que c&#x27;est très similaire à la façon dont n8n a commencé à faire un tabac, c&#x27;est parce qu&#x27;ils avaient visuellement de bons éléments que les gens avaient l&#x27;impression de pouvoir réellement comprendre rien qu&#x27;en les regardant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique / outil de dessin (ex: Excalidraw) avec incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte : &quot;The entertainment value is real, and that&#x27;s OK&quot; et &quot;Watching your agents work is fun!&quot;, avec des illustrations de terminal et de &quot;Pixel Agents&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le côté visuel et divertissant des agents IA, rendant la technologie plus accessible aux non-techniciens.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000756_seg22.jpg" alt="Un dessin schématique montrant un utilisateur détendu regardant un écran avec des agents pixelisés, comparé à un terminal de code classique, illustrant le côté ludique et visuel des agents IA." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000756_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:56</span>
+                        <span class="caption-text">Un dessin schématique montrant un utilisateur détendu regardant un écran avec des agents pixelisés, comparé à un terminal de code classique, illustrant le côté ludique et visuel des agents IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:12 - 00:08:31</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et cela m&#x27;amène un peu à mon deuxième point, qui concerne le fait que c&#x27;est exactement ce qui manque au codage par IA, ce sont les éléments visuels. Parce que, comme je l&#x27;ai dit plus tôt, ce que nous regardons est un terminal ou, en gros, une fenêtre de chat. Alors que dans NNN ou quelque chose comme ça, vous voyez des flux de travail visuels, vous voyez le processus des données et vous voyez des choses être construites ou modifiées.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique / outil de mindmapping ou de dessin (style Excalidraw)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte « AI coding lacks visual elements », comparaison entre « AI Coding Today » (écran de terminal rouge avec un personnage perplexe) et « Visual Workflows » (écran vert avec un diagramme de processus et une ampoule allumée).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique conceptuellement les lacunes du codage textuel par IA par rapport aux interfaces visuelles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000817_seg23.jpg" alt="Schéma explicatif dessiné à la main montrant le contraste entre le codage IA actuel et les flux de travail visuels, avec en incrustation vidéo le présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000817_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:17</span>
+                        <span class="caption-text">Schéma explicatif dessiné à la main montrant le contraste entre le codage IA actuel et les flux de travail visuels, avec en incrustation vidéo le présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:32 - 00:08:52</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, évidemment, Pixel Agents ce n&#x27;est pas ça. Ce n&#x27;est pas une représentation de ce qu&#x27;ils font réellement. C&#x27;est juste comme vous montrer combien vous en faites, mais je pense vraiment que c&#x27;est un pas dans la bonne direction, parce que je pense qu&#x27;en fin de compte, là où j&#x27;aimerais aller, c&#x27;est vers un endroit où Cloud Code me construit, vous savez, des flux de travail et des automatisations et qu&#x27;il me montre en train de les construire dans une interface de style n8n où je peux voir le flux.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique ou application de mindmapping / dessin de type Excalidraw.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte principal : &#x27;AI coding lacks visual elements&#x27;. Section rouge à gauche : &#x27;AI Coding Today&#x27;. Section verte à droite : &#x27;Visual Workflows&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique conceptuellement la transition nécessaire entre le code textuel et les représentations visuelles des agents.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000837_seg24.jpg" alt="Schéma explicatif dessiné à la main sur fond blanc, comparant le codage IA actuel (marqué d&#x27;un point d&#x27;interrogation et d&#x27;un écran de code textuel) aux workflows visuels futurs (marqués d&#x27;une ampoule)." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000837_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:37</span>
+                        <span class="caption-text">Schéma explicatif dessiné à la main sur fond blanc, comparant le codage IA actuel (marqué d&#x27;un point d&#x27;interrogation et d&#x27;un écran de code textuel) aux workflows visuels futurs (marqués d&#x27;une ampoule).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:52 - 00:09:14</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, nous pouvons parler de la surveillance multi-agents. Il y a beaucoup de choses qui peuvent se passer avec différents agents, que vous les exécutiez en parallèle dans différents terminaux, ou que vous ayez des sous-agents, ou que vous ayez des équipes d&#x27;agents. Et c&#x27;était plutôt cool ici que, vous savez, chacune de ces personnes soit son propre terminal. Et donc si je vois quatre exemplaires de cette fille, je sais qu&#x27;il s&#x27;agit d&#x27;un agent principal et de quatre sous-agents, alors que tous ceux-ci ne sont que des agents différents s&#x27;exécutant dans des terminaux parce qu&#x27;il s&#x27;agit de choses différentes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique, VS Code, interface graphique en pixel art (Pixel Agents) et terminal intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma illustrant la surveillance multi-agents (agents parallèles, sous-agents, équipes d&#x27;agents) et interface visuelle montrant des agents au travail avec du texte de sortie dans le terminal.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation conceptuelle des différents modes de fonctionnement multi-agents suivie d&#x27;une démonstration visuelle d&#x27;agents autonomes dans un environnement virtuel style pixel art.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000858_seg25.jpg" alt="Un schéma explicatif sur fond blanc titré &#x27;Multi-agent monitoring&#x27;, présentant trois types d&#x27;architectures d&#x27;agents : Parallel Agents, Sub-Agents et Agent Teams, avec le présentateur visible en incrustation dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000858_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:58</span>
+                        <span class="caption-text">Un schéma explicatif sur fond blanc titré &#x27;Multi-agent monitoring&#x27;, présentant trois types d&#x27;architectures d&#x27;agents : Parallel Agents, Sub-Agents et Agent Teams, avec le présentateur visible en incrustation dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000903_seg25.jpg" alt="Une interface de type jeu en pixel art représentant des bureaux d&#x27;agents IA dans VS Code, avec un terminal à droite affichant du texte formaté et le présentateur en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000903_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:03</span>
+                        <span class="caption-text">Une interface de type jeu en pixel art représentant des bureaux d&#x27;agents IA dans VS Code, avec un terminal à droite affichant du texte formaté et le présentateur en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:15 - 00:09:34</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Des agents parallèles, vous savez, quatre agents de terminal différents. Des sous-agents qui délèguent visiblement des tâches à différents sous-agents. Ces sous-agents peuvent utiliser différents modèles et ils ont, vous savez, leur propre contexte indépendant. Et puis vous avez des équipes d&#x27;agents, que Pixel Agent ne montre pas encore en réalité, mais les équipes d&#x27;agents travaillent ensemble un petit peu mieux. Elles ne partagent pas nécessairement le contexte, mais elles partagent une liste de tâches.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique / outil de mindmapping et visio-conférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte et illustrations schématiques décrivant les &#x27;Parallel Agents&#x27; (tâches indépendantes), &#x27;Sub-Agents&#x27; (tâches déléguées) et &#x27;Agent Teams&#x27; (liste de tâches partagée).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les différents modes d&#x27;interaction et de supervision des agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000919_seg26.jpg" alt="Schéma explicatif intitulé &#x27;Multi-agent monitoring&#x27; illustrant trois concepts : Parallel Agents, Sub-Agents et Agent Teams, avec le présentateur visible en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000919_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:19</span>
+                        <span class="caption-text">Schéma explicatif intitulé &#x27;Multi-agent monitoring&#x27; illustrant trois concepts : Parallel Agents, Sub-Agents et Agent Teams, avec le présentateur visible en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:34 - 00:09:55</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ils peuvent se parler entre eux et ils comprennent quand l&#x27;autre personne a terminé ou quand l&#x27;autre agent a terminé. Et même Boris, le génie qui est en quelque sorte derrière CloudCode, a dit qu&#x27;il utilise, vous savez, cinq agents dans son terminal en permanence et puis peut-être 10 autres sur le web ou quelque chose comme ça. Il travaille donc toujours avec des tonnes d&#x27;agents différents. Je suis donc vraiment curieux de voir ce que CloudCode va faire en matière de visualisation un peu plus native.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique / Outil de schématisation (type Excalidraw)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte et illustrations schématiques sur l&#x27;organisation des agents IA : Parallel Agents (tâches indépendantes), Sub-Agents (tâches déléguées), et Agent Teams (liste de tâches partagée et communication entre agents).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle et explication des différents modes de fonctionnement et de communication des agents multiples.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000940_seg27.jpg" alt="Schéma explicatif intitulé &quot;Multi-agent monitoring&quot; illustrant trois types de structures : Parallel Agents, Sub-Agents et Agent Teams, avec le présentateur visible en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_000940_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:40</span>
+                        <span class="caption-text">Schéma explicatif intitulé &quot;Multi-agent monitoring&quot; illustrant trois types de structures : Parallel Agents, Sub-Agents et Agent Teams, avec le présentateur visible en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:56 - 00:10:18</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, rapidement, abordons la sécurité de ce plugin, car vous ne devriez vraiment installer que des extensions qui sont vérifiées ou dont vous savez qu&#x27;elles sont sûres. Donc, avant de l&#x27;installer, je me suis juste un peu renseigné à son sujet. L&#x27;éditeur s&#x27;appelle Pablo De Luca. C&#x27;est un éditeur vérifié sur le Marketplace de VS Code. J&#x27;ai regardé son parcours et c&#x27;est une vraie personne. Il est cofondateur d&#x27;une entreprise et il a un dépôt GitHub avec 1300 étoiles et plus de 100 forks.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de notes ou de présentation visuelle (type canvas/whiteboard) avec incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur l&#x27;éditeur Pablo De Luca, les statistiques GitHub du projet et un tableau d&#x27;audit de sécurité (Outbound network calls, Data exfiltration, Shell command injection, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le document de présentation détaillant l&#x27;audit de sécurité de l&#x27;extension VS Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001001_seg28.jpg" alt="Une page de présentation intitulée &quot;Security&quot; détaillant les vérifications faites sur l&#x27;extension Pixel Agents et son créateur Pablo De Luca." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001001_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:01</span>
+                        <span class="caption-text">Une page de présentation intitulée &quot;Security&quot; détaillant les vérifications faites sur l&#x27;extension Pixel Agents et son créateur Pablo De Luca.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001007_seg28.jpg" alt="La suite du tableau d&#x27;audit de sécurité montrant les résultats pour les appels réseau, l&#x27;exfiltration de données, et l&#x27;accès au système de fichiers." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001007_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:07</span>
+                        <span class="caption-text">La suite du tableau d&#x27;audit de sécurité montrant les résultats pour les appels réseau, l&#x27;exfiltration de données, et l&#x27;accès au système de fichiers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:18 - 00:10:55</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je pense que cela signifie qu&#x27;il a un petit peu de crédibilité. Il n&#x27;a pas créé une sorte de faux profil pour publier quelque chose là-bas afin de voler vos données. Nous avons donc examiné quelques éléments clés tels que les appels réseau sortants, l&#x27;exfiltration de données, l&#x27;injection de commandes shell, les dépendances suspectes, les identifiants, la gestion des secrets, l&#x27;accès au système de fichiers et le chargement de scripts à distance, et nous n&#x27;avons rien vu. Il ne semble donc pas envoyer de données nulle part, il ne collecte rien, il n&#x27;exécute aucune commande, et tout reste sur votre machine. C&#x27;est donc pour cela que je me suis senti en confiance pour l&#x27;installer et le tester. Je voulais donc simplement partager mon expérience d&#x27;un point de vue de la sécurité. Donc, dans l&#x27;ensemble, ce que je ressens à ce sujet, c&#x27;est que PixelAgent m&#x27;indique simplement qu&#x27;un agent ou des agents sont en train de travailler. Ce que je veux réellement savoir</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de prise de notes ou tableau blanc virtuel (type Miro ou Obsidian Canvas).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau présentant les checks de sécurité : &quot;Outbound network calls&quot;, &quot;Data exfiltration&quot;, &quot;Shell command injection&quot;, &quot;Suspicious dependencies&quot;, &quot;Credential/secret handling&quot;, &quot;Filesystem access&quot;, et &quot;Remote script loading&quot;, tous avec le résultat &quot;None&quot; ou une mention de sécurité.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle d&#x27;un audit de sécurité pour rassurer l&#x27;utilisateur sur la fiabilité d&#x27;une extension VS Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001028_seg29.jpg" alt="Une vue d&#x27;un document récapitulatif sur la sécurité, affichant un tableau d&#x27;audit de code avec les résultats pour diverses menaces potentielles." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001028_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:28</span>
+                        <span class="caption-text">Une vue d&#x27;un document récapitulatif sur la sécurité, affichant un tableau d&#x27;audit de code avec les résultats pour diverses menaces potentielles.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001037_seg29.jpg" alt="La suite du tableau d&#x27;audit, montrant les résultats négatifs pour les vecteurs d&#x27;attaque comme l&#x27;exfiltration de données ou l&#x27;injection de commandes." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001037_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:37</span>
+                        <span class="caption-text">La suite du tableau d&#x27;audit, montrant les résultats négatifs pour les vecteurs d&#x27;attaque comme l&#x27;exfiltration de données ou l&#x27;injection de commandes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001046_seg29.jpg" alt="Une vue détaillée de la section &quot;Security&quot; présentant l&#x27;identité du développeur (Pablo De Lucca) et la crédibilité du projet." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001046_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:46</span>
+                        <span class="caption-text">Une vue détaillée de la section &quot;Security&quot; présentant l&#x27;identité du développeur (Pablo De Lucca) et la crédibilité du projet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:55 - 00:11:22</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est ce qu&#x27;ils construisent, quelles décisions ils prennent, et si c&#x27;est sur le point de faire quelque chose avec lequel je serais d&#x27;accord ou pas d&#x27;accord. C&#x27;est le véritable produit dont je pense que nous avons besoin lorsqu&#x27;il s&#x27;agit de visualisation, parce que nous, en tant qu&#x27;humains, nous évoluons vers ce monde où nous devons vraiment juste être de très bons managers et maintenir nos agents et nos sous-agents sur le bon chemin. Et la meilleure façon de faire cela, c&#x27;est d&#x27;être capable de simplement voir tout le temps ce qui se passe, d&#x27;arrêter les choses avant qu&#x27;elles ne tournent mal, et de continuer à leur donner de manière proactive plus de travail pour qu&#x27;ils ne restent jamais là à ne rien faire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique (type Excalidraw ou similaire) avec la vidéo du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte manuscrit : &quot;Pixel Agents tells me an agent is working. What I actually want to know is what it&#x27;s building, what decisions it&#x27;s making, and whether it&#x27;s about to do something I&#x27;d disagree with. That&#x27;s the real product someone needs to build.&quot; et schémas comparatifs &quot;AI Coding Today&quot; versus &quot;Visual Workflows&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation conceptuelle et schématique illustrant le besoin d&#x27;outils de visualisation pour le développement assisté par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001102_seg30.jpg" alt="Un tableau blanc numérique illustrant la comparaison entre le codage IA actuel (boîte noire avec un utilisateur perplexe) et les flux de travail visuels souhaités (diagramme de processus avec un utilisateur satisfait)." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001102_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:02</span>
+                        <span class="caption-text">Un tableau blanc numérique illustrant la comparaison entre le codage IA actuel (boîte noire avec un utilisateur perplexe) et les flux de travail visuels souhaités (diagramme de processus avec un utilisateur satisfait).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:22 - 00:11:45</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais bref, c&#x27;est tout pour aujourd&#x27;hui. Si vous voulez approfondir tout ce genre de sujets et faire un peu de techno, alors allez absolument jeter un œil à mon groupe payant, AI Automation Society Plus. Nous avons plus de 3 000 membres qui créent avec l&#x27;IA chaque jour et qui bâtissent des entreprises avec l&#x27;IA. C&#x27;est donc un endroit formidable si vous avez des objectifs similaires. Mais si vous avez apprécié la vidéo ou si vous avez appris quelque chose de nouveau, n&#x27;hésitez pas à mettre un pouce bleu. Ça m&#x27;aide énormément. Et comme toujours, je vous remercie d&#x27;être arrivés jusqu&#x27;à la fin de la vidéo. Je vous dis à la prochaine. Merci à tous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Skool (communauté privée), Excalidraw (tableau blanc numérique).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publications des membres (&quot;So I Just Fully Rebuilt My Website&quot;, &quot;Starting a AI Outbound Agent&quot;), statistiques de groupe, texte &quot;The entertainment value is real, and that&#x27;s OK&quot; et &quot;Watching your agents work is fun!&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur la plateforme communautaire (Image 1) ; présentation visuelle d&#x27;un concept ludique sur le travail des agents IA (Image 2).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001128_seg31.jpg" alt="Interface de la plateforme communautaire &quot;AI Automation Society Plus&quot; hébergée sur Skool, montrant le fil d&#x27;actualité avec des messages de membres et des statistiques de communauté." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001128_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:28</span>
+                        <span class="caption-text">Interface de la plateforme communautaire &quot;AI Automation Society Plus&quot; hébergée sur Skool, montrant le fil d&#x27;actualité avec des messages de membres et des statistiques de communauté.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001139_seg31.jpg" alt="Illustration stylisée sous forme de dessin sur un tableau blanc numérique, représentant une personne observant avec plaisir un terminal de commande et des &quot;Pixel Agents&quot; à l&#x27;écran." loading="lazy" onclick="openLightbox('../screenshots/62Rfe1w9NBc/62Rfe1w9NBc_001139_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:39</span>
+                        <span class="caption-text">Illustration stylisée sous forme de dessin sur un tableau blanc numérique, représentant une personne observant avec plaisir un terminal de commande et des &quot;Pixel Agents&quot; à l&#x27;écran.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
