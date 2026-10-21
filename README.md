@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `235 / 358` (`65.6%`)
+- **Vidéos traitées** : `236 / 358` (`65.9%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -252,6 +252,7 @@
 | 2025-11-21 | [iUgAVUcv9r0](https://www.youtube.com/watch?v=iUgAVUcv9r0) | **How to Use the NEW Nano Banana 2 in n8n (cheaper & no watermark)** | [2025-11-21_YT-[iUgAVUcv9r0]_How to Use the NEW Nano Banana 2 in n8n (cheaper & no watermark)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-11-21_YT-[iUgAVUcv9r0]_How to Use the NEW Nano Banana 2 in n8n (cheaper & no watermark)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-11-21_YT-[iUgAVUcv9r0]_How to Use the NEW Nano Banana 2 in n8n (cheaper & no watermark)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `29` |
 | 2025-11-19 | [Vb1SwBAn9cQ](https://www.youtube.com/watch?v=Vb1SwBAn9cQ) | **Build ANYTHING with Gemini 3 Pro and n8n AI Agents** | [2025-11-19_YT-[Vb1SwBAn9cQ]_Build ANYTHING with Gemini 3 Pro and n8n AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-11-19_YT-[Vb1SwBAn9cQ]_Build ANYTHING with Gemini 3 Pro and n8n AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-11-19_YT-[Vb1SwBAn9cQ]_Build ANYTHING with Gemini 3 Pro and n8n AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-11-17 | [9dA1VB8V8oo](https://www.youtube.com/watch?v=9dA1VB8V8oo) | **Comment décrocher votre premier client en automatisation IA (sans créer d'agence)** | [2025-11-17_YT-[9dA1VB8V8oo]_Comment décrocher votre premier client en automatisation IA (sans créer d'agence_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-11-17_YT-[9dA1VB8V8oo]_Comment décrocher votre premier client en automatisation IA (sans créer d'agence_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-11-17_YT-[9dA1VB8V8oo]_Comment décrocher votre premier client en automatisation IA (sans créer d'agence_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `7` |
+| 2025-11-13 | [6ZB0zADNaqk](https://www.youtube.com/watch?v=6ZB0zADNaqk) | **The Cheapest & Easiest Way to Self-Host n8n (Beginner's Guide)** | [2025-11-13_YT-[6ZB0zADNaqk]_The Cheapest & Easiest Way to Self-Host n8n (Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-11-13_YT-[6ZB0zADNaqk]_The Cheapest & Easiest Way to Self-Host n8n (Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-11-13_YT-[6ZB0zADNaqk]_The Cheapest & Easiest Way to Self-Host n8n (Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
