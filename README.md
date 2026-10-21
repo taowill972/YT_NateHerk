@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `237 / 358` (`66.2%`)
+- **Vidéos traitées** : `238 / 358` (`66.5%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -254,6 +254,7 @@
 | 2025-11-17 | [9dA1VB8V8oo](https://www.youtube.com/watch?v=9dA1VB8V8oo) | **Comment décrocher votre premier client en automatisation IA (sans créer d'agence)** | [2025-11-17_YT-[9dA1VB8V8oo]_Comment décrocher votre premier client en automatisation IA (sans créer d'agence_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-11-17_YT-[9dA1VB8V8oo]_Comment décrocher votre premier client en automatisation IA (sans créer d'agence_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-11-17_YT-[9dA1VB8V8oo]_Comment décrocher votre premier client en automatisation IA (sans créer d'agence_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `7` |
 | 2025-11-13 | [6ZB0zADNaqk](https://www.youtube.com/watch?v=6ZB0zADNaqk) | **The Cheapest & Easiest Way to Self-Host n8n (Beginner's Guide)** | [2025-11-13_YT-[6ZB0zADNaqk]_The Cheapest & Easiest Way to Self-Host n8n (Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-11-13_YT-[6ZB0zADNaqk]_The Cheapest & Easiest Way to Self-Host n8n (Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-11-13_YT-[6ZB0zADNaqk]_The Cheapest & Easiest Way to Self-Host n8n (Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-11-11 | [oWdJMJp2HgM](https://www.youtube.com/watch?v=oWdJMJp2HgM) | **n8n JUST Leveled Up AI Agents With Guardrails: Here's How It Works** | [2025-11-11_YT-[oWdJMJp2HgM]_n8n JUST Leveled Up AI Agents With Guardrails Here's How It Works_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-11-11_YT-[oWdJMJp2HgM]_n8n JUST Leveled Up AI Agents With Guardrails Here's How It Works_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-11-11_YT-[oWdJMJp2HgM]_n8n JUST Leveled Up AI Agents With Guardrails Here's How It Works_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-11-10 | [a5sJNwfZ528](https://www.youtube.com/watch?v=a5sJNwfZ528) | **How to Build Workflows 10x Faster with n8n's AI Builder** | [2025-11-10_YT-[a5sJNwfZ528]_How to Build Workflows 10x Faster with n8n's AI Builder_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-11-10_YT-[a5sJNwfZ528]_How to Build Workflows 10x Faster with n8n's AI Builder_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-11-10_YT-[a5sJNwfZ528]_How to Build Workflows 10x Faster with n8n's AI Builder_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
