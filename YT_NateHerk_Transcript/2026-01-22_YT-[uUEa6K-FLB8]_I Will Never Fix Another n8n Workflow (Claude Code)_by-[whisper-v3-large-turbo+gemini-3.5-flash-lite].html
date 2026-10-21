@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 I Will Never Fix Another n8n Workflow (Claude Code) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 I Will Never Fix Another n8n Workflow (Claude Code)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-01-22</span>
+                <span class="badge">⏱️ 00:13:20</span>
+                <span class="badge">🆔 <code>uUEa6K-FLB8</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=uUEa6K-FLB8" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **I Will Never Fix Another n8n Workflow (Claude Code)**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:30</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So last week I dropped this YouTube video where I showed you guys how you can use CloudCode to build and in workflows instantly. And after I posted that, I was thinking to myself, wouldn&#x27;t it be really cool if you could have CloudCode fix and optimize your workflows? So I tried it and it worked, but I wanted to take it one step further and think about when my workflows error, could I have CloudCode automatically go fix those? So that&#x27;s what I&#x27;m going to show you guys today. So right here, I&#x27;ve got this workflow. It basically captures orders and it can either go this way or it can go this way. And I&#x27;ve put in here something that&#x27;s going to break the workflow. So I&#x27;m going to go ahead and call it and show you guys what happens.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme de workflow automatisé (Type n8n ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : Webhook, Enrich Order Data, Validate Each Order, Flag High Priority, Send to Fulfillment API, Message a model, Send a message.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et démonstration de la structure logique d&#x27;un workflow automatisé piloté par des agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000007_seg1.jpg" alt="Interface de conception de workflow montrant un &quot;Research Agent&quot; et un &quot;Newsletter Writer&quot; connectés, avec des modèles IA (ChatGPT-5, Perplexity, Sonnet 4.5) liés." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000007_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:07</span>
+                        <span class="caption-text">Interface de conception de workflow montrant un &quot;Research Agent&quot; et un &quot;Newsletter Writer&quot; connectés, avec des modèles IA (ChatGPT-5, Perplexity, Sonnet 4.5) liés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000015_seg1.jpg" alt="Interface de workflow montrant un &quot;Error Trigger&quot; lié à un nœud &quot;Call Claude Bridge&quot; avec une requête POST spécifique, illustrant la gestion d&#x27;erreurs." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000015_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:15</span>
+                        <span class="caption-text">Interface de workflow montrant un &quot;Error Trigger&quot; lié à un nœud &quot;Call Claude Bridge&quot; avec une requête POST spécifique, illustrant la gestion d&#x27;erreurs.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000022_seg1.jpg" alt="Vue globale d&#x27;un &quot;Order Processing Pipeline&quot; complexe avec des nœuds de logique conditionnelle (If), d&#x27;enrichissement de données et d&#x27;envoi de messages Slack." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000022_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:22</span>
+                        <span class="caption-text">Vue globale d&#x27;un &quot;Order Processing Pipeline&quot; complexe avec des nœuds de logique conditionnelle (If), d&#x27;enrichissement de données et d&#x27;envoi de messages Slack.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:30 - 00:00:49</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I just got a message in my ClickUp that says, this workflow, demo order processing pipeline, had an error. The failed node was the validate each order node. So it was this one right here. And the error message was expected individual order items, but received an array. Data must be split into individual items using a split out node before validation can process each line.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de gestion de workflow et d&#x27;automatisation appelée &quot;Uppit AI&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Détails du log d&#x27;erreur : &quot;Failed Node: Validate Each Order&quot;, &quot;Original Error: Expected individual order items but received array&quot;, et explication de la correction effectuée par Claude.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;un rapport de diagnostic et de résolution automatique de bug au sein d&#x27;un pipeline d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000035_seg2.jpg" alt="Interface de l&#x27;application &quot;Uppit AI&quot; affichant un rapport de correction automatique d&#x27;un workflow nommé &quot;DEMO - Order Processing Pipeline&quot;." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000035_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:35</span>
+                        <span class="caption-text">Interface de l&#x27;application &quot;Uppit AI&quot; affichant un rapport de correction automatique d&#x27;un workflow nommé &quot;DEMO - Order Processing Pipeline&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000045_seg2.jpg" alt="Même interface montrant le détail technique de la correction : la cause racine (un nœud de code renvoyant un tableau au lieu d&#x27;éléments séparés) et la solution apportée par l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000045_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:45</span>
+                        <span class="caption-text">Même interface montrant le détail technique de la correction : la cause racine (un nœud de code renvoyant un tableau au lieu d&#x27;éléments séparés) et la solution apportée par l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:50 - 00:01:10</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So then what Claude did was it found the root cause, which was the enrich order data code node. So the one right before it returned all orders as a single item, which was an array. So the fix was it changed the code node to return each order as a separate item. So that&#x27;s kind of cool because NNN itself suggested using a split out node, but Cloud Code realized that it&#x27;s easier to actually just fix it by changing the code in this node itself.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;application Uppit AI (environnement de gestion de workflows).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte récapitulatif du diagnostic de l&#x27;IA : &quot;Workflow Fixed Successfully&quot;, explication de l&#x27;erreur initiale (&quot;Expected individual order items but received array&quot;) et description de la correction (&quot;Enrich Order Data node to return each order as a separate item&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du rapport final détaillant la résolution de l&#x27;erreur de formatage des données dans le workflow n8n &quot;DEMO - Order Processing Pipeline&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000055_seg3.jpg" alt="Interface d&#x27;une application nommée &quot;Uppit AI&quot; affichant un rapport de correction automatique d&#x27;un workflow n8n." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000055_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:55</span>
+                        <span class="caption-text">Interface d&#x27;une application nommée &quot;Uppit AI&quot; affichant un rapport de correction automatique d&#x27;un workflow n8n.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:10 - 00:01:29</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So then it basically says the fix was applied and the workflow should now be all set. So I&#x27;m gonna give this workflow a refresh. It probably didn&#x27;t actually change anything physically that we could see, but this is the more updated version. So now what I&#x27;m gonna do is go to the executions. You can see that this one was the most recent one we just ran and it failed right there on the validate each order node.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflows low-code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds visibles : &quot;Webhook&quot;, &quot;Set Sample Orders&quot;, &quot;If&quot;, &quot;Enrich Order Data&quot;, &quot;Validate Each Order&quot;, &quot;Flag High Priority&quot;, &quot;Send to Fulfillment API&quot;, &quot;Respond Success&quot;, &quot;Message a model&quot;, &quot;Send a message&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la mise à jour du workflow et s&#x27;apprête à naviguer vers l&#x27;onglet des exécutions pour vérifier le fonctionnement du pipeline.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000115_seg4.jpg" alt="Interface de l&#x27;éditeur de workflow n8n montrant un pipeline de traitement de commandes (&quot;DEMO - Order Processing Pipeline&quot;) avec plusieurs nœuds connectés." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000115_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:15</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur de workflow n8n montrant un pipeline de traitement de commandes (&quot;DEMO - Order Processing Pipeline&quot;) avec plusieurs nœuds connectés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000119_seg4.jpg" alt="Même interface de l&#x27;éditeur n8n, affichant la structure complète du flux de travail incluant les nœuds d&#x27;enrichissement, de validation et d&#x27;API." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000119_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:19</span>
+                        <span class="caption-text">Même interface de l&#x27;éditeur n8n, affichant la structure complète du flux de travail incluant les nœuds d&#x27;enrichissement, de validation et d&#x27;API.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:29 - 00:02:06</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And what I did is I just triggered this workflow once again. So we should see a new execution pop up live And now you can see this time it actually succeeded Because what cloud code did was it went ahead and it fixed the workflow and now everything flows all the way through All right So that was a little demo to show you guys that this workflow just failed I didn&#x27;t touch it at all and then cloud code fixed it and then sent me a message and said hey it failed But I got you. So I&#x27;m sure you guys are wondering how this actually works behind the scenes So let me show you The way that we&#x27;re doing this is we are using an error workflow So as soon as that previous workflow fails at all, it triggers off this new one, which basically sends an HTTP request essentially to CloudCode.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflows).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow &quot;DEMO - Order Processing Pipeline&quot; comprenant des nœuds comme &quot;Webhook&quot;, &quot;If&quot;, &quot;Enrich Order Data&quot;, &quot;Validate Each Order&quot;, &quot;Flag High Priority&quot; et &quot;Send to Fulfillment API&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur observe le succès de l&#x27;exécution du workflow après que l&#x27;IA a corrigé les erreurs précédemment identifiées dans le pipeline.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000138_seg5.jpg" alt="Interface d&#x27;historique des exécutions dans n8n affichant une liste de succès et d&#x27;erreurs, avec une exécution récente en cours de chargement." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000138_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:38</span>
+                        <span class="caption-text">Interface d&#x27;historique des exécutions dans n8n affichant une liste de succès et d&#x27;erreurs, avec une exécution récente en cours de chargement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000147_seg5.jpg" alt="Éditeur de workflow visuel dans n8n montrant la structure complète d&#x27;un pipeline de traitement de commandes (nœuds, connexions et flux de données)." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000147_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:47</span>
+                        <span class="caption-text">Éditeur de workflow visuel dans n8n montrant la structure complète d&#x27;un pipeline de traitement de commandes (nœuds, connexions et flux de données).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:06 - 00:02:27</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So when you have a workflow in NNN in production, what you can do is in the settings, you can have an error workflow. So this basically means if this core workflow ever fails, you can trigger a different one. So you can log the error, send yourself a message, or in our case, use CloudCode to fix it. So you can actually see right here in the nasty looking terminal. What happened was it said error received this workflow.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de configuration du workflow n8n (n8n workflow editor).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres visibles : &quot;Error Workflow&quot; configuré sur &quot;Error Handler - Claude Code Fixer&quot;, fuseau horaire &quot;America/Chicago&quot;, et options de sauvegarde des exécutions.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur a ouvert les paramètres du workflow pour configurer le déclenchement d&#x27;un workflow de gestion d&#x27;erreurs.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000211_seg6.jpg" alt="Fenêtre modale des paramètres d&#x27;un workflow n8n intitulée &quot;Workflow settings for DEMO - Order Processing Pipeline&quot;." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000211_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:11</span>
+                        <span class="caption-text">Fenêtre modale des paramètres d&#x27;un workflow n8n intitulée &quot;Workflow settings for DEMO - Order Processing Pipeline&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:27 - 00:02:48</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It sends over the workflow ID. We got the failed node. We got the error. And then it says starting Claude code. Prompt saved, starting Claude code. And the Claude code is running locally. And it basically goes through its system prompt to understand here&#x27;s the workflow. Let me look it up. Let me get the data. Let me understand what went wrong. Let me understand all the nodes, all the workflow patterns, and all of the JSON expressions that I can use.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Windows PowerShell, n8n (éditeur de workflow en arrière-plan).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le terminal affiche : &quot;ERROR RECEIVED&quot;, le nom du workflow (&quot;DEMO - Order Processing Pipeline&quot;), le nœud défaillant (&quot;Validate Each Order&quot;), la description de l&#x27;erreur, le message &quot;Starting Claude Code...&quot;, ainsi qu&#x27;une analyse de la cause racine (&quot;Root Cause&quot;) et le correctif apporté au code JavaScript.</p>
+                        <p><strong>Action / Démonstration :</strong> Le terminal exécute le processus de diagnostic et de correction automatique par Claude Code, analysant l&#x27;erreur de formatage des données entre les nœuds &quot;Enrich Order Data&quot; et &quot;Validate Each Order&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000232_seg7.jpg" alt="Capture d&#x27;écran montrant une fenêtre de terminal Windows PowerShell superposée à une interface de workflow n8n, affichant un journal d&#x27;erreurs et les détails de résolution par l&#x27;agent Claude Code." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000232_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:32</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une fenêtre de terminal Windows PowerShell superposée à une interface de workflow n8n, affichant un journal d&#x27;erreurs et les détails de résolution par l&#x27;agent Claude Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:48 - 00:03:09</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then I&#x27;m going to go ahead and fix it. So I&#x27;ve now fixed the workflow. And I&#x27;m going to notify Nate in ClickUp, as you can see right there. So you guys know that when I&#x27;m using CloudCode, I&#x27;m going to try my best to stay out of the terminal. But to the best of my knowledge, this is the way to do it right now because of the fact that we had to set up some tunnels and stuff. Okay, so I know this is cool, but I&#x27;m going to talk about how this could actually be practical, and we&#x27;re going to show off a few more examples.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal Windows PowerShell (intégré dans l&#x27;environnement de développement) et interface partielle de l&#x27;outil d&#x27;automatisation n8n en arrière-plan.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code JavaScript montrant le &quot;Before/After&quot; du correctif, explications textuelles sur la résolution du bug de traitement des commandes, et logs de confirmation &quot;CLAUDE CODE FINISHED SUCCESSFULLY&quot; suivis de l&#x27;envoi de l&#x27;API ClickUp.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent Claude Code a corrigé une erreur de mapping dans le workflow et a automatiquement notifié l&#x27;utilisateur via ClickUp suite à la correction.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000253_seg8.jpg" alt="Une capture d&#x27;écran montrant l&#x27;exécution réussie de Claude Code dans un terminal Windows PowerShell, affichant le correctif appliqué au workflow (logique JavaScript) et la confirmation de l&#x27;envoi d&#x27;une notification ClickUp." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000253_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:53</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;exécution réussie de Claude Code dans un terminal Windows PowerShell, affichant le correctif appliqué au workflow (logique JavaScript) et la confirmation de l&#x27;envoi d&#x27;une notification ClickUp.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:09 - 00:03:31</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But first, I wanted to talk about how this actually works because I know it&#x27;s a little confusing. And before I actually built this, I was kind of confused about it too. So the first thing that&#x27;s confusing is the fact that CloudCode can talk to NNN using the MCP server. and it can look at your workflows, fix them, change them, whatever you want. But NNN can&#x27;t talk to Cloud Code, at least the way I&#x27;m doing it here where I have my NNN hosted on the cloud.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Outil de tableau blanc collaboratif (type Excalidraw ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Icônes illustratives (marché, bâtiment) et logos de plateformes d&#x27;automatisation (n8n).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle pour expliquer le flux de connexion entre deux systèmes via le serveur MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000315_seg9.jpg" alt="Un schéma conceptuel sur une toile blanche représentant une épicerie et un immeuble, associés respectivement aux logos de n8n et d&#x27;un autre service, illustrant l&#x27;interconnexion via MCP." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000315_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:15</span>
+                        <span class="caption-text">Un schéma conceptuel sur une toile blanche représentant une épicerie et un immeuble, associés respectivement aux logos de n8n et d&#x27;un autre service, illustrant l&#x27;interconnexion via MCP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:31 - 00:04:06</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So this is the best way to think about it. NNN is like a grocery store. Anyone can go to it because everyone knows where it is. It&#x27;s public. It&#x27;s on the cloud. So Cloud Code could easily walk over here to the grocery store and interact with NNN. But NNNN can&#x27;t just go out and go visit Cloud Code because Cloud Code lives in an apartment building in a specific unit and the door is locked. So the only way that NNN could visit Cloud Code is if we give it permission to, if we give it the address, if we give it a key to the door. So that&#x27;s kind of what we&#x27;re doing and that&#x27;s what we set up. So how do we actually do it? Well let me just run you guys through a little story. So this</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Outil de tableau blanc collaboratif (type Excalidraw ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Illustrations vectorielles : une épicerie, un immeuble, le logo n8n et une icône représentant un agent ou un service de code.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur utilise une représentation visuelle pour expliquer la connectivité réseau et les interactions entre n8n (le marché public) et un environnement de code cloud sécurisé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000340_seg10.jpg" alt="Un schéma illustratif sur un tableau blanc virtuel montrant une épicerie (&quot;Market&quot;) associée à une icône n8n à gauche, et un immeuble associé à une icône d&#x27;agent (Cloud Code) à droite." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000340_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:40</span>
+                        <span class="caption-text">Un schéma illustratif sur un tableau blanc virtuel montrant une épicerie (&quot;Market&quot;) associée à une icône n8n à gauche, et un immeuble associé à une icône d&#x27;agent (Cloud Code) à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:06 - 00:04:41</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">is the workflow we just saw in NNN. And what happens is something fails. And actually I put an X over the wrong node. It was this one that failed. So this node fails. And so when that happens, that triggers our error workflow. As you guys saw, it triggers the error trigger, which calls this HTTP request. And this HTTP request is calling ngrok, which basically just helps you set up tunnels. So if you&#x27;ve never heard of a tunnel before, or it&#x27;s really confusing to you, I have made a video where I talk about how you can expose your local instance with a tunnel so that you can do more things. I&#x27;ll tag that video right up here. But anyways, ngrok sets</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow), ngrok.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : &quot;Webhook&quot;, &quot;Enrich Order Data&quot;, &quot;Validate Each Order&quot;, &quot;Error Trigger&quot;, &quot;Call Claude Bridge&quot; (URL POST).</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration du mécanisme de gestion d&#x27;erreur dans n8n déclenchant un pont HTTP via ngrok.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000415_seg11.jpg" alt="Diagramme de workflow n8n montrant un flux principal avec un nœud d&#x27;erreur marqué d&#x27;un X rouge, relié à un sous-processus &quot;Error Trigger&quot;." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000415_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:15</span>
+                        <span class="caption-text">Diagramme de workflow n8n montrant un flux principal avec un nœud d&#x27;erreur marqué d&#x27;un X rouge, relié à un sous-processus &quot;Error Trigger&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000423_seg11.jpg" alt="Gros plan sur le workflow de gestion d&#x27;erreur n8n montrant le nœud &quot;Call Claude Bridge&quot; relié au service ngrok." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000423_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:23</span>
+                        <span class="caption-text">Gros plan sur le workflow de gestion d&#x27;erreur n8n montrant le nœud &quot;Call Claude Bridge&quot; relié au service ngrok.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000432_seg11.jpg" alt="Schéma illustrant la connexion entre le workflow n8n, le service ngrok, et un terminal de commande via une icône de tunnel." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000432_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:32</span>
+                        <span class="caption-text">Schéma illustrant la connexion entre le workflow n8n, le service ngrok, et un terminal de commande via une icône de tunnel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:41 - 00:05:03</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">up a tunnel and then feeds data through it. And that ends up going to essentially a terminal which is where Cloud Code lives locally on my computer, and it starts up Cloud Code. Once it starts up Cloud Code, Cloud&#x27;s able to see all of the error messages and the workflow that we need to fix, and then it gets to work actually fixing the workflow, and not just coming up with a plan to fix it, but actually implementing those changes in the workflow itself.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de tableau blanc collaboratif (type FigJam ou Miro).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Symboles graphiques : logos Ngrok, icônes de terminal, logos de Claude, icônes d&#x27;outils (tournevis) et un workflow d&#x27;automatisation incluant des nœuds &quot;Webhook&quot;, &quot;Code&quot;, &quot;Slack&quot; et des traitements de données.</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration visuelle du processus technique : le tunnel de données Ngrok est établi vers un terminal local pour permettre à l&#x27;agent Claude d&#x27;accéder, d&#x27;analyser et de corriger les erreurs dans un workflow opérationnel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000446_seg12.jpg" alt="Un schéma conceptuel sur tableau blanc montrant le flux de données : Ngrok se connecte à un tunnel, qui transmet les données à un terminal de commande, lequel communique ensuite avec l&#x27;icône de l&#x27;agent Claude." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000446_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:46</span>
+                        <span class="caption-text">Un schéma conceptuel sur tableau blanc montrant le flux de données : Ngrok se connecte à un tunnel, qui transmet les données à un terminal de commande, lequel communique ensuite avec l&#x27;icône de l&#x27;agent Claude.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000458_seg12.jpg" alt="Un schéma illustrant l&#x27;agent Claude (avec un casque de chantier) travaillant sur un workflow d&#x27;automatisation complexe, représenté par une série de nœuds logiques dans un environnement de type éditeur d&#x27;automatisation (n8n ou similaire)." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000458_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:58</span>
+                        <span class="caption-text">Un schéma illustrant l&#x27;agent Claude (avec un casque de chantier) travaillant sur un workflow d&#x27;automatisation complexe, représenté par une série de nœuds logiques dans un environnement de type éditeur d&#x27;automatisation (n8n ou similaire).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:04 - 00:05:36</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then the last piece is that it sends me a notification on ClickUp. That you could change. You could also have it do a log on Google Sheets, an email, whatever you want. And the reason why it&#x27;s able to so successfully do this is because we give Cloud Code access to the NNN MCP server and the NNN skills. So I&#x27;m not going to dive super deep into this. Basically, the MCP server gives Cloud Code access to tons of different documentation on how NNN nodes work, different workflow templates, different patterns, and access to your own NNN environment. And then the NNN skills are a set of Cloud skills that give Cloud</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de diagramme (type Excalidraw) pour l&#x27;image 1 et site web de documentation/présentation produit pour l&#x27;image 2.</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Texte des boîtes : &quot;Us&quot;, &quot;Claude Code&quot;, &quot;n8n&quot;, &quot;n8n-mcp&quot;, &quot;n8n-skills&quot;.
+- Image 2 : Liste de fonctionnalités : &quot;Complete Node Coverage&quot;, &quot;2,700+ Workflow Templates&quot;, &quot;Diff-Based Updates&quot;, &quot;Real-Time Monitoring&quot;, &quot;Full n8n API Access&quot;, &quot;Always Current&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration visuelle du flux de travail automatisé dans l&#x27;image 1, et mise en avant des capacités techniques de l&#x27;intégration dans l&#x27;image 2.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000512_seg13.jpg" alt="Un schéma architectural simplifié montrant les interactions entre l&#x27;utilisateur, Claude Code et n8n via des composants &quot;n8n-mcp&quot; et &quot;n8n-skills&quot;." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000512_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:12</span>
+                        <span class="caption-text">Un schéma architectural simplifié montrant les interactions entre l&#x27;utilisateur, Claude Code et n8n via des composants &quot;n8n-mcp&quot; et &quot;n8n-skills&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000528_seg13.jpg" alt="Une page de présentation web décrivant les fonctionnalités clés d&#x27;un outil d&#x27;IA pour n8n (couverture de nœuds, modèles de workflow, mises à jour différées, surveillance, accès API)." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000528_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:28</span>
+                        <span class="caption-text">Une page de présentation web décrivant les fonctionnalités clés d&#x27;un outil d&#x27;IA pour n8n (couverture de nœuds, modèles de workflow, mises à jour différées, surveillance, accès API).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:36 - 00:06:10</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">access to information that it would need. So really good prompts about how to use expressions, how to validate things, node configuration, coding, workflow patterns. So we&#x27;re basically supercharging Cloud Code with information about NNN. So I made, like I said, a full video diving into this and setting it all up. If you want to check that out, I will tag that one right up here. So that brings me on to my next point, which is basically about workflows failing after they&#x27;ve been running successfully for a week or two. There&#x27;s lots of different reasons that a workflow can fail. Unfortunately, Cloud Code cannot fix all of those reasons. So what Cloud Code can fix are issues with maybe the logic, the code, the data.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google Docs) et site web de formation/documentation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte structuré sur les compétences n8n et un tableau technique de débogage pour les échecs de workflows d&#x27;automatisation.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique et didactique des capacités de l&#x27;agent IA à diagnostiquer et réparer des workflows n8n complexes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000545_seg14.jpg" alt="Une page web affichant une section intitulée &quot;7 Expert Skills&quot;, listant des compétences techniques pour construire des workflows n8n, notamment la syntaxe d&#x27;expression, les outils MCP, les patterns de workflow, la validation, la configuration de nœuds et le code JavaScript." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000545_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:45</span>
+                        <span class="caption-text">Une page web affichant une section intitulée &quot;7 Expert Skills&quot;, listant des compétences techniques pour construire des workflows n8n, notamment la syntaxe d&#x27;expression, les outils MCP, les patterns de workflow, la validation, la configuration de nœuds et le code JavaScript.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000553_seg14.jpg" alt="Un document Google Docs intitulé &quot;Why Workflows Fail After Running Successfully&quot; préparé par &quot;AIS+ (AI Automation Society)&quot;, présentant un tableau comparatif des problèmes que l&#x27;IA Claude peut réparer (données manquantes, valeurs nulles, types de données erronés, erreurs de frappe, bugs de nœuds de code)." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000553_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:53</span>
+                        <span class="caption-text">Un document Google Docs intitulé &quot;Why Workflows Fail After Running Successfully&quot; préparé par &quot;AIS+ (AI Automation Society)&quot;, présentant un tableau comparatif des problèmes que l&#x27;IA Claude peut réparer (données manquantes, valeurs nulles, types de données erronés, erreurs de frappe, bugs de nœuds de code).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:11 - 00:06:33</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So missing data, null values, wrong data types, empty arrays, typos and expressions, code node bugs, things like that. What Cloud Code cannot fix are things like expired credentials, an API is down, your rate limited. I actually think that Cloud Code could figure that out because maybe it would be able to say, hey, this was a rate limit, let me go ahead and add a loop and a wait node and like use my logic to actually get there.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Docs</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau classant les erreurs de workflow (Missing data, Null values, Wrong data type, etc.) entre celles que Claude peut réparer et celles qui nécessitent une intervention humaine.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle et explicative des diagnostics de pannes dans les workflows d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000616_seg15.jpg" alt="Une capture d&#x27;écran d&#x27;un document Google Docs présentant un tableau comparatif sur les problèmes de workflow n8n et les capacités de résolution de Claude Code." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000616_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:16</span>
+                        <span class="caption-text">Une capture d&#x27;écran d&#x27;un document Google Docs présentant un tableau comparatif sur les problèmes de workflow n8n et les capacités de résolution de Claude Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:33 - 00:06:54</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">At least if it can&#x27;t do it right now, it will be able to do that eventually because what it will do is it will reason, it will search through the API documentation, figure out what the rate limit actually is, and then build a fix for it. So this stuff definitely isn&#x27;t perfect, but it&#x27;s cool to see where we&#x27;re going, and it&#x27;s cool to experiment to see how we can Frankenstein our own solutions so that when the models get smarter and smarter, we&#x27;re already there.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Docs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif détaillant les types de pannes (Expired credentials, API is down, Rate limited, etc.), les causes (&quot;Too many requests&quot;, &quot;Billing issue&quot;) et les actions humaines nécessaires pour résoudre chaque problème.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique illustrant les limites d&#x27;intervention d&#x27;un agent IA dans la résolution de bugs externes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000639_seg16.jpg" alt="Une capture d&#x27;écran d&#x27;un document Google Docs présentant un tableau intitulé &quot;Claude CANNOT Fix (External Issues)&quot;, listant les erreurs système hors contrôle de l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000639_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:39</span>
+                        <span class="caption-text">Une capture d&#x27;écran d&#x27;un document Google Docs présentant un tableau intitulé &quot;Claude CANNOT Fix (External Issues)&quot;, listant les erreurs système hors contrôle de l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:55 - 00:07:29</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But anyways, of course, there are certain things that Cloud Code cannot fix, but there are lots of things that Cloud Code can fix. So that&#x27;s why getting a notification is cool because either way, if it runs into something like an expired API key, it will still let you know. So here&#x27;s another example. We have an email agent. It&#x27;s very, very simple. And what happens is it wants to respond to emails, but we know that when we send an email with a Gmail node, we have a subject and a message. So what we do is we use a structured output parser to put those out into two different fields so that we can send it properly. And so we just did a run of this. You can see that it failed right here because the structured output parser</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Docs, n8n (éditeur de workflow).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau explicatif des erreurs (Expired credentials, API is down, Rate limited) et schéma technique de workflow d&#x27;agent.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique des limites de correction automatique suivies d&#x27;une démonstration pratique dans l&#x27;éditeur de flux de travail.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000703_seg17.jpg" alt="Une page Google Docs intitulée &quot;Self-Healing n8n Workflows w/ Claude Code&quot; présentant un tableau récapitulant les problèmes externes que Claude ne peut pas résoudre (ex: API expirée, panne de service)." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000703_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:03</span>
+                        <span class="caption-text">Une page Google Docs intitulée &quot;Self-Healing n8n Workflows w/ Claude Code&quot; présentant un tableau récapitulant les problèmes externes que Claude ne peut pas résoudre (ex: API expirée, panne de service).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000712_seg17.jpg" alt="L&#x27;interface de l&#x27;éditeur n8n affichant un workflow nommé &quot;Test Form Responder&quot; composé d&#x27;un déclencheur Gmail, d&#x27;un agent &quot;Email Responder&quot; et d&#x27;une action d&#x27;envoi de message." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000712_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:12</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;éditeur n8n affichant un workflow nommé &quot;Test Form Responder&quot; composé d&#x27;un déclencheur Gmail, d&#x27;un agent &quot;Email Responder&quot; et d&#x27;une action d&#x27;envoi de message.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:29 - 00:08:01</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">was invalid. This of course triggered my error workflow, which looks like this. And then I get a message in ClickUp that says, hey, the workflow has been fixed. The test form responder email responder agent had an error in the structured output parser. It had invalid JSON in the actual schema. So I fixed it and now it should work. So like I said, this is the most recent run. You can see in here, this wasn&#x27;t correct because we were missing commas. But now if I go to the current version that cloud code actually fixed, and we just go ahead and run this workflow, we should see that it&#x27;s able to use the structured output parser correctly now that cloud code has fixed it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur de la plateforme Uppit AI (environnement de gestion d&#x27;agents IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le message &quot;Workflow Fixed Successfully&quot; indique l&#x27;erreur initiale (&quot;Error in sub-node Structured Output Parser&quot;) et l&#x27;explication technique : &quot;Root Cause: The Structured Output Parser node had invalid JSON... The fix: Added the missing commas&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le système présente le journal de résolution automatique généré par l&#x27;agent IA après avoir corrigé une erreur de syntaxe JSON dans un workflow n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000737_seg18.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface d&#x27;Uppit AI affichant un rapport de correction automatique d&#x27;un workflow nommé &quot;Test Form Responder&quot;." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000737_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:37</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface d&#x27;Uppit AI affichant un rapport de correction automatique d&#x27;un workflow nommé &quot;Test Form Responder&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:01 - 00:08:33</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Okay, let me show you guys another cool example. We&#x27;ve got a super simple workflow here that takes a form submission And then we&#x27;re gonna go ahead and do research on tably So we&#x27;re gonna put in a topic and this time I&#x27;m gonna let you guys see what actually happens in the terminal once this errors All right, so we&#x27;ve got the terminal up on the left and we&#x27;ve got the research form here Now what I&#x27;m gonna do is I&#x27;m gonna send over, you know, I want you to research bananas What I&#x27;m gonna do is I&#x27;m gonna accidentally put a double quotes right there Which if you guys know that&#x27;s gonna break the JSON body, so I&#x27;m gonna go ahead and hit submit We&#x27;ll close out of this and we can see instantly we already received an error</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow composé de deux nœuds principaux : &quot;On form submission&quot; (déclencheur) et &quot;Tavily&quot; (requête POST vers api.tavily.com). Le formulaire affiche un champ &quot;Topic&quot; et un bouton &quot;Submit&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente la structure d&#x27;automatisation avant l&#x27;exécution du workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000809_seg19.jpg" alt="Une interface de workflow n8n montrant un flux simple avec un déclencheur &quot;On form submission&quot; relié à un nœud &quot;Tavily&quot; pour la recherche, à côté d&#x27;une fenêtre de prévisualisation affichant un formulaire de recherche." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000809_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:09</span>
+                        <span class="caption-text">Une interface de workflow n8n montrant un flux simple avec un déclencheur &quot;On form submission&quot; relié à un nœud &quot;Tavily&quot; pour la recherche, à côté d&#x27;une fenêtre de prévisualisation affichant un formulaire de recherche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:34 - 00:09:08</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Error received workflow test JSON body, which is this one right here We aired in Tavoli because the JSON parameter is not valid JSON. So what happened here is Okay, take two we&#x27;re gonna do it again So the terminals up over here you can see that it&#x27;s waiting for any of an errors I&#x27;m gonna shoot over Apple this time because it didn&#x27;t really like banana. So submit this We&#x27;re gonna see that pretty much instantly we have some cloud code getting started up over here here. So prompt has been saved. We&#x27;re starting cloud code. And now you can see in the error handling workflow, it&#x27;s running right now. So it&#x27;s running for 38 seconds. You can see that based on</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow), Terminal Windows (CLI), Navigateur Web (interface de formulaire n8n).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Logs d&#x27;erreur n8n (Workflow: Test JSON Body, Failed Node: Tavily), commandes de configuration du pont (ngrok http 3456), logs système &quot;Claude Code exited with code 1&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Débogage et test du workflow &quot;Test JSON Body&quot;, observation de la capture d&#x27;erreur par le bridge, soumission d&#x27;un formulaire pour déclencher l&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000842_seg20.jpg" alt="Terminal affichant une erreur de workflow n8n (&quot;JSON parameter needs to be valid JSON&quot;) et la tentative infructueuse de lancement de Claude Code." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000842_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:42</span>
+                        <span class="caption-text">Terminal affichant une erreur de workflow n8n (&quot;JSON parameter needs to be valid JSON&quot;) et la tentative infructueuse de lancement de Claude Code.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000851_seg20.jpg" alt="Interface divisée avec le terminal &quot;CLAUDE-NBN BRIDGE SERVER&quot; à gauche et un formulaire de recherche &quot;Research Form&quot; sur n8n à droite." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000851_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:51</span>
+                        <span class="caption-text">Interface divisée avec le terminal &quot;CLAUDE-NBN BRIDGE SERVER&quot; à gauche et un formulaire de recherche &quot;Research Form&quot; sur n8n à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000859_seg20.jpg" alt="Terminal affichant la réception d&#x27;une nouvelle erreur de workflow et le début du processus de relance automatique de Claude Code." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000859_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:59</span>
+                        <span class="caption-text">Terminal affichant la réception d&#x27;une nouvelle erreur de workflow et le début du processus de relance automatique de Claude Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:08 - 00:09:29</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">the error and based on what it needs to do, it can run for longer, but we&#x27;re getting some content back right here. It looks like it&#x27;s finished up. So the fix has been applied. The root cause was that the JSON body parameter in the Tavly request node had an expression syntax, which didn&#x27;t work. So what it did is it went ahead and fixed that syntax so that that double quote in there wouldn&#x27;t actually break requests in the future.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (interface de workflow d&#x27;automatisation) et un terminal de commande Windows (ou fenêtre de code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications textuelles sur le remplacement d&#x27;une syntaxe d&#x27;expression invalide `{{ $json.Topic }}` par une fonction `JSON.stringify()` pour corriger une erreur dans le nœud de requête Tavily.</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse et documentation du correctif technique (root cause analysis) affiché dans une fenêtre de terminal superposée à l&#x27;historique des exécutions du workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000913_seg21.jpg" alt="Une interface de workflow n8n montrant l&#x27;historique des exécutions à gauche et une fenêtre de terminal ou éditeur de texte au centre expliquant techniquement la résolution d&#x27;un bug lié à la syntaxe JSON dans une requête." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000913_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:13</span>
+                        <span class="caption-text">Une interface de workflow n8n montrant l&#x27;historique des exécutions à gauche et une fenêtre de terminal ou éditeur de texte au centre expliquant techniquement la résolution d&#x27;un bug lié à la syntaxe JSON dans une requête.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:29 - 00:09:51</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it&#x27;s a really good guardrail that it baked in there. You can see in my ClickUp, I have a notification. Once again, I have a link to view the workflow in NNN if I choose to. And now back in this workflow, even if I put in Apple with a double quote in the front, what we&#x27;re gonna see is that we should get a successful run if I go to the executions, and we can see right here that we get no errors, even though in the actual form, I submitted Apple with a double quote right there.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow et historique des exécutions), Uppit AI (interface de chat).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow n8n avec nœuds &quot;On form submission&quot; et &quot;Tavily&quot;, logs d&#x27;erreurs et de succès, formulaire de recherche HTML.</p>
+                        <p><strong>Action / Démonstration :</strong> Correction automatique d&#x27;un workflow, saisie de données utilisateur dans un formulaire, exécution et test de validation d&#x27;un workflow après correction.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000934_seg22.jpg" alt="Interface de notification Uppit AI affichant un message de confirmation &quot;Workflow Fixed Successfully&quot; concernant une erreur Tavily, avec un lien pour visualiser le workflow dans n8n." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000934_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:34</span>
+                        <span class="caption-text">Interface de notification Uppit AI affichant un message de confirmation &quot;Workflow Fixed Successfully&quot; concernant une erreur Tavily, avec un lien pour visualiser le workflow dans n8n.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000940_seg22.jpg" alt="Interface n8n montrant un workflow de recherche (&quot;Research Form&quot;) où l&#x27;utilisateur saisit &#x27;&quot;apple&#x27; (avec un guillemet) dans le champ de texte avant de cliquer sur &quot;Submit&quot;." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000940_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:40</span>
+                        <span class="caption-text">Interface n8n montrant un workflow de recherche (&quot;Research Form&quot;) où l&#x27;utilisateur saisit &#x27;&quot;apple&#x27; (avec un guillemet) dans le champ de texte avant de cliquer sur &quot;Submit&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000945_seg22.jpg" alt="Vue de l&#x27;historique des exécutions dans n8n montrant le succès d&#x27;une exécution récente (ID#20137) après la soumission du formulaire, avec une icône de chargement sur le nœud Tavily." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_000945_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:45</span>
+                        <span class="caption-text">Vue de l&#x27;historique des exécutions dans n8n montrant le succès d&#x27;une exécution récente (ID#20137) après la soumission du formulaire, avec une icône de chargement sur le nœud Tavily.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:51 - 00:10:27</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Because what it did is it actually changed the JSON body. So instead of it looking, you know, the way that I had it structured it basically wrapped all of this up And now it made sure that when it comes through it can actually be read by Tably So I wanted to end off with one example of what happens if Claude can&#x27;t actually fix the workflow So there are certain times when it can&#x27;t in this case What I did is I switched the API key to be a vappy API key, which is obviously not going to work for Tably So I&#x27;m going to show you the way that I&#x27;ve configured the Claude agent to notify me in a different way So once again, we have the server right here and you can see that it&#x27;s waiting for any errors I&#x27;m going to go ahead and submit this form and we are going to get an error. Pretty much instantly</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflow).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Expression JavaScript `{{ JSON.stringify({ query: $json.Topic, ... }) }}` et son résultat JSON formaté à droite.
+- Image 2 : Flux de travail composé d&#x27;un déclencheur &quot;On form submission&quot; relié à une API &quot;Tavily&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Modification du corps de la requête JSON dans l&#x27;éditeur d&#x27;expression pour assurer la compatibilité avec l&#x27;API Tavily avant l&#x27;exécution du workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001000_seg23.jpg" alt="Vue détaillée de l&#x27;éditeur d&#x27;expression dans n8n, montrant une fonction `JSON.stringify` transformant des données de requête en format JSON." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001000_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:00</span>
+                        <span class="caption-text">Vue détaillée de l&#x27;éditeur d&#x27;expression dans n8n, montrant une fonction `JSON.stringify` transformant des données de requête en format JSON.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001009_seg23.jpg" alt="Interface principale de l&#x27;éditeur de workflow n8n montrant deux nœuds connectés : &quot;On form submission&quot; et le nœud &quot;Tavily&quot;." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001009_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:09</span>
+                        <span class="caption-text">Interface principale de l&#x27;éditeur de workflow n8n montrant deux nœuds connectés : &quot;On form submission&quot; et le nœud &quot;Tavily&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:27 - 00:11:03</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">we get this notification in our terminal that Cloud Code is now working on it. So Cloud Code is finished. You can see that it says user action required and we got a message in ClickUp. So I&#x27;ll open that up and now you can see it&#x27;s a different type of message compared to when it would say that it was fixed. And this time it says user action required in this workflow. Tavoli had an authorization failed. Why Cloud Code couldn&#x27;t fix it? Because it&#x27;s authentication and that requires the human to take action. So it also says here&#x27;s what you need to do now. You need to select an existing Tavoli credential and verify it&#x27;s correct, or you can go ahead and create a new one and then paste in your API key. Save it, test the workflow. Once you&#x27;ve configured that valid Tavoli credentials,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> ClickUp (interface web/application de bureau).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Message d&#x27;erreur détaillé expliquant un échec d&#x27;authentification avec l&#x27;API Tavily, incluant des étapes de résolution (&quot;What You Need To Do&quot;) et un lien vers &quot;View Workflow in n8n&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage d&#x27;un rapport d&#x27;état envoyé par l&#x27;agent IA à l&#x27;utilisateur, signalant une action requise pour corriger une configuration d&#x27;API.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001036_seg24.jpg" alt="Une fenêtre de messagerie dans l&#x27;application ClickUp affichant une notification &quot;Why Claude Couldn&#x27;t Fix It&quot; concernant une erreur d&#x27;authentification Tavily API." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001036_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:36</span>
+                        <span class="caption-text">Une fenêtre de messagerie dans l&#x27;application ClickUp affichant une notification &quot;Why Claude Couldn&#x27;t Fix It&quot; concernant une erreur d&#x27;authentification Tavily API.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:03 - 00:11:26</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">the workflow should work on the next execution. And then it says no changes were made to this workflow because it really couldn&#x27;t do anything to fix it. So hopefully you guys can see by combining an N8N error workflow with Cloud Code, with N8N MCP, and N8N Skills, we were able to build this system where when your workflows fail they automatically get fixed, they notify you, or if Cloud Code can&#x27;t fix it it tells you how you should go about fixing it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow), interface de chat Uppit AI.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte expliquant les étapes de résolution manuelle (clés API, credentials), diagramme de workflow avec les nœuds &quot;Error Trigger&quot; et &quot;Call Claude Bridge&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Diagnostic d&#x27;erreur système et affichage du workflow de gestion d&#x27;erreurs par l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001109_seg25.jpg" alt="Une interface de chat IA (Uppit AI) affichant un rapport d&#x27;analyse détaillé expliquant pourquoi une erreur d&#x27;authentification Tavily API ne peut être corrigée automatiquement par le code." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001109_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:09</span>
+                        <span class="caption-text">Une interface de chat IA (Uppit AI) affichant un rapport d&#x27;analyse détaillé expliquant pourquoi une erreur d&#x27;authentification Tavily API ne peut être corrigée automatiquement par le code.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001115_seg25.jpg" alt="L&#x27;éditeur de workflow n8n montrant un flux de gestion d&#x27;erreurs intitulé &quot;Error Handler - Claude Code Fixer&quot;, composé d&#x27;un déclencheur d&#x27;erreur et d&#x27;un nœud d&#x27;appel HTTP vers &quot;Claude Bridge&quot;." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001115_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:15</span>
+                        <span class="caption-text">L&#x27;éditeur de workflow n8n montrant un flux de gestion d&#x27;erreurs intitulé &quot;Error Handler - Claude Code Fixer&quot;, composé d&#x27;un déclencheur d&#x27;erreur et d&#x27;un nœud d&#x27;appel HTTP vers &quot;Claude Bridge&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:26 - 00:12:00</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I think this is super cool because you could have obviously that bridge and the tunnel running all the time so that even if I&#x27;m not standing here watching it, if you&#x27;re sleeping, if you&#x27;re on vacation, every time a workflow fails it can still do that for you. And because it&#x27;s in Cloud Code, in a Cloud project, think about all the different contexts you could give it in there about your business, about other documentation, about the workflows themselves, so you can really make these things better and better over time. So I know I didn&#x27;t really show you guys exactly how I built this. Let me just tell you, I did it all using Cloud Code, using natural language, using plan mode, asking it questions, telling it what I wanted to do. I literally started off my prompts to Cloud</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web n8n et lecteur PDF.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow n8n (Error Trigger, Call Claude Bridge) et table des matières du guide de configuration.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du workflow d&#x27;automatisation et du guide de configuration associé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001135_seg26.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un workflow d&#x27;automatisation n8n avec les nœuds &#x27;Error Trigger&#x27; et &#x27;Call Claude Bridge&#x27;." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001135_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:35</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un workflow d&#x27;automatisation n8n avec les nœuds &#x27;Error Trigger&#x27; et &#x27;Call Claude Bridge&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:00 - 00:12:18</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Code with, hey, I&#x27;ve got this crazy idea. Yeah, here it is. I&#x27;ll actually show you guys. I said, I need your help with the crazy idea I have. And then I explained what I wanted to do. But anyways, I did compile an 18 page PDF guide on exactly how I did this. So I go over the the prereqs, the architecture, installing cloud code, setting up the MCP server, all of this kind of stuff, talking about Ngrok.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec extension Claude), Visualiseur de documents PDF (navigateur ou lecteur système).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur : &quot;I want to build a system where n8n is able to talk to Claude code... trigger when an n8n workflow fails... Claude code will go ahead and fix the n8n workflow.&quot; Sommaire du guide : Overview, Prerequisites, Architecture, Install Claude Code, Set Up n8n MCP Server, Create Bridge Server, Expose with ngrok.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la conception théorique de son automatisation puis présente le guide technique complet (PDF) qu&#x27;il a compilé pour documenter la solution.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001204_seg27.jpg" alt="Interface VS Code affichant une conversation avec l&#x27;agent Claude, où le présentateur soumet sa requête pour créer un système de &quot;self-healing&quot; (auto-réparation) pour les workflows n8n." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001204_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:04</span>
+                        <span class="caption-text">Interface VS Code affichant une conversation avec l&#x27;agent Claude, où le présentateur soumet sa requête pour créer un système de &quot;self-healing&quot; (auto-réparation) pour les workflows n8n.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001209_seg27.jpg" alt="Visionneuse PDF affichant la première page du guide &quot;Self-Healing n8n Workflows&quot; (18 pages), montrant le sommaire détaillé incluant l&#x27;installation de Claude Code, du serveur MCP n8n et l&#x27;utilisation de ngrok." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001209_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:09</span>
+                        <span class="caption-text">Visionneuse PDF affichant la première page du guide &quot;Self-Healing n8n Workflows&quot; (18 pages), montrant le sommaire détaillé incluant l&#x27;installation de Claude Code, du serveur MCP n8n et l&#x27;utilisation de ngrok.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:19 - 00:12:40</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">The other good news is if you&#x27;re running NNN locally, this is even easier because you don&#x27;t have to configure that tunnel. But this should pretty much walk you through all of it. But like I said, you could give this to cloud code or you could just brainstorm with your own cloud code and you should be able to get this set up in 30 minutes to an hour. Then obviously it&#x27;s all about testing it and going back and forth and refining it a little bit. So I&#x27;ll drop this in my FreeSchool community, which you guys can access for completely free.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visionneuse de document PDF (tutoriel technique &quot;Self-Healing n8n Workflows&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Processus en 5 étapes pour le traitement des erreurs via ngrok, Claude Code et n8n.
+- Image 2 : Contenu du fichier `CLAUDE.md` définissant les outils `n8n_get_workflow`, `n8n_update_partial_workflow` et `n8n_validate_workflow`.
+- Image 3 : Commandes terminal `ngrok config add-authtoken` et `ngrok http 3456`.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique et guide de configuration étape par étape pour automatiser la résolution d&#x27;erreurs dans des workflows n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001224_seg28.jpg" alt="Page de documentation présentant une vue d&#x27;ensemble du système de réparation automatique de workflows n8n." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001224_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:24</span>
+                        <span class="caption-text">Page de documentation présentant une vue d&#x27;ensemble du système de réparation automatique de workflows n8n.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001229_seg28.jpg" alt="Page de documentation détaillant la configuration système via `CLAUDE.md`, incluant la mission de l&#x27;agent et les outils MCP." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001229_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:29</span>
+                        <span class="caption-text">Page de documentation détaillant la configuration système via `CLAUDE.md`, incluant la mission de l&#x27;agent et les outils MCP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001235_seg28.jpg" alt="Page de documentation illustrant les étapes d&#x27;installation et de configuration du tunnel ngrok pour l&#x27;accès local." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001235_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:35</span>
+                        <span class="caption-text">Page de documentation illustrant les étapes d&#x27;installation et de configuration du tunnel ngrok pour l&#x27;accès local.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:40 - 00:12:58</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">As always, the link for this will be down in the description. And if you&#x27;re interested in diving deeper with NNN, Cloud Code, pretty much anything that&#x27;s going to be in the AI automation space, then definitely check out my plus group. We&#x27;ve got a great community of over 3,000 members who are building automations every day and building businesses with automations. So it&#x27;s a really cool spot to be if that&#x27;s kind of what you&#x27;re looking to do.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme de communauté en ligne Skool (AI Automation Society Plus).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publications sur le recrutement de spécialistes en automatisation n8n, témoignages de contrats clients signés (385 000 $), récapitulatifs des succès de la communauté et sidebar affichant les statistiques de membres.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation au sein du flux d&#x27;actualités et du tableau de bord de la communauté pour présenter les ressources et le réseau aux abonnés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001245_seg29.jpg" alt="Interface de la plateforme communautaire Skool &quot;AI Automation Society Plus&quot; montrant un flux de publications, des annonces épinglées et un classement des membres." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001245_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:45</span>
+                        <span class="caption-text">Interface de la plateforme communautaire Skool &quot;AI Automation Society Plus&quot; montrant un flux de publications, des annonces épinglées et un classement des membres.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:59 - 00:13:17</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We&#x27;ve got a full classroom section that&#x27;s always being worked on and we&#x27;re planning to bring a lot of new stuff with all of these changes in the space. We&#x27;ve got one live Q&amp;A every single week. So I&#x27;d love to see you guys in these communities in the live calls, but that&#x27;s going to do it for today. So if you enjoyed the video or you learned something new, please give it a like. It definitely helps me out a ton. And as always, I appreciate you guys making it to the end of the video.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Skool, Excalidraw (tableau blanc virtuel)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des modules de formation (Agent Zero, One Person AI Agency), titres de posts communautaires (&quot;We&#x27;re Hiring: Automation Support Specialists&quot;), icônes de n8n et d&#x27;agents.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans les sections pédagogiques, consultation du flux social et présentation visuelle d&#x27;un concept d&#x27;architecture via un schéma.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001312_seg30.jpg" alt="Diagramme schématique sur un tableau blanc virtuel illustrant une comparaison entre une boutique (Market) et un immeuble, associée à l&#x27;icône de n8n et une icône d&#x27;agent." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001312_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:12</span>
+                        <span class="caption-text">Diagramme schématique sur un tableau blanc virtuel illustrant une comparaison entre une boutique (Market) et un immeuble, associée à l&#x27;icône de n8n et une icône d&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:17 - 00:13:19</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I&#x27;ll see you on the next one. Thanks so much, everyone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique (type Excalidraw ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Deux illustrations : à gauche une épicerie (&quot;MARKET&quot;) associée à une icône Make, à droite un immeuble associé à une icône de créature pixelisée (souvent associée à des outils d&#x27;IA).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de fin de tutoriel, illustrant la structure du système ou du projet développé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001318_seg31.jpg" alt="Un schéma visuel sur un tableau blanc numérique illustrant une comparaison entre deux entités, avec des icônes représentant possiblement des services d&#x27;automatisation (Make et une plateforme d&#x27;IA)." loading="lazy" onclick="openLightbox('../screenshots/uUEa6K-FLB8/uUEa6K-FLB8_001318_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:18</span>
+                        <span class="caption-text">Un schéma visuel sur un tableau blanc numérique illustrant une comparaison entre deux entités, avec des icônes représentant possiblement des services d&#x27;automatisation (Make et une plateforme d&#x27;IA).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
