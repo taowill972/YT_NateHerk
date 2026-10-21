@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `220 / 358` (`61.5%`)
+- **Vidéos traitées** : `221 / 358` (`61.7%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -237,6 +237,7 @@
 | 2025-12-27 | [xxARTGo_Oqg](https://www.youtube.com/watch?v=xxARTGo_Oqg) | **Comment réussir vraiment ses projets d'IA (APIs, hébergement et transfert de compétences expliqués)** | [2025-12-27_YT-[xxARTGo_Oqg]_Comment réussir vraiment ses projets d'IA (APIs, hébergement et transfert de com_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-27_YT-[xxARTGo_Oqg]_Comment réussir vraiment ses projets d'IA (APIs, hébergement et transfert de com_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-27_YT-[xxARTGo_Oqg]_Comment réussir vraiment ses projets d'IA (APIs, hébergement et transfert de com_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `46` |
 | 2025-12-19 | [4OOS96i2gfI](https://www.youtube.com/watch?v=4OOS96i2gfI) | **Les agents IA sont surexploités : voici quoi construire à la place** | [2025-12-19_YT-[4OOS96i2gfI]_Les agents IA sont surexploités voici quoi construire à la place_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-19_YT-[4OOS96i2gfI]_Les agents IA sont surexploités voici quoi construire à la place_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-19_YT-[4OOS96i2gfI]_Les agents IA sont surexploités voici quoi construire à la place_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `42` |
 | 2025-12-17 | [bxGE_LXPyAU](https://www.youtube.com/watch?v=bxGE_LXPyAU) | **J'ai créé un agent IA en 2 heures (et j'ai touché 2600 $)** | [2025-12-17_YT-[bxGE_LXPyAU]_J'ai créé un agent IA en 2 heures (et j'ai touché 2600 $)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-17_YT-[bxGE_LXPyAU]_J'ai créé un agent IA en 2 heures (et j'ai touché 2600 $)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-17_YT-[bxGE_LXPyAU]_J'ai créé un agent IA en 2 heures (et j'ai touché 2600 $)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `94` |
+| 2025-12-15 | [jx-yvSRLKrA](https://www.youtube.com/watch?v=jx-yvSRLKrA) | **Nouvelle sortie du Chat Hub de n8n : ce qu'il faut savoir** | [2025-12-15_YT-[jx-yvSRLKrA]_Nouvelle sortie du Chat Hub de n8n ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-15_YT-[jx-yvSRLKrA]_Nouvelle sortie du Chat Hub de n8n ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-15_YT-[jx-yvSRLKrA]_Nouvelle sortie du Chat Hub de n8n ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `33` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
