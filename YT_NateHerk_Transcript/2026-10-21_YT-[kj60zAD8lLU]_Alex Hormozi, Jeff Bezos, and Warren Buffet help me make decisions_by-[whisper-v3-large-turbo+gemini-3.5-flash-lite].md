@@ -25,10 +25,24 @@ Dans cette vidéo intitulée **Alex Hormozi, Jeff Bezos, and Warren Buffet help 
 
 ## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
 
-### ⏱️ `[00:00:00 - 00:00:31]` | Segment #01
+### ⏱️ `[00:00:00 - 00:00:18]` | Segment #01
 
 **🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
-> If Claude keeps giving you generic business advice, then you need to make Alex Ramosi, Warren Buffett, and Jeff Bezos fight about it. It's called the Roast Room, and it's completely free. You use it whenever you're stuck on a big decision. So instead of one chat telling you what you want to hear, it brings in a board of AI advisors, each built from a real expert's public work, and it gives every one of them your decision. And then they argue about it. They poke holes in each other's ideas, and they vote until the best option wins, and you walk away with a real answer and a score for every option. To set it up, all you have to do is open up Claude Code, paste in the link, and then just say, set this up for me. So if you want it, just comment roast room and I'll shoot it over.
+> If Claude keeps giving you generic business advice, then you need to make Alex Ramosi, Warren Buffett, and Jeff Bezos fight about it. It's called the Roast Room, and it's completely free. You use it whenever you're stuck on a big decision. So instead of one chat telling you what you want to hear, it brings in a board of AI advisors, each built from a real expert's public work, and it gives every one of them your decision. And then they argue about it.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:00:18 - 00:00:31]` | Segment #02
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> They poke holes in each other's ideas, and they vote until the best option wins, and you walk away with a real answer and a score for every option. To set it up, all you have to do is open up Claude Code, paste in the link, and then just say, set this up for me. So if you want it, just comment Roast Room, and I'll shoot it over.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
 **Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
