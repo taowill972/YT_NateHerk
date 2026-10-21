@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 OpenAI Just Leveled Up n8n AI Agents (here&#x27;s how it works) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 OpenAI Just Leveled Up n8n AI Agents (here&#x27;s how it works)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-12-03</span>
+                <span class="badge">⏱️ 00:10:31</span>
+                <span class="badge">🆔 <code>lokbsA5VXOk</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=lokbsA5VXOk" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **OpenAI Just Leveled Up n8n AI Agents (here's how it works)**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:25</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So if we want to have an AI agent that can search through documents and search the web, we would have to give that agent access to tools. So something like perplexity for web search and something like a super base vector store for file search. So that way I can ask my AI agent, what number is the rule about the flagstick? And what is the Chicago Bears current record? It&#x27;s going to search perplexity for the Bears record. It&#x27;s going to search its vector store for the rule about the pin. You can see it says that the rule about the flagstick is rule 17.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Flowise (interface de création de workflows d&#x27;agents IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : &quot;AI Agent&quot;, &quot;OpenAI Chat Model&quot;, &quot;Message a model in Perplexity&quot;, &quot;Supabase Vector Store&quot;, et &quot;Embeddings OpenAI&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le pointeur de la souris survole le bloc &quot;AI Agent&quot; dans l&#x27;éditeur visuel pour mettre en évidence les connexions entre l&#x27;agent et ses outils de recherche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000006_seg1.jpg" alt="Un schéma de workflow au sein de l&#x27;interface Flowise illustrant une architecture d&#x27;agent IA nommée &quot;Old Way&quot;, connectant un déclencheur de message, un agent IA, et des outils comme Perplexity et Supabase." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000006_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:06</span>
+                        <span class="caption-text">Un schéma de workflow au sein de l&#x27;interface Flowise illustrant une architecture d&#x27;agent IA nommée &quot;Old Way&quot;, connectant un déclencheur de message, un agent IA, et des outils comme Perplexity et Supabase.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:25 - 00:00:51</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And if I go to the PDF that it&#x27;s looking at, we have rule 17 about the flagstick. And then the Chicago Bears current record in the 2025 NFL season is 8-3. Go Bears! So what&#x27;s important to know here is that it used those two tools to pull its knowledge because inside the AI agent itself, we have no system prompts. All we said is that you are a helpful assistant. So then how come I&#x27;m able to come over to this AI agent and ask the exact same question about the rule about the flagstick and what is the Chicago Bears current record?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:51 - 00:01:09</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And you can see this agent has no tools attached at all. And if we look inside real quick, there is not even a system prompt either. So how come this agent with no tools is able to get us the exact same answer? The rule about the flagstick is rule 17. And as of today, the Chicago Bears record is 8-3. You can also see it got that from ChicagoBears.com.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflow low-code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur : &quot;What number is the rule about the Flagstick (pin)? And what is the Chicago Bears&#x27; current record?&quot;. Réponse de l&#x27;agent : &quot;The rule about the flagstick (the pin) is Rule 17. As of today (Nov 25, 2025) the Chicago Bears&#x27; record is 8-3.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un nœud d&#x27;agent IA pour vérifier la capacité de réponse sans outils externes ni system prompt configuré.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000056_seg3.jpg" alt="Interface de configuration d&#x27;un nœud d&#x27;agent IA dans n8n, montrant les paramètres d&#x27;entrée, le prompt utilisateur et l&#x27;indication &quot;Executing node...&quot; en cours." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000056_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:56</span>
+                        <span class="caption-text">Interface de configuration d&#x27;un nœud d&#x27;agent IA dans n8n, montrant les paramètres d&#x27;entrée, le prompt utilisateur et l&#x27;indication &quot;Executing node...&quot; en cours.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000100_seg3.jpg" alt="Interface de chat n8n affichant l&#x27;historique d&#x27;une conversation avec les réponses générées par l&#x27;agent et les logs d&#x27;exécution sur le panneau latéral droit." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000100_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:00</span>
+                        <span class="caption-text">Interface de chat n8n affichant l&#x27;historique d&#x27;une conversation avec les réponses générées par l&#x27;agent et les logs d&#x27;exécution sur le panneau latéral droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:10 - 00:01:42</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So this is not magic. What we&#x27;re doing is inside the actual OpenAI chat model, which is the brain for our AI agent, we&#x27;re enabling web search and we&#x27;re enabling file search. So that&#x27;s what we&#x27;re going to be talking about today using OpenAI&#x27;s responses API. Okay, so in a recent update of NNN, I think it was 1.118 or later, what they did is they updated the chat model node for OpenAI. So when you click in your node and you go to settings, you should see version 1.3, which is the latest. Otherwise, you will not have access to the responses API. Now, unfortunately, right now, you do have to do it through the OpenAI chat</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:42 - 00:02:14</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">model. And if you guys have been watching my channel for a while, you know that I like to use OpenRouter. But unfortunately, even if you&#x27;re using OpenAI models, we don&#x27;t yet have access to responses API through OpenRouter yet. But anyways, now that we&#x27;re able to use the responses API natively in here, what that does is it allows our agents to have a few more capabilities. So really the big one is being able to have the built-in tools. So the OpenAI Responses API provides a range of built-in tools to enrich the model&#x27;s response. And the ones that we&#x27;re covering today are web search and file search. So web search allows the model to actually search the web for</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:14 - 00:02:48</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">the latest information before it creates a response. And the file search allows you to drop in a file into OpenAI. OpenAI will handle the embedding and the indexing and the storage once you drop it in there, and then you can hook that up to your AI agents. We also have the ability for code interpretation and MCP servers, but right now I&#x27;m just going to be talking about these top two in today&#x27;s video. So let&#x27;s just first start off with a web search example. So what you&#x27;re going to do is you&#x27;re going to create an AI agent and you&#x27;re going to hook up an OpenAI chat model. And then when you click into the chat model, the first thing you have to do if you don&#x27;t already have a credential is go to OpenAI and get a API key. This is not your typical chat GPT environment.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:48 - 00:03:20</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">This is platform.openai.com, and this is what it should look like. And then you&#x27;ll go here and grab an API key, putting your billing information. And once you get that key, it will be as simple as just pasting it right in here in the API key section. So once you&#x27;re connected, what you have to do is just enable this little toggle that says use responses API. And this is what gives us access to adding in those built-in tools, which are web search, file search, and code interpreter. And by the way, I don&#x27;t see the MCP thing right here. It still may be possible, but you might just have to do a little bit more kind of like coding in order to set up that request to use the MCP servers.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres du nœud : &quot;Credential to connect with&quot; (OpenAI account 2), sélection de modèle (&quot;gpt-4o-mini&quot;), option &quot;Use Responses API&quot;. La section INPUT indique &quot;No input connected&quot; et OUTPUT indique &quot;No output data&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole le champ de sélection des identifiants (Credential) pour configurer l&#x27;accès à l&#x27;API OpenAI.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000256_seg7.jpg" alt="Une interface de configuration de nœud &quot;Web&quot; (probablement dans n8n) montrant les paramètres de connexion à un compte OpenAI." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000256_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:56</span>
+                        <span class="caption-text">Une interface de configuration de nœud &quot;Web&quot; (probablement dans n8n) montrant les paramètres de connexion à un compte OpenAI.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:20 - 00:03:56</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m not going to cover that today. So for the first example, I&#x27;m just going to enable web search and we have a few options now. So the first thing is to set the context size. So right here, you can see high level guidance for the amount of context window space to use for the search. And you can choose between low, medium, or high. And then what&#x27;s pretty cool is you can actually select the city, the country, or the region to search within. And then you can also do web search allowed domains. So if you only want to search certain domains like Google or LinkedIn or Wikipedia, you could do that. And I will show an example of this in a sec. So now just to prove that this works, let me go ahead and turn off the responses API and let&#x27;s chat with this agent real</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:56 - 00:04:28</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">quick. So with no web search functionality in this agent, if I ask who won the world series this year, it&#x27;s going to come back with something like, I don&#x27;t have information on the events that occurred after June, 2024. So then all we&#x27;d have to do is come into the node, enable responses API, enable web search. And then now that we have that turned on, we can just run this again. And now when it hits its open AI brain, it&#x27;s actually searching the web in order to figure out who won the World Series this year. So that just came back. The LA Dodgers won the 2025 World Series, defeating the Blue Jays in a thrilling seven-game series, and it also is pulling the actual websites that it got</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:28 - 00:05:03</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">this information from. It even included a visual recap of the final moments of Game 7 at the end, so nice. Now real quick, let me just show off the actual domain thing. So if I come in here and I choose that I only want to search within a domain, which is up at AI.com, which is my really old AI agency website that has no information about the 2025 World Series in there at all. And I go ahead and rerun this question. We&#x27;re going to see that it&#x27;s basically not able to find this because, okay, I forgot about this, but I&#x27;m glad it happened. You can&#x27;t use that filter if you&#x27;re using GPT 4.1 or probably some of those older models. So what I&#x27;m going to do real quick is</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow), Interface web de configuration d&#x27;agent IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Configuration API : &quot;openai_api_key&quot;, &quot;gpt-4o-mini&quot;, paramètres de timeout.
+- Résultat de recherche : &quot;The Los Angeles Dodgers won the 2025 World Series...&quot;
+- Message de log : &quot;Problem in node &#x27;Research&#x27; - Bad request - please check your parameters&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la configuration d&#x27;un agent IA pour effectuer des recherches web, tout en affichant les détails des nœuds d&#x27;automatisation et les erreurs potentielles lors de l&#x27;exécution.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000437_seg10.jpg" alt="Interface de configuration d&#x27;un nœud IA montrant les paramètres d&#x27;API OpenAI, le modèle gpt-4o-mini et l&#x27;activation de l&#x27;outil &quot;Web Search&quot;." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000437_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:37</span>
+                        <span class="caption-text">Interface de configuration d&#x27;un nœud IA montrant les paramètres d&#x27;API OpenAI, le modèle gpt-4o-mini et l&#x27;activation de l&#x27;outil &quot;Web Search&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000454_seg10.jpg" alt="Éditeur de workflow de type n8n montrant un schéma d&#x27;automatisation d&#x27;agent avec une erreur dans le nœud &quot;Research&quot; et une fenêtre de chat latérale." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000454_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:54</span>
+                        <span class="caption-text">Éditeur de workflow de type n8n montrant un schéma d&#x27;automatisation d&#x27;agent avec une erreur dans le nœud &quot;Research&quot; et une fenêtre de chat latérale.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:03 - 00:05:22</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I&#x27;m just going to go ahead and grab a GPT 5 mini instead, and we should be able to see some success here. So I&#x27;ll grab 5 mini and we will just go ahead and run this again. And like I was saying before I got rudely interrupted. There&#x27;s no information about the world series on that website right there. So it&#x27;s not going to be able to answer it. And it&#x27;s gonna say, hey, I&#x27;m limited to only this domain.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:22 - 00:05:41</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I can&#x27;t find that. There you go. I can&#x27;t find the answer on the domain that I&#x27;m restricted to, which is up at AI.com. All right, now for file search, which is also really, really cool. What we&#x27;re doing in this node is once again, we are using the responses API. We&#x27;re gonna turn off the web search and we&#x27;re using file search this time. But you certainly can use both at the same time as you saw earlier in that demo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:41 - 00:06:03</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So you can see here what we need is a vector store ID and a filter. Now I&#x27;ll explain the filter thing in a sec because this looks pretty weird, but first let&#x27;s just talk about how do you actually get a vector store ID. So you&#x27;re gonna go once again to the same place where you got your API key, platform.openai.com. And on the left-hand side, you can see storage. And this will let you upload files, but it will also let you create vector stores.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:03 - 00:06:25</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So you&#x27;re gonna go ahead and create a vector store, give it a name and drop in some files. So here you can see once again, I&#x27;ve dropped in the rules of golf PDF. And what this does is it gives you a vector store ID, which is right here. So you&#x27;d copy this value and you would put it right here as an array. So if there&#x27;s just one, you put two double quotes on each side, but if you had multiple vector stores that you wanted to be able to query through, you would just put a comma and then do the exact same thing.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme développeur OpenAI (Platform) et interface de workflow n8n.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Identifiant du vector store : &quot;vs_6925f9a9c18c8191941990521802cca8&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Copie de l&#x27;ID du magasin de vecteurs depuis la plateforme OpenAI pour l&#x27;intégrer dans le champ de configuration du nœud d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000608_seg14.jpg" alt="Interface de gestion de stockage de fichiers OpenAI montrant le détail d&#x27;un &quot;Vector store&quot; avec l&#x27;ID associé et le fichier PDF &quot;Rules_of_Golf_Simplified.pdf&quot; téléchargé." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000608_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:08</span>
+                        <span class="caption-text">Interface de gestion de stockage de fichiers OpenAI montrant le détail d&#x27;un &quot;Vector store&quot; avec l&#x27;ID associé et le fichier PDF &quot;Rules_of_Golf_Simplified.pdf&quot; téléchargé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000614_seg14.jpg" alt="Interface de configuration d&#x27;un nœud &quot;File Search&quot; dans une plateforme d&#x27;automatisation (n8n), où l&#x27;utilisateur colle l&#x27;identifiant du Vector store récupéré précédemment." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000614_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:14</span>
+                        <span class="caption-text">Interface de configuration d&#x27;un nœud &quot;File Search&quot; dans une plateforme d&#x27;automatisation (n8n), où l&#x27;utilisateur colle l&#x27;identifiant du Vector store récupéré précédemment.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:25 - 00:06:43</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, if you just try to do this without filters, it&#x27;s going to error, at least it was erring for me. So I was able to figure out based on the documentation over here of how to use these tools for the responses API with web search and file search, that I needed to add this filter that looks like this. And I&#x27;ll be honest, it wasn&#x27;t super intuitive. So good thing I&#x27;ve got this right here for you guys.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> OpenAI Platform (Documentation) et interface de workflow de type n8n/Make (probablement le constructeur d&#x27;agents d&#x27;OpenAI ou un outil similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - JSON de filtres : `{&quot;filters&quot;: [], &quot;type&quot;: &quot;and&quot;}`
+- Code JS : `const response = await client.responses.create({ tools: [{ type: &quot;web_search&quot; }], ... })`</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la nécessité d&#x27;ajouter manuellement une structure de filtre JSON dans les paramètres du nœud pour éviter des erreurs lors de l&#x27;utilisation des outils de recherche de fichiers/web.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000630_seg15.jpg" alt="Interface de configuration de nœud &quot;File Search&quot; montrant les paramètres du modèle, les Vector Store IDs et la section &quot;Filters&quot; avec un objet JSON." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000630_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:30</span>
+                        <span class="caption-text">Interface de configuration de nœud &quot;File Search&quot; montrant les paramètres du modèle, les Vector Store IDs et la section &quot;Filters&quot; avec un objet JSON.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000634_seg15.jpg" alt="Documentation officielle en ligne sur l&#x27;utilisation des outils (Web Search, File Search), présentant un exemple de code JavaScript pour l&#x27;API." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000634_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:34</span>
+                        <span class="caption-text">Documentation officielle en ligne sur l&#x27;utilisation des outils (Web Search, File Search), présentant un exemple de code JavaScript pour l&#x27;API.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000639_seg15.jpg" alt="Vue identique à l&#x27;image #1, affichant les paramètres détaillés du nœud &quot;File Search&quot; dans l&#x27;éditeur de workflow." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000639_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:39</span>
+                        <span class="caption-text">Vue identique à l&#x27;image #1, affichant les paramètres détaillés du nœud &quot;File Search&quot; dans l&#x27;éditeur de workflow.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:43 - 00:07:19</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Go ahead and take a screenshot of it and then you can paste that into your OpenAI chat model node. And then the other option that we can add in here is about max results. So we could just set a number here if we wanted to. So before we test that out again, I just wanted to call out the whole pricing thing. So if you haven&#x27;t yet watched my video about Gemini file search, I will go ahead and tag that right up here. Definitely give it a watch because it&#x27;s basically the exact same thing that we&#x27;re doing here with OpenAI&#x27;s Vector Store file search, except for Gemini&#x27;s was so much cheaper. Because you can see here that OpenAI is going to charge you 10 cents per gigabyte per day. So if you have a vector store sitting here with data and you&#x27;re not even using it, you&#x27;re still going to get billed. And Gemini only charges</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:19 - 00:07:53</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">you for uploading files, which is why everyone was like, whoa, this is awesome. So I just wanted to call that out real quick. But as far as actually what&#x27;s going on on the backend when you drop in files to either Gemini or to OpenAI and indexing and like what&#x27;s going on and which one&#x27;s better retrieval, I haven&#x27;t explicitly tested them out yet. Right now I&#x27;m kind of leaning towards Gemini because it comes back with a lot more metadata than what OpenAI does, which I&#x27;ll show you guys in a sec. But I just wanted to say, because I know I&#x27;m going to get comments about that, I haven&#x27;t explicitly tested it yet, but maybe a video is coming about that. Okay, so I&#x27;m going to ask it to explain what should happen if a ball at rest moves in golf. And what it&#x27;s doing,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> OpenAI Platform (Platform Dashboard - section Storage/Vector stores).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Détails techniques du Vector Store : ID (vs_6925f9...), utilisation estimée, taille (129 KB), politique d&#x27;expiration, et liste des fichiers attachés incluant &quot;Rules_of_Golf_Simplified.pdf&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation et présentation des données de stockage et de l&#x27;indexation de fichiers via l&#x27;interface de la plateforme OpenAI.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000727_seg17.jpg" alt="Interface de gestion de stockage d&#x27;OpenAI Platform affichant les détails d&#x27;un &quot;Vector store&quot; nommé &quot;Test&quot;." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000727_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:27</span>
+                        <span class="caption-text">Interface de gestion de stockage d&#x27;OpenAI Platform affichant les détails d&#x27;un &quot;Vector store&quot; nommé &quot;Test&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:53 - 00:08:23</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">of course, is it&#x27;s using its brain to think about what it needs to do. There are no tools to call, so it&#x27;s going to search through the files. You can see the answer we get is if a ball at rest moves, what happens depends on what caused the ball to move. If X, this happens. If Y, this happens. If Z, if A, if B, as you can see, this is pulling from our document. Now by default right now with no system prompt, it&#x27;s not actually exactly citing where it got this information from. And if we click into the actual chat model node, we can see this is the actual answer that it gave us.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme d&#x27;automatisation de workflow (probablement n8n ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Réponse textuelle détaillée expliquant les règles de pénalité au golf si une balle au repos se déplace, basée sur la cause du mouvement (agence extérieure, joueur/partenaire, ou adversaire).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent a traité une requête utilisateur (&quot;Please explain what should happen if a ball at rest moves in golf&quot;) et affiche la réponse générée après une recherche dans les fichiers.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000800_seg18.jpg" alt="Une interface de plateforme d&#x27;automatisation d&#x27;agents IA montrant une fenêtre de chat avec une réponse détaillée sur les règles de golf, et un panneau latéral de logs affichant les sorties d&#x27;exécution." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000800_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:00</span>
+                        <span class="caption-text">Une interface de plateforme d&#x27;automatisation d&#x27;agents IA montrant une fenêtre de chat avec une réponse détaillée sur les règles de golf, et un panneau latéral de logs affichant les sorties d&#x27;exécution.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:23 - 00:08:49</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But what we don&#x27;t see is an exact source or an exact section that it pulled it from. And that&#x27;s what Gemini does give back, which is super helpful. Now you could get this to be a little bit more specific with that sort of stuff by prompting our agent. But once again, there&#x27;s nothing in here as far as the system message. Now, the last thing I wanted to hit on real quick was the other options that we actually get in addition to the built-in tools. So with the Responses API, we get these built-in tools as you guys saw, but we also have more options to choose from in here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflow).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration de nœuds API OpenAI (modèle gpt-4o-mini), Vector Store ID, paramètres de prompt système (&quot;You are a helpful assistant&quot;), et réponses textuelles concernant les règles de mouvement d&#x27;une balle de golf.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;exécution d&#x27;un workflow d&#x27;automatisation avec un agent IA utilisant la recherche vectorielle (RAG) pour répondre à une question spécifique sur les règles du golf.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000829_seg19.jpg" alt="Interface de configuration du nœud &quot;File Search&quot; dans n8n, montrant les paramètres d&#x27;accès à OpenAI, l&#x27;identifiant du Vector Store et le résultat de la réponse générée dans le panneau de droite." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000829_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:29</span>
+                        <span class="caption-text">Interface de configuration du nœud &quot;File Search&quot; dans n8n, montrant les paramètres d&#x27;accès à OpenAI, l&#x27;identifiant du Vector Store et le résultat de la réponse générée dans le panneau de droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000836_seg19.jpg" alt="Interface de configuration d&#x27;un nœud de workflow RAG dans n8n, affichant les paramètres de prompt (System Message) et la réponse textuelle détaillée renvoyée par le modèle sur les règles du golf." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000836_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:36</span>
+                        <span class="caption-text">Interface de configuration d&#x27;un nœud de workflow RAG dans n8n, affichant les paramètres de prompt (System Message) et la réponse textuelle détaillée renvoyée par le modèle sur les règles du golf.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:49 - 00:09:24</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So in the options, if we scroll all the way down, if Responses API is enabled, we have some extra things like conversation ID, prompt cache key, all the way down to prompt. And just to show you guys, if I turned off responses API, we don&#x27;t have those options anymore. I don&#x27;t want this video to go too long. So I&#x27;m not going to run through an example of every single one, but here are what these additional options do. And also if you&#x27;re curious in here, you can pretty much get information about all of them a little bit more detailed. And you could of course go to the open AI platform for the responses API to read more about how these all work. But at a high level, the prompt lets you have saved prompts in your open AI dashboard that you can reference with some sort of ID to</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflow).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des paramètres : Conversation ID, Prompt Cache Key, Safety Identifier, Service Tier, Metadata, Top Logprobs, Prompt.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;activation/désactivation de l&#x27;option &quot;Use Responses API&quot; dans le nœud pour faire apparaître ou disparaître les paramètres avancés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000858_seg20.jpg" alt="Interface de configuration d&#x27;un nœud &quot;File Search&quot; montrant une liste déroulante des options avancées disponibles (Conversation ID, Prompt Cache Key, etc.)." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000858_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:58</span>
+                        <span class="caption-text">Interface de configuration d&#x27;un nœud &quot;File Search&quot; montrant une liste déroulante des options avancées disponibles (Conversation ID, Prompt Cache Key, etc.).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000907_seg20.jpg" alt="Une diapositive explicative détaillant les définitions techniques de chaque option supplémentaire (&quot;Additional Options&quot;) liée à l&#x27;API OpenAI." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000907_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:07</span>
+                        <span class="caption-text">Une diapositive explicative détaillant les définitions techniques de chaque option supplémentaire (&quot;Additional Options&quot;) liée à l&#x27;API OpenAI.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lokbsA5VXOk/lokbsA5VXOk_000916_seg20.jpg" alt="Interface de configuration du nœud avec l&#x27;option &quot;Use Responses API&quot; activée, affichant les champs de paramètres spécifiques (Conversation ID, Service Tier, Top Logprobs)." loading="lazy" onclick="openLightbox('../screenshots/lokbsA5VXOk/lokbsA5VXOk_000916_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:16</span>
+                        <span class="caption-text">Interface de configuration du nœud avec l&#x27;option &quot;Use Responses API&quot; activée, affichant les champs de paramètres spécifiques (Conversation ID, Service Tier, Top Logprobs).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:24 - 00:09:56</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pull those into your chat model. You can have a service tier, so you can have sort of the balance between speed and cost for that use case. You can have a safety identifier to tag individuals. You can have a conversation ID, which is really cool because then you have sort of your memory being held in OpenAI rather than having like a simple memory or a Postgres memory in NNN. You can have a prompt cache key, which basically lets OpenAI cache some of those prompts and responses rather than having to run it through and burn more tokens every time. You can have metadata, so custom key value tags.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:56 - 00:10:31</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then you can have top log probs, which honestly I don&#x27;t fully understand and I&#x27;m not sure when I would use it. But once again, if you&#x27;re curious, chuck this into Perplexity and figure out how that works or check out the OpenAI docs. But if you&#x27;re interested in diving deeper with all this kind of stuff, then definitely check out my plus community. The link for that is down in the description. We&#x27;ve got a great community of members who are building with Aniden every day and building businesses with Aniden every day. We also run one live call per week in the community, So I&#x27;d love to see you guys in those calls in the communities, but that&#x27;s going to do it for today If you enjoyed or you learned something new, please give it a like it definitely helps me out a ton And as always, I appreciate you guys making it to the end of the video. I&#x27;ll see you on the next one. Thanks, everyone</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `227 / 358` (`63.4%`)
+- **Vidéos traitées** : `228 / 358` (`63.7%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -244,6 +244,7 @@
 | 2025-12-08 | [67BVIScAlbs](https://www.youtube.com/watch?v=67BVIScAlbs) | **n8n 2.0 est là (Ce que vous devez savoir)** | [2025-12-08_YT-[67BVIScAlbs]_n8n 2.0 est là (Ce que vous devez savoir)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-08_YT-[67BVIScAlbs]_n8n 2.0 est là (Ce que vous devez savoir)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-08_YT-[67BVIScAlbs]_n8n 2.0 est là (Ce que vous devez savoir)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `47` |
 | 2025-12-07 | [y-cq_Qo4zVo](https://www.youtube.com/watch?v=y-cq_Qo4zVo) | **J'ai créé un standardiste vocal IA avec Vapi et le MCP n8n (modèle gratuit)** | [2025-12-07_YT-[y-cq_Qo4zVo]_J'ai créé un standardiste vocal IA avec Vapi et le MCP n8n (modèle gratuit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-07_YT-[y-cq_Qo4zVo]_J'ai créé un standardiste vocal IA avec Vapi et le MCP n8n (modèle gratuit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-07_YT-[y-cq_Qo4zVo]_J'ai créé un standardiste vocal IA avec Vapi et le MCP n8n (modèle gratuit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `120` |
 | 2025-12-05 | [5p5cV0yVDvQ](https://www.youtube.com/watch?v=5p5cV0yVDvQ) | **Unlock the Full Power of Your n8n Agents (new instance MCP)** | [2025-12-05_YT-[5p5cV0yVDvQ]_Unlock the Full Power of Your n8n Agents (new instance MCP)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-05_YT-[5p5cV0yVDvQ]_Unlock the Full Power of Your n8n Agents (new instance MCP)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-05_YT-[5p5cV0yVDvQ]_Unlock the Full Power of Your n8n Agents (new instance MCP)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `26` |
+| 2025-12-03 | [lokbsA5VXOk](https://www.youtube.com/watch?v=lokbsA5VXOk) | **OpenAI Just Leveled Up n8n AI Agents (here's how it works)** | [2025-12-03_YT-[lokbsA5VXOk]_OpenAI Just Leveled Up n8n AI Agents (here's how it works)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-03_YT-[lokbsA5VXOk]_OpenAI Just Leveled Up n8n AI Agents (here's how it works)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-03_YT-[lokbsA5VXOk]_OpenAI Just Leveled Up n8n AI Agents (here's how it works)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `18` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
