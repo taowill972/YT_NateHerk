@@ -1,0 +1,2852 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Claude Code is Better at n8n than I am (Beginner&#x27;s Guide) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Claude Code is Better at n8n than I am (Beginner&#x27;s Guide)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-01-14</span>
+                <span class="badge">⏱️ 00:28:06</span>
+                <span class="badge">🆔 <code>B6k_vAjndMo</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=B6k_vAjndMo" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Claude Code is Better at n8n than I am (Beginner's Guide)**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:24</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right, so I just brain dumped a manual process into ChatGPT and it spit this out for me. And now I&#x27;m going to come into Claude Code and just say, hey Claude, build me this end-to-end workflow. And I&#x27;m just going to paste in that information and shoot that off. And I&#x27;ll check in with you guys when we get that workflow back. Okay, so that took about three minutes. And you can see now that the workflow has finished. So let me open up this link. Wow. I mean, for me to be able to just brain dump into Claude Code and have it spit this out, now all I have to do is connect my credentials and I should be good to go.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:24 - 00:00:46</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And just a real quick breakdown of what actually happened here. You can see that it&#x27;s not perfect. It creates a to-do list. It starts to slowly go through each of its tasks and check them off as done. It&#x27;s searching through documentation to figure out what nodes to use and how to set them up. And the cool thing about Cloud Code is when it runs into issues, it literally figures out why it went wrong and then it fixes it. Right here you can see, I see there are some issues with the CodeNode parameters and SlackNode configuration.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:46 - 00:01:06</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Let me fix these by updating the workflow. It happened two more times. I see the SlackNode configuration uses this. Let me fix it. I see the CodeNode needs this. Let me fix it. And that&#x27;s the power of using these super strong models like Opus 4.5 in Cloud Code paired with MCP servers and tools and skills. So I&#x27;m gonna show you exactly how we set this up today. And trust me, I know it might look a little intimidating, but I&#x27;m gonna make it super, super simple.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:07 - 00:01:39</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So let&#x27;s get into it. All right, so you guys know that my job is to make complicated and intimidating things as simple as possible. So even if you&#x27;re not super interested in this specific use case of CloudCode building NN workflows, I still would highly recommend that you watch this video. I really think learning CloudCode is the future of AI automation. I&#x27;ve been all in on NNN, but lately I&#x27;ve been going all in on CloudCode, and I&#x27;m gonna be bringing a lot more of this type of content to my channel. And so I think if you take the next hour and just follow along with this video and do the steps that I&#x27;m showing in this tutorial, it will be an amazing investment of your time because inevitably later when you realize you need to get into Cloud Code,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:39 - 00:02:11</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">it&#x27;s going to make it so much easier because we&#x27;re going to break everything down today super simply. So the first thing you&#x27;re going to want to do is go to your browser and download Visual Studio Code, which you can just go to a browser and type it in and then it will look like this and you&#x27;ll just go ahead and download that for your system. Visual Studio Code is just an interface that&#x27;s going to let us connect and use CloudCode through an extension. And the reason why I chose VS Code is because it&#x27;s just the cleanest and it looks the least codey in my opinion, because you could do it on something like cursor, or of course you could just access CloudCode in your terminal like this, but I don&#x27;t want to be looking at this at all. And I know that</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:11 - 00:02:43</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">80% or more of you guys don&#x27;t want to be looking at this either. So we&#x27;re going to do it in VS Code and it&#x27;s going to be pretty simple and I&#x27;ll show you guys how. All right. So once we&#x27;re in here, you&#x27;re going to go over to the left-hand side and you&#x27;re going to click on extensions. Once you get here, you&#x27;re going to type in Claude code and it should pop up right there and you&#x27;ll click on Claude code and then just go ahead and install it. When you install this, it should automatically pop up and just have you sign into your Anthropic Claude account, which would be the same as if you went to Google Chrome and typed in Claude and you were talking to Claude right there. It&#x27;ll have you logging over there so that you can use your plan in VS Code with the extension. Now from here,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation de l&#x27;extension &quot;Claude Code for VS Code&quot; incluant les fonctionnalités, l&#x27;identifiant et les statistiques d&#x27;utilisation.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;éditeur vers la section des extensions pour localiser et installer l&#x27;outil Claude Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000219_seg6.jpg" alt="Page d&#x27;accueil de Visual Studio Code affichant les options de démarrage et les guides d&#x27;apprentissage (Walkthroughs)." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000219_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:19</span>
+                        <span class="caption-text">Page d&#x27;accueil de Visual Studio Code affichant les options de démarrage et les guides d&#x27;apprentissage (Walkthroughs).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000227_seg6.jpg" alt="Interface de gestion des extensions dans VS Code, affichant la page détaillée de l&#x27;extension &quot;Claude Code for VS Code&quot;." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000227_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:27</span>
+                        <span class="caption-text">Interface de gestion des extensions dans VS Code, affichant la page détaillée de l&#x27;extension &quot;Claude Code for VS Code&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:43 - 00:03:04</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">you&#x27;re going to go over to the left-hand side and click on Explorer. And this just basically means that we have to open up a folder to work inside of for this specific project. And so what I did in my documents folder, I made a folder called agentic workflows, where I&#x27;m just going to have a bunch of different projects for cloud code. And I&#x27;m going to open up this one called NN builder, which has nothing in it. So it&#x27;s a fresh project and I&#x27;m going to select it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:04 - 00:03:40</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And what you can see here is now on the left-hand side, we have this project, which is NN builder and different files will pop up as we start making things in here. And then on the right-hand side, we&#x27;ve got the actual interface where we&#x27;re going to talk to cloud. And the way that you do that is on the top, right, you&#x27;ll see this little extension button and you can open up cloud code, close out of this and now we have Claude code ready to go working in this project for us and this looks very similar to when you would use like a chat GPT or Claude on the web. So the first thing you want to think about doing in a project is actually telling Claude code what you want to do in this project. So giving it a bit of a system prompt as far as this is the environment</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:40 - 00:04:13</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">you&#x27;re in and this is what we&#x27;re going to do together. You can even see right here it says tired of repeating yourself tell Claude to remember what you&#x27;ve told it using Claude.md. So what we&#x27;re gonna do is come over to our Explorer. I&#x27;m gonna click on new file and I&#x27;m gonna type in Claude.md and this just creates a markdown file for us that is Essentially think of it as the system prompt for this project So when we&#x27;re in the file, we can actually look at it We could also close out of it and if we wanted to we could open it back up again But that&#x27;s just like the interface that we&#x27;re working in here And the first thing that I actually want to do is I want to put in that system prompt and what we&#x27;re gonna</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (avec l&#x27;extension ou interface Claude Code intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;Tired of repeating yourself? Tell Claude to remember what you&#x27;ve told it using CLAUDE.md.&quot; et une zone de saisie en bas avec l&#x27;instruction &quot;ctrl esc to focus or unfocus Claude&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente l&#x27;interface d&#x27;accueil de Claude Code avant de procéder à la création du fichier de configuration.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000348_seg9.jpg" alt="Interface de l&#x27;outil Claude Code dans VS Code affichant un message d&#x27;accueil et une invite pour créer un fichier CLAUDE.md." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000348_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:48</span>
+                        <span class="caption-text">Interface de l&#x27;outil Claude Code dans VS Code affichant un message d&#x27;accueil et une invite pour créer un fichier CLAUDE.md.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:13 - 00:04:32</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Do is use Claude to build that system prompt One thing that I want you guys to take note of is down here, we&#x27;ve got different modes. So right now we&#x27;re on bypass permissions, which just means that Cloud doesn&#x27;t have to ask us anything. It can just go ahead and take action and execute things, which is really good to be in later when we want it to actually run for us. But right now, what I want to do is go to plan mode.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec l&#x27;interface de ligne de commande (CLI) &quot;Claude Code&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le message central indique &quot;Tired of repeating yourself? Tell Claude to remember what you&#x27;ve told it using CLAUDE.md&quot;. En bas, la barre de contrôle affiche le mode &quot;Bypass permissions&quot; sélectionné.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et visualisation des paramètres de permissions de l&#x27;agent Claude dans l&#x27;environnement de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000418_seg10.jpg" alt="L&#x27;interface de Claude Code intégrée dans un éditeur de code, montrant le mode de permission &quot;Bypass&quot; activé." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000418_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:18</span>
+                        <span class="caption-text">L&#x27;interface de Claude Code intégrée dans un éditeur de code, montrant le mode de permission &quot;Bypass&quot; activé.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:32 - 00:05:05</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You can see there&#x27;s also ask before edits, there&#x27;s edit automatically, but what we&#x27;re going to do pretty much every time before we actually say, okay, go ahead and do that for me, is we&#x27;re going to work on plan mode. And if you&#x27;re cycling through right now and you don&#x27;t see the bypass permissions, The reason why is because you&#x27;re gonna have to go to your settings, which is in here. You&#x27;re gonna go ahead and type in Claude code and then when you get there you should see Allow dangerously skip permissions and you have to turn that on if you want to allow bypass permissions mode Now it seems dangerous But it&#x27;s really not because you are still in control and you can watch it and once you set up different like prompts and different</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:05 - 00:05:28</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You know instructions it will pretty much work inside that environment But that&#x27;s just how you get that setting So I&#x27;m just going to explain to Claude what I want to do, and then it&#x27;s going to help me plan out to create that Claude.md system prompt. So I&#x27;m just going to say, hey Claude, I need you to help me create the Claude.md file for this project. Basically what I&#x27;ve set up this project for is just to help me create workflows in N8N using you.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec l&#x27;extension ou le terminal Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;Tired of repeating yourself? Tell Claude to remember what you&#x27;ve told it using CLAUDE.md.&quot; et barre de saisie de commande avec l&#x27;option &quot;Plan mode&quot; activée.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;apprête à interagir avec l&#x27;assistant Claude via la barre de saisie pour planifier la création du fichier de configuration système CLAUDE.md.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000511_seg12.jpg" alt="Interface de l&#x27;outil Claude Code intégrée dans VS Code, affichant l&#x27;écran d&#x27;accueil avec une incitation à configurer un fichier CLAUDE.md." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000511_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:11</span>
+                        <span class="caption-text">Interface de l&#x27;outil Claude Code intégrée dans VS Code, affichant l&#x27;écran d&#x27;accueil avec une incitation à configurer un fichier CLAUDE.md.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:28 - 00:05:52</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m going to give you access to a few different tools. One of them will be the N8N MCP server, and one of them will be N8N skills. and you&#x27;ll use those in combination with my request to help build workflows in my end in an instance that are high quality. So the end in MCP server and the end in skills, right after we set up this file, I&#x27;ll show you guys what those are and explain how those are gonna work together with us.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:52 - 00:06:27</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But right now, let&#x27;s just basically take a look at what&#x27;s going on. So when you send off a request to Claude in this environment, it&#x27;s gonna start doing some stuff. But the cool thing about this is if you just play around with it and talk to it, it will basically walk you through what&#x27;s going on in its mind. So you can see it started off by saying, I&#x27;ll help you create the claw.md file for this NNN workflow builder project. Let me first explore what&#x27;s already in here. And you can see on this left-hand side in our file explorer, there&#x27;s nothing in here already. So it&#x27;s going to search through it for a bit, and then it&#x27;s going to come back and give us some more information. And I know that clawed code might seem intimidating, but really it&#x27;s just as simple as if you can talk to a</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec l&#x27;extension/interface Claude Code (ou équivalent)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur : &quot;say hey Claude, I need you to help me create the CLAUDE.md file...&quot;. Réponse de l&#x27;IA : &quot;I&#x27;ll help you create the CLAUDE.md file... Task: Explore n8n builder project&quot;. Commande terminal : `ls -la &quot;C:\Users\nateh\OneDrive\Documents\Agentic Workflows\n8n-builder&quot;`.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA analyse la structure du répertoire local via une commande terminal pour préparer la création d&#x27;un fichier de documentation (`CLAUDE.md`).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000600_seg14.jpg" alt="L&#x27;interface de l&#x27;agent Claude dans VS Code affiche une interaction où l&#x27;utilisateur demande la création d&#x27;un fichier CLAUDE.md pour un projet n8n. L&#x27;IA a répondu en définissant une tâche d&#x27;exploration du projet et en exécutant une commande Bash `ls -la` pour lister le contenu du répertoire courant." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000600_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:00</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;agent Claude dans VS Code affiche une interaction où l&#x27;utilisateur demande la création d&#x27;un fichier CLAUDE.md pour un projet n8n. L&#x27;IA a répondu en définissant une tâche d&#x27;exploration du projet et en exécutant une commande Bash `ls -la` pour lister le contenu du répertoire courant.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:27 - 00:07:00</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">developer or if you can talk to a brainstorm partner, you can use clawed code. The key is not being able to know how to read code and understand what it&#x27;s doing. The key is, can you clearly communicate what you want. Because if you can communicate the end goal, Claude will help you get there. Because what it does is it asks you questions like, hey, did you mean this or this? Or do you want this or this? And because Opus models and Sonnet models are so good, they&#x27;ll help you do pretty much anything you want. And if you ever get confused, you just say, hey, that doesn&#x27;t make sense. Can you explain that to me? Or why&#x27;d you do that? And it really, really helps you get things done fast. So now it&#x27;s asking us some questions already. So it says, what NNN MCP server</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec terminal intégré (Claude Code) et une interface de configuration interactive (MCP Tools).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes bash pour localiser des fichiers (&quot;find&quot;), lecture du fichier &quot;CLAUDE.md&quot;, et sélection d&#x27;options pour le serveur MCP n8n (&quot;I&#x27;ll provide details&quot;, &quot;Standard n8n API&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des outils MCP (Model Context Protocol) pour permettre à l&#x27;agent IA d&#x27;interagir avec n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000635_seg15.jpg" alt="Une interface VS Code montrant l&#x27;utilisation de Claude Code (CLI) avec un historique de commandes bash et une fenêtre de configuration MCP pour n8n." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000635_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:35</span>
+                        <span class="caption-text">Une interface VS Code montrant l&#x27;utilisation de Claude Code (CLI) avec un historique de commandes bash et une fenêtre de configuration MCP pour n8n.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:00 - 00:07:33</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">tools will be available. And I will say, I will share those details. It asks about the skills and I will once again, provide those details. And then for the NNN setup, it asks what our setup is. And I&#x27;m just going to say that I&#x27;m using NNN cloud and submit those answers, which once again, all of this information is going to help it create its system prompt so that everything works better in the future. Okay, cool. So it says, awesome. You&#x27;re using NNN cloud and you will provide the details for the NNN MCP server and the NNN skills. And so now that it&#x27;s asking for that information, I&#x27;m just going to go ahead and open up those GitHub repositories and show you guys what they are and what they do.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec extension Claude Code / Agent).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu de sélection &quot;n8n Setup&quot; avec les options : &quot;Self-hosted n8n&quot;, &quot;n8n Cloud&quot;, &quot;Both/varies&quot; et &quot;Other&quot;. Historique des commandes bash en arrière-plan.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur est en train de configurer les paramètres de l&#x27;agent en sélectionnant son instance n8n avant de cliquer sur &quot;Submit answers&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000708_seg16.jpg" alt="Interface de configuration de Claude Code affichant les options de déploiement de n8n à l&#x27;intérieur de VS Code." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000708_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:08</span>
+                        <span class="caption-text">Interface de configuration de Claude Code affichant les options de déploiement de n8n à l&#x27;intérieur de VS Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:33 - 00:07:52</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then we&#x27;re going to just give Claude the URL so it can search, read, research, and just figure out for itself. But of course, before we do that, you know I have to pull up a whiteboard. So what we&#x27;re looking at is basically at a high level, what we&#x27;re actually building today in this N&amp;M project. So we have us over here on the left-hand side. And what we&#x27;re doing is we&#x27;re talking to Claude Code.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec extension Claude), Tableau blanc numérique (type Excalidraw).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion de l&#x27;agent demandant : &quot;The n8n MCP server tools - What operations/endpoints are available? The n8n skills - What skill definitions will Claude have access to?&quot;. Le diagramme montre les relations entre l&#x27;utilisateur, l&#x27;agent Claude et l&#x27;écosystème n8n.</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse et configuration initiale du projet &quot;n8n-builder&quot; par l&#x27;agent Claude dans VS Code, suivie d&#x27;une présentation visuelle de l&#x27;architecture du workflow sur un tableau blanc.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000738_seg17.jpg" alt="Interface de VS Code montrant l&#x27;agent Claude en pleine interaction, analysant les fichiers du répertoire &quot;n8n-builder&quot; et demandant des précisions sur les outils MCP." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000738_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:38</span>
+                        <span class="caption-text">Interface de VS Code montrant l&#x27;agent Claude en pleine interaction, analysant les fichiers du répertoire &quot;n8n-builder&quot; et demandant des précisions sur les outils MCP.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000743_seg17.jpg" alt="Diagramme conceptuel sur un tableau blanc numérique illustrant les composants du projet : &quot;Us&quot;, &quot;Claude Code&quot;, &quot;n8n&quot;, &quot;n8n-mcp&quot; et &quot;n8n-skills&quot;." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000743_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:43</span>
+                        <span class="caption-text">Diagramme conceptuel sur un tableau blanc numérique illustrant les composants du projet : &quot;Us&quot;, &quot;Claude Code&quot;, &quot;n8n&quot;, &quot;n8n-mcp&quot; et &quot;n8n-skills&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:52 - 00:08:16</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And ultimately, what we want Claude Code to do is talk to our N&amp;M to build workflows for us. Now, Cloud Code by itself is smart and it knows JSON, but it doesn&#x27;t yet understand NN nodes and NN expression syntax and configuration and parameters. So what we need to do is give it access to different tools to do so. So the first one of those is NNN MCP server, which is this NNN MCP server right here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Excalidraw (outil de tableau blanc numérique).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de flux composé de trois blocs principaux reliés par des flèches : &quot;Us&quot; (vert), &quot;Claude Code&quot; (orange) et &quot;n8n&quot; (rose). Deux boîtes bleues isolées contiennent les textes &quot;n8n-mcp&quot; et &quot;n8n-skills&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur utilise le tableau blanc pour conceptualiser l&#x27;architecture de l&#x27;intégration entre Claude Code et l&#x27;écosystème n8n via des composants MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000758_seg18.jpg" alt="Un schéma illustrant le flux de travail entre l&#x27;utilisateur (&quot;Us&quot;), Claude Code et n8n, incluant deux composants supplémentaires (&quot;n8n-mcp&quot; et &quot;n8n-skills&quot;) placés en dessous." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000758_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:58</span>
+                        <span class="caption-text">Un schéma illustrant le flux de travail entre l&#x27;utilisateur (&quot;Us&quot;), Claude Code et n8n, incluant deux composants supplémentaires (&quot;n8n-mcp&quot; et &quot;n8n-skills&quot;) placés en dessous.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:17 - 00:08:53</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s on GitHub. I&#x27;ll leave a link to this down in the description. And also shout out to this guy. I&#x27;m not even going to try to pronounce his name because he built both this MCP and he also built the skills, which we&#x27;ll show you in a second. So in this repo, you can actually read about what this is and what it does, but I&#x27;m actually just going to go to the website that he built for it, which basically says to connect your AI to NNN and let it build, deploy, and debug workflows for you. So it makes it super easy. Now, how does it actually do that? Well, it has complete node coverage. So all of the 1100 nodes with 99% property accuracy, so parameters, options, and all that kind of stuff perfectly documented. It&#x27;s got over 2700 workflow templates, so it can</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (site n8n-ai/site vitrine), outil de schéma en ligne (type Excalidraw ou Miro).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes explicatifs sur les workflows IA, statistiques de plateforme (28,959+ utilisateurs), liste de fonctionnalités techniques (Complete Node Coverage, 2,700+ Workflow Templates).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de l&#x27;architecture du système et démonstration des capacités de l&#x27;outil d&#x27;automatisation n8n piloté par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000826_seg19.jpg" alt="Un schéma conceptuel illustrant l&#x27;intégration entre l&#x27;utilisateur, Claude Code, n8n, et les outils spécifiques &quot;n8n-mcp&quot; et &quot;n8n-skills&quot;." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000826_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:26</span>
+                        <span class="caption-text">Un schéma conceptuel illustrant l&#x27;intégration entre l&#x27;utilisateur, Claude Code, n8n, et les outils spécifiques &quot;n8n-mcp&quot; et &quot;n8n-skills&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000835_seg19.jpg" alt="Page d&#x27;accueil du site web présentant la solution &quot;Build n8n Workflows With AI&quot;, mettant en avant les statistiques d&#x27;utilisation et les outils compatibles." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000835_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:35</span>
+                        <span class="caption-text">Page d&#x27;accueil du site web présentant la solution &quot;Build n8n Workflows With AI&quot;, mettant en avant les statistiques d&#x27;utilisation et les outils compatibles.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_000844_seg19.jpg" alt="Capture d&#x27;écran détaillant les fonctionnalités clés de l&#x27;outil, notamment la couverture des nœuds, les templates de workflows, le monitoring et l&#x27;accès API." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_000844_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:44</span>
+                        <span class="caption-text">Capture d&#x27;écran détaillant les fonctionnalités clés de l&#x27;outil, notamment la couverture des nœuds, les templates de workflows, le monitoring et l&#x27;accès API.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:53 - 00:09:30</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">look through those, pull different elements from them and get some inspiration. All these other benefits, of course, and the ability to create, update, activate and manage your NNN workflows. So really simply, all I&#x27;m going to do is copy the URL from this GitHub repo, go into VS Code. And first of all, just say, here is the NNN MCP server and link that in there. And then let&#x27;s go back into Chrome and let me talk about the NNN skills, which once again is a GitHub repo. And basically what it says here is NNN skill set for Cloud Code to build flawless NNN workflows. So basically what this is, is it teaches the AI model. So it&#x27;ll teach Cloud Code how to use this. And so if you&#x27;ve never</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:30 - 00:10:06</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">heard of like a Cloud skill, basically just think of them like system instructions. And the benefit here is that Cloud only reads through them when it needs to. So if you think about this master Cloud Code agent having all of this context of all the nodes and all of the different ways to use them, every time you talk to it, it would use so many tokens to read through all that. And so essentially these are tools because it knows I have access to this stuff, but I&#x27;m only going to call it when I know that I need it. And so it basically uses the skills, it uses the MCP server, and then it&#x27;s able to actually build really nice workflows in NNN. And so in the NNN skills repo, if you scroll down, which you guys can read about, here are the seven skills that it gets access to. It knows about</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:06 - 00:10:25</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">expression syntax, which is really important. It knows how to use that MCP server that we just looked at. It knows workflow patterns. It knows how to validate them. It knows how the nodes are configured and then also knows how to code both in JavaScript and Python. So now when we give our Claude code access to these two things, it basically just becomes supercharged in building NNN workflows.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de texte ou visualiseur de documentation (probablement Obsidian ou un fichier Markdown sur GitHub/VS Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte détaillé présentant des fonctionnalités comme &quot;5 proven architectural patterns&quot;, &quot;Webhook processing&quot;, &quot;HTTP API&quot;, &quot;database&quot;, &quot;AI&quot;, &quot;scheduled&quot;, ainsi que des conseils sur la validation des erreurs et la gestion des faux positifs.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation statique des capacités de l&#x27;agent IA à travers une documentation technique de référence pour l&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001011_seg22.jpg" alt="Capture d&#x27;écran montrant un fichier README affichant une documentation structurée sur les capacités d&#x27;un agent IA pour n8n, incluant les sections &quot;n8n Workflow Patterns&quot; et &quot;n8n Validation Expert&quot;." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001011_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:11</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un fichier README affichant une documentation structurée sur les capacités d&#x27;un agent IA pour n8n, incluant les sections &quot;n8n Workflow Patterns&quot; et &quot;n8n Validation Expert&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:26 - 00:11:00</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m going to go ahead and copy the URL to the NNN skills, open up our Claude code, and then just say here are the NNN skills. You can go ahead and research them so that you can make the Claude.mb file better. So go ahead and shoot that off and it will continue to build out a plan for our system prompts for this project. You can see what it&#x27;s doing right now is researching those and it&#x27;s using a web fetch for those URLs just like we kind of wanted it to do. Okay so here&#x27;s the plan that it came up with. It has an overview, a research summary, it has the skills, the structure, and all</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (utilisant l&#x27;interface de Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion : l&#x27;agent liste des questions sur les outils n8n MCP et les définitions de compétences. L&#x27;utilisateur a saisi : &quot;n8n-MCP server: https://github.com/czlk/ntowskov/n8n-mcp&quot; et &quot;n8n skills: https://github.com/czlonkowski/n8n-skills-&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur soumet des liens de documentation (GitHub) à l&#x27;agent Claude Code pour qu&#x27;il puisse configurer et améliorer le fichier `CLAUDE.md`.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001034_seg23.jpg" alt="L&#x27;interface de l&#x27;agent &quot;Claude Code&quot; au sein de VS Code, montrant un historique de conversation où l&#x27;IA demande des détails sur les outils MCP et les compétences n8n, avec une réponse utilisateur contenant les liens GitHub." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001034_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:34</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;agent &quot;Claude Code&quot; au sein de VS Code, montrant un historique de conversation où l&#x27;IA demande des détails sur les outils MCP et les compétences n8n, avec une réponse utilisateur contenant les liens GitHub.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:00 - 00:11:33</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">this kind of stuff. You could obviously go ahead and read through all of that and then you could tell it to keep planning but in this case let&#x27;s just go ahead and auto accept this plan so that will update that Claude file for us. Okay, so it finished up that Claude.md file and it goes over environment, MCP tools, skills, workflow building, safety rules, all this kind of stuff. So if I actually click into this file, we should now see that we have a pretty nice breakdown of what we actually want to do in this project. So you can see for the workflow building, we have to understand requirements, we search templates, we research nodes, we build, we validate, and then we deploy.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur VS Code avec l&#x27;interface intégrée de l&#x27;outil Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Plan détaillé comprenant : Project Purpose, Available Tools (MCP), Available Skills, Workflow Building Guidelines, Safety Rules, Quality Standards, Common Patterns. Section &quot;Files to Modify&quot; ciblant CLAUDE.md et étape de &quot;Verification&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent présente un plan de travail et attend une validation utilisateur pour procéder à la création ou à la modification du fichier CLAUDE.md.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001108_seg24.jpg" alt="Interface de l&#x27;agent IA affichant un plan d&#x27;action structuré pour la création du fichier CLAUDE.md au sein d&#x27;un environnement de développement." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001108_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:08</span>
+                        <span class="caption-text">Interface de l&#x27;agent IA affichant un plan d&#x27;action structuré pour la création du fichier CLAUDE.md au sein d&#x27;un environnement de développement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:33 - 00:12:05</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And so just giving our project a lot more structure as far as like what files it will have what the end goal is It just makes the whole thing better because otherwise if we didn&#x27;t have a cloud.md file We would just start creating files willy-nilly and then cloud itself would have no idea how to look through those and what it&#x27;s trying to do Okay, but the next step now is we need to actually go ahead and install those Two things the mtp server and the skills So what I&#x27;m gonna do is we&#x27;re going to open up the slash which has a bunch of different slash commands that&#x27;s how you can change the thinking model. You can do different plugins and things like that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de code Cursor (avec l&#x27;interface de chat Claude intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le fichier &quot;CLAUDE.md&quot; détaille les instructions de configuration pour Claude : sections &quot;Environment&quot;, &quot;MCP Tools&quot;, &quot;Skills&quot;, &quot;Workflow Building Process&quot;, &quot;Safety Rules&quot;, &quot;Quality Standards&quot;, &quot;Workflow Patterns&quot;, &quot;Expression Syntax&quot; et &quot;Common Mistakes&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le modèle affiche le résultat de la création du fichier &quot;CLAUDE.md&quot; pour structurer le projet n8n, répondant à une demande de l&#x27;utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001141_seg25.jpg" alt="Une capture d&#x27;écran de l&#x27;interface de l&#x27;éditeur Cursor affichant le contenu du fichier &quot;CLAUDE.md&quot; dans un projet nommé &quot;n8n-builder&quot;." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001141_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:41</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface de l&#x27;éditeur Cursor affichant le contenu du fichier &quot;CLAUDE.md&quot; dans un projet nommé &quot;n8n-builder&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:05 - 00:12:36</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">What I&#x27;m going to do is slash clear, which just lets us clear the conversation and how we get to start fresh. So in the GitHub repo for both of these things, if you keep scrolling down, it&#x27;ll basically go over how to install these things. And you&#x27;ve got these different like mcp.json files that you could do in order to install this stuff. Same thing if we go to the skills and you can see if I scroll down, it shows installation. But what&#x27;s so much easier is what we did earlier where we say, hey, Claude, here are the two GitHub repos we want to get in our project.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface GitHub.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence du dépôt (dossiers .claude, .github, data, deploy, etc.) et informations sur le projet (11.6k stars, version v2.33.2).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur la page principale du dépôt GitHub pour présenter les ressources d&#x27;installation du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001213_seg26.jpg" alt="Capture d&#x27;écran montrant le dépôt GitHub &quot;n8n-mcp&quot; de l&#x27;utilisateur czionkowski, affichant la structure des fichiers du projet et les derniers commits." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001213_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:13</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le dépôt GitHub &quot;n8n-mcp&quot; de l&#x27;utilisateur czionkowski, affichant la structure des fichiers du projet et les derniers commits.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:36 - 00:13:10</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Just go ahead and install them. So I&#x27;m on bypass permissions mode. So I don&#x27;t have to say yes anything. And I told it to install the server, install the skills. And I also said, make sure they are accessible by Claude code in this project so that we can build flawless NNN workflows. And I&#x27;m going to let this run. And then I&#x27;ll check in with you guys when we get some sort of response back. Now, the one thing about bypass permissions is it still won&#x27;t bypass permissions if it doesn&#x27;t have enough information, which is great. Because in this case, if you remember, the NNN MCP server is supposed to also be able to create, manage, and update workflows in your instance. And I didn&#x27;t give it my instance information. So here it says, do you have a cloud</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Code / VS Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts utilisateur : &quot;install this MCP server: https://github.com/czlonkowski/n8n-mcp&quot;, &quot;install these skills: https://github.com/czlonkowski/n8n-skills&quot;, &quot;Make sure they are accessible by Claude Code in this project...&quot;. Réponse de l&#x27;agent : &quot;I&#x27;ll help you install the n8n MCP server and skills... Web Fetch... Actioning...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA traite la demande, effectue une recherche web (Web Fetch) sur les dépôts GitHub fournis et commence l&#x27;installation des outils pour la création de workflows n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001245_seg27.jpg" alt="Interface de Claude Code au sein d&#x27;un éditeur (VS Code), affichant les instructions de l&#x27;utilisateur pour installer un serveur MCP et des compétences n8n." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001245_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:45</span>
+                        <span class="caption-text">Interface de Claude Code au sein d&#x27;un éditeur (VS Code), affichant les instructions de l&#x27;utilisateur pour installer un serveur MCP et des compétences n8n.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:10 - 00:13:29</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">instance that you want to connect for workflow management? If yes, I need the URL and API key. So I&#x27;m going to say, yes, I have NNN cloud and submit that. And then it&#x27;s probably going to come back and say, okay, cool. Can you give me that information? So let me just show you real quick how we can get that. And right on Q, it asks for both of those. So I&#x27;m just going to say, I&#x27;ll provide So let me go over to NNN and let&#x27;s actually get that information.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (avec une interface de configuration de serveur MCP intégrée).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Formulaire interactif proposant les options : &quot;Yes, I have n8n Cloud&quot;, &quot;No, documentation only&quot;, et &quot;Other&quot;. Le texte demande spécifiquement une URL API et une clé API pour la gestion des workflows.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur est sur le point de sélectionner l&#x27;option &quot;Yes, I have n8n Cloud&quot; pour procéder à la configuration de son instance n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001315_seg28.jpg" alt="Une interface de configuration interactive s&#x27;affiche au sein d&#x27;un éditeur de code, demandant à l&#x27;utilisateur s&#x27;il souhaite connecter une instance n8n Cloud." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001315_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:15</span>
+                        <span class="caption-text">Une interface de configuration interactive s&#x27;affiche au sein d&#x27;un éditeur de code, demandant à l&#x27;utilisateur s&#x27;il souhaite connecter une instance n8n Cloud.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:30 - 00:13:48</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m in my NNN cloud instance. And first of all, let&#x27;s get the URL. So up top, I&#x27;m just going to grab everything before the slash home, which is, you know, it should end in dot cloud if you&#x27;re on the cloud. And I&#x27;ll come back in here and I&#x27;ll say I have both of these credentials ready. So it&#x27;s actually just prompting us for them. So enter your NNN API URL.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme d&#x27;automatisation n8n (instance cloud).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de bord affichant les statistiques d&#x27;exécution (75 exécutions, 3 échecs, 4% de taux d&#x27;échec) et la liste des workflows récents (Migrate Workflows, From Process Map to Nodes, Meeting Recording Automations).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de l&#x27;instance cloud n8n pour localiser l&#x27;URL de l&#x27;instance avant de procéder à la configuration des identifiants.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001334_seg29.jpg" alt="Capture d&#x27;écran de l&#x27;interface principale de n8n montrant le tableau de bord des workflows." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001334_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:34</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface principale de n8n montrant le tableau de bord des workflows.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:49 - 00:14:21</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m just going to go ahead and paste that in there as you can see. And now we&#x27;re going to head back into NNN and I&#x27;m going to go to my settings. I&#x27;m going to go to NNN API. I&#x27;m going to create a new one, call this one Claude Code Demo, and copy that API key right there. And now right on cue again, it&#x27;s asking us for the key. I&#x27;ll say other. I&#x27;ll paste it in right there. And then we will go ahead and submit those answers. So now it should be able to create the MCP configuration like we see right here. And then it&#x27;s also going to clone those NNN skills for us. You can see there&#x27;s the to-do list. So it did the NNN MCP</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:21 - 00:14:55</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">server. Now it&#x27;s installing the skills, which you can see just got put in right there. So right here we have the MCP JSON file with our information. We have the end of end skills, which are being added in, which if I click under here, we should see now we have those seven skills that it talked about in the repo. And so hopefully Claude will be able to look at these two things to help us actually build out our workflows after this is done. Okay. So I know we&#x27;re moving a little fast, but let&#x27;s just do a quick recap. Left-hand side, we&#x27;re operating inside a project. This is a file in your computer. So I was in my documents in a folder called agentic workflows in a fresh folder</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Cursor (éditeur de code basé sur VS Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de fichiers (n8n-skills, dist, .mcp.json), commandes Bash (git clone, ls -la) et logs de sortie dans le panneau latéral de l&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Installation et clonage du dépôt n8n-skills via l&#x27;assistant IA intégré à l&#x27;éditeur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001429_seg31.jpg" alt="Interface de l&#x27;éditeur de code Cursor affichant l&#x27;arborescence des fichiers d&#x27;un projet n8n-builder et une session de chat active avec l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001429_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:29</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur de code Cursor affichant l&#x27;arborescence des fichiers d&#x27;un projet n8n-builder et une session de chat active avec l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:55 - 00:15:32</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">called nnn builder. What we see here are we have different files that we&#x27;ve created in this project. So we&#x27;ve got claw.md, which is kind of like the system prompt. It runs through what this project is actually built for. We have connected our MCP server, which is the mcp.json right here, which is the nnnmcp. And we&#x27;ve added those seven nnn skills, as you can see here, expression, syntax, tools expert, blah, blah, blah. And those can be found in here under skills, which is what we connected from the GitHub repo. And in the middle, what we&#x27;re looking at is talking to Claude itself. And as we&#x27;re talking to it, it basically makes to-do lists, it makes plans, and it tells</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:32 - 00:15:52</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">us what it&#x27;s thinking. So hopefully by now we&#x27;re not too intimidated. So what it&#x27;s telling us now is to restart Claude code in order to actually load those servers and skills. After restarted, just test by asking, can you search for the webhook node using MCP? So let me just actually copy this right there. And then it says the NNN skills folder was cloned for reference.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (Visual Studio Code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation Markdown listant les &quot;Skills Installed&quot; (n8n-expression-syntax, n8n-mcp-tools-expert, etc.) et les &quot;Next Steps&quot; à suivre pour redémarrer Claude Code et tester l&#x27;intégration avec une requête spécifique.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la documentation technique pour finaliser l&#x27;installation du serveur MCP et préparer la phase de test de l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001537_seg33.jpg" alt="Capture d&#x27;écran de l&#x27;éditeur VS Code affichant un fichier Markdown détaillant les étapes d&#x27;installation et de configuration des skills n8n pour Claude Code." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001537_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:37</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;éditeur VS Code affichant un fichier Markdown détaillant les étapes d&#x27;installation et de configuration des skills n8n pour Claude Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:52 - 00:16:27</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So they basically just cloned it from the GitHub repo, which is why we see so much more stuff in here than just the actual seven skills itself. And it tells us that we can delete it if we don&#x27;t need it since the skills are installed globally. So right now I&#x27;m not going to worry about deleting that. But if we wanted to clean some stuff up, we could obviously have Claude walk us through how to delete just those things that we don&#x27;t need. So I&#x27;m going to go ahead and close out of this conversation, exit out of VS Code. And as we open it back up, we are already still in our folder. If we weren&#x27;t in this one, we would just go to file and we would open folder and hop back into it. But now we&#x27;re going to open up Claude once again. And I am just going to say, hey, just</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (éditeur de texte).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation Markdown listant 7 compétences n8n installées dans `~/.claude/skills/`, incluant des descriptions pour &#x27;n8n-expression-syntax&#x27;, &#x27;n8n-mcp-tools-expert&#x27;, &#x27;n8n-workflow-patterns&#x27;, etc., ainsi que des instructions pour redémarrer Claude Code.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur consulte la documentation générée après l&#x27;installation d&#x27;un serveur MCP pour n8n, confirmant que les compétences sont bien installées globalement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001601_seg34.jpg" alt="Une capture d&#x27;écran de l&#x27;éditeur VS Code affichant un fichier Markdown (README) détaillant les compétences n8n (n8n skills) installées localement." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001601_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:01</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;éditeur VS Code affichant un fichier Markdown (README) détaillant les compétences n8n (n8n skills) installées localement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:27 - 00:17:01</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">wanted to check that you were able to successfully install and use the NNN MCP and NNN skills. And then I&#x27;m going to paste in that one test thing that it asked us to do, which was, can you search for the webhook node using the NNN MCP server? So it says I&#x27;ll test the NNN MCP connection by searching for the node. You can see right here that it&#x27;s actually using it. It&#x27;s calling the search nodes function and it says yep I was able to find 13 results for webhook, also found Facebook ads, WhatsApp, Slack, blah blah blah. So it sounds like we&#x27;re all successfully ready to go with building NNN workflows. So remember how I said that if you are getting</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec l&#x27;extension/outil Claude Code intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt suivant est visible dans la zone de saisie : &quot;hey, just wanted to check that you were able to successfully install and use the n8n MCP and n8n skills. Can you search for the webhook node using n8n-mcp?&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur saisit une instruction pour tester la connexion entre Claude Code et le serveur MCP n8n en recherchant spécifiquement un nœud &quot;webhook&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001635_seg35.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de &quot;Claude Code&quot; au sein de VS Code, avec un prompt saisi dans la zone de texte." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001635_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:35</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de &quot;Claude Code&quot; au sein de VS Code, avec un prompt saisi dans la zone de texte.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:01 - 00:17:24</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">confused or if you don&#x27;t understand how something&#x27;s working you just ask? Well here&#x27;s an example of me just checking, are you also able to create workflows in my instance? It verified with the MCP server and it said, yep, here&#x27;s information about your instance. Here&#x27;s what I can do. And then I said, do you also have the seven NNN skills that we need to build workflows? And it went ahead and it looked through everything and it made sure we did have them. And it does, in fact, have them. So now it says ready to build some workflows whenever you are.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur de Claude dans un éditeur type VS Code/IDE.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de conversation : la question &quot;are you also able to create workflows in my n8n instance?&quot; suivie de la réponse de l&#x27;IA détaillant un &quot;mcp_n8n_health_check&quot; réussi et confirmant l&#x27;accès à l&#x27;instance &quot;nateherk.app.n8n.cloud&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;IA exécute une vérification de santé (health check) via le protocole MCP pour confirmer sa capacité à interagir avec l&#x27;instance n8n de l&#x27;utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001706_seg36.jpg" alt="Une capture d&#x27;écran de l&#x27;interface Claude montrant une interaction où l&#x27;IA vérifie la connexion MCP à une instance n8n." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001706_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:06</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface Claude montrant une interaction où l&#x27;IA vérifie la connexion MCP à une instance n8n.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:24 - 00:17:58</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m going to go ahead and do slash clear. We&#x27;re going to clear the conversation and let&#x27;s prompt it with a workflow that we want to build. Okay. So remember earlier, we talked about the different modes. What I always want to do when I&#x27;m first starting off with some sort of plan is obviously to go in plan mode so we can make sure we have a really nice prompt before we go ahead and let Claude code loose. So I&#x27;m in plan mode and I&#x27;m going to start to explain a workflow that I want. Hey Claude, I&#x27;d love to build a workflow where we have an AI agent and I want you to build this workflow in my NNN instance. I want this AI agent to go off every morning at 7am</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code (ou éditeur compatible avec l&#x27;extension Claude Code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de guidage pour le raccourci clavier, icône d&#x27;attachement, barre de commandes slash et bouton d&#x27;envoi.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;apprête à utiliser la commande &quot;/clear&quot; pour réinitialiser la conversation avec l&#x27;agent IA avant de définir un nouveau workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001732_seg37.jpg" alt="L&#x27;interface de Claude Code intégrée dans un environnement de développement, affichant une zone de saisie de texte avec le placeholder &quot;ctrl esc to focus or unfocus Claude&quot; et l&#x27;option &quot;Bypass permissions&quot;." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001732_seg37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:32</span>
+                        <span class="caption-text">L&#x27;interface de Claude Code intégrée dans un environnement de développement, affichant une zone de saisie de texte avec le placeholder &quot;ctrl esc to focus or unfocus Claude&quot; et l&#x27;option &quot;Bypass permissions&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:58 - 00:18:17</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and I want it to do research for me to help me find out information for my business. I have an AI automation agency, so I wanna make sure that every morning I&#x27;m getting insights as far as any AI developments or specifically AI automation related developments for voice agents, because that&#x27;s the niche of my agency.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> VS Code avec l&#x27;extension/interface Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte dans la barre de saisie : &quot;ctrl esc to focus / unfocus Claude&quot; et mention &quot;Plan mode&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;outil est en attente d&#x27;une instruction utilisateur pour lancer une recherche ou une automatisation de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001802_seg38.jpg" alt="Une vue de l&#x27;interface de Claude Code intégrée au sein de l&#x27;éditeur de code VS Code, montrant la zone de saisie des prompts en mode « Plan mode »." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001802_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:02</span>
+                        <span class="caption-text">Une vue de l&#x27;interface de Claude Code intégrée au sein de l&#x27;éditeur de code VS Code, montrant la zone de saisie des prompts en mode « Plan mode ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:17 - 00:18:41</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Once it has that information, after it&#x27;s done research, I want it to create an HTML styled newsletter for me and send it to my email through Gmail. And I want two separate AI agents I want the first one that does research to use OpenRouter and to use ChatGPT 5. And I want the second agent that writes the email and stylizes it in HTML to use OpenRouter, but I want it to use Anthropic Sonnet 4.5.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visual Studio Code (ou éditeur similaire) avec l&#x27;extension/outil Claude Code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte dans la zone de saisie : &quot;Ctrl esc to focus / unfocus Claude&quot; et mention du mode &quot;Plan mode&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur est prêt à interagir avec l&#x27;agent Claude Code pour planifier ou exécuter des tâches de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001823_seg39.jpg" alt="Une capture d&#x27;écran de l&#x27;interface de &quot;Claude Code&quot; intégrée au sein d&#x27;un éditeur de code, avec une barre de saisie de texte en bas et une icône de pixel art au centre." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001823_seg39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:23</span>
+                        <span class="caption-text">Une capture d&#x27;écran de l&#x27;interface de &quot;Claude Code&quot; intégrée au sein d&#x27;un éditeur de code, avec une barre de saisie de texte en bas et une icône de pixel art au centre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:43 - 00:19:04</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Okay, so that is our request. We are going to shoot that off in plan mode. And now it&#x27;s going to come back, ask us some questions maybe, and build out a plan. And then we&#x27;ll be able to go ahead and approve that. And so this is exactly what we wanted. What it&#x27;s doing is it is creating a task. It&#x27;s exploring through the MCP servers to search for different nodes, and then it&#x27;s going to build us an implementation plan. So I&#x27;ll check in with you guys when that plan is all ready.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Cursor (éditeur de code avec intégration d&#x27;IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un prompt détaillé décrivant la création d&#x27;un workflow n8n automatisé pour la recherche quotidienne et l&#x27;envoi d&#x27;emails via Gmail, utilisant des modèles comme OpenRouter, ChatGPT 5 et Anthropic Sonnet 4.5. L&#x27;IA affiche l&#x27;état &quot;Philosophising...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur soumet une requête complexe à l&#x27;IA, qui est en cours d&#x27;analyse (&quot;Philosophising&quot;) pour générer un plan de construction du workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/B6k_vAjndMo/B6k_vAjndMo_001848_seg40.jpg" alt="Interface de l&#x27;éditeur de code Cursor affichant une conversation avec l&#x27;agent Claude dans le volet de discussion (Composer)." loading="lazy" onclick="openLightbox('../screenshots/B6k_vAjndMo/B6k_vAjndMo_001848_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:48</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur de code Cursor affichant une conversation avec l&#x27;agent Claude dans le volet de discussion (Composer).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:05 - 00:19:32</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right. So it&#x27;s a little bit darker, but it says I have a good understanding of the requirements. Let me ask a few clarification questions. The first one is which email address should the newsletter be sent to? I&#x27;m just going to go ahead and type in nateatexample.com just to shoot that off. We&#x27;ve got the search tool. Which web search tool do you want to use. Okay, we&#x27;ve got SERP API, GINA, HTTP. I&#x27;m going to go ahead and say other, and I actually want to use perplexity. And then for time zone, it says what time zone do you want to send from?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-42">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:32 - 00:19:51</span>
+                <span class="segment-idx">Segment #42</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And I&#x27;m just going to go ahead and say Eastern time, which I&#x27;m not even in Eastern time, but just to make it easier, shoot off those questions. Okay, so we&#x27;ve got a pretty comprehensive plan here, as you can see. It is our AI research newsletter workflow plan. It&#x27;s got some architecture, so the different nodes, the schedule trigger, all this kind of stuff, the configuration details of each of these.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-43">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:51 - 00:20:11</span>
+                <span class="segment-idx">Segment #43</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Obviously, we could read through all of this and make some changes if we want. What I&#x27;m gonna do is we&#x27;re just gonna go ahead and auto accept this to see how well it did on its own. And we will see what happens next. Oh, wait, actually, I&#x27;m going to stop this real quick because what I noticed is that it said what I&#x27;m creating is a single workflow file in JSON. But actually what we wanna do is have it created in our edit instance.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-44">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:20:11 - 00:20:45</span>
+                <span class="segment-idx">Segment #44</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I&#x27;m just gonna go ahead and change this to bypass permissions. And I&#x27;m gonna say, that plan looks great. I want you to just go ahead and create that in my end in an instance and just give me a link so that I can go look at it All right, so there we go You can see it had a to-do list with three items One was to create the workflow one was to validate it and then one was to report completion And so we have the link and then we have some next steps as far as connecting your credentials making it active things like that So let&#x27;s click into the link Okay, we can see we&#x27;ve got the workflow right here with our schedule trigger our research agent our newsletter writer and our newsletter gmail tool</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-45">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:20:45 - 00:21:19</span>
+                <span class="segment-idx">Segment #45</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So let me real quick just connect all these credentials Okay, now that that&#x27;s set up, we&#x27;re going to go ahead and run this. So pretending that this went off at 7 a.m. Eastern time, we can see that it&#x27;s using its perplexity tool, its open router. And let me just also make sure this one was supposed to be GPT 5, which this one&#x27;s 4.1. So it messed up a little bit there. It filled in tokens and temperature, which is kind of funny. This one was supposed to be sun at 4.5 and it was sun at 4. So it messed up a little bit on that actual configuration, but that&#x27;s not a huge deal. You can see that it&#x27;s searching perplexity. It&#x27;s actually done three searches already. So if I click into the research agent, we can see that we</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-46">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:21:19 - 00:21:53</span>
+                <span class="segment-idx">Segment #46</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">have a user message, which is to research the latest developments. Actually, let me just make this full screen. Research the latest developments in AI automation and voice agent technology from the past week. Focus on these five things, search for these four things, and then compile your findings. It also says to source citations, which is nice. And then if we go into the actual system message, let&#x27;s see what we&#x27;ve got in here. You are an AI research analyst specializing in AI automation and voice agent technology. Your role is to gather relevant information, be thorough, be concise, prioritize actionable insights that would help an agency owner stay ahead of industry trends.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-47">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:21:53 - 00:22:28</span>
+                <span class="segment-idx">Segment #47</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it&#x27;s really good that it&#x27;s making these prompts pretty nice for us. Once this research finishes up, we will go over to the newsletter writer. So let&#x27;s take a look at this prompt. Okay, cool. So the user message was already an expression because it knows that it needs all of the research from the previous agent. And we can see that we&#x27;ve got it coming through right here. and then it says transform the above research findings into a professional html newsletter follow the styling guide in your system prompt okay so we&#x27;ll take a look at that styling guide in a sec what we can see here is the we get the actual results of the research from the previous agent so we&#x27;ve got breaking news and ai we&#x27;ve got voice agent and conversational developments</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-48">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:22:28 - 00:22:48</span>
+                <span class="segment-idx">Segment #48</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ai automation tools and platforms industry trends affecting ai agencies and new voice ai products and then some headlines and action for agency owners. Super cool. And then real quick, just to take a look at the actual system message, it basically gives us a HTML styling guide and some newsletter structure, which is great.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-49">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:22:49 - 00:23:24</span>
+                <span class="segment-idx">Segment #49</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it looks like that all finished up and it got sent to the correct email, I hope, which was nateatexample.com. It comes through as AI Automation Daily Brief with the date and it&#x27;s formatted, which is nice. And then we have the actual message and it even turned off the append, edit, and attribution, which I don&#x27;t think I explicitly told it to do. So that&#x27;s pretty cool. But let me go to the email and let&#x27;s take a look. Okay. Wow. Look at this. We&#x27;ve got our AI automation daily brief for January 14th. It&#x27;s obviously stylized in HTML. We&#x27;ve got an executive summary with the agentic AI market exploding. We&#x27;ve got top stories. So we&#x27;ve got some headlines like the agentic AI market</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-50">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:23:24 - 00:23:43</span>
+                <span class="segment-idx">Segment #50</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">is set for growth, enterprise agent ops, hardware breakthrough. We&#x27;ve got some voice agent focus because that&#x27;s what I told it was my niche. So we&#x27;ve got emotionally intelligent agents, global support, new voice AI integrations, some quick hits, some action items for agency owners, and then at the bottom we&#x27;ve got a bunch of sources, which is pretty cool as well.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-51">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:23:43 - 00:24:17</span>
+                <span class="segment-idx">Segment #51</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So obviously this was our one-shot prompt for this workflow. If we wanted to iterate upon this, we could go ahead and come back into VS Code with our Cloud Code and say, hey, this workflow is great. Can you make these changes to the prompt or could you switch out some things here? And it would actually be able to take that instance, change it, and then we&#x27;d see those changes reflected in our NNN cloud. This workflow obviously wouldn&#x27;t take me, you know, any more than an hour if I was building it myself in NNN, but hopefully you can see if you&#x27;re a beginner and you need to help brainstorm through some things, CloudCode is going to help you out a ton. And also if you think about as you scale up to some more complex use cases where maybe you need to think</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-52">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:24:17 - 00:24:49</span>
+                <span class="segment-idx">Segment #52</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">about how you&#x27;re going to handle the data and things like that, using CloudCode in plan mode is really, really going to help you out because it&#x27;s going to ask you a lot of questions that you may not have thought of yourself when you&#x27;re building out your workflow. And something else that I talk a lot about in my plus community is the importance of wireframing things out, as you guys could tell earlier when I did this. And so I imagine if you wireframed out a workflow and you gave that screenshot to a cloud projects like this, a cloud code project like this, it would be able to do a lot better too, because it already knows kind of like the general architecture and structure that you&#x27;re thinking of for your NNN workflow. Like I said, that&#x27;s</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-53">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:24:49 - 00:25:10</span>
+                <span class="segment-idx">Segment #53</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">something I talk a lot about in my plus community with full courses on NNN and building agencies and stuff like that. So if you&#x27;re interested, the link for that would be down in the description. So let&#x27;s just do a quick recap of what we actually talked about today. We got familiar with VS Code and Cloud Code, and we understand that the left-hand side is our project, where we have different files, and we have basically a system prompt that explains what this project is going to do.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-54">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:25:10 - 00:25:29</span>
+                <span class="segment-idx">Segment #54</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We&#x27;ve got the middle section, where we actually talk to, either we look at our files or we talk to Cloud Code itself. We have different modes to talk to Cloud Code, like bypass permissions, ask before edits, edit automatically, or plan mode, which is really important when you&#x27;re actually trying to figure out what you want to do. And then we talked about how you can give it access to MCP servers, skills.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-55">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:25:29 - 00:25:49</span>
+                <span class="segment-idx">Segment #55</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And rather than trying to figure out how to configure it yourself, just make CloudCode do the research. And something funny about CloudCode is sometimes it&#x27;ll do the research and say, hey, you know, I can do this for you, or you could just install it yourself. And a lot of times you just have to say, no, you do it. Like, I don&#x27;t want to do anything. I just want you to do everything for me. And it will do it all for you. So key lesson, don&#x27;t be intimidated by CloudCode.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-56">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:25:49 - 00:26:23</span>
+                <span class="segment-idx">Segment #56</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I&#x27;m going to have a lot more content around this coming. So please let me know what type of use cases you guys want to see when it comes to automating things with CloudCode. The thing you need to remember is all that matters is can you communicate clearly what you want as if you were talking to a human developer or a human project manager or even just a regular human. If you can communicate it clearly and if you can ask questions when you&#x27;re confused, you will be fine with CloudCode. And once again, the interface is going to get better, the models are going to get better. So the earlier you jump on this, the easier it&#x27;s going to be when inevitably every person in the world starts using CloudCode. Okay, one final thing that I wanted to</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-57">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:26:23 - 00:26:48</span>
+                <span class="segment-idx">Segment #57</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">just make sure you guys were aware of is it has its limits. So obviously I was trying to get to that line and see how far I could push it. And I was able to build some really complicated workflows and some cool agents, but I tried building one where it was going to be like 60 nodes. And what ended up happening is it basically like throttled the API and it just like became unresponsive. And this was like over an hour ago and my NNN cloud is still down.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-58">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:26:48 - 00:27:10</span>
+                <span class="segment-idx">Segment #58</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And so the thing is here, N8N&#x27;s cloud server is what&#x27;s down, specifically for my domain here. But if I open up a different cloud instance that I own from N8N, that one&#x27;s working. So there&#x27;s an error going on here. You can see it&#x27;s 522. And I&#x27;m basically, I think, gonna have to reach out to them and have them reboot the server or something like that. If you were doing this on self-hosted, you&#x27;d be able to reboot it yourself and you&#x27;d be good to go.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-59">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:27:10 - 00:27:35</span>
+                <span class="segment-idx">Segment #59</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But this is something I wanted to at least let you guys be aware of, is that if you do make some massive, crazy requests and it&#x27;s timing out and then it&#x27;s trying again And it&#x27;s just like, you know, just trying to do way too much. This may happen. So I just felt like I was obligated to at least tell you guys that. So anyways, and if it helps you guys out, I will drop this claw.md file, which keep in mind, I one-shotted with plan mode, but I will drop this in my free school community.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-60">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:27:35 - 00:28:00</span>
+                <span class="segment-idx">Segment #60</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">If you want to grab that for free, the link for that is down in the description. It will look like this. All you have to do is get in here and I&#x27;ll have a post associated with this video. And like, let&#x27;s pretend it&#x27;s this post. you would just see right here, I would attach a JSON file or a doc with that exact cloud.md file in there so that you guys could just paste that over to your cloud code if you want to play around with this use case. But anyways, that is going to do it for today. So if you enjoyed the video, or if you learned something new, please give it a like. It definitely helps me out a ton.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-61">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:28:01 - 00:28:06</span>
+                <span class="segment-idx">Segment #61</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And as always, I appreciate you guys making it to the end of the video. So I will see you on the next one. Thanks so much, guys.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
