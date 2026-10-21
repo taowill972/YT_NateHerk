@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 n8n 2.0 est là (Ce que vous devez savoir) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 n8n 2.0 est là (Ce que vous devez savoir)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-12-08</span>
+                <span class="badge">⏱️ 00:11:08</span>
+                <span class="badge">🆔 <code>67BVIScAlbs</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=67BVIScAlbs" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>La version 2 de n8n représente un tournant majeur pour l'automatisation des workflows et l'intégration des agents IA, tout en préservant une continuité ergonomique appréciable. Nate Herk propose dans cette vidéo une analyse comparative approfondie entre la v1 et la v2, soulignant que si l'interface utilisateur conserve ses repères familiers, de nettes améliorations visuelles et structurelles ont été introduites. Parmi les nouveautés notables figurent des animations de traitement plus épurées — comme le cercle de contour rouge et les lignes vertes pour les agents —, une barre latérale redimensionnable, l'accès direct aux paramètres et un passage de la terminologie « actif/inactif » à « publié/dépublié ». <br><br>Au-delà de l'interface, la v2 mise massivement sur la robustesse du backend, la sécurité et la scalabilité en prévision de l'arrivée de la sauvegarde automatique en janvier 2026. La démonstration technique la plus critique réside dans la gestion des sous-workflows asynchrones impliquant une validation humaine. Alors que la version 1 péchait en ne renvoyant aucune donnée exploitable à l'agent après une approbation (comme via Slack), la version 2 corrige ce comportement fondamental. Désormais, les sous-workflows doivent impérativement être publiés pour être appelés, et les retours d'information issus des interactions humaines sont transmis de manière transparente, permettant à l'agent IA de réagir contextuellement et d'achever ses tâches avec précision.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **n8n v2.0** : La nouvelle version majeure de la plateforme d'automatisation, axée sur la scalabilité du backend, la sécurité et des améliorations de l'expérience utilisateur.<br>* **n8n v1.0** : La version historique utilisée pour la comparaison directe des flux de travail, de l'ergonomie et des comportements d'exécution.<br>* **Hostinger** : La solution d'hébergement cloud/auto-hébergée utilisée pour déployer et tester l'environnement n8n v2.0.<br>* **n8n Cloud** : La plateforme gérée utilisée pour exécuter et comparer l'environnement de la version 1.0.<br>* **Slack** : L'outil de messagerie collaborative utilisé dans le workflow pour notifier les équipes et recueillir des approbations ou refus humains.<br>* **Perplexity** : L'outil de recherche intégré aux agents IA pour collecter des données contextuelles (ex. sur l'IA vocale).<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Continuité structurelle du JSON** : Le format sous-jacent des workflows n8n v2 reste compatible avec la v1, permettant de copier et coller des structures complexes sans perte de propriétés.<br>* **Refonte visuelle et minimalisme** : L'abandon de l'effet 3D au profit de nœuds plus plats et intégrés offre un rendu plus moderne et épuré.<br>* **Animations d'exécution futuristes** : Les contours rouges animés pendant le traitement et les lignes vertes à la validation améliorent la lisibilité du statut des agents et des nœuds.<br>* **Ergonomie de la barre latérale** : La v2 introduit une barre latérale extensible et un accès direct aux paramètres sans passer par les menus de profil.<br>* **Standardisation sémantique** : Le passage des statuts « actif/inactifs » aux états « publié/dépublié » uniformise la gestion du cycle de vie des automatisations.<br>* **Préparation à l'auto-sauvegarde** : Les performances instantanées de la fonction d'enregistrement préfigurent l'arrivée imminente de la sauvegarde automatique planifiée pour janvier 2026.<br>* **Architecture renforcée du backend** : La majorité des modifications de la v2 se situent sous le capot pour garantir une scalabilité accrue et une sécurité de niveau entreprise.<br>* **Obligation de publication des sous-workflows** : Contrairement à la v1 où un sous-workflow pouvait rester inactif tout en étant appelable, la v2 exige qu'il soit explicitement publié et versionné.<br>* **Résolution du retour d'information humain** : La v2 comble une lacune critique en transmettant fidèlement le résultat des validations humaines (ex. : "approuvé = vrai") directement au contexte de l'agent IA.<br>* **Efficacité contextuelle des agents** : Grâce au nouveau comportement des sous-workflows, les agents IA comprennent enfin l'issue d'une action asynchrone et peuvent formuler des réponses adaptées à l'utilisateur final.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">n8n v2.0</span><span class="tool-tag">n8n v1.0</span><span class="tool-tag">Hostinger</span><span class="tool-tag">n8n Cloud</span><span class="tool-tag">Slack</span><span class="tool-tag">Perplexity</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Continuité structurelle du JSON** : Le format sous-jacent des workflows n8n v2 reste compatible avec la v1, permettant de copier et coller des structures complexes sans perte de propriétés.</span></li><li><span class="point-bullet">✦</span><span>Refonte visuelle et minimalisme** : L&#x27;abandon de l&#x27;effet 3D au profit de nœuds plus plats et intégrés offre un rendu plus moderne et épuré.</span></li><li><span class="point-bullet">✦</span><span>Animations d&#x27;exécution futuristes** : Les contours rouges animés pendant le traitement et les lignes vertes à la validation améliorent la lisibilité du statut des agents et des nœuds.</span></li><li><span class="point-bullet">✦</span><span>Ergonomie de la barre latérale** : La v2 introduit une barre latérale extensible et un accès direct aux paramètres sans passer par les menus de profil.</span></li><li><span class="point-bullet">✦</span><span>Standardisation sémantique** : Le passage des statuts « actif/inactifs » aux états « publié/dépublié » uniformise la gestion du cycle de vie des automatisations.</span></li><li><span class="point-bullet">✦</span><span>Préparation à l&#x27;auto-sauvegarde** : Les performances instantanées de la fonction d&#x27;enregistrement préfigurent l&#x27;arrivée imminente de la sauvegarde automatique planifiée pour janvier 2026.</span></li><li><span class="point-bullet">✦</span><span>Architecture renforcée du backend** : La majorité des modifications de la v2 se situent sous le capot pour garantir une scalabilité accrue et une sécurité de niveau entreprise.</span></li><li><span class="point-bullet">✦</span><span>Obligation de publication des sous-workflows** : Contrairement à la v1 où un sous-workflow pouvait rester inactif tout en étant appelable, la v2 exige qu&#x27;il soit explicitement publié et versionné.</span></li><li><span class="point-bullet">✦</span><span>Résolution du retour d&#x27;information humain** : La v2 comble une lacune critique en transmettant fidèlement le résultat des validations humaines (ex. : &quot;approuvé = vrai&quot;) directement au contexte de l&#x27;agent IA.</span></li><li><span class="point-bullet">✦</span><span>Efficacité contextuelle des agents** : Grâce au nouveau comportement des sous-workflows, les agents IA comprennent enfin l&#x27;issue d&#x27;une action asynchrone et peuvent formuler des réponses adaptées à l&#x27;utilisateur final.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:18</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La version 2 de NN est enfin là et j&#x27;ai passé plusieurs heures à comparer la version 1 avec la version 2, donc dans la vidéo d&#x27;aujourd&#x27;hui, je vais passer en revue les choses que vous devez réellement savoir ainsi que les changements majeurs. Ne perdons donc pas de temps et allons directement dans la vidéo. Ce que nous regardons en ce moment est la version 2 de NN, et ce que vous remarquez probablement immédiatement, c&#x27;est qu&#x27;elle n&#x27;a pas l&#x27;air si différente que ça, et c&#x27;est une très bonne chose.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de n8n (éditeur de workflows d&#x27;automatisation et d&#x27;agents IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow d&#x27;agent IA connecté à OpenRouter, Slack et Perplexity, avec un déclencheur de message de chat.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et comparaison visuelle des versions 1 et 2 de l&#x27;interface de création d&#x27;agents IA dans n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000005_seg1.jpg" alt="Gros plan sur un nœud de workflow d&#x27;agent IA avec des connexions vers des outils comme Slack et Perplexity." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Gros plan sur un nœud de workflow d&#x27;agent IA avec des connexions vers des outils comme Slack et Perplexity.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000009_seg1.jpg" alt="Comparaison côte à côte de deux versions d&#x27;une interface de workflow d&#x27;automatisation." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Comparaison côte à côte de deux versions d&#x27;une interface de workflow d&#x27;automatisation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000014_seg1.jpg" alt="Vue complète de l&#x27;interface d&#x27;édition de workflow n8n montrant un agent IA et ses outils connectés." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000014_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:14</span>
+                        <span class="caption-text">Vue complète de l&#x27;interface d&#x27;édition de workflow n8n montrant un agent IA et ses outils connectés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:19 - 00:00:50</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais à mesure que nous commençons à nous plonger dans les choses et à cliquer un peu partout, vous remarquerez quelques changements, je suis donc là pour vous guider à travers ceux-ci. Donc, très rapidement, laissez-moi juste envoyer ce message à notre agent IA, qui dispose d&#x27;un outil Slack et d&#x27;un outil Perplexity, et je lui demande de faire des recherches sur l&#x27;IA vocale et d&#x27;envoyer ces résultats à Nate sur Slack. Et la première chose que vous verrez, c&#x27;est cette nouvelle animation vraiment sympa où, lorsque les nœuds tournent ou réfléchissent, ils ont en fait ce petit cercle de contour rouge autour, ce qui a l&#x27;air beaucoup plus futuriste, et ça a vraiment fière allure par rapport à l&#x27;ancienne méthode où les agents avaient en quelque sorte juste un cercle tournant rouge à l&#x27;intérieur du nœud lui-même.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de construction de workflows (type Flowise ou équivalent)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma de workflow nommé &#x27;Test Agent 2.0&#x27; avec les composants &#x27;When chat message received&#x27;, &#x27;AI Agent&#x27;, &#x27;OpenRouter Chat Model&#x27;, &#x27;Send a message in Slack&#x27;, et &#x27;Message a model in Perplexity&#x27;. Dans le chat en bas : &#x27;Research Voice AI and send those results to Nate in slack.&#x27;</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie d&#x27;un message de test dans le panneau de chat pour déclencher et tester le workflow de l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000027_seg2.jpg" alt="Interface d&#x27;un éditeur de workflow d&#x27;agent IA montrant un schéma avec un déclencheur de message, un bloc &#x27;AI Agent&#x27; connecté à OpenRouter, Slack et Perplexity, avec un panneau de chat en bas." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000027_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:27</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow d&#x27;agent IA montrant un schéma avec un déclencheur de message, un bloc &#x27;AI Agent&#x27; connecté à OpenRouter, Slack et Perplexity, avec un panneau de chat en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:51 - 00:01:18</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais ensuite, quand tout est exécuté, ils ont le contour vert et les lignes vertes comme d&#x27;habitude. Et cette animation de traitement n&#x27;est pas réservée à l&#x27;IA, c&#x27;est aussi pour chaque fois que des nœuds en général sont en train de traiter et de s&#x27;exécuter encore. Comme vous pouvez le voir ici avec ce nœud Perplexity et les autres qui tournent un peu de la même manière. Et l&#x27;autre chose que vous remarquerez, c&#x27;est que les nœuds ont l&#x27;air d&#x27;être un peu plus intégrés dans le flux de travail et il n&#x27;y a pas vraiment d&#x27;effet 3D, ce qui, je pense, a en fait un aspect beaucoup plus moderne et minimaliste.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de création de workflow (type n8n/Flowise/Langflow)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : &#x27;When clicking Execute workflow&#x27;, &#x27;Search Term&#x27;, &#x27;Message a model&#x27;, &#x27;Send a message&#x27;</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation du diagramme de workflow et de ses étapes d&#x27;exécution</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000057_seg3.jpg" alt="Un éditeur de workflow avec quatre nœuds connectés : &#x27;When clicking Execute workflow&#x27;, &#x27;Search Term&#x27;, &#x27;Message a model&#x27; et &#x27;Send a message&#x27;, sur fond sombre avec le présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000057_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:57</span>
+                        <span class="caption-text">Un éditeur de workflow avec quatre nœuds connectés : &#x27;When clicking Execute workflow&#x27;, &#x27;Search Term&#x27;, &#x27;Message a model&#x27; et &#x27;Send a message&#x27;, sur fond sombre avec le présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:18 - 00:01:54</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, si je vais de l&#x27;avant et que je copie réellement ce flux de travail ici, et que je vais dans la version 1.0 et que je le colle, vous pouvez voir la différence ici. Comment ceux-ci ont l&#x27;air un peu plus volumineux maintenant. Et il y a aussi comme un schéma de couleurs différent entre l&#x27;outil et l&#x27;IA ici en haut. Une autre chose que j&#x27;ai remarquée, mais c&#x27;est assez subtil, ce sont les connexions entre les nœuds. Donc, dans cette nouvelle version, lorsque vous passez la souris sur les connecteurs, ils sortent en quelque sorte et ils sont juste entourés de blanc. Comme vous pouvez le voir avec ces losanges pour l&#x27;agent et ensuite les cercles pour les autres connecteurs. Mais dans l&#x27;ancienne version, ça devenait juste orange et ça ne devenait pas plus grand. Il n&#x27;y avait pas d&#x27;effet de pulsation. Et c&#x27;est également la même chose pour</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (interface web de gestion de flux de travail d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : &quot;When chat message received&quot;, &quot;AI Agent&quot;, &quot;OpenRouter Chat Model&quot;, &quot;Send a message in Slack&quot;, &quot;Message a model in Perplexity&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Comparaison et présentation d&#x27;un flux de travail collé dans l&#x27;interface montrant les différences de design et de blocs entre les versions</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000127_seg4.jpg" alt="Interface n8n affichant un flux de travail avec un nœud &#x27;AI Agent&#x27; connecté à OpenRouter, Slack et Perplexity, avec le présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000127_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:27</span>
+                        <span class="caption-text">Interface n8n affichant un flux de travail avec un nœud &#x27;AI Agent&#x27; connecté à OpenRouter, Slack et Perplexity, avec le présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:54 - 00:02:23</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des nœuds comme celui-ci, même s&#x27;ils ne sont pas des agents IA en soi. Très bien, donc ici nous avons la version un sur la gauche et nous avons la version deux sur la droite. Et nous allons simplement examiner les différences ici. Maintenant, une chose à garder à l&#x27;esprit, sur le côté gauche, je suis sur N8N Cloud. Et sur le côté droit, je suis sur ma version auto-hébergée avec Hostinger. Il peut donc y avoir juste quelques éléments comme le panneau d&#x27;administration ici qui sont différents uniquement en raison de la différence entre le cloud et l&#x27;auto-hébergement. Donc, l&#x27;une des premières choses que vous remarquerez concerne la barre latérale. Vous pouvez donc voir que si je développe la barre latérale, nous avons aperçu, personnel, et ensuite nous avons ces éléments en bas.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de type outil de workflow / automatisation d&#x27;agents IA (analogue à n8n) avec affichage divisé en deux panneaux.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagrammes de flux avec des nœuds &quot;When chat message received&quot;, &quot;AI Agent&quot;, &quot;OpenRouter Chat Model&quot;, &quot;Send a message in Slack&quot; et &quot;Message a model in Perplexity&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur compare les deux versions du workflow affichées à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000201_seg5.jpg" alt="Comparaison côte à côte de deux versions d&#x27;un workflow d&#x27;agent IA dans une interface d&#x27;automatisation." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000201_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:01</span>
+                        <span class="caption-text">Comparaison côte à côte de deux versions d&#x27;un workflow d&#x27;agent IA dans une interface d&#x27;automatisation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:23 - 00:02:47</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si j&#x27;agrandis la barre latérale de ce côté-ci, nous faisons cela en cliquant sur cette petite flèche. Maintenant, en plus des barres latérales qui sont un peu différentes, vous pouvez aussi voir que dans la nouvelle version, nous pouvons agrandir la barre latérale. Nous pouvons donc réellement l&#x27;étirer. Mais de ce côté gauche, nous ne pouvons pas faire cela. Nous avons aussi la possibilité dans la nouvelle version d&#x27;accéder à nos paramètres beaucoup plus facilement, car lorsque je clique sur paramètres, je peux tout voir directement ici. Alors que dans cette première version, vous deviez simplement cliquer sur votre profil, puis cliquer sur paramètres, et ensuite cela vous amenait vers un onglet de paramètres différent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web n8n (tableaux de bord de workflows d&#x27;agents IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflows n8n comprenant des nœuds &quot;When chat message received&quot;, &quot;AI Agent&quot;, &quot;OpenRouter Chat Model&quot;, &quot;Send a message in Slack&quot; et &quot;Message a model in Perplexity&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur compare les différentes versions de l&#x27;interface n8n et démontre comment agrandir la barre latérale.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000229_seg6.jpg" alt="Comparaison côte à côte de l&#x27;interface n8n montrant l&#x27;ancienne et la nouvelle version avec les options de barre latérale." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000229_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:29</span>
+                        <span class="caption-text">Comparaison côte à côte de l&#x27;interface n8n montrant l&#x27;ancienne et la nouvelle version avec les options de barre latérale.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:47 - 00:03:05</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez également voir qu&#x27;à l&#x27;arrière-plan, les petits points du canevas réel sont un peu plus difficiles à voir dans cette version. Si nous remontons tout en haut, vous pouvez voir que dans la version un, nous avons des flux de travail inactifs ou actifs. Alors que dans la version deux, nous avons la possibilité de publier et de dépublier, ce qui fait essentiellement la même chose, mais avec une terminologie un peu différente maintenant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de création de workflows d&#x27;agents IA (deux fenêtres comparées).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Deux diagrammes de workflow contenant un nœud &quot;When chat message received&quot;, un nœud &quot;AI Agent&quot;, et des connexions vers &quot;OpenRouter Chat Model&quot;, &quot;Send a message in Slack&quot; et &quot;Message a model in Perplexity&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Comparaison visuelle entre les versions un et deux des flux de travail de l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000251_seg7.jpg" alt="Comparaison côte à côte de deux versions d&#x27;une interface de workflow d&#x27;agent IA, montrant les différences de design des canevas et des barres supérieures." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000251_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:51</span>
+                        <span class="caption-text">Comparaison côte à côte de deux versions d&#x27;une interface de workflow d&#x27;agent IA, montrant les différences de design des canevas et des barres supérieures.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:05 - 00:03:26</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Une autre chose que je voulais vous montrer ici, c&#x27;était la fonctionnalité de sauvegarde elle-même. Donc, dans la version un, quand on clique sur enregistrer, ça tourne pendant une seconde et puis ça nous indique que ça a été enregistré. Mais dans la version deux, c&#x27;est pour ainsi dire instantané. Et c&#x27;était une toute petite fonctionnalité, mais je pense que c&#x27;est parce que la fonctionnalité de sauvegarde automatique, qui est une fonctionnalité extrêmement demandée, va arriver. Elle n&#x27;est pas encore disponible à ce jour, mais j&#x27;ai entendu dire qu&#x27;elle arriverait en janvier 2026.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de construction de workflows / agents IA (Flowise ou similaire) avec affichage en double écran.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagrammes de flux avec nœuds &quot;When chat message received&quot;, &quot;AI Agent&quot;, &quot;OpenRouter Chat Model&quot;, &quot;Send a message in Slack&quot; et &quot;Message a model in Perplexity&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Comparaison visuelle des versions 1 et 2 du workflow et de leur interface de sauvegarde.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000310_seg8.jpg" alt="Comparaison côte à côte de deux interfaces de workflows avec un diagramme d&#x27;agent IA montrant les connexions vers OpenRouter, Slack et Perplexity, et la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000310_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:10</span>
+                        <span class="caption-text">Comparaison côte à côte de deux interfaces de workflows avec un diagramme d&#x27;agent IA montrant les connexions vers OpenRouter, Slack et Perplexity, et la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:27 - 00:03:45</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, de retour sur l&#x27;écran d&#x27;accueil réel de la version un et de la version deux, c&#x27;est à peu près la même chose. Nous avons des éléments comme les identifiants, les exécutions, nous avons exactement la même chose dans les deux. Mais l&#x27;autre chose concernant le fait d&#x27;être actif ou inactif, publié ou non publié, c&#x27;est que sur ce côté droit, vous pouvez voir que nous avons ce petit indicateur avec la coche verte. Et sur le côté gauche, nous avions fondamentalement juste un petit interrupteur qui était soit activé, soit désactivé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation n8n (vue partagée version 1 et version 2)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de bord de présentation avec statistiques d&#x27;exécution, listes de workflows (&quot;My workflow 56&quot;, &quot;Test Agent 2.0&quot;, &quot;Parent Wait&quot;, &quot;Child Wait&quot;) et curseurs d&#x27;activation/désactivation.</p>
+                        <p><strong>Action / Démonstration :</strong> Comparaison visuelle des écrans d&#x27;accueil des deux versions avec un curseur de souris pointant sur l&#x27;onglet Credentials de la version droite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000331_seg9.jpg" alt="Comparaison côte à côte de deux versions d&#x27;une interface de tableau de bord d&#x27;automatisation (n8n), affichant les onglets Workflows, Credentials, Executions, Variables et Data tables." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000331_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:31</span>
+                        <span class="caption-text">Comparaison côte à côte de deux versions d&#x27;une interface de tableau de bord d&#x27;automatisation (n8n), affichant les onglets Workflows, Credentials, Executions, Variables et Data tables.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:46 - 00:04:05</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais de toute façon, vous avez probablement vu, quand vous allez dans votre NNN, vous avez cette petite barre en haut qui dit : préparez-vous pour la V2, en savoir plus. Et si vous cliquez dessus, ça va grosso modo présenter ce qui arrive dans ces nouvelles versions. Il y a un énorme accent mis sur la sécurité, la fiabilité et les performances. Donc la majorité des changements ici sont en fait dans le backend, juste pour préparer la scalabilité et l&#x27;avenir de NNN.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web n8n et page de documentation officielle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Bannière &quot;Get ready for n8n v2.0, coming soon!&quot; et article de blog annonçant n8n version 2.0.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur l&#x27;interface et consultation de la page d&#x27;annonce de la mise à jour v2.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000351_seg10.jpg" alt="Vue d&#x27;ensemble de l&#x27;interface n8n avec une bannière en haut indiquant la sortie prochaine de la version 2.0." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000351_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:51</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;interface n8n avec une bannière en haut indiquant la sortie prochaine de la version 2.0.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000355_seg10.jpg" alt="Page web de documentation de n8n annonçant officiellement la sortie de la version 2.0 avec les détails et dates de déploiement." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000355_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:55</span>
+                        <span class="caption-text">Page web de documentation de n8n annonçant officiellement la sortie de la version 2.0 avec les détails et dates de déploiement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:05 - 00:04:38</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc la version 2.0, qui est la bêta, aujourd&#x27;hui 8 décembre, et ensuite la 2.0 stable sort environ une semaine plus tard, le 15. Maintenant, il y a quelques changements majeurs de rupture et nous allons les passer en revue et je vais montrer un exemple, mais je suis vraiment ravi que la majorité des fondations réelles du fonctionnement de n8n soit quasiment exactement la même. Et donc ici dans l&#x27;ancienne version, si je devais copier l&#x27;intégralité de ce workflow et ouvrir la version 2.0, ouvrir un nouveau workflow et le coller dedans, vous pouvez voir que tout se colle parfaitement bien et que tous les nœuds ont toujours les mêmes propriétés, ce qui signifie que le JSON sous-jacent qui construit concrètement les workflows, les connexions et les paramètres est toujours le même.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la documentation et l&#x27;éditeur visuel de n8n.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de l&#x27;annonce n8n v2.0 listant les breaking changes, et diagramme de workflow d&#x27;automatisation IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des notes de version et démonstration d&#x27;un workflow d&#x27;automatisation sur n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000413_seg11.jpg" alt="Page de documentation officielle de n8n listant les nouveautés et changements majeurs de la version 2.0." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000413_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:13</span>
+                        <span class="caption-text">Page de documentation officielle de n8n listant les nouveautés et changements majeurs de la version 2.0.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000421_seg11.jpg" alt="Interface de l&#x27;éditeur de workflow n8n montrant un flux complexe intégrant Veo 3.1, NanoBanana et Sora 2." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000421_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:21</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur de workflow n8n montrant un flux complexe intégrant Veo 3.1, NanoBanana et Sora 2.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:38 - 00:05:03</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En ce qui concerne les changements majeurs, nous avons un changement de comportement, dont je suis sur le point de montrer un exemple, mais nous avons également beaucoup de choses concernant la sécurité, les données backend, la configuration et l&#x27;environnement. Donc, comme je l&#x27;ai dit, beaucoup de changements qui vont simplement aider à modifier et à passer à l&#x27;échelle à l&#x27;avenir. Mais je dois absolument passer en revue ce changement de comportement, qui est vraiment très important, où les données du sous-workflow peuvent en fait être renvoyées au workflow principal s&#x27;il y a eu une sorte d&#x27;attente, ou une sorte d&#x27;approbation humaine ou de retour humain.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la documentation de n8n (n8n Docs)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de documentation technique listant les points de rupture (breaking changes) : blocage par défaut de l&#x27;accès aux variables d&#x27;environnement depuis le Code Node, application stricte des permissions de fichiers (0600), et activation des task runners par défaut.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les notes de version de n8n v2.0 affichées à l&#x27;écran, en insistant sur les aspects de sécurité et de configuration.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000444_seg12.jpg" alt="Capture d&#x27;écran de la documentation officielle de n8n affichant les notes de version et les changements majeurs de la version 2.0, notamment concernant la sécurité et les variables d&#x27;environnement." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000444_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:44</span>
+                        <span class="caption-text">Capture d&#x27;écran de la documentation officielle de n8n affichant les notes de version et les changements majeurs de la version 2.0, notamment concernant la sécurité et les variables d&#x27;environnement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:03 - 00:05:22</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et donc vous pouvez aller consulter la documentation pour en savoir plus sur tout cela si vous le souhaitez, mais je vais juste vous montrer un exemple de la façon dont tout cela fonctionne et de ce que cela signifie réellement. D&#x27;accord, donc les sous-workflows, pouvoir attendre et renvoyer des données que l&#x27;agent peut réellement utiliser. Donc c&#x27;est la version 1.0. Et ce que nous faisons ici, c&#x27;est que nous avons un sous-workflow, qui va obtenir une approbation. Donc voici le sous-workflow.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (documentation et interface de création de workflows)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation sur les sous-workflows n8n et diagramme de workflow avec un nœud AI Agent connecté à OpenRouter Chat Model et un outil &#x27;Get approval&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la documentation et des exemples de configuration de sous-workflows dans n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000508_seg13.jpg" alt="Documentation officielle de n8n montrant les changements de version v2.0 concernant les sous-workflows et l&#x27;exécution parente." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000508_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:08</span>
+                        <span class="caption-text">Documentation officielle de n8n montrant les changements de version v2.0 concernant les sous-workflows et l&#x27;exécution parente.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000512_seg13.jpg" alt="Interface de l&#x27;éditeur n8n affichant un workflow nommé &#x27;Parent Wait&#x27; avec un nœud &#x27;AI Agent&#x27;, un modèle OpenRouter et un outil de validation." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000512_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:12</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur n8n affichant un workflow nommé &#x27;Parent Wait&#x27; avec un nœud &#x27;AI Agent&#x27;, un modèle OpenRouter et un outil de validation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:22 - 00:05:45</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il s&#x27;agit essentiellement d&#x27;utiliser l&#x27;opération envoyer et attendre dans Slack pour obtenir une approbation ou un refus. Et lorsque l&#x27;agent principal fait appel à cela, ce que vous verrez, c&#x27;est que l&#x27;agent va attendre. Mais ensuite, lorsque nous cliquons sur la réponse, l&#x27;agent ne voit en réalité pas ce que le flux de travail a fourni. Donc je sais que cela peut n&#x27;avoir aucun sens. Laissez-moi donc vous montrer. Très bien, alors je dis à l&#x27;agent de bien vouloir obtenir une approbation pour la note de service suivante, qui est : « Hé l&#x27;équipe, nous déplaçons nos mercredis de la crème glacée aux jeudis à la place. »</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de construction de workflows d&#x27;agents IA (style Langflow ou outil similaire)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme avec les nœuds &#x27;When chat message received&#x27;, &#x27;AI Agent&#x27;, &#x27;OpenRouter Chat Model&#x27; et &#x27;Get approval&#x27; reliés entre eux.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et explication du flux d&#x27;exécution et des connexions entre l&#x27;agent principal et l&#x27;outil d&#x27;approbation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000527_seg14.jpg" alt="Un éditeur de workflow d&#x27;agents IA montrant un diagramme avec un déclencheur de message, un bloc &#x27;AI Agent&#x27; connecté à un modèle OpenRouter et à un outil &#x27;Get approval&#x27;." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000527_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:27</span>
+                        <span class="caption-text">Un éditeur de workflow d&#x27;agents IA montrant un diagramme avec un déclencheur de message, un bloc &#x27;AI Agent&#x27; connecté à un modèle OpenRouter et à un outil &#x27;Get approval&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:45 - 00:06:03</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et donc ce que vous pouvez voir, c&#x27;est qu&#x27;il a fait appel à l&#x27;outil d&#x27;obtention d&#x27;approbation et qu&#x27;il va rester là à attendre jusqu&#x27;à ce que nous obtenions une sorte de réponse de la part de notre équipe. Et donc si je vais dans Slack et que nous voyons juste ici, nous avons reçu ce message où nous pouvons approuver ou refuser, je vais aller de l&#x27;avant et approuver ce message et nous obtenons ce succès et je reviens dans le flux de travail et il se termine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de workflow d&#x27;automatisation IA et application de messagerie Slack.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Message de demande d&#x27;approbation envoyé par l&#x27;agent IA : &#x27;Please approve or deny the following memo: Hey team, we&#x27;re moving our Ice Cream Wednesdays to Thursdays instead.&#x27;</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA exécute le workflow et se met en pause en attendant l&#x27;approbation humaine sur Slack.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000550_seg15.jpg" alt="Interface de workflow montrant un agent IA en cours d&#x27;exécution avec un outil &#x27;Get approval&#x27; en attente de réponse." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000550_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:50</span>
+                        <span class="caption-text">Interface de workflow montrant un agent IA en cours d&#x27;exécution avec un outil &#x27;Get approval&#x27; en attente de réponse.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000559_seg15.jpg" alt="Interface de l&#x27;application Slack affichant un message de demande d&#x27;approbation avec les boutons &#x27;Decline&#x27; et &#x27;Approve&#x27;." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000559_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:59</span>
+                        <span class="caption-text">Interface de l&#x27;application Slack affichant un message de demande d&#x27;approbation avec les boutons &#x27;Decline&#x27; et &#x27;Approve&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:04 - 00:06:23</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ce que l&#x27;agent nous répond, c&#x27;est : J&#x27;ai soumis la note de service pour approbation concernant le déplacement du mercredi des glaces au jeudi. Y a-t-il autre chose que vous aimeriez que je fasse ? Et donc, nous ne savons pas réellement si l&#x27;équipe a approuvé ou refusé cela. Parce que si je clique sur l&#x27;outil, vous pouvez voir que la réponse que nous avons obtenue de l&#x27;outil n&#x27;était pratiquement rien. Tout ce que nous savons, c&#x27;est l&#x27;identifiant de session, l&#x27;action, la saisie du chat, la note de service, l&#x27;identifiant d&#x27;appel d&#x27;outil.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow d&#x27;automatisation et d&#x27;agents IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow n8n avec les nœuds &quot;OpenRouter Chat Model&quot;, &quot;Get approval&quot;, et le panneau de chat interactif montrant l&#x27;interaction avec l&#x27;agent IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et explication du fonctionnement de l&#x27;agent IA et de ses outils d&#x27;approbation dans l&#x27;interface n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000608_seg16.jpg" alt="Interface n8n montrant un workflow d&#x27;agent IA avec le panneau de chat affichant la réponse de l&#x27;agent sur l&#x27;approbation de la note de service." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000608_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:08</span>
+                        <span class="caption-text">Interface n8n montrant un workflow d&#x27;agent IA avec le panneau de chat affichant la réponse de l&#x27;agent sur l&#x27;approbation de la note de service.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000618_seg16.jpg" alt="Panneau de configuration du nœud &quot;Get approval&quot; dans n8n, détaillant les paramètres et les données de sortie (output) d&#x27;un appel d&#x27;outil (tool call)." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000618_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:18</span>
+                        <span class="caption-text">Panneau de configuration du nœud &quot;Get approval&quot; dans n8n, détaillant les paramètres et les données de sortie (output) d&#x27;un appel d&#x27;outil (tool call).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:24 - 00:06:46</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc aucune information qui ne soit réellement précieuse pour nous. Donc si je vais réellement dans le flux de travail et que je vais dans l&#x27;exécution qui vient de s&#x27;exécuter, qui est ce flux de travail juste ici, vous pouvez voir que la réponse de cette opération Slack était que l&#x27;approbation était vraie. Et donc c&#x27;est ce que vous voulez réellement que l&#x27;agent IA dans ce flux voie, mais il ne le voit pas. Donc nous allons faire exactement le même flux, exactement le même flux de travail dans la version 2.0.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (interface de création de workflows d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow connectés (Webhook, Slack, AI Agent, OpenRouter) et données JSON de sortie de l&#x27;opération Slack.
+[DESC_IMAGE_3_ALT] Navigation et explication des flux de travail dans l&#x27;éditeur de l&#x27;application.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et explication des résultats d&#x27;exécution du workflow d&#x27;approbation Slack dans l&#x27;interface n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000629_seg17.jpg" alt="Vue d&#x27;ensemble du workflow n8n &#x27;Child Wait&#x27; montrant les nœuds de déclenchement et Slack." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000629_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:29</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du workflow n8n &#x27;Child Wait&#x27; montrant les nœuds de déclenchement et Slack.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000635_seg17.jpg" alt="Panneau de configuration du nœud Slack avec la sortie JSON affichant &#x27;approved: true&#x27;." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000635_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:35</span>
+                        <span class="caption-text">Panneau de configuration du nœud Slack avec la sortie JSON affichant &#x27;approved: true&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000640_seg17.jpg" alt="Vue d&#x27;ensemble du workflow principal &#x27;Parent Wait&#x27; avec l&#x27;agent IA, le modèle OpenRouter et l&#x27;outil &#x27;Get approval&#x27;." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000640_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:40</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du workflow principal &#x27;Parent Wait&#x27; avec l&#x27;agent IA, le modèle OpenRouter et l&#x27;outil &#x27;Get approval&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:46 - 00:07:21</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais avant de faire cela, je voulais vous montrer une différence. Dans la version 1 de N8N, si vous aviez un sous-flux de travail, il pouvait être inactif parce que le flux de travail principal pouvait l&#x27;appeler, ce qui l&#x27;activait essentiellement. Mais dans la version 2, votre sous-flux de travail doit être publié afin d&#x27;être appelé par un autre flux de travail. Vous pouvez donc voir ici que si j&#x27;essaie de configurer cet outil pour appeler le flux de travail de poids enfant, il est indiqué qu&#x27;il doit être publié avant d&#x27;être utilisé, je devrais donc aller dans ce flux de travail, je devrais cliquer sur publier et je pourrais lui donner un nom de version et une description concernant les modifications apportées. Et maintenant que je clique sur publier, nous pouvons effectivement le déclencher à partir d&#x27;un flux de travail différent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de flux de travail)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow n8n (When chat message received, AI Agent, OpenRouter Chat Model, Get approval) et fenêtre modale de publication de workflow.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et configuration de nœuds dans un workflow n8n, puis ouverture de la fenêtre de publication pour versionner le sous-flux.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000654_seg18.jpg" alt="Interface n8n montrant un workflow avec un nœud &#x27;AI Agent&#x27;, relié à un nœud &#x27;OpenRouter Chat Model&#x27; et un sous-flux &#x27;Get approval&#x27;." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000654_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:54</span>
+                        <span class="caption-text">Interface n8n montrant un workflow avec un nœud &#x27;AI Agent&#x27;, relié à un nœud &#x27;OpenRouter Chat Model&#x27; et un sous-flux &#x27;Get approval&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000712_seg18.jpg" alt="Boîte de dialogue &#x27;Publish workflow&#x27; dans l&#x27;interface n8n permettant de nommer et publier une version du sous-flux de travail." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000712_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:12</span>
+                        <span class="caption-text">Boîte de dialogue &#x27;Publish workflow&#x27; dans l&#x27;interface n8n permettant de nommer et publier une version du sous-flux de travail.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:21 - 00:07:39</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc maintenant, je peux aller ici et je peux choisir le flux de travail de pondération enfant. Donc ici, je vais envoyer exactement le même message. Veuillez obtenir une approbation sur la note suivante. Salut l&#x27;équipe, nous déplaçons nos mercredis de la crème glacée aux jeudis, vous pouvez voir ici que cela a déclenché la demande vers l&#x27;outil d&#x27;approbation. Et ça va continuer et rester ici à attendre que nous allions approuver cela dans Slack.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation de workflow (éditeur de type n8n ou plateforme similaire d&#x27;agent IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Message dans le chat de test : &quot;Please get approval on the following memo: Hey team, we&#x27;re moving our Ice Cream Wednesdays to Thursdays instead&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur configure et teste l&#x27;envoi d&#x27;un message pour déclencher le workflow d&#x27;approbation dans l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000725_seg19.jpg" alt="Interface d&#x27;un éditeur de workflow d&#x27;agents IA montrant un diagramme avec un déclencheur de message de chat, un agent IA relié à un modèle OpenRouter et un outil d&#x27;approbation." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000725_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:25</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow d&#x27;agents IA montrant un diagramme avec un déclencheur de message de chat, un agent IA relié à un modèle OpenRouter et un outil d&#x27;approbation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:39 - 00:07:58</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais passer par ici. Je vais à nouveau approuver cette action. Nous obtenons notre message de réussite. Et quand je retourne ici, il est effectivement écrit que la note de service pour déplacer les mercredis de la crème glacée aux jeudis a été approuvée. Voudrais-tu que je t&#x27;aide ? Blabla, blabla, blabla. Et si je clique sur cet outil, nous pouvons voir que nous obtenons effectivement ce message de réponse du sous-flux de travail, qui indique qu&#x27;il a été approuvé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de workflow d&#x27;automatisation (type n8n ou plateforme similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow comprenant &quot;When chat message received&quot;, &quot;AI Agent&quot;, &quot;OpenRouter Chat Model&quot;, et &quot;Get approval&quot; ; panneau de chat avec le message de confirmation.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un workflow d&#x27;agent IA et vérification du résultat d&#x27;approbation d&#x27;une note de service.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000744_seg20.jpg" alt="Vue d&#x27;ensemble du workflow d&#x27;agent IA dans une interface de type canvas avec une notification de succès d&#x27;exécution et la sortie du chat." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000744_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:44</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du workflow d&#x27;agent IA dans une interface de type canvas avec une notification de succès d&#x27;exécution et la sortie du chat.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000753_seg20.jpg" alt="Panneau de configuration de l&#x27;étape &quot;Get approval&quot; affichant les paramètres et les données de sortie avec le champ &quot;approved&quot; réglé sur true." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000753_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:53</span>
+                        <span class="caption-text">Panneau de configuration de l&#x27;étape &quot;Get approval&quot; affichant les paramètres et les données de sortie avec le champ &quot;approved&quot; réglé sur true.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:58 - 00:08:32</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et encore une fois, ce sous-flux de travail réel ici est exactement le même que celui que nous venons de voir dans la version un. C&#x27;est exactement la même chose et il répond avec le même message approuvé. Donc, évidemment, ce n&#x27;était qu&#x27;un cas d&#x27;utilisation. Il y a des tonnes de moments où l&#x27;on veut qu&#x27;un sous-flux de travail puisse attendre, ou que l&#x27;on veut qu&#x27;un agent puisse attendre une intervention humaine, ou pour vous savez, un sondage ou quoi que ce soit d&#x27;autre, et maintenant c&#x27;est possible. Et juste une autre petite parenthèse, si vous voulez dépublier un flux de travail, vous devez essentiellement, au lieu de le désactiver ici en haut, aller dans vos paramètres, puis cliquer simplement sur ce bouton ici qui dit dépublier. Il y a deux autres fonctionnalités que je veux présenter qui ne sont pas vraiment nouvelles pour cette</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;outil d&#x27;automatisation n8n.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration du nœud Slack avec les paramètres d&#x27;envoi de message et d&#x27;attente de réponse (&quot;approved: true&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Explication et visualisation de la structure d&#x27;un sous-flux de travail automatisé de validation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000807_seg21.jpg" alt="Capture montrant les paramètres détaillés du nœud Slack &quot;Send message and wait for response&quot; dans n8n, avec un aperçu des données d&#x27;entrée et de sortie." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000807_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:07</span>
+                        <span class="caption-text">Capture montrant les paramètres détaillés du nœud Slack &quot;Send message and wait for response&quot; dans n8n, avec un aperçu des données d&#x27;entrée et de sortie.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000815_seg21.jpg" alt="Vue globale du canevas d&#x27;un workflow n8n montrant l&#x27;enchaînement de deux blocs : &quot;When Executed by Another Workflow&quot; et &quot;Send message and wait for response&quot;." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000815_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:15</span>
+                        <span class="caption-text">Vue globale du canevas d&#x27;un workflow n8n montrant l&#x27;enchaînement de deux blocs : &quot;When Executed by Another Workflow&quot; et &quot;Send message and wait for response&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:32 - 00:09:05</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">mise à jour, mais je pense que ce sont des fonctionnalités très discrètes. Je veux donc simplement les mettre un peu en valeur. Nous avons ce panneau latéral juste ici, qui s&#x27;appelle un panneau de focalisation. Et vous pouvez voir que nous pouvons afficher les paramètres des nœuds et en fait les modifier tout en construisant sur le canevas ici. Donc si je clique sur l&#x27;agent IA et que nous cliquons sur le message système, il y a un petit bouton de paramètre de focalisation juste ici. Si je clique dessus, cela ouvre en fait le message système de l&#x27;agent sur le côté. Nous pouvons donc procéder à sa personnalisation et continuer à construire, puis nous pouvons exécuter l&#x27;agent et nous pouvons continuer à faire des choses comme ça tout en ayant une vue complète du canevas ici,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (Interface de conception de workflows d&#x27;automatisation IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow d&#x27;agent IA comprenant un déclencheur de chat, un modèle OpenRouter, Slack et Perplexity, avec des champs de configuration de prompt (System Message : &quot;You are a helpful assistant&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Manipulation de l&#x27;interface n8n pour ouvrir et épingler un paramètre de nœud dans le panneau latéral de focalisation afin de pouvoir l&#x27;éditer plus facilement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000841_seg22.jpg" alt="Vue d&#x27;ensemble de l&#x27;interface n8n montrant un workflow avec un nœud AI Agent et le panneau latéral de focalisation vide à droite." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000841_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:41</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;interface n8n montrant un workflow avec un nœud AI Agent et le panneau latéral de focalisation vide à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000849_seg22.jpg" alt="Gros plan sur la configuration détaillée d&#x27;un nœud AI Agent dans n8n, affichant les paramètres et le champ du message système." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000849_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:49</span>
+                        <span class="caption-text">Gros plan sur la configuration détaillée d&#x27;un nœud AI Agent dans n8n, affichant les paramètres et le champ du message système.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000857_seg22.jpg" alt="Retour à la vue principale de n8n avec le panneau de focalisation latéral activé à droite, affichant spécifiquement les paramètres du message système." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000857_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:57</span>
+                        <span class="caption-text">Retour à la vue principale de n8n avec le panneau de focalisation latéral activé à droite, affichant spécifiquement les paramètres du message système.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:05 - 00:09:38</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce qui est plutôt sympa parce que ça ne doit pas être juste un prompt système d&#x27;agent. Ça peut aussi être différents paramètres ou différents nœuds. Par exemple, dans celui-ci sur Slack, on pourrait en fait créer le message à envoyer sur un panneau de focus ici et continuer à itérer là-dessus et à déplacer des variables au fur et à mesure qu&#x27;on construit le reste de la logique. Et puis un autre truc sympa en termes de productividad que beaucoup de gens n&#x27;utilisent pas, c&#x27;est que quand vous êtes dans des nœuds du côté gauche et du côté droit, vous pouvez passer d&#x27;un nœud à l&#x27;autre comme ça au lieu de devoir, vous savez, à chaque fois cliquer en dehors puis double-cliquer pour revenir dedans, et ça marche aussi pour les configurations d&#x27;agents où, si je suis dans l&#x27;agent, je peux aller directement sur le chat, je peux revenir en arrière</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflows d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : « When clicking &#x27;Execute workflow&#x27; », « Search Term », « Message a model », « Send a message ». Variable JSON affichée : `{{ $json.choices[0].message.content }}`.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et configuration des nœuds dans l&#x27;interface du constructeur de flux d&#x27;automatisation n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000913_seg23.jpg" alt="Vue d&#x27;un workflow n8n avec un panneau latéral droit ouvert sur les paramètres d&#x27;un nœud Slack (« Send a message »)." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000913_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:13</span>
+                        <span class="caption-text">Vue d&#x27;un workflow n8n avec un panneau latéral droit ouvert sur les paramètres d&#x27;un nœud Slack (« Send a message »).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000922_seg23.jpg" alt="Vue d&#x27;ensemble du workflow n8n montrant quatre nœuds connectés : déclencheur, terme de recherche, modèle de message et envoi Slack." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000922_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:22</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du workflow n8n montrant quatre nœuds connectés : déclencheur, terme de recherche, modèle de message et envoi Slack.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000930_seg23.jpg" alt="Vue détaillée des paramètres d&#x27;un nœud de recherche (« Search Term ») avec le champ de saisie « topic » configuré sur « artificial intelligence for marketing teams »." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000930_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:30</span>
+                        <span class="caption-text">Vue détaillée des paramètres d&#x27;un nœud de recherche (« Search Term ») avec le champ de saisie « topic » configuré sur « artificial intelligence for marketing teams ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:38 - 00:09:58</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vers l&#x27;agent, je peux descendre au modèle de chat, je peux remonter vers l&#x27;agent et je peux aussi choisir entre les différents outils ici bas, que ce soit Slack et puis remonter vers l&#x27;agent ou si je voulais aller sur Perplexity, donc juste une autre façon de gagner quelques secondes ici et là, mais sur le long d&#x27;une année, pensez à tout cet RSI annualisé. Je voulais donc aussi parler de la migration.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (Interface de conception de workflows d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : When chat message received, AI Agent, OpenRouter Chat Model, Send a message in Slack, Message a model in Perplexity.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des connexions entre l&#x27;agent IA, le modèle de langage et les outils externes (Slack, Perplexity).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000943_seg24.jpg" alt="Gros plan sur le panneau de configuration d&#x27;un agent IA dans n8n, montrant les paramètres du prompt et les outils disponibles." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000943_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:43</span>
+                        <span class="caption-text">Gros plan sur le panneau de configuration d&#x27;un agent IA dans n8n, montrant les paramètres du prompt et les outils disponibles.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_000953_seg24.jpg" alt="Vue d&#x27;ensemble du workflow sur n8n montrant un agent IA connecté à un modèle de chat OpenRouter, Slack et Perplexity." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_000953_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:53</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du workflow sur n8n montrant un agent IA connecté à un modèle de chat OpenRouter, Slack et Perplexity.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:58 - 00:10:17</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il y a donc un outil de migration NNN v2.0, et vous pouvez venir sur la documentation une fois de plus et lire sur la façon dont tout cela fonctionne et tous les différents problèmes que vous pourriez rencontrer. Mais en fait, la façon d&#x27;accéder à cela est que dans votre NNN, vous allez aller dans vos paramètres. Vous devriez voir sur le côté gauche ici un rapport de migration, et il vous dira fondamentalement combien de vos workflows sont déjà compatibles avec la version 2.0.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Documentation web n8n et interface utilisateur n8n</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de documentation technique sur la migration v2.0 et liste des workflows de l&#x27;application (My workflow 56, Parent Wait, etc.)</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la documentation de l&#x27;outil de migration puis navigation vers l&#x27;interface n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_001003_seg25.jpg" alt="Documentation officielle de n8n montrant la page sur l&#x27;outil de migration v2.0 et l&#x27;accès via les paramètres." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_001003_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:03</span>
+                        <span class="caption-text">Documentation officielle de n8n montrant la page sur l&#x27;outil de migration v2.0 et l&#x27;accès via les paramètres.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_001008_seg25.jpg" alt="Interface principale du tableau de bord n8n affichant la liste des workflows et les statistiques de production." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_001008_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:08</span>
+                        <span class="caption-text">Interface principale du tableau de bord n8n affichant la liste des workflows et les statistiques de production.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:17 - 00:10:52</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et il vous montrera les différences entre vos problèmes de flux de travail ou certains problèmes d&#x27;instance, ainsi qu&#x27;un score de priorité ou un score d&#x27;urgence. Et tout cela devrait pratiquement avoir une documentation. Donc, si ceux-ci portent à confusion, vous pouvez aller les lire et vous assurer que tout cela est résolu. Encore une fois, cela arrivera pour l&#x27;édition communautaire cloud et auto-hébergée, peu importe où vous voulez avoir votre NNN, cela va arriver. Dans la vidéo d&#x27;aujourd&#x27;hui, je vous montrais la version 2.0 dans ma version auto-hébergée de NNN avec Hostinger. Si vous voulez regarder une vidéo complète sur la façon dont vous pouvez configurer cela, vous pouvez cliquer sur le lien là-haut. Et vous pouvez également utiliser le code NateHerk pour 10 % de réduction sur les abonnements annuels lorsque vous vous auto-hébergez sur Hostinger. Et si vous voulez approfondir NNN et l&#x27;IA</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web n8n (paramètres et éditeur de workflow)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Compatibility report for version 2.0.0, Instance issues, Workflow issues, AI Agent workflow avec nœuds OpenRouter, Slack et Perplexity.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans les rapports de compatibilité n8n et présentation de l&#x27;éditeur de workflow d&#x27;un agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_001026_seg26.jpg" alt="Rapport de compatibilité n8n montrant les problèmes d&#x27;instance et de flux de travail avec leurs niveaux de sévérité et liens vers la documentation." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_001026_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:26</span>
+                        <span class="caption-text">Rapport de compatibilité n8n montrant les problèmes d&#x27;instance et de flux de travail avec leurs niveaux de sévérité et liens vers la documentation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_001035_seg26.jpg" alt="Éditeur de workflow n8n affichant un agent IA connectant un modèle OpenRouter avec des outils Slack et Perplexity." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_001035_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:35</span>
+                        <span class="caption-text">Éditeur de workflow n8n affichant un agent IA connectant un modèle OpenRouter avec des outils Slack et Perplexity.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:52 - 00:11:07</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des automatisations et de vous connecter avec d&#x27;autres personnes qui font de même, alors consultez définitivement ma communauté Plus. Le lien pour cela sera en bas. Mais c&#x27;est tout pour aujourd&#x27;hui. J&#x27;espère que vous avez apprécié ou que vous avez appris quelque chose de nouveau. Si c&#x27;est le cas, veuillez laisser un pouce bleu. Ça m&#x27;aide énormément. Et comme toujours, je vous remercie tous d&#x27;être arrivés jusqu&#x27;à la fin de la vidéo. Je vous vois dans la prochaine. Merci les gars.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme Skool et l&#x27;interface n8n.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publications de communauté, discussions, et diagramme de workflow IA avec nœuds connectés (OpenRouter Chat Model, Send a message in Slack, Message a model in Perplexity).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la communauté d&#x27;automatisation puis d&#x27;un exemple de workflow d&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_001056_seg27.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de la communauté Skool &quot;AI Automation Society Plus&quot; avec des publications épinglées sur les workflows n8n." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_001056_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:56</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de la communauté Skool &quot;AI Automation Society Plus&quot; avec des publications épinglées sur les workflows n8n.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/67BVIScAlbs/67BVIScAlbs_001100_seg27.jpg" alt="Capture d&#x27;écran montrant l&#x27;éditeur de workflow n8n avec un agent IA connecté à OpenRouter, Slack et Perplexity." loading="lazy" onclick="openLightbox('../screenshots/67BVIScAlbs/67BVIScAlbs_001100_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:00</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;éditeur de workflow n8n avec un agent IA connecté à OpenRouter, Slack et Perplexity.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
