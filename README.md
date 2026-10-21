@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `223 / 358` (`62.3%`)
+- **Vidéos traitées** : `224 / 358` (`62.6%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -240,6 +240,7 @@
 | 2025-12-15 | [jx-yvSRLKrA](https://www.youtube.com/watch?v=jx-yvSRLKrA) | **Nouvelle sortie du Chat Hub de n8n : ce qu'il faut savoir** | [2025-12-15_YT-[jx-yvSRLKrA]_Nouvelle sortie du Chat Hub de n8n ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-15_YT-[jx-yvSRLKrA]_Nouvelle sortie du Chat Hub de n8n ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-15_YT-[jx-yvSRLKrA]_Nouvelle sortie du Chat Hub de n8n ce qu'il faut savoir_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `33` |
 | 2025-12-10 | [Fqeo8q8-nJg](https://www.youtube.com/watch?v=Fqeo8q8-nJg) | **Comment j'apprendrais n8n si je devais tout recommencer en 2026** | [2025-12-10_YT-[Fqeo8q8-nJg]_Comment j'apprendrais n8n si je devais tout recommencer en 2026_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-10_YT-[Fqeo8q8-nJg]_Comment j'apprendrais n8n si je devais tout recommencer en 2026_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-10_YT-[Fqeo8q8-nJg]_Comment j'apprendrais n8n si je devais tout recommencer en 2026_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `30` |
 | 2025-12-08 | [67BVIScAlbs](https://www.youtube.com/watch?v=67BVIScAlbs) | **n8n 2.0 est là (Ce que vous devez savoir)** | [2025-12-08_YT-[67BVIScAlbs]_n8n 2.0 est là (Ce que vous devez savoir)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-08_YT-[67BVIScAlbs]_n8n 2.0 est là (Ce que vous devez savoir)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-08_YT-[67BVIScAlbs]_n8n 2.0 est là (Ce que vous devez savoir)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `47` |
+| 2025-12-07 | [y-cq_Qo4zVo](https://www.youtube.com/watch?v=y-cq_Qo4zVo) | **J'ai créé un standardiste vocal IA avec Vapi et le MCP n8n (modèle gratuit)** | [2025-12-07_YT-[y-cq_Qo4zVo]_J'ai créé un standardiste vocal IA avec Vapi et le MCP n8n (modèle gratuit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-12-07_YT-[y-cq_Qo4zVo]_J'ai créé un standardiste vocal IA avec Vapi et le MCP n8n (modèle gratuit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-12-07_YT-[y-cq_Qo4zVo]_J'ai créé un standardiste vocal IA avec Vapi et le MCP n8n (modèle gratuit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `120` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
