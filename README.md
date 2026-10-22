@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `246 / 358` (`68.7%`)
+- **Vidéos traitées** : `247 / 358` (`69.0%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -263,6 +263,7 @@
 | 2025-10-22 | [Vm8QOo9MiC4](https://www.youtube.com/watch?v=Vm8QOo9MiC4) | **Create ANYTHING with Sora 2 + n8n AI Agents (Full Beginner's Guide)** | [2025-10-22_YT-[Vm8QOo9MiC4]_Create ANYTHING with Sora 2 + n8n AI Agents (Full Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-10-22_YT-[Vm8QOo9MiC4]_Create ANYTHING with Sora 2 + n8n AI Agents (Full Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-10-22_YT-[Vm8QOo9MiC4]_Create ANYTHING with Sora 2 + n8n AI Agents (Full Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-10-18 | [5uw1wE6niGc](https://www.youtube.com/watch?v=5uw1wE6niGc) | **Build Your First RAG Pipeline for Better RAG (step-by-step)** | [2025-10-18_YT-[5uw1wE6niGc]_Build Your First RAG Pipeline for Better RAG (step-by-step)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-10-18_YT-[5uw1wE6niGc]_Build Your First RAG Pipeline for Better RAG (step-by-step)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-10-18_YT-[5uw1wE6niGc]_Build Your First RAG Pipeline for Better RAG (step-by-step)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-10-15 | [ip8FEYOQob0](https://www.youtube.com/watch?v=ip8FEYOQob0) | **You’re Doing AI Automation Wrong (Here’s How to Fix It)** | [2025-10-15_YT-[ip8FEYOQob0]_You’re Doing AI Automation Wrong (Here’s How to Fix It)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-10-15_YT-[ip8FEYOQob0]_You’re Doing AI Automation Wrong (Here’s How to Fix It)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-10-15_YT-[ip8FEYOQob0]_You’re Doing AI Automation Wrong (Here’s How to Fix It)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `12` |
+| 2025-10-10 | [tFFKuq2t0rI](https://www.youtube.com/watch?v=tFFKuq2t0rI) | **Créez TOUT ce que vous voulez avec Base44 et les agents IA n8n (guide pour débutants)** | [2025-10-10_YT-[tFFKuq2t0rI]_Créez TOUT ce que vous voulez avec Base44 et les agents IA n8n (guide pour début_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-10-10_YT-[tFFKuq2t0rI]_Créez TOUT ce que vous voulez avec Base44 et les agents IA n8n (guide pour début_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-10-10_YT-[tFFKuq2t0rI]_Créez TOUT ce que vous voulez avec Base44 et les agents IA n8n (guide pour début_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `86` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
