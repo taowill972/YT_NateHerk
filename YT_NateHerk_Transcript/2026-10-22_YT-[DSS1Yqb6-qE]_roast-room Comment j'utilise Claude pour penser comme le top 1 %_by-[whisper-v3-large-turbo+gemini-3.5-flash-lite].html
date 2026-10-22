@@ -1,0 +1,2350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 /roast-room : Comment j&#x27;utilise Claude pour penser comme le top 1 % — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 /roast-room : Comment j&#x27;utilise Claude pour penser comme le top 1 %</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-10-22</span>
+                <span class="badge">⏱️ 00:15:00</span>
+                <span class="badge">🆔 <code>DSS1Yqb6-qE</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=DSS1Yqb6-qE" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **/roast-room : Comment j'utilise Claude pour penser comme le top 1 %**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, juste ici, vous pouvez voir que j&#x27;ai Jeff Bezos, Paul Graham, Alex Ramosi, Gary Vee, Dan Martel, Gino Wickman et Warren Buffett qui discutent tous d&#x27;une question business que j&#x27;avais. En gros, vous envoyez une question avec différentes options et tous ces différents membres du conseil vont en quelque sorte se réunir, passer votre idée au grill et vous aider à y réfléchir d&#x27;une manière différente. Parce que chacun de ces sièges a une question spécifique sur laquelle il se concentre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (application web &quot;Roast Room&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau latéral affichant les &quot;Key Points&quot; et les positions d&#x27;ouverture des membres (Bezos, Graham). Au centre, un avatar de Paul Graham avec un texte détaillant une recommandation stratégique (&quot;Option C, but pick the 5 by hand...&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration visuelle de l&#x27;outil de simulation de débat par IA où plusieurs agents personnalisés interagissent sur une problématique métier.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000005_seg1.jpg" alt="Interface de l&#x27;application &quot;Roast Room&quot; montrant un conseil consultatif virtuel composé d&#x27;avatars de personnalités du monde des affaires (Bezos, Paul Graham, Alex Hormozi, Gary Vee, etc.) analysant une question posée." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Interface de l&#x27;application &quot;Roast Room&quot; montrant un conseil consultatif virtuel composé d&#x27;avatars de personnalités du monde des affaires (Bezos, Paul Graham, Alex Hormozi, Gary Vee, etc.) analysant une question posée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:21 - 00:00:54</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et maintenant vous pouvez voir ce qui se passe, c&#x27;est qu&#x27;ils sont en train de débattre entre eux. Donc Jeff Bezos débattait avec Gary Vee. Même chose avec Paul Graham et Gary Vee. Maintenant j&#x27;ai Alex Hormozi qui s&#x27;en prend à Gary Vee aussi. Et wow, tout le monde décide de s&#x27;en prendre à Gary V dans cette salle de roast. C&#x27;est fou. Et voilà, Warren Buffett s&#x27;en prend à Hormozi. Mais le fait est que, comme je l&#x27;ai dit, tout le monde a sa propre question sur laquelle il se concentre. Donc la question de Warren Buffett est : qu&#x27;est-ce que ça fait à la trésorerie, au risque et à la valeur à long terme ? La question d&#x27;Alex Hormozi est : est-ce que les gens vont payer ? Combien ? Et comment on conclut ? Et la question de Gino Wickman est : est-ce que l&#x27;entreprise peut tourner sans que le fondateur ne tienne tout ensemble ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web propriétaire &quot;Roast Room&quot; (système d&#x27;IA pour débats et simulations stratégiques).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Arguments textuels comparatifs (Ex: &quot;Gary V, his argument is that volume is the lever...&quot;). 
+- Image 2 : Données de scoring (Final Score 8/10), amendements de stratégie (&quot;Raise the scale gate from 70%...&quot;), et citation de synthèse (&quot;views ain&#x27;t cash, cash is cash&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation au sein d&#x27;une plateforme de simulation décisionnelle où l&#x27;utilisateur observe les échanges, les scores de votes et les recommandations stratégiques générés par des agents IA basés sur des personnalités publiques.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000029_seg2.jpg" alt="Interface web &quot;Roast Room&quot; affichant une discussion structurée sous forme de débat entre des avatars stylisés de personnalités comme Alex Hormozi et Gary Vee." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000029_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:29</span>
+                        <span class="caption-text">Interface web &quot;Roast Room&quot; affichant une discussion structurée sous forme de débat entre des avatars stylisés de personnalités comme Alex Hormozi et Gary Vee.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000045_seg2.jpg" alt="Fenêtre modale détaillée dans l&#x27;application &quot;Roast Room&quot; présentant l&#x27;analyse et le vote simulé d&#x27;Alex Hormozi sur une stratégie de vente et de prix." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000045_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:45</span>
+                        <span class="caption-text">Fenêtre modale détaillée dans l&#x27;application &quot;Roast Room&quot; présentant l&#x27;analyse et le vote simulé d&#x27;Alex Hormozi sur une stratégie de vente et de prix.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:54 - 00:01:15</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, après que ces trois cycles se sont produits, nous pouvons voir que nous avons un verdict final, qui était l&#x27;option C. Et ensuite, nous pouvons également télécharger un PDF, ce qui nous permet de lire ceci et nous pouvons en quelque sorte examiner cela plus en profondeur. Et nous pourrions également partager cela avec notre équipe si nous le voulions. Maintenant, c&#x27;est vraiment juste une couche visuelle par-dessus ce qui se passe réellement dans Cloud Code, qui exécute fondamentalement juste un groupe de sous-agents basés sur ces différents membres du conseil que j&#x27;ai créés.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Roast Room), Terminal Claude Code (CLI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> &quot;The Council&#x27;s Verdict: GO&quot;, détail de l&#x27;option C (5-person, 4-week volunteer pilot), scores des options A, B, C, D. Dans le terminal : &quot;localhost:4731&quot;, &quot;/roast-room should I...&quot;, &quot;Claude Code&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du verdict final par l&#x27;agent, téléchargement du rapport de synthèse au format PDF, et démonstration de l&#x27;exécution via la ligne de commande dans Claude Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000059_seg3.jpg" alt="L&#x27;interface web de &quot;Roast Room&quot; affiche les avatars des conseillers et le verdict final &quot;Option C&quot; avec un bouton de téléchargement PDF." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000059_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:59</span>
+                        <span class="caption-text">L&#x27;interface web de &quot;Roast Room&quot; affiche les avatars des conseillers et le verdict final &quot;Option C&quot; avec un bouton de téléchargement PDF.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000105_seg3.jpg" alt="Affichage d&#x27;un document PDF généré présentant le détail de la décision &quot;AIS Campus Correspondants&quot;, incluant les scores des différentes options." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000105_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:05</span>
+                        <span class="caption-text">Affichage d&#x27;un document PDF généré présentant le détail de la décision &quot;AIS Campus Correspondants&quot;, incluant les scores des différentes options.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000110_seg3.jpg" alt="Vue en écran divisé montrant à gauche le terminal Claude Code (utilisant le modèle Sonnet 5.5) et à droite l&#x27;interface web &quot;Roast Room&quot; en attente de commande." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000110_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:10</span>
+                        <span class="caption-text">Vue en écran divisé montrant à gauche le terminal Claude Code (utilisant le modèle Sonnet 5.5) et à droite l&#x27;interface web &quot;Roast Room&quot; en attente de commande.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:15 - 00:01:34</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc vous n&#x27;avez pas besoin de garder ce localhost ouvert pour exécuter et utiliser ceci, mais c&#x27;est juste une belle visualisation de ce qui se passe. Et c&#x27;est complètement personnalisable, ce qui signifie que vous pouvez changer différents membres du conseil et vous pouvez en créer d&#x27;autres aussi. En fait, dans ce répertoire que je vais vous donner les gars, il y en a déjà quelques autres aussi. Hé, Claude, quels sont les autres membres du conseil à l&#x27;intérieur de notre salle de roast ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google Chrome) affichant une application web personnalisée nommée &quot;Roast Room&quot; (AI Automation Society).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Portraits avatars (Jeff Bezos, Paul Graham, Alex Hormozi, Gary V, Dan Martell, Gino Wickman, Warren Buffett), texte de verdict (&quot;The Council&#x27;s Verdict: GO&quot;) et une colonne latérale résumant les avis de chaque membre du conseil.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation du résultat final généré par l&#x27;agent IA, montrant la prise de décision (&quot;GO&quot;) et les recommandations détaillées basées sur les avis des membres du conseil.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000120_seg4.jpg" alt="Interface web &quot;Roast Room&quot; affichant un conseil de figures d&#x27;affaires générées par IA avec un verdict textuel et une barre latérale de points clés." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000120_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:20</span>
+                        <span class="caption-text">Interface web &quot;Roast Room&quot; affichant un conseil de figures d&#x27;affaires générées par IA avec un verdict textuel et une barre latérale de points clés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:34 - 00:01:57</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et donc voilà Glido qui est en train d&#x27;envoyer un prompt en ce moment même à Claude Code, comme vous pouvez le voir. Et ensuite, cela va nous montrer qui sont les autres membres du conseil. Claude Code répond et dit qu&#x27;il y a 11 sièges. Nous avons les sept par défaut que vous voyez ici. Et puis nous avons aussi Naval, Cody Sanchez, Sarah Blakely et Leila Hermosi. Mais bien sûr, vous pouvez en créer autant d&#x27;autres que vous le souhaitez. C&#x27;est donc une nouvelle fonctionnalité de Glido qui nous permet d&#x27;orchestrer différentes discussions entre différents agents de codage.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Roast Room), Claude Code (agent IA via interface ligne de commande/overlay).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de la réponse de Claude Code : &quot;The Roast Room has 11 seats. The default board of seven members is Jeff Bezos (strategy), Paul Graham (product), Alex Hormozi (offers), Gary Vaynerchuk (marketing), Dan Martell (people), Gino Wickman (operations) and Warren Buffett (money). The four on-call members are Naval Ravikant, Codie Sanchez, Sara Blakely and Leila Hormozi.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation de l&#x27;interface de l&#x27;application &quot;Roast Room&quot; et affichage de la réponse de l&#x27;agent Claude Code concernant la structure de gouvernance du conseil.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000140_seg5.jpg" alt="Interface web du &quot;Roast Room&quot; affichant un conseil composé de 7 avatars de personnalités business (Jeff Bezos, Alex Hormozi, Gary V, etc.) avec leurs recommandations textuelles à droite." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000140_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:40</span>
+                        <span class="caption-text">Interface web du &quot;Roast Room&quot; affichant un conseil composé de 7 avatars de personnalités business (Jeff Bezos, Alex Hormozi, Gary V, etc.) avec leurs recommandations textuelles à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000146_seg5.jpg" alt="Interface de Claude Code (overlay) au centre de l&#x27;écran affichant une réponse détaillée sur la composition du conseil (11 sièges au total, liste des membres par défaut et membres suppléants)." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000146_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:46</span>
+                        <span class="caption-text">Interface de Claude Code (overlay) au centre de l&#x27;écran affichant une réponse détaillée sur la composition du conseil (11 sièges au total, liste des membres par défaut et membres suppléants).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:57 - 00:02:16</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous voulez l&#x27;essayer, vous pouvez obtenir un mois gratuit en utilisant le lien dans la description. Mais bref, je voulais juste vous montrer ça les gars, et laissez-moi vous détailler comment cela fonctionne vraiment. Donc c&#x27;est un dépôt appelé the Roast Room, comme vous pouvez le voir. Et en gros, nous avons ces sept conseillers différents ainsi que quatre supplémentaires. Et je vais probablement continuer d&#x27;en ajouter d&#x27;autres dans le lot également. Mais ce que je voulais vous montrer, ce sont les conseillers. Que sont ces membres du conseil ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant GitHub.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau présentant les rôles de différents conseillers IA : &quot;Jeff Bezos (Stratégie)&quot;, &quot;Paul Graham (Produits)&quot;, &quot;Alex Hormozi (Ventes)&quot;, &quot;Gary Vaynerchuk (Marketing)&quot;, &quot;Dan Martell (RH)&quot;, &quot;Gino Wickman (Opérations)&quot;, &quot;Warren Buffett (Finance)&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du concept du projet &quot;Roast Room&quot; et explication du fonctionnement des conseillers IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000206_seg6.jpg" alt="Capture d&#x27;écran du dépôt GitHub intitulé &quot;Roast Room&quot;. La page montre une présentation du projet avec un tableau listant des conseillers IA célèbres (Jeff Bezos, Paul Graham, Alex Hormozi, etc.) et leurs domaines d&#x27;expertise respectifs." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000206_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:06</span>
+                        <span class="caption-text">Capture d&#x27;écran du dépôt GitHub intitulé &quot;Roast Room&quot;. La page montre une présentation du projet avec un tableau listant des conseillers IA célèbres (Jeff Bezos, Paul Graham, Alex Hormozi, etc.) et leurs domaines d&#x27;expertise respectifs.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:16 - 00:02:36</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Où vivent-ils vraiment ? Ce sont en fait juste un groupe de sous-agents. Donc, si je vais dans le dossier .claude, en fait, laissez-moi zoomer un peu plus. Vous pouvez voir que nous avons des agents. Et ici, nous avons un fichier markdown pour chacun de ces sous-agents. Donc Bezos, Blakely, Buffett, Gary V, Graham, et ainsi de suite. Et si nous en ouvrons un pour que vous puissiez voir ce que c&#x27;est, c&#x27;est littéralement juste un fichier markdown qui contient des informations sur les sous-agents.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant GitHub.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de fichiers comprenant le dossier &quot;.claude&quot; contenant les sous-dossiers &quot;agents&quot; et &quot;skills&quot;, ainsi que les fichiers &quot;launch.json&quot; et &quot;settings.json&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;arborescence du projet pour localiser les fichiers de configuration des agents.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000221_seg7.jpg" alt="Interface GitHub affichant le dépôt &quot;roast-room&quot; avec l&#x27;arborescence du dossier &quot;.claude&quot; sélectionné dans la barre latérale gauche." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000221_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:21</span>
+                        <span class="caption-text">Interface GitHub affichant le dépôt &quot;roast-room&quot; avec l&#x27;arborescence du dossier &quot;.claude&quot; sélectionné dans la barre latérale gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:36 - 00:03:01</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc pour Jeff Bezos, par exemple, sa façon de penser, quelles sont les sources qu&#x27;il référence, comment il prend des décisions, tout ce genre de choses. De sorte que lorsque j&#x27;envoie réellement un prompt au &quot;roast room&quot;, il va passer par les différents membres du conseil et il adopte en quelque sorte leur personnalité, leur façon de penser et de prendre des décisions. Et il est capable de s&#x27;inspirer de choses telles que leurs vraies conversations, leurs conférences, leurs livres, leurs principes, des choses qu&#x27;ils publient publiquement, des articles, ce genre de choses.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un dépôt GitHub (interface de gestion de fichiers).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le fichier Markdown affiche une description détaillée de l&#x27;agent &quot;council-bezos&quot;, précisant qu&#x27;il est basé sur 68 sources publiques (lettres aux actionnaires, témoignages, interviews). Il définit ses outils (Read, Grep, Glob), son nombre maximum de tours (12) et ses instructions système (&quot;You hold the Strategy and decisions seat on the Roast Room council&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation de la documentation de configuration d&#x27;un agent spécifique au sein d&#x27;une bibliothèque d&#x27;agents (&quot;Roast Room&quot;).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000242_seg8.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface GitHub affichant le fichier de configuration &#x27;council-bezos.md&#x27;, qui définit le comportement et les paramètres de l&#x27;agent IA simulant Jeff Bezos." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000242_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:42</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface GitHub affichant le fichier de configuration &#x27;council-bezos.md&#x27;, qui définit le comportement et les paramètres de l&#x27;agent IA simulant Jeff Bezos.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:01 - 00:03:21</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce que vous remarquerez, c&#x27;est qu&#x27;ils auront tous leur propre fichier d&#x27;agent, qui n&#x27;est vraiment pas si long. Ce sont des choses comme la façon dont vous débattez, la façon dont vous parlez, votre angle de vue. Mais ce qui est vraiment intéressant ici, c&#x27;est le cerveau juste ici. Donc nous pouvons voir tous les sous-agents. Mais si je vais réellement dans les compétences de ce répertoire, nous pouvons voir qu&#x27;il y a un dossier de salon de vannes qui contient des cerveaux.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> GitHub (ou éditeur Markdown intégré au navigateur).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Contenu textuel d&#x27;un fichier Markdown détaillant le &quot;système de personnalité&quot; de l&#x27;agent : utilisation de phrases déclaratives courtes, ton optimiste, méthode de débat basée sur les chiffres et les piliers, et directives sur la manière de citer des sources ou d&#x27;interagir avec les points de vue des autres agents.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans le dépôt de fichiers d&#x27;agents (agents-council) pour visualiser la configuration spécifique de l&#x27;agent &quot;Bezos&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000306_seg9.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface d&#x27;un éditeur de fichiers (GitHub ou environnement similaire) affichant le contenu du fichier &quot;council-bezos.md&quot;. Ce fichier définit les directives de comportement pour un agent IA, incluant des sections sur &quot;How you talk&quot; (comment parler) et &quot;How you debate&quot; (comment débattre), avec une liste de fichiers d&#x27;agents similaires dans la barre latérale gauche." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000306_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:06</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface d&#x27;un éditeur de fichiers (GitHub ou environnement similaire) affichant le contenu du fichier &quot;council-bezos.md&quot;. Ce fichier définit les directives de comportement pour un agent IA, incluant des sections sur &quot;How you talk&quot; (comment parler) et &quot;How you debate&quot; (comment débattre), avec une liste de fichiers d&#x27;agents similaires dans la barre latérale gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:21 - 00:03:51</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et encore une fois, il y a un dossier pour chaque membre du conseil que vous souhaitez lancer. Donc si, par exemple, nous ouvrons le cerveau de Layla Hormozi, nous pouvons voir qu&#x27;elle a des livres phares, des cadres de travail, des positions, des principes, des sources, des histoires et une voix. Et c&#x27;est à peu près la même chose que ce que tous ces autres membres du conseil ont également, mais ils ont tous évidemment l&#x27;air différents. Le contenu est différent. Donc si nous ouvrons le « hot » de Layla, ce qui se passe, c&#x27;est que nous pouvons voir que son pilier est : « votre équipe et votre leadership peuvent-ils porter cela, et qui doit changer ? ». Cela nous montre à partir de quoi cela a été construit.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de GitHub (dépôt de fichiers).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de fichiers structurés par personnage : `_hot.md`, `books.md`, `frameworks.md`, `positions.md`, `principles.md`, `sources.md`, `stories.md`, `voice.md`.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;arborescence du dépôt pour illustrer la base de connaissances organisée par membre du conseil.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000329_seg10.jpg" alt="Capture d&#x27;écran montrant l&#x27;arborescence des dossiers dans un dépôt GitHub, avec le dossier « leila-hormozi » ouvert pour révéler ses fichiers de connaissances (books, frameworks, positions, etc.)." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000329_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:29</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;arborescence des dossiers dans un dépôt GitHub, avec le dossier « leila-hormozi » ouvert pour révéler ses fichiers de connaissances (books, frameworks, positions, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:51 - 00:04:11</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc par exemple, Layla a été conçue à partir de 48 sources, environ un demi-million de mots de 2021 à 2026. 14 interviews où elle est l&#x27;invitée principale et 34 de ses propres vidéos sur le leadership et ce genre de choses. Chaque personne ici a huit règles selon lesquelles elle prend ses décisions. Des cadres de référence, des boucles de décision, ce genre de choses. Évidemment, tous les livres qu&#x27;ils ont écrits, les cadres de référence dont ils parlent fréquemment et qu&#x27;ils citent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant GitHub.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du document markdown détaillant les 48 sources (472k mots, 2021-2026), incluant 14 interviews et 34 vidéos, ainsi que les &quot;8 rules&quot; (règles de décision) de Leila Hormozi.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;arborescence des fichiers du dépôt et lecture du contenu textuel d&#x27;un document de configuration d&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000356_seg11.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface GitHub affichant le fichier &quot;hot.md&quot; relatif à Leila Hormozi, avec une mise en évidence textuelle des sources de données utilisées pour entraîner l&#x27;agent." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000356_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:56</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface GitHub affichant le fichier &quot;hot.md&quot; relatif à Leila Hormozi, avec une mise en évidence textuelle des sources de données utilisées pour entraîner l&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:12 - 00:04:30</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Leurs positions sur certaines choses, la tarification, les réductions, la levée de fonds, la dette. Leurs principes, les différentes sources dont cela s&#x27;inspire réellement, des histoires spécifiques dont ils pourraient parler dans des vidéos, des interviews, ce genre de choses. Et chacun de ces cerveaux pour chaque</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface GitHub (dépôt &quot;roast-room&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de sources documentaires (titres de vidéos YouTube, liens et dates) liées à Leila Hormozi, incluant des titres comme &quot;Making $100M At 28&quot; et &quot;How to Overcome Hardships&quot;. Le panneau latéral gauche montre une structure de fichiers organisée par personnalités (gary-vaynerchuk, gino-wickman, jeff-bezos, leila-hormozi, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation de la base de connaissances (Knowledge Base) structurée, montrant comment les principes et histoires sont sourcés et organisés pour alimenter l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000416_seg12.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface GitHub affichant le fichier &quot;sources.md&quot; dans le répertoire dédié à Leila Hormozi." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000416_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:16</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface GitHub affichant le fichier &quot;sources.md&quot; dans le répertoire dédié à Leila Hormozi.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:30 - 00:04:49</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">On peut voir qu&#x27;il a des frameworks qu&#x27;il utilise tout le temps. Vous pouvez voir le principe de rachat, le taux de rachat, l&#x27;audit de temps et d&#x27;énergie, la matrice drip. Tout cela devrait vous sembler familier, les gars. Si vous avez suivi, vous savez, Alex Hormozi ou Dan Martell, l&#x27;équation de valeur, l&#x27;offre Grand Slam, toutes ces choses dont ils parlent en fait tout le temps. Une courte pause pour vous parler du sponsor de la vidéo d&#x27;aujourd&#x27;hui, Phish Audio.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface GitHub (dépôt de code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte Markdown structuré concernant des frameworks de gestion, notamment la &quot;DRIP Matrix&quot; (Delegate, Replace, Invest, Produce) et des méthodes de classification de tâches basées sur l&#x27;énergie et la valeur monétaire, avec des références bibliographiques.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage et lecture d&#x27;une documentation technique/conceptuelle organisée en arborescence de fichiers sur un dépôt GitHub.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000435_seg13.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface GitHub avec un fichier Markdown nommé &quot;frameworks.md&quot; ouvert, détaillant des concepts de productivité et de gestion d&#x27;entreprise." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000435_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:35</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface GitHub avec un fichier Markdown nommé &quot;frameworks.md&quot; ouvert, détaillant des concepts de productivité et de gestion d&#x27;entreprise.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:49 - 00:05:16</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, anyone who&#x27;s tried AI voiceovers knows that the words come out right, but the delivery doesn&#x27;t always, because it might read a joke or a warning and an apology in the exact same tone of voice. So Phish Audio has a new model that is their most emotive yet, and it&#x27;s called Drama 3. You direct it the way that you would direct an actual voice actor, which means that you can write the direction in plain English inside the text, like slowly realizing something&#x27;s wrong, and everything after that tag will follow that direction.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation graphique (type diapositive vidéo).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;AI VOICEOVERS&quot;, &quot;The words come out right.&quot;, &quot;The delivery doesn&#x27;t.&quot;, et une encadré mentionnant &quot;A JOKE: &#x27;So a bot walks into a bar...&#x27;&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration du problème de ton monotone dans la synthèse vocale d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000456_seg14.jpg" alt="Une diapositive de présentation illustrant la limite des voix off IA, affichant le texte &quot;The words come out right. The delivery doesn&#x27;t&quot; avec un exemple de blague textuelle." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000456_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:56</span>
+                        <span class="caption-text">Une diapositive de présentation illustrant la limite des voix off IA, affichant le texte &quot;The words come out right. The delivery doesn&#x27;t&quot; avec un exemple de blague textuelle.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:16 - 00:05:37</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ainsi, une ligne peut commencer calmement et se terminer dans la panique. Merci d&#x27;avoir appelé. Votre commande est en route. Attendez, ce n&#x27;est pas la bonne adresse. Qui a approuvé ce workflow ? Et les tags fonctionnent aussi dans d&#x27;autres langues. Cela génère également des conversations complètes. Vous pouvez donner une voix à chaque intervenant, vous pouvez indiquer qui parle, et chaque personnage conserve sa propre voix tout au long de la scène.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur web d&#x27;un modèle de génération vocale (vraisemblablement liée à l&#x27;API ElevenLabs ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Script affiché : &quot;[calm, friendly support voice] Thanks for calling, your order&#x27;s on its way.&quot; suivi de lignes estompées &quot;[slowly realizing something&#x27;s wrong] Wait. That&#x27;s not the right address.&quot; et &quot;[full panic, speaking fast] Who approved this workflow?!&quot;. On voit également le nom du modèle &quot;drama-3&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation du rendu textuel synchronisé avec une forme d&#x27;onde audio illustrant une transition émotionnelle dans une réponse générée par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000522_seg15.jpg" alt="Une interface de génération de texte-vers-voix affichant un script avec des balises émotionnelles et une forme d&#x27;onde audio en bas." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000522_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:22</span>
+                        <span class="caption-text">Une interface de génération de texte-vers-voix affichant un script avec des balises émotionnelles et une forme d&#x27;onde audio en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:37 - 00:05:57</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Lance-le juste une fois de plus. Bien sûr, ce sera la tentative 47. Donc si vous le mettez sur une vidéo, le point de terminaison de streaming renvoie des horodatages au niveau du mot avec l&#x27;audio. Ainsi, vos sous-titres s&#x27;alignent exactement avec la parole. Maintenant, du côté de la configuration, vous réglez le modèle sur Drama 3 dans l&#x27;API Fish Audio. Ils ont aussi un serveur MCP également.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de synthèse vocale (image 1) ; Interface de ligne de commande (CLI) (image 2).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte transcrit : &quot;[exhausted, it&#x27;s 2am] Just run it one more time. [relentlessly cheerful] Of course! That&#x27;ll be attempt forty-seven.&quot; (image 1) ; Commande saisie dans le terminal : &quot;bat -r 12:33 -H 29 drama3_demo&quot; (image 2).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation d&#x27;une interaction entre deux IA aux tempéraments contrastés (image 1) ; Exécution d&#x27;une commande système dans un terminal pour configurer ou tester le flux de démonstration (image 2).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000542_seg16.jpg" alt="Interface de démonstration audio affichant deux voix distinctes avec des étiquettes d&#x27;état émotionnel, synchronisées avec une onde sonore en temps réel." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000542_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:42</span>
+                        <span class="caption-text">Interface de démonstration audio affichant deux voix distinctes avec des étiquettes d&#x27;état émotionnel, synchronisées avec une onde sonore en temps réel.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000552_seg16.jpg" alt="Interface de terminal (ligne de commande) montrant la saisie d&#x27;une instruction technique avec le présentateur visible en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000552_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:52</span>
+                        <span class="caption-text">Interface de terminal (ligne de commande) montrant la saisie d&#x27;une instruction technique avec le présentateur visible en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:57 - 00:06:32</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez donc le connecter à Claude Code ou Codex, et ils ont également un nœud n8n officiel. Donc, si vous construisez quelque chose qui parle comme un agent vocal ou un personnage de jeu vidéo, ou si vous narrez simplement vos vidéos, essayez Drama 3 sur l&#x27;API de Fish Audio grâce au lien dans la description. Un grand merci à Fish Audio pour avoir sponsorisé cette partie de la vidéo. Maintenant, revenons-en au sujet. Et puis j&#x27;ai ajouté cette nouvelle compétence appelée « new roaster », qui vous permet en gros de créer de nouveaux « roasters ». Donc par exemple, si je venais ici et que je disais : « Hé, new roaster », et qu&#x27;on voulait faire, vous savez, Elon Musk, et qu&#x27;on lançait ça, cela va en gros créer le cerveau d&#x27;Elon Musk, son fichier d&#x27;agent et tout son</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> GitHub, Claude Code CLI, Navigateur web (localhost:4731).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Structure de fichiers de projet (frameworks.md), commandes CLI, interface web de l&#x27;application &quot;Roast Room&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans les fichiers du projet et démonstration de l&#x27;exécution d&#x27;une application d&#x27;agent IA (&quot;Roast Room&quot;) dans un environnement de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000615_seg17.jpg" alt="Interface GitHub affichant la structure de fichiers d&#x27;un projet, incluant des dossiers comme &quot;claude&quot;, &quot;agents&quot;, &quot;skills&quot;, et un fichier Markdown détaillé sur les frameworks de valeur." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000615_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:15</span>
+                        <span class="caption-text">Interface GitHub affichant la structure de fichiers d&#x27;un projet, incluant des dossiers comme &quot;claude&quot;, &quot;agents&quot;, &quot;skills&quot;, et un fichier Markdown détaillé sur les frameworks de valeur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000623_seg17.jpg" alt="Interface de développement divisée : à gauche, une console Claude Code avec des outils de gestion de sessions ; à droite, une application web &quot;Roast Room&quot; avec des avatars de personnalités publiques." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000623_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:23</span>
+                        <span class="caption-text">Interface de développement divisée : à gauche, une console Claude Code avec des outils de gestion de sessions ; à droite, une application web &quot;Roast Room&quot; avec des avatars de personnalités publiques.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:32 - 00:07:07</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">sources, cela va le générer et lui créer aussi un petit personnage de dessin animé qui apparaîtra dans la salle de roast elle-même, exactement de la même manière que tous ces autres membres du conseil de la salle de roast ont été créés. Vous pouvez donc continuer à faire passer ce truc à l&#x27;échelle. Et évidemment, je vais laisser ce truc générer Elon, et ensuite je vais ajouter ça dans le repo. Comme ça, vous pourrez tous utiliser Elon vous aussi. Donc, pendant que ça génère Elon, comme vous pouvez le voir, faisons une nouvelle session. Alors, ouvrez la salle de roast. C&#x27;est à peu près tout ce que vous avez à faire, c&#x27;est de le demander. Et je vais juste remettre ça sur Opus ici et ça va ouvrir la salle de roast. Nous allons l&#x27;ouvrir dans le navigateur local à l&#x27;intérieur de l&#x27;application de bureau, puis nous allons lancer un prompt pour que vous puissiez voir comment</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal Claude Code (gauche) et interface web locale (localhost:4731) (droite).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de tâches : &quot;Check roster&quot;, &quot;Find and fetch sources&quot;, &quot;Extract notes with agents&quot;, &quot;Write brain files&quot;, &quot;Write agent and register seat&quot;, &quot;Build portrait&quot;, &quot;Test seat and report&quot;. Le tableau de bord affiche des métriques de session et le conseil de la &quot;Roast Room&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent Claude Code exécute une séquence de tâches pour automatiser la création et l&#x27;ajout d&#x27;un nouveau membre dans l&#x27;interface de la &quot;Roast Room&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000641_seg18.jpg" alt="Une vue divisée montrant à gauche l&#x27;interface de terminal Claude Code en cours d&#x27;exécution de tâches d&#x27;automatisation, et à droite une application web nommée &quot;Roast Room&quot; affichant un conseil de personnages générés par IA." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000641_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:41</span>
+                        <span class="caption-text">Une vue divisée montrant à gauche l&#x27;interface de terminal Claude Code en cours d&#x27;exécution de tâches d&#x27;automatisation, et à droite une application web nommée &quot;Roast Room&quot; affichant un conseil de personnages générés par IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:07 - 00:07:31</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça fonctionne vraiment. Maintenant, encore une fois, vous n&#x27;avez pas besoin d&#x27;avoir cette interface visuelle ouverte. Cela exécutera évidemment la roast room du sous-agent exactement de la même manière, mais c&#x27;est sympa à voir. Mais une chose que je dirai sur le fait de vraiment lancer une roast room, c&#x27;est que généralement, vous voulez y inclure une décision. Vous voulez y mettre des options, donc deux ou trois options. Vous voulez lui donner du contexte pour qu&#x27;ils puissent vraiment raisonner à ce sujet et prendre une meilleure décision, n&#x27;est-ce pas ? Alors, laissez-moi juste vous donner un exemple rapide.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Code (CLI / Interface de chat) et navigateur web (Localhost:4732).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur le port 4732, instruction &quot;/roast-room&quot;, et interface graphique affichant les conseillers (Jeff Bezos, Paul Graham, etc.) de la &quot;Roast Room&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;environnement de développement &quot;Roast Room&quot; et explication de la manière de lancer une délibération d&#x27;agent IA via une commande terminal.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000713_seg19.jpg" alt="Capture d&#x27;écran divisée en deux : à gauche, l&#x27;interface de Claude Code affichant le statut du port local et les instructions d&#x27;utilisation, et à droite, l&#x27;interface web &quot;Roast Room&quot; avec les avatars des membres du conseil." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000713_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:13</span>
+                        <span class="caption-text">Capture d&#x27;écran divisée en deux : à gauche, l&#x27;interface de Claude Code affichant le statut du port local et les instructions d&#x27;utilisation, et à droite, l&#x27;interface web &quot;Roast Room&quot; avec les avatars des membres du conseil.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:31 - 00:08:00</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous envisageons d&#x27;organiser un autre événement en présentiel à l&#x27;été 2027, et nous essayons de déterminer où le faire. Nous avons, vous savez, analysé différentes options comme San Francisco, Salt Lake City, Austin, Chicago. Nous voulons évidemment pouvoir y obtenir de bons sponsors, des incitations locales, y faire venir beaucoup de monde. Et, vous savez, les aéroports devraient donc être importants, les transports en commun, de bons restaurants, de bonnes activités à faire en dehors du simple fait d&#x27;avoir l&#x27;événement, des choses comme ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Code (CLI), Navigateur web (localhost:4732)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte technique indiquant &quot;The Roast Room is open in the browser pane at http://localhost:4732&quot; et des statistiques d&#x27;utilisation du modèle (cache warm, ctx 122k, coût $0.97). L&#x27;interface web montre des photos de personnalités comme Jeff Bezos et Warren Buffett.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent Claude Code a lancé une application locale sur le port 4732 après un conflit sur le port 4730 et invite l&#x27;utilisateur à interagir via la commande &quot;/roast-room&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000738_seg20.jpg" alt="Une interface de terminal Claude Code (à gauche) affichant le statut d&#x27;une application &quot;Roast Room&quot; et une fenêtre de navigateur (à droite) montrant l&#x27;interface utilisateur de l&#x27;application &quot;Roast Room&quot; avec un panel de personnalités publiques." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000738_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:38</span>
+                        <span class="caption-text">Une interface de terminal Claude Code (à gauche) affichant le statut d&#x27;une application &quot;Roast Room&quot; et une fenêtre de navigateur (à droite) montrant l&#x27;interface utilisateur de l&#x27;application &quot;Roast Room&quot; avec un panel de personnalités publiques.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:00 - 00:08:23</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors aide-moi à déterminer où cela devrait être et fais cela sur le Roast Room Council. Donc cette requête en langage naturel devrait être tout à fait suffisante, mais vous pourriez aussi venir ici et faire un slash Roast Room, puis vous pourriez simplement l&#x27;invoquer comme ça. Mais nous allons continuer et simplement supprimer cela pour l&#x27;instant et l&#x27;envoyer. Et cela devrait être suffisant. Une chose que cela fera, c&#x27;est que cela vous aidera à déterminer quels seraient les meilleurs membres du conseil à avoir pour ce débat spécifique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Code / Terminal CLI avec panneau de visualisation web intégré (Opus 5.5).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Prompt utilisateur : &quot;So help me figure out where this should be and do this on the Roast Room Council.&quot;
+- Tâches affichées : &quot;Load the Roast Room skill&quot;, &quot;Gather event and business context&quot;, &quot;Run the council debate&quot;, &quot;Deliver the verdict&quot;.
+- URL locale : `http://localhost:4732` (Roast Room).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;assistant IA traite une requête en langage naturel pour initier un débat au sein de la &quot;Roast Room&quot; en utilisant des outils automatisés pour analyser les options de localisation d&#x27;un événement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000806_seg21.jpg" alt="Interface divisée montrant à gauche le flux de discussion de l&#x27;assistant IA avec le prompt utilisateur sur le choix d&#x27;un lieu d&#x27;événement, et à droite l&#x27;interface web &quot;Roast Room&quot; sur localhost:4732." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000806_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:06</span>
+                        <span class="caption-text">Interface divisée montrant à gauche le flux de discussion de l&#x27;assistant IA avec le prompt utilisateur sur le choix d&#x27;un lieu d&#x27;événement, et à droite l&#x27;interface web &quot;Roast Room&quot; sur localhost:4732.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000817_seg21.jpg" alt="Interface de l&#x27;assistant IA affichant une liste de tâches en cours d&#x27;exécution (« Running a command ») pour le « Roast Room skill », avec le panneau de droite montrant toujours l&#x27;application web." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000817_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:17</span>
+                        <span class="caption-text">Interface de l&#x27;assistant IA affichant une liste de tâches en cours d&#x27;exécution (« Running a command ») pour le « Roast Room skill », avec le panneau de droite montrant toujours l&#x27;application web.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:23 - 00:08:42</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Comme vous pouvez le voir, il va charger la compétence. Il va recueillir le contexte de l&#x27;événement et de l&#x27;entreprise. Donc il vous posera des questions s&#x27;il a l&#x27;impression de ne pas encore en avoir assez, et ensuite il va vraiment lancer le débat pour vous. Vous pouvez donc voir qu&#x27;il va me poser quelques questions ici. Il y a quatre questions qu&#x27;il me pose. Et au passage, nous avons déjà réservé cet événement à Salt Lake City, du 16 au 20 juin.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de type agent conversationnel (Claude Code / interface personnalisée) et navigateur web affichant une application locale (localhost:4732).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de tâches de l&#x27;agent : &quot;Load the Roast Room skill&quot;, &quot;Gather event and business context&quot;, &quot;Run the council debate&quot;, &quot;Deliver the verdict&quot;. Stats de consommation (tokens, session, cache). Interface web &quot;Roast Room&quot; avec portraits de personnalités et invitation à soumettre une décision.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA est en phase d&#x27;exécution active, ayant déjà traité du contexte (vérification du wiki et notes) et en train de progresser dans les étapes du processus de débat pour la &quot;Roast Room&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000828_seg22.jpg" alt="Interface divisée en deux montrant à gauche une console d&#x27;agent IA (type interface Claude) listant des étapes de workflow et à droite une interface web intitulée &quot;Roast Room&quot; montrant une table ronde de figures influentes (Jeff Bezos, Warren Buffet, etc.)." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000828_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:28</span>
+                        <span class="caption-text">Interface divisée en deux montrant à gauche une console d&#x27;agent IA (type interface Claude) listant des étapes de workflow et à droite une interface web intitulée &quot;Roast Room&quot; montrant une table ronde de figures influentes (Jeff Bezos, Warren Buffet, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:42 - 00:09:03</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc si vous voulez y assister, allez jeter un coup d&#x27;œil. Mais pour les besoins de l&#x27;exemple, je vais simplement faire comme si rien de tout cela ne s&#x27;était encore produit. Je vais donc simplement dire non signé, choix ouvert. Il est écrit, autour de quelle taille et de quel budget le conseil devrait-il planifier ? Et j&#x27;ai en fait juste passé ces questions. Mais la dernière dit, qui s&#x27;assied à la table ? Et cela m&#x27;a donné une recommandation. Et cela vous permet aussi de jouer avec si vous vouliez y mettre différentes personnes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de gestion de projet ou de workflow automatisé (type interface de sondage ou d&#x27;agent conversationnel).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Question : &quot;The Oct 2 all-hands says SLC June 16-20 is booked (hotel contract received). What’s the real status?&quot; avec les options : &quot;Not signed, open choice&quot;, &quot;Signed, weigh switching&quot;, et &quot;SLC is set, this is #2&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur sélectionne l&#x27;option &quot;Not signed, open choice&quot; dans l&#x27;interface pour illustrer une manipulation de donnée ou une réponse d&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000847_seg23.jpg" alt="Une interface de formulaire interactif ou de chatbot affichant une question sur le statut d&#x27;un contrat d&#x27;événement (SLC) avec plusieurs choix à cocher, dont l&#x27;option &quot;Not signed, open choice&quot; est sélectionnée." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000847_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:47</span>
+                        <span class="caption-text">Une interface de formulaire interactif ou de chatbot affichant une question sur le statut d&#x27;un contrat d&#x27;événement (SLC) avec plusieurs choix à cocher, dont l&#x27;option &quot;Not signed, open choice&quot; est sélectionnée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:03 - 00:09:22</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So that&#x27;s part of it is thinking about who should actually sit on the council for your specific debate. But now that&#x27;s going to be it. It&#x27;s basically going to run. It&#x27;s going to process this. Even if this was closed, like I said, we would have sub agents that would be going through and doing this no matter what. And the reason I decided to do this with sub agents, because when I actually started doing these roasts, I started doing this with agent teams.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface d&#x27;agent IA (Opus 5.5), Navigateur web (Roast Room locale sur localhost:4732).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des tâches : &quot;Load the Roast Room skill&quot;, &quot;Gather event and business context&quot;, &quot;Run the council debate&quot;, &quot;Deliver the verdict&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA traite les étapes de la &quot;Roast Room&quot; pour automatiser un débat décisionnel avec des experts simulés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000907_seg24.jpg" alt="Interface divisée en deux volets : à gauche, une console d&#x27;agent IA (Claude Code/Opus 5.5) listant des étapes de travail ; à droite, une interface web &quot;Roast Room&quot; montrant un panel de personnages (icônes technologiques) prêts à débattre." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000907_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:07</span>
+                        <span class="caption-text">Interface divisée en deux volets : à gauche, une console d&#x27;agent IA (Claude Code/Opus 5.5) listant des étapes de travail ; à droite, une interface web &quot;Roast Room&quot; montrant un panel de personnages (icônes technologiques) prêts à débattre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:22 - 00:09:54</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">but the reason I&#x27;m doing sub agents now is because I found after doing lots of testing that agent teams was more expensive for a minimal amount of actual value add. So doing sub agents works pretty well because they start to actually talk to each other and stuff like that either way. So it works just fine. Now, in this case, you can see that we took out Dan Martel because his is more about like protecting the founder&#x27;s time and we put in Naval. And his question is, does this build leverage and equity you own or does it just rent out your time? So you can see it was great that we brought in Neval for this specific type of roast room. And obviously last time you guys</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application locale (localhost:4732) et une interface de terminal/agent IA (probablement intégrée à un framework de type Claude Code/Opus 5.5).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de tâches de l&#x27;agent : &quot;Load the Roast Room skill&quot;, &quot;Gather event and business context&quot;, &quot;Run the council debate&quot;, &quot;Deliver the verdict&quot;. Visuels des membres du conseil : Jeff Bezos, Paul Graham, Alex Hormozi, Gary V, Gino Wickman, Warren Buffett, Naval Ravikant.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;une simulation de débat entre agents (&quot;The council is seated and running in full mode&quot;). Le système affiche le statut en temps réel des &quot;opening positions&quot; de chaque conseiller IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000938_seg25.jpg" alt="Interface de l&#x27;application &quot;Roast Room&quot; montrant un tableau de bord d&#x27;agents IA (un &quot;conseil&quot; composé de personnalités du business) en pleine exécution." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_000938_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:38</span>
+                        <span class="caption-text">Interface de l&#x27;application &quot;Roast Room&quot; montrant un tableau de bord d&#x27;agents IA (un &quot;conseil&quot; composé de personnalités du business) en pleine exécution.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:54 - 00:10:27</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">saw the PDF that it creates, which is pretty high level, but all of this stuff is stored locally and you&#x27;re able to dig in. You can ask more questions about it. You can inspect all that stuff if you want to look at the debate more deeply. So it&#x27;s not lost data, of course. Show me where all of the debates are held later if I want to be able to dig in and ask more questions about it. So as they&#x27;re going through round one and writing their opening positions, I can just show you real quick. If I go to the files and I go down here to projects, and then we scroll down to a project called founder council right here, you can see that there is different sessions in</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Roast Room UI) et interface de contrôle d&#x27;agent IA (Claude Code/Opus 5.5).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des tâches de l&#x27;agent : &quot;Load the Roast Room skill&quot;, &quot;Gather event and business context&quot;, &quot;Run the council debate&quot;, &quot;Deliver the verdict&quot;. Visualisation des participants au débat (Jeff Bezos, Paul Graham, Alex Hormozi, Gary V, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA est en train d&#x27;exécuter le processus de &quot;Roast Room&quot; et affiche les étapes de progression tout en mettant à jour l&#x27;interface web locale avec les positions des intervenants.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001002_seg26.jpg" alt="Interface divisée montrant à gauche un agent IA en cours d&#x27;exécution (Claude Code/Opus 5.5) avec une liste de tâches, et à droite une application web nommée &quot;Roast Room&quot; sur localhost:4732 visualisant un débat entre des figures influentes (business/tech)." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001002_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:02</span>
+                        <span class="caption-text">Interface divisée montrant à gauche un agent IA en cours d&#x27;exécution (Claude Code/Opus 5.5) avec une liste de tâches, et à droite une application web nommée &quot;Roast Room&quot; sur localhost:4732 visualisant un débat entre des figures influentes (business/tech).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:27 - 00:11:00</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">here. And these sessions will show us different roast rooms that we&#x27;ve run since creating this visual interface. And we&#x27;re able to actually then dig in. So if I look at this one, we can see that there was a brief, there was around one, around two, and a verdict. And this will hold all of the session logs from each of these people, because as they start to write their positions, we&#x27;ll see that all of their reasoning comes through, even when they start to debate. And we can view it right in this interface as well. So now you can see they&#x27;re starting to come through with their opening positions and we&#x27;ll see below their name what they voted for. So Gary came in with voting for A and gave it an eight out of 10 score. Gino did the same. And you can see A is Salt Lake</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (localhost:4732), environnement de développement/interface d&#x27;agent (Claude Code/Opus 5.5).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Arborescence de fichiers incluant &quot;brief.md&quot;, &quot;events.json&quot;, &quot;round-1.md&quot;, &quot;round-2.md&quot; et &quot;verdict.md&quot;. Interface de chat montrant des métriques de tokens, le coût de la session ($3.10) et un statut d&#x27;agent (&quot;The Naval seat is back. Six seats are still running.&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration de l&#x27;interface visuelle &quot;Roast Room&quot; permettant de consulter les différentes étapes (rounds) d&#x27;une session d&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001035_seg27.jpg" alt="Une interface de bureau divisée montrant à gauche une console de discussion d&#x27;agent IA (Claude Code/Opus 5.5) et à droite une application web nommée &quot;Roast Room&quot; tournant sur localhost, avec une arborescence de fichiers Markdown affichée." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001035_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:35</span>
+                        <span class="caption-text">Une interface de bureau divisée montrant à gauche une console de discussion d&#x27;agent IA (Claude Code/Opus 5.5) et à droite une application web nommée &quot;Roast Room&quot; tournant sur localhost, avec une arborescence de fichiers Markdown affichée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:00 - 00:11:20</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">City and B, San Francisco, Austin, Chicago. This one, Alex Hermosi also voted for Salt Lake City. So everyone voted for Salt Lake City, except for it looks like Naval went for B, San Francisco. And then like I said, we could click in and we could look at exactly why. We could see the risk. We could see what they would do. And then we can keep seeing what everyone&#x27;s going to do.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;application décisionnelle ou de sondage (type plateforme de collaboration IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de choix : A. Salt Lake City, B. San Francisco, C. Austin, D. Chicago, E. Stay virtual in 2027. Avatars affichés : Jeff Bezos, Paul Graham, Alex Hormozi, Gary V, Dan Martell, Gino Wickman, Warren Buffett et Naval Ravikant.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole l&#x27;interface pour présenter les résultats des votes des personnalités sur le choix du lieu de l&#x27;événement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001105_seg28.jpg" alt="Une interface de plateforme collaborative affichant un sondage nommé « AIS Live in person: which city, summer 2027 » avec une liste de choix de villes et une galerie d&#x27;avatars de personnalités publiques ayant voté." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001105_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:05</span>
+                        <span class="caption-text">Une interface de plateforme collaborative affichant un sondage nommé « AIS Live in person: which city, summer 2027 » avec une liste de choix de villes et une galerie d&#x27;avatars de personnalités publiques ayant voté.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:20 - 00:11:40</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And now what&#x27;s going to happen is they&#x27;re going to read each other&#x27;s positions. And then they&#x27;ll start to go after each other and try to poke holes in each other&#x27;s opinions. In this case, they all are in pretty much good agreement, which is nice. But if they did all completely agree, then the chair or sort of like Claude Code, the facilitator of this debate, would make one of them argue for a different side.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Roast Room), terminal de ligne de commande (Claude Code/Opus 5.5).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Log d&#x27;exécution : &quot;Round 1 results are in...&quot;, &quot;Round 2: Naval seat &gt;&quot;, métriques de session (coûts, usage du cache). Interface de débat : visuels des participants (Bezos, Graham, Hormozi, Vaynerchuk, Wickman, Buffett, Ravikant), état de la discussion &quot;The advisors are reading each other&#x27;s openings and firing back&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un processus de débat multi-agents où les IA analysent et répondent aux arguments des autres participants en temps réel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001125_seg29.jpg" alt="Une interface divisée en deux panneaux montrant l&#x27;exécution d&#x27;un agent IA : à gauche, le journal d&#x27;activité d&#x27;un terminal (type Claude Code) et à droite, une interface web &quot;Roast Room&quot; illustrant un débat entre des avatars de personnalités influentes." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001125_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:25</span>
+                        <span class="caption-text">Une interface divisée en deux panneaux montrant l&#x27;exécution d&#x27;un agent IA : à gauche, le journal d&#x27;activité d&#x27;un terminal (type Claude Code) et à droite, une interface web &quot;Roast Room&quot; illustrant un débat entre des avatars de personnalités influentes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:40 - 00:11:59</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So they kind of play devil&#x27;s advocate and we get to see more perspective as well. But in this case, we didn&#x27;t have a unanimous decision. So the debate will continue as expected. Now, what I think is really fun about this is we&#x27;re able to leverage the subject matter expertise of other people. And humans are really good at their domains, right?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal (Claude Code / Opus 5.5) et interface web locale (Roast Room).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Logs d&#x27;exécution d&#x27;agent : &quot;Round 1 results are in...&quot;, &quot;Round 2: Naval seat&quot;, et interface web affichant des scores pour différentes options de localisation (Salt Lake City, San Francisco, etc.) avec des profils d&#x27;experts comme Jeff Bezos, Alex Hormozi et Naval Ravikant.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un processus automatisé de débat entre agents IA simulant des personnalités influentes pour prendre une décision collective.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001145_seg30.jpg" alt="L&#x27;écran est divisé en deux parties : à gauche, une fenêtre de terminal montrant le journal d&#x27;exécution d&#x27;un agent IA avec un résumé des résultats d&#x27;un débat, et à droite, une interface web &quot;Roast Room&quot; présentant des statistiques et une galerie de portraits d&#x27;experts." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001145_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:45</span>
+                        <span class="caption-text">L&#x27;écran est divisé en deux parties : à gauche, une fenêtre de terminal montrant le journal d&#x27;exécution d&#x27;un agent IA avec un résumé des résultats d&#x27;un débat, et à droite, une interface web &quot;Roast Room&quot; présentant des statistiques et une galerie de portraits d&#x27;experts.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:59 - 00:12:36</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So like, for example, I could not build a world-class copywriting agent. It would be tough for me because I don&#x27;t have a copywriting background. But what I could do is go find someone who I think is the best copywriter in the world. I could extract their frameworks, examples of their copy, how they think, how they decide what to write. And then I could put them into this council. And when I have questions about copy or how to market something, I could leverage them inside of this roast room. And it doesn&#x27;t mean it&#x27;s going to be perfect. It doesn&#x27;t mean that whatever this roast room decides, I blindly take and accept. But just getting in this mindset of thinking about who has done something that you want to do, who has done something and proven it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucun</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun</p>
+                        <p><strong>Action / Démonstration :</strong> Aucun</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:36 - 00:13:02</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, how can you go out there and study what they did and how they got there and basically just try to follow that path? I think it&#x27;s a lot better to do that than just trusting Claude&#x27;s gut or trusting your gut sometimes. Like following someone that&#x27;s actually walked the path you want to walk is a pretty good signal, right? So doing these councils helps me just look at things through different perspectives and, you know, think about things that I might not have thought about because Paul Graham brought up this idea or because Naval brought up that idea.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur parle directement à la caméra (Talking head).</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:02 - 00:13:25</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And so even outside of the bounds of this roast room, for example, I think that just thinking like that when you&#x27;re building out other skills or you&#x27;re trying to automate different processes, I think thinking like that is a really good way to think. But anyways, you can see they&#x27;re actually coming through now. They&#x27;re deciding on final votes. And you can see that we&#x27;re probably going to win Salt Lake City. It&#x27;s 7.9 out of 10 right now. And that is probably the verdict that we&#x27;re going to get.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Code, interface web personnalisée (application &quot;Roast Room&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion d&#x27;un agent IA traitant des votes et des amendements, avec des métriques de session (cache, coût, temps), et une interface de vote visuelle affichant les décisions de personnalités comme Jeff Bezos, Alex Hormozi et Naval Ravikant.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un processus automatisé où un agent IA synthétise des votes et rédige une ratification, tout en mettant à jour une interface de visualisation en temps réel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001319_seg33.jpg" alt="Capture d&#x27;écran divisée en deux sections : à gauche, l&#x27;interface de &quot;Claude Code&quot; montrant un suivi de sous-agent (&quot;subagent&quot;), à droite, une interface web &quot;Roast Room&quot; (localhost:4732) présentant un tableau de bord interactif avec les avatars de personnalités et un système de vote." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001319_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:19</span>
+                        <span class="caption-text">Capture d&#x27;écran divisée en deux sections : à gauche, l&#x27;interface de &quot;Claude Code&quot; montrant un suivi de sous-agent (&quot;subagent&quot;), à droite, une interface web &quot;Roast Room&quot; (localhost:4732) présentant un tableau de bord interactif avec les avatars de personnalités et un système de vote.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:25 - 00:13:57</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">but of course we could go through and we could read everyone&#x27;s key points as you can see here is Hermosi&#x27;s key point here&#x27;s Wickman&#x27;s key point you can see here Bezos conceded to Gary V and Graham about them being right on certain things but also disagreed the most with Naval so anyways that&#x27;s how you could sort of start to read through some things in more depth we can see that we have the pdf now which I&#x27;ll go ahead and download real quick and now we&#x27;re able to look at the fact that Salt Lake City won which is actually pretty cool because that is where we decided to have this first in-person event. Now, anyways, that is done. We could obviously do more rounds</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google Chrome) visualisant une interface web de gestion de décisions et un lecteur PDF.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Analyse décisionnelle type &quot;roast&quot; avec des arguments textuels sur la stratégie commerciale, et un tableau comparatif de scores numériques par localisation.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration visuelle des arguments argumentés (Bezos) et des données quantitatives (scores des villes) pour justifier un choix stratégique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001333_seg34.jpg" alt="Interface affichant les points de vue détaillés de Jeff Bezos, incluant des sections &quot;I DISAGREE MOST WITH&quot;, &quot;I CONCEDE&quot; et &quot;ON THE CRUXES&quot;." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001333_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:33</span>
+                        <span class="caption-text">Interface affichant les points de vue détaillés de Jeff Bezos, incluant des sections &quot;I DISAGREE MOST WITH&quot;, &quot;I CONCEDE&quot; et &quot;ON THE CRUXES&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001349_seg34.jpg" alt="Visualisation d&#x27;un document PDF dans un navigateur présentant un tableau de scores pour différentes villes (Salt Lake City, San Francisco, etc.) et une section &quot;Why the council landed here&quot;." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001349_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:49</span>
+                        <span class="caption-text">Visualisation d&#x27;un document PDF dans un navigateur présentant un tableau de scores pour différentes villes (Salt Lake City, San Francisco, etc.) et une section &quot;Why the council landed here&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:57 - 00:14:31</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">if we wanted to. We could bring in other council members. And now going back to check on Elon, you can see that it created the actual portrait for him and it created these different views so that we can see what it will look like when he&#x27;s actually talking. And then if I go to the repo, we can see that we now have Elon added in here. If I go to the brain or not the brain, the agents, we can see right here, we have Musk. And then of course, in the actual brain, because it&#x27;s supposed to do that through the new roaster skill. We have a brain for Musk. Once again, it has hot books, frameworks, positions, principles, sources, stories, and a voice.md. So we are now set up and</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;agent IA &quot;Opus 5.5&quot; (contexte de développement/automation).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de tâches : &quot;I&#x27;ll build a pipeline that downloads the audio, transcribes it with ElevenLabs Scribe&quot;, &quot;Testing on one short video (Kevin Rose, 27 minutes)&quot;, et la liste des fichiers générés (test-consult.md, yt-ids.txt). Barre latérale affichant l&#x27;environnement &quot;Herk-2&quot; et les statistiques de session.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur utilise l&#x27;agent pour planifier et exécuter le traitement de transcriptions audio en masse, tout en supervisant les fichiers de sortie et les changements dans le dépôt (&quot;roast-room&quot;).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001406_seg35.jpg" alt="L&#x27;interface de l&#x27;agent IA &quot;Opus 5.5&quot; affiche un historique de conversation détaillant le pipeline de transcription audio via ElevenLabs Scribe, incluant le traitement de vidéos par lots et la gestion de fichiers de sortie." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001406_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:06</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;agent IA &quot;Opus 5.5&quot; affiche un historique de conversation détaillant le pipeline de transcription audio via ElevenLabs Scribe, incluant le traitement de vidéos par lots et la gestion de fichiers de sortie.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:31 - 00:14:55</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">we are able to use Elon Musk inside of this Roaster Council. If you guys want to grab this GitHub repo and play around with it, then just go to my FreeSchool community. This will be linked in the description. Go to the classroom and then grab it. And from the AI skills or from the all YouTube resources, all of my other free GitHub repos, skills, prompts, guides, everything is in the free school community. So anyways, guys, that is going to do it for this one. I hope that you enjoyed. You learned something new. And if you did, please give it a like. It helps me out a ton.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google Chrome) accédant à la plateforme communautaire Skool.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Vignettes des modules : &quot;Start Here&quot;, &quot;7 Day AIS Challenge&quot;, &quot;Build Your AI OS&quot;, &quot;7 Day Challenge Graduates&quot;, &quot;All YouTube Resources&quot;, &quot;AI Skills&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation au sein de la section formation/ressources de la communauté pour localiser les répertoires GitHub mentionnés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001443_seg36.jpg" alt="Interface de la plateforme &quot;AI Automation Society&quot; (Skool) montrant la section &quot;Classroom&quot; avec différents cours et ressources accessibles." loading="lazy" onclick="openLightbox('../screenshots/DSS1Yqb6-qE/DSS1Yqb6-qE_001443_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:43</span>
+                        <span class="caption-text">Interface de la plateforme &quot;AI Automation Society&quot; (Skool) montrant la section &quot;Classroom&quot; avec différents cours et ressources accessibles.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:55 - 00:14:59</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And as always, I appreciate you guys making it to the end of the video. And I&#x27;ll see you on the next one. Thanks, everyone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface logicielle montrée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu technique ou code affiché.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;adresse directement à son audience pour clôturer la séquence.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
