@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Les nouvelles tables de données natives de n8n facilitent grandement la création d&#x27;agents — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Les nouvelles tables de données natives de n8n facilitent grandement la création d&#x27;agents</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-09-22</span>
+                <span class="badge">⏱️ 00:14:32</span>
+                <span class="badge">🆔 <code>QCjMBOEhpLE</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=QCjMBOEhpLE" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo de la chaîne Nate Herk | AI Automation explore l'intégration majeure des tables de données natives au sein de la plateforme d'automatisation n8n. Conçue pour s'affranchir des contraintes et de la latence des services externes comme Google Sheets, cette fonctionnalité permet de stocker, manipuler et interroger des données structurées directement dans l'environnement de travail local. L'auteur démontre l'efficacité de ce nouveau stockage natif à travers deux cas d'usage pratiques : l'enrichissement contextuel d'un agent de support client via un carnet de contacts filtré, et l'analyse financière autonome d'un agent IA connecté à une base de données de ventes. <br><br>Au cœur des démonstrations, la mise en œuvre technique met en lumière la fluidité des transferts de données et l'utilisation de nœuds dédiés capables d'exécuter des opérations CRUD (Créer, Lire, Mettre à jour, Supprimer) ainsi que des filtres conditionnels précis. En évitant les appels API externes et l'authentification tierce, les flux de travail gagnent considérablement en vitesse d'exécution. De plus, la capacité à filtrer rigoureusement les données en amont de leur transmission à un modèle de langage (LLM) réduit drastiquement la consommation de jetons et minimise les risques d'hallucination, tout en abaissant les coûts opérationnels globaux.<br><br>Les exemples présentés illustrent la synergie entre les tables de données et les agents IA dotés d'outils de calcul et de requête. Qu'il s'agisse de croiser l'e-mail d'un expéditeur entrant avec des notes contextuelles de profil pour rédiger un message sur-mesure, ou d'interroger un historique de ventes par date pour sommer des volumes de produits, n8n démontre sa maturité pour orchestrer des architectures logiques complexes, déterministes et hautement performantes.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **n8n** : Plateforme d'automatisation de flux de travail open-source et low-code intégrant désormais des tables de données natives pour un stockage et une manipulation ultra-rapides des données.<br>* **Tables de données n8n (Data Tables)** : Nouvelle fonctionnalité native permettant de stocker de manière permanente des jeux de données structurés (chaînes, nombres, booléens, dates) sans dépendre d'outils tiers.<br>* **Google Sheets** : Tableur cloud utilisé dans la vidéo comme source de données initiale pour être ensuite importé et centralisé dans l'environnement natif de n8n.<br>* **Agents IA (n8n AI Agents)** : Modules cognitifs autonomes capables d'utiliser dynamiquement des outils de requête et de calcul pour interroger les tables de données et raisonner sur l'information.<br>* **Gmail** : Nœud de messagerie utilisé pour déclencher des flux automatisés basés sur la réception d'e-mails entrants.<br>* **ChatGPT (OpenAI)** : Mentionné comme outil d'assistance pour générer rapidement des données textuelles synthétiques destinées à alimenter les fiches de contacts.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Stockage natif intégré** : L'introduction des tables de données natives dans n8n élimine la dépendance aux bases de données externes ou aux feuilles de calcul tierces pour les flux quotidiens.<br>* **Suppression des identifiants tiers** : L'utilisation de tables internes simplifie l'architecture technique en s'affranchissant de la configuration et de la gestion de jetons d'authentification API externes.<br>* **Optimisation de la consommation de jetons** : Filtrer strictement les données en amont de l'agent IA évite d'injecter des centaines ou des milliers de lignes superflues, réduisant ainsi les coûts de tokens.<br>* **Atténuation des hallucinations** : Réduire le bruit et limiter le contexte transmis aux grands modèles de langage (LLM) renforce la précision de leurs réponses et leur fiabilité déterministe.<br>* **Migration et import simplifiés** : Les données provenant d'outils externes (comme Google Sheets) peuvent être facilement transférées et insérées en masse dans les tables natives grâce à des nœuds d'écriture dédiés.<br>* **Typage strict des données** : Les colonnes des tables natives exigent un typage rigoureux (chaîne, nombre, booléen, date), garantissant l'intégrité des données et évitant les erreurs d'insertion.<br>* **Filtrage conditionnel granulaire** : Les nœuds de récupération permettent d'appliquer des conditions logiques complexes (comme l'égalité d'un e-mail ou d'une date) pour extraire uniquement la ressource pertinente.<br>* **Fonctions CRUD complètes** : Les tables prennent en charge toutes les opérations essentielles : insertion, mise à jour, suppression, obtention de lignes et transactions de type *upsert*.<br>* **Augmentation des agents IA par outils** : Combiner un agent IA avec des outils de requête spécifiques et une calculatrice lui permet de réaliser des calculs arithmétiques précis et vérifiables sur les données métier.<br>* **Personnalisation contextuelle avancée** : L'association des tables de contacts aux e-mails entrants permet d'injecter des notes comportementales ou préférentielles pour générer des réponses hautement personnalisées.<br>* **Architecture hybride (déterministe et cognitive)** : Le flux combine des étapes logiques déterministes (filtrage SQL-like des tables) et des étapes cognitives (rédaction par l'agent IA), optimisant la robustesse du système.<br>* **Gain de performance et de vitesse** : L'absence de requêtes réseau vers des services cloud tiers se traduit par des exécutions quasi instantanées des flux de travail.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">n8n</span><span class="tool-tag">Tables de données n8n (Data Tables)</span><span class="tool-tag">Google Sheets</span><span class="tool-tag">Agents IA (n8n AI Agents)</span><span class="tool-tag">Gmail</span><span class="tool-tag">ChatGPT (OpenAI)</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Stockage natif intégré** : L&#x27;introduction des tables de données natives dans n8n élimine la dépendance aux bases de données externes ou aux feuilles de calcul tierces pour les flux quotidiens.</span></li><li><span class="point-bullet">✦</span><span>Suppression des identifiants tiers** : L&#x27;utilisation de tables internes simplifie l&#x27;architecture technique en s&#x27;affranchissant de la configuration et de la gestion de jetons d&#x27;authentification API externes.</span></li><li><span class="point-bullet">✦</span><span>Optimisation de la consommation de jetons** : Filtrer strictement les données en amont de l&#x27;agent IA évite d&#x27;injecter des centaines ou des milliers de lignes superflues, réduisant ainsi les coûts de tokens.</span></li><li><span class="point-bullet">✦</span><span>Atténuation des hallucinations** : Réduire le bruit et limiter le contexte transmis aux grands modèles de langage (LLM) renforce la précision de leurs réponses et leur fiabilité déterministe.</span></li><li><span class="point-bullet">✦</span><span>Migration et import simplifiés** : Les données provenant d&#x27;outils externes (comme Google Sheets) peuvent être facilement transférées et insérées en masse dans les tables natives grâce à des nœuds d&#x27;écriture dédiés.</span></li><li><span class="point-bullet">✦</span><span>Typage strict des données** : Les colonnes des tables natives exigent un typage rigoureux (chaîne, nombre, booléen, date), garantissant l&#x27;intégrité des données et évitant les erreurs d&#x27;insertion.</span></li><li><span class="point-bullet">✦</span><span>Filtrage conditionnel granulaire** : Les nœuds de récupération permettent d&#x27;appliquer des conditions logiques complexes (comme l&#x27;égalité d&#x27;un e-mail ou d&#x27;une date) pour extraire uniquement la ressource pertinente.</span></li><li><span class="point-bullet">✦</span><span>Fonctions CRUD complètes** : Les tables prennent en charge toutes les opérations essentielles : insertion, mise à jour, suppression, obtention de lignes et transactions de type *upsert*.</span></li><li><span class="point-bullet">✦</span><span>Augmentation des agents IA par outils** : Combiner un agent IA avec des outils de requête spécifiques et une calculatrice lui permet de réaliser des calculs arithmétiques précis et vérifiables sur les données métier.</span></li><li><span class="point-bullet">✦</span><span>Personnalisation contextuelle avancée** : L&#x27;association des tables de contacts aux e-mails entrants permet d&#x27;injecter des notes comportementales ou préférentielles pour générer des réponses hautement personnalisées.</span></li><li><span class="point-bullet">✦</span><span>Architecture hybride (déterministe et cognitive)** : Le flux combine des étapes logiques déterministes (filtrage SQL-like des tables) et des étapes cognitives (rédaction par l&#x27;agent IA), optimisant la robustesse du système.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:36</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, donc nous avons notre agent IA de données de vente juste ici, et il est connecté à tous ces outils afin qu&#x27;il puisse interroger notre base de données de ventes. Je vais donc ouvrir le chat, et je vais lui demander : quel est le chiffre d&#x27;affaires total que nous avons réalisé grâce à notre haut-parleur Bluetooth ? Et donc ce qu&#x27;il va faire, c&#x27;est utiliser ces outils juste ici, et il a utilisé la requête de nom de produit pour examiner toutes les fois où nous avons vendu un haut-parleur Bluetooth, et ensuite il a simplement utilisé son outil de calcul pour déterminer ce total. Donc il vient de terminer. Si j&#x27;ouvre le chat, vous pouvez voir que nous avons obtenu la réponse : le chiffre d&#x27;affaires total du haut-parleur Bluetooth était de 546 dollars. Il a calculé cela en récupérant toutes les lignes de vente pour le haut-parleur Bluetooth, et ensuite il a additionné le chiffre d&#x27;affaires total de chaque ligne,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de workflow / automatisation d&#x27;agents IA (type n8n ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Question dans le chat : &#x27;How much total revenue have we made from our bluetooth speaker?&#x27;. Réponse de l&#x27;agent : &#x27;Total revenue from Bluetooth Speaker (product ID BS002): $546.00&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie et envoi d&#x27;une requête textuelle dans le chat de l&#x27;agent IA pour interroger la base de données de ventes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000009_seg1.jpg" alt="Interface d&#x27;un outil de workflow d&#x27;agent IA montrant un schéma de nœuds avec &#x27;Sales Data Agent&#x27; relié à plusieurs outils de données, et un panneau de chat en bas avec une question pré-remplie." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Interface d&#x27;un outil de workflow d&#x27;agent IA montrant un schéma de nœuds avec &#x27;Sales Data Agent&#x27; relié à plusieurs outils de données, et un panneau de chat en bas avec une question pré-remplie.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000027_seg1.jpg" alt="Même interface de workflow après l&#x27;exécution du chat, affichant la réponse de l&#x27;agent IA indiquant le chiffre d&#x27;affaires total pour le haut-parleur Bluetooth ($546.00) ainsi que les journaux d&#x27;exécution à droite." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000027_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:27</span>
+                        <span class="caption-text">Même interface de workflow après l&#x27;exécution du chat, affichant la réponse de l&#x27;agent IA indiquant le chiffre d&#x27;affaires total pour le haut-parleur Bluetooth ($546.00) ainsi que les journaux d&#x27;exécution à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:36 - 00:01:09</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et c&#x27;est pourquoi il a utilisé sa calculatrice et est arrivé au résultat de 546, ce qui est correct. Et donc vous n&#x27;avez peut-être jamais vu ce nœud auparavant. Ce sont des tables de données qui sont stockées de manière native dans N8N, et cela ressemble à ceci juste ici. Vous pouvez voir qu&#x27;il s&#x27;agit de la table de données, et ce sont les différents produits, ainsi que les quantités, les prix et le chiffre d&#x27;affaires, et c&#x27;est ce qu&#x27;il vient de parcourir afin de répondre à notre question avec précision. Et encore une fois, celles-ci se trouvent de manière native dans N8N, donc notre agent n&#x27;a pas eu besoin d&#x27;aller sur Internet ou d&#x27;effectuer un appel API quelque part pour accéder à ces données. Elles résident ici même dans notre environnement, dans un nouvel onglet juste ici appelé tables de données. C&#x27;est donc ce que nous allons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> N8N (Interface de workflow et tables de données natives)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow N8N, agent LLM (Sales Data Agent), outils de requête, calculatrice, et tableau de données de ventes avec des lignes de transactions.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;un workflow N8N et démonstration visuelle des tables de données natives utilisées pour alimenter l&#x27;agent IA en informations commerciales.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000044_seg2.jpg" alt="Vue d&#x27;ensemble du workflow N8N montrant l&#x27;agent IA de données de ventes connecté à plusieurs sous-outils et tables, avec le panneau de chat affichant le résultat du calcul du revenu total." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000044_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:44</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du workflow N8N montrant l&#x27;agent IA de données de ventes connecté à plusieurs sous-outils et tables, avec le panneau de chat affichant le résultat du calcul du revenu total.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000052_seg2.jpg" alt="Interface de la table de données native dans N8N nommée &#x27;Sales&#x27;, présentant un tableau structuré avec des colonnes telles que id, productName, dateSold, price, quantitySold, productID, totalRevenue, createdAt et updatedAt." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000052_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:52</span>
+                        <span class="caption-text">Interface de la table de données native dans N8N nommée &#x27;Sales&#x27;, présentant un tableau structuré avec des colonnes telles que id, productName, dateSold, price, quantitySold, productID, totalRevenue, createdAt et updatedAt.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:09 - 00:01:38</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">dont nous allons parler aujourd&#x27;hui. Comme toujours, vous obtiendrez ce flux de travail ainsi que les deux jeux de données d&#x27;exemple de manière totalement gratuite afin de pouvoir venir ici, mettre les mains dans le cambouis et commencer simplement à l&#x27;utiliser pour comprendre comment cela fonctionne. Mais entrons dans le vif du sujet. Voici à quoi ressemble l&#x27;onglet des tables de données dans n8n. J&#x27;enregistre cette vidéo avant qu&#x27;il ne soit réellement déployé pour tout le monde. Donc, si vous ne le voyez pas pour l&#x27;instant, tout ce que vous aurez à faire, c&#x27;est de vous assurer de mettre à jour votre n8n vers la dernière version, et vous devriez alors voir les tables de données. C&#x27;est juste ici sur mon écran d&#x27;accueil. J&#x27;ai mes flux de travail, mes identifiants, mes exécutions, et ensuite j&#x27;ai mes tables de données.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation de workflows (type n8n)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflows intitulés &#x27;From Sheets to Data Table&#x27;, &#x27;Inserting Sales Data&#x27;, &#x27;Contact Lookup&#x27; avec des nœuds de déclenchement (Gmail Trigger), d&#x27;IA (GPT-4o-mini) et de manipulation de données.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation générale du flux de travail d&#x27;automatisation et de ses différents blocs fonctionnels.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000116_seg3.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application d&#x27;automatisation de type n8n ou similaire avec plusieurs blocs de workflows pour la gestion de tables de données et d&#x27;agents IA, et le présentateur en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000116_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:16</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application d&#x27;automatisation de type n8n ou similaire avec plusieurs blocs de workflows pour la gestion de tables de données et d&#x27;agents IA, et le présentateur en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:39 - 00:02:03</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et tout ce que j&#x27;ai à faire pour en créer un nouveau, c&#x27;est de cliquer sur ce petit menu déroulant, de cliquer sur créer une table de données. Je vais appeler celle-ci « demo » avec un antislash, ou peut-être un slash. Et ensuite, ce que nous avons, c&#x27;e sont deux colonnes par défaut, qui sont une date de création et une date de mise à jour. Et ensuite, si nous voulons ajouter différentes colonnes, nous aurions juste à taper ici pour ajouter une colonne. Et ensuite, nous devons choisir un type de données. Nous avons donc chaîne de caractères, nombre, booléen, ou date. Une fois que j&#x27;ajoute cette colonne, je suis alors capable d&#x27;ajouter une ligne.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;application de gestion de données.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nom de la table « demo\ », colonnes par défaut « id », « createdAt », « updatedAt », message « No Rows To Show ».</p>
+                        <p><strong>Action / Démonstration :</strong> Création et affichage d&#x27;une nouvelle table de données vide nommée « demo\ ».</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000145_seg4.jpg" alt="Interface montrant une table de données nommée « demo\ » avec deux colonnes par défaut (« id », « createdAt », « updatedAt ») et des boutons « Add Row » et « Add Column »." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000145_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:45</span>
+                        <span class="caption-text">Interface montrant une table de données nommée « demo\ » avec deux colonnes par défaut (« id », « createdAt », « updatedAt ») et des boutons « Add Row » et « Add Column ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:03 - 00:02:38</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, je peux simplement remplir les données ici même. Ou je voulais taper Nate en fait. Ou au lieu de remplir des trucs manuellement, vous pouvez importer d&#x27;autres feuilles de données dans N8N. Donc disons que j&#x27;ai cette feuille de contacts que j&#x27;utilise dans Google Sheets, mais je veux la déplacer vers N8N. Laissez-moi vous montrer comment nous faisons cela. Donc nous voici de retour dans N8N et nous avons ces nœuds orange. Il vous suffirait d&#x27;appuyer sur tab ou de cliquer sur le plus en haut à droite. Et si vous cherchez des tables de données, vous pouvez maintenant voir que nous avons ce nouveau nœud, qui dit enregistrer définitivement des données lors des exécutions de flux de travail dans une table. Et si j&#x27;ouvre cela, nous avons les fonctions qui sont assez similaires à Google Sheets, comme la suppression d&#x27;une ligne, l&#x27;obtention d&#x27;un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (Interface web d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow n8n (&quot;Get Contacts&quot;, &quot;Insert Contacts&quot;, &quot;Gmail Trigger&quot;, &quot;Get row(s)&quot;, &quot;AI Agent&quot;), table de données avec colonnes &quot;id&quot;, &quot;Name&quot;, &quot;createdAt&quot;, &quot;updatedAt&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la table de données intégrée dans n8n, puis affichage du workflow complet connectant Google Sheets, Data Table et un Agent IA avec Gmail.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000212_seg5.jpg" alt="Interface N8N affichant une table de données (&quot;Data tables / demo&quot;) avec une ligne contenant le nom &quot;Nate&quot;." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000212_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:12</span>
+                        <span class="caption-text">Interface N8N affichant une table de données (&quot;Data tables / demo&quot;) avec une ligne contenant le nom &quot;Nate&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000229_seg5.jpg" alt="Interface N8N affichant un éditeur de workflow avec deux blocs principaux (&quot;From Sheets to Data Table&quot; et &quot;Contact Lookup&quot;) et le panneau latéral de recherche de nœuds." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000229_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:29</span>
+                        <span class="caption-text">Interface N8N affichant un éditeur de workflow avec deux blocs principaux (&quot;From Sheets to Data Table&quot; et &quot;Contact Lookup&quot;) et le panneau latéral de recherche de nœuds.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:38 - 00:03:13</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ligne, l&#x27;insertion d&#x27;une ligne, la mise à jour ou l&#x27;upsert. Donc, juste pour vous montrer comment cela fonctionne, nous allons récupérer mes contacts de cette feuille Google Sheets et nous allons les importer dans cette table de données de contacts dans N8N. Donc, très rapidement, je vais juste supprimer toutes ces lignes et gardez à l&#x27;esprit, vous pouvez voir ici, la dernière ligne commence à l&#x27;ID 20. Et quand je les supprime, on dirait que ça se réinitialise, mais quand nous écrirons d&#x27;autres lignes, cela commencera à 21 parce que cette table de données s&#x27;en souvient, mais c&#x27;est un détail très mineur. Comme je l&#x27;ai dit, exécutons cela très rapidement et ensuite je vous montrerai ce qui se passe. Donc, vous pouvez voir que c&#x27;est arrivé très, très vite. Nous récupérons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Sheets et n8n (Data Tables)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Données de contacts structurées en colonnes (Nate Herkelman, Michael Scott, Mark Johnson, etc.) et table n8n vide puis remplie.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation entre la source Google Sheets et la table de données n8n pour illustrer l&#x27;importation et la gestion des contacts.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000247_seg6.jpg" alt="Une feuille Google Sheets affichant une liste de contacts avec les colonnes Nom, Email, Numéro de téléphone et Notes." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000247_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:47</span>
+                        <span class="caption-text">Une feuille Google Sheets affichant une liste de contacts avec les colonnes Nom, Email, Numéro de téléphone et Notes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000256_seg6.jpg" alt="L&#x27;interface d&#x27;une table de données dans n8n montrant plusieurs lignes de contacts importées avec leurs ID, noms, numéros et horodatages." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000256_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:56</span>
+                        <span class="caption-text">L&#x27;interface d&#x27;une table de données dans n8n montrant plusieurs lignes de contacts importées avec leurs ID, noms, numéros et horodatages.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000304_seg6.jpg" alt="La même table de données n8n pour les contacts, affichant actuellement &quot;No Rows To Show&quot; avant l&#x27;importation." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000304_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:04</span>
+                        <span class="caption-text">La même table de données n8n pour les contacts, affichant actuellement &quot;No Rows To Show&quot; avant l&#x27;importation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:13 - 00:03:48</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">dans toutes les lignes de ma feuille de contacts, et ensuite nous les écrivons dans une table de données. Et vous pouvez simplement choisir dans une liste. Vous remarquerez qu&#x27;il n&#x27;y a pas de section d&#x27;identifiants parce que nous n&#x27;allons pas sur Internet. Nous récupérons simplement cela de manière native depuis N8N. Et ensuite, nous devons juste mapper nos colonnes. Donc le nom, j&#x27;ai glissé le nom, l&#x27;adresse e-mail, le numéro, les notes, tout ce genre de choses. Vous devez simplement vous assurer que les types de données correspondent. Sinon, cela ne vous permettra pas d&#x27;insérer ces valeurs. Donc maintenant que nous avons fait cela, si je retourne dans ma table de données N8N pour les contacts et que je clique sur actualiser, nous devrions voir que ces lignes de contacts sont arrivées dans notre instance. Donc j&#x27;espère que vous</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflows low-code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : &quot;When clicking &#x27;Execute workflow&#x27;&quot;, &quot;Get Contacts&quot;, &quot;Insert Contacts&quot;, &quot;Gmail Trigger&quot;, et &quot;AI Agent&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des paramètres du nœud &#x27;Insert Contacts&#x27; pour mapper les colonnes de données issues d&#x27;une feuille de calcul.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000322_seg7.jpg" alt="Interface d&#x27;un éditeur de workflow avec un panneau de configuration ouvert au centre montrant les paramètres d&#x27;insertion de contacts dans une table de données." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000322_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:22</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow avec un panneau de configuration ouvert au centre montrant les paramètres d&#x27;insertion de contacts dans une table de données.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000340_seg7.jpg" alt="Vue d&#x27;ensemble du canvas d&#x27;automatisation montrant plusieurs workflows de traitement de données et d&#x27;agents IA (n8n)." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000340_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:40</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du canvas d&#x27;automatisation montrant plusieurs workflows de traitement de données et d&#x27;agents IA (n8n).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:48 - 00:04:25</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">voyez comment cela ouvre quelques opportunités. Nous n&#x27;allons pas pouvoir plonger dans tous les cas d&#x27;utilisation aujourd&#x27;hui, mais laissez-moi vous en montrer un auquel vous pourriez penser. Donc nous avons nos données de contact dans n8n, et ce que nous pourrions faire, c&#x27;est fondamentalement utiliser quelque chose comme ceci, où nous allons répondre à un e-mail, mais avant de répondre à l&#x27;e-mail, nous voulons rechercher ce contact et filtrer à travers toutes nos données, tous nos contacts pour ne garder que celui que nous recherchons. Donc je vais récupérer un nouvel e-mail à partir de notre déclencheur Gmail. Nous pouvons voir que l&#x27;e-mail d&#x27;où cela provient est upatdigital@gmail.com et nous avons Nate Herkelman. Donc ce que je vais faire ensuite, c&#x27;est que nous utilisons un nœud pour obtenir des lignes à partir d&#x27;une table de données, mais nous utilisons un filtre et nous disons que nous voulons seulement récupérer les lignes qui correspondent</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflows d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow n8n (Gmail Trigger, Get row(s), AI Agent GPT-4o-mini) et données JSON/HTML de sortie d&#x27;un e-mail reçu.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des différents scénarios d&#x27;automatisation et de recherche de contacts basés sur les e-mails dans n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000357_seg8.jpg" alt="Vue d&#x27;ensemble de l&#x27;interface n8n montrant plusieurs workflows automatisés, incluant &#x27;From Sheets to Data Table&#x27; et &#x27;Contact Lookup&#x27; avec un agent IA GPT-4o-mini." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000357_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:57</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;interface n8n montrant plusieurs workflows automatisés, incluant &#x27;From Sheets to Data Table&#x27; et &#x27;Contact Lookup&#x27; avec un agent IA GPT-4o-mini.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000416_seg8.jpg" alt="Panneau de configuration du nœud &#x27;Gmail Trigger&#x27; dans n8n, affichant les paramètres de déclenchement (toutes les minutes, réception de message) et le panneau de sortie des données (Output)." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000416_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:16</span>
+                        <span class="caption-text">Panneau de configuration du nœud &#x27;Gmail Trigger&#x27; dans n8n, affichant les paramètres de déclenchement (toutes les minutes, réception de message) et le panneau de sortie des données (Output).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:25 - 00:05:01</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">cette condition spécifique. Et la condition est que l&#x27;e-mail doit correspondre à l&#x27;e-mail qui a déclenché tout ce flux ici. Donc je suis essentiellement descendu et j&#x27;ai glissé ça directement ici. Et maintenant, quand j&#x27;exécute ceci, nous allons seulement obtenir la ligne pour Nate Herkelman avec cet e-mail. Et maintenant, ce que je peux faire, c&#x27;est que je peux injecter les notes juste ici concernant cette personne dans l&#x27;agent IA qui va rédiger l&#x27;e-mail. Donc si je vais à l&#x27;étape suivante, je vais juste exécuter ceci rapidement, mais regardons quel est le prompt utilisateur. Donc l&#x27;agent IA examine le prompt utilisateur, qui est l&#x27;objet de l&#x27;e-mail, le corps de l&#x27;e-mail, le nom de cette personne et les notes concernant cette personne. Et ces éléments proviennent</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil d&#x27;automatisation de workflow (type n8n ou Make) avec un panneau latéral de configuration et un aperçu des données JSON.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration du nœud : opération &#x27;Get&#x27;, table de données &#x27;Contacts&#x27;, condition de correspondance &#x27;Email - (string)&#x27; Equals &#x27;{{ $json.from.value[0].address }}&#x27;. Données JSON affichant les détails d&#x27;un e-mail avec les adresses de Nate Herkelman.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et association d&#x27;une condition dynamique pour filtrer les lignes en fonction de l&#x27;adresse e-mail source du déclencheur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000434_seg9.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de configuration d&#x27;un nœud d&#x27;automatisation (Get row(s)) avec un panneau de données d&#x27;entrée JSON à gauche et le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000434_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:34</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de configuration d&#x27;un nœud d&#x27;automatisation (Get row(s)) avec un panneau de données d&#x27;entrée JSON à gauche et le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:01 - 00:05:29</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">depuis le tableau de données. Il peut donc voir que le sujet était, j&#x27;ai besoin d&#x27;aide. Le corps de l&#x27;e-mail est, hé, j&#x27;ai besoin d&#x27;aide pour mon entreprise. Des suggestions de Nate Herkelman, qui est un fondateur spécialisé dans l&#x27;automatisation par IA, aime les détails, prudent sur les engagements. Ceci a en fait été tiré de ChatGPT à mon sujet lorsque j&#x27;ai dit, hé, j&#x27;ai besoin de notes rapides pour une base de données de contacts. C&#x27;est donc intéressant. Quoi qu&#x27;il en soit, ensuite, bien sûr, notre message système est simplement d&#x27;écrire un e-mail amical qui est personnalisé. Et vous pouvez voir qu&#x27;il répond en disant, hé, Nate, merci d&#x27;avoir contacté. J&#x27;aimerais beaucoup vous aider avec votre entreprise.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de workflow de type n8n avec un panneau d&#x27;expressions et de résultats.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Expressions JavaScript configurant le sujet et le corps de l&#x27;e-mail (Email Subject, Email Body, Name, Notes) et affichant le résultat de l&#x27;exécution avec les informations de Nate Herkelman.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et vérification du mapping des données d&#x27;un nœud dans l&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000508_seg10.jpg" alt="Interface d&#x27;un éditeur de workflow montrant un panneau de configuration avec des expressions JavaScript pour mapper les données d&#x27;un e-mail et d&#x27;une base de données, ainsi que le résultat correspondant." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000508_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:08</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow montrant un panneau de configuration avec des expressions JavaScript pour mapper les données d&#x27;un e-mail et d&#x27;une base de données, ainsi que le résultat correspondant.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:29 - 00:06:01</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Puisque tu t&#x27;intéresses à l&#x27;automatisation par IA et que tu apprécies une approche détaillée, nous pouvons explorer quelques solutions sur mesure qui correspondent à tes besoins sans te donner l&#x27;impression d&#x27;être poussé à t&#x27;engager. Donc comme je l&#x27;ai dit, un cas d&#x27;usage super, super simple, mais la clé ici était de vous montrer que vous êtes capable de filtrer et d&#x27;avoir des conditions lorsque vous extrayez des lignes de votre ensemble de données, ce qui va être très important à mesure que votre base de données grandit et grandit. Sinon, vous allez transmettre des centaines, potentiellement des milliers de lignes à l&#x27;IA, et tout ce que vous faites là, c&#x27;est ajouter plus de jetons, ce qui peut amener l&#x27;IA à halluciner un peu plus.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de workflow d&#x27;automatisation (type n8n ou similaire) avec un nœud &quot;AI Agent&quot; actif au centre.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Données JSON en entrée (nom, email, notes, numéro), prompt utilisateur configuré avec les variables du déclencheur Gmail, et message de sortie généré sous forme d&#x27;e-mail de réponse.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des paramètres et du prompt d&#x27;un agent IA pour automatiser la rédaction d&#x27;un e-mail de réponse en fonction des données reçues.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000537_seg11.jpg" alt="Interface d&#x27;un workflow d&#x27;automatisation montrant les données d&#x27;entrée (Get row, Gmail Trigger), la configuration d&#x27;un agent IA au centre avec son prompt et ses paramètres, ainsi que le résultat généré dans le panneau de droite." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000537_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:37</span>
+                        <span class="caption-text">Interface d&#x27;un workflow d&#x27;automatisation montrant les données d&#x27;entrée (Get row, Gmail Trigger), la configuration d&#x27;un agent IA au centre avec son prompt et ses paramètres, ainsi que le résultat généré dans le panneau de droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:01 - 00:06:22</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et la principale raison, c&#x27;est que ça va simplement être plus cher. Et bien sûr, ça ne doit pas nécessairement être ça. Nous avons adopté ici l&#x27;approche linéaire déterministe, mais vous pourriez aussi ajouter des outils de table de données comme nous le verrons dans un exemple futur, où vous pouvez choisir à partir d&#x27;une certaine table de données et ensuite vous pouvez avoir toutes ces lignes comme l&#x27;insertion de choses, le filtrage à travers des éléments, l&#x27;ajout de conditions, la mise à jour de lignes, la suppression de lignes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation (n8n / workflow visuel)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagrammes de flux avec des nœuds pour &quot;From Sheets to Data Table&quot; et &quot;Contact Lookup&quot;, intégrant des déclencheurs Gmail, des feuilles de calcul et un agent IA propulsé par GPT-4.1-mini.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et visualisation de workflows d&#x27;automatisation incluant des tables de données et des agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000606_seg12.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil d&#x27;automatisation de flux de travail de type n8n, illustrant des blocs pour les tables de données et des agents IA." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000606_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:06</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil d&#x27;automatisation de flux de travail de type n8n, illustrant des blocs pour les tables de données et des agents IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:22 - 00:06:46</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc tout ce que vous feriez typiquement avec Google Sheets, mais maintenant c&#x27;est plus rapide et c&#x27;est dans nnn. Cool. Passons donc à un exemple différent ici. Laissez-moi simplement attraper mon déclencheur manuel et le déplacer là-bas. Donc maintenant nous allons traiter les données de ventes. J&#x27;ai donc une feuille de données de ventes ici même dans Google Sheets. Vous pouvez voir qu&#x27;il y a 20 lignes. Nous avons un total de trois produits à analyser. Nous avons un total de trois jours à analyser. Nous avons des prix, des quantités, et le chiffre d&#x27;affaires total, ce genre de choses.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n, Google Sheets</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableur avec données de ventes (Wireless Headphones, Bluetooth Speaker, Phone Case, dates, prix, quantités, ID produit et revenus totaux).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation d&#x27;exemples de traitement des données de ventes dans Google Sheets et n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000628_seg13.jpg" alt="Interface n8n montrant plusieurs workflows d&#x27;automatisation et un agent IA configuré pour traiter des données." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000628_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:28</span>
+                        <span class="caption-text">Interface n8n montrant plusieurs workflows d&#x27;automatisation et un agent IA configuré pour traiter des données.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000640_seg13.jpg" alt="Fichier Google Sheets intitulé &#x27;Sales Data&#x27; contenant un tableau de ventes avec des colonnes de produits, dates, prix et quantités." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000640_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:40</span>
+                        <span class="caption-text">Fichier Google Sheets intitulé &#x27;Sales Data&#x27; contenant un tableau de ventes avec des colonnes de produits, dates, prix et quantités.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:46 - 00:07:07</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et nous allons, tout d&#x27;abord, intégrer ceci dans notre table de données NN. Donc dans ma table de données de vente et NNN, je vais simplement aller de l&#x27;avant et m&#x27;assurer que nous supprimons toutes ces lignes. Je ne veux rien ici, juste pour vous montrer à quel temps il est facile de tout y inscrire. Donc, de retour dans notre flux de travail, tout ce que j&#x27;ai à faire maintenant, c&#x27;est d&#x27;exécuter ce flux de travail. Nous allons récupérer les 20 lignes et les lire, ou désolé, et les écrire dans notre table de données et l&#x27;en terminer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de gestion de bases de données / tables de données (interface de type Airtable ou outil d&#x27;automatisation n8n)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Données tabulaires de vente avec colonnes : id, productName, dateSold, price, quantitySold, productID, totalRevenue, createdAt, updatedAt</p>
+                        <p><strong>Action / Démonstration :</strong> Suppression de l&#x27;ensemble des lignes de la table de données &quot;Sales&quot; pour repartir d&#x27;une table vide.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000652_seg14.jpg" alt="L&#x27;image montre une table de données nommée &quot;Sales&quot; avec plusieurs lignes de ventes de produits (Wireless Headphone, Bluetooth Speaker, Phone Case) affichant les colonnes id, productName, dateSold, price, quantitySold, productID, totalRevenue, createdAt et updatedAt. Le présentateur est visible en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000652_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:52</span>
+                        <span class="caption-text">L&#x27;image montre une table de données nommée &quot;Sales&quot; avec plusieurs lignes de ventes de produits (Wireless Headphone, Bluetooth Speaker, Phone Case) affichant les colonnes id, productName, dateSold, price, quantitySold, productID, totalRevenue, createdAt et updatedAt. Le présentateur est visible en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000657_seg14.jpg" alt="L&#x27;image montre la même table de données &quot;Sales&quot; après la suppression de toutes les lignes, affichant le message &quot;No Rows To Show&quot; avec un total de 0 lignes et une notification de succès &quot;Rows deleted&quot; en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000657_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:57</span>
+                        <span class="caption-text">L&#x27;image montre la même table de données &quot;Sales&quot; après la suppression de toutes les lignes, affichant le message &quot;No Rows To Show&quot; avec un total de 0 lignes et une notification de succès &quot;Rows deleted&quot; en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:08 - 00:07:38</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je devrais pouvoir actualiser ceci et maintenant nous voyons nos données de ventes. Et ensuite, parce que nous avons cet agent d&#x27;IA connecté à cela et que nous avons différents outils, il devrait être capable de répondre à la majorité de nos questions en utilisant une combinaison de ces outils et de la calculatrice. Faisons donc quelques exemples et je vais vous montrer ce qui se passe à l&#x27;intérieur des outils. Très bien, donc si je lui pose cette première question, qui est combien de produits ont été vendus le 15 septembre de cette année, ce qu&#x27;il devrait faire, c&#x27;est aller à cet outil de requête de date et il ne devrait ramener que les lignes où la date est égale au 15 septembre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de type n8n ou plateforme d&#x27;automatisation low-code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow nommé &#x27;Contact Lookup&#x27; avec un agent &#x27;Sales Data Agent&#x27; relié à des outils : &#x27;GPT-5-mini&#x27;, &#x27;All Rows&#x27;, &#x27;Product Name Query&#x27;, &#x27;Date Query&#x27;, &#x27;Product ID Query&#x27;, et &#x27;Calculator&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur survole ou configure les différents outils et requêtes connectés à l&#x27;agent d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000715_seg15.jpg" alt="Interface d&#x27;un constructeur de workflow d&#x27;IA montrant un agent connecté à divers outils de requêtes de données et un modèle LLM." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000715_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:15</span>
+                        <span class="caption-text">Interface d&#x27;un constructeur de workflow d&#x27;IA montrant un agent connecté à divers outils de requêtes de données et un modèle LLM.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:38 - 00:07:58</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, il va probablement utiliser sa calculatrice pour s&#x27;assurer qu&#x27;il fait bien le calcul correctement. Donc vous pouvez voir qu&#x27;il a obtenu la réponse de 10, ce qui est correct. Et vous pouvez voir ce qu&#x27;il a fait, c&#x27;est qu&#x27;il a récupéré tous les enregistrements de ventes pour 2025, 9, 15, ce qui fait le 15 septembre. Il y avait six transactions au total et il les a toutes résumées en utilisant la calculatrice. Donc c&#x27;était deux plus un plus trois, bla, bla, bla, ce qui faisait 10.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflows).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow automatisé avec des nœuds : &quot;Sales Data Agent&quot;, &quot;GPT-5-mini&quot;, &quot;All Rows&quot;, &quot;Date Query&quot;, &quot;Calculator&quot;. Logs d&#x27;exécution détaillant les étapes de calcul. Fenêtre de chat affichant le raisonnement de l&#x27;agent : &quot;Total products sold on 2025-09-15: 10 units&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un workflow automatisé pour interroger des données de ventes, calculer la somme via un outil &quot;Calculator&quot; et générer une réponse textuelle dans le chat.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000743_seg16.jpg" alt="Une interface de workflow visuel (type n8n) affichant un &quot;Sales Data Agent&quot; connecté à divers outils dont un modèle GPT-4o-mini, des requêtes de base de données et une calculatrice. Le panneau de chat à gauche affiche la réponse finale &quot;10 unités&quot; pour une requête sur les ventes du 15 septembre 2025." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000743_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:43</span>
+                        <span class="caption-text">Une interface de workflow visuel (type n8n) affichant un &quot;Sales Data Agent&quot; connecté à divers outils dont un modèle GPT-4o-mini, des requêtes de base de données et une calculatrice. Le panneau de chat à gauche affiche la réponse finale &quot;10 unités&quot; pour une requête sur les ventes du 15 septembre 2025.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:59 - 00:08:31</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, si je clique sur l&#x27;outil de requête de données qu&#x27;il a décidé d&#x27;utiliser, vous pouvez voir que la raison pour laquelle cela fonctionne, c&#x27;est parce que nous avons la condition, qui est que la date de vente soit égale à la valeur que l&#x27;IA renseigne. Et l&#x27;IA a renseigné la valeur juste ici, ce qui est exactement la façon dont nous la voyons dans notre tableau de données de ventes, parce que nous lui avons dit que c&#x27;est en gros le format des dates. Et une chose que je voulais souligner très rapidement, c&#x27;est que vous pouvez voir que c&#x27;est configuré comme une chaîne de caractères. Ce n&#x27;est pas le véritable type de données « date », et la raison pour laquelle nous avons fait cela, c&#x27;est parce que dans nos données de ventes sur Google Sheets, c&#x27;était formaté comme ceci et les tirets en font fondamentalement une chaîne de caractères.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation et de gestion de bases de données (type outil low-code/IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de requête de données avec conditions de filtrage par date et tableau de données répertoriant les ventes.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et explication des paramètres de l&#x27;outil de requête de données configuré pour l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000807_seg17.jpg" alt="Interface d&#x27;un outil de requête de données avec le panneau &#x27;Date Query&#x27; ouvert, affichant les conditions et les paramètres de filtrage par IA." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000807_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:07</span>
+                        <span class="caption-text">Interface d&#x27;un outil de requête de données avec le panneau &#x27;Date Query&#x27; ouvert, affichant les conditions et les paramètres de filtrage par IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000815_seg17.jpg" alt="Tableau de données nommé &#x27;Sales&#x27; affichant des enregistrements de ventes avec des colonnes telles que productID, dateSold, price et quantitySold." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000815_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:15</span>
+                        <span class="caption-text">Tableau de données nommé &#x27;Sales&#x27; affichant des enregistrements de ventes avec des colonnes telles que productID, dateSold, price et quantitySold.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:31 - 00:08:50</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc c&#x27;est pour ça que c&#x27;est une chaîne de caractères ici. Mais bref, comme je l&#x27;ai dit, il a trouvé qu&#x27;ici à travers ici avaient tous une date égale au 9/15 et ensuite il a juste additionné ces quantités. Faisons donc un autre exemple rapide. Combien de casques sans fil avons-nous vendus ? Il va faire une requête sur le nom du produit puisqu&#x27;il a le nom du produit.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation et de gestion de bases de données (style outil low-code/n8n/agent builder).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de données avec des produits (Wireless Headphone, Bluetooth Speaker, Phone Case) et requêtes de chat (ex: &quot;How many wireless headphones have we sold?&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et explication d&#x27;un tableau de données de ventes, puis basculement sur un agent IA exécutant un workflow avec des requêtes textuelles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000836_seg18.jpg" alt="Vue d&#x27;un tableau de données (Data tables) nommé Sales montrant des enregistrements de ventes avec ID, nom de produit, date, prix, quantité et ID de produit." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000836_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:36</span>
+                        <span class="caption-text">Vue d&#x27;un tableau de données (Data tables) nommé Sales montrant des enregistrements de ventes avec ID, nom de produit, date, prix, quantité et ID de produit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000845_seg18.jpg" alt="Interface de workflow d&#x27;automatisation IA montrant un agent &quot;Sales Data Agent&quot; connecté à GPT-5-mini, avec un panneau de chat interactif en bas à gauche et des journaux d&#x27;exécution à droite." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000845_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:45</span>
+                        <span class="caption-text">Interface de workflow d&#x27;automatisation IA montrant un agent &quot;Sales Data Agent&quot; connecté à GPT-5-mini, avec un panneau de chat interactif en bas à gauche et des journaux d&#x27;exécution à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:50 - 00:09:09</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et voilà. Vous pouvez voir qu&#x27;il vient tout juste de l&#x27;atteindre. Je peux en fait cliquer là-dedans très rapidement. Vous pouvez voir qu&#x27;il a rempli la condition juste ici sous la forme de casque sans fil. Donc c&#x27;est ce qu&#x27;il cherche. Nous pourrions aller vérifier que pour toutes les lignes qu&#x27;il a récupérées, vous pouvez voir que le nom du produit doit être égal à casque sans fil. Et ensuite, ce qu&#x27;il a fait, c&#x27;est qu&#x27;il a simplement additionné toutes ces quantités vendues et il a obtenu la réponse 12, ce qui est correct.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil d&#x27;automatisation de type workflow/no-code avec configuration de paramètres et visualisation de données tabulaires.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de requête de nom de produit (Product Name Query), conditions de filtrage sur la colonne &#x27;productName&#x27; égale à &#x27;Wireless Headphones&#x27; (casque sans fil), et données de sortie JSON montrant plusieurs objets avec &#x27;productName&#x27; réglé sur &#x27;Wireless Headphones&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation et vérification des paramètres de condition et des données de sortie correspondantes dans l&#x27;interface de l&#x27;outil d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000855_seg19.jpg" alt="Interface d&#x27;un outil d&#x27;automatisation avec un panneau de configuration de nœud au centre, affichant les entrées à gauche et les résultats JSON structurés sous forme de tableau à droite, avec le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000855_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:55</span>
+                        <span class="caption-text">Interface d&#x27;un outil d&#x27;automatisation avec un panneau de configuration de nœud au centre, affichant les entrées à gauche et les résultats JSON structurés sous forme de tableau à droite, avec le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:10 - 00:09:45</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">D&#x27;accord. Et pour une dernière question, celle-ci est un peu plus délicate. Quel est le nombre moyen du produit ID BS002 que nous vendons par jour ? Il a donc utilisé la requête par ID produit et va en gros examiner les trois jours, déterminer combien ont été vendus chaque jour, puis trouver la moyenne de cela. Vous pouvez voir qu&#x27;il vient d&#x27;utiliser la calculatrice. Je pense donc qu&#x27;il est sur le point de nous donner notre réponse. La réponse que nous recherchons est quatre. Et nous sommes sur le point de l&#x27;obtenir. D&#x27;accord, donc le résumé pour l&#x27;ID produit, il indique que les données utilisées sont toutes les lignes de vente pour cet ID produit. Le nombre total vendu était de 12. Il y avait trois jours différents. Donc 12 divisé</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de construction de workflows / plateforme d&#x27;agents IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de nœuds interconnectés (When chat message received, Sales Data Agent, GPT-5-mini, All Rows, Product Name Query, Date Query, Product ID Query, Calculator) et logs d&#x27;exécution en bas à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA exécute le workflow et traite la requête textuelle concernant le nombre moyen de ventes quotidiennes pour le produit ID BS002.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000919_seg20.jpg" alt="Interface de workflow d&#x27;un agent IA affichant un diagramme de flux avec le module &#x27;Sales Data Agent&#x27; et différents outils de requête (All Rows, Product Name Query, Date Query, Product ID Query, Calculator), ainsi qu&#x27;un panneau de discussion montrant la question sur le produit ID BS002 et les logs d&#x27;exécution." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000919_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:19</span>
+                        <span class="caption-text">Interface de workflow d&#x27;un agent IA affichant un diagramme de flux avec le module &#x27;Sales Data Agent&#x27; et différents outils de requête (All Rows, Product Name Query, Date Query, Product ID Query, Calculator), ainsi qu&#x27;un panneau de discussion montrant la question sur le produit ID BS002 et les logs d&#x27;exécution.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:45 - 00:10:10</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">par trois donne quatre unités par jour, ce qui est correct. Donc je sais qu&#x27;on va un petit peu vite là-dessus, mais vous pourrez télécharger l&#x27;intégralité de ce flux de travail ainsi que toutes les ressources Google Sheets dont vous avez besoin juste ici, tout à fait gratuitement. Tout ce que vous avez à faire, c&#x27;est de rejoindre ma communauté School gratuite. Le lien pour cela se trouve dans la description. Et quand vous y serez, vous irez dans les ressources YouTube. Et lorsque vous trouverez la publication associée à cette vidéo, disons que c&#x27;était celle-ci, vous pourrez voir qu&#x27;il y a des fichiers JSON ici et il vous suffit de les télécharger et de les importer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n, Google Sheets, Skool (AI Automation Society)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow automatisé (n8n), liste de données CRM (Google Sheets), fils de discussion communautaires (Skool).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des outils de workflow, démonstration des données sources et partage des ressources de la communauté.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000951_seg21.jpg" alt="Interface de la plateforme n8n affichant plusieurs workflows automatisés connectés à des outils comme Gmail, des agents IA et des bases de données." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000951_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:51</span>
+                        <span class="caption-text">Interface de la plateforme n8n affichant plusieurs workflows automatisés connectés à des outils comme Gmail, des agents IA et des bases de données.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000957_seg21.jpg" alt="Feuille de calcul Google Sheets contenant une base de données de contacts avec des colonnes pour le nom, l&#x27;email, le numéro de téléphone et des notes." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_000957_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:57</span>
+                        <span class="caption-text">Feuille de calcul Google Sheets contenant une base de données de contacts avec des colonnes pour le nom, l&#x27;email, le numéro de téléphone et des notes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001004_seg21.jpg" alt="Interface de la communauté Skool &quot;AI Automation Society&quot; montrant les derniers posts, les ressources vidéo et les statistiques des membres." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001004_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:04</span>
+                        <span class="caption-text">Interface de la communauté Skool &quot;AI Automation Society&quot; montrant les derniers posts, les ressources vidéo et les statistiques des membres.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:10 - 00:10:43</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et puis il y aura aussi des liens pour faire une copie de ces tableurs si vous voulez les tester dans les tables de données NNN. Et la raison pour laquelle je mentionne cela, c&#x27;est parce que je ne vais pas plonger dans l&#x27;intégralité de cette invite système, mais je vais juste vous montrer rapidement ce que j&#x27;ai dit. Fondamentalement, vous êtes un analyste de données de vente expert. Vous avez ces outils. Voici à quoi sert chacun d&#x27;eux. Et ensuite, ce que j&#x27;ai fait, c&#x27;est que je lui ai donné les noms valides qui vont dans chaque catégorie. Donc pour les noms de produits, je lui ai donné les trois produits. Pour les dates, je lui ai indiqué le format sous lequel il doit structurer ses dates. Et ensuite, pour les identifiants de produits, je lui ai également donné les trois identifiants de produits, juste pour le plaisir de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (plateforme d&#x27;automatisation de workflow).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Nœud &quot;Sales Data Agent&quot; avec connexions vers GPT-4o-mini et outils de base de données.
+- Prompt système : &quot;You are Master Sales Data Analyst AI, an expert in analyzing sales data...&quot;, listant les outils AllRows, ProductNameQuery, DateQuery, ProductIDQuery, et Calculator.
+- Entrée utilisateur exemple : &quot;what&#x27;s the average number of product ID: BS002 we are selling per day?&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de l&#x27;architecture d&#x27;un agent IA dans n8n suivie de l&#x27;ouverture de l&#x27;éditeur pour inspecter le prompt système du nœud agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001019_seg22.jpg" alt="Interface n8n montrant un workflow d&#x27;automatisation avec un nœud central &quot;Sales Data Agent&quot; connecté à un modèle GPT-4o-mini et plusieurs outils de données (All Rows, Product Name/Date/ID Query, Calculator)." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001019_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:19</span>
+                        <span class="caption-text">Interface n8n montrant un workflow d&#x27;automatisation avec un nœud central &quot;Sales Data Agent&quot; connecté à un modèle GPT-4o-mini et plusieurs outils de données (All Rows, Product Name/Date/ID Query, Calculator).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001027_seg22.jpg" alt="Éditeur de configuration du &quot;Sales Data Agent&quot; dans n8n, affichant l&#x27;invite système (system prompt) qui définit le rôle d&#x27;analyste de données et les outils disponibles." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001027_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:27</span>
+                        <span class="caption-text">Éditeur de configuration du &quot;Sales Data Agent&quot; dans n8n, affichant l&#x27;invite système (system prompt) qui définit le rôle d&#x27;analyste de données et les outils disponibles.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:43 - 00:11:20</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">de l&#x27;exemple, nous pouvions voir comment fonctionne le filtrage. D&#x27;accord. Donc, pour le dernier exemple que nous allons faire, j&#x27;ai simplement un nœud de code ici qui génère essentiellement 400 éléments. Il compte simplement de un à 400. Et ce que je veux faire, c&#x27;est que nous allons simplement voir la différence de vitesse en raison du fait que nous ne passons pas par Internet pour faire cet appel d&#x27;API. Nous avons donc cette feuille ici appelée test, et elle a juste une colonne appelée nombre. Et tout ce que je vais faire, c&#x27;est que nous allons exécuter ceci, puis nous allons voir combien de temps met ce nœud pour écrire 400 lignes. Nous allons donc l&#x27;exécuter. Nous pouvons voir que ça tourne. Il vient d&#x27;écrire toutes les données. Donc nous</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (interface de workflow d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : déclencheur &quot;When clicking &#x27;Execute workflow&#x27;&quot;, nœud de code nommé &quot;400&quot; générant 400 éléments, et deux nœuds &quot;Append row in sheet&quot; et &quot;Insert row&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du dernier exemple de workflow avec un nœud de code générant 400 éléments connectés à des feuilles de calcul.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001053_seg23.jpg" alt="Interface d&#x27;automatisation n8n montrant un workflow avec un nœud déclencheur, un nœud de code générant 400 éléments, et deux nœuds de destination (Google Sheets et autre)." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001053_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:53</span>
+                        <span class="caption-text">Interface d&#x27;automatisation n8n montrant un workflow avec un nœud déclencheur, un nœud de code générant 400 éléments, et deux nœuds de destination (Google Sheets et autre).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:20 - 00:11:53</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">on peut voir que si je fais défiler tout en bas jusqu&#x27;à 400, vous pouvez voir qu&#x27;il est là. Et maintenant, si nous allons dans le nœud, nous pouvons voir juste ici qu&#x27;il s&#x27;est exécuté en 2000 millisecondes, 2080. Donc 2080 millisecondes. Maintenant, regardez ce qui se passe lorsque nous le connectons à notre table de données NN, connecté à une table de données appelée test. Nous écrivons exactement les mêmes données. Donc, lorsque j&#x27;exécute celui-ci, vous pouvez voir, oh, cela a honnêtement semblé plutôt similaire. Voyons comment c&#x27;était. C&#x27;était 2511 millisecondes, ce qui est vraiment</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration du nœud Google Sheets (&#x27;Append row in sheet&#x27;) et affichage des résultats JSON avec 400 éléments.</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation des détails d&#x27;exécution d&#x27;un nœud dans n8n puis retour sur le canevas principal pour connecter un nouveau nœud.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001129_seg24.jpg" alt="Interface détaillée d&#x27;un nœud n8n &#x27;Append row in sheet&#x27; montrant les paramètres de configuration et les données de sortie avec le temps d&#x27;exécution." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001129_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:29</span>
+                        <span class="caption-text">Interface détaillée d&#x27;un nœud n8n &#x27;Append row in sheet&#x27; montrant les paramètres de configuration et les données de sortie avec le temps d&#x27;exécution.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001145_seg24.jpg" alt="Vue d&#x27;ensemble du canevas de l&#x27;éditeur de workflow n8n montrant plusieurs nœuds connectés et l&#x27;exécution en cours." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001145_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:45</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du canevas de l&#x27;éditeur de workflow n8n montrant plusieurs nœuds connectés et l&#x27;exécution en cours.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:53 - 00:12:20</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Intéressant parce que presque tous mes exemples précédents, la table de données a été plus rapide. D&#x27;accord. Donc c&#x27;était assez intéressant pour moi. Nous allons le refaire avec 60. Mon hypothèse était peut-être que quand c&#x27;est moins, Google Sheets a toujours en quelque sorte plus de temps, mais avec les fonctions en masse, c&#x27;est plus rapide. Je ne sais pas. Nous verrons. Donc nous allons exécuter ceci avec 60. Google Sheets vient de prendre 1700 millisecondes. Maintenant nous allons aller sur notre table de données N8N, l&#x27;exécuter à nouveau.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web n8n (éditeur de workflow).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœud de déclenchement « When clicking &#x27;Execute workflow&#x27; », nœud de configuration « 60 », nœud « Append row in sheet » (Google Sheets) et nœud « Insert row » (Data Tables).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et configuration d&#x27;un workflow de test de performance comparatif.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001200_seg25.jpg" alt="Un diagramme de workflow sur n8n comparant la vitesse entre Google Sheets et Data Tables avec 60 éléments." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001200_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:00</span>
+                        <span class="caption-text">Un diagramme de workflow sur n8n comparant la vitesse entre Google Sheets et Data Tables avec 60 éléments.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:20 - 00:12:42</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;était beaucoup plus rapide cette fois-ci. Et celui-ci a pris 300 millisecondes. Et maintenant, juste pour confirmer mon hypothèse une fois de plus, nous allons le refaire avec 20. Donc 20 vers Google Sheets nous a pris un total de 1700 millisecondes encore une fois. Donc c&#x27;est peut-être juste en quelque sorte sa limite minimale. Mais quand nous allons aux tableaux de données NNN, c&#x27;était instantané. Genre, ça a pris 97 millisecondes. Donc c&#x27;était intéressant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de workflow (style n8n)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds : &#x27;When clicking Execute workflow&#x27;, nœud de données &#x27;20&#x27;, &#x27;Append row in sheet&#x27; (Google Sheets) et &#x27;Insert row&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et analyse les résultats de vitesse et de performance du workflow avec 20 éléments.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001225_seg26.jpg" alt="Interface d&#x27;un éditeur de workflow montrant un test de vitesse avec plusieurs nœuds connectés, dont un déclencheur, un nœud de données &#x27;20&#x27; et des actions d&#x27;insertion vers Google Sheets." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001225_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:25</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow montrant un test de vitesse avec plusieurs nœuds connectés, dont un déclencheur, un nœud de données &#x27;20&#x27; et des actions d&#x27;insertion vers Google Sheets.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:42 - 00:13:17</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous en avez des tonnes et des tonnes, par centaines, ça va être similaire. NNN sera peut-être même un peu plus lent, mais pour la majorité de vos écritures, et surtout si vous faites une ligne ou deux lignes, ce qui en fait, essayons juste rapidement. Désolé, c&#x27; donc juste trop amusant. Donc nous allons essayer deux lignes. Google Sheets a pris une minute. Ça a pris 1600 millisecondes. Et si nous allons dans NNN data tables, ça va être instantané. Ça a pris 11 millisecondes. Donc vous pouvez voir que quand vous en avez moins, NNN data tables va être fondamentalement instantané. Mais si vous avez un grand nombre, comme la première fois où nous en avons fait 400, ça va être assez comparable. Donc ouais, j&#x27;espère que vous avez apprécié celui-ci</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de workflow de type n8n ou similaire dans un navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds du workflow : &quot;When clicking &#x27;Execute workflow&#x27;&quot;, un nœud JSON intermédiaire (&quot;20&quot;), et deux nœuds d&#x27;action parallèle (&quot;Append row in sheet&quot; et &quot;Insert row&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur survole ou manipule les blocs du workflow en vue d&#x27;exécuter un test rapide des écritures de données.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001251_seg27.jpg" alt="Interface d&#x27;un éditeur de workflow montrant un diagramme avec plusieurs nœuds connectés, incluant un déclencheur manuel, un nœud de transformation de données, et des actions d&#x27;insertion de lignes dans des tableaux de données." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001251_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:51</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow montrant un diagramme avec plusieurs nœuds connectés, incluant un déclencheur manuel, un nœud de transformation de données, et des actions d&#x27;insertion de lignes dans des tableaux de données.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:17 - 00:13:52</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Intéressant. Je voulais juste faire une petite vidéo pour vous montrer comment vous pouvez utiliser ces tables de données et un peu la différence entre l&#x27;utilisation de quelque chose comme celles-ci et Google Sheets. Une autre chose à laquelle je pensais est que vous pourriez vous heurte à des limites de taux avec Google Sheets parce que vous faites un appel d&#x27;API. Donc si vous le spamez trop souvent, vous risquez en fait d&#x27;être limité par le taux et vous devrez peut-être intégrer des pauses ou des nouvelles tentatives. Mais je ne vois pas cela se produire avec n8n parce qu&#x27;encore une fois, tout reste en interne. Donc n&#x27;oubliez pas que vous pouvez également récupérer tout ce flux de travail ainsi que les deux jeux de données de test si vous voulez simplement tester des trucs afin de pouvoir essentiellement imiter ce flux de travail et voir comment il fonctionne. Tout ce que vous avez à faire pour cela, c&#x27;est de rejoindre ma communauté School gratuite.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de workflow d&#x27;automatisation (n8n/Make) et Google Sheets.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow (&quot;From Sheets to Data Table&quot;, &quot;Contact Lookup&quot;, &quot;Sales Data Agent&quot;) et tableau de données de vente (Product Name, Date Sold, Price, Quantity Sold, Total Revenue).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation comparative entre l&#x27;utilisation des tables de données dans un outil d&#x27;automatisation et Google Sheets.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001326_seg28.jpg" alt="Vue d&#x27;ensemble d&#x27;une interface de workflow d&#x27;automatisation montrant plusieurs flux de données interconnectés avec des agents IA." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001326_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:26</span>
+                        <span class="caption-text">Vue d&#x27;ensemble d&#x27;une interface de workflow d&#x27;automatisation montrant plusieurs flux de données interconnectés avec des agents IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001343_seg28.jpg" alt="Affichage d&#x27;un tableau Google Sheets intitulé &quot;Sales Data&quot; contenant des données de ventes par produit, date et prix." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001343_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:43</span>
+                        <span class="caption-text">Affichage d&#x27;un tableau Google Sheets intitulé &quot;Sales Data&quot; contenant des données de ventes par produit, date et prix.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:52 - 00:14:19</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le lien pour ça est dans la description, c&#x27;est totalement gratuit. Et si vous cherchez des conseils un peu plus structurés et que vous voulez aller un peu plus loin dans vos apprentissages, alors consultez définitivement ma communauté Plus. Le lien pour cela est également dans la description. Nous avons une communauté de plus de 2 500 membres qui construisent et gagnent de l&#x27;argent avec n8n. Nous avons une section de cours complète avec Agent Zero pour les débutants. Nous avons 10 heures et 10 secondes où nous plongeons dans n8n. Et puis nous avons un nouveau cours appelé Agence d&#x27;automatisation IA d&#x27;une seule personne, qui est un bonus pour les membres annuels. Et tout cela consiste à poser les bases pour construire une entreprise d&#x27;automatisation IA évolutive.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme communautaire en ligne (Skool)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publications de communauté, annonces de hackathons et modules de formation en IA et automatisation</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans la communauté en ligne et présentation des modules de formation de la plateforme Plus</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001359_seg29.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de la communauté &quot;AI Automation Society Plus&quot; sur Skool, affichant le fil d&#x27;actualité principal avec les publications épinglées." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001359_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:59</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de la communauté &quot;AI Automation Society Plus&quot; sur Skool, affichant le fil d&#x27;actualité principal avec les publications épinglées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001406_seg29.jpg" alt="Capture d&#x27;écran montrant l&#x27;onglet &quot;Classroom&quot; de la communauté, listant les différents modules de formation disponibles (Start Here, Agent Zero, 10 Hours to 10 Seconds, One Person AI Agency, etc.)." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001406_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:06</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;onglet &quot;Classroom&quot; de la communauté, listant les différents modules de formation disponibles (Start Here, Agent Zero, 10 Hours to 10 Seconds, One Person AI Agency, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:20 - 00:14:32</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc j&#x27;adorerais vous voir les gars dans cette communauté, mais c&#x27;est tout pour la vidéo d&#x27;aujourd&#x27;hui. Si vous avez apprécié ou si vous avez appris quelque chose de nouveau, veuillez s&#x27;il vous plaît lui donner un j&#x27;aime. Ça m&#x27;aide vraiment énormément. Et comme toujours, je vous remercie d&#x27;être arrivés jusqu&#x27;à la fin de la vidéo. On se voit dans la prochaine. Merci tout le monde.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (Interface web de gestion de workflows et d&#x27;agents IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagrammes de flux : &quot;From Sheets to Data Table&quot;, &quot;Inserting Sales Data&quot;, &quot;Contact Lookup&quot; avec divers nœuds (Google Sheets, AI Agent GPT-4o-mini).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et présentation de différents workflows d&#x27;automatisation configurés dans l&#x27;interface.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001423_seg30.jpg" alt="Vue d&#x27;ensemble d&#x27;une interface de workflow (n8n) montrant plusieurs diagrammes d&#x27;automatisation et d&#x27;agents IA, avec la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/QCjMBOEhpLE/QCjMBOEhpLE_001423_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:23</span>
+                        <span class="caption-text">Vue d&#x27;ensemble d&#x27;une interface de workflow (n8n) montrant plusieurs diagrammes d&#x27;automatisation et d&#x27;agents IA, avec la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
