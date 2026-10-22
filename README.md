@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `241 / 358` (`67.3%`)
+- **Vidéos traitées** : `242 / 358` (`67.6%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -258,6 +258,7 @@
 | 2025-11-06 | [zWLZ3bVVwD8](https://www.youtube.com/watch?v=zWLZ3bVVwD8) | **Learn Voice Agents Now, Thank Me Later (Full Beginner's Guide)** | [2025-11-06_YT-[zWLZ3bVVwD8]_Learn Voice Agents Now, Thank Me Later (Full Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-11-06_YT-[zWLZ3bVVwD8]_Learn Voice Agents Now, Thank Me Later (Full Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-11-06_YT-[zWLZ3bVVwD8]_Learn Voice Agents Now, Thank Me Later (Full Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-11-04 | [AYsg5gAMWyo](https://www.youtube.com/watch?v=AYsg5gAMWyo) | **I Built the Ultimate UGC Content System with AI Agents (free template)** | [2025-11-04_YT-[AYsg5gAMWyo]_I Built the Ultimate UGC Content System with AI Agents (free template)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-11-04_YT-[AYsg5gAMWyo]_I Built the Ultimate UGC Content System with AI Agents (free template)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-11-04_YT-[AYsg5gAMWyo]_I Built the Ultimate UGC Content System with AI Agents (free template)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-10-31 | [VzOYty0siaM](https://www.youtube.com/watch?v=VzOYty0siaM) | **How I'd Become an AI Consultant If I Had To Start Over (2 Paths)** | [2025-10-31_YT-[VzOYty0siaM]_How I'd Become an AI Consultant If I Had To Start Over (2 Paths)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-10-31_YT-[VzOYty0siaM]_How I'd Become an AI Consultant If I Had To Start Over (2 Paths)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-10-31_YT-[VzOYty0siaM]_How I'd Become an AI Consultant If I Had To Start Over (2 Paths)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-10-29 | [HN0oWxbF2bM](https://www.youtube.com/watch?v=HN0oWxbF2bM) | **De zéro à l'agent de messagerie : Cours complet pour débutants sans code** | [2025-10-29_YT-[HN0oWxbF2bM]_De zéro à l'agent de messagerie Cours complet pour débutants sans code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-10-29_YT-[HN0oWxbF2bM]_De zéro à l'agent de messagerie Cours complet pour débutants sans code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-10-29_YT-[HN0oWxbF2bM]_De zéro à l'agent de messagerie Cours complet pour débutants sans code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `9` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
