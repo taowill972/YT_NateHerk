@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 I Built a Photoshop AI Agent in n8n with no code (NanoBanana) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 I Built a Photoshop AI Agent in n8n with no code (NanoBanana)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-09-05</span>
+                <span class="badge">⏱️ 00:17:25</span>
+                <span class="badge">🆔 <code>7UNsK9LoORo</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=7UNsK9LoORo" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **I Built a Photoshop AI Agent in n8n with no code (NanoBanana)**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:34</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Today I&#x27;m super excited to share with you guys this Photoshop AI agent that I built in NNN with no code. It uses Google&#x27;s new nano banana image generation model which is absolutely insane. It&#x27;s really changing the game for ad creatives and UGC content. So I don&#x27;t want to waste any time we&#x27;re going to dive into it and I&#x27;m going to show you guys exactly how the system works and as always I&#x27;m going to give all the resources that you need to set this up completely free so stick around so I can show you guys how to do that. Alright so here is the master Photoshop agent and you can see it&#x27;s not too complex. Up front what we have is the ability to take text or image as an input. And then the agent has five different tools to choose from. It&#x27;s got two image gen tools</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Outil d&#x27;automatisation visuelle (type plateforme low-code/n8n) avec une interface graphique de conception de workflows.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow nommés &quot;Telegram Trigger&quot;, &quot;Photoshop Agent&quot;, &quot;GPT 5 mini&quot;, &quot;Sonnet 3.5&quot;, &quot;AI Image Gen&quot; et &quot;File Handling&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et démonstration du flux logique de l&#x27;agent Photoshop, mettant en évidence les connexions entre les outils d&#x27;IA et la gestion de fichiers.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_000009_seg1.jpg" alt="Gros plan sur le workflow d&#x27;automatisation montrant la section &quot;Brain&quot; avec les modèles actifs (GPT 5 mini, Sonnet 3.5) et les outils associés." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Gros plan sur le workflow d&#x27;automatisation montrant la section &quot;Brain&quot; avec les modèles actifs (GPT 5 mini, Sonnet 3.5) et les outils associés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_000017_seg1.jpg" alt="Mise au point sur la section &quot;AI Image Gen&quot; du workflow, détaillant les outils &quot;Combine Images&quot; et &quot;Edit Image&quot; connectés à l&#x27;agent Photoshop." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_000017_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:17</span>
+                        <span class="caption-text">Mise au point sur la section &quot;AI Image Gen&quot; du workflow, détaillant les outils &quot;Combine Images&quot; et &quot;Edit Image&quot; connectés à l&#x27;agent Photoshop.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_000026_seg1.jpg" alt="Vue d&#x27;ensemble de l&#x27;interface complète du workflow &quot;Nano Photoshop Agent&quot;, incluant les triggers Telegram, le traitement des fichiers et les différents modules d&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_000026_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:26</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;interface complète du workflow &quot;Nano Photoshop Agent&quot;, incluant les triggers Telegram, le traitement des fichiers et les différents modules d&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:34 - 00:01:06</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">where it can combine images or edit existing images. And then it has three file handling tools in Google Drive where it can change the name of a file, search through raw files, or search through AI generated images that it&#x27;s created for us. And it can manage all of this right in your pocket, right through Telegram. So let&#x27;s hop into a demo. Okay, so you can see that our workflow is listening to us. I&#x27;m going to send a picture on Telegram. Okay, so I just shot that off. And now you can see it&#x27;s uploading that to Google Drive. The agent&#x27;s going to see that and then it&#x27;s going to ask us what we want to name that file in our Google Drive. So there you go. It just responded with</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:06 - 00:01:41</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">what would you like me to name that photo? And I&#x27;m shooting back a message that says call it Nate. And what it&#x27;s going to do now is use this change name tool to change the name in our Google Drive to Nate. As you can see, if I switch over real quick to media, it just got called Nate. And originally it would have been called today&#x27;s date. So now it&#x27;s asking us what we want to do next. And I&#x27;m going to shoot off this picture of a bag of granola. And once again, it&#x27;s going to ask us, what do we want to name this file? And just to show you guys real quick in the media folder that it&#x27;s dropping, like I said, it defaults to naming everything today&#x27;s date. So now I&#x27;m going to show you guys that it actually does change it. All right. So shooting off this message that says to</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:41 - 00:02:06</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">call that picture granola. And once again, we&#x27;ll see it go here and change that picture to granola, and then we&#x27;ll have it combine the images together. All right, that just finished up. We&#x27;ll check the media folder and we can see that picture got called granola. Okay. So I&#x27;ve got telegram open on my desktop now just to make this easier and it&#x27;s asking us what to do next. I&#x27;m shooting off this message that says please combine the Nate and granola pictures to make a photorealistic image where the man is holding their granola while hiking on a mountain.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:07 - 00:02:41</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So if you remember over here we have a raw file of granola. We have a smiling selfie of me and it&#x27;s going to put these together right here. You can see it&#x27;s using its combined image tool and it&#x27;s going to use nano banana to make it look like I&#x27;m holding the granola on a mountain. So I&#x27;ll check with you guys when that&#x27;s finished up. Oh, and one other thing while this is running, normally the agent would go search through the files to make sure it has the right IDs to combine the images, but because it&#x27;s using its memory, it already knows that. So that&#x27;s why it didn&#x27;t hit the other file handling tools. But you can see we got a response over here. It&#x27;s combined the images. Now let me click into this Google Drive link and we&#x27;ll take a look. So there we go. We&#x27;ve got the kind granola</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme d&#x27;automatisation de workflow (n8n ou similaire), intégration Telegram.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow composé de nœuds : &quot;Text/Image Input&quot;, &quot;Photoshop Agent&quot;, &quot;Brain&quot; (GPT 4o mini, Sonnet 3.5), &quot;AI Image Gen&quot; (Combine Images, Edit Image) et &quot;File Handling&quot;. Chat Telegram affichant la demande : &quot;Please combine the Nate and Granola pictures...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le workflow est en cours d&#x27;exécution (&quot;Executing workflow&quot;) pour traiter la fusion de deux images via l&#x27;agent Photoshop, suite à une instruction textuelle envoyée par l&#x27;utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_000215_seg5.jpg" alt="Une interface de workflow visuel (type n8n ou plateforme d&#x27;automatisation) montrant un agent &quot;Nano Photoshop&quot; en cours d&#x27;exécution, avec une fenêtre de chat Telegram latérale illustrant l&#x27;interaction utilisateur pour combiner des images." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_000215_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:15</span>
+                        <span class="caption-text">Une interface de workflow visuel (type n8n ou plateforme d&#x27;automatisation) montrant un agent &quot;Nano Photoshop&quot; en cours d&#x27;exécution, avec une fenêtre de chat Telegram latérale illustrant l&#x27;interaction utilisateur pour combiner des images.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:41 - 00:03:16</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">with all the spelling correct. We&#x27;ve got me and my face holding the granola while hiking on a And just to show you guys what that would look like if the files weren&#x27;t just immediately uploaded and we wanted to pull different ones So let&#x27;s see we have a hermosi picture right here. That&#x27;s insanely low quality. We&#x27;ve got a JBL speaker picture right here So what I&#x27;m gonna do now is say Please combine the hermosi image with the JBL speaker image to make it look like the man is listening to the speaker on a boat And now you can see it&#x27;s searching through the raw files It has those correct IDs and now that it has those file IDs It can pass that to the combined images tool in order to actually send those both to nano banana</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (ou plateforme similaire d&#x27;automatisation low-code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de flux comprenant : &quot;Text/Image Input&quot; (Telegram Trigger, Switch), &quot;Photoshop Agent&quot;, &quot;Brain&quot; (GPT 5.1 mini, Sonnet 3.5, Simple Memory), &quot;AI Image Gen&quot; et &quot;File Handling&quot;. Le bouton de statut indique &quot;Waiting for trigger event&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation du pipeline d&#x27;automatisation de l&#x27;agent qui traite des messages Telegram, manipule des fichiers et utilise des modèles IA pour l&#x27;édition d&#x27;images.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_000250_seg6.jpg" alt="Une interface de plateforme d&#x27;automatisation de workflow (type n8n) affichant un schéma complexe de nœuds connectés pour un &quot;Nano Photoshop Agent&quot;." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_000250_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:50</span>
+                        <span class="caption-text">Une interface de plateforme d&#x27;automatisation de workflow (type n8n) affichant un schéma complexe de nœuds connectés pour un &quot;Nano Photoshop Agent&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:16 - 00:03:36</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and get back an image. There you go. You can see it&#x27;s calling the combined images tool. So I&#x27;ll check in with you guys when we get that back. All right. So it just told us it was done. I&#x27;m going to go to the AI image generation folder and you can see we do have a new one. Let&#x27;s click in to see how it turned out. Not too bad at all. We have the JBL speaker. We&#x27;ve got Hermosi in his acquisition.com beater and it looks pretty good.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:37 - 00:04:08</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And remember, these images are only going to get better and better when you come in here and you customize the prompts and you customize all this other stuff because what&#x27;s actually going on is this agent is creating its own prompt when it sends over variables to this workflow. So if we had a dedicated agent just focused on like creating optimized AI image generation prompts, the results would probably be a lot better. All right, and just to show off the functionality of the edit image tool, I&#x27;m going to shoot off this message that says to create a photorealistic advertisement of the granola image, make it look like it&#x27;s being held in front of the Eiffel Tower.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:08 - 00:04:44</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So this one is going to have to find the file ID of the granola image, whether that&#x27;s in the memory or if it has to search the raw files. Looks like it just searched the raw files as you can see. And now it&#x27;s going to call the edit image tool in order to change the appearance of that image. Okay, so it looks like that just finished up. I&#x27;m going to go to the AI image generation folder. You can see we have granola ad Eiffel. If I click on it, you can see that it is our bag of granola, which looks exactly like that and is being held in front of the Eiffel Tower. So if that&#x27;s not a good ad creative, then I don&#x27;t know what is. And so all of the words are pretty much spot on except for right up here at the top as you can see. This is supposed to say ingredients</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:44 - 00:05:19</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">you can see and pronounce but two things. The first thing is that in the raw files this is a pretty low quality image so like I can&#x27;t even read what that says right there. And the second thing is this image generation model is only going to get better and better and of course the prompting that is in this current workflow is very minimal. But anyways now that you guys have seen how this works let&#x27;s start to dive into what&#x27;s going on with all of these nodes. So the first thing I&#x27;m to start off with is the text to image input. What happens here is we&#x27;re using a switch basically to detect if a photo exists or if text exists. And if photo exists, we go up this way where we download it,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:19 - 00:05:55</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">upload it to Google Drive, and then we shoot that off to the agent. But if text exists, then we just shoot the text straight away. But what we have to do is make sure that the variables are the same so that it&#x27;s always coming through in a field called json.message.txt. So we basically just standardize the input so the agent looks at it no matter what comes through. Naturally, the next thing that we&#x27;ll go over is the system prompt, which is very, very minimal. I said, you are a personal assistant agent. Your job is to use the tools you have access to, to help the user with their request. I listed out all the tools and I gave a very minimal description of each of them because in the tools themselves, there&#x27;s a brief description, but I still like to put them here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:56 - 00:06:31</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then for the instructions, I only ended up giving it one instruction, which was if the user submits a photo, ask what they want to name it by saying, what would you like me to name that photo in your Google Drive. Then once they respond, change the name using your change name tool. The system prompt is very minimal. We have only five tools to choose from and we&#x27;re using GPT 5.1 and it&#x27;s doing really well. And from here, what I would do is as I&#x27;m testing more and as you guys download the template and start to play around with different things, just add instructions to your system prompt when you realize it&#x27;s failing to do certain things. And then real quick, just to hit on what&#x27;s going on over here before we dive into the tools is we&#x27;re using GPT 5.1. We&#x27;re using</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:31 - 00:07:05</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Sonnet 3.5 as the fallback model. And then we&#x27;re just using simple memory with the session ID being the telegram chat ID. All right. So first I&#x27;m going to go over the file handling tools because they&#x27;re super simple and we&#x27;ll just get that out the way. The first one is change name. So if I click into this tool, you can see what we&#x27;re doing is we&#x27;re updating a file and we&#x27;re updating it by the ID. And the ID is automatically found by the agent. So if the agent doesn&#x27;t have the ID of a file to change the name, it will have to go use its other tools to find that ID. And then it will pass the ID to this tool. And the other thing that gets passed to this tool is the new name. So when</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:05 - 00:07:38</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">we say, hey, call that photo Nate, it knows to fill this in right here with the word Nate. And then these tools are doing the exact same thing. The only difference is the folder that they&#x27;re searching in. So if I say to search for raw files, what we&#x27;re doing is we&#x27;re searching within a folder called media, and we&#x27;re searching for files. But if the agent realizes that we want to search through an image that it already created for us, it would use this one, which is search AI images. And it&#x27;s doing the exact same thing except for we change the folder that it&#x27;s looking through. So like I said, those three are super simple, but those are necessary in order to change things, look at</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:38 - 00:08:12</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">things and search through the database. Okay, so now let&#x27;s get into the fun stuff, which are these two custom workflows that I built. And what that means is if I open up this workflow, you can see that it is a custom NNN workflow that I built myself. We&#x27;re able to make our main agent call on it because you can see that if we add a tool right here, we have an option to call an NNN workflow as a tool. So that&#x27;s how we can create these really modular systems because now if I ever want to create another agent that can combine images I can just plug it into this workflow right here. So anyways there&#x27;s a lot of stuff going on here so let&#x27;s just take it node by node. The first thing that&#x27;s</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:12 - 00:08:40</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">going on is we have the input where I&#x27;m defining to the main Photoshop agent what to send over. So you can see we&#x27;re sending over an image prompt, image 1 which is an image ID, image 2 which is the image ID of the second image, and and then the image title for the new image that&#x27;s created. And that may seem a little confusing, but when we go back to the main Photoshop agent, it looks at this and it says, okay, when I need to call this tool, which is combining images, I need to send over a prompt, image one, image two, and image title.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:41 - 00:09:13</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So this is how it knows to use its brain to give the second workflow all of this information. And to make this easier, I pulled in the live data from that run we did in the demo, just so you guys can see that what comes in is, here&#x27;s the image with Hormozy in the speaker, Here&#x27;s the idea of the first one the idea of the second one and the new name of the AI generated image So from there what we do is we edit fields just to create an array of the two image IDs We have to create an array so that we can split these out into two separate items Because we need to download two files and we need to get a public URL of both of those files</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:14 - 00:09:37</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So in the Google Drive node, we&#x27;re downloading by ID so you can see we&#x27;re getting both of these pictures here There&#x27;s the Hormozy one and there is the speaker one and then the way that the Nano banana API works it has to take a public URL of an image in order to actually change it. So what we do is we use a free service called ImageBB and I&#x27;m basically just uploading these images as binary and then it gives us back a public URL that represents the image.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:37 - 00:09:55</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So here you can see this is what we get back and if I open that up, it is the picture of Hermosi. So that&#x27;s just a cool little workaround if you need to get a binary image into a public URL. There&#x27;s other ways to do it, but this is just a free easy way that I do it. So once we have both those URLs back, we aggregate them so that we can make one API request rather than two.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:55 - 00:10:14</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So we&#x27;re making one request to NanoBanana through a service called Fal.ai. So I&#x27;m not going to dive super, super deep into what&#x27;s going on here. If you want to watch an API video I made, I&#x27;ll tag that right up here. But what&#x27;s going on is we&#x27;re using our file credentials. So I got my API key from Fal.ai. And then this JSON body request is really simple.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:14 - 00:10:47</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We&#x27;re passing over a prompt and we&#x27;re passing over two image URLs. And the only reason why this prompt looks a little confusing is because I put these two replace functions in there that basically make sure if the prompt has new lines or Double quotation marks that it gets rid of that because that would break the JSON body request So now it has everything it needs It has both the images and it has the prompt and then it basically says, okay I received your request. We&#x27;re working on that right now and because it&#x27;s working on it We wait for about 10 seconds and then we make a request back to foul to see if it&#x27;s done</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:47 - 00:11:19</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And if it&#x27;s not done it will come here and it will wait for 30 seconds And honestly this should probably change to like four because images are really quick and then it will just continuously check until it&#x27;s done So that&#x27;s just another cool guardrail you can have in your workflows And then once it gets that result back it basically gives us a URL And so what I do is I make a simple get requests to that URL to actually get the image itself And now we have the images binary We can upload it to Google Drive and then we can set our response to the main agent which is basically saying, hey, the image was created and this is what we named it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:19 - 00:11:41</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And here&#x27;s the link to that image in your Google Drive. And then the main agent gets that in response to us, the user. So hopefully that wasn&#x27;t too confusing. And at a high level, you can understand what&#x27;s going on. Remember, this will be a free workflow you guys can download in my Freeschool community as well. So the best way to really understand it is to download all the assets, run it, and then go node by node and understand what&#x27;s going on.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflows).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Expressions de données JSON (ex: `$json.name`, `$json.webViewLink`), blocs de nœuds logiques (Input, Download File, Create AI Image, Polling, Output).</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des paramètres de sortie d&#x27;un nœud et visualisation complète de la structure d&#x27;un workflow automatisé pour la génération et le stockage d&#x27;images.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001124_seg23.jpg" alt="Fenêtre de configuration de nœud n8n affichant les métadonnées d&#x27;un fichier Google Drive et un champ d&#x27;expression générant un message de confirmation avec un lien." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001124_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:24</span>
+                        <span class="caption-text">Fenêtre de configuration de nœud n8n affichant les métadonnées d&#x27;un fichier Google Drive et un champ d&#x27;expression générant un message de confirmation avec un lien.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001130_seg23.jpg" alt="Vue d&#x27;ensemble du workflow d&#x27;automatisation dans n8n, illustrant le pipeline de traitement, de la réception des fichiers à la création d&#x27;image IA et à l&#x27;export final." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001130_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:30</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du workflow d&#x27;automatisation dans n8n, illustrant le pipeline de traitement, de la réception des fichiers à la création d&#x27;image IA et à l&#x27;export final.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:41 - 00:12:05</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And real quick, the way you would actually get all this is you join my Freeschool community. The link for that&#x27;s down in the description. When you get there, this is what it will look like. And all you need to do is go to YouTube resources and find the post associated with this video. If you&#x27;re having trouble finding it, you can also use the search bar to search for the title of the video. But then once you get in there, you&#x27;ll see the video and then you&#x27;ll also see all of these JSON files that you can download and then import directly into your NNN.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme de communauté en ligne Skool (AI Automation Society).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titres de posts : &quot;Get ready... I&#x27;m about to release a new course&quot;, &quot;New Video: Beginner&#x27;s Guide to Workflow Evaluation in n8n&quot;, &quot;Ticket Tagging Evaluation.json&quot;, &quot;RAG Evaluation.json&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation au sein de la communauté pour localiser et ouvrir la ressource associée à la vidéo YouTube.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001147_seg24.jpg" alt="Interface principale de la plateforme communautaire &quot;AI Automation Society&quot; (Skool), montrant le flux des publications avec les derniers posts de Nate Herk." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001147_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:47</span>
+                        <span class="caption-text">Interface principale de la plateforme communautaire &quot;AI Automation Society&quot; (Skool), montrant le flux des publications avec les derniers posts de Nate Herk.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001159_seg24.jpg" alt="Fenêtre modale ouverte sur une publication spécifique de Nate Herk concernant le guide sur l&#x27;évaluation des workflows dans n8n, incluant des fichiers joints en .json." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001159_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:59</span>
+                        <span class="caption-text">Fenêtre modale ouverte sur une publication spécifique de Nate Herk concernant le guide sur l&#x27;évaluation des workflows dans n8n, incluant des fichiers joints en .json.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:05 - 00:12:26</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then when you get all the stuff set up, there will be a big sticky note right here called a setup guide and it will tell you exactly what you need to do to get up and running. Okay, cool. So that was the combined images node where we used Nano Banana. Now, what&#x27;s cool is the edit image node is very, very similar. So if I open this up and I actually just click on view sub execution, we can see exactly what happened when it was called.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflows low-code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image #1 : Workflow &quot;Nano Photoshop Agent&quot; avec des déclencheurs Telegram, des nœuds d&#x27;IA (GPT 5.1 mini, Sonnet 3.5), et des outils de manipulation d&#x27;images (&quot;Combine Images&quot;, &quot;Edit Image&quot;).
+- Image #2 : Configuration du nœud &quot;Edit Image&quot; avec un prompt détaillé pour la création d&#x27;une image publicitaire (&quot;Granola_Ad_Eiffel&quot;), et un résultat de sortie contenant un lien Google Drive.</p>
+                        <p><strong>Action / Démonstration :</strong> - Image #1 : Présentation visuelle de l&#x27;architecture du workflow d&#x27;agent IA.
+- Image #2 : Manipulation des paramètres d&#x27;entrée pour le nœud d&#x27;édition d&#x27;image via l&#x27;interface de n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001210_seg25.jpg" alt="Vue d&#x27;ensemble d&#x27;un workflow d&#x27;automatisation dans n8n, montrant des nœuds organisés par catégories (Input, Agent, Brain, Image Gen, File Handling)." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001210_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:10</span>
+                        <span class="caption-text">Vue d&#x27;ensemble d&#x27;un workflow d&#x27;automatisation dans n8n, montrant des nœuds organisés par catégories (Input, Agent, Brain, Image Gen, File Handling).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001221_seg25.jpg" alt="Interface de configuration détaillée du nœud &quot;Edit Image&quot; dans n8n, affichant les paramètres, les champs d&#x27;entrée (input) et le résultat (output) d&#x27;une exécution." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001221_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:21</span>
+                        <span class="caption-text">Interface de configuration détaillée du nœud &quot;Edit Image&quot; dans n8n, affichant les paramètres, les champs d&#x27;entrée (input) et le résultat (output) d&#x27;une exécution.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:27 - 00:12:59</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And it&#x27;s very similar to the previous one. Literally, the only difference is that instead of passing in two image IDs, we&#x27;re only passing in one. So what happens once again is the input is image title, image prompt, and image ID. So here&#x27;s the run from the granola Eiffel Tower ad as you can see We&#x27;re gonna go to Google Drive once again pass in that image ID so we can download the file Then what comes next is we are once again sending that binary data to image BB to get a public URL So right here you can see this is the public URL we get for our granola picture</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:59 - 00:13:18</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then now that we have that we can make another request to file AI to use nano banana Where we send over the prompt and then just one image URL instead of two So it&#x27;s very, very similar. We&#x27;re using the same guardrails in here to get rid of new lines and new spaces and quotation marks, all that kind of stuff.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:18 - 00:13:38</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then it basically just edits that image. We&#x27;re doing the exact same thing here with a polling check. And then when we get the result, we download it as binary rather than keeping it as a URL, put it in our Google Drive, and then we send a response back to the main agent. Real quick, just wanted to touch on some of the pricing for this system. The first thing that I wanted to cover was fal.ai.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (workflow automation) et plateforme web &quot;fal.ai&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de flux de données (nœuds Input, Download, Create AI Image, Polling, Output) et interface utilisateur de gestion de modèles d&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Construction et démonstration d&#x27;un workflow d&#x27;automatisation pour le traitement d&#x27;images, suivi d&#x27;une vue d&#x27;ensemble des capacités de la plateforme fal.ai.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001323_seg28.jpg" alt="Interface n8n montrant un workflow automatisé pour le traitement d&#x27;images IA avec des nœuds de téléchargement, de génération et une boucle de &quot;polling&quot; (interrogation) de 30 secondes." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001323_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:23</span>
+                        <span class="caption-text">Interface n8n montrant un workflow automatisé pour le traitement d&#x27;images IA avec des nœuds de téléchargement, de génération et une boucle de &quot;polling&quot; (interrogation) de 30 secondes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001333_seg28.jpg" alt="Tableau de bord de la plateforme &quot;fal&quot; affichant des modèles d&#x27;IA récemment ajoutés et utilisés, tels que des outils d&#x27;édition d&#x27;image, de génération de sons et de synchronisation labiale." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001333_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:33</span>
+                        <span class="caption-text">Tableau de bord de la plateforme &quot;fal&quot; affichant des modèles d&#x27;IA récemment ajoutés et utilisés, tels que des outils d&#x27;édition d&#x27;image, de génération de sons et de synchronisation labiale.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:38 - 00:14:13</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">What FAL is is like a place where you can have a ton of different image and video generation models And you can just use one credential and you know get all of them through there So it&#x27;s really cool. You can see right here my recently used our nano banana edit We&#x27;ve got VO3 fast VO3 You can go to explore and you can see all of these other models that they have available But anyways the reason why I wanted to show you guys this is because first of all It&#x27;s only about four cents per image, which is not too bad at all But what you can do is you can play around with like image URLs and prompts here So you can really refine the way you want to have your prompting before you get into N8N and start messing around there</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:13 - 00:14:47</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then the way that we can call it through N8N is by going to their API documentation I would change this to HTTP curl And now you can look through like how to get your API key how to set that up how to submit a request how to upload files All this kind of stuff And I also did see about a week ago that you could get free image generation through open router for Gemini Nano Banana Because if you go to the Gemini web app, it&#x27;s free to try out there And so for a while it was free here on open router, but it looks like they might have just taken that off so Unfortunate but once again, you can get 25 images for only a dollar. So it&#x27;s not too bad. Okay</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:47 - 00:15:08</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So that&#x27;s basically all that&#x27;s going on in this workflow Now let&#x27;s talk about a few ways that when you get this template that you could customize this and make it a little more Production ready. So something that I alluded to earlier was in these two tools where you&#x27;re doing image generation Would be to have a dedicated AI that would create the system prompts or the AI image generation prompts.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Flowise (interface de design de workflow basée sur des nœuds).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de workflow complexe comprenant des blocs fonctionnels : &quot;Text/Image Input&quot;, &quot;Photoshop Agent&quot;, &quot;Brain&quot; (contenant GPT 5.1 mini, Sonnet 3.5), &quot;AI Image Gen&quot; (Combine Images, Edit Image) et &quot;File Handling&quot; (Google Drive).</p>
+                        <p><strong>Action / Démonstration :</strong> Le pointeur de la souris survole le bloc &quot;Search Raw Files&quot; dans la section &quot;File Handling&quot;, illustrant la manipulation et l&#x27;organisation du workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001453_seg31.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface de travail de Flowise, un outil de création de workflows IA, illustrant un projet nommé &quot;Nano Photoshop Agent&quot;." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001453_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:53</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface de travail de Flowise, un outil de création de workflows IA, illustrant un projet nommé &quot;Nano Photoshop Agent&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:08 - 00:15:28</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So what you could do is like literally right here, just add an AI agent node. And this one is prompted in a way where it&#x27;s specializing in creating AI image generated prompts. And then you pass that prompt all the way down to the create image node, rather than relying on this main agent who has tons of other jobs to do, relying on him to make the image prompt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:28 - 00:16:01</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It would be better to have a second agent in this workflow that would specialize in that. There&#x27;s of course other things you can do like having a logger. So in a previous agent I&#x27;ve made that was kind of similar. This one was an ultimate media team. What I did here was I had it returning all of its steps into a Google Sheet, whether it erred or it was successful. So you could see exactly what input was processed, what tools were called, how many tokens that was taking you. So you could use this video, which I will tag right up here if you haven&#x27;t seen it. You can download those resources and do the exact same thing in this agent where you can have a Google Sheet that&#x27;s logging everything. And then of course, another</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme d&#x27;automatisation de workflow (interface web type n8n ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de flux divisé en sections : &quot;Text/Image Input&quot;, &quot;Photoshop Agent&quot;, &quot;Brain&quot; (avec GPT 5.1 mini, Sonnet 3.5), &quot;AI Image Gen&quot;, et &quot;File Handling&quot; (avec des nœuds de recherche de fichiers Google Drive). Les flux sont représentés par des lignes pointillées et continues reliant les différents agents et outils.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;architecture d&#x27;un agent IA capable de traiter des fichiers, d&#x27;utiliser des modèles LLM et d&#x27;interagir avec des services externes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001536_seg33.jpg" alt="Une vue d&#x27;ensemble d&#x27;un éditeur de workflow visuel (type plateforme d&#x27;automatisation d&#x27;agents IA) nommé &quot;Nano Photoshop Agent&quot;, présentant une architecture modulaire avec divers blocs interconnectés." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001536_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:36</span>
+                        <span class="caption-text">Une vue d&#x27;ensemble d&#x27;un éditeur de workflow visuel (type plateforme d&#x27;automatisation d&#x27;agents IA) nommé &quot;Nano Photoshop Agent&quot;, présentant une architecture modulaire avec divers blocs interconnectés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:01 - 00:16:24</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Another really cool next step would be being able to take these AI generated images and pass that to another workflow that can create videos out of them. And you could use like VO3Fast to create those images for you. That&#x27;s another thing that I did in this media agent where I have like an image to video tool, a create video tool. So definitely check out that video as well if you want to literally use some of these workflows and then just hook them up to your Photoshop agent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:24 - 00:16:43</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Because that&#x27;s the beauty of these custom workflows as a tool, you can have them hooked up to as many different agents as you want. Once again, all the resources for this video and every single other YouTube video you&#x27;ve seen on my channel, you can get for completely free in my FreeSchool community. You just have to come here, look through the YouTube resources. And as you can see, every single video has all of the resources right here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:43 - 00:17:16</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And if you&#x27;re looking to take your skills a little further with NNN and you&#x27;re also looking to understand how you can monetize your AI automation knowledge, then definitely check out my Plus community. The link for that will also be down in the description. We&#x27;ve got thousands of members in here who are building and selling NNN services every single day and they&#x27;re always sharing their learnings and their challenges. It&#x27;s a really cool space to be. We&#x27;ve also got two full courses at the moment with a third one coming about monetizing your AI skills. But if you&#x27;re a complete beginner, you can start with the foundations and then you get in here and you master N8N and then you learn how to start selling or consulting with this knowledge. So I&#x27;d love to see you guys in these communities, but that&#x27;s going to do it</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme communautaire Skool (AI Automation Society Plus).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titres de cours et modules : &quot;Start Here&quot;, &quot;Agent Zero (Foundations)&quot;, &quot;10 Hours to 10 Seconds&quot;, &quot;n8n Templates&quot;, et &quot;Step-by-Step Builds&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des ressources éducatives et de la structure de la communauté privée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001652_seg36.jpg" alt="Vue d&#x27;ensemble de l&#x27;interface de la communauté &quot;AI Automation Society Plus&quot; sur Skool, montrant le fil d&#x27;actualité avec des publications épinglées et le tableau de bord latéral." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001652_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:52</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;interface de la communauté &quot;AI Automation Society Plus&quot; sur Skool, montrant le fil d&#x27;actualité avec des publications épinglées et le tableau de bord latéral.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/7UNsK9LoORo/7UNsK9LoORo_001708_seg36.jpg" alt="Interface de la section &quot;Classroom&quot; de la plateforme, affichant une grille de modules de formation sur l&#x27;IA et l&#x27;automatisation, incluant &quot;Agent Zero&quot; et &quot;n8n Templates&quot;." loading="lazy" onclick="openLightbox('../screenshots/7UNsK9LoORo/7UNsK9LoORo_001708_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:08</span>
+                        <span class="caption-text">Interface de la section &quot;Classroom&quot; de la plateforme, affichant une grille de modules de formation sur l&#x27;IA et l&#x27;automatisation, incluant &quot;Agent Zero&quot; et &quot;n8n Templates&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:16 - 00:17:24</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">for the video. If you enjoyed it or you learned something new, please give it a like. It definitely helps me out a ton. And as always, I appreciate you guys making it to the end of the video. I&#x27;ll see you on the next one. Thanks everyone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
