@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 La NOUVELLE méthode la plus simple pour créer des agents RAG en quelques minutes (sans code) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 La NOUVELLE méthode la plus simple pour créer des agents RAG en quelques minutes (sans code)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-09-19</span>
+                <span class="badge">⏱️ 00:16:09</span>
+                <span class="badge">🆔 <code>QojPKL96Dx4</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=QojPKL96Dx4" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo présentée par la chaîne Nate Herk | AI Automation met en lumière une méthode extrêmement rapide et sans code complexe pour configurer un agent RAG (Retrieval-Augmented Generation) ultra-précis en moins de cinq minutes. Grâce à l'utilisation combinée des assistants Pinecone et d'un workflow N8N, la démonstration prouve qu'il est possible d'interroger simultanément plusieurs rapports financiers complexes (Tesla, NVIDIA, Nike) et d'obtenir non seulement des réponses factuelles exactes, mais aussi des citations textuelles rigoureuses, incluant les noms de documents et les numéros de page précis. <br><br>L'approche technique s'affranchit des pipelines de métadonnées traditionnellement lourds et fastidieux à mettre en place. En exploitant nativement l'API d'un assistant Pinecone via une simple requête HTTP importée en cURL dans un agent IA N8N, le système devient capable d'analyser dynamiquement les requêtes de l'utilisateur grâce à une expression (`$json.query`). Cette architecture low-code simplifie radicalement le prototypage tout en garantissant un niveau de traçabilité et de fiabilité indispensable pour des cas d'usage professionnels en ingénierie IA et en automatisation.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Pinecone Assistant** : Une solution de base de données vectorielle gérée qui intègre nativement une interface de type "GPT personnalisé" pour le téléchargement direct de fichiers et l'interrogation sémantique via API.<br>* **N8N** : Une plateforme d'automatisation des flux de travail (workflow automation) low-code utilisée ici pour orchestrer l'agent IA, gérer les requêtes HTTP et connecter les outils de raisonnement.<br>* **OpenRouter** : Une passerelle d'API unifiée permettant d'accéder facilement à différents modèles de langage de pointe.<br>* **GPT-4o mini** : Un modèle de langage léger, rapide et économique utilisé comme "cerveau" de l'agent IA dans N8N pour traiter les requêtes et structurer les réponses.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Simplification radicale du RAG** : Élimination de la nécessité de configurer manuellement des pipelines complexes de balisage de métadonnées pour obtenir des citations exactes.<br>* **Exploitation de Pinecone Assistant** : Utilisation d'une interface intuitive de type glisser-déposer pour ingérer instantanément des documents PDF volumineux (rapports financiers).<br>* **Traçabilité et explicabilité accrues** : Capacité native de l'agent à restituer le document source, la section, le numéro de page et la citation textuelle exacte, renforçant la confiance de l'utilisateur.<br>* **Intégration API via cURL** : Méthode rapide et infaillible pour connecter l'assistant Pinecone à un agent N8N en important directement la structure de la requête HTTP.<br>* **Dynamisation des requêtes d'outils** : Utilisation d'expressions dynamiques (`$json.query`) au sein de N8N pour permettre à l'agent IA d'adapter la requête envoyée à la base vectorielle en fonction de la question de l'utilisateur.<br>* **Gestion flexible des identifiants** : Possibilité d'utiliser soit une clé API Pinecone dédiée, soit les nœuds d'authentification prédéfinis natifs de N8N pour sécuriser les appels.<br>* **Rôle critique du prompt système** : Définition comportementale explicite indispensable pour forcer l'agent IA à formater et restituer les métadonnées de citation (pages, sources) fournies par l'outil de recherche.<br>* **Efficacité du prototypage** : Démonstration qu'un système RAG hautement fonctionnel et prêt pour la production peut être entièrement opérationnel en moins de cinq minutes.<br>* **Disponibilité des ressources** : Mise à disposition gratuite du modèle de workflow complet au sein de la communauté FreeSchool pour encourager l'expérimentation pratique.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Pinecone Assistant</span><span class="tool-tag">N8N</span><span class="tool-tag">OpenRouter</span><span class="tool-tag">GPT-4o mini</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Simplification radicale du RAG** : Élimination de la nécessité de configurer manuellement des pipelines complexes de balisage de métadonnées pour obtenir des citations exactes.</span></li><li><span class="point-bullet">✦</span><span>Exploitation de Pinecone Assistant** : Utilisation d&#x27;une interface intuitive de type glisser-déposer pour ingérer instantanément des documents PDF volumineux (rapports financiers).</span></li><li><span class="point-bullet">✦</span><span>Traçabilité et explicabilité accrues** : Capacité native de l&#x27;agent à restituer le document source, la section, le numéro de page et la citation textuelle exacte, renforçant la confiance de l&#x27;utilisateur.</span></li><li><span class="point-bullet">✦</span><span>Intégration API via cURL** : Méthode rapide et infaillible pour connecter l&#x27;assistant Pinecone à un agent N8N en important directement la structure de la requête HTTP.</span></li><li><span class="point-bullet">✦</span><span>Dynamisation des requêtes d&#x27;outils** : Utilisation d&#x27;expressions dynamiques (`$json.query`) au sein de N8N pour permettre à l&#x27;agent IA d&#x27;adapter la requête envoyée à la base vectorielle en fonction de la question de l&#x27;utilisateur.</span></li><li><span class="point-bullet">✦</span><span>Gestion flexible des identifiants** : Possibilité d&#x27;utiliser soit une clé API Pinecone dédiée, soit les nœuds d&#x27;authentification prédéfinis natifs de N8N pour sécuriser les appels.</span></li><li><span class="point-bullet">✦</span><span>Rôle critique du prompt système** : Définition comportementale explicite indispensable pour forcer l&#x27;agent IA à formater et restituer les métadonnées de citation (pages, sources) fournies par l&#x27;outil de recherche.</span></li><li><span class="point-bullet">✦</span><span>Efficacité du prototypage** : Démonstration qu&#x27;un système RAG hautement fonctionnel et prêt pour la production peut être entièrement opérationnel en moins de cinq minutes.</span></li><li><span class="point-bullet">✦</span><span>Disponibilité des ressources** : Mise à disposition gratuite du modèle de workflow complet au sein de la communauté FreeSchool pour encourager l&#x27;expérimentation pratique.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:33</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc cet agent RAG m&#x27;a pris moins de cinq minutes à configurer. C&#x27;est la méthode la plus simple que j&#x27;aie jamais essayée. Je vais ouvrir ce chat et coller ce message, qui contient trois requêtes différentes. La première est : quel a été le chiffre d&#x27;affaires total de Tesla au deuxième trimestre 2025 ? La deuxième est : quel a été le chiffre d&#x27;affaires total de NVIDIA au premier trimestre de l&#x27;exercice fiscal 25 ? Et la troisième est : quels ont été les chiffres d&#x27;affaires de Nike pour le quatrième trimestre de l&#x27;exercice fiscal 2025 ? Vous pouvez voir que l&#x27;agent a sollicité son outil Pinecone à trois reprises. Et si nous regardons ses réponses, non seulement il nous donne les bonnes réponses, mais il nous fournit le document exact, les numéros de page et la citation exacte qu&#x27;il a trouvée dans le PDF. Et c&#x27;est ainsi que nous pouvons avoir confiance dans le fait que les réponses sont</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de workflow d&#x27;automatisation et de chatbot (type n8n ou plateforme similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> &quot;What was Tesla&#x27;s total revenue in Q2 2025? What was NVIDIA&#x27;s total revenue for Q1 FY25? What were Nike&#x27;s revenues for Q4 FY25?&quot; ainsi que les réponses structurées avec sources.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un workflow RAG qui interroge un modèle OpenRouter et Pinecone pour répondre à une requête multi-entreprises.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000008_seg1.jpg" alt="Interface d&#x27;un workflow d&#x27;agent IA montrant un panneau de chat en bas avec la requête sur Tesla, Nvidia et Nike saisie, et le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000008_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:08</span>
+                        <span class="caption-text">Interface d&#x27;un workflow d&#x27;agent IA montrant un panneau de chat en bas avec la requête sur Tesla, Nvidia et Nike saisie, et le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000025_seg1.jpg" alt="Le même workflow montrant la réponse générée dans le chat avec les chiffres d&#x27;affaires détaillés et les sources pour Tesla, NVIDIA et Nike." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000025_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:25</span>
+                        <span class="caption-text">Le même workflow montrant la réponse générée dans le chat avec les chiffres d&#x27;affaires détaillés et les sources pour Tesla, NVIDIA et Nike.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:33 - 00:01:06</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">exact. Donc pour commencer avec Tesla, si je prends la citation exacte qu&#x27;il a trouvée dans le PDF, et que je vais dans le document Tesla, et que nous faisons une recherche rapide, nous pouvons voir qu&#x27;il l&#x27;a tirée de la page quatre. Et auparavant dans NNN, notre assistant a dit qu&#x27;il l&#x27;avait trouvée de la page trois à sept sur ce document exact. Ensuite, si nous allons à la réponse de Nvidia, et que nous prenons la citation exacte, et ensuite je fais un Ctrl+F pour celle-ci dans ce document, vous pouvez voir qu&#x27;il la trouve juste ici. Et c&#x27;est la page un du PDF. Et nous retournons dans NNN et il dit qu&#x27;il l&#x27;a trouvée sur la page un du document du rapport annuel de Nvidia. Et puis enfin, si nous allons à la réponse de Nike et que nous prenons cette citation qu&#x27;il a trouvée, passons au Nike</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visionneuse de PDF et interface de workflow d&#x27;assistant IA (Pinecone).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Document financier de Tesla (chiffres d&#x27;affaires Q2 2024 - Q2 2025) et interface de chat avec des sources et des citations textuelles.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans le document PDF pour retrouver la citation exacte et affichage des résultats dans l&#x27;assistant IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000041_seg2.jpg" alt="Visualisation du document PDF &#x27;2025 Q2 Quarterly Update Deck&#x27; de Tesla montrant le tableau financier de la page 4 avec des données de revenus." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000041_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:41</span>
+                        <span class="caption-text">Visualisation du document PDF &#x27;2025 Q2 Quarterly Update Deck&#x27; de Tesla montrant le tableau financier de la page 4 avec des données de revenus.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000050_seg2.jpg" alt="Interface de l&#x27;assistant Pinecone affichant un workflow de chat avec les résultats de recherche et les citations extraites des documents." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000050_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:50</span>
+                        <span class="caption-text">Interface de l&#x27;assistant Pinecone affichant un workflow de chat avec les résultats de recherche et les citations extraites des documents.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:06 - 00:01:28</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">document et faire un autre Ctrl+F, nous pouvons voir que la citation exacte a été trouvée juste ici à la page un. Et dans NNN, l&#x27;assistant a dit qu&#x27;il l&#x27;avait trouvée à la page un. Donc ceux d&#x27;entre vous qui ont déjà créé des agents RAG, vous savez que ce n&#x27;est pas super facile de faire en sorte que votre agent cite exactement d&#x27;où il tire tout. C&#x27;est faisable, mais vous devez configurer un pipeline pour faire des choses comme le balisage de métadonnées. Et comme je l&#x27;ai dit, tout ce que j&#x27;ai fait ici, c&#x27;est déposer un fichier et ensuite chatter avec.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de workflow / chatbot (type n8n ou plateforme d&#x27;agent IA personnalisée) avec un panneau de discussion intégré et une vue des logs d&#x27;exécution.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Réponse textuelle détaillée d&#x27;un assistant IA listant les revenus de Tesla, NVIDIA et Nike accompagnés de citations textuelles exactes et numéros de pages extraits des rapports de référence.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un workflow d&#x27;agent IA effectuant une recherche RAG et affichant les résultats structurés dans le chat et les logs de sortie.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000112_seg3.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil d&#x27;automatisation de flux de travail avec un panneau de chat à gauche affichant les résultats de requêtes RAG sur des rapports financiers (Tesla, NVIDIA, Nike), un éditeur de workflow au centre-haut et les logs d&#x27;exécution à droite." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000112_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:12</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil d&#x27;automatisation de flux de travail avec un panneau de chat à gauche affichant les résultats de requêtes RAG sur des rapports financiers (Tesla, NVIDIA, Nike), un éditeur de workflow au centre-haut et les logs d&#x27;exécution à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:28 - 00:01:53</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est donc exactement ce que je vais vous montrer comment nous faisons cela aujourd&#x27;hui. D&#x27;accord, maintenant que vous avez vu cette rapide démo, je vais simplement, en gros, construire ce système exact devant vous, étape par étape. Donc, n&#x27;hésitez pas à ouvrir votre ordinateur et à suivre ce que je fais. Mais aussi, le modèle entier que vous verrez aujourd&#x27;hui sera disponible au téléchargement gratuitement. Tout ce que vous avez à faire, c&#x27;est de rejoindre ma communauté FreeSchool. De cette façon, vous pourrez simplement l&#x27;installer et l&#x27;essayer par vous-même. Donc, ce que nous faisons aujourd&#x27;hui, c&#x27;est que nous utilisons un assistant Pinecone comme recherche RAG.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de type constructeur de workflow (Pinecone Assistant Template)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Espace de travail vide avec une grille de points et l&#x27;élément central &#x27;Add first step&#x27;</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;apprête à ajouter la première étape du système automatisé</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000135_seg4.jpg" alt="Interface vide de création de workflow avec un bouton central &#x27;Add first step&#x27;, en bas à droite la webcam du présentateur." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000135_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:35</span>
+                        <span class="caption-text">Interface vide de création de workflow avec un bouton central &#x27;Add first step&#x27;, en bas à droite la webcam du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:54 - 00:02:18</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, si vous n&#x27;avez jamais utilisé Pinecone auparavant, c&#x27;est une base de données vectorielle. Mais ici, vous pouvez voir que nous avons une section juste ici appelée &quot;assistant&quot;. Donc si je clique dessus, vous pouvez voir que j&#x27;ai un assistant de test, qui est celui que nous venions d&#x27;utiliser. Mais ce que je vais faire aujourd&#x27;hui rapidement, c&#x27;est en créer un nouveau devant vous les gars. Je vais juste appeler celui-ci &quot;demo&quot; et je vais créer l&#x27;assistant. Maintenant, rapidement, ce auquel vous voulez faire attention, c&#x27;est ici en bas : il est écrit que les assistants actifs ont des frais de cinq cents par heure.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web Pinecone</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation et options de configuration de la base de données vectorielle Pinecone, sections &quot;Get started&quot;, &quot;Assistant&quot;, et formulaire de création d&#x27;assistant.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans le tableau de bord Pinecone pour accéder et configurer un assistant IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000200_seg5.jpg" alt="Interface web de la plateforme Pinecone montrant le tableau de bord &quot;Get started&quot; avec le curseur sur la section &quot;Assistant&quot; dans le menu de gauche." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000200_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:00</span>
+                        <span class="caption-text">Interface web de la plateforme Pinecone montrant le tableau de bord &quot;Get started&quot; avec le curseur sur la section &quot;Assistant&quot; dans le menu de gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000212_seg5.jpg" alt="Interface web de Pinecone affichant une fenêtre modale &quot;Set up your new assistant&quot; avec un champ de saisie du nom (&quot;demo&quot;)." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000212_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:12</span>
+                        <span class="caption-text">Interface web de Pinecone affichant une fenêtre modale &quot;Set up your new assistant&quot; avec un champ de saisie du nom (&quot;demo&quot;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:18 - 00:02:39</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce n&#x27;est pas trop mal. Et vous pouvez aussi cliquer juste ici pour plus de détails sur les tarifs. Maintenant que c&#x27;est fait, je vais procéder à la création de cet assistant. Et ce que vous pouvez voir, c&#x27;est que cela ressemble un peu à une interface de GPT personnalisé. Nous avons un chat juste ici et ensuite vous avez la possibilité d&#x27;y glisser des fichiers. Donc ce que je vais faire, c&#x27;est glisser ces trois fichiers que nous regardions tout à l&#x27;heure, les rapports de résultats de Tesla, Nike et NVIDIA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Pinecone (Assistant playground).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nom de l&#x27;assistant &quot;demo&quot;, sélection de la région &quot;United States&quot;, et interface de chat avec zone de téléchargement de fichiers (PDF, DOCX, TXT, JSON, MD).</p>
+                        <p><strong>Action / Démonstration :</strong> Création d&#x27;un nouvel assistant et affichage de l&#x27;interface de test (playground).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000223_seg6.jpg" alt="Interface de Pinecone affichant une boîte de dialogue pour configurer un nouvel assistant avec les champs de nom et de région." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000223_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:23</span>
+                        <span class="caption-text">Interface de Pinecone affichant une boîte de dialogue pour configurer un nouvel assistant avec les champs de nom et de région.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000228_seg6.jpg" alt="Interface de l&#x27;Assistant playground de Pinecone montrant un espace de chat à gauche et une zone de dépôt de fichiers à droite." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000228_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:28</span>
+                        <span class="caption-text">Interface de l&#x27;Assistant playground de Pinecone montrant un espace de chat à gauche et une zone de dépôt de fichiers à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:39 - 00:02:57</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et je vais simplement les importer tout de suite dans notre Pinecone Assistant. Et maintenant qu&#x27;ils sont téléchargés dans Pinecone Assistant, je peux coller exactement la même question que j&#x27;ai posée à notre agent NN dans cette démo. Vous pouvez donc voir qu&#x27;il renvoie les bonnes réponses, et nous pouvons survoler chacun de ces liens puisque nous sommes en mode terrain de jeu pour voir de quel PDF il les a tirés, puis les numéros de page d&#x27;où il a tiré cette information.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Pinecone Assistant (interface web)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichiers PDF importés (Nike.pdf, TSLA.pdf, Nvidia.pdf) et barre de saisie de question en bas avec une requête visible.</p>
+                        <p><strong>Action / Démonstration :</strong> Importation des fichiers PDF et test des requêtes dans l&#x27;assistant Pinecone.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000243_seg7.jpg" alt="Interface web de Pinecone Assistant montrant le panneau de test &#x27;Assistant playground&#x27; avec la liste des fichiers importés (Nike.pdf, TSLA.pdf, Nvidia.pdf) dans le panneau latéral droit." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000243_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:43</span>
+                        <span class="caption-text">Interface web de Pinecone Assistant montrant le panneau de test &#x27;Assistant playground&#x27; avec la liste des fichiers importés (Nike.pdf, TSLA.pdf, Nvidia.pdf) dans le panneau latéral droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:58 - 00:03:20</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc la puissance de ceci provient de l&#x27;API réelle que nous pouvons utiliser pour parler à cet assistant Pinecone. Et comme je l&#x27;ai dit, ne vous inquiétez pas si cela semble confus. Je vais vous montrer exactement ce que nous devons faire, et c&#x27;est en fait super facile. Donc vous pouvez voir qu&#x27;via l&#x27;API, il y a deux choses que nous pouvons faire. Nous pouvons télécharger des fichiers ou nous pouvons discuter avec notre assistant. Et dans la vidéo d&#x27;aujourd&#x27;hui, nous allons simplement nous concentrer sur la discussion avec notre assistant parce que nous avons déjà téléchargé nos fichiers dans cette interface juste ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web Pinecone (Assistant playground)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Exemples de code cURL pour l&#x27;upload de fichiers et pour chatter avec l&#x27;assistant, ainsi qu&#x27;un historique de conversation (ex: questions sur les revenus de Tesla, Nvidia, Nike).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;API Pinecone et de ses exemples de code d&#x27;intégration.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000303_seg8.jpg" alt="Interface web de Pinecone montrant le &quot;Assistant playground&quot; avec des exemples de requêtes et de code API pour interagir avec l&#x27;assistant." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000303_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:03</span>
+                        <span class="caption-text">Interface web de Pinecone montrant le &quot;Assistant playground&quot; avec des exemples de requêtes et de code API pour interagir avec l&#x27;assistant.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:20 - 00:03:39</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais retourner dans N8N et on va juste rapidement prendre un agent IA. Et maintenant, nous allons pouvoir le connecter à cet outil Pinecone Assistant. Donc quand nous donnons un outil à notre agent, vous pouvez voir qu&#x27;il n&#x27;y a pas d&#x27;outil natif ici pour un Pinecone Assistant, mais il y en a un pour Pinecone Vector Store. Donc ce que nous devons faire, c&#x27;est prendre une requête HTTP pour pouvoir parler à notre assistant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (interface web de gestion de workflows d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow contenant les blocs &#x27;When chat message received&#x27; relié à un bloc &#x27;AI Agent&#x27; avec ses connecteurs Chat Model, Memory et Tool.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment intégrer et connecter l&#x27;agent IA dans l&#x27;éditeur de workflows n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000325_seg9.jpg" alt="Vue d&#x27;ensemble de l&#x27;interface n8n montrant un workflow en cours de construction avec un nœud déclencheur de chat et un nœud &#x27;AI Agent&#x27;." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000325_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:25</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;interface n8n montrant un workflow en cours de construction avec un nœud déclencheur de chat et un nœud &#x27;AI Agent&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:40 - 00:04:00</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc tout ce que vous allez faire, c&#x27;est de retourner dans Pinecone ici. Vous allez ouvrir cette petite chose de connexion pour accéder à l&#x27;API. Et puis ici en bas, où vous voyez &quot;discuter avec votre assistant&quot;, je vais fondamentalement tout copier, à l&#x27;exception des deux lignes du haut pour la clé API Pinecone et cette ligne vide. Je vais donc copier ceci, y retourner et modifier, cliquer sur &quot;importer cURL&quot;, puis coller cela là-dedans.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Pinecone (Assistant Playground).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes cURL pour l&#x27;API Pinecone, requêtes POST JSON pour l&#x27;assistant avec messages et modèles de langage (GPT-4o).</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection et copie du code cURL pour interagir avec l&#x27;assistant Pinecone via l&#x27;API.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000345_seg10.jpg" alt="Interface Pinecone montrant le panneau latéral de connexion avec les instructions cURL pour discuter avec l&#x27;assistant, et une consigne textuelle indiquant de sélectionner &#x27;Shell&#x27; et non &#x27;Python&#x27;." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000345_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:45</span>
+                        <span class="caption-text">Interface Pinecone montrant le panneau latéral de connexion avec les instructions cURL pour discuter avec l&#x27;assistant, et une consigne textuelle indiquant de sélectionner &#x27;Shell&#x27; et non &#x27;Python&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000350_seg10.jpg" alt="Gros plan sur le panneau latéral de Pinecone montrant la sélection et la copie du bloc de code cURL pour la section &#x27;Chat with your assistant&#x27;." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000350_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:50</span>
+                        <span class="caption-text">Gros plan sur le panneau latéral de Pinecone montrant la sélection et la copie du bloc de code cURL pour la section &#x27;Chat with your assistant&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:00 - 00:04:36</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et quand je clique sur importer, cela remplit pratiquement toute la requête HTTP dont nous avons besoin, à l&#x27;exception de quelques éléments que nous devrons ajuster. Donc, la première chose est une clé API Pinecone. La façon d&#x27;obtenir cela est de retourner dans Pinecone, vous cliquerez ici sur les clés API, et ensuite vous allez simplement créer une nouvelle clé. Donc, voici à quoi cela ressemble, vous cliquez sur créer une clé API. Je vais juste appeler celle-ci &quot;demo 4&quot;, nous allons créer cette clé et maintenant elle va nous donner la valeur secrète et je dois copier ceci et après l&#x27;avoir sauvegardée et avoir cliqué sur fermer, elle va disparaître. Vous pouvez toujours en créer une nouvelle, mais gardez simplement à l&#x27;esprit que cette clé aura disparu. Donc ensuite, vous revenez dans Pinecone et vous collez simplement cette clé directement là-dedans et vous serez tout bon.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n / outil d&#x27;automatisation de workflow et tableau de bord Pinecone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de requête HTTP avec en-tête &#x27;Api-Key&#x27; et formulaire de génération de clé API Pinecone.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des identifiants et génération d&#x27;une nouvelle clé API pour connecter le flux à Pinecone.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000409_seg11.jpg" alt="Configuration d&#x27;un nœud de requête HTTP dans une interface d&#x27;automatisation montrant le paramètre de clé API Pinecone." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000409_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:09</span>
+                        <span class="caption-text">Configuration d&#x27;un nœud de requête HTTP dans une interface d&#x27;automatisation montrant le paramètre de clé API Pinecone.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000418_seg11.jpg" alt="Interface de gestion de Pinecone affichant la fenêtre modale pour générer une nouvelle clé API." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000418_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:18</span>
+                        <span class="caption-text">Interface de gestion de Pinecone affichant la fenêtre modale pour générer une nouvelle clé API.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:36 - 00:05:11</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc c&#x27;est super simple et une astuce de pro que je veux vous montrer les gars, c&#x27;est que si vous êtes déjà connecté à Pinecone via un nœud natif, vous pouvez venir dans l&#x27;authentification, vous pouvez aller dans prédéfini, et ensuite vous pouvez venir ici et taper simplement Pinecone et cela récupérera vos identifiants de votre intégration Pinecone native, donc vous pouvez soit faire ça, soit faire ceci. C&#x27;est exactement la même chose. Donc parce que je fais ça, je vais juste désactiver mes en-têtes, mais ne laissez pas cela vous confondre, tout ce que c&#x27;est, c&#x27;est essentiellement juste entrer notre mot de passe afin que nous puissions accéder à cet assistant Pinecone. Donc maintenant ce que je vais faire, c&#x27;est changer la description et je vais juste dire d&#x27;utiliser cet outil pour parler à votre base de connaissances. Donc nous allons coller cela comme description.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de workflow d&#x27;automatisation (type n8n) avec une fenêtre modale de configuration de nœud HTTP Request.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres HTTP (Method: POST, URL: https://prod-1-data.ke.pinecone.io/assistant/chat/demo, Authentication: Predefined Credential Type, Header Parameters: Api-Key).</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection du type d&#x27;authentification prédéfini pour se connecter à Pinecone via le nœud HTTP Request.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000445_seg12.jpg" alt="Configuration d&#x27;un nœud HTTP Request dans une interface d&#x27;automatisation avec un panneau de paramètres ouvert." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000445_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:45</span>
+                        <span class="caption-text">Configuration d&#x27;un nœud HTTP Request dans une interface d&#x27;automatisation avec un panneau de paramètres ouvert.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:11 - 00:05:43</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais nommer cet outil Pinecone juste pour garder les choses simples. Et ensuite, la dernière chose que nous devons configurer est la requête réelle que nous faisons à notre assistant Pinecone. Donc pour l&#x27;instant, si nous déclenchions cet outil, peu importe ce pour quoi nous demandions de l&#x27;aide à notre assistant, il enverrait cette requête à l&#x27;assistant. Quel est l&#x27;incident déclencheur de Orgueil et Préjugés ? Et donc nous ne voulons pas que ce soit la requête à chaque fois. Donc ce que nous devons faire, c&#x27;est changer ceci en une expression, ce qui signifie que ces valeurs peuvent être dynamiques. Je vais me débarrasser de ce contenu ici, et je vais taper deux accolades tournées dans chaque sens. Nous allons faire un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation de workflow (style n8n ou plateforme similaire)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Objet JSON avec un tableau &quot;messages&quot; incluant une question sur le livre &quot;Pride and Prejudice&quot;, le paramètre &quot;stream: false&quot; et le modèle &quot;gpt-4o&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des paramètres et de la requête JSON pour l&#x27;outil Pinecone au sein du workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000519_seg13.jpg" alt="Interface d&#x27;un éditeur de workflow montrant les paramètres du nœud Pinecone configurés avec un payload JSON contenant un message pour le modèle gpt-4o." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000519_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:19</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow montrant les paramètres du nœud Pinecone configurés avec un payload JSON contenant un message pour le modèle gpt-4o.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:43 - 00:06:18</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">signe dollar, et nous allons récupérer ceci depuis la fonction IA. Et ceci va simplement permettre à notre agent IA de déterminer quelle requête est-ce que j&#x27;envoie à l&#x27;Assistant Pinecone. Et donc tout ce que je vais faire, c&#x27;est taper &quot;search query&quot; à l&#x27;intérieur de cette petite guillemet juste là. Et maintenant, c&#x27;est fondamentalement configuré pour être dynamique. Et je vais vous montrer exactement ce que je veux dire par là, si cela n&#x27;a pas encore de sens. Super. Donc maintenant, tout ce qui reste à faire, c&#x27;est de tester l&#x27;agent. Bien sûr, nous devons d&#x27;abord lui donner un cerveau. Donc je vais juste aller récupérer ma clé API OpenRouter, et nous allons simplement nous en tenir à GPT-4o mini pour l&#x27;instant. Très bien. Donc maintenant, l&#x27;agent est fondamentalement configuré. Tout ce qui va</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow low-code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Expression JSON contenant `{{ $fromAI() }}` configurée pour un modèle gpt-4o.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration d&#x27;un paramètre `$fromAI` pour l&#x27;agent IA au sein du workflow n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000552_seg14.jpg" alt="Interface d&#x27;édition de code (expression JSON) avec infobulle pour la fonction $fromAI dans n8n." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000552_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:52</span>
+                        <span class="caption-text">Interface d&#x27;édition de code (expression JSON) avec infobulle pour la fonction $fromAI dans n8n.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:18 - 00:06:50</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">il ne reste plus qu&#x27;à le tester, à ajuster le prompt système et à continuer à faire quelques tests. C&#x27;est donc exactement ce que nous allons faire en premier. Je vais insérer cette requête concernant le document Tesla. Combien de véhicules Tesla a-t-il livrés au deuxième trimestre 2025 ? Et comment cela se compare-t-il au même trimestre en 2024. Encore une fois, ce qui se passe, c&#x27;est que cela interroge notre assistant Pinecone, et ensuite, il va nous renvoyer quelques réponses. Vous pouvez donc voir qu&#x27;il indique que Tesla a livré un total de 384 000 véhicules, et il nous donne ensuite une ventilation des différents modèles qu&#x27;il a réellement livrés. Et il a également indiqué qu&#x27;il y avait eu une baisse de 13 % des livraisons totales d&#x27;une année sur l&#x27;autre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de workflow (type n8n) avec panneau de chat intégré et logs d&#x27;exécution en temps réel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Question dans le chat : &quot;How many vehicles did Tesla deliver in Q2 2025, and how did that compare to the same quarter in 2024?&quot;. Workflow avec &quot;When chat message received&quot;, &quot;AI Agent&quot;, &quot;OpenRouter Chat Model&quot;, et &quot;Pinecone&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution du workflow et test de la requête sur Tesla dans l&#x27;assistant de chat.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000626_seg15.jpg" alt="Interface de workflow montrant un diagramme de nœuds (Pinecone Assistant Template) avec le panneau de chat en bas à gauche contenant la requête sur Tesla et les logs d&#x27;exécution en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000626_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:26</span>
+                        <span class="caption-text">Interface de workflow montrant un diagramme de nœuds (Pinecone Assistant Template) avec le panneau de chat en bas à gauche contenant la requête sur Tesla et les logs d&#x27;exécution en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:50 - 00:07:12</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">je viens juste de vérifier tout ça. C&#x27;est correct. Maintenant, gardez à l&#x27;esprit qu&#x27;il n&#x27;y a pas de prompt système dans cet agent IA, ce qui explique pourquoi nous n&#x27;obtenons aucune information de source, comme le PDF d&#x27;où il provient et les numéros de page où il a été trouvé. Donc, ce que je vais faire très rapidement, c&#x27;est lui donner un prompt système juste ici, qui est ce qui définit le comportement de notre agent IA. Je vais donc ouvrir ceci en plein écran et je vais simplement coller ce prompt que j&#x27;utilisais tout à l&#x27;heure.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflows d&#x27;automatisation IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow d&#x27;agent IA connecté à Pinecone et OpenRouter, avec les paramètres du nœud AI Agent affichant le champ System Message.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et configuration des paramètres du nœud de l&#x27;agent IA pour inspecter le message système.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000656_seg16.jpg" alt="Vue d&#x27;ensemble du workflow n8n montrant un assistant Pinecone avec les nœuds de déclenchement, l&#x27;agent IA, le modèle OpenRouter et Pinecone, ainsi qu&#x27;une fenêtre de chat en bas à gauche affichant une question sur les livraisons de Tesla." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000656_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:56</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du workflow n8n montrant un assistant Pinecone avec les nœuds de déclenchement, l&#x27;agent IA, le modèle OpenRouter et Pinecone, ainsi qu&#x27;une fenêtre de chat en bas à gauche affichant une question sur les livraisons de Tesla.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000707_seg16.jpg" alt="Gros plan sur les paramètres du nœud &quot;AI Agent&quot; dans n8n, montrant la section System Message configurée simplement avec &quot;You are a helpful assistant&quot; sans instructions sur les sources PDF." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000707_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:07</span>
+                        <span class="caption-text">Gros plan sur les paramètres du nœud &quot;AI Agent&quot; dans n8n, montrant la section System Message configurée simplement avec &quot;You are a helpful assistant&quot; sans instructions sur les sources PDF.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:13 - 00:07:31</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est vraiment, vraiment simple. J&#x27;ai dit, tu es un agent IA spécialisé dans l&#x27;analyse de données de rapports de bénéfices. Utilise ton outil Pinecone pour faire des recherches dans les rapports de bénéfices de Tesla, Nike et NVIDIA. En répondant à la question de l&#x27;utilisateur, cite toujours tes sources en indiquant de quel document tu l&#x27;as tiré, de quelle page, de quelle section, ainsi qu&#x27;une citation textuelle exacte provenant de la source originale.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation (n8n), panneau de configuration de nœud avec volet d&#x27;expression et aperçu des résultats.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt configuré pour l&#x27;agent IA : &quot;# Overview\nYou are an AI agent specialized in analyzing earnings report data.\nUse your Pinecone tool to search through earnings reports from Tesla, Nike, and Nvidia.\nWhen answering the user&#x27;s question, always cite your sources as far as: what document you got it from, what page it was from, what section, and an exact text based quote from the original source&quot; ainsi que les variables d&#x27;entrée (sessionId, action, chatInput).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et explication de la configuration du prompt système de l&#x27;agent IA dans l&#x27;éditeur de flux de travail.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000717_seg17.jpg" alt="Interface d&#x27;un panneau de configuration de nœud d&#x27;automatisation (n8n ou similaire) affichant les détails d&#x27;un prompt système pour un agent IA spécialisé dans l&#x27;analyse de rapports financiers." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000717_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:17</span>
+                        <span class="caption-text">Interface d&#x27;un panneau de configuration de nœud d&#x27;automatisation (n8n ou similaire) affichant les détails d&#x27;un prompt système pour un agent IA spécialisé dans l&#x27;analyse de rapports financiers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:32 - 00:07:57</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parce que lorsque nous faisons du RAG et de la recherche vectorielle, il est vraiment important de voir d&#x27;où notre agent a tiré l&#x27;information afin que nous puissions lui faire confiance. C&#x27;est donc simplement un excellent exemple de la définition du comportement de l&#x27;agent. Car ce qui est intéressant, c&#x27;est que vous remarquerez que lorsqu&#x27;il a cherché dans l&#x27;outil Pinecone, nous obtenions réellement cette information. Si je devais faire défiler vers le bas par ici, vous pourriez voir que ce que nous récupérions de Pinecone, ce sont les pages exactes d&#x27;où il a tiré cette information, ainsi que le nom du PDF d&#x27;où il l&#x27;a trouvée.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un prompt définissant le comportement d&#x27;un agent IA spécialisé dans l&#x27;analyse de rapports financiers (exigeant de citer les sources, documents, pages et citations exactes).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et configuration du prompt système de l&#x27;agent d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000738_seg18.jpg" alt="Interface d&#x27;un éditeur de workflow de type n8n montrant la configuration des instructions d&#x27;un agent IA pour le RAG." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000738_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:38</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow de type n8n montrant la configuration des instructions d&#x27;un agent IA pour le RAG.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:57 - 00:08:19</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">L&#x27;agent IA ne savait tout simplement pas comment nous communiquer réellement cette information. Très rapidement, les gars, excusez l&#x27;éclairage. Je suis assis ici en train d&#x27;éditer cette vidéo de nuit et je me suis rendu compte que je n&#x27;avais pas montré ce que je voulais dire par le fait que l&#x27;agent remplissait la requête ici en bas tout seul. Donc si vous vous souvenez, cette question que nous avons posée était : combien de véhicules Tesla a-t-il livrés au deuxième trimestre 2025 et comment cela se comparait-il au même trimestre en 2024 ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow low-code pour l&#x27;automatisation par IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de nœuds, configuration JSON avec corps de requête et variables dynamiques, données de test affichant une question sur les livraisons de Tesla.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et explication de la configuration d&#x27;un agent IA et de ses nœuds de données dans n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000803_seg19.jpg" alt="Vue globale du workflow n8n montrant un agent IA connecté à un modèle OpenRouter et Pinecone." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000803_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:03</span>
+                        <span class="caption-text">Vue globale du workflow n8n montrant un agent IA connecté à un modèle OpenRouter et Pinecone.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000808_seg19.jpg" alt="Panneau de configuration d&#x27;un nœud Pinecone dans n8n avec la structure JSON et les données de sortie." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000808_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:08</span>
+                        <span class="caption-text">Panneau de configuration d&#x27;un nœud Pinecone dans n8n avec la structure JSON et les données de sortie.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000814_seg19.jpg" alt="Panneau des paramètres et de sortie du nœud déclencheur de chat n8n affichant la requête utilisateur." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000814_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:14</span>
+                        <span class="caption-text">Panneau des paramètres et de sortie du nœud déclencheur de chat n8n affichant la requête utilisateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:20 - 00:08:49</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, ce qui s&#x27;est passé ici, c&#x27;est qu&#x27;on peut voir que l&#x27;agent a appelé l&#x27;outil Pinecone deux fois. On peut voir qu&#x27;il y avait deux éléments. Et si on clique dessus, on peut voir les deux recherches différentes qu&#x27;il a faites auprès de notre assistant Pinecone. En haut à gauche, si on va sur l&#x27;exécution numéro un sur deux, il a cherché dans l&#x27;assistant Pinecone « Tesla Vehicle Delivers Q2 2025 ». Et ensuite, il a su qu&#x27;il devait comparer cela à 2024. Alors il a fait une nouvelle recherche. Et il a dit « Tesla Vehicle Deliveries Q2 2024 ». Et donc cette requête de recherche est la variable que nous avons ici en bas, parce que l&#x27;agent décide fondamentalement quelle sera ma requête de recherche ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de plateforme d&#x27;automatisation IA / workflow (type Flowise ou équivalent).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de l&#x27;outil Pinecone (URL, méthode POST, authentification) avec le champ searchQuery indiquant &#x27;Tesla vehicle deliveries Q2 2024&#x27; et la réponse JSON de l&#x27;assistant.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et inspection des détails d&#x27;un appel d&#x27;outil Pinecone suite à son exécution par l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000827_seg20.jpg" alt="Interface d&#x27;un tableau de bord d&#x27;agent IA montrant les détails d&#x27;exécution de l&#x27;outil Pinecone avec les requêtes d&#x27;entrée et les réponses de sortie." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000827_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:27</span>
+                        <span class="caption-text">Interface d&#x27;un tableau de bord d&#x27;agent IA montrant les détails d&#x27;exécution de l&#x27;outil Pinecone avec les requêtes d&#x27;entrée et les réponses de sortie.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:50 - 00:09:09</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et combien de fois dois-je faire une requête de recherche ? Et c&#x27;est pourquoi sur ce côté droit, nous avons aussi deux exécutions distinctes et deux résultats distincts. Donc pour tous les exemples futurs, gardez simplement cela à l&#x27;esprit. L&#x27;agent décide de la requête de recherche, et c&#x27;est ainsi qu&#x27;il parvient à obtenir les bonnes informations à chaque fois. Encore une fois, excusez l&#x27;éclairage. Je travaille pour obtenir un éclairage professionnel ici derrière. Comme ça, si je m&#x27;enregistre dans le noir, je n&#x27;aurai pas l&#x27;air terrifiant comme ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de workflow et d&#x27;automatisation de type nœuds (Pinecone Assistant Template).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma d&#x27;agent IA connectant un module &quot;When chat message received&quot; à un &quot;AI Agent&quot;, relié à &quot;OpenRouter Chat Model&quot; et &quot;Pinecone&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication du fonctionnement des exécutions multiples et de la structure d&#x27;un agent IA avec ses outils de recherche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000854_seg21.jpg" alt="Interface détaillée montrant les entrées, paramètres et sorties d&#x27;un nœud Pinecone avec les résultats JSON des exécutions." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000854_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:54</span>
+                        <span class="caption-text">Interface détaillée montrant les entrées, paramètres et sorties d&#x27;un nœud Pinecone avec les résultats JSON des exécutions.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000904_seg21.jpg" alt="Vue d&#x27;ensemble d&#x27;un workflow d&#x27;agent IA montrant les connexions entre le déclencheur de chat, le modèle OpenRouter et l&#x27;outil Pinecone." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000904_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:04</span>
+                        <span class="caption-text">Vue d&#x27;ensemble d&#x27;un workflow d&#x27;agent IA montrant les connexions entre le déclencheur de chat, le modèle OpenRouter et l&#x27;outil Pinecone.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:09 - 00:09:43</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Revenons à la vidéo. Donc, juste pour vous montrer que ce prompt a fonctionné, je vais republier exactement le même message. Et ce qu&#x27;on va voir, c&#x27;est que ça nous donne la bonne réponse une fois de plus, mais cette fois, il y aura le nom d&#x27;un PDF et des pages. Donc voilà. On a eu la même réponse et cette fois, on a notre source de Tesla Q2 et on a nos numéros de page ici en bas. Mais ce que vous remarquez peut-être maintenant, c&#x27;est qu&#x27;on n&#x27;obtient pas la citation textuelle du PDF. Et la raison pour laquelle ce n&#x27;est pas le cas, c&#x27;est parce que ce qui se passe dans ce nœud Pinecone, et je ne vais pas essayer d&#x27;entrer trop dans les détails techniques ici, mais l&#x27;assistant Pinecone sur ce serveur</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Pinecone Assistant Template (style n8n ou plateforme de workflow d&#x27;IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma de workflow connectant &quot;When chat message received&quot; à un &quot;AI Agent&quot;, relié à OpenRouter Chat Model et Pinecone. Dans le chat, une question sur les livraisons de Tesla en Q2 2025 est affichée.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un message de chat testant l&#x27;agent IA, avec les logs montrant l&#x27;appel en cours à Pinecone.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000918_seg22.jpg" alt="Interface utilisateur montrant un éditeur de workflow avec un nœud AI Agent, un module OpenRouter Chat Model et un outil Pinecone, accompagné d&#x27;un panneau de chat en bas à gauche et de logs d&#x27;exécution en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000918_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:18</span>
+                        <span class="caption-text">Interface utilisateur montrant un éditeur de workflow avec un nœud AI Agent, un module OpenRouter Chat Model et un outil Pinecone, accompagné d&#x27;un panneau de chat en bas à gauche et de logs d&#x27;exécution en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:43 - 00:10:02</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il effectue des recherches dans la base de connaissances et nous donne ensuite pour ainsi dire un bref résumé avec la bonne réponse. Ceci n&#x27;est pas une citation exacte basée sur du texte, mais c&#x27;est ce que notre agent IA NNN utilise pour nous donner une réponse. Et pour souligner ce point, je vais vous montrer un meilleur exemple de cela. Je demande quels ont été les revenus de Nike pour le quatrième trimestre de l&#x27;exercice fiscal 2025 et comment ils se comparent à ceux de l&#x27;année dernière ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation de workflow (style n8n ou plateforme similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration du connecteur Pinecone, structure JSON de sortie (réponse de l&#x27;assistant sur les livraisons Tesla) et prompt de chat sur Nike.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;une étape de test d&#x27;API pour interroger la base de connaissances Pinecone et affichage des résultats.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000948_seg23.jpg" alt="Interface détaillée d&#x27;un nœud d&#x27;API Pinecone montrant les paramètres de configuration et la réponse JSON structurée." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000948_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:48</span>
+                        <span class="caption-text">Interface détaillée d&#x27;un nœud d&#x27;API Pinecone montrant les paramètres de configuration et la réponse JSON structurée.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_000957_seg23.jpg" alt="Vue d&#x27;ensemble du canevas d&#x27;un agent IA connecté à OpenRouter et Pinecone avec un panneau de chat en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_000957_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:57</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du canevas d&#x27;un agent IA connecté à OpenRouter et Pinecone avec un panneau de chat en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:02 - 00:10:35</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ce que vous allez voir se produire, c&#x27;est que cela nous donne la bonne réponse, mais maintenant cela nous donne la citation exacte, ce qui est faux. Donc si je devais copier cette citation et aller dans le document Nike, qui était celui-ci. Et si je colle ceci dedans, nous n&#x27;obtenons aucun résultat. Nous obtenons zéro correspondance. Et c&#x27;est parce que, encore une fois, ce qui se passe, c&#x27;est que le contenu de Pinecone qui revient est un résumé. C&#x27;est la réponse de l&#x27;assistant Pinecone qu&#x27;il a générée à partir du texte exact. Donc la façon dont nous corrigeons cela, c&#x27;est que nous devons comprendre le type de requête que nous faisons à l&#x27;assistant Pinecone. Et pour ce faire,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Pinecone Assistant (plateforme de workflow), Visionneuse PDF (Navigateur web).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts de requête sur les revenus de Nike pour le T4 FY25, logs d&#x27;exécution de l&#x27;agent, structure JSON avec les champs &quot;message&quot;, &quot;content&quot; et &quot;citations&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration du processus de débogage : l&#x27;utilisateur vérifie la cohérence d&#x27;une citation fournie par l&#x27;IA en la comparant manuellement avec le document source PDF officiel de Nike.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001010_seg24.jpg" alt="Interface de Pinecone Assistant montrant le workflow de l&#x27;agent IA avec les résultats du chat affichant une réponse générée et une citation mise en évidence." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001010_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:10</span>
+                        <span class="caption-text">Interface de Pinecone Assistant montrant le workflow de l&#x27;agent IA avec les résultats du chat affichant une réponse générée et une citation mise en évidence.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001018_seg24.jpg" alt="Visionneuse PDF affichant le rapport financier &quot;NIKE, INC. REPORTS FISCAL 2025&quot; avec une barre de recherche active en haut de page." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001018_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:18</span>
+                        <span class="caption-text">Visionneuse PDF affichant le rapport financier &quot;NIKE, INC. REPORTS FISCAL 2025&quot; avec une barre de recherche active en haut de page.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001027_seg24.jpg" alt="Fenêtre de configuration de noeud Pinecone dans un éditeur de workflow, montrant les paramètres API et la structure JSON de la réponse de l&#x27;agent." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001027_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:27</span>
+                        <span class="caption-text">Fenêtre de configuration de noeud Pinecone dans un éditeur de workflow, montrant les paramètres API et la structure JSON de la réponse de l&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:35 - 00:10:53</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">nous devons regarder la documentation de l&#x27;API, que je vais faire glisser ici. C&#x27;est donc essentiellement la documentation qui nous indique comment utiliser l&#x27;Assistant via l&#x27;API. Nous pouvons voir des choses comme la réponse en streaming, l&#x27;extraction du contenu de la réponse, le choix d&#x27;un modèle, tout ce genre de choses. Mais ce qui m&#x27;intéresse, c&#x27;est cette section du bas qui dit inclure les surbbrillances de citation dans la réponse.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la documentation de Pinecone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation technique avec des exemples de code cURL, Python et JavaScript pour interagir avec l&#x27;Assistant Pinecone, incluant les paramètres de messages et de température.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente la structure de la documentation d&#x27;API et les paramètres disponibles comme la température d&#x27;échantillonnage et la réponse en streaming.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001039_seg25.jpg" alt="Capture d&#x27;écran montrant la documentation officielle de l&#x27;API Pinecone, avec un exemple de requête curl pour configurer la température d&#x27;échantillonnage de l&#x27;assistant." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001039_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:39</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant la documentation officielle de l&#x27;API Pinecone, avec un exemple de requête curl pour configurer la température d&#x27;échantillonnage de l&#x27;assistant.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:54 - 00:11:24</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, tout ce que nous avons à faire pour obtenir une citation exacte, c&#x27;est d&#x27;ajouter cette chose ici en bas qui dit « include highlights ». C&#x27;est essentiellement juste un petit levier sur lequel nous pouvons tirer pour modifier le fonctionnement de l&#x27;Assistant. Alors gardez en tête la façon dont cette citation n&#x27;a pas fonctionné. Je vais aller dans la requête HTTP et tout ce que je vais faire, c&#x27;est ajouter cette petite section « include highlights equals true ». Et maintenant, je vais enregistrer ceci et poser exactement la même question. Donc nous posons exactement la même question. La réponse va revenir correcte à nouveau parce que l&#x27;assistant Pinecone va être plutôt bon pour donner la bonne réponse.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Documentation web Pinecone, éditeur de workflow visuel type n8n / Flowise.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Requête cURL avec paramètre d&#x27;API « include_highlights: true » et structure JSON pour l&#x27;Assistant Pinecone.</p>
+                        <p><strong>Action / Démonstration :</strong> Explication et configuration des paramètres de l&#x27;API Pinecone pour inclure les citations et surbrillances dans les réponses de l&#x27;assistant IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001102_seg26.jpg" alt="Documentation de Pinecone montrant un exemple de requête cURL avec le paramètre « include_highlights » mis en surbrillance." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001102_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:02</span>
+                        <span class="caption-text">Documentation de Pinecone montrant un exemple de requête cURL avec le paramètre « include_highlights » mis en surbrillance.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001109_seg26.jpg" alt="Interface de configuration du nœud Pinecone dans un éditeur de workflow montrant le corps JSON avec les messages." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001109_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:09</span>
+                        <span class="caption-text">Interface de configuration du nœud Pinecone dans un éditeur de workflow montrant le corps JSON avec les messages.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001117_seg26.jpg" alt="Interface complète d&#x27;un workflow de type n8n avec un agent IA connectant OpenRouter et Pinecone, et une fenêtre de chat en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001117_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:17</span>
+                        <span class="caption-text">Interface complète d&#x27;un workflow de type n8n avec un agent IA connectant OpenRouter et Pinecone, et une fenêtre de chat en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:25 - 00:11:58</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais maintenant, nous allons voir qu&#x27;une citation exacte ressort également. Donc, juste ici, on obtient cette citation exacte. Je vais copier ça, retourner dans le document Nike. Et maintenant, si je colle ça, on peut voir qu&#x27;il extrait la citation exacte. Et la raison pour laquelle il a pu faire ça, c&#x27;est parce que dans Pinecone, encore une fois, cette section appelée « content » n&#x27;est pas la citation exacte. Mais si je fais défiler tout en bas, vous pouvez voir qu&#x27;on a une nouvelle section qui a été ajoutée, appelée « content ». Et c&#x27;est en fait ce qui va extraire exactement ce qui a été trouvé dans le document. C&#x27;est donc un très bon exemple non seulement de pouvoir comprendre ce qui se passe, mais aussi de pouvoir comprendre que si je veux changer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visionneuse PDF, interface Pinecone (tableau de bord d&#x27;assistant IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Document financier Nike, requêtes de recherche et réponses JSON structurées avec citations.</p>
+                        <p><strong>Action / Démonstration :</strong> Copie et collage d&#x27;une citation exacte extraite du document financier via l&#x27;assistant Pinecone.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001133_seg27.jpg" alt="Document PDF Nike affiché avec du texte surligné en bleu." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001133_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:33</span>
+                        <span class="caption-text">Document PDF Nike affiché avec du texte surligné en bleu.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001141_seg27.jpg" alt="Interface Pinecone montrant un panneau de configuration API et une réponse JSON avec le contenu généré." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001141_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:41</span>
+                        <span class="caption-text">Interface Pinecone montrant un panneau de configuration API et une réponse JSON avec le contenu généré.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001150_seg27.jpg" alt="Gros plan sur l&#x27;interface Pinecone montrant les métadonnées de citation avec le texte extrait et surligné." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001150_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:50</span>
+                        <span class="caption-text">Gros plan sur l&#x27;interface Pinecone montrant les métadonnées de citation avec le texte extrait et surligné.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:58 - 00:12:19</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">le comportement, je peux aller parcourir la documentation de l&#x27;API. Et c&#x27;est ainsi que je peux aussi modifier des éléments comme la température d&#x27;échantillonnage, ou je peux changer le modèle. Parce qu&#x27;une chose que vous remarquerez, c&#x27;est que si vous êtes dans votre playground d&#x27;assistant juste ici et que vous changez le modèle de chat avec lequel interagir, vous pouvez voir que j&#x27;ai changé le modèle. Si je survole ceci, il est écrit : sélectionnez le modèle à utiliser par l&#x27;assistant dans cette conversation.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la documentation Pinecone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation technique avec extraits de code cURL et JSON illustrant l&#x27;utilisation du paramètre &quot;temperature&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation de la documentation de l&#x27;API Pinecone pour configurer les paramètres du modèle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001203_seg28.jpg" alt="Documentation officielle de Pinecone montrant la section sur le réglage de la température d&#x27;échantillonnage (&quot;Set the sampling temperature&quot;) avec un exemple de requête cURL." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001203_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:03</span>
+                        <span class="caption-text">Documentation officielle de Pinecone montrant la section sur le réglage de la température d&#x27;échantillonnage (&quot;Set the sampling temperature&quot;) avec un exemple de requête cURL.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:19 - 00:12:45</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Pour persister ce choix dans votre application, rappelez-vous que vous devez définir votre modèle dans vos appels API. Donc, en retournant sur NNN dans la requête HTTP, ici en bas, nous avons un modèle. Et donc, si je voulais changer le modèle que nous utilisons pour interagir du côté de l&#x27;assistant Pinecone, nous devrions le modifier ici même. Très bien. Désolé si je suis entré un peu dans les détails techniques. Je pense simplement qu&#x27;il est vraiment important que vous compreniez comment cela fonctionne réellement. Si vous cherchez à comprendre un peu mieux tout cela, j&#x27;ai une vidéo sur l&#x27;API que vous pouvez regarder. Je vais la taguer juste ici en haut.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de type n8n ou plateforme d&#x27;automatisation similaire.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : &quot;When chat message received&quot;, &quot;AI Agent&quot;, &quot;OpenRouter Chat Model&quot;, et &quot;Pinecone&quot;, avec les logs d&#x27;exécution et une interface de chat interactive.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la configuration des modèles dans les appels API du workflow en montrant les différents nœuds connectés à l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001225_seg29.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de workflow d&#x27;automatisation avec un agent IA relié à OpenRouter et Pinecone, ainsi qu&#x27;une fenêtre de chat ouverte en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001225_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:25</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de workflow d&#x27;automatisation avec un agent IA relié à OpenRouter et Pinecone, ainsi qu&#x27;une fenêtre de chat ouverte en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:45 - 00:13:18</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ou vous pouvez également consulter ma communauté Plus. Le lien pour celle-ci se trouve dans la description. C&#x27;est là que vous recevrez un accompagnement plus structuré et que vous trouverez une communauté de personnes qui construisent chaque jour. Quoi qu&#x27;il en soit, très rapidement maintenant, je veux vous montrer la différence, car je suis sûr que vous vous demandez pourquoi je n&#x27;utiliserais pas simplement une base de vecteurs Pinecone ou une base de vecteurs Supabase ? Pourquoi est-ce plus rapide, plus facile et peut-être même meilleur ? Donc, la raison pour laquelle je suis un grand fan de ça en ce moment, c&#x27;est parce que ce qui se passe ici, c&#x27;est que Pinecone, en arrière-plan, gère toute l&#x27;indexation, l&#x27;incorporation, le découpage. Il gère tout cela afin de vous faciliter la tâche pour que vous n&#x27;ayez pas à tout gérer pour récupérer vos sources précises. Parce que comme je l&#x27;ai dit, si</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Pinecone Assistant / Flowise (ou outil similaire de workflow d&#x27;agents IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de workflow avec des nœuds connectés (Pinecone Assistant, Pinecone Vector, Supabase Vector, OpenRouter Chat Model) et une zone de chat en bas.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et configuration d&#x27;un workflow d&#x27;automatisation IA avec plusieurs modèles et bases de données vectorielles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001253_seg30.jpg" alt="Interface d&#x27;un éditeur de workflow montrant un assistant Pinecone et des blocs de données connectés." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001253_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:53</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow montrant un assistant Pinecone et des blocs de données connectés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:18 - 00:13:42</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">si vous adoptez l&#x27;approche vectorielle classique, il y a beaucoup plus de travail en amont. Vous ne pouvez pas simplement déposer un fichier et être prêt à démarrer. Vous devez configurer un pipeline pour inclure un filtrage des métadonnées et peut-être même différents types de découpage et de segmentation. Je ne vais pas entrer dans les détails à ce sujet pour l&#x27;instant, car je ne veux pas que la vidéo soit trop longue, mais je veux vous montrer une comparaison très rapide. Ainsi, ces trois agents ont exactement le même prompt et les mêmes documents, à la différence qu&#x27;ils sont simplement stockés différemment.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de gestion de flux de travail / Pinecone Assistant.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow représentant Pinecone Assistant, Pinecone Vector, Supabase Vector, OpenRouter Chat Model, et Pinecone/Supabase Store avec des embeddings OpenAI.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et configuration visuelle d&#x27;un pipeline vectoriel avec des nœuds connectés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001324_seg31.jpg" alt="Interface graphique montrant un diagramme de workflow avec différents nœuds connectés pour Pinecone Assistant, Pinecone Vector et Supabase Vector." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001324_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:24</span>
+                        <span class="caption-text">Interface graphique montrant un diagramme de workflow avec différents nœuds connectés pour Pinecone Assistant, Pinecone Vector et Supabase Vector.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:43 - 00:14:17</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, je vais poser cette question dès maintenant à notre assistant Pinecone qui demande : quelle était la marge opérationnelle de Tesla au deuxième trimestre 2025 ? Vous verrez donc qu&#x27;il répond que la marge opérationnelle était de 4,1 %, ce qui est correct. Vous pouvez voir qu&#x27;il nous donne le document, il nous donne les numéros de page ainsi qu&#x27;une citation exacte. Et gardez également à l&#x27;esprit que nous avons obtenu cette réponse. Juste ici, il est écrit 1 277 jetons. Gardez donc ce chiffre en tête. Maintenant, si nous passons à cet agent du milieu qui utilise un magasin de vecteurs Pinecone plutôt que l&#x27;assistant, nous allons poser exactement la même question. Et rappelez-vous que nous cherchons la réponse 4,1 %. Donc, ce que nous obtenons en retour</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de workflow et d&#x27;assistant IA (type Make/n8n ou interface personnalisée Pinecone).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow avec les nœuds &quot;When chat message received&quot;, &quot;Pinecone Assistant&quot;, &quot;OpenRouter Chat Model&quot;, &quot;Pinecone&quot;, et &quot;Calculator&quot;. Dans le chat : &quot;What was Tesla&#x27;s operating margin in Q2 2025 ?&quot; et la réponse &quot;Tesla&#x27;s operating margin in Q2 2025 was 4.1%.&quot; avec les sources.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un workflow interactif pour interroger l&#x27;assistant sur les données financières de Tesla.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001351_seg32.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil d&#x27;automatisation avec un workflow de type nœuds (Pinecone Assistant) et un panneau de chat en bas à gauche affichant la réponse de l&#x27;assistant concernant la marge opérationnelle de Tesla." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001351_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:51</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil d&#x27;automatisation avec un workflow de type nœuds (Pinecone Assistant) et un panneau de chat en bas à gauche affichant la réponse de l&#x27;assistant concernant la marge opérationnelle de Tesla.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:17 - 00:14:50</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c’est que je ne sais pas vraiment quelle est la réponse. Et vous pouvez voir que cela a pris près de 30 000 jetons. Nous avons donc obtenu une réponse incorrecte et cela nous a coûté environ 15 fois plus, plus de 15 fois plus. Oui, c&#x27;était un calcul horrible, mais vous voyez l&#x27;idée. Et comme nous avons adopté une approche classique par morceaux vectoriels où nous étions en charge de tout le prétraitement de ces morceaux, je suppose que cela fera exactement la même chose lorsque nous essaierons cela avec notre base de données vectorielle Supabase. Vous pouvez donc voir ici à peu près la même réponse. Il n&#x27;a pas été capable de trouver le chiffre exact. Nous recherchions 4,1 % et celui-ci n&#x27;a pris que 5 000 jetons.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Pinecone Assistant / Outil de workflow visuel</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de flux de travail d&#x27;automatisation IA comprenant des modules de chat, de vectorisation et de calcul, ainsi que les logs d&#x27;exécution indiquant 29,459 jetons et une sortie textuelle sur la marge opérationnelle de Tesla.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation des résultats d&#x27;exécution d&#x27;un workflow d&#x27;assistant IA montrant les coûts en jetons et la réponse textuelle générée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001425_seg33.jpg" alt="Interface de Pinecone Assistant affichant un diagramme de workflow complexe avec des nœuds connectés (Pinecone Vector, Supabase Vector, OpenRouter Chat Model) et un panneau de chat en bas montrant le résultat d&#x27;une exécution." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001425_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:25</span>
+                        <span class="caption-text">Interface de Pinecone Assistant affichant un diagramme de workflow complexe avec des nœuds connectés (Pinecone Vector, Supabase Vector, OpenRouter Chat Model) et un panneau de chat en bas montrant le résultat d&#x27;une exécution.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:50 - 00:15:16</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce qui est encore environ trois fois plus cher que l&#x27;assistant Pinecone. C&#x27;est donc tout ce dont je vais parler aujourd&#x27;hui. Je ne dis pas que l&#x27;assistant Pinecone est toujours la meilleure option, car vous avez aussi ce coût de fonctionnement de cinq cents par heure. Mais ce que je veux dire, c&#x27;est que si vous voulez mettre quelque chose en place rapidement et voir comment cela fonctionne, cet assistant Pinecone change la donne, surtout si vous êtes débutant et que vous voulez expérimenter avec des trucs comme des agents RAG. Et je voulais aussi saluer rapidement la légende, Mark Kashoff.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation de workflow (semblable à Flowise ou Langflow)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Blocs fonctionnels : &quot;When chat message received&quot;, &quot;Pinecone Assistant&quot;, &quot;Pinecone Vector&quot;, &quot;Supabase Vector&quot;, reliés à des modèles de chat (OpenRouter), des stockages (Pinecone Store, Supabase Store), et des outils (Calculator, Embeddings).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et configuration d&#x27;un diagramme de workflow d&#x27;intelligence artificielle avec le curseur de la souris positionné sur le modèle OpenRouter Chat.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001456_seg34.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface graphique d&#x27;un éditeur de workflow avec trois blocs principaux connectés à différents services (Pinecone Assistant, Pinecone Vector, Supabase Vector) ainsi que le présentateur en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001456_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:56</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface graphique d&#x27;un éditeur de workflow avec trois blocs principaux connectés à différents services (Pinecone Assistant, Pinecone Vector, Supabase Vector) ainsi que le présentateur en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:16 - 00:15:51</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est lui qui m&#x27;a fait découvrir ces assistants Pinecone. Et comme je l&#x27;ai dit, je trouve ça super cool. J&#x27;espère donc que vous comprenez maintenant comment vous pouvez tester l&#x27;assistant Pinecone par vous-même. Et si vous voulez télécharger ce modèle pour pouvoir vous amuser un peu avec les différences, vous pouvez l&#x27;obtenir gratuitement en rejoignant ma communauté School gratuite. Et si vous aimez voir ce genre de choses et que vous voulez un apprentissage un peu plus structuré, alors allez absolument jeter un œil à ma communauté Plus. Le lien pour cela se trouve également dans la description. Nous avons une super communauté de plus de 2 500 membres. Tout le monde, chaque jour, construit et gagne sa vie avec N8N. Et nous avons une section de cours complète avec trois cours complets. Agent Zero est les bases pour les débutants. De 10 heures à 10 secondes plonge dans N8N. Et puis notre nouveau cours sur l&#x27;agence IA unipersonnelle est disponible pour nos</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de workflow et plateforme communautaire Skool (AI Automation Society Plus).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : &quot;Pinecone Assistant&quot;, &quot;Pinecone Vector&quot;, &quot;Supabase Vector&quot;, &quot;OpenRouter Chat Model&quot;, &quot;Pinecone Store&quot;, &quot;Supabase Store&quot; et &quot;Calculator&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation d&#x27;un schéma d&#x27;automatisation d&#x27;IA et navigation dans la plateforme de cours de la communauté.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001525_seg35.jpg" alt="Un éditeur de workflow avec des nœuds connectés pour Pinecone Assistant, Pinecone Vector et Supabase Vector." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001525_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:25</span>
+                        <span class="caption-text">Un éditeur de workflow avec des nœuds connectés pour Pinecone Assistant, Pinecone Vector et Supabase Vector.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:51 - 00:16:08</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">membres annuels. Et cela explique comment poser les bases pour créer une entreprise d&#x27;automatisation IA. Donc j&#x27;adorerais vous voir dans ces communautés, mais ce sera tout pour cette vidéo. J&#x27;espère que vous avez apprécié. Si vous avez appris quelque chose de nouveau, n&#x27;hésitez pas à laisser un j&#x27;aime. Ça m&#x27;aide vraiment énormément. Et comme toujours, j&#x27;apprécie que vous soyez allés jusqu&#x27;à la fin de la vidéo. On se retrouve tous dans la prochaine. Merci les gars.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, plateforme communautaire en ligne, éditeur de flux d&#x27;automatisation visuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Modules de cours sur l&#x27;automatisation IA et diagramme de workflow intégrant des bases de données vectorielles (Pinecone, Supabase) et des modèles de langage.
+[DESC_IMAGE_1] Présentation des ressources de la communauté et des modules de formation pour créer une agence d&#x27;automatisation IA.
+[DESC_IMAGE_2] Visualisation d&#x27;un workflow complexe connectant des assistants IA et des outils de calcul.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001556_seg36.jpg" alt="Interface web de la communauté &quot;AI Automation Society Plus&quot; montrant différents modules de formation (Start Here, Agent Zero, n8n Templates, etc.)." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001556_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:56</span>
+                        <span class="caption-text">Interface web de la communauté &quot;AI Automation Society Plus&quot; montrant différents modules de formation (Start Here, Agent Zero, n8n Templates, etc.).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/QojPKL96Dx4/QojPKL96Dx4_001600_seg36.jpg" alt="Éditeur de workflow de type n8n ou similaire montrant un pipeline d&#x27;automatisation avec des nœuds pour Pinecone Assistant, Supabase Vector, OpenRouter Chat Model et Calculator." loading="lazy" onclick="openLightbox('../screenshots/QojPKL96Dx4/QojPKL96Dx4_001600_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:00</span>
+                        <span class="caption-text">Éditeur de workflow de type n8n ou similaire montrant un pipeline d&#x27;automatisation avec des nœuds pour Pinecone Assistant, Supabase Vector, OpenRouter Chat Model et Calculator.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
