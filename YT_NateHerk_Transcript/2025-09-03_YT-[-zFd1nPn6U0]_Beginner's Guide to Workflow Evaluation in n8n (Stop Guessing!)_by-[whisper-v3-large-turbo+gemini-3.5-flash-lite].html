@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Beginner&#x27;s Guide to Workflow Evaluation in n8n (Stop Guessing!) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Beginner&#x27;s Guide to Workflow Evaluation in n8n (Stop Guessing!)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-09-03</span>
+                <span class="badge">⏱️ 00:17:25</span>
+                <span class="badge">🆔 <code>-zFd1nPn6U0</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=-zFd1nPn6U0" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Beginner's Guide to Workflow Evaluation in n8n (Stop Guessing!)**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:21</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Today we&#x27;re going to talk about something pretty boring but super super important and that is workflow evaluation. So I&#x27;m going to start off by talking about what it is and how it works then we&#x27;re going to get into N8N and I&#x27;m going to show you guys me actually running some evaluations. So let&#x27;s get started. All right like I said today we&#x27;re talking about AI workflow evaluation and specifically within N8N. I thought it would first make sense to talk about what is evaluation.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (plateforme d&#x27;automatisation de workflows).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : &quot;Gmail Trigger&quot;, &quot;Tagging Agent&quot;, &quot;OpenRouter Chat Model&quot;, &quot;Structured Output Parser&quot;, et tableau de bord &quot;All runs&quot; avec données de performance.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation du design d&#x27;un workflow d&#x27;agent IA suivi de l&#x27;affichage des logs et métriques d&#x27;évaluation de ses performances.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000005_seg1.jpg" alt="Interface n8n montrant un workflow d&#x27;automatisation avec des nœuds de déclenchement Gmail, un &quot;Tagging Agent&quot; et des outils d&#x27;évaluation." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Interface n8n montrant un workflow d&#x27;automatisation avec des nœuds de déclenchement Gmail, un &quot;Tagging Agent&quot; et des outils d&#x27;évaluation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000010_seg1.jpg" alt="Tableau de bord d&#x27;évaluation dans n8n affichant un graphique de précision et un historique des exécutions avec des métriques de tokens et de temps." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000010_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:10</span>
+                        <span class="caption-text">Tableau de bord d&#x27;évaluation dans n8n affichant un graphique de précision et un historique des exécutions avec des métriques de tokens et de temps.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:21 - 00:00:43</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">In my mind the simplest way to put it is validating your hypothesis with objective proof. Think back to when you were building an AI agent or a workflow and you weren&#x27;t happy with the results. What you do is you think about, okay, if I do X, it&#x27;s going to make the output better. And so that&#x27;s your hypothesis. You go ahead and you make that change, you run it again, and you basically subjectively judge, is it better or worse?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:43 - 00:01:02</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But by running evaluations, we can actually see data and we can see proof if your change validates your hypothesis or not. So now that we all are on the same page about what evaluation means, let&#x27;s start to look at how this would actually work in NADN. So for this example, what we&#x27;re looking at is a tagging agent. It will receive an email.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:02 - 00:01:22</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It will look at the subject and the body, and it will use its AI brain to basically tag the category and priority of an email and then do whatever it has to do later. And so what we&#x27;re looking at here is a test data set where we say, okay, here are six really good examples of an email that came in and where they should be categorized and marked as far as priority goes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de type éditeur de workflow visuel (similaire à n8n ou Make) et tableau de données.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le schéma montre un workflow partant d&#x27;un &quot;Gmail Trigger&quot; vers un &quot;Tagging Agent&quot; (connecté à &quot;OpenRouter Chat Model&quot; et &quot;Structured Output Parser&quot;), suivi d&#x27;une action &quot;Ticket Tagging&quot; dans Google Sheets et un envoi d&#x27;email. Le tableau en dessous liste des exemples de sujets d&#x27;emails, leurs contenus, ainsi que la catégorie et la priorité attendues (High/Medium).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de la logique de traitement des emails par un agent IA, illustrant comment les données d&#x27;entrée (emails) sont structurées pour entraîner ou tester le modèle de classification.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000107_seg4.jpg" alt="Une capture d&#x27;écran montrant un workflow d&#x27;automatisation d&#x27;agent IA et un tableau de données de test." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000107_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:07</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant un workflow d&#x27;automatisation d&#x27;agent IA et un tableau de données de test.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:22 - 00:01:40</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So what we would do in our evaluation is we would feed through these six inputs and we would basically validate, are they answering the expected category and expected priority correctly? And when we run these through an evaluation, we can actually see each of those six test cases and we can look at how many tokens were consumed, how long it took in time.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Outil d&#x27;automatisation de workflow (type n8n ou plateforme d&#x27;agents IA) et interface de test/évaluation personnalisée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow logique (Gmail &gt; Tagging Agent &gt; Sheets), données de test (ex: &quot;Order #12345 not delivered yet&quot;), et métriques d&#x27;évaluation LLM (completion/prompt tokens, execution time).</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de la validation automatisée des entrées d&#x27;un agent IA pour vérifier la conformité des catégories et priorités par rapport aux attentes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000126_seg5.jpg" alt="Un workflow automatisé montrant un déclencheur Gmail relié à un &quot;Tagging Agent&quot;, avec un tableau présentant six cas de test basés sur des objets de courriels, catégories et priorités attendues." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000126_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:26</span>
+                        <span class="caption-text">Un workflow automatisé montrant un déclencheur Gmail relié à un &quot;Tagging Agent&quot;, avec un tableau présentant six cas de test basés sur des objets de courriels, catégories et priorités attendues.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000136_seg5.jpg" alt="Un tableau de bord d&#x27;évaluation affichant les résultats de 6 cas de test (tous marqués en succès), avec des statistiques de tokens et temps d&#x27;exécution, au-dessus d&#x27;un tableau comparatif des catégories et priorités." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000136_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:36</span>
+                        <span class="caption-text">Un tableau de bord d&#x27;évaluation affichant les résultats de 6 cas de test (tous marqués en succès), avec des statistiques de tokens et temps d&#x27;exécution, au-dessus d&#x27;un tableau comparatif des catégories et priorités.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:40 - 00:02:00</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then we can see if the priority or category was right or wrong. And then because we&#x27;re able to identify patterns like maybe when it&#x27;s shipping inquiry, it&#x27;s actually being labeled as support or something like that. We can go ahead and use that data of what is actually happening to go ahead and fix the prompt. And then we fix the prompt, run it through again, and we see if we get a higher accuracy score.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau de bord d&#x27;analyse de données AIS+</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques de performance (tokens, temps d&#x27;exécution) pour 6 cas de test et colonnes pour comparer &quot;Expected Category/Priority&quot; (Shipping Inquiry, Return and Refund, etc.) avec &quot;Actual Category/Priority&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse et comparaison des résultats de catégorisation et de priorité des tickets pour identifier les erreurs d&#x27;étiquetage par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000145_seg6.jpg" alt="Un tableau de bord AIS+ présentant les statistiques d&#x27;exécution de 6 cas de test, couplé à une grille de comparaison des catégories et priorités (attendues vs réelles)." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000145_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:45</span>
+                        <span class="caption-text">Un tableau de bord AIS+ présentant les statistiques d&#x27;exécution de 6 cas de test, couplé à une grille de comparaison des catégories et priorités (attendues vs réelles).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:00 - 00:02:19</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So in a couple minutes, we&#x27;re going to hop into N&amp;N and actually look at this exact example. But real quick, I wanted to get some of the more boring stuff out of the way real quick, which is just kind of laying a good foundation about the mindset of AI workflow evaluation. So evaluation has been around for a long time. But why is AI workflow evaluation fundamentally different than code evaluation or other projects?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation PowerPoint ou Keynote (diapositive pédagogique).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte : &quot;Black Box Problem&quot;, &quot;Probabilistic Nature&quot;, &quot;Evolving Models&quot;, &quot;Beyond Traditional Testing&quot; (incluant précision, cohérence, robustesse, biais et coût). Logo &quot;AIS+&quot; en haut à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre les concepts théoriques avant la démonstration technique sur n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000205_seg7.jpg" alt="Une diapositive de présentation titrée &quot;Why AI Workflow Evaluation is Different&quot; listant les défis fondamentaux de l&#x27;évaluation des flux de travail IA." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000205_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:05</span>
+                        <span class="caption-text">Une diapositive de présentation titrée &quot;Why AI Workflow Evaluation is Different&quot; listant les défis fondamentaux de l&#x27;évaluation des flux de travail IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:20 - 00:02:42</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Because AI, LLMs, are kind of known as a black box. because we don&#x27;t know exactly what is going on and how it gets to its end result. Meaning if you put in 100 of the exact same inputs, you&#x27;d likely get 100 different variations of outputs. Whereas in a traditional workflow with no AI or a code script, you could put in 100 of the same inputs and you should get 100 of the same outputs.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation de diapositives (Slide deck).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte listant les problématiques : Black Box Problem, Probabilistic Nature, Evolving Models, Beyond Traditional Testing.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique illustrant les différences entre les workflows IA et traditionnels.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000225_seg8.jpg" alt="Une diapositive de présentation titrée &quot;Why AI Workflow Evaluation is Different&quot; listant quatre points clés sur les défis des LLM (Black Box, Nature probabiliste, modèles évolutifs, limites des tests traditionnels)." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000225_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:25</span>
+                        <span class="caption-text">Une diapositive de présentation titrée &quot;Why AI Workflow Evaluation is Different&quot; listant quatre points clés sur les défis des LLM (Black Box, Nature probabiliste, modèles évolutifs, limites des tests traditionnels).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:42 - 00:03:05</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We also have the probabilistic nature. Output is shaped by probability, temperature, and context. And there&#x27;s so many different levers that we can pull to train the way the AI actually behaves. We also have evolving models. as new ones come out, if they&#x27;re cheaper and faster and people say they&#x27;re the best, you&#x27;re going to switch it out. But does that new model actually increase the performance of your workflow or not? And there&#x27;s other things that we want to optimize for beyond just accuracy and consistency.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de présentation (type PowerPoint ou Google Slides).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte listant les points suivants : &quot;Black Box Problem&quot;, &quot;Probabilistic Nature&quot; (avec mention de la probabilité, la température et le contexte), &quot;Evolving Models&quot; et &quot;Beyond Traditional Testing&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique illustrant les concepts abordés oralement par le narrateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000248_seg9.jpg" alt="Une diapositive de présentation titrée &quot;Why AI Workflow Evaluation is Different&quot;, listant quatre défis majeurs liés à l&#x27;évaluation des flux de travail IA." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000248_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:48</span>
+                        <span class="caption-text">Une diapositive de présentation titrée &quot;Why AI Workflow Evaluation is Different&quot;, listant quatre défis majeurs liés à l&#x27;évaluation des flux de travail IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:05 - 00:03:39</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We also have stuff like bias and cost and time. So because there&#x27;s so much to take a look at, there&#x27;s a lot of noise. The key metrics to really be thinking about when you are running evaluations and you want to track would be performance, reliability, efficiency, and quality. And by the I&#x27;ll have these slides in my free school community. The link for that will be down in the description You can download that and you can also get the two workflows We&#x27;re gonna look at so you can get all the resources shown in this video in the free school Just in case you thought I was going a little too fast and now moving on to something that is Probably the most important part of evaluations Well second most the most important thing we&#x27;ll talk about at the end</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diapositive de présentation (format slide).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte structuré listant les métriques : Performance (Accuracy, correctness), Reliability (Consistency, error rate, uptime), Efficiency (Token usage, latency, cost), Quality (Hallucination rate, relevance, completeness).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation pédagogique des indicateurs de performance clés (KPI) pour le suivi des agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000314_seg10.jpg" alt="Une diapositive de présentation intitulée &quot;Key Metrics to Track&quot; listant quatre catégories principales pour l&#x27;évaluation des systèmes IA : Performance, Reliability, Efficiency et Quality, avec des indicateurs spécifiques pour chacune." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000314_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:14</span>
+                        <span class="caption-text">Une diapositive de présentation intitulée &quot;Key Metrics to Track&quot; listant quatre catégories principales pour l&#x27;évaluation des systèmes IA : Performance, Reliability, Efficiency et Quality, avec des indicateurs spécifiques pour chacune.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:39 - 00:04:14</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But the second most important thing is being able to isolate variables to actually understand what&#x27;s going on I don&#x27;t know how long you guys have been watching my channel, but something I&#x27;ve talked about before is reactively prompting your AI agents. Meaning if you aren&#x27;t happy with the output of your agent you want to change one thing in the prompt at a time. Rather than if you get in there and you add like two paragraphs and all of a sudden your agents performing horribly you don&#x27;t know where in the two paragraphs you broke the agent. Or on the other side of things if it makes it better you don&#x27;t know what specifically made it better. And this is honestly even more important when you&#x27;re doing evaluations because let&#x27;s say you&#x27;re getting you know 70%</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de présentation (type PowerPoint ou Google Slides).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste à puces : &quot;Treat every change as a scientific experiment&quot;, &quot;Only change one thing at a time&quot;, &quot;Keep test conditions consistent&quot;, &quot;Document what changed, why, and results&quot;, &quot;Establish a baseline before testing improvements&quot;. Liste &quot;Common Variables to Test&quot; : &quot;Prompt wording &amp; structure&quot;, &quot;LLM/model version&quot;, &quot;Workflow design&quot;, &quot;Data preprocessing methods&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique des principes méthodologiques d&#x27;optimisation des agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000348_seg11.jpg" alt="Une diapositive de présentation titrée &quot;Isolating Variables for True Insights&quot; listant les bonnes pratiques pour tester les agents IA." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000348_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:48</span>
+                        <span class="caption-text">Une diapositive de présentation titrée &quot;Isolating Variables for True Insights&quot; listant les bonnes pratiques pour tester les agents IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:14 - 00:04:45</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">accuracy and then you change the prompt and the tools and the chat model and all of a sudden you&#x27;re getting 85% accuracy. You don&#x27;t know which one of those had the most effect on the actual increase in performance. So what you need to do is treat it as a scientific experiment to validate your hypothesis. Change one thing at a time, whatever that is. Keep all of the test conditions consistent. So keep all of the variables, not variable, keep them consistent and only change one thing at a time and document what changed, why you changed it and what the actual result was.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diapositive de présentation (format slide deck).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de bonnes pratiques pour l&#x27;expérimentation : &quot;Only change one thing at a time&quot;, &quot;Keep test conditions consistent&quot;, &quot;Document what changed&quot;, &quot;Establish a baseline&quot;. Liste des variables courantes à tester : prompt, LLM/modèle, design de workflow, méthodes de prétraitement des données.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique l&#x27;importance d&#x27;isoler les variables lors des tests de performance pour identifier précisément ce qui améliore la précision du modèle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000422_seg12.jpg" alt="Une diapositive de présentation titrée &quot;Isolating Variables for True Insights&quot; détaillant la méthodologie scientifique pour optimiser les performances des agents IA." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000422_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:22</span>
+                        <span class="caption-text">Une diapositive de présentation titrée &quot;Isolating Variables for True Insights&quot; détaillant la méthodologie scientifique pour optimiser les performances des agents IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:45 - 00:05:08</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">This allows you to actually test different things and optimize for the best model possible. Common variables that you should change and test different things would be the prompt wording, would be the actual LLM itself. And then within the LLM, you have different things like temperature, top P, all this kind of stuff, the workflow design and data pre-processing methods. So in other words, kind of the context that is being fed to the agent or to the AI before it does its action.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:08 - 00:05:32</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And now this is the most important part of an evaluation is the data set. The purpose of your evaluation data set is that it has to be the ground truth. This is basically what we&#x27;re training our AI workflow to perform like. So it has to be good and what does good data look like? It&#x27;s accurate, obviously it&#x27;s consistent, it&#x27;s comprehensive and representative of lots of different scenarios that may go through the system.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de présentation (type PowerPoint ou Google Slides).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste à puces : Purpose (Ground truth), Qualities of Good Data (Accurate, consistent, comprehensive, representative, edge cases, statistical significance), Sourcing Examples (Historical tickets, marketing content, SME-curated outputs).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique illustrant les concepts clés de la préparation de données pour l&#x27;évaluation de systèmes d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000514_seg14.jpg" alt="Une diapositive de présentation titrée &quot;The &#x27;Gold Standard&#x27; Dataset&quot; détaillant le but, les qualités requises et des exemples de sources pour un jeu de données d&#x27;évaluation IA." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000514_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:14</span>
+                        <span class="caption-text">Une diapositive de présentation titrée &quot;The &#x27;Gold Standard&#x27; Dataset&quot; détaillant le but, les qualités requises et des exemples de sources pour un jeu de données d&#x27;évaluation IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:32 - 00:06:05</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It covers edge cases and it has to be large enough for statistical significance to have confidence in it. And some examples of where you could get this type of data would be historical high quality tickets, expert responses, high performing marketing content. And ultimately you&#x27;re probably going to have to work with the subject matter expert of whoever was manually doing the process beforehand or overseeing the manual process. They are the ones that should be able to provide you with all of that good data. So for example, if you&#x27;re building a system to make LinkedIn posts, you would want to go grab all of the best performing LinkedIn posts and use those</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de présentation (type PowerPoint ou Google Slides).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste à puces détaillant les critères d&#x27;un bon jeu de données (précision, couverture des cas limites, significativité statistique) et des exemples de sources (tickets historiques, contenu marketing, sorties validées par des experts).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique illustrant les concepts abordés par l&#x27;intervenant pour guider la préparation des données d&#x27;entraînement ou d&#x27;évaluation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000540_seg15.jpg" alt="Une diapositive de présentation titrée &quot;The &#x27;Gold Standard&#x27; Dataset&quot; détaillant les objectifs, les qualités requises et les exemples de sources pour constituer un jeu de données de haute qualité pour l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000540_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:40</span>
+                        <span class="caption-text">Une diapositive de présentation titrée &quot;The &#x27;Gold Standard&#x27; Dataset&quot; détaillant les objectifs, les qualités requises et les exemples de sources pour constituer un jeu de données de haute qualité pour l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:05 - 00:06:40</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">as data that you want the AI workflow to consistently output stuff like those posts. And last slide here, then we&#x27;re hopping into NNN. Why data is the core of success? Well, it&#x27;s pretty obvious. Good data would be, you know, good evaluation, good AI behavior. Bad data is you&#x27;re literally just training the LLM to be worse. It would be like every time, you know, a kid cusses, you just start laughing and you give them a cookie and you say, good job. That&#x27;s just like, not the way you should do it. And anyways, when you think about size, ultimately more data the better, unless it&#x27;s bad data. But if you start small and you&#x27;re trying to get some early testing,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de présentation (type PowerPoint ou Google Slides).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte structuré listant : &quot;Good data vs Bad data&quot;, suivi des recommandations pour &quot;Minimum for a Holistic Dataset&quot; (Small-scale POC : 50-100, Production-ready : 250-750, Mission-critical : 1,000+).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique illustrant l&#x27;importance de la qualité et de la quantité des données dans les workflows d&#x27;automatisation IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000613_seg16.jpg" alt="Une diapositive de présentation titrée &quot;Why Data is the Core of Success&quot;, détaillant les exigences de taille de jeux de données selon le stade de développement du projet IA." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000613_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:13</span>
+                        <span class="caption-text">Une diapositive de présentation titrée &quot;Why Data is the Core of Success&quot;, détaillant les exigences de taille de jeux de données selon le stade de développement du projet IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:40 - 00:06:59</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">50 to 100 examples is good. I&#x27;m not going to do 50 examples today. I&#x27;m going to do like 6 or 10, but just I wanted to throw this out there to show you that you need more than just 10. When you really are starting to think about pushing this into production readiness, you want to have upwards of 250 to 750 examples where you can actually get statistical significance and cover a wide range of scenarios.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:00 - 00:07:20</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now take this with a grain of salt because the amount of examples you need definitely depends on the actual system and the variety of inputs it could receive, but just kind of rough ballpark figures. And then mission critical, high risk systems, you wanna go above a thousand, get as much data as you can truly. Something else to think about is if you were to think about right now, I need to source a thousand examples, that would kind of suck.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diapositive de présentation (type PowerPoint/Keynote).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte structuré sur l&#x27;importance de la qualité des données (Good/Bad data) et les recommandations chiffrées : 50-100 exemples pour un POC, 250-750 pour la production, et 1000+ pour les systèmes critiques.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique illustrant les seuils recommandés pour la constitution de jeux de données d&#x27;évaluation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000705_seg18.jpg" alt="Une diapositive de présentation titrée « Why Data is the Core of Success » listant les recommandations de volume de données nécessaires pour évaluer des systèmes d&#x27;IA selon leur criticité." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000705_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:05</span>
+                        <span class="caption-text">Une diapositive de présentation titrée « Why Data is the Core of Success » listant les recommandations de volume de données nécessaires pour évaluer des systèmes d&#x27;IA selon leur criticité.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:21 - 00:07:43</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But if you&#x27;re thinking about getting good data and collecting data over months so that when you&#x27;re ready to test the system, you have it, that&#x27;s going to obviously make the workload less. But also when you do that, you&#x27;re collecting data, like I said, over months. So you&#x27;re not just grabbing, you know, all the data from the past week or something where that wouldn&#x27;t be as holistic as when the system is actually gonna be in production and facing this type of real stuff.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diapositive de présentation (type PowerPoint/Keynote) avec branding &quot;AIS+&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte structuré en listes à puces expliquant la corrélation entre la qualité des données et le comportement de l&#x27;IA, ainsi que des recommandations chiffrées : 50-100 exemples pour un POC, 250-750 pour la production, et plus de 1000 pour les systèmes critiques.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique illustrant l&#x27;importance stratégique de la collecte de données pour l&#x27;automatisation IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000726_seg19.jpg" alt="Une diapositive de présentation titrée &quot;Why Data is the Core of Success&quot; détaillant les exigences minimales en nombre d&#x27;exemples de données pour différents stades de développement de systèmes IA (POC, production, systèmes critiques)." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000726_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:26</span>
+                        <span class="caption-text">Une diapositive de présentation titrée &quot;Why Data is the Core of Success&quot; détaillant les exigences minimales en nombre d&#x27;exemples de données pour différents stades de développement de systèmes IA (POC, production, systèmes critiques).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:43 - 00:08:01</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right, so now we&#x27;re actually in NNN and we&#x27;re gonna look at how we do an evaluation flow. So I know this workflow may look intimidating like right off the bat because there&#x27;s so many different nodes. These are all of the new evaluation nodes in NNN and I&#x27;m gonna explain exactly how they work. So if you were to come in here and type evaluation, you can see there&#x27;s four new nodes. We have the trigger, which is over here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:02 - 00:08:36</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We have check if evaluating, we have set metrics, and we have set outputs. So what happens is when we do this trigger, it&#x27;s going to pull in our data set, which in this case, we&#x27;re going to use this data set of six examples with our expected category and our expected priority. So it&#x27;s going to pull in those examples. It&#x27;s going to feed them through the AI model, which is supposed to tag them, you know, the different categories and the priority. It&#x27;s going to check if we&#x27;re evaluating or not because you could still have a typical flow. So if a Gmail came in, it would go down the normal branch and you could set the logic. But if you&#x27;re evaluating, it&#x27;ll go up here,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflow low-code)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de flux comprenant : &quot;Gmail Trigger&quot;, &quot;When fetching a dataset row&quot;, &quot;Tagging Agent&quot;, &quot;OpenRouter Chat Model&quot;, &quot;Evaluation&quot;, &quot;Set Outputs&quot;, &quot;Category&quot; et &quot;Priority&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;architecture du workflow montrant comment les données sont extraites d&#x27;un jeu de données pour tester l&#x27;agent et évaluer les performances via les nœuds de métriques et de résultats.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000810_seg21.jpg" alt="Interface n8n affichant un workflow automatisé pour l&#x27;évaluation du &quot;Tagging&quot; (étiquetage) de tickets, avec des nœuds pour le déclencheur Gmail, l&#x27;agent de tagging, l&#x27;évaluation et la définition des métriques." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_000810_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:10</span>
+                        <span class="caption-text">Interface n8n affichant un workflow automatisé pour l&#x27;évaluation du &quot;Tagging&quot; (étiquetage) de tickets, avec des nœuds pour le déclencheur Gmail, l&#x27;agent de tagging, l&#x27;évaluation et la définition des métriques.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:37 - 00:08:55</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">set outputs, which just means it&#x27;s going to write the AI&#x27;s answers back into the Google sheet. And then it will set the category and the priority, which we will be able to check in the evaluations tab. So just to show you guys how that looks, I&#x27;m going to do one run through here, and then we&#x27;re going to actually do the evaluation. So just to pull in the data set, It&#x27;s gonna pull in the first row.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:56 - 00:09:15</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">The AI is gonna tag it. It&#x27;s going to go up the evaluation branch and then it&#x27;s gonna write the outputs back to the Google Sheet. I&#x27;m just gonna stop this real quick. And then it would have set the category and priority. So if I go into our data set, you can see that that first run, it got the category wrong because it was billing issue rather than billing and the priority was right.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:15 - 00:09:53</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And so obviously this is just a mistake of like wording. And the reason it did that is because this AI agent has no system prompt. So just wanted to show you guys like a very very rough baseline of how this works. I&#x27;m going to clear this out and What we&#x27;re gonna do is check what chat model we&#x27;re using We&#x27;re using 4.1 mini and then I&#x27;m gonna go to evaluations and just hit run test And so this is basically going to send those six different items in our data set through this model It&#x27;s going to collect an average of how many tokens were used prompt, total, and then also how long it took. And then it&#x27;s going to give us an average of the</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:53 - 00:10:16</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">priority and category score correctness. So looks like that already finished up. If I clicked into it, you can see it processed all six and you can see which ones, you know, were right and which ones weren&#x27;t. And so let me just go back to the actual execution. You can see that we got 67% of priority correct, but 0% of category correct. We could also look at different figures over here, of course, like our time and how much it costed us.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:16 - 00:10:47</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But this is mainly what I&#x27;m focused on right now. And so you would see this and you&#x27;d go into your sheet and you&#x27;d see, okay, all of these categories are wrong. What we could do is work in a quick fix in the prompts because it seems like it&#x27;s just messing up because it doesn&#x27;t know the actual words. So what I&#x27;m gonna do is just copy these words right there. I&#x27;m gonna go back into our workflow, into the editor, and I&#x27;m just gonna add a really quick system prompt into the agent where I am just going to say, here are the categories to choose from.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:47 - 00:11:05</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And I&#x27;m just gonna paste those in like that. I think this alone will make it much more accurate. So we&#x27;re just gonna go to evaluations. I&#x27;m gonna hit run test once again. It&#x27;s gonna pull in that same dataset and it will overwrite whatever already exists in here. And you can see it already got that first category right. You just got the second category right. Got the third one right.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:05 - 00:11:26</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It got the fourth one right. And I&#x27;m assuming it&#x27;s gonna be 100% accuracy on category, but then we&#x27;re still messing up on the priority score. So just finished up, we can see the evaluation now. We got 100% correctness in the category. We got 67% correctness in the priority. And now we would just be able to keep making one tweak at a time and know exactly why what we&#x27;re doing is working.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:26 - 00:11:49</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And so yes, you have this data here, but what you don&#x27;t see is you don&#x27;t see what you changed unless you clicked into it and looked on all the executions. So what I would recommend is when you start running these evaluations, you would maybe in your dataset have another tab where you could say, run number one, what did I change? And then what were the results? And then you can just basically keep stacking all those runs and evaluations to see which ones gave you the best scores.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:50 - 00:12:25</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I hope you guys can see how this would be really helpful in creating a workflow and then basically deciding, okay, well, which model do I wanna use? You just test like five of them, see which ones have the best accuracy and we&#x27;re also the cheapest and boom. I don&#x27;t want this video to go too long, so I won&#x27;t really dive into what&#x27;s actually going on here, but basically in these metrics, I&#x27;m just setting it as what the expected answer is, what the actual answer was, and then that&#x27;s how it outputs either one or zero if it was correct or incorrect. But what you can see here is that there&#x27;s lots of other metrics. We just did categorization, which means explicitly do these two things match. But what we want to do is sometimes</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:25 - 00:12:58</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">we need to use like correctness or similarity or helpfulness. And that&#x27;s where you actually need to use AI to judge the correctness or similarity. So this next example that we&#x27;re going to look at, This one actually uses AI to evaluate so similar type of scenario. We have a Agent that&#x27;s going to read an email. It will look up in its vector database FAQs and policies to answer that email and then it would respond back to them So what we&#x27;re gonna do is we&#x27;re gonna look at this second data set that has subject and body It has expected answers and then we&#x27;re gonna get the actual answer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:59 - 00:13:35</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Evaluated on how close it is to these expected answers. And so before I actually kick this off I wanted to show you guys one thing real quick because what you can do is Use the actual set metrics node to do AI based correctness and it will give you this full prompt about like Basically you have your expected answer and you have your actual answer and it will output a score one through five over how correct it is But right now I&#x27;m sure by the time everyone&#x27;s watching this it&#x27;ll be fixed This node is basically broken and it was giving me these errors Let me just show you guys. It was giving me these errors where it would say the set metrics node is not configured properly</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:35 - 00:14:09</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Even though I knew it was so all I did is I took this system prompt And I basically fed it into this agent where I&#x27;m giving it now the expected answer the actual answer and the exact same system prompt So it&#x27;s really the same exact thing going on and then I&#x27;m just passing it into a different metric setter And I know this all may seem a little confusing. Just watch how this plays out You can download all of these workflows I&#x27;m showing you today and my set example data sets from the the free school community. If you want to play with it yourself, that&#x27;ll probably be a better way to actually understand what each node is doing. But I just wanted to show you guys this little workaround because this node wasn&#x27;t actually working. And you know, we talked about</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:09 - 00:14:46</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">keeping things consistent. I know some people may say like, Hey, but you&#x27;re using an AI model to evaluate blah, blah, blah. All you have to make sure is that you keep this AI model the same every single time. That&#x27;s where you&#x27;d run into trouble is if you were changing like the prompt, but you were also changing the model that you use to evaluate. So as long as you keep this consistent, I&#x27;m not going to be concerned at all that we&#x27;re using AI to evaluate. If you watch my GPT-5 video, you may have seen a preview of me actually doing this. I was testing GPT-5 and GPT-5 mini and stuff like that. So this first run, we&#x27;re going to do GPT-5 mini. I&#x27;m just going to go to evaluations, hit run test, and we&#x27;ll let this finish up real quick. And then I&#x27;ll show you guys what we&#x27;re</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflows).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration du nœud avec un compte OpenRouter, sélection du modèle &quot;openai/gpt-4o&quot; (affiché comme gpt-4.1), et message d&#x27;avertissement indiquant que le nœud doit être connecté à une chaîne IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre la configuration technique du modèle d&#x27;IA au sein d&#x27;un workflow, soulignant l&#x27;importance de maintenir une configuration constante pour la cohérence des résultats.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001418_seg34.jpg" alt="Interface de configuration d&#x27;un nœud &quot;OpenRouter Chat Model&quot; dans l&#x27;outil d&#x27;automatisation n8n." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001418_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:18</span>
+                        <span class="caption-text">Interface de configuration d&#x27;un nœud &quot;OpenRouter Chat Model&quot; dans l&#x27;outil d&#x27;automatisation n8n.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:46 - 00:15:21</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">looking at. Okay. So this run just finished up. Looks like we had an accuracy of 3.5 out of five. We could click into the run and we could see individually each of the runs. Like we can see number three was not accurate at all but the first one was super accurate and what&#x27;s nice is we can see like over time if our workflow has gotten better or worse but keep in mind this doesn&#x27;t really show us what was changed in each one so it&#x27;s still very important to track on your own in like a Google Sheet or something but let&#x27;s say for some reason we were not happy about how long this took so we have an hypothesis that if I use Google Flash it will finish a lot quicker so in order to validate that I would just go into the editor I&#x27;d</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil d&#x27;évaluation de pipelines IA (semblable à LangSmith ou plateforme similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de données montrant les colonnes : Test case, Status (Success), completionTokens, promptTokens, totalTokens, executionTime, et Accuracy. On peut voir par exemple que le cas #3 affiche une précision de 1.0, tandis que le cas #1 affiche 5.0.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur visualise les performances détaillées de chaque exécution de test pour analyser la précision du modèle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001455_seg35.jpg" alt="Une vue détaillée des résultats d&#x27;une évaluation RAG (Retrieval-Augmented Generation) affichant un tableau comparatif de 10 cas de test avec leurs métriques respectives (tokens, temps d&#x27;exécution et score d&#x27;exactitude)." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001455_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:55</span>
+                        <span class="caption-text">Une vue détaillée des résultats d&#x27;une évaluation RAG (Retrieval-Augmented Generation) affichant un tableau comparatif de 10 cas de test avec leurs métriques respectives (tokens, temps d&#x27;exécution et score d&#x27;exactitude).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:21 - 00:15:56</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">come in here and I would just want to go to some sort of flash model so we&#x27;ll do 2.5 flash. We&#x27;ll save that, go back into evaluations. And now we&#x27;re going to run another test. So the hypothesis that flash is going to be cheaper and hopefully more accurate, but we don&#x27;t actually know. So now we are going to, oh, and faster. That&#x27;s the whole reason I said it in the first place. So now I&#x27;m going to let this finish up and we&#x27;ll compare the execution time and the accuracy. Okay. So that just finished up and I&#x27;m actually really impressed. It got 4.3 on the accuracy, so much higher than GPT-5 mini. And I know for a fact it was cheaper and it was about</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme d&#x27;évaluation d&#x27;IA (interface web type LangSmith ou équivalent).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau récapitulatif &quot;All runs (14)&quot; avec les colonnes : Run, Run at, Status, completionTokens, promptTokens, totalTokens, executionTime, et Accuracy. Le test #14 est en cours d&#x27;exécution.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur a lancé une nouvelle série d&#x27;évaluations (#14) après avoir modifié la configuration du modèle pour comparer les performances (précision, temps d&#x27;exécution et consommation de jetons).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001530_seg36.jpg" alt="Interface de monitoring d&#x27;évaluations de RAG (Retrieval-Augmented Generation) affichant un tableau de bord avec les résultats des différents tests et un graphique de performance." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001530_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:30</span>
+                        <span class="caption-text">Interface de monitoring d&#x27;évaluations de RAG (Retrieval-Augmented Generation) affichant un tableau de bord avec les résultats des différents tests et un graphique de performance.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:56 - 00:16:21</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">half the time. So I don&#x27;t think speed alone in this use case justifies making the switch, but because the accuracy was 0.8 higher, which is pretty significant, then that makes this one a no-brainer. But we were able to objectively see that rather than just having a hunch. Anyways, I hope that this video has been helpful and showed you how you can use this evaluation feature for not just like categorization metrics, but also for accuracy metrics and stuff like that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme d&#x27;évaluation d&#x27;agents IA (interface web type LangSmith ou plateforme similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif des exécutions (#8 à #14) incluant les colonnes : date, statut, completionTokens, promptTokens, totalTokens, executionTime et Accuracy (score de précision).</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse comparative des performances entre différentes exécutions pour justifier le choix d&#x27;un modèle basé sur une augmentation significative de la précision (+0.8).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001602_seg37.jpg" alt="Interface de monitoring &quot;RAG Evaluation&quot; affichant un graphique de précision et un tableau récapitulatif des exécutions avec des métriques détaillées." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001602_seg37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:02</span>
+                        <span class="caption-text">Interface de monitoring &quot;RAG Evaluation&quot; affichant un graphique de précision et un tableau récapitulatif des exécutions avec des métriques détaillées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:21 - 00:16:44</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You&#x27;ll be able to download this workflow, this workflow, as well as the two different sets of test data right here that we saw in the video. You&#x27;ll be able to make a copy of all of this stuff and download all of it for free, as well as the actual slides that we were looking at earlier too. All you gotta do is go to my FreeSchool community. Link for that will be down in the description. And once you get in here, just go to YouTube resources and you&#x27;ll be able to find this YouTube video, or you can search for the title of it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Sheets, plateforme communautaire Skool.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de données de test avec des exemples de tickets de support client et leurs catégorisations/priorités associées (ex: &quot;Invoice charged twice&quot;, &quot;App crash on login&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des ressources téléchargeables et des jeux de données de test utilisés dans le workflow automatisé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001627_seg38.jpg" alt="Une feuille de calcul Google Sheets intitulée &quot;Tagging Evaluation&quot; présentant des données de test structurées en colonnes (Subject, Body, Expected Category, Expected Priority, Actual Category, Actual Priority)." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001627_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:27</span>
+                        <span class="caption-text">Une feuille de calcul Google Sheets intitulée &quot;Tagging Evaluation&quot; présentant des données de test structurées en colonnes (Subject, Body, Expected Category, Expected Priority, Actual Category, Actual Priority).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:44 - 00:17:05</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;ll be in here, I promise. And then all of the resources will be pretty much in that post associated with this video. And if you want to dive deeper with NNN, then I definitely recommend to check out my plus community. The link for that will also be down in the description. We&#x27;ve got a great community of members who are always sharing what they&#x27;re doing and what they&#x27;re building with NNN, sharing their challenges, sharing helpful resources. We&#x27;ve also got a classroom section with two full courses right now.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales et mise en contexte méthodologique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:05 - 00:17:25</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">One is Agent Zero, the foundations of AI. And then 10 hours and 10 seconds where you learn how to identify, design, and build time-saving automations. So I&#x27;d love to see you guys in these communities, but that&#x27;s gonna do it for today If you enjoyed the video or you learned something new, please give it a like it definitely helps me out a ton And as always, I appreciate you guys making it to the end of the video. I&#x27;ll see you on the next one. Thanks guys</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow low-code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de flux logique connectant des outils : Gmail Trigger, Support Agent, Supabase Vector Store, Embeddings OpenAI, OpenRouter Chat Model, et un mécanisme d&#x27;évaluation (Evaluation).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation du canvas de travail n8n avec un bouton &quot;Execute workflow&quot; prêt à être déclenché en bas de l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001715_seg40.jpg" alt="Éditeur de workflow n8n ouvert sur un projet intitulé &quot;RAG Evaluation&quot;, affichant un diagramme complexe d&#x27;automatisation incluant des nœuds Gmail, Supabase, OpenAI et des agents IA." loading="lazy" onclick="openLightbox('../screenshots/-zFd1nPn6U0/-zFd1nPn6U0_001715_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:15</span>
+                        <span class="caption-text">Éditeur de workflow n8n ouvert sur un projet intitulé &quot;RAG Evaluation&quot;, affichant un diagramme complexe d&#x27;automatisation incluant des nœuds Gmail, Supabase, OpenAI et des agents IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
