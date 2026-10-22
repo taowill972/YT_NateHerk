@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `261 / 358` (`72.9%`)
+- **Vidéos traitées** : `262 / 358` (`73.2%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -278,6 +278,7 @@
 | 2025-09-17 | [7siRW0My05o](https://www.youtube.com/watch?v=7siRW0My05o) | **Comment cet agent vocal Vapi + n8n a gagné 5 000 $ en seulement 21 jours** | [2025-09-17_YT-[7siRW0My05o]_Comment cet agent vocal Vapi + n8n a gagné 5 000 $ en seulement 21 jours_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-09-17_YT-[7siRW0My05o]_Comment cet agent vocal Vapi + n8n a gagné 5 000 $ en seulement 21 jours_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-09-17_YT-[7siRW0My05o]_Comment cet agent vocal Vapi + n8n a gagné 5 000 $ en seulement 21 jours_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `10` |
 | 2025-09-14 | [SAerRtQLD0I](https://www.youtube.com/watch?v=SAerRtQLD0I) | **The TRUTH About Selling AI Automations to Businesses** | [2025-09-14_YT-[SAerRtQLD0I]_The TRUTH About Selling AI Automations to Businesses_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-09-14_YT-[SAerRtQLD0I]_The TRUTH About Selling AI Automations to Businesses_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-09-14_YT-[SAerRtQLD0I]_The TRUTH About Selling AI Automations to Businesses_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `18` |
 | 2025-09-10 | [TDHFkKSTJ30](https://www.youtube.com/watch?v=TDHFkKSTJ30) | **n8n's Agent Builder Somehow Made Building Agents Even Easier (text to workflow)** | [2025-09-10_YT-[TDHFkKSTJ30]_n8n's Agent Builder Somehow Made Building Agents Even Easier (text to workflow)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-09-10_YT-[TDHFkKSTJ30]_n8n's Agent Builder Somehow Made Building Agents Even Easier (text to workflow)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-09-10_YT-[TDHFkKSTJ30]_n8n's Agent Builder Somehow Made Building Agents Even Easier (text to workflow)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `53` |
+| 2025-09-07 | [NSwl_E0WWKk](https://www.youtube.com/watch?v=NSwl_E0WWKk) | **How I Sold a $6000 AI Workflow to a Business (Live Sales Call)** | [2025-09-07_YT-[NSwl_E0WWKk]_How I Sold a $6000 AI Workflow to a Business (Live Sales Call)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-09-07_YT-[NSwl_E0WWKk]_How I Sold a $6000 AI Workflow to a Business (Live Sales Call)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-09-07_YT-[NSwl_E0WWKk]_How I Sold a $6000 AI Workflow to a Business (Live Sales Call)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `28` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
