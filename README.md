@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `255 / 358` (`71.2%`)
+- **Vidéos traitées** : `256 / 358` (`71.5%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -17,6 +17,7 @@
 
 | Date | Réf. Vidéo | Titre Français / Sujet | Fiche Markdown | Fiche Interactive HTML | Captures |
 | :--- | :--- | :--- | :--- | :--- | :---: |
+| 2026-10-22 | [biQmfyYZAHw](https://www.youtube.com/watch?v=biQmfyYZAHw) | **Cette IA génère un popup différent pour chaque client** | [2026-10-22_YT-[biQmfyYZAHw]_Cette IA génère un popup différent pour chaque client_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-22_YT-[biQmfyYZAHw]_Cette IA génère un popup différent pour chaque client_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-22_YT-[biQmfyYZAHw]_Cette IA génère un popup différent pour chaque client_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `6` |
 | 2026-10-21 | [zTfpVoIT03s](https://www.youtube.com/watch?v=zTfpVoIT03s) | **Claude Code + Blender = Beautiful 3D Renders** | [2026-10-21_YT-[zTfpVoIT03s]_Claude Code + Blender = Beautiful 3D Renders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-21_YT-[zTfpVoIT03s]_Claude Code + Blender = Beautiful 3D Renders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-21_YT-[zTfpVoIT03s]_Claude Code + Blender = Beautiful 3D Renders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `5` |
 | 2026-10-21 | [OawSCIZdZmU](https://www.youtube.com/watch?v=OawSCIZdZmU) | **Opus 5.5 + Blender = Insane 3D Renders** | [2026-10-21_YT-[OawSCIZdZmU]_Opus 5.5 + Blender = Insane 3D Renders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-21_YT-[OawSCIZdZmU]_Opus 5.5 + Blender = Insane 3D Renders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-21_YT-[OawSCIZdZmU]_Opus 5.5 + Blender = Insane 3D Renders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `6` |
 | 2026-10-21 | [kj60zAD8lLU](https://www.youtube.com/watch?v=kj60zAD8lLU) | **Alex Hormozi, Jeff Bezos, and Warren Buffet help me make decisions** | [2026-10-21_YT-[kj60zAD8lLU]_Alex Hormozi, Jeff Bezos, and Warren Buffet help me make decisions_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2026-10-21_YT-[kj60zAD8lLU]_Alex Hormozi, Jeff Bezos, and Warren Buffet help me make decisions_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2026-10-21_YT-[kj60zAD8lLU]_Alex Hormozi, Jeff Bezos, and Warren Buffet help me make decisions_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |

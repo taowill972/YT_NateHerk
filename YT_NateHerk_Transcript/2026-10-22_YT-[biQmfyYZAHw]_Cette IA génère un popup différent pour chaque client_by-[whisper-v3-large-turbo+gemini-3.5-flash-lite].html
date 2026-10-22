@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Cette IA génère un popup différent pour chaque client — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Cette IA génère un popup différent pour chaque client</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-10-22</span>
+                <span class="badge">⏱️ 00:01:06</span>
+                <span class="badge">🆔 <code>biQmfyYZAHw</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=biQmfyYZAHw" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Bienvenue sur la chaîne **Nate Herk | AI Automation**. Dans cette vidéo, nous explorons **Alia**, une solution d'intelligence artificielle révolutionnaire conçue pour transformer l'expérience utilisateur des sites e-commerce en temps réel. Plutôt que de diffuser un pop-up d'acquisition figé et générique, Alia analyse en continu le profil de chaque visiteur — en se basant sur sa page d'atterrissage, ses paramètres UTM ou son origine géographique — pour générer dynamiquement la variante la plus pertinente. L'IA orchestre un processus d'optimisation autonome à grande échelle, combinant des tests A/B massifs et multi-contextuels pour acheminer progressivement le trafic vers les variantes les plus performantes, maximisant ainsi les taux de conversion et l'engagement global.<br><br>Au-delà de la simple personnalisation visuelle, l'outil intègre des fonctionnalités avancées telles que les *Smart Offers* et le *Smart Triggering*. La première analyse l'intention d'achat comportementale afin d'ajuster dynamiquement les incitations (comme les codes promotionnels) : elle évite d'éroder les marges sur des acheteurs déjà convertis tout en stimulant l'engagement des primo-visiteurs. La seconde optimise le timing d'affichage des pop-ups pour capturer jusqu'à 40 % d'abonnés supplémentaires. Surtout, l'architecture d'Alia ne se limite pas à la simple capture d'e-mails : elle boucle la boucle en analysant les données post-acquisition (panier moyen, valeur vie client – LTV, et revenus réels générés par lead), offrant aux marques e-commerce un avantage compétitif critique, notamment à l'approche de pics de trafic massifs comme le Black Friday.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Alia** : Solution d'IA conversationnelle et d'optimisation e-commerce qui automatise la personnalisation des pop-ups et le ciblage comportemental en temps réel.<br>* **Prism AI** : Moteur technologique sous-jacent permettant de segmenter et d'adapter dynamiquement les variantes de pop-ups en fonction du contexte de trafic (UTM, page d'atterrissage, source).<br>* **Smart Offers** : Module intelligent évaluant l'intention d'achat pour délivrer des incitations tarifaires sur-mesure sans sacrifier inutilement les marges bénéficiaires.<br>* **Smart Triggering** : Fonctionnalité algorithmique de cadencement et de déclenchement temporel des fenêtres pop-up visant à maximiser le taux de capture d'abonnés.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Dépassement du A/B testing statique** : Remplacement des tests traditionnels à variante unique par un système d'apprentissage continu et multicontextuel piloté par l'IA.<br>* **Hyper-personnalisation contextuelle** : Adaptation dynamique des interfaces selon l'origine du trafic, les paramètres UTM et le parcours de navigation initial de l'utilisateur.<br>* **Optimisation orientée LTV et revenus** : Mesure de la performance d'acquisition non seulement au taux de clic ou d'inscription, mais en fonction de la valeur à long terme (LTV) et du panier moyen des clients générés.<br>* **Protection des marges par l'intention** : Utilisation des *Smart Offers* pour moduler les réductions, évitant ainsi de brader des ventes qui se seraient conclues spontanément sans incitation financière.<br>* **Maîtrise du timing d'interaction** : Exploitation du *Smart Triggering* pour identifier la fenêtre temporelle optimale d'affichage des pop-ups, augmentant la capture d'abonnés jusqu'à 40 %.<br>* **Bouclage de la boucle de données (Feedback Loop)** : Connexion directe entre les données d'interaction front-end et les métriques financières back-end pour un apprentissage algorithmique global.<br>* **Anticipation des pics de trafic saisonniers** : Nécessité critique pour les marques e-commerce d'implémenter et de stabiliser ces boucles d'optimisation autonome avant les fortes affluences du Black Friday.<br>* **Réduction de la friction utilisateur** : Amélioration de l'expérience de navigation par la pertinence des messages, minimisant l'intrusivité publicitaire ou promotionnelle.<br>* **Scalabilité de l'automatisation marketing** : Capacité à gérer une infinité de variations de pop-ups de manière automatisée, éliminant la charge de travail humaine liée à la conception manuelle de campagnes segmentées.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Alia</span><span class="tool-tag">Prism AI</span><span class="tool-tag">Smart Offers</span><span class="tool-tag">Smart Triggering</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Dépassement du A/B testing statique** : Remplacement des tests traditionnels à variante unique par un système d&#x27;apprentissage continu et multicontextuel piloté par l&#x27;IA.</span></li><li><span class="point-bullet">✦</span><span>Hyper-personnalisation contextuelle** : Adaptation dynamique des interfaces selon l&#x27;origine du trafic, les paramètres UTM et le parcours de navigation initial de l&#x27;utilisateur.</span></li><li><span class="point-bullet">✦</span><span>Optimisation orientée LTV et revenus** : Mesure de la performance d&#x27;acquisition non seulement au taux de clic ou d&#x27;inscription, mais en fonction de la valeur à long terme (LTV) et du panier moyen des clients générés.</span></li><li><span class="point-bullet">✦</span><span>Protection des marges par l&#x27;intention** : Utilisation des *Smart Offers* pour moduler les réductions, évitant ainsi de brader des ventes qui se seraient conclues spontanément sans incitation financière.</span></li><li><span class="point-bullet">✦</span><span>Maîtrise du timing d&#x27;interaction** : Exploitation du *Smart Triggering* pour identifier la fenêtre temporelle optimale d&#x27;affichage des pop-ups, augmentant la capture d&#x27;abonnés jusqu&#x27;à 40 %.</span></li><li><span class="point-bullet">✦</span><span>Bouclage de la boucle de données (Feedback Loop)** : Connexion directe entre les données d&#x27;interaction front-end et les métriques financières back-end pour un apprentissage algorithmique global.</span></li><li><span class="point-bullet">✦</span><span>Anticipation des pics de trafic saisonniers** : Nécessité critique pour les marques e-commerce d&#x27;implémenter et de stabiliser ces boucles d&#x27;optimisation autonome avant les fortes affluences du Black Friday.</span></li><li><span class="point-bullet">✦</span><span>Réduction de la friction utilisateur** : Amélioration de l&#x27;expérience de navigation par la pertinence des messages, minimisant l&#x27;intrusivité publicitaire ou promotionnelle.</span></li><li><span class="point-bullet">✦</span><span>Scalabilité de l&#x27;automatisation marketing** : Capacité à gérer une infinité de variations de pop-ups de manière automatisée, éliminant la charge de travail humaine liée à la conception manuelle de campagnes segmentées.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:22</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cette IA fait réagir votre site web différemment pour chaque personne qui le visite. Elle s&#x27;appelle Alia, et au lieu de montrer exactement le même pop-up à chaque acheteur, elle détermine en continu quelle version fonctionne le mieux pour différents types de trafic. Ainsi, avec Prism AI, vous pouvez avoir différentes variantes de pop-up selon des éléments tels que la page sur laquelle la personne a atterri, son UTM ou d&#x27;où elle vient. Ensuite, Alia observe quelles versions génèrent le plus d&#x27;inscriptions et de revenus dans chaque contexte, et elle envoie progressivement plus de trafic uniquement vers les gagnants.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web / interface e-commerce avec pop-up promotionnel dynamique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Offres promotionnelles, champs de saisie d&#x27;e-mail, cartes de grattage virtuelles pour e-commerce.
+[COMPILATION] Présentation visuelle de différents formats de pop-ups dynamiques et personnalisés générés par l&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/biQmfyYZAHw/biQmfyYZAHw_000006_seg1.jpg" alt="Pop-up de site web promotionnel flou avec une légende incrustée « POP UP »." loading="lazy" onclick="openLightbox('../screenshots/biQmfyYZAHw/biQmfyYZAHw_000006_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:06</span>
+                        <span class="caption-text">Pop-up de site web promotionnel flou avec une légende incrustée « POP UP ».</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/biQmfyYZAHw/biQmfyYZAHw_000011_seg1.jpg" alt="Pop-up e-commerce de la marque Milk Makeup proposant la livraison gratuite et 15 % de réduction avec un champ d&#x27;adresse e-mail." loading="lazy" onclick="openLightbox('../screenshots/biQmfyYZAHw/biQmfyYZAHw_000011_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:11</span>
+                        <span class="caption-text">Pop-up e-commerce de la marque Milk Makeup proposant la livraison gratuite et 15 % de réduction avec un champ d&#x27;adresse e-mail.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/biQmfyYZAHw/biQmfyYZAHw_000017_seg1.jpg" alt="Pop-up e-commerce interactif de la marque KUT from the Kloth avec un jeu de grattage « Scratch Here » pour gagner une offre." loading="lazy" onclick="openLightbox('../screenshots/biQmfyYZAHw/biQmfyYZAHw_000017_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:17</span>
+                        <span class="caption-text">Pop-up e-commerce interactif de la marque KUT from the Kloth avec un jeu de grattage « Scratch Here » pour gagner une offre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:23 - 00:00:44</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, c’est fondamentalement un test A/B massif qui continue de s&#x27;optimiser tout seul. Ensuite, il y a un truc appelé Smart Offers, qui examine l&#x27;intention d&#x27;achat. Quelqu&#x27;un qui a déjà l&#x27;air prêt à acheter n&#x27;a pas nécessairement besoin de la même réduction qu&#x27;un visiteur qui vient pour la première fois et qui est juste en train de naviguer. Vous pouvez donc améliorer la conversion sans céder inutilement de marge sur des ventes qui auraient eu lieu de toute façon. Et Smart Triggering détermine quand réafficher la fenêtre pop-up, ce qui, selon Alia, peut capturer jusqu&#x27;à 40 % d&#x27;abonnés en plus.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (site e-commerce).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Catalogue de vêtements en ligne et texte &quot;Smart triggering&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur un site de e-commerce illustrant le parcours d&#x27;achat.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/biQmfyYZAHw/biQmfyYZAHw_000033_seg2.jpg" alt="Vue en plongée d&#x27;une personne naviguant sur un site e-commerce de mode sur un ordinateur portable." loading="lazy" onclick="openLightbox('../screenshots/biQmfyYZAHw/biQmfyYZAHw_000033_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:33</span>
+                        <span class="caption-text">Vue en plongée d&#x27;une personne naviguant sur un site e-commerce de mode sur un ordinateur portable.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/biQmfyYZAHw/biQmfyYZAHw_000039_seg2.jpg" alt="Animation ou graphique minimaliste affichant le texte &quot;Smart triggering&quot; avec une icône de cadran/compteur." loading="lazy" onclick="openLightbox('../screenshots/biQmfyYZAHw/biQmfyYZAHw_000039_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:39</span>
+                        <span class="caption-text">Animation ou graphique minimaliste affichant le texte &quot;Smart triggering&quot; avec une icône de cadran/compteur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:44 - 00:01:06</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais la partie la plus intelligente, c&#x27;est que ça n&#x27;optimise pas seulement en fonction de qui entre son adresse e-mail. Ça peut regarder ce qui se passe après. Est-ce qu&#x27;ils ont acheté ? Quel était leur panier moyen ? Leur valeur vie client ? Combien de revenus ces abonnés ont-ils réellement générés ? Et avec le trafic du Black Friday qui s&#x27;apprête à exploser, c&#x27;est exactement le genre de chose que les marques e-commerce devraient optimiser avant que tout ce trafic n&#x27;arrive réellement. Donc si vous voulez découvrir Alia, réservez une démonstration via mon lien ou mentionnez Nate Herc lors de votre réservation et vous obtiendrez un essai gratuit de 30 jours.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique textuelle (UI animée).
+[DESC_IMAGE_1_TEXTE] Did they actually buy? / What was their AOV?</p>
+                        <p><strong>Contenu textuel & Code :</strong> Questions sur l&#x27;historique d&#x27;achat et le panier moyen (AOV) des utilisateurs.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage séquentiel de questions analytiques illustrant les métriques e-commerce suivies par l&#x27;outil.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/biQmfyYZAHw/biQmfyYZAHw_000050_seg3.jpg" alt="Deux blocs de texte flottants posant des questions analytiques : &quot;Did they actually buy?&quot; et &quot;What was their AOV?&quot;." loading="lazy" onclick="openLightbox('../screenshots/biQmfyYZAHw/biQmfyYZAHw_000050_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:50</span>
+                        <span class="caption-text">Deux blocs de texte flottants posant des questions analytiques : &quot;Did they actually buy?&quot; et &quot;What was their AOV?&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
