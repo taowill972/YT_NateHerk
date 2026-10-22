@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `266 / 358` (`74.3%`)
+- **Vidéos traitées** : `267 / 358` (`74.6%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -283,6 +283,7 @@
 | 2025-09-03 | [-zFd1nPn6U0](https://www.youtube.com/watch?v=-zFd1nPn6U0) | **Beginner's Guide to Workflow Evaluation in n8n (Stop Guessing!)** | [2025-09-03_YT-[-zFd1nPn6U0]_Beginner's Guide to Workflow Evaluation in n8n (Stop Guessing!)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-09-03_YT-[-zFd1nPn6U0]_Beginner's Guide to Workflow Evaluation in n8n (Stop Guessing!)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-09-03_YT-[-zFd1nPn6U0]_Beginner's Guide to Workflow Evaluation in n8n (Stop Guessing!)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `24` |
 | 2025-08-31 | [HNKlFTd1maM](https://www.youtube.com/watch?v=HNKlFTd1maM) | **How I Sold These 4 AI Agents for $23,000 (as a beginner)** | [2025-08-31_YT-[HNKlFTd1maM]_How I Sold These 4 AI Agents for $23,000 (as a beginner)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-08-31_YT-[HNKlFTd1maM]_How I Sold These 4 AI Agents for $23,000 (as a beginner)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-08-31_YT-[HNKlFTd1maM]_How I Sold These 4 AI Agents for $23,000 (as a beginner)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `23` |
 | 2025-08-24 | [QIsJe-nZ5XE](https://www.youtube.com/watch?v=QIsJe-nZ5XE) | **Comment vendre des workflows IA (sans lancer d'agence)** | [2025-08-24_YT-[QIsJe-nZ5XE]_Comment vendre des workflows IA (sans lancer d'agence)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-08-24_YT-[QIsJe-nZ5XE]_Comment vendre des workflows IA (sans lancer d'agence)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-08-24_YT-[QIsJe-nZ5XE]_Comment vendre des workflows IA (sans lancer d'agence)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `36` |
+| 2025-08-21 | [pxzo2lXhWJE](https://www.youtube.com/watch?v=pxzo2lXhWJE) | **Watch Me Build a Multi-Agent Newsletter System in n8n (step-by-step)** | [2025-08-21_YT-[pxzo2lXhWJE]_Watch Me Build a Multi-Agent Newsletter System in n8n (step-by-step)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-08-21_YT-[pxzo2lXhWJE]_Watch Me Build a Multi-Agent Newsletter System in n8n (step-by-step)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-08-21_YT-[pxzo2lXhWJE]_Watch Me Build a Multi-Agent Newsletter System in n8n (step-by-step)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `11` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
