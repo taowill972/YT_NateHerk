@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `244 / 358` (`68.2%`)
+- **Vidéos traitées** : `245 / 358` (`68.4%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -261,6 +261,7 @@
 | 2025-10-29 | [HN0oWxbF2bM](https://www.youtube.com/watch?v=HN0oWxbF2bM) | **De zéro à l'agent de messagerie : Cours complet pour débutants sans code** | [2025-10-29_YT-[HN0oWxbF2bM]_De zéro à l'agent de messagerie Cours complet pour débutants sans code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-10-29_YT-[HN0oWxbF2bM]_De zéro à l'agent de messagerie Cours complet pour débutants sans code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-10-29_YT-[HN0oWxbF2bM]_De zéro à l'agent de messagerie Cours complet pour débutants sans code_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `9` |
 | 2025-10-27 | [Z46F8ZiHZJo](https://www.youtube.com/watch?v=Z46F8ZiHZJo) | **This n8n Sales Automation Won $5,000 in Just 14 days** | [2025-10-27_YT-[Z46F8ZiHZJo]_This n8n Sales Automation Won $5,000 in Just 14 days_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-10-27_YT-[Z46F8ZiHZJo]_This n8n Sales Automation Won $5,000 in Just 14 days_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-10-27_YT-[Z46F8ZiHZJo]_This n8n Sales Automation Won $5,000 in Just 14 days_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-10-22 | [Vm8QOo9MiC4](https://www.youtube.com/watch?v=Vm8QOo9MiC4) | **Create ANYTHING with Sora 2 + n8n AI Agents (Full Beginner's Guide)** | [2025-10-22_YT-[Vm8QOo9MiC4]_Create ANYTHING with Sora 2 + n8n AI Agents (Full Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-10-22_YT-[Vm8QOo9MiC4]_Create ANYTHING with Sora 2 + n8n AI Agents (Full Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-10-22_YT-[Vm8QOo9MiC4]_Create ANYTHING with Sora 2 + n8n AI Agents (Full Beginner's Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-10-18 | [5uw1wE6niGc](https://www.youtube.com/watch?v=5uw1wE6niGc) | **Build Your First RAG Pipeline for Better RAG (step-by-step)** | [2025-10-18_YT-[5uw1wE6niGc]_Build Your First RAG Pipeline for Better RAG (step-by-step)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-10-18_YT-[5uw1wE6niGc]_Build Your First RAG Pipeline for Better RAG (step-by-step)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-10-18_YT-[5uw1wE6niGc]_Build Your First RAG Pipeline for Better RAG (step-by-step)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
