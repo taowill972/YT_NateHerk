@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `288 / 358` (`80.4%`)
+- **Vidéos traitées** : `289 / 358` (`80.7%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -305,6 +305,7 @@
 | 2025-07-02 | [UBx4Zudvf8s](https://www.youtube.com/watch?v=UBx4Zudvf8s) | **Créez votre premier agent IA de recherche en 12 minutes (Sans code)** | [2025-07-02_YT-[UBx4Zudvf8s]_Créez votre premier agent IA de recherche en 12 minutes (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-07-02_YT-[UBx4Zudvf8s]_Créez votre premier agent IA de recherche en 12 minutes (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-07-02_YT-[UBx4Zudvf8s]_Créez votre premier agent IA de recherche en 12 minutes (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `43` |
 | 2025-06-30 | [M0s6O8xtVUE](https://www.youtube.com/watch?v=M0s6O8xtVUE) | **Watch Me Build an AI Resume Analysis System in 28 minutes (no code)** | [2025-06-30_YT-[M0s6O8xtVUE]_Watch Me Build an AI Resume Analysis System in 28 minutes (no code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-06-30_YT-[M0s6O8xtVUE]_Watch Me Build an AI Resume Analysis System in 28 minutes (no code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-06-30_YT-[M0s6O8xtVUE]_Watch Me Build an AI Resume Analysis System in 28 minutes (no code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `117` |
 | 2025-06-28 | [xWhX61651H8](https://www.youtube.com/watch?v=xWhX61651H8) | **n8n Just Leveled Up RAG Agents (Reranking & Metadata)** | [2025-06-28_YT-[xWhX61651H8]_n8n Just Leveled Up RAG Agents (Reranking & Metadata)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-06-28_YT-[xWhX61651H8]_n8n Just Leveled Up RAG Agents (Reranking & Metadata)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-06-28_YT-[xWhX61651H8]_n8n Just Leveled Up RAG Agents (Reranking & Metadata)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `53` |
+| 2025-06-26 | [AGi3U79zMIM](https://www.youtube.com/watch?v=AGi3U79zMIM) | **How to Trigger n8n AI Agents from ChatGPT (no code)** | [2025-06-26_YT-[AGi3U79zMIM]_How to Trigger n8n AI Agents from ChatGPT (no code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-06-26_YT-[AGi3U79zMIM]_How to Trigger n8n AI Agents from ChatGPT (no code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-06-26_YT-[AGi3U79zMIM]_How to Trigger n8n AI Agents from ChatGPT (no code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `40` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*

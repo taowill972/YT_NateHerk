@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 How to Trigger n8n AI Agents from ChatGPT (no code) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 How to Trigger n8n AI Agents from ChatGPT (no code)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-06-26</span>
+                <span class="badge">⏱️ 00:08:52</span>
+                <span class="badge">🆔 <code>AGi3U79zMIM</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=AGi3U79zMIM" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **How to Trigger n8n AI Agents from ChatGPT (no code)**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.<br>- Automatiser les cycles de création logicielle de bout en bout.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Opus 5.5 &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimiser le niveau d&#x27;effort et le raisonnement des modèles IA pour des résultats industriels.</span></li><li><span class="point-bullet">✦</span><span>Automatiser les cycles de création logicielle de bout en bout.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:25</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">On the left we have ChatGPT, on the right we have my NNN assistant and what I&#x27;m going to do is send off this message that&#x27;s asking my NNN assistant to send an email to Dexter Morgan asking for an update on Project Panda. I&#x27;m going to allow my ChatGPT to talk to NNN and now you can see it&#x27;s going to grab that message, search through our contact database and then it&#x27;s going to come over here and write that email using our email agent and then when it responds to the webhook using this node right here we&#x27;re going to get that response in ChatGPT on the left hand side.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme d&#x27;automatisation n8n et interface de chatbot GPT.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur : &quot;send an email to dexter morgan to see if he has an update on project panda&quot;. Workflow n8n affichant un nœud Webhook en attente (&quot;Waiting for you to call the Test URL&quot;) relié à un nœud &quot;Ultimate Assistant&quot; configuré avec des modèles et de la mémoire.</p>
+                        <p><strong>Action / Démonstration :</strong> Préparation de l&#x27;envoi d&#x27;une requête depuis le chat n8n vers le workflow n8n configuré pour automatiser l&#x27;envoi d&#x27;un e-mail.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000006_seg1.jpg" alt="L&#x27;écran est divisé en deux : à gauche, l&#x27;interface de discussion &quot;n8n Assistant&quot; avec un prompt envoyé ; à droite, le canevas de création de workflow de n8n montrant un nœud Webhook connecté à un &quot;Ultimate Assistant&quot;." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000006_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:06</span>
+                        <span class="caption-text">L&#x27;écran est divisé en deux : à gauche, l&#x27;interface de discussion &quot;n8n Assistant&quot; avec un prompt envoyé ; à droite, le canevas de création de workflow de n8n montrant un nœud Webhook connecté à un &quot;Ultimate Assistant&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:26 - 00:00:56</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So there you go we just got the response the email has been sent to Dexter Morgan asking if if he has an update on Project Panda, is there anything else you&#x27;d like to do? And as you can see over here, we have that email that was successfully sent to dexter at miami.com. So what I&#x27;m gonna be showing you guys is how you can connect your ChatGPT to an NITIN webhook, and it doesn&#x27;t have to be an ultimate assistant. It could be a workflow to update something in your CRM or to parse an invoice or to do whatever you want, because you have the functionality in NITIN to build custom workflows, and then just have them be triggered by ChatGPT, which you probably are sitting there using every day.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme d&#x27;automatisation n8n et interface web Gmail.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow n8n incluant des nœuds pour &quot;Email Agent&quot;, &quot;Calendar Agent&quot;, &quot;Contact Agent&quot;, et &quot;Content Creator Agent&quot; ; contenu de l&#x27;e-mail envoyé à Dexter Morgan.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;exécution d&#x27;un workflow d&#x27;agent IA ayant déclenché l&#x27;envoi automatisé d&#x27;un e-mail de suivi.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000033_seg2.jpg" alt="Interface divisée montrant à gauche un chatbot n8n et à droite une fenêtre Gmail confirmant l&#x27;envoi d&#x27;un e-mail intitulé &quot;Request for Update on Project Panda&quot;." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000033_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:33</span>
+                        <span class="caption-text">Interface divisée montrant à gauche un chatbot n8n et à droite une fenêtre Gmail confirmant l&#x27;envoi d&#x27;un e-mail intitulé &quot;Request for Update on Project Panda&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000041_seg2.jpg" alt="Interface divisée montrant à gauche le chatbot n8n et à droite le canevas de création de workflow n8n avec un nœud &quot;Ultimate Assistant&quot; connecté à plusieurs agents spécialisés." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000041_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:41</span>
+                        <span class="caption-text">Interface divisée montrant à gauche le chatbot n8n et à droite le canevas de création de workflow n8n avec un nœud &quot;Ultimate Assistant&quot; connecté à plusieurs agents spécialisés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:56 - 00:01:18</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s not gonna be too difficult at all, so let&#x27;s get into it. Okay, so how the system works is we&#x27;re gonna build a custom GPT and in that GPT, we&#x27;re gonna give it an action, which is the ability to send data to our NNN webhook right here. So the demo that I just showed was a pretty fun example, but we&#x27;re gonna go over an example of a very practical one where you can drop in a invoice into your custom GPT and then it will send you that data to upload to a database.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (Assistant IA et éditeur de workflow).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de conversation : &quot;send an email to dexter morgan to see if he has an update on project panda&quot; ; Configuration du nœud Webhook dans le workflow.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;exécution d&#x27;une action via un assistant IA et présentation visuelle du point d&#x27;entrée (webhook) du workflow automatisé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000102_seg3.jpg" alt="Interface de chat &quot;n8n Assistant&quot; montrant l&#x27;historique d&#x27;une requête réussie pour envoyer un e-mail concernant le &quot;Project Panda&quot;." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000102_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:02</span>
+                        <span class="caption-text">Interface de chat &quot;n8n Assistant&quot; montrant l&#x27;historique d&#x27;une requête réussie pour envoyer un e-mail concernant le &quot;Project Panda&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000107_seg3.jpg" alt="Interface de l&#x27;éditeur de workflow n8n montrant un nœud unique &quot;Webhook&quot; configuré pour recevoir des requêtes GET." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000107_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:07</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur de workflow n8n montrant un nœud unique &quot;Webhook&quot; configuré pour recevoir des requêtes GET.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:18 - 00:01:38</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And what&#x27;s gonna be cool about this is ChatGPT is the one on the front end that is going to use its vision to analyze the invoice and extract the text. So we don&#x27;t have to worry about NNNN setting up any sort of OCR or document understanding tool because ChatGPT takes care of that. All right, so let&#x27;s get started. What we&#x27;re gonna do is go to this custom GPT, which is one by ChatGPT.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflows)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un nœud unique nommé &#x27;Webhook&#x27; avec un symbole d&#x27;éclair rouge et un connecteur de sortie &#x27;GET&#x27; menant à un bouton d&#x27;ajout &#x27;+&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du début de la construction du workflow d&#x27;automatisation dans n8n, montrant le nœud de déclenchement initial par webhook.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000123_seg4.jpg" alt="Interface n8n affichant un workflow en cours de construction avec un nœud &#x27;Webhook&#x27; connecté à un point de liaison &#x27;GET&#x27;." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000123_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:23</span>
+                        <span class="caption-text">Interface n8n affichant un workflow en cours de construction avec un nœud &#x27;Webhook&#x27; connecté à un point de liaison &#x27;GET&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:38 - 00:01:58</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s called Actions GPT, and it helps us create that JSON schema that we need to give to our custom GPT so that it can send data to the webhook. So I&#x27;m gonna have this GPT linked in the description, click on that, and then follow along what I&#x27;m about to do here. Okay, so I said, help me create an open API 3.1.0 schema in JSON so that I can give it to a custom GPT and it will send data to my webhook.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> ChatGPT (Interface Web GPTs)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif : &quot;Helps you create OpenAPI specifications from documentation, code examples, cURL commands, or just a description of how to use an API.&quot; ainsi que quatre suggestions de prompts prédéfinis.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur présente l&#x27;outil spécialisé pour générer des schémas OpenAPI nécessaires à la configuration des Actions dans les GPT personnalisés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000143_seg5.jpg" alt="Interface principale du GPT personnalisé nommé &quot;ActionsGPT&quot; dans l&#x27;environnement ChatGPT, affichant une zone de saisie pour les requêtes et des exemples de prompts." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000143_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:43</span>
+                        <span class="caption-text">Interface principale du GPT personnalisé nommé &quot;ActionsGPT&quot; dans l&#x27;environnement ChatGPT, affichant une zone de saisie pour les requêtes et des exemples de prompts.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:58 - 00:02:17</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then we&#x27;re gonna go into NNN and we&#x27;re going to open up this webhook and grab this test URL real quick, go back into the actions GPT and paste that in there. And then what I wanna do is tell it the parameters that it&#x27;s going to send over to this webhook. So that first example you saw, I talked to my ultimate assistant, I just told it send over one field in the body called request.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (workflow automation), ChatGPT (ActionsGPT).</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de webhook : `https://nateherk.app.n8n.cloud/webhook-test/9f96a51a-4e1b-4eaf-8b9f-9e44fb4136cc`. Prompt : &quot;Help me create an OpenAPI 3.1.0 schema in JSON...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Copie de l&#x27;URL du webhook dans n8n, puis transfert de cette adresse dans le chat d&#x27;ActionsGPT pour configurer l&#x27;intégration.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000203_seg6.jpg" alt="Interface n8n affichant les paramètres d&#x27;un nœud &quot;Webhook&quot; avec l&#x27;URL de test mise en évidence." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000203_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:03</span>
+                        <span class="caption-text">Interface n8n affichant les paramètres d&#x27;un nœud &quot;Webhook&quot; avec l&#x27;URL de test mise en évidence.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000208_seg6.jpg" alt="Interface de &quot;ActionsGPT&quot; dans ChatGPT montrant une requête utilisateur contenant l&#x27;URL du webhook n8n pour générer un schéma OpenAPI." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000208_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:08</span>
+                        <span class="caption-text">Interface de &quot;ActionsGPT&quot; dans ChatGPT montrant une requête utilisateur contenant l&#x27;URL du webhook n8n pour générer un schéma OpenAPI.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:17 - 00:02:37</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais dans celui-ci, nous voulons que le GPT regarde la facture et extrait la date, le numéro de facture, le montant, tout ce genre de choses. J&#x27;ai donc dit : voici les champs à envoyer dans le corps de la requête et je lui ai donné tous les champs que je veux. Et ensuite, je lui ai donné les types de données, qui sont tous, pour l&#x27;instant, des chaînes de caractères. Vous pourrez toujours revenir en arrière et changer cela. Mais pour l&#x27;instant, nous allons simplement envoyer tout ça. Donc, comme vous pouvez le voir, il est en train de générer ce schéma JSON pour nous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de ChatGPT (modèle ActionsGPT).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur : &quot;Help me create an OpenAPI 3.1.0 schema in JSON so that I can give it to a custom GPT, and it will send data to my webhook. Here is my webhook address: https://nateherk.app.n8n.cloud/webhook-test/9f96a51a-4e1b-4eaf-8b9f-9e44fb4136cc&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Soumission d&#x27;une demande de génération de schéma OpenAPI pour configurer l&#x27;intégration d&#x27;un GPT personnalisé avec un webhook n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000222_seg7.jpg" alt="L&#x27;interface de discussion de l&#x27;assistant &quot;ActionsGPT&quot; sur ChatGPT, montrant une requête utilisateur pour générer un schéma OpenAPI 3.1.0." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000222_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:22</span>
+                        <span class="caption-text">L&#x27;interface de discussion de l&#x27;assistant &quot;ActionsGPT&quot; sur ChatGPT, montrant une requête utilisateur pour générer un schéma OpenAPI 3.1.0.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:37 - 00:03:00</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">That&#x27;s gonna have our webhook URL, our path. It&#x27;s gonna have the things that we need to send over to NNN. And then once we grab that data and NNN, all we have to do is map it to a Google Sheet. So I&#x27;m gonna go ahead and copy this schema right here. I&#x27;m gonna open up my ChatGPT and go to custom GPTs. And then in the top right, I&#x27;m gonna click create. Okay, so this is gonna have you configure the name, the description and the instructions for your GPT.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> ChatGPT (Custom GPT Editor / Actions configuration)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma JSON définissant des champs tels que &quot;date&quot;, &quot;invoiceNumber&quot;, &quot;soldBy&quot;, &quot;billTo&quot;, &quot;productsAndPricing&quot;, et &quot;total&quot;, avec une section &quot;required&quot; et une réponse de succès.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur affiche et s&#x27;apprête à copier le schéma JSON pour l&#x27;intégrer dans le workflow d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000243_seg8.jpg" alt="Interface de configuration des &quot;Actions&quot; au sein d&#x27;un Custom GPT affichant le schéma JSON de la structure des données d&#x27;une facture." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000243_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:43</span>
+                        <span class="caption-text">Interface de configuration des &quot;Actions&quot; au sein d&#x27;un Custom GPT affichant le schéma JSON de la structure des données d&#x27;une facture.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:00 - 00:03:20</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You can go ahead and take a look at what I put in here and copy the instructions if you&#x27;d like. But where the magic really happens is when we give this agent access to actions. So I&#x27;m gonna scroll down to the bottom. I&#x27;m going to check on this box that says code interpreter and data analysis. And I&#x27;m gonna click on create new action. And then right here in the schema, this is where we paste in that open API schema we just generated with that custom GPT.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> OpenAI GPT Builder (interface web).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le champ &quot;Instructions&quot; détaille le rôle de l&#x27;assistant : automatiser le traitement de factures en envoyant des données via webhook vers n8n.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur est en train de configurer les instructions système de l&#x27;agent IA avant de passer à l&#x27;activation des capacités (Capabilities).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000305_seg9.jpg" alt="Interface de configuration d&#x27;un GPT personnalisé dans OpenAI, nommée &quot;n8n Invoice Processor&quot;, montrant les champs de configuration (Name, Description, Instructions)." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000305_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:05</span>
+                        <span class="caption-text">Interface de configuration d&#x27;un GPT personnalisé dans OpenAI, nommée &quot;n8n Invoice Processor&quot;, montrant les champs de configuration (Name, Description, Instructions).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:20 - 00:03:39</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And once I paste this in, you&#x27;re gonna see down here with available actions, It creates basically a new tool called send invoice data. We have our method as post, and then we have the webhook path. So what I&#x27;m gonna do real quick is we need to go to NNN and we need to set our webhook as a post method. So here&#x27;s the webhook. I&#x27;m gonna change the HTTP method to post, and then I&#x27;m gonna hit listen for test event.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow) et éditeur de spécifications OpenAPI.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code JSON OpenAPI définissant les serveurs et les chemins d&#x27;accès (paths) / Paramètres du nœud Webhook dans n8n (URLs, méthode HTTP, chemin).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la structure de l&#x27;API générée par l&#x27;outil, suivie de la navigation dans l&#x27;interface n8n pour modifier la méthode HTTP du webhook de &quot;GET&quot; vers &quot;POST&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000325_seg10.jpg" alt="L&#x27;éditeur affiche une spécification OpenAPI au format JSON dans la partie supérieure et une section &quot;Available actions&quot; listant l&#x27;action &quot;sendInvoiceData&quot; avec la méthode POST en dessous." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000325_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:25</span>
+                        <span class="caption-text">L&#x27;éditeur affiche une spécification OpenAPI au format JSON dans la partie supérieure et une section &quot;Available actions&quot; listant l&#x27;action &quot;sendInvoiceData&quot; avec la méthode POST en dessous.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000334_seg10.jpg" alt="L&#x27;interface du nœud Webhook dans n8n montrant les paramètres de configuration, avec le menu déroulant &quot;HTTP Method&quot; réglé sur &quot;GET&quot;." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000334_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:34</span>
+                        <span class="caption-text">L&#x27;interface du nœud Webhook dans n8n montrant les paramètres de configuration, avec le menu déroulant &quot;HTTP Method&quot; réglé sur &quot;GET&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:39 - 00:04:06</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So right now this webhook is listening. We&#x27;ll go back to the GPT and I&#x27;ll hit test. And what this is gonna do is it&#x27;s basically going to try to talk to our NNN cloud. I&#x27;ll hit confirm. And once we&#x27;ll see that it&#x27;s gonna talk to it, it has been able to communicate. And now if I go back to my workflow, you can see that we accepted some data. And if I scroll all the way down towards the bottom, you can see the body parameters that got sent over were date, invoice number, sold by, bill to, products and pricing and total.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> ChatGPT (GPT Builder / Actions configuration).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image #1 : Schéma OpenAPI (définition de l&#x27;endpoint webhook) et fenêtre de débogage affichant &quot;Calling HTTP endpoint&quot; / &quot;Response received&quot;.
+- Image #2 : Structure de données JSON montrant des champs comme &quot;date&quot;, &quot;invoiceNumber&quot;, &quot;soldBy&quot;, &quot;billTo&quot;, &quot;productsAndPricing&quot;, et &quot;total&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> - Image #1 : L&#x27;utilisateur clique sur le bouton &quot;Confirm&quot; pour autoriser le GPT à envoyer une requête à l&#x27;API n8n.
+- Image #2 : Vérification du succès de la transmission des données de la facture via le webhook.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000346_seg11.jpg" alt="Interface de configuration &quot;Add actions&quot; dans ChatGPT montrant une spécification OpenAPI et une fenêtre de prévisualisation demandant une confirmation de connexion vers l&#x27;API n8n." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000346_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:46</span>
+                        <span class="caption-text">Interface de configuration &quot;Add actions&quot; dans ChatGPT montrant une spécification OpenAPI et une fenêtre de prévisualisation demandant une confirmation de connexion vers l&#x27;API n8n.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000359_seg11.jpg" alt="Visualisation des données JSON envoyées via le webhook, incluant des détails de facturation tels que la date, le numéro de facture, le vendeur, l&#x27;acheteur et les produits." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000359_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:59</span>
+                        <span class="caption-text">Visualisation des données JSON envoyées via le webhook, incluant des détails de facturation tels que la date, le numéro de facture, le vendeur, l&#x27;acheteur et les produits.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:06 - 00:04:25</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So this is exactly what it&#x27;s going to extract when we actually drop in an invoice. So obviously this is just sample made up data. So we have our web hook here. And what I&#x27;m gonna do is go back into our custom GPT. And we&#x27;re basically configured and I&#x27;m gonna hit create, and I&#x27;m gonna say only me and then save it. And now that we just created this GPT, let&#x27;s try to drop in an invoice and test it out.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow) et ChatGPT (interface de configuration GPT Builder).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma JSON/OpenAPI définissant l&#x27;opération `sendInvoiceData` (méthode POST) et données factices de facture (INV-1001, Acme Corp, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Vérification des données entrantes du webhook, test de l&#x27;action HTTP dans le GPT, et configuration des paramètres de visibilité/partage du GPT personnalisé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000411_seg12.jpg" alt="Interface n8n affichant les données JSON reçues par un webhook, incluant des champs comme la date, le numéro de facture, l&#x27;émetteur et le destinataire." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000411_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:11</span>
+                        <span class="caption-text">Interface n8n affichant les données JSON reçues par un webhook, incluant des champs comme la date, le numéro de facture, l&#x27;émetteur et le destinataire.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000415_seg12.jpg" alt="Éditeur de configuration &quot;Custom GPT&quot; dans ChatGPT, affichant le schéma OpenAPI pour l&#x27;intégration avec le webhook n8n et la fenêtre de prévisualisation confirmant le succès de l&#x27;envoi." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000415_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:15</span>
+                        <span class="caption-text">Éditeur de configuration &quot;Custom GPT&quot; dans ChatGPT, affichant le schéma OpenAPI pour l&#x27;intégration avec le webhook n8n et la fenêtre de prévisualisation confirmant le succès de l&#x27;envoi.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000420_seg12.jpg" alt="Interface de configuration &quot;Custom GPT&quot; montrant la boîte de dialogue de partage avec l&#x27;option &quot;Only me&quot; sélectionnée avant la finalisation de la sauvegarde." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000420_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:20</span>
+                        <span class="caption-text">Interface de configuration &quot;Custom GPT&quot; montrant la boîte de dialogue de partage avec l&#x27;option &quot;Only me&quot; sélectionnée avant la finalisation de la sauvegarde.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:25 - 00:04:44</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Okay, so we have an example invoice right here, that&#x27;s a PDF and I&#x27;m gonna send this off and it&#x27;s going to say, please process this invoice. You can see the GPT is trying to talk to our NNN, so I&#x27;m gonna hit confirm. And then it&#x27;s going to be able to send that data. Well, we have to make sure it&#x27;s listening for us. So I&#x27;m gonna go back into the workflow, I&#x27;m gonna hit execute workflow, now it&#x27;s listening and we&#x27;ll try this again.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un agent personnalisé (ChatGPT/GPT) configuré pour l&#x27;automatisation n8n.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier joint &quot;Example Invoice.pdf&quot; et message de prompt &quot;please process this invoice&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;utilisateur a soumis un document PDF à l&#x27;agent IA pour traitement via une connexion n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000430_seg13.jpg" alt="Interface de chat type ChatGPT nommée &quot;n8n Invoice Processor&quot; affichant une requête utilisateur incluant un fichier &quot;Example Invoice.pdf&quot; avec le message &quot;please process this invoice&quot; et un indicateur d&#x27;état &quot;Talking to connector&quot;." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000430_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:30</span>
+                        <span class="caption-text">Interface de chat type ChatGPT nommée &quot;n8n Invoice Processor&quot; affichant une requête utilisateur incluant un fichier &quot;Example Invoice.pdf&quot; avec le message &quot;please process this invoice&quot; et un indicateur d&#x27;état &quot;Talking to connector&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:44 - 00:05:03</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Okay, so I said, try again, I&#x27;m gonna hit confirm. And this time it should be able to read that invoice and send data over. So you can see we just captured data in NNN. I&#x27;m going to go to table view just so we can look at it better. And we can see we have a date, an invoice number. We have sold by with an address. We have bill to with an address. And then we have our products and pricing and our total.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflow) et interface de chat (GPT-4o).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Image 1 : Message de confirmation &quot;The invoice has been successfully processed and the workflow has started&quot;.
+- Image 2 : Données extraites de la facture (date : 06/25/2025, numéro de facture, informations client, détails de prix, total).</p>
+                        <p><strong>Action / Démonstration :</strong> - Image 1 : Le présentateur déclenche le processus en cliquant sur &quot;try again&quot;.
+- Image 2 : Le présentateur bascule vers la vue &quot;Table&quot; dans n8n pour inspecter les données de la facture capturées par l&#x27;agent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000449_seg14.jpg" alt="Interface ChatGPT confirmant le traitement réussi de la facture par le workflow n8n." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000449_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:49</span>
+                        <span class="caption-text">Interface ChatGPT confirmant le traitement réussi de la facture par le workflow n8n.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000454_seg14.jpg" alt="Interface n8n affichant les données extraites (JSON/Table) de la facture via un nœud Webhook." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000454_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:54</span>
+                        <span class="caption-text">Interface n8n affichant les données extraites (JSON/Table) de la facture via un nœud Webhook.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:03 - 00:05:25</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And here&#x27;s the actual example invoice we dropped in. We can see the invoice number and the date. Those line up perfectly. We can see the sold by and the bill to, which should be local store, importing company, local store, importing company. We have the right email address and address as well. We have two items, conveyor belt for 400, pole for 85. And then here we have pole for 85 and conveyor belt for 400.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (automatisation de workflow) et lecteur PDF intégré au navigateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Données extraites de la facture : numéro de facture, date (06/25/2025), détails du vendeur (Local Store), acheteur (Importing Company), et détails des produits (conveyor belt, pole with bracket).</p>
+                        <p><strong>Action / Démonstration :</strong> Vérification de la correspondance des données extraites par le workflow n8n avec le document PDF source original.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000509_seg15.jpg" alt="Interface de configuration d&#x27;un nœud &quot;Webhook&quot; dans n8n montrant les données extraites d&#x27;une facture sous forme de tableau (JSON/Output)." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000509_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:09</span>
+                        <span class="caption-text">Interface de configuration d&#x27;un nœud &quot;Webhook&quot; dans n8n montrant les données extraites d&#x27;une facture sous forme de tableau (JSON/Output).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000519_seg15.jpg" alt="Visualisation PDF d&#x27;une facture exemple (&quot;Example Invoice.pdf&quot;) ouverte dans un lecteur de document intégré au navigateur." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000519_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:19</span>
+                        <span class="caption-text">Visualisation PDF d&#x27;une facture exemple (&quot;Example Invoice.pdf&quot;) ouverte dans un lecteur de document intégré au navigateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:25 - 00:05:45</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And the total is 702, which you can see matches up over here. So like I said, we drop an invoice into our custom GPT. It uses its vision to analyze it and then it sends over the parameters to us. And now all we have to do is put that into a Google Sheet. So I have this template real quick, which has those exact parameters. I&#x27;m going to go into here. I&#x27;m gonna connect a Google Sheet and we&#x27;re gonna do append row and sheet.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (workflow automation), Google Sheets.</p>
+                        <p><strong>Contenu textuel & Code :</strong> - n8n : Workflow avec un trigger Webhook et indication &quot;1 item&quot;.
+- Google Sheets : En-têtes de colonnes pour une base de données de factures.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du flux de travail : le Webhook reçoit les données traitées par l&#x27;IA, qui seront ensuite insérées dans le template Google Sheets.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000530_seg16.jpg" alt="Interface de l&#x27;outil d&#x27;automatisation n8n montrant un nœud &quot;Webhook&quot; actif ayant reçu des données (1 item)." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000530_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:30</span>
+                        <span class="caption-text">Interface de l&#x27;outil d&#x27;automatisation n8n montrant un nœud &quot;Webhook&quot; actif ayant reçu des données (1 item).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000540_seg16.jpg" alt="Feuille de calcul Google Sheets nommée &quot;Invoice Database&quot; avec des colonnes prêtes à recevoir les données extraites (Date, Invoice Number, Sold By, Bill To, Products and Pricing, Total)." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000540_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:40</span>
+                        <span class="caption-text">Feuille de calcul Google Sheets nommée &quot;Invoice Database&quot; avec des colonnes prêtes à recevoir les données extraites (Date, Invoice Number, Sold By, Bill To, Products and Pricing, Total).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:45 - 00:06:19</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now all I have to do is link up that sheet that we were talking about called invoice database. I&#x27;ll link it to sheet one. And then this is going to pop up with all of those columns that we have set up in Google Sheets. So I would just close out of headers and go to the body. We have date, we have invoice number, we have sold by, we have bill to, we have products and pricing, and then we have our total. So now all I&#x27;m going to do is hit save. I&#x27;m going to make this thing listen to us once again. Then I&#x27;m going to go ahead back into our chat to BT. I&#x27;m going to drop in the invoice once again and say process this, send it off. And we should be able to talk to the</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflow) et interface de chat IA (type ChatGPT/GPTs).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres du nœud Google Sheets : Opération &quot;Append Row&quot;, document &quot;Invoice Database&quot;, feuille &quot;Sheet1&quot;, et champs de mappage pour Date, Invoice Number, Sold By, Bill To.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et mappage manuel des colonnes de données provenant du Webhook vers une feuille de calcul Google Sheets dans n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000554_seg17.jpg" alt="Interface de configuration du nœud &quot;Google Sheets&quot; dans n8n, affichant la sélection du document &quot;Invoice Database&quot; et la liste des colonnes à mapper (Date, Invoice Number, Sold By, Bill To)." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000554_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:54</span>
+                        <span class="caption-text">Interface de configuration du nœud &quot;Google Sheets&quot; dans n8n, affichant la sélection du document &quot;Invoice Database&quot; et la liste des colonnes à mapper (Date, Invoice Number, Sold By, Bill To).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:19 - 00:06:40</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">connector. I&#x27;ll hit confirm. And now we should see that once this is done, we&#x27;ll go ahead and come into here and we should see that it&#x27;s going to write that data to the sheet. There we go. And so two things I want to point out. The first one is how do you want your workflow in NNN to respond to your custom GPT? In that first demo, we basically used the respond to webhook node because sometimes we we had to wait for data to come back.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Sheets, n8n (éditeur de workflow d&#x27;automatisation).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Structure de base de données d&#x27;une facture dans Sheets ; diagramme de nœuds n8n (Webhook -&gt; Google Sheets).</p>
+                        <p><strong>Action / Démonstration :</strong> Vérification de la structure de destination (Sheets) et exécution du workflow dans n8n pour transférer les données.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000624_seg18.jpg" alt="Une feuille de calcul Google Sheets intitulée &quot;Invoice Database&quot; montrant les colonnes : Date, Invoice Number, Sold By, Bill To, Products and Pricing, et Total." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000624_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:24</span>
+                        <span class="caption-text">Une feuille de calcul Google Sheets intitulée &quot;Invoice Database&quot; montrant les colonnes : Date, Invoice Number, Sold By, Bill To, Products and Pricing, et Total.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000629_seg18.jpg" alt="L&#x27;éditeur de workflow n8n affichant un flux automatisé composé d&#x27;un nœud &quot;Webhook&quot; relié à un nœud &quot;Google Sheets&quot; configuré pour l&#x27;action &quot;append&quot;." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000629_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:29</span>
+                        <span class="caption-text">L&#x27;éditeur de workflow n8n affichant un flux automatisé composé d&#x27;un nœud &quot;Webhook&quot; relié à un nœud &quot;Google Sheets&quot; configuré pour l&#x27;action &quot;append&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:40 - 00:07:01</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But in this case, we were just responding immediately. And you can change that setting in the webhook. So right here you have respond, this one was set to immediately, or you can use the respond to webhook node, which will send back whatever comes at the end of the workflow back to the initial thing that triggered it. So there&#x27;s that. And then the other thing is right now we&#x27;re testing the webhook, so we have to hit execute workflow.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (plateforme d&#x27;automatisation de workflows).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration du nœud Webhook (HTTP Method: POST, Path, Authentication: None, Respond settings) et données JSON (headers, body avec des informations d&#x27;invoice).</p>
+                        <p><strong>Action / Démonstration :</strong> Modification des paramètres de réponse du nœud Webhook pour expliquer la gestion des flux de données entre les nœuds.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000645_seg19.jpg" alt="Fenêtre de configuration du nœud &#x27;Webhook&#x27; dans n8n, montrant les options de réponse (&#x27;Immediately&#x27;, &#x27;When Last Node Finishes&#x27;, &#x27;Using Respond to Webhook Node&#x27;) et les données JSON reçues en sortie." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000645_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:45</span>
+                        <span class="caption-text">Fenêtre de configuration du nœud &#x27;Webhook&#x27; dans n8n, montrant les options de réponse (&#x27;Immediately&#x27;, &#x27;When Last Node Finishes&#x27;, &#x27;Using Respond to Webhook Node&#x27;) et les données JSON reçues en sortie.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000656_seg19.jpg" alt="Vue d&#x27;ensemble de l&#x27;éditeur de workflow n8n montrant un flux simple reliant un déclencheur &#x27;Webhook&#x27; à une action &#x27;Google Sheets&#x27;." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000656_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:56</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;éditeur de workflow n8n montrant un flux simple reliant un déclencheur &#x27;Webhook&#x27; à une action &#x27;Google Sheets&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:01 - 00:07:19</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">If we wanted to switch this to active, we would have to actually use the production URL in here. So the only difference is that after cloud slash webhook, the test one says dash test and the production one doesn&#x27;t say dash test. So what you could do is go back in your custom GPT, you could open it up and say edit GPT.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow automatisé).</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de webhook : &quot;https://nateherk.app.n8n.cloud/webhook-test/9f96a51a-4e1b-4eaf-8b9f-9e44fb4136cc&quot; affichée dans le champ URL, avec les en-têtes (headers) HTTP reçus à droite (host, user-agent, content-type, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur survole la section des URLs de webhook pour illustrer la distinction entre l&#x27;URL de test et l&#x27;URL de production utilisée pour les déploiements actifs.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000705_seg20.jpg" alt="Fenêtre de configuration d&#x27;un nœud &quot;Webhook&quot; dans l&#x27;interface n8n, montrant les URLs de test et de production ainsi que les données de sortie reçues dans un tableau." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000705_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:05</span>
+                        <span class="caption-text">Fenêtre de configuration d&#x27;un nœud &quot;Webhook&quot; dans l&#x27;interface n8n, montrant les URLs de test et de production ainsi que les données de sortie reçues dans un tableau.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:19 - 00:07:41</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then in here, you would just scroll down to your action which is the one that we configured. And all you&#x27;d have to do is right here for the path, you would just basically get rid of the dash test and everything else should already be configured. Then you&#x27;d hit update up here and your GPT would be saved and it would be able to talk to your active workflow. And just to show you guys how that respond to webhook node thing works, I&#x27;m asking the GPT to get Mark Johnson&#x27;s contact information.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> OpenAI GPT Builder (interface &quot;Edit actions&quot;)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma OpenAPI au format JSON, incluant la définition du serveur (url: https://nateherk.app.n8n.cloud) et le chemin d&#x27;accès API (paths: &quot;/webhook-test/...&quot;)</p>
+                        <p><strong>Action / Démonstration :</strong> Modification du schéma de l&#x27;action, avec mise en évidence du chemin (path) contenant le segment &quot;/webhook-test/&quot; que l&#x27;utilisateur doit modifier.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000725_seg21.jpg" alt="Interface de configuration d&#x27;une action personnalisée dans l&#x27;éditeur de GPT d&#x27;OpenAI, montrant le schéma OpenAPI en JSON dans le panneau de gauche." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000725_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:25</span>
+                        <span class="caption-text">Interface de configuration d&#x27;une action personnalisée dans l&#x27;éditeur de GPT d&#x27;OpenAI, montrant le schéma OpenAPI en JSON dans le panneau de gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:42 - 00:08:02</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s going to send that query off to our ultimate assistant. And it has to wait over here until it actually gets Mark Johnson&#x27;s contact information. So the agent&#x27;s about to send it back to the webhook, and now our custom GPT can respond to us. And just so you guys see that that worked, we have Mark 2343 and 333444, which is exactly what we see for Mark in our Airtable base.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflow)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow d&#x27;agent IA composé d&#x27;un Webhook, d&#x27;un &quot;Ultimate Assistant&quot; (AI Agent) et de plusieurs sous-agents (Email, Calendar, Contact, Content Creator, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Le workflow est en cours d&#x27;exécution ; le nœud &quot;Ultimate Assistant&quot; est actif et en attente de la récupération des informations de contact de Mark Johnson via le &quot;Contact Agent&quot; pour renvoyer la réponse au Webhook.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000747_seg22.jpg" alt="Une interface de workflow n8n divisée en deux : à gauche, une fenêtre de chat « n8n Assistant » avec la requête &quot;get mark johnson&#x27;s contact information&quot; ; à droite, le canevas d&#x27;automatisation montrant le nœud central &quot;Ultimate Assistant&quot; connecté à divers outils dont un &quot;Contact Agent&quot;." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000747_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:47</span>
+                        <span class="caption-text">Une interface de workflow n8n divisée en deux : à gauche, une fenêtre de chat « n8n Assistant » avec la requête &quot;get mark johnson&#x27;s contact information&quot; ; à droite, le canevas d&#x27;automatisation montrant le nœud central &quot;Ultimate Assistant&quot; connecté à divers outils dont un &quot;Contact Agent&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:02 - 00:08:21</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So if you like this type of content and you wanna take your N&amp;N learning a little bit deeper, then definitely check out my paid community. The link for that is down in the description. We&#x27;ve got a great community of members who are building with N&amp;N every single day for themselves or for their businesses, always sharing their resources and challenges that they&#x27;re running into. On top of that, we have two full courses right now, one called Agent Zero, which is like the foundations for AI automation.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow) et Skool (plateforme communautaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma technique d&#x27;automatisation avec noeuds d&#x27;IA dans n8n ; fils de discussion et publications communautaires concernant les outils d&#x27;automatisation IA dans Skool.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation d&#x27;un workflow d&#x27;automatisation complexe et promotion de la communauté privée pour le partage de ressources sur n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000807_seg23.jpg" alt="Interface de l&#x27;éditeur de workflow n8n montrant un système d&#x27;agent IA complexe nommé &quot;Ultimate Assistant&quot;, connecté à divers outils comme GPT 4.1-mini, Simple Memory, et plusieurs agents spécialisés (Email, Calendar, Contact, Content Creator)." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000807_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:07</span>
+                        <span class="caption-text">Interface de l&#x27;éditeur de workflow n8n montrant un système d&#x27;agent IA complexe nommé &quot;Ultimate Assistant&quot;, connecté à divers outils comme GPT 4.1-mini, Simple Memory, et plusieurs agents spécialisés (Email, Calendar, Contact, Content Creator).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000812_seg23.jpg" alt="Capture d&#x27;écran de la plateforme communautaire &quot;AI Automation Society Plus&quot; (hébergée sur Skool), affichant le fil d&#x27;actualité des membres, des publications épinglées, ainsi que la barre latérale avec les statistiques et le classement des membres." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000812_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:12</span>
+                        <span class="caption-text">Capture d&#x27;écran de la plateforme communautaire &quot;AI Automation Society Plus&quot; (hébergée sur Skool), affichant le fil d&#x27;actualité des membres, des publications épinglées, ainsi que la barre latérale avec les statistiques et le classement des membres.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:22 - 00:08:41</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then this one is 10 hours to 10 seconds where you learn how to identify, design and build time-saving automations. We also just announced a pretty cool partnership where we&#x27;re able to get our members up to $3 million in savings across some of the top AI tools like Bolt, Airtable, Perplexity, Azure Cloud Credits, stuff like that. So if any of that sounds interesting to you, definitely check out the community.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme de communauté/cours en ligne (type Skool) &quot;AI Automation Society Plus&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte promotionnel détaillant les économies réalisées via des crédits sur des outils comme Bolt Pro, Notion AI, Airtable, Stripe, Perplexity, Miro et Azure.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans les modules de formation et lecture de l&#x27;annonce officielle sur les nouveaux avantages réservés aux membres.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000827_seg24.jpg" alt="Interface de la plateforme &quot;AI Automation Society Plus&quot; montrant les modules de formation, dont le module &quot;10 Hours to 10 Seconds&quot; et le &quot;3M Savings Vault&quot;." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000827_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:27</span>
+                        <span class="caption-text">Interface de la plateforme &quot;AI Automation Society Plus&quot; montrant les modules de formation, dont le module &quot;10 Hours to 10 Seconds&quot; et le &quot;3M Savings Vault&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000831_seg24.jpg" alt="Fenêtre pop-up affichant l&#x27;annonce &quot;New Member Perk - $3M+ in Savings Now Available&quot; avec une liste de logiciels partenaires." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000831_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:31</span>
+                        <span class="caption-text">Fenêtre pop-up affichant l&#x27;annonce &quot;New Member Perk - $3M+ in Savings Now Available&quot; avec une liste de logiciels partenaires.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000836_seg24.jpg" alt="Suite de l&#x27;annonce détaillée listant les avantages spécifiques (Bolt Pro, Notion, Airtable, Stripe, Perplexity, Miro, Azure)." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000836_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:36</span>
+                        <span class="caption-text">Suite de l&#x27;annonce détaillée listant les avantages spécifiques (Bolt Pro, Notion, Airtable, Stripe, Perplexity, Miro, Azure).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:42 - 00:08:51</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But I appreciate you guys making it to the end of the video as always. If you learned something new or you enjoyed the video, please give it a like. Helps me out a ton. And I&#x27;ll see you all in the next one. Thanks guys.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (outil d&#x27;automatisation de workflow).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : Webhook, Ultimate Assistant, Respond to Webhook, GPT 4.1-mini, Simple Memory, Think, et divers agents spécialisés (Email, Calendar, Contact, Content Creator).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation de l&#x27;architecture d&#x27;un agent IA multi-outils dans l&#x27;éditeur de workflow n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/AGi3U79zMIM/AGi3U79zMIM_000844_seg25.jpg" alt="Un workflow n8n complexe montrant un nœud &quot;Ultimate Assistant&quot; connecté à plusieurs sous-agents spécialisés (Email, Calendar, Contact, Content Creator)." loading="lazy" onclick="openLightbox('../screenshots/AGi3U79zMIM/AGi3U79zMIM_000844_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:44</span>
+                        <span class="caption-text">Un workflow n8n complexe montrant un nœud &quot;Ultimate Assistant&quot; connecté à plusieurs sous-agents spécialisés (Email, Calendar, Contact, Content Creator).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
