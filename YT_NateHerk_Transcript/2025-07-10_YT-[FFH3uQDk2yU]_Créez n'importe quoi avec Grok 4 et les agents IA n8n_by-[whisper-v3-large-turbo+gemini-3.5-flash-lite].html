@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Créez n&#x27;importe quoi avec Grok 4 et les agents IA n8n — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Créez n&#x27;importe quoi avec Grok 4 et les agents IA n8n</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-07-10</span>
+                <span class="badge">⏱️ 00:10:33</span>
+                <span class="badge">🆔 <code>FFH3uQDk2yU</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=FFH3uQDk2yU" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo présentée par la chaîne *Nate Herk | AI Automation* explore l'arrivée sur le marché de **Grok 4**, lancé par xAI le 9 juillet 2025, et démontre son intégration pratique au sein des flux de travail d'automatisation et d'agents IA sur **n8n**. Le modèle s'impose comme un mastodonte de l'intelligence artificielle grâce à ses **1,7 mille milliards de paramètres**, surpassant de nombreux concurrents de premier plan (comme GPT-4, Gemini Ultra et Claude 4) sur des benchmarks exigeants en mathématiques, sciences et programmation. Bien que sa fenêtre de contexte soit limitée à 256 000 jetons et que son coût ou sa vitesse brute ne soient pas toujours les plus optimisés du marché, ses capacités de raisonnement de niveau postdoctoral en font un choix redoutable pour des analyses complexes.<br><br>Dans la partie démonstrative, la vidéo illustre la configuration de Grok 4 dans n8n via un nœud de modèle de chat natif xAI ou en passant par un routeur centralisé comme OpenRouter. Un premier test simple avec un outil de recherche (Perplexity) montre le succès de l'agent, qui exploite le modèle pour mener des recherches approfondies et structurées sans prompt système initial complexe. Toutefois, des défis techniques apparaissent lors de scénarios multi-outils plus avancés combinant Tavily et Perplexity, où le modèle génère parfois un JSON invalide pour l'appel d'outils, nécessitant des ajustements de formatage de réponse ou le recours à des intermédiaires d'API.<br><br>L'analyse met ainsi en lumière le potentiel immense de Grok 4 pour l'automatisation intelligente tout en soulignant les frictions pratiques inhérentes à l'intégration de modèles ultra-puissants dans des environnements d'orchestration sans code basés sur LangChain.<br><br>---<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Grok 4** : Dernier modèle phare de xAI fondé par Elon Musk, doté de 1,7 mille milliards de paramètres et excellant dans le raisonnement logique, les mathématiques et le code.<br>* **n8n** : Plateforme d'automatisation de flux de travail sans code utilisée pour orchestrer les agents IA et connecter différents outils via des nœuds dédiés.<br>* **OpenRouter** : Plateforme d'agrégation d'API permettant de centraliser la facturation, le suivi des consommations et l'accès à de multiples modèles d'IA, dont Grok 4.<br>* **Perplexity (Sonar)** : Outil de recherche web et de génération de réponses basé sur l'IA, intégré comme outil de recherche dans l'agent n8n.<br>* **Tavily** : Moteur de recherche optimisé pour les agents IA et les LLM, utilisé pour alimenter les assistants en données web en temps réel.<br>* **Claude Code / Claude 4 Opus** : Modèles d'Anthropic mentionnés à titre de comparaison comparative en matière de performances et de taille de paramètres.<br>* **ChatGPT / OpenAI GPT-4** : Modèles de référence utilisés pour le diagnostic d'erreurs de parsing et de compatibilité JSON au sein des flux n8n.<br><br>---<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Montée en puissance de xAI** : Le lancement de Grok 4 redéfinit les standards de l'industrie avec 1,7 mille milliards de paramètres, positionnant l'architecture parmi les plus complexes jamais construites aux côtés de GPT-4.<br>* **Performances académiques de pointe** : Le modèle surpasse ses rivaux sur des examens de haut niveau, atteignant des scores records aux tests de physique/astronomie (GPQA) et de mathématiques (AIME avec 95/100).<br>* **Compétence avérée en génie logiciel** : Avec un score SWE de 72 à 75 %, Grok 4 s'avère particulièrement pertinent pour les tâches de codage et d'ingénierie logicielle du monde réel.<br>* **Limites de la fenêtre de contexte** : Malgré sa puissance de calcul, Grok 4 se contente d'une fenêtre de 256 000 jetons, ce qui le place derrière certains concurrents offrant un à deux millions de jetons.<br>* **Intégration native simplifiée dans n8n** : L'utilisation de Grok 4 dans les flux d'automatisation ne nécessite qu'un nœud de modèle de chat XAI, une clé API valide et la sélection de la version `Grok 4 0709`.<br>* **Succès des appels d'outils simples** : Couplé à un outil de recherche comme Perplexity, l'agent est capable de planifier, d'exécuter et de synthétiser des rapports documentés de manière autonome, même sans prompt système élaboré.<br>* **Gestion des erreurs de syntaxe JSON** : Les architectures d'agents basées sur LangChain (comme n8n) peuvent rencontrer des échecs d'analyse d'arguments si le LLM renvoie un format d'appel d'outil non conforme.<br>* **Stratégies de mitigation des erreurs d'outils** : Pour contrer les difficultés de formatage, l'ingénieur peut forcer un format de réponse JSON et expliciter la consigne directement dans le prompt système de l'agent.<br>* **Centralisation via OpenRouter** : L'utilisation d'intermédiaires d'API comme OpenRouter est une bonne pratique d'ingénierie pour unifier la facturation, les rechargements de crédits et l'analyse de plusieurs modèles sous une seule interface.<br>* **Arbitrage coût-performance** : Grok 4 n'est pas le modèle le plus économique du marché ; son intégration doit donc se justifier par des besoins critiques en matière de raisonnement complexe, d'analyse financière ou de mathématiques avancées.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Grok 4</span><span class="tool-tag">n8n</span><span class="tool-tag">OpenRouter</span><span class="tool-tag">Perplexity (Sonar)</span><span class="tool-tag">Tavily</span><span class="tool-tag">Claude Code / Claude 4 Opus</span><span class="tool-tag">ChatGPT / OpenAI GPT-4</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Montée en puissance de xAI** : Le lancement de Grok 4 redéfinit les standards de l&#x27;industrie avec 1,7 mille milliards de paramètres, positionnant l&#x27;architecture parmi les plus complexes jamais construites aux côtés de GPT-4.</span></li><li><span class="point-bullet">✦</span><span>Performances académiques de pointe** : Le modèle surpasse ses rivaux sur des examens de haut niveau, atteignant des scores records aux tests de physique/astronomie (GPQA) et de mathématiques (AIME avec 95/100).</span></li><li><span class="point-bullet">✦</span><span>Compétence avérée en génie logiciel** : Avec un score SWE de 72 à 75 %, Grok 4 s&#x27;avère particulièrement pertinent pour les tâches de codage et d&#x27;ingénierie logicielle du monde réel.</span></li><li><span class="point-bullet">✦</span><span>Limites de la fenêtre de contexte** : Malgré sa puissance de calcul, Grok 4 se contente d&#x27;une fenêtre de 256 000 jetons, ce qui le place derrière certains concurrents offrant un à deux millions de jetons.</span></li><li><span class="point-bullet">✦</span><span>Intégration native simplifiée dans n8n** : L&#x27;utilisation de Grok 4 dans les flux d&#x27;automatisation ne nécessite qu&#x27;un nœud de modèle de chat XAI, une clé API valide et la sélection de la version `Grok 4 0709`.</span></li><li><span class="point-bullet">✦</span><span>Succès des appels d&#x27;outils simples** : Couplé à un outil de recherche comme Perplexity, l&#x27;agent est capable de planifier, d&#x27;exécuter et de synthétiser des rapports documentés de manière autonome, même sans prompt système élaboré.</span></li><li><span class="point-bullet">✦</span><span>Gestion des erreurs de syntaxe JSON** : Les architectures d&#x27;agents basées sur LangChain (comme n8n) peuvent rencontrer des échecs d&#x27;analyse d&#x27;arguments si le LLM renvoie un format d&#x27;appel d&#x27;outil non conforme.</span></li><li><span class="point-bullet">✦</span><span>Stratégies de mitigation des erreurs d&#x27;outils** : Pour contrer les difficultés de formatage, l&#x27;ingénieur peut forcer un format de réponse JSON et expliciter la consigne directement dans le prompt système de l&#x27;agent.</span></li><li><span class="point-bullet">✦</span><span>Centralisation via OpenRouter** : L&#x27;utilisation d&#x27;intermédiaires d&#x27;API comme OpenRouter est une bonne pratique d&#x27;ingénierie pour unifier la facturation, les rechargements de crédits et l&#x27;analyse de plusieurs modèles sous une seule interface.</span></li><li><span class="point-bullet">✦</span><span>Arbitrage coût-performance** : Grok 4 n&#x27;est pas le modèle le plus économique du marché ; son intégration doit donc se justifier par des besoins critiques en matière de raisonnement complexe, d&#x27;analyse financière ou de mathématiques avancées.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:18</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Aujourd&#x27;hui, nous allons parler du nouveau meilleur modèle d&#x27;IA au monde, Grok 4. Nous allons décortiquer ce que c&#x27;est, pourquoi c&#x27;est important. Nous allons examiner les benchmarks et le comparer à d&#x27;autres modèles. Et enfin, je vais vous montrer comment le connecter réellement à N8N pour alimenter vos agents IA et vos automatisations IA afin de les rendre encore plus intelligents. Aussi, j&#x27;ai une nouvelle souris. Elle a une forme ergonomique, donc ça ne fait pas mal à mon poignet.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflows d&#x27;automatisation et interface de chat)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow n8n (« Ultimate Assistant », « Grok Agent », « xAI Grok Chat Model », « Perplexity », etc.) et texte de rapport de recherche sur Grok 4.</p>
+                        <p><strong>Action / Démonstration :</strong> Construction d&#x27;un agent IA sous n8n intégrant Grok 4 et exécution d&#x27;une recherche sur l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000005_seg1.jpg" alt="Vue d&#x27;ensemble d&#x27;un workflow N8N complexe centré sur un nœud d&#x27;assistant IA avec de multiples outils connectés." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Vue d&#x27;ensemble d&#x27;un workflow N8N complexe centré sur un nœud d&#x27;assistant IA avec de multiples outils connectés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000009_seg1.jpg" alt="Gros plan sur un workflow N8N plus simple reliant un déclencheur de chat à un agent Grok et à un modèle xAI." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Gros plan sur un workflow N8N plus simple reliant un déclencheur de chat à un agent Grok et à un modèle xAI.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000014_seg1.jpg" alt="Interface de chat N8N affichant un rapport de recherche détaillé généré sur le modèle Grok 4." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000014_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:14</span>
+                        <span class="caption-text">Interface de chat N8N affichant un rapport de recherche détaillé généré sur le modèle Grok 4.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:18 - 00:00:38</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, plutôt emballé par ça. Bref, je ne veux pas perdre de temps. Plongeons directement dans le vif du sujet. Donc, le 9 juillet 2025, XAI a lancé Grok 4. Et aujourd&#x27;hui, je vais vous montrer comment nous pouvons connecter cela à nos automatisations NNN. Mais avant de plonger dans NNN, parlons rapidement de ce qu&#x27;est Grok 4 et pourquoi c&#x27;est un si gros événement. Il s&#x27;agit donc du dernier modèle d&#x27;intelligence artificielle de XAI, qui était l&#x27;entreprise fondée par Elon Musk.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo / Diapositive graphique</p>
+                        <p><strong>Contenu textuel & Code :</strong> Logos de &#x27;Grok&#x27; et &#x27;n8n&#x27; avec un &#x27;x&#x27; au milieu</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit le sujet de l&#x27;intégration entre Grok et n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000023_seg2.jpg" alt="Une diapositive illustrant le sujet de la vidéo avec les logos de Grok et de n8n reliés par un symbole &#x27;x&#x27;, avec le présentateur en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000023_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:23</span>
+                        <span class="caption-text">Une diapositive illustrant le sujet de la vidéo avec les logos de Grok et de n8n reliés par un symbole &#x27;x&#x27;, avec le présentateur en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:38 - 00:00:58</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il est conçu pour être plus intelligent, plus rapide et plus performant que les modèles d&#x27;IA précédents, visant à surpasser des concurrents tels que GPT-4 d&#x27;OpenAI, Gemini de Google, et Claude d&#x27;Anthropic, ainsi que d&#x27;autres modèles fermés de ce type. C&#x27;est un événement important pour ces trois principales raisons, la première étant la taille. Grok 4 possède 1,7 mille milliards de paramètres, et l&#x27;on peut un peu voir cela comme les neurones de l&#x27;IA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation textuelle (diapositive) et incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte définissant Grok 4 comme le dernier modèle d&#x27;IA de xAI fondé par Elon Musk, visant à surpasser GPT-4 et Gemini, avec la date de sortie au 9 juillet 2025.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du sujet et lecture du texte explicatif par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000043_seg3.jpg" alt="Une diapositive explicative montrant le texte de définition de Grok 4 avec le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000043_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:43</span>
+                        <span class="caption-text">Une diapositive explicative montrant le texte de définition de Grok 4 avec le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:58 - 00:01:19</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et cela en fait l&#x27;un des modèles d&#x27;IA les plus grands et les plus complexes jamais construits. Nous avons GPT-4, qui compte environ 1,8 mille milliards. Et puis Gemini Ultra est autour d&#x27;un mille milliards. Et Claude 4 n&#x27;est qu&#x27;autour de 500 milliards. Je dis « n&#x27;est que » comme si c&#x27;était petit. C&#x27;est quand même massif. Et juste pour mettre cela en contexte, si vous avez regardé ma vidéo sur la façon d&#x27;installer un modèle d&#x27;IA local pour tourner dans n8n, ce que nous avons fait dans celle-ci était un DeepSeek d&#x27;environ 1,5 milliard de paramètres.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de présentation de diapositives.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparatif sur les modèles d&#x27;IA : Grok 4 (1.7 trillion), GPT-4 (~1.8 trillion), Gemini Ultra (~1 trillion), Claude 4 (~500 billion).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les différentes caractéristiques et tailles des modèles d&#x27;intelligence artificielle à l&#x27;aide d&#x27;une diapositive.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000103_seg4.jpg" alt="Une diapositive de présentation titrée &#x27;Why is Grok 4 a Big Deal?&#x27; listant la taille (1,7 trillion de paramètres avec comparaison GPT-4, Gemini Ultra, Claude 4), l&#x27;intelligence et la vitesse, avec une petite incrustation vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000103_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:03</span>
+                        <span class="caption-text">Une diapositive de présentation titrée &#x27;Why is Grok 4 a Big Deal?&#x27; listant la taille (1,7 trillion de paramètres avec comparaison GPT-4, Gemini Ultra, Claude 4), l&#x27;intelligence et la vitesse, avec une petite incrustation vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:19 - 00:01:38</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;ai fait des essais avec environ 14 milliards ou 32 milliards pour des appels d&#x27;outils très basiques, mais tu ne pourrais pas vraiment faire tourner quelque chose comme 500 milliards de paramètres sur, du moins, mon PC que j&#x27;ai juste là en bas. Quoi qu&#x27;il en soit, c&#x27;est incroyablement intelligent. Maintenant, prenez cela avec des pincettes car cela a été dit par Elon, mais c&#x27;est décrit comme étant supérieur au niveau de doctorat dans chaque matière.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de présentation de diapositives avec incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte sur la taille du modèle (Grok 4 à 1,7 trillion de paramètres, comparé à GPT-4, Gemini Ultra et Claude 4) et sur ses capacités cognitives supérieures au niveau doctoral.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des spécifications techniques de différents grands modèles linguistiques (LLM).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000124_seg5.jpg" alt="Une diapositive de présentation montrant le titre &#x27;Why is Grok 4 a Big Deal?&#x27; avec des détails sur la taille, l&#x27;intelligence et la vitesse des modèles d&#x27;IA, tandis que le présentateur apparaît en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000124_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:24</span>
+                        <span class="caption-text">Une diapositive de présentation montrant le titre &#x27;Why is Grok 4 a Big Deal?&#x27; avec des détails sur la taille, l&#x27;intelligence et la vitesse des modèles d&#x27;IA, tandis que le présentateur apparaît en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:38 - 00:02:13</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et puis juste ici, nous avons une autre citation d&#x27;Elon : Grok 4 est plus intelligent que presque tous les étudiants diplômés dans toutes les disciplines simultanément. Donc nous n&#x27;allons pas nous plonger dans la politique de xAI et d&#x27;Elon, je ne fais que vous exposer les faits. Et ensuite, nous avons la vitesse. Le modèle peut gérer de nombreuses tâches à la fois, ce qui le rend utile tant pour les utilisateurs quotidiens que pour les grandes organisations. Et bien sûr, nous allons passer sur NNN et le soumettre à un test rapide avec un agent IA. Mais regardons maintenant quelques benchmarks réels de ce modèle, parce que nous voulons le comparer à d&#x27;autres modèles propriétaires de premier plan. Le premier que nous allons examiner est ses performances au HLE, c&#x27;est-à-dire le dernier examen de l&#x27;humanité, qui est un test ultra difficile conçu avec des questions de mathématiques, de science et de sciences humaines, conçu pour être difficile même pour</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation diapositive (logiciel de type PowerPoint/Keynote).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur Grok 4, comparaison de paramètres et graphiques de benchmarks (Scaling HLE - Test time).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les caractéristiques et les performances de Grok 4 affichées à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:13 - 00:02:48</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">experts. Grok 4, sans aucun outil, a obtenu 25 %, et avec des outils en mode multi-agents, a obtenu 44,4 %. Et ce n&#x27;est pas que je sache vraiment ce que ces pourcentages signifient, mais ce que nous savons, c&#x27;est qu&#x27;il a obtenu un score supérieur à celui des précédents modèles d&#x27;IA de premier plan comme OpenAI et Google. Et en regardant d&#x27;autres benchmarks ici, tout ce qui est en orange est un modèle Grok 4. Et vous pouvez voir qu&#x27;il surpasse pratiquement tous les autres. Nous avons Grok 4 sans outils, nous avons Grok 4, et puis nous avons Grok 4 heavy. Et je vais juste en mentionner deux, qui seront tout d&#x27;abord le GPQA, qui correspond aux questions de physique et d&#x27;astronomie de niveau universitaire. C&#x27;est un test avec des questions scientifiques difficiles et Grok 4 a obtenu 87.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec diapositive explicative et notes textuelles.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphiques de performance, scores de benchmarks (GPQA, HIME, LCB, HMMT, USAMO) et explications textuelles des scores de Grok 4.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des résultats de benchmarks et comparaison des performances des modèles d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000222_seg7.jpg" alt="Diapositive présentant le benchmark HLE de Grok 4 avec des graphiques de performance et des notes explicatives sur les scores obtenus." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000222_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:22</span>
+                        <span class="caption-text">Diapositive présentant le benchmark HLE de Grok 4 avec des graphiques de performance et des notes explicatives sur les scores obtenus.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000230_seg7.jpg" alt="Diapositive montrant plusieurs graphiques de benchmarks comparatifs (GPQA, AIME25, LCB, HMMT25, USAMO25) évaluant différents modèles d&#x27;IA dont Grok 4." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000230_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:30</span>
+                        <span class="caption-text">Diapositive montrant plusieurs graphiques de benchmarks comparatifs (GPQA, AIME25, LCB, HMMT25, USAMO25) évaluant différents modèles d&#x27;IA dont Grok 4.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:48 - 00:03:06</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">à 88 %, ce qui est supérieur aux 86 % de Google Gemini et bien supérieur aux 79 % de Claude 4 Opus d&#x27;Anthropic. Et ensuite, nous avons l&#x27;AIME, qui est l&#x27;American Invitational Mathematics Examination, un test de mathématiques difficile destiné aux meilleurs lycéens, et Grok 4 a obtenu 95 sur 100, ce qui est mieux que la plupart des humains et des autres modèles d&#x27;IA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec graphiques de benchmarks de modèles d&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphiques en barres comparant les scores (en pourcentage) de o3, Gemini 2.5 Pro, Claude 4 Opus, Grok 4 et Grok 4 Heavy sur différents tests.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente et analyse les résultats des tests de performance affichés à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:06 - 00:03:42</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est vraiment cool parce que traditionnellement, nous savons plus ou moins que les modèles d&#x27;IA ne sont pas très bons en mathématiques, mais Grok 4 est excellent pour résoudre des problèmes mathématiques complexes étape par étape, et c&#x27;est cool parce que tous les modèles d&#x27;IA s&#x27;améliorent lentement et sûrement en mathématiques. Et ensuite, un autre truc vraiment cool que nous avons, c&#x27;est le benchmark SWE ou les questions de génie logiciel. Cela évalue des tâches de codage et de développement logiciel du monde réel, ce qui est quelque chose pour lequel l&#x27;IA est utilisée très intensément en ce moment dans le monde réel. Grok 4 a obtenu un score de 72 à 75 %, ce qui est légèrement meilleur que les autres meilleurs modèles d&#x27;IA, comme vous pouvez le voir ici en bas avec ce tableau récapitulatif. Mais qu&#x27;est-ce que tout cela signifie ? Et pourquoi les gens disent-ils que c&#x27;est le nouveau meilleur modèle d&#x27;IA au monde ? Eh bien, ça va</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation visuelle (diapositives) avec graphiques statistiques et tableaux de données.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Scores de performance pour les modèles Grok 4, Claude Opus et OpenAI o3 sur des tests mathématiques et de programmation.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les résultats comparatifs des modèles d&#x27;IA sur les graphiques affichés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000315_seg9.jpg" alt="Graphiques de performance montrant les résultats comparatifs de plusieurs modèles d&#x27;IA (dont Grok 4) sur divers benchmarks mathématiques comme AIME25 et GPQA." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000315_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:15</span>
+                        <span class="caption-text">Graphiques de performance montrant les résultats comparatifs de plusieurs modèles d&#x27;IA (dont Grok 4) sur divers benchmarks mathématiques comme AIME25 et GPQA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000324_seg9.jpg" alt="Tableau de présentation des performances SWE-Bench comparant Grok 4 Code, Claude Opus 4 et OpenAI o3 sur des tâches de génie logiciel." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000324_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:24</span>
+                        <span class="caption-text">Tableau de présentation des performances SWE-Bench comparant Grok 4 Code, Claude Opus 4 et OpenAI o3 sur des tâches de génie logiciel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:42 - 00:04:18</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">être utilisé dans de nombreuses industries, bien sûr, les affaires, la santé, l&#x27;éducation, la programmation, le service client et bien d&#x27;autres encore. Et c&#x27;est très important parce que Grok 4 est vraiment, vraiment intelligent. Il peut travailler en équipe, il comprend mieux, et il va être vraiment facile à utiliser. Maintenant, bien sûr, il y a d&#x27;autres modèles d&#x27;IA qui surpassent Grok dans certains critères. Nous avons par exemple la fenêtre de contexte, Grok 4 n&#x27;a que 256 000 jetons, tandis que d&#x27;autres en ont jusqu&#x27;à un million ou 2 millions. Ce n&#x27;est définitivement pas le modèle le moins cher. Vous pouvez donc en trouver des moins chers chez OpenAI et Google, des choses comme ça. Et il y a vraiment des modèles qui sont plus rapides pour traiter l&#x27;information. Donc dans l&#x27;ensemble, selon chaque critère, ce n&#x27;est pas le meilleur, mais c&#x27;est un vraiment,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation PowerPoint ou diapositive graphique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte bullet-points détaillant l&#x27;impact de Grok 4 dans différents secteurs industriels.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les points affichés à l&#x27;écran concernant les applications de Grok 4.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:18 - 00:04:51</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">très puissant comme modèle. Et bien sûr, pourquoi voulons-nous utiliser ceci dans un constructeur de flux de travail sans code comme NNN ? Parce que nous pouvons connecter ce modèle d&#x27;IA à nos automatisations d&#x27;IA existantes pour voir s&#x27;il peut les rendre plus intelligentes, avec une meilleure analyse, peut-être même effectuer certaines fonctions auxquelles nous n&#x27;aurions pas fait confiance à d&#x27;autres modèles d&#x27;IA, comme analyser des données financières ou quelque chose de ce genre. Il y a donc des tonnes de cas d&#x27;utilisation, j&#x27;ai hâte de voir ce que vous allez inventer en utilisant Grok4, mais passons directement à NNN pour que je puisse vous montrer comment l&#x27;utiliser réellement, surtout si vous voulez l&#x27;utiliser pour l&#x27;appel d&#x27;outils. Bon, alors probablement la façon la plus simple de l&#x27;utiliser serait, dans NNN, vous avez un agent IA, vous ajoutez un modèle de chat,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation visuelle (diapositive) avec un encart vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur l&#x27;utilisation de Grok 4 dans n8n, énumérant plusieurs cas d&#x27;usage : analyse de données, réponses intelligentes, création de contenu, aide au codage et chatbots IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les avantages de l&#x27;intégration de Grok 4 dans des flux de travail n8n sans code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000426_seg11.jpg" alt="Une diapositive explicative intitulée &quot;What Does This All Mean?&quot; détaillant l&#x27;utilisation de Grok 4 avec n8n pour l&#x27;automatisation, avec le présentateur visible en vignette dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000426_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:26</span>
+                        <span class="caption-text">Une diapositive explicative intitulée &quot;What Does This All Mean?&quot; détaillant l&#x27;utilisation de Grok 4 avec n8n pour l&#x27;automatisation, avec le présentateur visible en vignette dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:51 - 00:05:25</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et vous faites simplement défiler vers le bas pour récupérer un modèle de chat XAI Grok. Vous auriez alors juste besoin d&#x27;aller dans votre console d&#x27;administration sur Grok. Vous pourriez venir ici, créer un compte, ajouter quelques informations de facturation, aller dans les clés API juste ici. Et ensuite, tout ce que vous auriez à faire, c&#x27;est d&#x27;en créer une nouvelle, puis de copier cette clé API et de l&#x27;ajouter juste ici comme nouvel identifiant. Ensuite, lorsque vous ouvrez la liste des modèles, vous pouvez voir qu&#x27;ici, nous sommes capable de choisir Grok 4 0709, qui correspondait au 9 juillet lorsqu&#x27;il a été lancé. Et ensuite, nous pouvons aller de l&#x27;avant et parler à Grok, dire simplement, bonjour, Grok. Et nous pouvons voir qu&#x27;il va utiliser son cerveau de chat juste ici. Et il utilise Grok 4 afin de nous répondre. Bonjour, je suis Grok, construit par XAI.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Console d&#x27;administration xAI et interface de workflow d&#x27;automatisation</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menus de configuration d&#x27;API xAI et paramètres du modèle xAI Grok Chat Model (grok-2-vision-1212)</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans la console xAI pour récupérer les clés API et configuration d&#x27;un nœud de chat Grok</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000459_seg12.jpg" alt="Capture montrant le tableau de bord xAI avec le menu latéral où l&#x27;utilisateur clique sur la section &#x27;API Keys&#x27;." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000459_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:59</span>
+                        <span class="caption-text">Capture montrant le tableau de bord xAI avec le menu latéral où l&#x27;utilisateur clique sur la section &#x27;API Keys&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000508_seg12.jpg" alt="Capture montrant un modèle de chat XAI Grok configuré dans une interface d&#x27;automatisation avec le modèle &#x27;grok-2-vision-1212&#x27;." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000508_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:08</span>
+                        <span class="caption-text">Capture montrant un modèle de chat XAI Grok configuré dans une interface d&#x27;automatisation avec le modèle &#x27;grok-2-vision-1212&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:25 - 00:05:58</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Qu&#x27;avez-vous en tête aujourd&#x27;hui ? Disons donc que je voulais ajouter un outil rapide pour faire un peu de recherche et que nous ajoutons un outil Perplexity. Tout ce que je vais faire très rapidement ici, c&#x27;est changer ceci pour sonar. Je vais faire en sorte que le modèle choisisse le message réel à envoyer. Et si vous voulez regarder une analyse plus approfondie dans une vidéo sur Perplexity, je vais l&#x27;épingler juste ici. Mais cela devrait déjà être configuré très facilement et j&#x27;espère que je n&#x27;aurai même pas à prompter l&#x27;agent pour qu&#x27;il l&#x27;utilise. Essayons donc. Je vais donc lui dire de faire des recherches sur Grok4 et ce que nous allons voir se produire, c&#x27;est qu&#x27;il réfléchit à ce qu&#x27;il doit faire en ce moment et qu&#x27;il va essayer d&#x27;utiliser cet outil. Voilà, vous pouvez voir qu&#x27;il a réussi à appeler notre outil Perplexity et maintenant il réfléchit à la manière de nous répondre. Et il vient de terminer. Vous pouvez voir que cela a pris environ deux</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow d&#x27;automatisation IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœud Perplexity configuré avec le modèle &quot;Sonar&quot; et un message défini automatiquement par le modèle.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des paramètres du nœud Perplexity pour l&#x27;outil de recherche dans le workflow d&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000533_seg13.jpg" alt="Gros plan sur le panneau de configuration d&#x27;un nœud Perplexity avec les paramètres du modèle Sonar configurés." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000533_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:33</span>
+                        <span class="caption-text">Gros plan sur le panneau de configuration d&#x27;un nœud Perplexity avec les paramètres du modèle Sonar configurés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000550_seg13.jpg" alt="Vue d&#x27;ensemble du workflow d&#x27;automatisation montrant l&#x27;agent Grok relié à un modèle xAI et à un outil Perplexity." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000550_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:50</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du workflow d&#x27;automatisation montrant l&#x27;agent Grok relié à un modèle xAI et à un outil Perplexity.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:58 - 00:06:32</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">minutes. Donc, espérons que nous avons ici des recherches assez approfondies, ce qui semble être le cas. Nous avons un historique et un développement, des fonctionnalités clés, l&#x27;état de la version et la disponibilité, des comparaisons, des défis et des critiques. Et nous avons également trois sources ici sur lesquelles nous pouvons cliquer, et nous avons une autre source juste là. Gardez à l&#x27;esprit qu&#x27;il n&#x27;y a pas eu de prompt système dans l&#x27;agent. Regardons un autre exemple où nous allons utiliser Grok4 avec notre assistant ultime pour effectuer des recherches en utilisant à la fois Tavily et Perplexity afin, encore une fois, de rechercher Grok4 et de l&#x27;envoyer par e-mail à Dexter Morgan. Il y a donc beaucoup d&#x27;éléments mobiles ici et beaucoup de choses qui doivent se produire. Et le problème auquel nous sommes confrontés ici est que nous obtenons cet échec d&#x27;analyse des arguments de l&#x27;outil.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau de bord d&#x27;agent IA (interface web)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de recherche structuré sur Grok 4 (Challenges and Criticisms, Sources and Further Reading) et panneau d&#x27;exécution affichant les entrées/sorties (sessionId, action: sendMessage, chatInput: do some research on grok 4).</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage et navigation dans les résultats d&#x27;une recherche approfondie générée par un agent d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000607_seg14.jpg" alt="Interface d&#x27;un tableau de bord d&#x27;agent IA montrant les sections de recherche sur Grok 4, avec des détails sur les défis, critiques et sources, ainsi qu&#x27;un panneau latéral affichant les données d&#x27;entrée et de sortie." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000607_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:07</span>
+                        <span class="caption-text">Interface d&#x27;un tableau de bord d&#x27;agent IA montrant les sections de recherche sur Grok 4, avec des détails sur les défis, critiques et sources, ainsi qu&#x27;un panneau latéral affichant les données d&#x27;entrée et de sortie.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:32 - 00:06:56</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">d&#x27;un message d&#x27;erreur de modèle de chat. Et si je balance ça dans ChatGPT, parce que je ne sais pas exactement ce que ça veut dire, ça nous dit en gros que le modèle d&#x27;IA, qui est Grok4, a renvoyé une réponse pour appeler l&#x27;outil qui n&#x27;était pas un JSON valide. Et ensuite le NNN, qui est en quelque sorte construit au-dessus de Langchain, n&#x27;a pas pu l&#x27;analyser et l&#x27;envoyer dans notre outil. Et le problème, je pense, est dû à la requête HTTP Tavli, parce qu&#x27;on vient de voir Grok utiliser Perplexity, où si je clique ici, vous pouvez voir qu&#x27;on envoie un corps JSON.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> ChatGPT (interface web), Interface de workflow d&#x27;automatisation d&#x27;agents IA (type n8n).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Message d&#x27;erreur : &quot;Failed to parse tool arguments from chat model response... SyntaxError: Unexpected non-whitespace character after JSON&quot;, prompt demandant d&#x27;analyser l&#x27;erreur sur Grok 4.</p>
+                        <p><strong>Action / Démonstration :</strong> Explication et analyse textuelle d&#x27;un bug de parsing JSON dans un agent IA en utilisant ChatGPT, puis visualisation du workflow associé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000638_seg15.jpg" alt="Capture d&#x27;écran de l&#x27;interface de ChatGPT affichant l&#x27;analyse d&#x27;une erreur de modèle d&#x27;IA liée à l&#x27;analyse syntaxique JSON." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000638_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:38</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface de ChatGPT affichant l&#x27;analyse d&#x27;une erreur de modèle d&#x27;IA liée à l&#x27;analyse syntaxique JSON.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000650_seg15.jpg" alt="Interface graphique d&#x27;un workflow de type agent (n8n ou similaire) montrant les connexions entre divers outils et modèles (OpenRouter Grok 4, Tavily, etc.)." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000650_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:50</span>
+                        <span class="caption-text">Interface graphique d&#x27;un workflow de type agent (n8n ou similaire) montrant les connexions entre divers outils et modèles (OpenRouter Grok 4, Tavily, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:56 - 00:07:18</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc peut-être que le modèle a des difficultés avec ça. Alors ce que j&#x27;ai pensé faire, c&#x27;est venir dans le modèle de chat juste ici et ensuite, en gros, ajouter un format de réponse, puis envoyer ceci sous forme de JSON, ce qui devrait garantir que le message que le modèle génère est un JSON valide. Donc je jette ça là-dedans et ensuite ça dit que nous devons inclure JSON dans le prompt. Alors je viens dans le prompt système de l&#x27;assistant ultime et ensuite dans la section des outils, je dis, hé, envoie du JSON aux outils.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation (type n8n) avec un panneau de configuration de modèle IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres du modèle &quot;grok-4-0709&quot;, options &quot;Add Option&quot;, et dans le volet de sortie (Output) les détails de la réponse JSON avec un &quot;finish_reason : tool_calls&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des paramètres du modèle Grok 4 et observation du résultat d&#x27;exécution dans le panneau latéral.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000702_seg16.jpg" alt="Interface d&#x27;un nœud d&#x27;automatisation (Grok 4) montrant les paramètres de configuration et la sortie de test avec une erreur de génération." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000702_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:02</span>
+                        <span class="caption-text">Interface d&#x27;un nœud d&#x27;automatisation (Grok 4) montrant les paramètres de configuration et la sortie de test avec une erreur de génération.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:18 - 00:07:53</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et maintenant, si je veux essayer d&#x27;envoyer cette requête exacte une fois de plus, nous verrons ce qui se passe. Et ce qui se passe cette fois-ci, c&#x27;est que nous n&#x27;obtenons pas d&#x27;erreur, mais il n&#x27;a toujours pas été capable d&#x27;utiliser ces outils. Donc ce que je vais faire ici, c&#x27;est qu&#x27;au lieu d&#x27;utiliser Grok, je vais simplement utiliser OpenRouter pour me connecter à Grok 4 également. Et j&#x27;aime faire cela dans les deux cas, car maintenant j&#x27;ai un seul endroit pour mes informations de facturation et un seul endroit à gérer en ce qui concerne le rechargement des crédits et la consultation de mes analyses. Et donc tout ce que vous auriez à faire ici, c&#x27;est d&#x27;aller sur openrouter.ai, vous vous inscririez, vous iriez dans les modèles et vous pouvez voir ici même que nous avons Grok 4 comme modèle. C&#x27;est aussi là que vous pouvez comprendre sa fenêtre de contexte, son prix par jeton d&#x27;entrée, de sortie, et d&#x27;autres choses de ce genre. Et ensuite</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de workflow d&#x27;automatisation et OpenRouter</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow connectés à un assistant central et liste de modèles IA (Mistral, Venice, xAI Grok) sur OpenRouter.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et configuration d&#x27;un agent IA et exploration des modèles disponibles sur OpenRouter.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000727_seg17.jpg" alt="Interface d&#x27;un workflow d&#x27;agent conversationnel montrant divers outils connectés (Email, Calendar, Tavily, Perplexity) et le panneau de chat en bas." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000727_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:27</span>
+                        <span class="caption-text">Interface d&#x27;un workflow d&#x27;agent conversationnel montrant divers outils connectés (Email, Calendar, Tavily, Perplexity) et le panneau de chat en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000744_seg17.jpg" alt="Interface web d&#x27;OpenRouter listant différents modèles de langage avec leurs caractéristiques et leur tarification." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000744_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:44</span>
+                        <span class="caption-text">Interface web d&#x27;OpenRouter listant différents modèles de langage avec leurs caractéristiques et leur tarification.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:53 - 00:08:25</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">tout ce que j&#x27;ai à faire, c&#x27;est de venir ici, d&#x27;aller dans mes clés, d&#x27;en créer une nouvelle, puis de brancher cette clé dans mon système et d&#x27;ajouter un identifiant Open Router. Et maintenant que nous avons connecté Open Router à Grok 4, je vais envoyer ce message qui dit : fais des recherches en utilisant Perplexity et Tavily sur le nouveau modèle d&#x27;IA Grok 4, puis envoie les résultats sous forme d&#x27;e-mail à Dexter Morgan. Il y a donc beaucoup de choses qui doivent se produire. Il doit faire des recherches ici, là, il doit obtenir les coordonnées de Dexter Morgan et lui envoyer la copie finale. Nous allons donc voir comment il s&#x27;en sort. Voilà, c&#x27;est fait. Maintenant, il appelle ces outils, Tavily, Perplexity, l&#x27;agent de contact, et ensuite il va procéder à l&#x27;envoi de cet e-mail.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de construction de workflows d&#x27;agents IA (type Flowise ou équivalent).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow incluant &quot;When chat message received&quot;, &quot;Ultimate Assistant&quot;, &quot;OpenRouter Grok 4&quot;, &quot;Simple Memory&quot;, &quot;Email Agent&quot;, &quot;Tavily&quot;, et un prompt de test dans le chat : &quot;Do research using Perplexity and Tavily on the new Grok 4 AI model...&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Connexion du modèle OpenRouter Grok 4 au workflow et préparation de l&#x27;envoi d&#x27;un message de test pour effectuer des recherches.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000801_seg18.jpg" alt="Interface d&#x27;un éditeur de workflow d&#x27;agent IA montrant la connexion d&#x27;OpenRouter Grok 4 à l&#x27;assistant principal avec divers outils connectés et une zone de chat en bas." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000801_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:01</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow d&#x27;agent IA montrant la connexion d&#x27;OpenRouter Grok 4 à l&#x27;assistant principal avec divers outils connectés et une zone de chat en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:25 - 00:08:44</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant vous pouvez voir que ça appelle cet agent de messagerie. Très bien, donc ça vient juste de se terminer et je vais aller dans ma boîte mail et aller dans le dossier des messages envoyés. Et vous pouvez voir que c&#x27;est l&#x27;e-mail que nous venons de recevoir qui a été envoyé à Dexter à Miami.com. Nous avons une tonne de recherches ici même de Perplexity et vous pouvez voir qu&#x27;il y a cinq sources en bas. Et ensuite nous avons aussi un bref résumé de Tavoli avec trois sources.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Gmail (interface web)</p>
+                        <p><strong>Contenu textuel & Code :</strong> E-mail intitulé &quot;Research on the New Grok 4 AI Model&quot; envoyé à dexter avec des détails sur les fonctionnalités et performances du modèle.</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation de l&#x27;e-mail envoyé dans le dossier des messages envoyés pour vérifier le résultat de l&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000830_seg19.jpg" alt="Boîte de réception Gmail montrant un e-mail envoyé avec des recherches sur le nouveau modèle IA Grok 4." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000830_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:30</span>
+                        <span class="caption-text">Boîte de réception Gmail montrant un e-mail envoyé avec des recherches sur le nouveau modèle IA Grok 4.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:44 - 00:09:03</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il est même indiqué que les résultats de Tavoli semblent se concentrer davantage sur les récentes mises à propos des versions existantes de Grok plutôt que sur Grok 4. Cette information entre donc en quelque sorte en contradiction avec celle de Perplexity, ce qui est une bonne chose que nous ayons utilisé deux sources. Mais je tiens à souligner ici que cette exécution a pris cinq minutes et qu&#x27;il a en fait fallu environ trois minutes avant même qu&#x27;il ne décide d&#x27;appeler le moindre outil pour commencer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Gmail et éditeur de workflow d&#x27;agent IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte d&#x27;un e-mail comparant les informations de Perplexity et de Tavily sur Grok 4, avec des liens vers des sources.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des résultats de recherche et des données comparatives sur Grok 4 provenant de différents outils de recherche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000848_seg20.jpg" alt="Image montrant un e-mail rédigé dans Gmail détaillant l&#x27;architecture technique, les sources et les résultats de Tavily concernant le modèle d&#x27;IA Grok 4." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000848_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:48</span>
+                        <span class="caption-text">Image montrant un e-mail rédigé dans Gmail détaillant l&#x27;architecture technique, les sources et les résultats de Tavily concernant le modèle d&#x27;IA Grok 4.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000858_seg20.jpg" alt="Image montrant un diagramme de flux d&#x27;un agent IA nommé &#x27;Ultimate Assistant&#x27; avec divers outils connectés dont Tavily et Perplexity." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000858_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:58</span>
+                        <span class="caption-text">Image montrant un diagramme de flux d&#x27;un agent IA nommé &#x27;Ultimate Assistant&#x27; avec divers outils connectés dont Tavily et Perplexity.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:03 - 00:09:22</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est vraiment intéressant parce que si je vais dans mes exécutions et que je fais défiler vers le bas, nous pouvons voir celle-ci juste ici qui a pris une minute et 40 secondes. J&#x27;ai en fait envoyé exactement la même requête juste pour tester cela, où je lui ai demandé de faire des recherches pour utiliser Perplexity et Tavily sur Grok 4, puis de l&#x27;envoyer comme e-mail à Dexter Morgan. Donc la même requête, mais celle que je viens de vous montrer en direct a pris presque trois fois plus de temps.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil d&#x27;automatisation et de gestion d&#x27;agents IA (type n8n ou plateforme similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des exécutions avec leur statut (Succeeded, Canceled, Error) et durée (ex: 1m 40.542s), et un diagramme de workflow avec des nœuds connectés à l&#x27;assistant.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole l&#x27;historique des exécutions pour analyser les performances des différents tests du workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000908_seg21.jpg" alt="Capture d&#x27;écran montrant l&#x27;historique des exécutions d&#x27;un workflow d&#x27;agent IA dans une interface web, avec un panneau latéral listant plusieurs exécutions datées du 10 juillet, et le diagramme du workflow visible au centre." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000908_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:08</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;historique des exécutions d&#x27;un workflow d&#x27;agent IA dans une interface web, avec un panneau latéral listant plusieurs exécutions datées du 10 juillet, et le diagramme du workflow visible au centre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:22 - 00:09:40</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce que cela me dit, c&#x27;est que, vous savez, Grok 4 est nouveau, tout le monde est en train de spammer les serveurs. Et donc selon l&#x27;heure de la journée et selon le nombre de requêtes que Grok 4 reçoit en ce moment, cela peut faire varier votre vitesse. Et aussi si nous venons ici et regardons le coût, vous pouvez voir que cette exécution que nous venons de faire, elle nous a coûté environ 12 cents.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation d&#x27;agents et tableau de bord OpenRouter.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme d&#x27;agent IA &quot;Ultimate Assistant&quot; avec des connexions vers Grok 4, OpenRouter, et divers agents spécialisés (Email, Calendar, etc.) ; tableau de statistiques d&#x27;utilisation des modèles d&#x27;IA avec horodatages, tokens et vitesses en tokens par seconde (tps).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et analyse des performances des exécutions d&#x27;agents IA et des vitesses de réponse du modèle Grok 4 sur OpenRouter.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000926_seg22.jpg" alt="Image montrant un tableau de bord d&#x27;agent IA avec un workflow complexe connectant divers outils et modèles (dont Grok 4)." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000926_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:26</span>
+                        <span class="caption-text">Image montrant un tableau de bord d&#x27;agent IA avec un workflow complexe connectant divers outils et modèles (dont Grok 4).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000935_seg22.jpg" alt="Image montrant le tableau de bord OpenRouter affichant l&#x27;historique des requêtes, les modèles utilisés (Grok 4), les tokens et la vitesse de traitement (tps)." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000935_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:35</span>
+                        <span class="caption-text">Image montrant le tableau de bord OpenRouter affichant l&#x27;historique des requêtes, les modèles utilisés (Grok 4), les tokens et la vitesse de traitement (tps).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:40 - 00:10:02</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est parce qu&#x27;on transmettait beaucoup de jetons, car on fait des recherches avec Perplexity et Tavoli. Donc toute cette information est renvoyée au modèle Grok pour être traitée. Ce n&#x27;est clairement pas le modèle le moins cher et vous pouvez voir qu&#x27;il n&#x27;est pas incroyablement rapide, mais j&#x27;ai vraiment aimé la façon dont il a raisonné et la façon dont il a fondamentalement structuré ses résultats. Et vous pourriez facilement traiter ces éléments différemment avec un autre modèle, puis envoyer ce résumé à Grok pour qu&#x27;il soit traité plus en profondeur.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (Interface de conception de workflows d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow &quot;Ultimate Assistant&quot; connectant un modèle Grok à divers agents et outils (Tavily, Perplexity, Email, Calendar).</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et explication d&#x27;un workflow d&#x27;agent IA complexe intégrant des recherches via Tavily et Perplexity.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000945_seg23.jpg" alt="Vue du tableau de bord n8n montrant un workflow complexe d&#x27;assistant IA avec des connexions vers Tavily et Perplexity." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000945_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:45</span>
+                        <span class="caption-text">Vue du tableau de bord n8n montrant un workflow complexe d&#x27;assistant IA avec des connexions vers Tavily et Perplexity.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000951_seg23.jpg" alt="Vue de l&#x27;éditeur de workflow n8n montrant les nœuds de l&#x27;assistant IA et ses outils connectés." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_000951_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:51</span>
+                        <span class="caption-text">Vue de l&#x27;éditeur de workflow n8n montrant les nœuds de l&#x27;assistant IA et ses outils connectés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:02 - 00:10:32</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est une façon de réduire vos coûts et d&#x27;économiser des jetons. Si vous cherchez à approfondir votre apprentissage avec NNN, à découvrir des stratégies d&#x27;ingénierie contextuelle comme celle-ci, à économiser des jetons de cette façon, alors consultez absolument ma communauté payante. Le lien pour y accéder se trouve dans la description. C&#x27;est un excellent endroit pour vous entourer de personnes partageant les mêmes idées qui utilisent NNN tous les jours. Et bien sûr, nous avons une section de cours où vous pouvez apprendre les bases ainsi que la manière d&#x27;identifier, de concevoir et de créer des automatisations qui font gagner du temps. Alors si vous avez aimé la vidéo ou si vous avez appris quelque chose de nouveau, n&#x27;hésitez pas à lui donner un j&#x27;aime. Ça m&#x27;aide vraiment beaucoup. Et comme toujours, je vous remercie d&#x27;être arrivés jusqu&#x27;à la fin de la vidéo. Je vous vois dans la prochaine. Merci à tous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de workflow visuel et plateforme communautaire Skool.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de nœuds représentant un agent IA &quot;Ultimate Assistant&quot; relié à des outils de recherche, de calcul et de messagerie.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation entre la présentation du workflow technique et la promotion de la communauté payante en ligne.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_001010_seg24.jpg" alt="Vue d&#x27;un éditeur de workflow visuel montrant un assistant IA connecté à divers outils (OpenRouter, mémoire, agents email, calendrier, etc.)." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_001010_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:10</span>
+                        <span class="caption-text">Vue d&#x27;un éditeur de workflow visuel montrant un assistant IA connecté à divers outils (OpenRouter, mémoire, agents email, calendrier, etc.).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_001017_seg24.jpg" alt="Interface de la communauté payante &quot;AI Automation Society Plus&quot; sur la plateforme Skool montrant des discussions et des ateliers." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_001017_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:17</span>
+                        <span class="caption-text">Interface de la communauté payante &quot;AI Automation Society Plus&quot; sur la plateforme Skool montrant des discussions et des ateliers.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_001025_seg24.jpg" alt="Vue de l&#x27;éditeur de workflow visuel avec l&#x27;assistant IA et ses connexions d&#x27;outils, identique à l&#x27;image 1." loading="lazy" onclick="openLightbox('../screenshots/FFH3uQDk2yU/FFH3uQDk2yU_001025_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:25</span>
+                        <span class="caption-text">Vue de l&#x27;éditeur de workflow visuel avec l&#x27;assistant IA et ses connexions d&#x27;outils, identique à l&#x27;image 1.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
