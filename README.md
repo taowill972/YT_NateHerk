@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `275 / 358` (`76.8%`)
+- **Vidéos traitées** : `276 / 358` (`77.1%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -292,6 +292,7 @@
 | 2025-08-08 | [gGCwSIlIRlY](https://www.youtube.com/watch?v=gGCwSIlIRlY) | **Build Anything with GPT-5 and n8n AI Agents** | [2025-08-08_YT-[gGCwSIlIRlY]_Build Anything with GPT-5 and n8n AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-08-08_YT-[gGCwSIlIRlY]_Build Anything with GPT-5 and n8n AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-08-08_YT-[gGCwSIlIRlY]_Build Anything with GPT-5 and n8n AI Agents_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-08-07 | [Irk4-DO5qgM](https://www.youtube.com/watch?v=Irk4-DO5qgM) | **Why 99% of AI Automations Fail in Production** | [2025-08-07_YT-[Irk4-DO5qgM]_Why 99% of AI Automations Fail in Production_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-08-07_YT-[Irk4-DO5qgM]_Why 99% of AI Automations Fail in Production_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-08-07_YT-[Irk4-DO5qgM]_Why 99% of AI Automations Fail in Production_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-08-05 | [A0OwvNOLNlw](https://www.youtube.com/watch?v=A0OwvNOLNlw) | **How to Build a WhatsApp Agent with n8n (credential tutorial)** | [2025-08-05_YT-[A0OwvNOLNlw]_How to Build a WhatsApp Agent with n8n (credential tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-08-05_YT-[A0OwvNOLNlw]_How to Build a WhatsApp Agent with n8n (credential tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-08-05_YT-[A0OwvNOLNlw]_How to Build a WhatsApp Agent with n8n (credential tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-07-31 | [qJRFu88HUio](https://www.youtube.com/watch?v=qJRFu88HUio) | **Transformez votre agent IA en assistant vocal en quelques minutes (n8n & ElevenLabs)** | [2025-07-31_YT-[qJRFu88HUio]_Transformez votre agent IA en assistant vocal en quelques minutes (n8n & ElevenL_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-07-31_YT-[qJRFu88HUio]_Transformez votre agent IA en assistant vocal en quelques minutes (n8n & ElevenL_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-07-31_YT-[qJRFu88HUio]_Transformez votre agent IA en assistant vocal en quelques minutes (n8n & ElevenL_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `89` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
