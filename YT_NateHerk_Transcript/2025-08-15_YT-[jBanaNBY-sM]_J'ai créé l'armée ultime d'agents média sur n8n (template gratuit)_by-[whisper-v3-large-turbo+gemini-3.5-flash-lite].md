@@ -1,0 +1,1142 @@
+# 🎬 I Built the Ultimate Army of Media Agents in n8n (free template)
+
+> **Chaîne** : [Nate Herk | AI Automation](https://www.youtube.com/@nateherk/featured)  
+> **Lien YouTube** : [https://www.youtube.com/watch?v=jBanaNBY-sM](https://www.youtube.com/watch?v=jBanaNBY-sM)  
+> **Date de publication** : 20250815  
+> **Durée** : 00:29:37  
+> **Identifiant vidéo** : `jBanaNBY-sM`  
+> **Transcription & Analyse** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`  
+
+---
+
+## 📌 Synthèse Exécutive & Outils
+
+### 💡 Résumé
+Dans cette vidéo intitulée **J'ai créé l'armée ultime d'agents média sur n8n (template gratuit)**, Nate Herk décortique les capacités pratiques d'automatisation et de développement propulsées par les modèles de pointe.
+
+### 🛠️ Outils, Modèles & Logiciels Présentés
+- **Opus 5.5 & Claude Code** : Modèles d'ingénierie et agents de codage autonome.
+
+### 🔑 Points Clés & Enseignements Stratégiques
+- Optimiser le niveau d'effort et le raisonnement des modèles IA pour des résultats industriels.
+- Automatiser les cycles de création logicielle de bout en bout.
+
+---
+
+## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)
+
+### ⏱️ `[00:00:00 - 00:00:19]` | Segment #01
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Today, I'm super excited to share with you guys the ultimate media agent. Not only does this agent have access to personal assistant functions like email, Google Drive, and Calendar, but it can also do so much on the creative side of things, like creating an image, editing an image, creating a video, or turning an image into video. And then finally, it can post any of the media that you create on X, TikTok, or Instagram.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Plateforme d'automatisation de type "Low-code/No-code" (probablement n8n ou similaire).
+
+**Contenu textuel & Code** : Nœuds connectés : Email Agent (Get Emails, Reply, Draft, Send), Google Drive Agent, Creative Agent (Edit Image, Create Image, Image to Video, Create Video), Posting Agent (X Post, TikTok Post).
+
+**Action / Démonstration** : Présentation visuelle de l'architecture d'un agent IA complexe capable de gérer des tâches administratives (email/drive) et créatives (image/vidéo) de manière modulaire.
+
+![Vue d'ensemble d'un workflow automatisé montrant l'agent de messagerie ("Email Agent") et ses sous-processus connectés à Gmail.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000005_seg1.jpg)
+*⏱️ 00:00:05 — Vue d'ensemble d'un workflow automatisé montrant l'agent de messagerie ("Email Agent") et ses sous-processus connectés à Gmail.*
+
+![Mise au point sur le workflow "Creative Agent" montrant les outils de génération et d'édition d'images et de vidéos intégrés au système.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000009_seg1.jpg)
+*⏱️ 00:00:09 — Mise au point sur le workflow "Creative Agent" montrant les outils de génération et d'édition d'images et de vidéos intégrés au système.*
+
+![Gros plan sur le "Creative Agent" mettant en évidence la structure des outils de création multimédia au sein de l'interface visuelle.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000014_seg1.jpg)
+*⏱️ 00:00:14 — Gros plan sur le "Creative Agent" mettant en évidence la structure des outils de création multimédia au sein de l'interface visuelle.*
+
+---
+
+### ⏱️ `[00:00:20 - 00:00:38]` | Segment #02
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And finally, something that's really important, it logs everything it does, even if there are errors, so that you can have full visibility into what your media agent is doing. As always, I'm going to give you guys this entire system for free so that you can get hooked up and start using this thing just like I am. So stick around to the end of the video and I'll show you how to set everything up. So I don't want to waste any time. Let's start seeing how this thing works.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : n8n (outil d'automatisation de workflows).
+
+**Contenu textuel & Code** : Nœuds d'automatisation, appels API vers Apify, intégrations Telegram, Google Drive, modèles GPT, et historique de chat montrant des instructions pour le montage vidéo.
+
+**Action / Démonstration** : Démonstration de la visibilité des logs d'exécution et de la structure complexe d'un système d'agents IA autonomes traitant des requêtes multimédias.
+
+![Vue rapprochée d'un workflow automatisé montrant la gestion des erreurs et le journal de bord (Update Log) pour un "Ultimate Media Agent".](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000024_seg2.jpg)
+*⏱️ 00:00:24 — Vue rapprochée d'un workflow automatisé montrant la gestion des erreurs et le journal de bord (Update Log) pour un "Ultimate Media Agent".*
+
+![Vue d'un diagramme de workflow complexe illustrant un "Social Media Agent" interagissant avec des outils de recherche (YouTube, Instagram, TikTok) et un modèle GPT.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000029_seg2.jpg)
+*⏱️ 00:00:29 — Vue d'un diagramme de workflow complexe illustrant un "Social Media Agent" interagissant avec des outils de recherche (YouTube, Instagram, TikTok) et un modèle GPT.*
+
+![Vue d'ensemble d'une interface multi-fenêtres affichant à gauche une conversation Telegram avec un assistant IA et à droite un vaste diagramme de workflow interconnecté.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000033_seg2.jpg)
+*⏱️ 00:00:33 — Vue d'ensemble d'une interface multi-fenêtres affichant à gauche une conversation Telegram avec un assistant IA et à droite un vaste diagramme de workflow interconnecté.*
+
+---
+
+### ⏱️ `[00:00:38 - 00:00:57]` | Segment #03
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Okay, so we talked to our agent through Telegram and on this left hand side, you can see I'm going to send over an image. And what the agent's going to do is first of all, process this into our Google Drive environment. And then it's going to come back and say, Hey, what do you want to call this file? That way we can keep it in your database for later. And while we're letting this spin, I'll just show you a quick sneak peek of something that it did earlier for me, this exact team of agents.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : n8n (éditeur de workflow d'automatisation) et interface de bureau Telegram.
+
+**Contenu textuel & Code** : Le workflow complexe "Ultimate Media Agent" affiche des nœuds connectés (Telegram, Google Drive, agents spécialisés comme Email, Calendar, Posting). La fenêtre Telegram montre l'envoi d'une photo d'une enceinte JBL et la réponse de l'agent demandant des précisions techniques (format de fichier, paramètres d'export).
+
+**Action / Démonstration** : Le workflow est en cours d'exécution ("Executing workflow"), illustrant le processus automatisé où l'agent traite une image reçue via Telegram pour l'enregistrer dans Google Drive avant de demander des instructions de nommage de fichier.
+
+![Une capture d'écran montrant une interface de workflow d'automatisation (n8n) superposée à une fenêtre de discussion Telegram contenant l'interaction avec l'agent.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000043_seg3.jpg)
+*⏱️ 00:00:43 — Une capture d'écran montrant une interface de workflow d'automatisation (n8n) superposée à une fenêtre de discussion Telegram contenant l'interaction avec l'agent.*
+
+---
+
+### ⏱️ `[00:00:57 - 00:01:19]` | Segment #04
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So here you can see the agent's pretty eager to help us out. It's asking us about how we want to name this and also if we want to change any sharing settings for this picture. So right now we're not going to touch the sharing settings. I'm just going to give it a name. So here you can see I just sent off this message that says to just name it speaker. What it's going to do is it's going to go to our Google Drive agent right here and that is the one that has the right tools to actually change the name.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Plateforme de développement d'agents IA (type workflow visuel/n8n ou similaire).
+
+**Contenu textuel & Code** : Chatbot affichant : "What would you like to name that photo?", avec des options de renommage et de gestion de partage. Dans la seconde image, le message utilisateur "Just name it 'Speaker'" est visible.
+
+**Action / Démonstration** : L'utilisateur interagit avec l'agent pour renommer un fichier image, déclenchant l'exécution du workflow d'automatisation.
+
+![Interface d'un agent IA affichant une conversation où l'assistant demande comment nommer une photo téléchargée et s'il faut ajuster les paramètres de partage.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000103_seg4.jpg)
+*⏱️ 00:01:03 — Interface d'un agent IA affichant une conversation où l'assistant demande comment nommer une photo téléchargée et s'il faut ajuster les paramètres de partage.*
+
+![La même interface après que l'utilisateur a envoyé le message "Just name it 'Speaker'", montrant l'exécution du workflow en cours dans le panneau de contrôle.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000113_seg4.jpg)
+*⏱️ 00:01:13 — La même interface après que l'utilisateur a envoyé le message "Just name it 'Speaker'", montrant l'exécution du workflow en cours dans le panneau de contrôle.*
+
+---
+
+### ⏱️ `[00:01:19 - 00:01:54]` | Segment #05
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> As you can see this tool right here is called change name. So we'll watch it hit the Google Drive agent and then we'll go check in our actual Google drive folder to see if it has been changed. Okay, so it just responded to us and of course it's logging all of its actions, which I'll show you guys later. But if I pull back up Telegram, it says that it renamed the file to speaker. I can click on this link right here and we should see that exact picture that I just uploaded. And you can see it exists in our folder called media. It is called speaker and it's right here. So now what I'm going to do is send off this other message that says, please edit that image, turn it into a studio looking image. It should be energetic, colorful and highlight the feeling of listening to music on a speaker, whatever that means.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Plateforme d'automatisation de workflows de type "no-code" (probablement Flowise ou outil similaire).
+
+**Contenu textuel & Code** : Chat interface : "Done — I renamed the Drive file to 'Speaker'", "File ID: 1VVPDI...", "New name: Speaker". Workflow : divers nœuds d'agents (Email, Google Drive, Creative, Posting).
+
+**Action / Démonstration** : Exécution d'un agent IA pour renommer un fichier dans Google Drive et affichage du journal de log de l'action dans le chat.
+
+![Vue d'ensemble de l'interface de gestion de workflow "Ultimate Media Agent" avec de nombreux nœuds interconnectés.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000127_seg5.jpg)
+*⏱️ 00:01:27 — Vue d'ensemble de l'interface de gestion de workflow "Ultimate Media Agent" avec de nombreux nœuds interconnectés.*
+
+![Gros plan sur une fenêtre de chat latérale affichant l'historique des interactions de l'agent confirmant le renommage d'un fichier Drive en "Speaker".](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000145_seg5.jpg)
+*⏱️ 00:01:45 — Gros plan sur une fenêtre de chat latérale affichant l'historique des interactions de l'agent confirmant le renommage d'un fichier Drive en "Speaker".*
+
+---
+
+### ⏱️ `[00:01:54 - 00:02:27]` | Segment #06
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> the media team will figure it out. So what this agent's going to do is it's using GPT-5 mini, which is its brain, to figure out which agents do I actually want to use in order to edit that image and turn it into a studio-looking sort of advertisement. And so what it's going to do is it's going to hit its creative agent right here. And this is the one that has access to that tool called edit image. And we should see it basically be able to grab that file from our Google Drive and edit it. It's also using a think tool because it has so many different actions to process that sometimes it needs to think. And if you haven't seen what this tool does, I'll link a video right up here where I cover that. As you can see, just as we predicted,
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : n8n (plateforme d'automatisation de workflows low-code).
+
+**Contenu textuel & Code** : Le diagramme présente une architecture d'agents spécialisés (Email Agent, Google Drive Agent, Creative Agent, Posting Agent, Contact Agent, etc.) reliés à des modèles LLM (GPT-4o, GPT-4o-mini) et des services tiers.
+
+**Action / Démonstration** : Le workflow est en cours d'exécution ("Executing workflow"), illustrant la logique de routage où l'agent central délègue des tâches à des sous-agents pour le traitement de médias et la gestion de contenu.
+
+![Une capture d'écran de l'interface n8n montrant un workflow complexe d'automatisation nommé "Ultimate Media Agent", avec de nombreux nœuds interconnectés.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000202_seg6.jpg)
+*⏱️ 00:02:02 — Une capture d'écran de l'interface n8n montrant un workflow complexe d'automatisation nommé "Ultimate Media Agent", avec de nombreux nœuds interconnectés.*
+
+---
+
+### ⏱️ `[00:02:27 - 00:02:49]` | Segment #07
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> the creative agent is using its edit image tool. So I'll check back in with you guys once we get that final product back. All right, look at that. The agent actually ended up creating three different images for us. So we have a couple of different styles that we can choose from, which is pretty cool. So now that it logged its actions, it said I created preview edits and save them to drive, but they're 1024 by 1024 proofs. Confirm before I render final 2048 deliverables. That's fine.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : n8n (éditeur de workflow visuel).
+
+**Contenu textuel & Code** : Nœuds d'automatisation interconnectés, incluant des agents spécialisés et des outils comme Telegram, Gmail, Google Drive, GPT-4o-mini, et des nœuds d'édition d'image.
+
+**Action / Démonstration** : Le workflow est actif ("Executing workflow"), avec une mise en évidence sur le "Creative Agent" qui traite l'outil "Edit Image".
+
+![Une vue d'ensemble d'un workflow complexe dans n8n montrant l'automatisation "Ultimate Media Agent" avec plusieurs sous-agents (Email, Google Drive, Creative, Posting) en cours d'exécution.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000233_seg7.jpg)
+*⏱️ 00:02:33 — Une vue d'ensemble d'un workflow complexe dans n8n montrant l'automatisation "Ultimate Media Agent" avec plusieurs sous-agents (Email, Google Drive, Creative, Posting) en cours d'exécution.*
+
+---
+
+### ⏱️ `[00:02:49 - 00:03:22]` | Segment #08
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So as you guys saw, it sent us three different ones. As you can see, they're pretty much all name the same thing, just Speaker Studio Vibrant. So then it asks us what we want to do next. First thing I'm going to do is just go to our media folder and make sure they're there. So we have the original source file and then we have the three edited ones right here. So here's number one, here's number two, here's number three. I think honestly number one is probably my favorite. So this is the one that we're going to use to turn it into a video. All right, so just fired off this new message where I said, actually what I want you to do is take that first preview file. So this was the one that we liked the best. And then I said, turn that into a video, create a VFX ad with
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : n8n (outil d'automatisation de workflow).
+
+**Contenu textuel & Code** : Diagramme complexe de nœuds connectés, interface de chat intégrée avec des logs de requêtes, et rendu final de l'image générée.
+
+**Action / Démonstration** : Explication du workflow de l'agent IA, visualisation du résultat (l'image générée) et envoi d'une nouvelle instruction pour créer une publicité vidéo.
+
+![Interface de workflow d'automatisation n8n affichant un agent de médias et un historique de discussion avec un assistant IA.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000258_seg8.jpg)
+*⏱️ 00:02:58 — Interface de workflow d'automatisation n8n affichant un agent de médias et un historique de discussion avec un assistant IA.*
+
+![Visualisation en plein écran d'une image générée représentant une enceinte JBL avec des effets lumineux stylisés.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000306_seg8.jpg)
+*⏱️ 00:03:06 — Visualisation en plein écran d'une image générée représentant une enceinte JBL avec des effets lumineux stylisés.*
+
+![Interface n8n montrant la suite de la conversation où l'utilisateur demande la transformation de l'image en vidéo publicitaire avec effets VFX.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000314_seg8.jpg)
+*⏱️ 00:03:14 — Interface n8n montrant la suite de la conversation où l'utilisateur demande la transformation de l'image en vidéo publicitaire avec effets VFX.*
+
+---
+
+### ⏱️ `[00:03:22 - 00:03:41]` | Segment #09
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> music and lights that sync to the beat as an advertisement for a JBL speaker. So once again, this is going to hit the creative agent. It's going to use that image to video tool. And let me check back in with you guys once that has been processed. And of course, real quick, we're using GPT one for the image generation, and we're using VO3 fast for the video generation.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Plateforme d'automatisation de workflow n8n.
+
+**Contenu textuel & Code** : Le workflow montre des nœuds interconnectés pour Telegram, Google Drive, et des agents spécialisés (Creative Agent, Posting Agent). La fenêtre de chat affiche des instructions spécifiques pour modifier une image, incluant des détails techniques sur le rendu vidéo (VFX, synchronisation musicale, balise JBL).
+
+**Action / Démonstration** : Le workflow est en cours d'exécution, comme indiqué par le bouton rouge "Executing workflow" en bas au centre, traitant la demande de création d'une publicité vidéo à partir d'une image.
+
+![Une capture d'écran montrant l'interface n8n avec un workflow complexe d'automatisation d'agent IA appelé "Ultimate Media Agent", accompagnée d'une fenêtre de chat latéral détaillant les instructions pour la création d'une publicité vidéo JBL.](../screenshots/jBanaNBY-sM/jBanaNBY-sM_000327_seg9.jpg)
+*⏱️ 00:03:27 — Une capture d'écran montrant l'interface n8n avec un workflow complexe d'automatisation d'agent IA appelé "Ultimate Media Agent", accompagnée d'une fenêtre de chat latéral détaillant les instructions pour la création d'une publicité vidéo JBL.*
+
+---
+
+### ⏱️ `[00:03:41 - 00:03:59]` | Segment #10
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Real quick, wanted to update you guys. The creative agent has full autonomy to use its tools to help us out with our media. And you can see it's going to turn that image into a video, but it also wanted to try out creating its own video with just text. So I'm not too confident how good this one will be, but we'll definitely take a look. All right, so that just finished up. I'm very, very impressed.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:03:59 - 00:04:31]` | Segment #11
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So this first one is the one that was actually the image turned into video. So let's click into this real quick. We'll hear the audio. That one's super cool. Very impressed. And now this one is just text to video. So obviously in that one, we don't get the same like JBL branding or the actual speaker, but still could be some really good B-roll.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:04:31 - 00:05:04]` | Segment #12
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And both of these were generated with VO3 fast, which is cheaper and faster than VO3. So imagine if we had these results in VO3. Also, you can customize these prompts a lot more for your use case You guys will see how I did it here and it's very very minimal So very impressive and then basically responds to us and says okay, here are the two different files we just made What do you want to do next? All right, so I'm gonna shoot off this one I'm saying to send the JBL speaker VFX video to Dexter Morgan So what's gonna have to do is find in our Google Drive the right file that we're talking about It's gonna have to go to our contact agent to find Dexter Morgan's email and then figure out if it can send it to him over email
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:05:04 - 00:05:23]` | Segment #13
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> It also may have to go make the file shareable. So it's got two options. It can share with what specific email or it can just share and make everyone a viewer of that file. So we'll see what it does. Okay, cool. So it got Dexter Morgan's email. It's searching through media right now. I'm assuming it's going to go back and either make it shareable if it's not already. And then, okay, there we go.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:05:23 - 00:05:55]` | Segment #14
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> It's sharing the file right now. And now it should kick off the actual email. All right, sweet. So that just finished up. It said done. I found his contact information, set the video to anyone with the link and sent the email. So it signed off best your name and placeholders, which I don't like, but that was my fault for not prompting it that way But either way, I'm just gonna hop into the email and let's take a look. All right So here's the email I'm sure you guys are glad that Dexter Morgan made another return Dexter at Miami calm Although if you've been watching the newer seasons, it's now Dexter at Iron Lake calm and then who knows but either way, please find the 15 second VFX ad draft for the JBL speaker here
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:05:55 - 00:06:17]` | Segment #15
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> I don't think it's 15 seconds But either way if we click on this link it should now just pop up as our video file which isn't fully processed yet, so we'd have to download it. Let me do that real quick. And when I hit download, this thing pops up and that's the exact ad that we wanted to send. So it was able to find the right one. And man, I just love how like the blue and red, they come out with music beats and it's like syncing to the audio, so cool.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:06:17 - 00:06:40]` | Segment #16
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Okay, so let's give the other agents some love. We haven't used the social media one or the posting one or the create doc tool. So what I'm gonna do is kick off this message that says, find me two high performing videos about NNN on each of these platforms, TikTok, Instagram, and YouTube. So it's gonna go down here to the social media agent and that's gonna do all of the searching. And then we will basically tell it to compile those results into a doc.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:06:40 - 00:06:59]` | Segment #17
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And then we'll come back later and have it post one of those ads on TikTok or something just to make sure that it's working. You can see it's doing search right now on all three of these simultaneously down here, YouTube, Instagram, and TikTok. These are all happening through Appify by the way, which I will show you guys like what's exactly going on. Don't forget to use the code down below if you wanna get 30% off Appify. Okay, workflow just finished up.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:06:59 - 00:07:18]` | Segment #18
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> It said, got it. I searched through these platforms and I found two high performing videos on each. So for TikTok, we have these four and then workflows are the silent killers. We have the link to the video. We have the creator. We can see different statistics about it. Same thing with the second video. We'll come down here to YouTube. We can see you need to use NN right now, free, local, private.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:07:18 - 00:07:36]` | Segment #19
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> That one's by network Chuck. We've got a URL. And then the second one is also about local setup. This one's also by network Chuck and we've got a video right there. And then for Instagram, we have our URL, our creator. We have the caption, all this kind of information. So we're able to actually search through based on, you know, a search term or a hashtag. And we can specify how many videos we want from each platform.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:07:37 - 00:07:55]` | Segment #20
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Then it said, what do you want me to do next? I'm just going to shoot this off, which says put those insights into Google Doc. We've got a tool right over here. It didn't really make sense to throw this in with a different agent. So I just gave the main agent a tool to create a doc. And that goes to a separate NNN workflow that we built out and does that whole thing. Okay, cool. So that one's finishing up right now.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:07:55 - 00:08:28]` | Segment #21
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> we should be receiving a link to the actual Google Doc it just made. So here it is. It called it NN High Performing Videos TikTok, Instagram, YouTube. Here's the link. Let me click on that real quick. And it pulls up our Google Doc right here where we can see it pretty much gave us those insights with a brief summary. And of course it titled it as well. And it should have put this document in a folder in our drive called Media Analysis, where you can see it popped up right here. Earlier I was testing this and I made a file called Brainstorm and it just says, don't forget to make your bed. All right. So I'm thinking you guys have probably seen the functionality of all of these agents. You don't need to see calendar. You've seen that before. You
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:08:28 - 00:08:53]` | Segment #22
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> don't need to see the web. You've seen that before. Let's just do a quick one with the posting agent. And what I'm going to do is tell it to just go grab that VFX of the JBL that we made and just post it to TikTok. All right. So I'm telling it to post that JBL VFX video ad on TikTok with the caption music to my ears. So it'll be interesting to see what it does here. It has memory. It has a five window context length, but we weren't most recently talking about this ad. You know, we were talking about some other stuff.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:08:53 - 00:09:12]` | Segment #23
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So it's gonna have to probably search through the actual media folder in order to pull back that ID of that file. And then once it has that ID, it can go ahead and hit the posting agent to make that post. So as you can see, it looks like it's making sure the file is actually public because in order to post it using Botato, the file's gotta be public.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:09:12 - 00:09:31]` | Segment #24
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So it's doing that. And then it's basically going to shoot it off over here and hit the TikTok post tool. All right, so it just said it posted the ad to TikTok. It gave us a submission ID and it captioned it music to my ears. Let me just hop over to TikTok real quick and make sure it's there. And as you can see, one minute ago, this just got posted and we have our ad.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:09:32 - 00:09:53]` | Segment #25
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> All right. So where to even begin? We've pretty much seen most of the agents here and I wanted to start actually breaking down how this kind of stuff works. So I'll start with the two things up top, which is the input and the output. What happens over here is we're just doing a quick switch to see what type of input it is. So if a photo exists, then we're going to go up to the photo path. And that's where we download it, put it to our drive and then set the text.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:09:54 - 00:10:13]` | Segment #26
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And if it's a regular text message that comes through, we're just going to feed it straight to the AI agent. And the reason why we have to set the text here is we have to make sure that both of the inputs equal message.txt. So that whichever way it comes, the agent will at least receive something. From there, obviously, it has its massive collection of agents and tools below it.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:10:13 - 00:10:34]` | Segment #27
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> But then what happens on this right side is it's going to clean up its intermediate steps and then log those in our tracker sheet. and then send back a message to us in Telegram. And so what that tracker sheet looks like is right here, we have this, we have timestamp, workflow, input, output, actions, tokens, and then total tokens. And let me just go all the way down to the bottom where our most recent runs would have been.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:10:34 - 00:11:06]` | Segment #28
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Okay, so here's the most recent one where I said, post my JBL VFX video ad on TikTok with the caption. Here's how it responded to us. And then we can see right here, the actions that were taken. If we clicked into here, we could see the different tools it called and the different inputs and the stuff like that. And of course we have our tokens. It shows us how many were prompt tokens completion tokens the total and also which model was used for each of these little Objects and so obviously this is gonna be really nice because you can see exactly what time different things were triggered You can see inputs and outputs and you can see You know based on these patterns of actions that are happening and you know stuff like tokens
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:11:06 - 00:11:40]` | Segment #29
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> You can make adjustments from there and if you're confused about how you actually get there in your agent You have a setting down at the bottom or an option where you can return intermediate steps And if you turn that on that's how you get this extra output on the right hand side of your agent right here Where you have this big array of intermediate steps which has all of the actions and it has stuff like that And the reason that we have both a success branch and an error branch is because we go to the agent settings and we want it to Continue using an error output on error if we didn't have it like this Basically that means if the agent failed for some reason It would just stop the whole flow and we wouldn't get a log or notification or anything like that
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:11:41 - 00:12:15]` | Segment #30
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So that's why we're able to split it up into two different branches So real quick before I show you guys some of these tools and how these sub-agents work I thought real quick would just actually read the system prompts for the main AI agent So the overview is that you are the ultimate manager agent Your job is to help the user out with the task by using your tools to delegate the task to their correct tool You yourself should not be writing emails or creating summaries. Your sole responsibility is just to call the correct tool It's got a ton of tools, right? It's got the Google Drive agent. It's got the email agent calendar contact social media creative, posting, web agent, create doc tool, and then a think tool. These
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:12:15 - 00:12:50]` | Segment #31
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> descriptions of these tools are very very high level and the reason they're so high level is because in each of the sub agents or the sub tools there's another description there where it's a little more detailed on when to use this tool. It's good to send as much information in the description over to the sub tool or sub agent because otherwise every single time your agents processing all of this so if you make this really chunky you're just gonna be using more tokens. So just something to think about. And then I have seven little key notes here that I decided to give it. I said if the user submits a photo, ask them what to call the photo then change the name. Some actions require you to look up contact information first, like these three. Images and videos are found in the database, use the Google Drive agent to get
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:12:50 - 00:13:25]` | Segment #32
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> to those. Before asking follow-up questions, use your think tool to figure out what to do next, and we've seen that it's been using the think tool a ton, which is awesome. Before posting anything, that file must be shared to anyone in Google Drive. When creating videos, don't ask how long they should be. You know, VO3 is basically just like eight seconds every time. And then always output a message back to the user, never say nothing. So as you can see that's not even too difficult or sophisticated of a system prompt. You'll receive an input, figure out which tools to use, and just use them. Couldn't be simpler. And then one other thing I will show you guys is that we're using GPT-5 mini through OpenRouter as the main model, but we also have a fallback model
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:13:25 - 00:14:01]` | Segment #33
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> where we're using GPT-5 mini as well, but we're just doing it through OpenAI rather than OpenRouter. And maybe that's not the smartest because if OpenAI goes down then both of these are screwed, but I could easily just switch this out to, you know, Anthropic or Google or something else. But if you didn't know about the fallback model, it's just a cool feature that they added in in the settings of the agent where you can enable a fallback model, like I said. All right. So the first thing that I'm going to do is talk about these custom tools that I built. So we have the edit image, the create image, the image to video and the create video. And then we have these three for posting and then we have one for creating a doc. So like I said, these are all workflows
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:14:01 - 00:14:34]` | Segment #34
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> that I built in NNN and we're just having these sub agents call on those workflows. But they're all very simple. The reason why we're going through sub workflows is because we have to handle binary data. And sometimes binary data can be really annoying to work with sending between flows. So that's why you guys may have noticed that when the tools would finish up, we would get a response in telegram before the main agent actually responded to us in telegram. And it's just because I'm sending the binary in the sub flows. So if you don't care about getting like super technical and you don't want to see what these tools are doing, then skip towards the end where I show you guys like what you need to know to set this stuff up. But I'm just going to talk about these subflows real
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:14:34 - 00:15:07]` | Segment #35
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> quick. So let's just start with the create image tool. As you can see, the trigger has to be the when executed by another workflow. And what we do in here is we give specific inputs that we need. So in this case, we need the name that the image will be called, we need the image prompt, and we need the chat ID so that we can send all of the chats back to our telegram. And we use the image name to name it in the drive and we use the prompt here. So I'm not going to dive into all these flows and how I set up these requests, but essentially we're hitting open AI to create the image. We're turning that URL into a binary file and then sending it to ourselves as well as putting
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:15:07 - 00:15:29]` | Segment #36
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> it in the Google Drive folder. And like I said, we have these inputs that we're sending over. And the way that we're able to specify how those work is in the tool. So that was the create image workflow. And if we click into this create image tool, you can see that it gives us these three things to send over. And I'm letting the AI model define what's the image name, what's the image prompt, but for the chat ID, we're referencing a variable.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:15:29 - 00:15:47]` | Segment #37
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And I'm basically just able to grab this from the telegram trigger node and pull over the chat ID that kicked off the original message. And that's really important to understand because we're doing that throughout all of these sub tools. For edit image, what we're sending over is image name, image request, chat ID, and picture ID.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:15:47 - 00:16:06]` | Segment #38
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And this is the edit image tool. It's basically identical to the create image tool except for we actually have to download that file. So we need the file ID of the original one that we want to edit because that lives in our Google Drive. And once we are able to pull that in, we can feed it into this edit image node, which is another node request to OpenAI's image generator.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:16:06 - 00:16:26]` | Segment #39
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And now we're able to actually give it the original, give it the prompts and it makes a new one. And then once again, it sends that new one to us in Telegram and also puts it in our Google Drive. Now these two get a little more complicated, but not too bad. First, let's look at the create video. What we're telling it to send over is a video prompt, chat ID, video title, and an aspect ratio.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:16:26 - 00:16:47]` | Segment #40
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And then the actual tool looks like this. It's gonna capture all those variables, feed them into FAL AI, which is where we're accessing Google VO3 fast. We set up a polling flow. So it's gonna continuously check in to make sure that the video is actually done. And once it finally is done, it's gonna move on, download that file, and then send it to us in Telegram and also put it back in our media folder drive.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:16:47 - 00:17:11]` | Segment #41
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And then the image to video tool is basically identical to the create video tool, except for we actually need that file ID to hand the original image to the video generation model, very similar to what we did earlier with the edit image tool. So you can see we pass over a file ID, a video prompt, a chat ID, and the name of the original image. And what that workflow looks like is this, it's very similar to that first one, except for we actually have to download the file first.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:17:11 - 00:17:31]` | Segment #42
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So basically we get the file ID, we share it, we download it, we get a URL for it. And then we pass that URL into file to create the video based on that original source file image. Same thing, we pull, we get it done, and then we send it to us in Telegram and we put it in our Google Drive. So I know this may seem kind of intimidating, but hopefully you can understand the patterns here.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:17:31 - 00:17:51]` | Segment #43
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Of all we're doing is we're passing over small variables between flows. And the variables now, we have everything that we need to do in this workflow. This workflow in itself is not complicated. And I think if you guys download this workflow and you dive into it, you'll see it's not complicated. I think sometimes when you think about like having to pass stuff from agent to tool, that's where it gets a little intimidating.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:17:51 - 00:18:12]` | Segment #44
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> But hopefully now you can see that's a pretty simple agent setup. And it was pretty cool that it had like full autonomy to decide which of these tools should I actually use. While I was editing this video, I realized that I didn't touch on something in as much depth as I'd like to. So real quick, just gonna come in here and explain this. So I pulled back in this execution where we had the creative agent use our image of that speaker to turn it into a video ad.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:18:12 - 00:18:32]` | Segment #45
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And then it also created its own video. But what I wanted to show you guys is that if we go into the sub execution here, what you can see is that there's no AI step in here. We're basically feeding in our prompts and everything right from that main workflow that called on it. So all the magic of the prompting is happening right here. As you can see, we basically tell this main creative agent.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:18:32 - 00:18:57]` | Segment #46
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> This is its full system prompt. Instructions. Image prompts should be detailed and stylized. Video prompts should be concise, energetic, and should be one seamless video with no cuts. Explain the sounds in the video or any dialogue. And then up here, its overview is that you're a creative agent. use your tools to take action as requested, and that you are an expert AI image video prompt generator. So this creative agent receives the request from its main agent up here.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:18:58 - 00:19:16]` | Segment #47
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And it itself sends over these really high quality prompts for image to video and for video, and then also the same thing with the images. And so the reason I wanted to bring this up is because this is GPT-5 mini that's creating these prompts over here. As you can see, It's sending over this full video prompt to the workflow.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:19:17 - 00:19:38]` | Segment #48
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And when I was brainstorming about building this system, my idea was that I was gonna go into this workflow. I was gonna have the main one send over an initial small prompt. And then I was gonna use like a prompt AI agent in this flow that would be super, super prompted on how to create like a structured JSON prompt. I'm sure you guys have seen like VO3 JSON prompting all over X, LinkedIn, stuff like that.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:19:39 - 00:20:09]` | Segment #49
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And so that's what I was gonna do. And I started off doing that. And then it just became like not very consistent and it wasn't super, super good. And it also was like very specific to one use case. And then I just basically gave the agent a little more autonomy and I was really happy with the output. So for now, it's like this. I'm happy with it. But once again, if you had a very specific use case where you would need this media agent to make certain types of content, really easy to just basically move over this trigger, put an AI agent right here and have the AI agent create a very specific prompt for you.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:20:09 - 00:20:28]` | Segment #50
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> You know, I think even if I go into the workflow history real quick, we can see that that's the route that I was taking initially earlier today. Yep, here it is. So this is the latest saved. And this was about 20 minutes before. You can see I had this prompt agent in here and I was giving it like structured JSON prompts to do. And like I said, I was just getting issues where it was like throwing in the reference image randomly.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:20:28 - 00:20:48]` | Segment #51
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And maybe I'm not the best at JSON prompting and I have some learning to do here. But it's kind of cool. And I wanted to show you guys behind the scenes that I had tried this and I ended up taking it away. and I was happier with those results. And I know that I'm not diving into all of these different prompts and all of these different agents. They're all pretty standard, but keep in mind, when you download the template, you'll be able to look at all of this and just dissect whatever you want to.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:20:48 - 00:21:10]` | Segment #52
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And then when it comes to these posting flows, these are all very, very identical. There's just one thing switched. And let me just pull up the X one to show you guys. It's super simple. What we're capturing over here is the file ID, of course, and then the text, which will be like the caption of the post. And then with those two things, we basically upload the Google Drive file, to Bloatato and then Bloatato post it to X.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:21:10 - 00:21:29]` | Segment #53
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And so all of these are the same. We have X, we have TikTok, we have Instagram. The only thing that changed is within each of these nodes. We just changed the platform that we're posting on. And so that's why I said, when you get this template and you wanna change like what you're posting to, it'd be super easy to just customize those tools for your liking. And then the final tool over here is creating a doc.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:21:29 - 00:21:49]` | Segment #54
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> What we're doing is we're sending over the title of the doc as well as the content of the doc. And if I click into this button to show you guys what this sub workflow looks like, You can see this one's very, very simple as well. We're capturing the title and the content. When we go to create the doc, we're basically just creating a document with a title. And then when we make that, it gives us a document ID. And we use that document ID right here to update it.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:21:49 - 00:22:08]` | Segment #55
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And all we do then is we pass in the actual content. So it's a two step thing. And then all I did here, and then all I did on this side is I have a variable just to show the doc ID so that we get our clickable link right away. Okay, next, let me explain what's going on down here in the social media agent. So what we're doing here is we are doing three different requests to Appify.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:22:08 - 00:22:29]` | Segment #56
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And Appify is kind of like a marketplace for different actors we can use. And actors is just a fancy word for like a scraper. So what I did is the first one I wanted to do is I knew that I wanted to scrape YouTube. So I went here and I grabbed this YouTube scraper, and then I just set up this request. So I'm not gonna dive too deep into it, but what you're gonna do is you're gonna go to Appify, create an API token.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:22:29 - 00:22:47]` | Segment #57
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> You will then come up here to authentication and create a predefined credential type. You will go to Appify API, and then just put in your API key. And this will already be completely configured for you where the AI is basically making this request to Appify and it's saying, okay, here's how many results the user wants and here's the search term that he is looking for.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:22:47 - 00:23:08]` | Segment #58
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And pretty much this exact same thing is happening within each of these two requests. The only difference is that they're all different actors. So they accept data a little bit differently, but essentially it's the same thing of search term and how many posts do you want back. And this is where you can really feel free to switch out different scrapers that you may wanna use and what exactly you're looking to do when you're using like a social media agent.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:23:08 - 00:23:27]` | Segment #59
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> But I just really wanted to show you guys how easy this can be to make these different systems of autonomous agents, give them tools based on like things that kind of make sense, different buckets. And once again, I'm using GPT-5 mini here to power this entire thing. All right, to wrap this one up here, we're gonna do a quick cost breakdown of everything that's associated with running the system.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:23:27 - 00:23:45]` | Segment #60
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And then I'm also gonna show you guys like what you need to do if you actually wanna get this set up. So first of all, if you do wanna get this set up, You're going to go to my free school community. You can also access this full guide if you go there. The free school community is linked down in the description. And once you get here, you just need to search for the title of this video, or it might be pinned or in the YouTube resources, but it will be here.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:23:45 - 00:24:06]` | Segment #61
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And once you click on that post, you'll be able to download the JSON file. In this case, it'll probably be a zip file with like eight or nine total files, but you'll download those. And then I'll show you like the full setup guide of how to get going with this. So first of all, we have the cost breakdown. Your first cost to be thinking about is your chat models, your token usage there. And so today I was using a mix of GPT-5 mini.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:24:06 - 00:24:25]` | Segment #62
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So pretty cool that the entire system, the main agent was running on 5 mini. And then for some of these sub-agents, I was using 4.1 just because I'd had them on 4.1 for so long and they worked so well. So for this video, just didn't touch them. And you can actually see here that 5 mini is cheaper on the input, but more expensive on the output. So you can do the math and kind of even that out there.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:24:25 - 00:24:45]` | Segment #63
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Then we have the pricing of the image generation and the video generation. So we were using GPT-image1 for the image generation. And so this doesn't matter as much, like in my mind, at least, this is more about like the input tokens on the prompts. I think what people are more concerned about is per image pricing. So for a low quality square image, it's going to be roughly a cent.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:24:45 - 00:25:05]` | Segment #64
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> For medium, it's roughly four cents. And for high, roughly 17 cents. And I think in this case, we were using the medium images for five cents a pop. And then we were using VO3Fast to make videos. And the pricing is a little bit different if you're doing text-to-video or image-to-video. So for text to video, for every second, you're going to be charged 25 cents, but we were doing audio on, so that would have been 40 cents.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:25:05 - 00:25:27]` | Segment #65
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And then for image to video, it's the same price for audio on per second, but if you don't do audio, it's going to be a little more expensive per second. But it also said that this is experimental pricing and could change. And then there's a couple subscriptions that you may want if you want to duplicate exactly what I have here. The first one would be Blotato, which the first plan is 29 bucks a month, but you can get 30% off for six months if you use code NATE30 at checkout.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:25:27 - 00:25:45]` | Segment #66
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And then you also have the Appify scrapers down here for different social medias. And Appify, you've got different tiers of pricing, but you can also use code 30NATEHERK for 30% off your first three months at Appify. And then down here in the web agent, we had a few APIs as well. We had Perplexity, we had Tavoli, we had OpenWeatherMap, and all of these are fairly cost efficient.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:25:45 - 00:26:07]` | Segment #67
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> All right, so now moving on to part two, the setup instructions, because I'll be honest, this is not going to be like a super simple two-minute setup. You're just going to have to do a few things, but it's not going to be too bad. And also if you hear jets in the background, they're like practicing for the air show. And yeah, there's just a bunch of jets. It's getting super loud. But either way, let's talk about setup. So when you go to my FreeSchool community and you click on the post, there's going to be a zip file right here.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:26:08 - 00:26:42]` | Segment #68
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And the zip file will have nine different workflows. It's going to first of all have the four for the creative agent down here. So it's going to have edit image, create image, image to video, and create video. And then for the posting agent, it'll have these three, X, TikTok, Instagram. And then you'll have the create doc tool, which will also be a workflow. and then you'll have this entire thing as its own workflow too. So that's going to be nine total files to download and import into NNN. But the rest of these agents will seamlessly integrate because they're already going to be baked into the main agent workflow. Luckily, we have this functionality. Otherwise, this would have been like 15 workflows to download. And so once you
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:26:42 - 00:27:15]` | Segment #69
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> have all of those downloaded, what's going to be really important is that you download them into your NNN, you name them something, and then once you name them, you're going to have to link them to each tool. So in this case, the edit image tool, I called it edit image tool, and I sync them up. You can tell because if I click on it, it's going to pull up the actual tool itself. So that's a good test. Make sure that once you connect these, if you click on this button, it'll pull up that actual tool and the workflow that you just downloaded. So like I said, you're gonna have to do that for all of these down here that are custom tools. And then after that, the last thing you'll have to configure is your own Google
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:27:15 - 00:27:35]` | Segment #70
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> environment. So keep in mind, what's happening is our creative agent is putting all of the the videos and images in a folder in my Google drive called media. So if you just create a folder in Google drive called media and you sync them up to those nodes, you'll be set. And then what's happening is once our agent creates a Google doc, it puts those in a Google drive folder called media analysis.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:27:35 - 00:27:53]` | Segment #71
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So if you sync those things up and then you come in here and you make sure that let you know the search media tool links up to your folder called media and that the search docs tool over here links up to your folder called media analysis. And then the other piece is in the actual workflows that create something. At the end, if you remember, we were uploading them back to our drive.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:27:53 - 00:28:14]` | Segment #72
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> And this is where I chose the folder called media to put them in. But when we have our Google Doc tool, which I think was this one, we can see that what it does is it just creates a doc. And this is where we actually choose to put it in the folder called media analysis. So like I said, a couple things you'll have to configure, but once you do, you're all set. And then finally, the last thing to do would be the actual Google Sheets.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:28:14 - 00:28:33]` | Segment #73
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> So we have two Google Sheets nodes up here and that's what links up to this media agent logger. And I'm going to give you guys the copy of this template and all the names will be set up. So all you have to do is come in here and just make sure that you're looking at the right document and the right sheet and you should be set. So I know there's a lot going on in this flow.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:28:33 - 00:28:52]` | Segment #74
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Try to do my best here to make that holistic. You guys will have access to this document. You'll have access to a little setup guide in here once you download this main flow. So hopefully that's all you guys need to actually get this up and running. If you're looking to take these skills further or you're really having trouble getting this thing set up and working, then definitely check out my plus community. The link for that's down in the description.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:28:52 - 00:29:16]` | Segment #75
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> We've got a great community of members who are sharing what they're doing with End&End every single day. People in here are building businesses around this End&End stuff. It's super cool to be in an environment where everyone is as obsessed with this as you are. Besides our two full courses and unlimited tech support, you're also going to get one live call a week with me. and every single month we're running hackathons with over $6,000 of prizes every single month and you can essentially get paid for building cool automations.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
+### ⏱️ `[00:29:16 - 00:29:36]` | Segment #76
+
+**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**
+> Anyways, I'd love to see you guys in this community but that is gonna do it for the video. If you enjoyed the video or you learned something new, please give it a like, it definitely helps me out a ton. And as always, I appreciate you guys making it to the end of the video even as we have jets flying through and have been making me stop recording like every 20 seconds to calm down. But either way, thanks so much guys, appreciate you and we'll see you in the next video.
+
+**👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
+**Interface & Outils** : Présentation ou face-caméra explicatif sans interface logicielle partagée.
+
+**Contenu textuel & Code** : Explications orales et mise en contexte méthodologique.
+
+**Action / Démonstration** : Explications face caméra et démonstration conceptuelle.
+
+---
+
