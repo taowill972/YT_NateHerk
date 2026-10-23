@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Sécurité des webhooks n8n : apprenez ceci avant qu’il ne soit trop tard — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Sécurité des webhooks n8n : apprenez ceci avant qu’il ne soit trop tard</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-07-18</span>
+                <span class="badge">⏱️ 00:08:31</span>
+                <span class="badge">🆔 <code>3FfCRbq3XMs</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=3FfCRbq3XMs" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Cette vidéo, présentée par la chaîne Nate Herk | AI Automation, s'attaque à un angle mort critique de l'ingénierie des flux d'automatisation : la sécurisation des points de terminaison (webhooks) n8n. Par défaut, un webhook actif est accessible publiquement, exposant l'infrastructure à des abus malveillants, des consommations excessives d'API payantes (OpenAI, OpenRouter) et des fuites de données sensibles connectées aux bases de connaissances ou CRM. L'intervenant démontre l'ampleur de la vulnérabilité en illustrant comment un appel non authentifié via Postman peut immédiatement interagir avec un agent conversationnel.<br><br>Pour parer à ces risques, la vidéo détaille l'implémentation pratique de trois méthodes d'authentification progressives au sein de n8n : l'authentification par en-tête (Header Auth), l'authentification basique (Basic Auth) et l'authentification par jeton Web JSON (JWT). À travers des démonstrations en direct couplées à l'outil Postman et à la plateforme JWT.io, Nate Herk montre non seulement comment bloquer les accès non autorisés, mais aussi comment injecter et exploiter une charge utile (payload) enrichie pour router dynamiquement les requêtes selon le profil de l'utilisateur (par exemple, distinguer un administrateur d'un utilisateur standard).<br><br>L'objectif de cette masterclass technique est d'offrir aux développeurs et aux architectes d'automatisation des clés de décision pragmatiques pour choisir le niveau de sécurité adapté à leurs agents vocaux, leurs chatbots ou leurs webhooks publics. En s'appuyant sur ces configurations, les ingénieurs peuvent prévenir efficacement les surcoûts financiers massifs, structurer les accès selon des critères d'identité précis et distribuer des jetons dotés de limites temporelles ou de privilèges contextuels.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **n8n** : Plateforme d'automatisation de flux de travail (workflow automation) open-source et low-code utilisée pour concevoir les webhooks et orchestrer les agents IA.<br>* **Postman** : Logiciel de test d'API incontournable employé pour simuler des requêtes HTTP (POST) et valider les réponses du serveur selon différents protocoles d'authentification.<br>* **JWT.io** : Outil de développement en ligne permettant de décoder, vérifier et générer des jetons web JSON (JWT) pour configurer les signatures cryptographiques et les charges utiles.<br>* **Anthropic / Claude / Opus 5.5 (Mention contextuelle)** : Écosystème de modèles de langage de pointe souvent orchestré derrière les agents IA automatisés par des webhooks.<br>* **OpenAI & OpenRouter** : Fournisseurs de grands modèles de langage (LLM) dont la surconsommation non autorisée représente le risque financier immédiat d'un webhook non protégé.<br>* **FreeSchool & Communauté Payante** : Plateformes de partage communautaire de Nate Herk hébergeant les ressources pédagogiques, les modèles de flux n8n téléchargeables et l'arbre de décision technique.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **La vulnérabilité critique des webhooks par défaut** : Tout webhook n8n configuré sans authentification (réglé sur « aucune ») expose publiquement une URL de production, permettant à n'importe quel acteur malveillant de déclencher des boucles de requêtes, de saturer les agents IA et d'engendrer des factures colossales auprès des fournisseurs de LLM.<br>* **L'élargissement de la surface d'attaque** : Au-delà du risque financier lié aux tokens d'API, un webhook non sécurisé relié à un agent doté d'outils (CRM, bases de connaissances, bases de données) compromet l'intégrité et la confidentialité des données d'entreprise.<br>* **L'obscurité du chemin ne suffit pas** : Bien qu'utiliser une URL de webhook complexe (contenant des chaînes aléatoires plutôt qu'un nom simple comme « /nate ») complique les tentatives de devinette, cela ne constitue en aucun cas une barrière de sécurité robuste face à une interception réseau.<br>* **Méthode 1 : L'authentification par en-tête (Header Auth)** : Similaire au fonctionnement des clés API classiques (type Perplexity ou OpenWeather), elle exige l'envoi d'une paire clé-valeur personnalisée (ex: clé `key`, valeur `12345`) dans les en-têtes de la requête pour valider l'accès au serveur backend.<br>* **Méthode 2 : L'authentification de base (Basic Auth)** : Repose sur un couple nom d'utilisateur et mot de passe traditionnels ; elle s'avère particulièrement pertinente pour s'interfacer rapidement avec des systèmes hérités (legacy systems) disposant déjà de ce mécanisme intégré.<br>* **Arbitrage entre En-tête et Authentification Basique** : L'authentification par en-tête offre une flexibilité et une universalité supérieures, car la quasi-totalité des clients HTTP et des scripts personnalisés permettent d'injecter facilement des en-têtes personnalisés lors des requêtes POST.<br>* **Méthode 3 : L'authentification JWT (JSON Web Token)** : Méthode la plus avancée et puissante, elle combine une signature cryptographique secrète (ex: algorithme HS256) et une charge utile (payload) intégrée pour authentifier l'appelant tout en transportant des métadonnées contextuelles.<br>* **L'enrichissement contextuel via la charge utile JWT** : L'utilisation de JWT permet de transmettre dynamiquement des informations sur l'utilisateur (nom, e-mail, statut d'administrateur, numéro de téléphone) directement dans la requête transmise au webhook.<br>* **Routage intelligent et conditionnel dans n8n** : Grâce aux données capturées dans le payload JWT (par exemple, `admin == true` ou `admin == false`), le flux n8n peut segmenter et acheminer intelligemment les utilisateurs vers des sous-agents dotés de privilèges différenciés.<br>* **Gouvernance et traçabilité des accès** : Les jetons JWT facilitent le suivi précis de la fréquence d'utilisation, des horaires de connexion et de l'identité des collaborateurs ou clients accédant aux services automatisés de l'entreprise.<br>* **Contrôle temporel des sessions** : Les jetons web JSON peuvent être configurés pour intégrer des limites d'expiration strictes (validité d'une journée, par exemple), réduisant la fenêtre de vulnérabilité en cas de compromission d'un jeton.<br>* **Accessibilité des ressources pédagogiques** : L'ensemble des modèles de flux n8n abordés dans la vidéo, accompagnés de l'arbre de décision méthodologique, sont mis à disposition de la communauté via la plateforme FreeSchool de Nate Herk pour une mise en pratique immédiate.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">n8n</span><span class="tool-tag">Postman</span><span class="tool-tag">JWT.io</span><span class="tool-tag">Anthropic / Claude / Opus 5.5 (Mention contextuelle)</span><span class="tool-tag">OpenAI &amp; OpenRouter</span><span class="tool-tag">FreeSchool &amp; Communauté Payante</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>La vulnérabilité critique des webhooks par défaut** : Tout webhook n8n configuré sans authentification (réglé sur « aucune ») expose publiquement une URL de production, permettant à n&#x27;importe quel acteur malveillant de déclencher des boucles de requêtes, de saturer les agents IA et d&#x27;engendrer des factures colossales auprès des fournisseurs de LLM.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;élargissement de la surface d&#x27;attaque** : Au-delà du risque financier lié aux tokens d&#x27;API, un webhook non sécurisé relié à un agent doté d&#x27;outils (CRM, bases de connaissances, bases de données) compromet l&#x27;intégrité et la confidentialité des données d&#x27;entreprise.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;obscurité du chemin ne suffit pas** : Bien qu&#x27;utiliser une URL de webhook complexe (contenant des chaînes aléatoires plutôt qu&#x27;un nom simple comme « /nate ») complique les tentatives de devinette, cela ne constitue en aucun cas une barrière de sécurité robuste face à une interception réseau.</span></li><li><span class="point-bullet">✦</span><span>Méthode 1 : L&#x27;authentification par en-tête (Header Auth)** : Similaire au fonctionnement des clés API classiques (type Perplexity ou OpenWeather), elle exige l&#x27;envoi d&#x27;une paire clé-valeur personnalisée (ex: clé `key`, valeur `12345`) dans les en-têtes de la requête pour valider l&#x27;accès au serveur backend.</span></li><li><span class="point-bullet">✦</span><span>Méthode 2 : L&#x27;authentification de base (Basic Auth)** : Repose sur un couple nom d&#x27;utilisateur et mot de passe traditionnels ; elle s&#x27;avère particulièrement pertinente pour s&#x27;interfacer rapidement avec des systèmes hérités (legacy systems) disposant déjà de ce mécanisme intégré.</span></li><li><span class="point-bullet">✦</span><span>Arbitrage entre En-tête et Authentification Basique** : L&#x27;authentification par en-tête offre une flexibilité et une universalité supérieures, car la quasi-totalité des clients HTTP et des scripts personnalisés permettent d&#x27;injecter facilement des en-têtes personnalisés lors des requêtes POST.</span></li><li><span class="point-bullet">✦</span><span>Méthode 3 : L&#x27;authentification JWT (JSON Web Token)** : Méthode la plus avancée et puissante, elle combine une signature cryptographique secrète (ex: algorithme HS256) et une charge utile (payload) intégrée pour authentifier l&#x27;appelant tout en transportant des métadonnées contextuelles.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;enrichissement contextuel via la charge utile JWT** : L&#x27;utilisation de JWT permet de transmettre dynamiquement des informations sur l&#x27;utilisateur (nom, e-mail, statut d&#x27;administrateur, numéro de téléphone) directement dans la requête transmise au webhook.</span></li><li><span class="point-bullet">✦</span><span>Routage intelligent et conditionnel dans n8n** : Grâce aux données capturées dans le payload JWT (par exemple, `admin == true` ou `admin == false`), le flux n8n peut segmenter et acheminer intelligemment les utilisateurs vers des sous-agents dotés de privilèges différenciés.</span></li><li><span class="point-bullet">✦</span><span>Gouvernance et traçabilité des accès** : Les jetons JWT facilitent le suivi précis de la fréquence d&#x27;utilisation, des horaires de connexion et de l&#x27;identité des collaborateurs ou clients accédant aux services automatisés de l&#x27;entreprise.</span></li><li><span class="point-bullet">✦</span><span>Contrôle temporel des sessions** : Les jetons web JSON peuvent être configurés pour intégrer des limites d&#x27;expiration strictes (validité d&#x27;une journée, par exemple), réduisant la fenêtre de vulnérabilité en cas de compromission d&#x27;un jeton.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:32</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous ne protégez pas vos webhooks, vous vous exposez au risque de vous réveiller avec une facture de 500 dollars ou de divulguer vos informations sensibles, ce genre de choses. Donc aujourd&#x27;hui, je vais vous parler des trois méthodes pour configurer l&#x27;authentification des webhooks. Ça va être super simple. Je vais vous montrer un exemple pour chacune d&#x27;entre elles et vous dire quand utiliser chacune. Bon, alors quand nous avons un webhook qui déclenche en gros notre flux de travail n8n, ce que nous avons, c&#x27;est une URL de production lorsque notre webhook est actif. Et cela signifie que n&#x27;importe qui accédant à ce point de terminaison ici peut atteindre notre flux de travail, le lancer et y effectuer des actions. Et donc évidemment, le risque immédiat est que quelqu&#x27;un puisse envoyer un message</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (Interface de workflow d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de webhook POST (https://nateherk.app.n8n.cloud/webhook/...), méthode HTTP POST, champ d&#x27;authentification réglé sur &quot;JWT Auth&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des paramètres d&#x27;authentification d&#x27;un nœud Webhook dans un workflow d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000008_seg1.jpg" alt="Interface n8n montrant un workflow de protection de webhook avec un guide de décision sur l&#x27;authentification." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000008_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:08</span>
+                        <span class="caption-text">Interface n8n montrant un workflow de protection de webhook avec un guide de décision sur l&#x27;authentification.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000024_seg1.jpg" alt="Panneau de configuration d&#x27;un nœud Webhook dans n8n avec les paramètres d&#x27;authentification JWT." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000024_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:24</span>
+                        <span class="caption-text">Panneau de configuration d&#x27;un nœud Webhook dans n8n avec les paramètres d&#x27;authentification JWT.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:32 - 00:00:57</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">votre agent un million de fois et votre agent enverrait un million de requêtes à OpenAI ou OpenRouter ou quel que soit le modèle de chat que vous utilisez et vous devriez assumer ce coût. Mais il y a aussi le risque que l&#x27;agent soit connectée à différents outils et différents systèmes qui accèdent à vos bases de données ou vos bases de connaissances ou votre CRM. Donc de toute façon, c&#x27;est pourquoi dans votre webhook, vous voulez probablement avoir un chemin assez robuste pour que ce ne soit pas juste comme Nate et que les gens puissent le deviner.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflows d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow n8n (Webhook, AI Agent, OpenRouter Chat Model, Respond to Webhook) et panneau de configuration des paramètres du Webhook.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la structure d&#x27;un agent IA dans n8n et configuration des paramètres d&#x27;un webhook d&#x27;entrée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000038_seg2.jpg" alt="Vue d&#x27;ensemble d&#x27;un workflow n8n montrant un déclencheur Webhook connecté à un nœud AI Agent, lié lui-même à un modèle OpenRouter Chat et à un nœud Respond to Webhook." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000038_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:38</span>
+                        <span class="caption-text">Vue d&#x27;ensemble d&#x27;un workflow n8n montrant un déclencheur Webhook connecté à un nœud AI Agent, lié lui-même à un modèle OpenRouter Chat et à un nœud Respond to Webhook.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000051_seg2.jpg" alt="Panneau de configuration des paramètres du nœud Webhook dans l&#x27;interface n8n, affichant l&#x27;URL de test, la méthode HTTP POST et les options d&#x27;authentification JWT." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000051_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:51</span>
+                        <span class="caption-text">Panneau de configuration des paramètres du nœud Webhook dans l&#x27;interface n8n, affichant l&#x27;URL de test, la méthode HTTP POST et les options d&#x27;authentification JWT.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:57 - 00:01:18</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais si quelqu&#x27;un réussit à intercepter votre webhook accessible publiquement, ce que vous pouvez faire, c&#x27;est que nous pouvons configurer une authentification. Et nous avons le choix entre l&#x27;authentification basique, par en-tête, ou JWT. Je vais donc vous montrer un exemple concret où je configure toutes ces différentes authentifications. Et nous parlerons du moment où vous voudriez utiliser chacune d&#x27;elles. Donc, juste pour vous montrer comment cela fonctionne initialement avec un webhook, lorsque vous le configurez par défaut, l&#x27;authentification est réglée sur aucune.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;outil d&#x27;automatisation n8n.</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL du webhook de test, méthode HTTP (POST), chemin et menu déroulant des options d&#x27;authentification.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur sélectionne l&#x27;option &quot;JWT Auth&quot; dans le menu déroulant des paramètres d&#x27;authentification du webhook.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000102_seg3.jpg" alt="Panneau de configuration d&#x27;un nœud Webhook dans n8n, montrant le menu déroulant des options d&#x27;authentification (Basic Auth, Header Auth, JWT Auth, None)." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000102_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:02</span>
+                        <span class="caption-text">Panneau de configuration d&#x27;un nœud Webhook dans n8n, montrant le menu déroulant des options d&#x27;authentification (Basic Auth, Header Auth, JWT Auth, None).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:18 - 00:01:40</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ce qui se passe, c&#x27;est que je vais utiliser cette URL de test. Nous allons faire en sorte que notre flux de travail n8n écoute si quelqu&#x27;un accède à cette adresse webhook. Et je peux aller sur Postman, qui nous permet simplement d&#x27;envoyer des requêtes. Je vais en ajouter une nouvelle. Nous allons envoyer une requête POST à l&#x27;URL de mon webhook. Et ensuite, je vais juste envoyer très rapidement un message dans le corps. Donc la clé sera « message » et le corps sera « bonjour ».</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web n8n et application Postman</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow n8n (Webhook, AI Agent, OpenRouter Chat Model, Respond to Webhook) et interface de requête HTTP Postman (méthode GET, champ d&#x27;URL, paramètres, en-têtes)</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et écoute d&#x27;un webhook dans n8n, puis création d&#x27;une nouvelle requête dans Postman pour tester l&#x27;appel du webhook.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000124_seg4.jpg" alt="Vue du flux de travail n8n montrant un déclencheur Webhook connecté à un nœud AI Agent et à un nœud Respond to Webhook, en attente d&#x27;un appel de test." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000124_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:24</span>
+                        <span class="caption-text">Vue du flux de travail n8n montrant un déclencheur Webhook connecté à un nœud AI Agent et à un nœud Respond to Webhook, en attente d&#x27;un appel de test.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000129_seg4.jpg" alt="Interface de l&#x27;application Postman montrant une nouvelle requête GET sans titre prête à recevoir une URL de test." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000129_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:29</span>
+                        <span class="caption-text">Interface de l&#x27;application Postman montrant une nouvelle requête GET sans titre prête à recevoir une URL de test.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:40 - 00:01:59</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, si j&#x27;envoie ceci à NNN, vous pouvez voir que ça va le récupérer. L&#x27;agent va utiliser notre argent pour le traiter, puis répondre à la requête Postman, qui dit : bonjour, comment puis-je vous aider aujourd&#x27;hui ? Et donc, le fait est que n&#x27;importe qui ayant ce webhook, si le flux de travail est actif, pourrait fondamentalement parler à mon agent. Donc, la première méthode dont nous allons parler consiste à utiliser une authentification par en-tête.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n, Postman</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL webhook n8n, requête POST avec corps de message &quot;hello&quot;, réponse JSON contenant &quot;output&quot;: &quot;Hello! How can I assist you today?&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Test d&#x27;une requête HTTP POST via Postman pour déclencher un agent IA configuré dans un workflow n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000145_seg5.jpg" alt="Vue d&#x27;un workflow n8n montrant les nœuds Webhook, AI Agent et Respond to Webhook, avec un panneau textuel explicatif sur l&#x27;authentification." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000145_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:45</span>
+                        <span class="caption-text">Vue d&#x27;un workflow n8n montrant les nœuds Webhook, AI Agent et Respond to Webhook, avec un panneau textuel explicatif sur l&#x27;authentification.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000150_seg5.jpg" alt="Interface de Postman montrant une requête POST envoyée vers une URL de webhook n8n avec la réponse JSON reçue (« Hello! How can I assist you today? »)." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000150_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:50</span>
+                        <span class="caption-text">Interface de Postman montrant une requête POST envoyée vers une URL de webhook n8n avec la réponse JSON reçue (« Hello! How can I assist you today? »).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:59 - 00:02:18</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc tout ce que je vais faire, c&#x27;est venir dans le webhook ici. Je vais choisir l&#x27;authentification par en-tête, et je vais en créer une nouvelle. Et la façon la plus simple de voir les choses, c&#x27;est de dire que vous utilisez une API comme Perplexity, OpenWeather, ou peu importe ce que vous utilisez. En général, vous devez envoyer une sorte de clé API ou de mot de passe, et c&#x27;est cela qui vous authentifie réellement pour utiliser leur serveur.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (interface d&#x27;automatisation de workflows)</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de webhook de test, méthode POST, champ d&#x27;authentification défini sur Header Auth, et volet de résultats (Output) listant les en-têtes HTTP reçus (host, user-agent, content-type, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection et configuration des paramètres d&#x27;authentification par en-tête pour le nœud Webhook.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000204_seg6.jpg" alt="Configuration d&#x27;un nœud Webhook dans l&#x27;interface de n8n avec les paramètres de la méthode HTTP (POST), l&#x27;authentification réglée sur Header Auth et le volet de sortie affichant les en-têtes de test reçus." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000204_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:04</span>
+                        <span class="caption-text">Configuration d&#x27;un nœud Webhook dans l&#x27;interface de n8n avec les paramètres de la méthode HTTP (POST), l&#x27;authentification réglée sur Header Auth et le volet de sortie affichant les en-têtes de test reçus.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:18 - 00:02:37</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc dans ce cas, faites simplement semblant d&#x27;être le serveur. Nous configurons un serveur avec des informations de backend auxquelles l&#x27;utilisateur souhaite accéder. Et pour que l&#x27;utilisateur y accède, il doit disposer de nos informations d&#x27;authentification d&#x27;en-tête. Je vais donc créer une nouvelle authentification d&#x27;en-tête. Le nom, je vais juste mettre &quot;key&quot;. Et pour la valeur, je mets juste &quot;1, 2, 3, 4, 5&quot;. Je vais enregistrer cela.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web n8n (outil d&#x27;automatisation de workflows).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres du webhook, en-têtes HTTP (headers), champs de configuration d&#x27;authentification par en-tête (Name et Value).</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration de l&#x27;authentification par en-tête (Header Auth) sur un nœud Webhook dans n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000223_seg7.jpg" alt="Vue globale du workflow n8n avec un nœud Webhook et un guide de documentation textuel sur l&#x27;authentification." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000223_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:23</span>
+                        <span class="caption-text">Vue globale du workflow n8n avec un nœud Webhook et un guide de documentation textuel sur l&#x27;authentification.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000228_seg7.jpg" alt="Panneau de configuration du nœud Webhook dans n8n, montrant les paramètres de méthode HTTP et la sélection de l&#x27;authentification par en-tête (Header Auth)." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000228_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:28</span>
+                        <span class="caption-text">Panneau de configuration du nœud Webhook dans n8n, montrant les paramètres de méthode HTTP et la sélection de l&#x27;authentification par en-tête (Header Auth).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000233_seg7.jpg" alt="Fenêtre modale de création de compte &quot;Header Auth&quot; dans n8n avec les champs pour saisir le nom (clé) et la valeur des en-têtes d&#x27;authentification." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000233_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:33</span>
+                        <span class="caption-text">Fenêtre modale de création de compte &quot;Header Auth&quot; dans n8n avec les champs pour saisir le nom (clé) et la valeur des en-têtes d&#x27;authentification.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:37 - 00:02:57</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et maintenant, pour que quelqu&#x27;un puisse accéder à notre webhook, il devrait saisir cette authentification par en-tête exacte. Notre flux de travail est donc maintenant à notre écoute. Et je vais continuer et simplement essayer d&#x27;envoyer cette requête sans authentification par en-tête. Et il est indiqué que les données d&#x27;autorisation sont erronées. Mais si je vais dans la section des en-têtes juste ici et que nous en ajoutons un nouveau où je saisis la clé, et je saisis un, deux, trois, quatre, cinq.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow) et Postman (client API)</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de webhook n8n, corps de requête POST avec la clé &#x27;message&#x27; et la valeur &#x27;hello&#x27;, et réponse HTTP &#x27;403 Forbidden&#x27; avec le message &#x27;Authorization data is wrong!&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Test d&#x27;envoi d&#x27;une requête POST sans en-tête d&#x27;authentification valide vers le webhook n8n depuis Postman, entraînant un refus d&#x27;accès.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000242_seg8.jpg" alt="Interface n8n montrant un workflow de webhook en attente d&#x27;un événement déclencheur et un panneau d&#x27;aide explicatif sur l&#x27;authentification." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000242_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:42</span>
+                        <span class="caption-text">Interface n8n montrant un workflow de webhook en attente d&#x27;un événement déclencheur et un panneau d&#x27;aide explicatif sur l&#x27;authentification.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000247_seg8.jpg" alt="Interface de Postman affichant une requête POST vers le webhook n8n avec un corps de message et une réponse &#x27;403 Forbidden&#x27; indiquant une erreur d&#x27;authentification." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000247_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:47</span>
+                        <span class="caption-text">Interface de Postman affichant une requête POST vers le webhook n8n avec un corps de message et une réponse &#x27;403 Forbidden&#x27; indiquant une erreur d&#x27;authentification.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:57 - 00:03:19</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, si j&#x27;envoie ceci, nous pouvons voir que notre flux de travail NNN a récupéré cette information, il l&#x27;a traitée, et il nous a renvoyé la réponse, bonjour, comment puis-je vous aider aujourd&#x27;hui ? C&#x27;est donc la première méthode, qui est l&#x27;authentification par en-tête, très simple à configurer, et nous avons fondamentalement une clé et une valeur. Maintenant, parlons de la méthode suivante, qui va être l&#x27;authentification de base. L&#x27;authentification de base est donc très similaire car elle ressemble toujours à une paire clé-valeur, mais il s&#x27;agit plutôt d&#x27;un nom d&#x27;utilisateur et d&#x27;un mot de passe.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Postman et n8n (Interface d&#x27;automatisation de flux de travail)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Requête HTTP POST avec en-tête d&#x27;authentification (clé: 12345) et réponse JSON {&quot;output&quot;: &quot;Hello! How can I assist you today?&quot;}.</p>
+                        <p><strong>Action / Démonstration :</strong> Envoi d&#x27;une requête API testée dans Postman pour valider l&#x27;authentification par en-tête vers le flux de travail n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000302_seg9.jpg" alt="Interface Postman montrant une requête POST vers n8n avec la réponse JSON réussie (200 OK) contenant le message &quot;Hello! How can I assist you today?&quot;." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000302_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:02</span>
+                        <span class="caption-text">Interface Postman montrant une requête POST vers n8n avec la réponse JSON réussie (200 OK) contenant le message &quot;Hello! How can I assist you today?&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000314_seg9.jpg" alt="Interface n8n affichant le workflow de protection de webhook avec les nœuds Webhook, AI Agent et Respond to Webhook." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000314_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:14</span>
+                        <span class="caption-text">Interface n8n affichant le workflow de protection de webhook avec les nœuds Webhook, AI Agent et Respond to Webhook.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:19 - 00:03:40</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, si je vais dans l&#x27;authentification de base et que nous en créons une nouvelle, vous pouvez voir qu&#x27;on nous invite à configurer un nom d&#x27;utilisateur et un mot de passe. Et donc, je mets « test » comme utilisateur, je mets « 12345 » encore une fois comme mot de passe, et nous allons enregistrer ceci. Et maintenant, si notre flux de travail est en train d&#x27;écouter pour nous et que nous allons dans Postman, et que nous n&#x27;envoyons aucun en-tête ni aucune authentification de base, encore une fois, il va dire que l&#x27;autorisation est requise.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (interface web) et Postman</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champs de configuration d&#x27;authentification Basic Auth (Username/Password) et requête HTTP POST avec réponse JSON.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et enregistrement des identifiants d&#x27;authentification de base dans n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000324_seg10.jpg" alt="Interface n8n montrant la fenêtre modale de configuration des identifiants d&#x27;authentification de base (Basic Auth) avec les champs &#x27;User&#x27; et &#x27;Password&#x27;." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000324_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:24</span>
+                        <span class="caption-text">Interface n8n montrant la fenêtre modale de configuration des identifiants d&#x27;authentification de base (Basic Auth) avec les champs &#x27;User&#x27; et &#x27;Password&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:40 - 00:04:04</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous irions dans l&#x27;autorisation, nous choisirions un type d&#x27;authentification, ce sera basique, et ensuite nous entrons notre nom d&#x27;utilisateur et notre mot de passe. Et maintenant que j&#x27;ai entré cela, je peux procéder à l&#x27;envoi de cette requête, et elle va la récupérer, la traiter, et nous allons obtenir la réponse ici, qui est, bonjour, comment puis-je vous aider aujourd&#x27;hui ? Donc la principale différence entre une authentification par en-tête et une authentification basique est simplement que certaines plates-formes, certains systèmes hérités ont fondamentalement déjà une authentification basique intégrée.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Postman et n8n</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de webhook n8n, configuration d&#x27;authentification basique et schéma de workflow avec agent IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des paramètres d&#x27;authentification HTTP basique pour tester l&#x27;envoi d&#x27;une requête vers le webhook.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000346_seg11.jpg" alt="Interface Postman montrant la configuration de l&#x27;authentification basique (Basic Auth) avec les champs nom d&#x27;utilisateur et mot de passe." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000346_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:46</span>
+                        <span class="caption-text">Interface Postman montrant la configuration de l&#x27;authentification basique (Basic Auth) avec les champs nom d&#x27;utilisateur et mot de passe.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000358_seg11.jpg" alt="Interface n8n montrant un workflow de protection de webhook avec un guide textuel sur les différents types d&#x27;authentification." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000358_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:58</span>
+                        <span class="caption-text">Interface n8n montrant un workflow de protection de webhook avec un guide textuel sur les différents types d&#x27;authentification.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:04 - 00:04:28</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il est donc beaucoup plus facile de configurer cela et d&#x27;envoyer des données à votre webhook. Mais les authentifications par en-tête sont un peu plus universelles et personnalisables, car vous pouvez presque toujours configurer des en-têtes à envoyer lorsque vous effectuez une requête. Mais encore une fois, j&#x27;ai comme un petit arbre de décision ici pour que vous puissiez déterminer quel type de méthode d&#x27;authentification vous devez utiliser. Et enfin, la dernière méthode, qui peut sembler un peu plus complexe, mais que nous allons rendre vraiment simple, est l&#x27;authentification par jeton JWT ou jeton web JSON.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (Interface web d&#x27;automatisation de workflows)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un panneau textuel &quot;Which Auth Do I Use?&quot; avec des questions/réponses sur les méthodes d&#x27;authentification (Basic Auth, Header Auth, JWT) et des exemples concrets, ainsi qu&#x27;un diagramme de workflow intégrant un agent IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les différentes méthodes d&#x27;authentification pour les webhooks en s&#x27;appuyant sur le guide affiché à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000410_seg12.jpg" alt="Interface d&#x27;un éditeur de workflow avec un panneau explicatif sur l&#x27;authentification des webhooks à gauche et un schéma de nœuds n8n à droite (Webhook, AI Agent, OpenRouter Chat Model, Respond to Webhook)." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000410_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:10</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow avec un panneau explicatif sur l&#x27;authentification des webhooks à gauche et un schéma de nœuds n8n à droite (Webhook, AI Agent, OpenRouter Chat Model, Respond to Webhook).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:28 - 00:04:47</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ce qui est génial avec les jetons web JSON, c&#x27;est que ça vous permet de capturer une charge utile, donc vous pouvez aussi voir qui y accède, quel est leur email, est-ce qu&#x27;ils sont admin, et ensuite, sur la base de toutes ces informations, vous pouvez leur donner accès à différentes choses. Vous pouvez aussi suivre les sessions, donc vous pouvez voir combien de fois quelqu&#x27;un accède à votre serveur backend ou peu importe ce que c&#x27;est. Laissez-moi donc vous montrer comment configurer ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds connectés : Webhook, AI Agent (relié à un modèle OpenRouter Chat Model), et Respond to Webhook. Une section textuelle sur la gauche pose des questions décisionnelles sur l&#x27;authentification (&quot;Which Auth Do I Use?&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication d&#x27;un workflow n8n impliquant la protection par webhook et l&#x27;utilisation potentielle de jetons JWT.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000433_seg13.jpg" alt="Un diagramme de workflow n8n intitulé &quot;Webhook Protection&quot; s&#x27;affiche à l&#x27;écran, accompagné d&#x27;une note textuelle détaillant les méthodes d&#x27;authentification (Basic Auth, Header Auth, JWT) et d&#x27;un aperçu vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000433_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:33</span>
+                        <span class="caption-text">Un diagramme de workflow n8n intitulé &quot;Webhook Protection&quot; s&#x27;affiche à l&#x27;écran, accompagné d&#x27;une note textuelle détaillant les méthodes d&#x27;authentification (Basic Auth, Header Auth, JWT) et d&#x27;un aperçu vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:47 - 00:05:05</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Comme je le disais, c&#x27;est un peu plus complexe que le simple en-tête. Et donc je suis sur JWT.io, qui nous permet simplement de créer ces jetons web JSON. Donc ce qui se passe ici, c&#x27;est qu&#x27;on lui indique l&#x27;algorithme et le type. Ne vous préoccupez donc pas vraiment de ça. Nous créons une charge utile à envoyer. Donc à chaque fois que quelqu&#x27;un accède à notre webhook, nous verrons aussi son nom, s&#x27;il est administrateur ou non.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site JWT.io (JWT Debugger)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un éditeur JWT contenant trois sections à gauche (Header avec {&quot;alg&quot;: &quot;HS256&quot;, &quot;typ&quot;: &quot;JWT&quot;}, Payload avec des données utilisateur, et Secret) et le jeton encodé généré à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la structure d&#x27;un jeton JWT en montrant l&#x27;en-tête (header), la charge utile (payload) et la signature sur l&#x27;outil en ligne JWT.io.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000451_seg14.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface du site web JWT.io pour la création et le décodage de jetons Web JSON, avec le présentateur visible en incrustation dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000451_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:51</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface du site web JWT.io pour la création et le décodage de jetons Web JSON, avec le présentateur visible en incrustation dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:05 - 00:05:25</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pourrions aussi mettre par exemple un e-mail, un numéro de téléphone, tout ce que nous voulons dans cette charge utile. Et ensuite, nous créons fondamentalement ce secret. Et c&#x27;est un peu comme une signature numérique qui indique que cette personne a bien accès à notre webhook. Et une fois que nous l&#x27;avons inséré, nous obtenons un jeton web JSON qui comporte différents éléments et qui est essentiellement encodé pour dire qui y accède et pour envoyer la bonne charge utile.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de JWT Debugger (jwt.io)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Blocs de configuration JSON pour le header (HS256, JWT), le payload (sub, name, admin, iat), et la chaîne secrète de signature (&quot;a-string-secret-at-least-256-bits-long&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la structure d&#x27;un JWT en montrant les différentes sections (en-tête, charge utile, secret de signature).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000510_seg15.jpg" alt="Interface web du débogueur/encodeur JWT montrant les sections Header, Payload, Sign JWT (Secret) et le token JSON généré sur la droite." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000510_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:10</span>
+                        <span class="caption-text">Interface web du débogueur/encodeur JWT montrant les sections Header, Payload, Sign JWT (Secret) et le token JSON généré sur la droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:25 - 00:05:45</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, pour configurer cela dans NNN, ce que je vais faire, c&#x27;est que je vais copier ce secret, notre signature ici en bas. Nous allons aller dans le webhook et nous allons choisir l&#x27;authentification JWT. Maintenant, quand je vais en créer une nouvelle, vous pouvez voir que nous avons besoin d&#x27;un type de clé et d&#x27;un algorithme. Donc, juste ici, nous allons le garder comme phrase secrète en HS256, ce qui est en quelque sorte la méthode la plus courante.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Débogueur JWT en ligne et interface de l&#x27;outil d&#x27;automatisation n8n.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de configuration d&#x27;un token JWT (algorithme HS256, secret, payload) et paramètres du webhook n8n.</p>
+                        <p><strong>Action / Démonstration :</strong> Copie du secret JWT et configuration de l&#x27;authentification JWT sur le nœud webhook dans n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000530_seg16.jpg" alt="Interface web d&#x27;un débugger JWT affichant l&#x27;en-tête, le payload et le secret de signature." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000530_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:30</span>
+                        <span class="caption-text">Interface web d&#x27;un débugger JWT affichant l&#x27;en-tête, le payload et le secret de signature.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000535_seg16.jpg" alt="Interface n8n montrant la configuration d&#x27;un nœud Webhook avec l&#x27;authentification réglée sur JWT Auth." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000535_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:35</span>
+                        <span class="caption-text">Interface n8n montrant la configuration d&#x27;un nœud Webhook avec l&#x27;authentification réglée sur JWT Auth.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000540_seg16.jpg" alt="Fenêtre modale de configuration des identifiants JWT Auth dans n8n, montrant les champs Key Type, Secret et Algorithm." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000540_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:40</span>
+                        <span class="caption-text">Fenêtre modale de configuration des identifiants JWT Auth dans n8n, montrant les champs Key Type, Secret et Algorithm.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:45 - 00:06:10</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez également voir ici que nous avons l&#x27;algorithme HS256. Et donc rappelez-vous que j&#x27;ai copié cette clé ici en bas. C&#x27;est ce que nous allons mettre ici comme secret. Et maintenant que nous avons configuré ce secret, je peux cliquer sur enregistrer et maintenant nous avons notre authentification JWT configurée. Donc si nous avons le flux de travail qui écoute à nouveau pour nous et que je retourne dans JWT.io, ce serait mon jeton Web, qui est unique pour moi, Nate, un administrateur.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de configuration d&#x27;authentification et outil de débogage JWT (jwt.io).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration du JWT Auth (Key Type: Passphrase, Secret, Algorithm: HS256) et structure JSON du token (Header, Payload avec données utilisateur, Secret et JWT généré).
+[DESC_IMAGE_1] Configuration des paramètres d&#x27;authentification JWT (algorithme HS256 et secret).
+[DESC_IMAGE_2] Affichage d&#x27;un débuggeur/encodeur JWT montrant la structure d&#x27;un jeton avec l&#x27;algorithme HS256.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000551_seg17.jpg" alt="Fenêtre de configuration d&#x27;authentification JWT affichant les champs Key Type, Secret et Algorithm réglé sur HS256, avec le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000551_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:51</span>
+                        <span class="caption-text">Fenêtre de configuration d&#x27;authentification JWT affichant les champs Key Type, Secret et Algorithm réglé sur HS256, avec le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000604_seg17.jpg" alt="Interface d&#x27;un outil de débogage et d&#x27;encodage JWT (jwt.io) montrant le Header (algorithme HS256), le Payload, la clé secrète et le jeton JSON Web Token généré à droite." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000604_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:04</span>
+                        <span class="caption-text">Interface d&#x27;un outil de débogage et d&#x27;encodage JWT (jwt.io) montrant le Header (algorithme HS256), le Payload, la clé secrète et le jeton JSON Web Token généré à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:10 - 00:06:33</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais copier ceci juste ici. Je vais retourner dans Postman. Nous allons changer l&#x27;authentification de base et nous allons en fait utiliser un jeton du porteur plutôt qu&#x27;un porteur JWT, car cela nous permet de simplement insérer un jeton complet, ce qui est exactement ce que je viens de copier dans JWT.io. Donc maintenant, si j&#x27;envoie ceci à NNN, cela va le capturer et le traiter, et nous renvoyer une réponse, qui est encore une fois : bonjour, comment puis-je vous aider aujourd&#x27;hui ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Postman et l&#x27;interface n8n</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de webhook n8n, options de configuration d&#x27;authentification (Basic Auth, Bearer Token, JWT Bearer), et diagramme de workflow d&#x27;automatisation.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection du type d&#x27;authentification Bearer Token dans Postman et visualisation du workflow dans n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000616_seg18.jpg" alt="L&#x27;interface de Postman montrant la sélection du type d&#x27;authentification pour une requête HTTP POST vers un webhook n8n." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000616_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:16</span>
+                        <span class="caption-text">L&#x27;interface de Postman montrant la sélection du type d&#x27;authentification pour une requête HTTP POST vers un webhook n8n.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000627_seg18.jpg" alt="L&#x27;éditeur de workflow n8n montrant un schéma avec un Webhook, un Agent IA et un nœud OpenRouter Chat Model." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000627_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:27</span>
+                        <span class="caption-text">L&#x27;éditeur de workflow n8n montrant un schéma avec un Webhook, un Agent IA et un nœud OpenRouter Chat Model.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:33 - 00:06:55</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais ce qui est génial avec ça, c&#x27;est que si nous allons à la réponse du webhook réel qui a été capturée et que nous faisons défiler tout en bas vers la droite, nous pouvons voir que nous avons capturé cette charge utile JWT. Et c&#x27;est là que nous pouvons voir les informations sur qui a réellement fait cette requête. Donc ce que nous pourrions faire avec ça, c&#x27;est en gros dire, d&#x27;accord, si admin est égal à vrai, je vais l&#x27;envoyer ici en haut à cet agent qui a un accès administrateur.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (Interface web de gestion de workflows)</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL du webhook POST, méthode HTTP POST, authentification JWT, et en-têtes HTTP (headers) affichant un jeton d&#x27;authentification (Bearer token).</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation des données de sortie et de la charge utile JWT capturée par le nœud webhook dans n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000639_seg19.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface du nœud Webhook dans n8n avec les paramètres de configuration à gauche et le panneau des données de sortie (Output) affichant les en-têtes de la requête, notamment le jeton d&#x27;autorisation JWT." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000639_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:39</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface du nœud Webhook dans n8n avec les paramètres de configuration à gauche et le panneau des données de sortie (Output) affichant les en-têtes de la requête, notamment le jeton d&#x27;autorisation JWT.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:55 - 00:07:17</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais si admin est égal à faux, ils vont descendre ici vers cet agent qui n&#x27;a pas d&#x27;accès administrateur. Vous pourriez aussi commencer à voir, vous savez, Lequel de mes employés accède à ce service et combien de fois y accèdent-ils ? À quelles heures y accèdent-ils ? Vous pouvez les rechercher dans votre système en vous basant sur leur adresse e-mail. Et ensuite, vous pouvez voir à quoi ils devraient réellement avoir accès et les acheminer vers le bon agent. Il y a aussi des choses plus complexes que vous pouvez faire, comme vous pouvez configurer leur jeton pour qu&#x27;il ne fonctionne que pendant un jour, ou vous pouvez y mettre une sorte de limite de temps.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;outil d&#x27;automatisation n8n.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un schéma logique avec les nœuds Webhook, AI Agent, OpenRouter Chat Model et Respond to Webhook.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique le fonctionnement du workflow d&#x27;automatisation basé sur des conditions d&#x27;authentification.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000701_seg20.jpg" alt="Un diagramme de workflow sur n8n montrant un Webhook connectant un agent IA (AI Agent) et un modèle OpenRouter Chat Model." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000701_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:01</span>
+                        <span class="caption-text">Un diagramme de workflow sur n8n montrant un Webhook connectant un agent IA (AI Agent) et un modèle OpenRouter Chat Model.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:17 - 00:07:38</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je ne vais pas vraiment entrer dans les détails de tout ça pour l&#x27;instant, mais je voulais vraiment vous sensibiliser à cela au moment où vous configurez, vous savez, vos agents vocaux, vos automatisations de messages directs ou peu importe ce que c&#x27;est, où vous avez un webhook auquel le public peut accéder. Et vous voulez vous assurer qu&#x27;ils n&#x27;en abusent pas. Et comme toujours, si vous voulez télécharger ce modèle, juste pour pouvoir l&#x27;essayer et examiner cet arbre de décision, tout ce que vous avez à faire est d&#x27;aller dans ma communauté FreeSchool.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de workflow d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : Webhook, AI Agent, OpenRouter Chat Model, Respond to Webhook. Texte explicatif sur l&#x27;authentification API (Basic Auth, Header Auth, JWT).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du schéma de workflow n8n intégrant un webhook public et un agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000722_seg21.jpg" alt="Interface d&#x27;un éditeur de workflow montrant un diagramme avec un nœud Webhook relié à un agent IA et une réponse Webhook, avec un panneau d&#x27;aide explicatif sur l&#x27;authentification." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000722_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:22</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow montrant un diagramme avec un nœud Webhook relié à un agent IA et une réponse Webhook, avec un panneau d&#x27;aide explicatif sur l&#x27;authentification.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:38 - 00:07:59</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le lien pour cela se trouvera dans la description. Une fois sur place, vous chercherez ici le titre de cette vidéo, ou vous pouvez cliquer sur les ressources YouTube et faire défiler jusqu&#x27;à ce que vous le trouviez. Disons que c&#x27;est la publication associée à cette vidéo. Vous pourrez cliquer dessus. Vous verrez la vidéo YouTube juste ici. Et puis vous aurez aussi le fichier juste ici à télécharger. Et si vous souhaitez explorer des sujets plus complexes comme celui-ci, ou si vous êtes débutant et que vous cherchez des conseils structurés, alors consultez absolument ma communauté payante.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme de communauté en ligne (type Skool)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publications sur la communauté, liens vers les ressources YouTube, fichiers de workflow JSON, commentaires d&#x27;utilisateurs.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et clic sur une publication spécifique pour accéder aux ressources associées (vidéo et fichier JSON).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000743_seg22.jpg" alt="Vue d&#x27;ensemble de la plateforme de communauté AI Automation Society montrant les différents salons de discussion et publications." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000743_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:43</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de la plateforme de communauté AI Automation Society montrant les différents salons de discussion et publications.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000748_seg22.jpg" alt="Gros plan sur une publication spécifique de Nate Herk contenant une vidéo et un fichier JSON téléchargeable (ZEP Memory.json)." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000748_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:48</span>
+                        <span class="caption-text">Gros plan sur une publication spécifique de Nate Herk contenant une vidéo et un fichier JSON téléchargeable (ZEP Memory.json).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:59 - 00:08:17</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le lien pour cela est également dans la description. Nous avons une super communauté de membres qui partagent leurs réussites et les défis auxquels ils font face chaque jour. Nous avons une section de cours complète, &quot;agent zéro&quot;, qui pose les bases de l&#x27;automatisation par IA. Et ensuite, &quot;de 10 heures à 10 secondes&quot;, où vous apprenez à identifier, concevoir et créer des automatisations qui font gagner du temps. Donc, quoi qu&#x27;il en soit, nous serions ravis de vous voir dans ces communautés, mais c&#x27;est tout pour aujourd&#x27;hui.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme communautaire Skool (AI Automation Society Plus).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titres de modules de formation et publications de la communauté axés sur l&#x27;automatisation par l&#x27;IA et n8n.
+[DESC_IMAGE_2] Le présentateur navigue dans la section des cours de sa communauté pour présenter les modules &quot;Agent Zero&quot; et &quot;10 Hours to 10 Seconds&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et démonstration conceptuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000803_seg23.jpg" alt="Capture d&#x27;écran de la communauté &quot;AI Automation Society Plus&quot; montrant le fil d&#x27;actualité général avec des publications d&#x27;utilisateurs et le présentateur en médaillon vidéo." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000803_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:03</span>
+                        <span class="caption-text">Capture d&#x27;écran de la communauté &quot;AI Automation Society Plus&quot; montrant le fil d&#x27;actualité général avec des publications d&#x27;utilisateurs et le présentateur en médaillon vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000808_seg23.jpg" alt="Capture d&#x27;écran de la section &quot;Classroom&quot; de la plateforme, affichant les différents modules de cours disponibles (Start Here, Agent Zero, 10 Hours to 10 Seconds, n8n Templates, etc.)." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000808_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:08</span>
+                        <span class="caption-text">Capture d&#x27;écran de la section &quot;Classroom&quot; de la plateforme, affichant les différents modules de cours disponibles (Start Here, Agent Zero, 10 Hours to 10 Seconds, n8n Templates, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:17 - 00:08:31</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je sais que c&#x27;était rapide, mais je voulais m&#x27;assurer de partager ceci pour que vous soyez conscients de ce qui pourrait arriver si vous ne protégez pas vos webhooks. Alors si vous avez aimé, ou si vous avez appris quelque chose de nouveau, veuillez mettre un pouce bleu, ça m&#x27;aide vraiment énormément. Et comme toujours, je vous remercie d&#x27;être arrivés jusqu&#x27;à la fin de la vidéo. Je vous vois à la prochaine. Merci les gars.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (Interface web de gestion de workflows)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœuds de workflow : Webhook, AI Agent, OpenRouter Chat Model, Respond to Webhook. Texte explicatif &quot;Which Auth Do I Use?&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du workflow complet de protection des webhooks.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000821_seg24.jpg" alt="Un diagramme de workflow sur n8n montrant un Webhook connecté à un agent IA (OpenRouter Chat Model) et une réponse de webhook, avec un panneau explicatif sur l&#x27;authentification à gauche." loading="lazy" onclick="openLightbox('../screenshots/3FfCRbq3XMs/3FfCRbq3XMs_000821_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:21</span>
+                        <span class="caption-text">Un diagramme de workflow sur n8n montrant un Webhook connecté à un agent IA (OpenRouter Chat Model) et une réponse de webhook, avec un panneau explicatif sur l&#x27;authentification à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
