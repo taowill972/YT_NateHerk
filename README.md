@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `271 / 358` (`75.7%`)
+- **Vidéos traitées** : `272 / 358` (`76.0%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -288,6 +288,7 @@
 | 2025-08-15 | [jBanaNBY-sM](https://www.youtube.com/watch?v=jBanaNBY-sM) | **J'ai créé l'armée ultime d'agents média sur n8n (template gratuit)** | [2025-08-15_YT-[jBanaNBY-sM]_J'ai créé l'armée ultime d'agents média sur n8n (template gratuit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-08-15_YT-[jBanaNBY-sM]_J'ai créé l'armée ultime d'agents média sur n8n (template gratuit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-08-15_YT-[jBanaNBY-sM]_J'ai créé l'armée ultime d'agents média sur n8n (template gratuit)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `17` |
 | 2025-08-13 | [QovlUE_VlWQ](https://www.youtube.com/watch?v=QovlUE_VlWQ) | **This Workflow Auto-Posts to 9 Different Socials (free template)** | [2025-08-13_YT-[QovlUE_VlWQ]_This Workflow Auto-Posts to 9 Different Socials (free template)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-08-13_YT-[QovlUE_VlWQ]_This Workflow Auto-Posts to 9 Different Socials (free template)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-08-13_YT-[QovlUE_VlWQ]_This Workflow Auto-Posts to 9 Different Socials (free template)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-08-11 | [k_5NcmxWlVg](https://www.youtube.com/watch?v=k_5NcmxWlVg) | **I Built 3 Lead Gen AI Agents Using ONLY My Words (beginner tutorial)** | [2025-08-11_YT-[k_5NcmxWlVg]_I Built 3 Lead Gen AI Agents Using ONLY My Words (beginner tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-08-11_YT-[k_5NcmxWlVg]_I Built 3 Lead Gen AI Agents Using ONLY My Words (beginner tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-08-11_YT-[k_5NcmxWlVg]_I Built 3 Lead Gen AI Agents Using ONLY My Words (beginner tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-08-09 | [4LQYWziOg0Q](https://www.youtube.com/watch?v=4LQYWziOg0Q) | **So You’re Building AI Agents... Now What?** | [2025-08-09_YT-[4LQYWziOg0Q]_So You’re Building AI Agents... Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-08-09_YT-[4LQYWziOg0Q]_So You’re Building AI Agents... Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-08-09_YT-[4LQYWziOg0Q]_So You’re Building AI Agents... Now What_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
