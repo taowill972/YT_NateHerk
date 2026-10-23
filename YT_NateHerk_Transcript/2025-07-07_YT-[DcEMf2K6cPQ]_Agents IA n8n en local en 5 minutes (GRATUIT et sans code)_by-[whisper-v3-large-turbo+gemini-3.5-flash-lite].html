@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Agents IA n8n en local en 5 minutes (GRATUIT et sans code) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Agents IA n8n en local en 5 minutes (GRATUIT et sans code)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-07-07</span>
+                <span class="badge">⏱️ 00:05:31</span>
+                <span class="badge">🆔 <code>DcEMf2K6cPQ</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@nateherk/featured" target="_blank" class="badge">📺 Nate Herk | AI Automation</a>
+                <a href="https://www.youtube.com/watch?v=DcEMf2K6cPQ" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo présentée par la chaîne *Nate Herk | AI Automation* lève le voile sur la mise en place rapide et entièrement gratuite d'agents IA exécutés localement au sein d'une instance n8n auto-hébergée. En s'appuyant sur l'écosystème open source et des outils de conteneurisation comme Docker, le créateur démontre qu'il n'est plus nécessaire de dépendre exclusivement de solutions cloud payantes ou d'APIs propriétaires onéreuses pour prototyper et faire tourner des flux de travail intelligents. La démonstration s'articule autour de l'utilisation d'Ollama, le moteur d'exécution de modèles locaux, pour injecter dynamiquement de nouveaux grands modèles de langage (LLM) directement dans l'infrastructure de développement.<br><br>Au fil de la démonstration, l'auteur illustre concrètement l'ajout de modèles de pointe ou alternatifs tels que DeepSeek R1 (et ses capacités de réflexion native) ou Qwen, en passant par de simples commandes d'administration dans le terminal du conteneur Docker (`ollama pull`). Les tests réalisés en direct dans n8n prouvent la réactivité instantanée du système et sa mise à jour en temps réel sans nécessiter de redémarrage des services, qu'il s'agisse d'exécuter de simples interactions conversationnelles ou de gérer des flux complexes.<br><br>Enfin, cette approche met en lumière l'équilibre délicat entre accessibilité financière, souveraineté des données et limitations matérielles. Si les petits modèles open source (1,5 à 1,7 milliard de paramètres) se révèlent parfaits pour des tâches textuelles basiques et l'apprentissage sans frais, l'ingénieur insiste sur la nécessité de dimensionner correctement son matériel (RAM, VRAM) et d'opter pour des modèles plus conséquents (14 à 32 milliards de paramètres) dès lors que l'on souhaite implémenter des fonctionnalités avancées comme l'appel d'outils (*tool calling*) au sein d'agents IA sophistiqués.<br><br>---<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>*   **n8n (Version auto-hébergée locale)** : Plateforme d'automatisation de flux de travail open-source exécutée localement via un kit de démarrage Docker pour orchestrer des agents IA sans code.<br>*   **Ollama** : Moteur open-source léger et performant permettant d'exécuter, de gérer et d'interagir facilement avec des grands modèles de langage directement sur une machine locale.<br>*   **Docker & Docker Compose** : Solution de conteneurisation logicielle utilisée pour isoler et exécuter l'environnement n8n ainsi que les services Ollama associés.<br>*   **DeepSeek R1 (1,5B)** : Modèle de langage open-source axé sur la réflexion et le raisonnement, idéal pour tester des capacités logiques avancées sur du matériel local.<br>*   **Qwen (1,7B)** : Série de modèles open-source performants développés par Alibaba Cloud, intégrés ici pour diversifier les options conversationnelles locales.<br>*   **Llama 3.2 (Latest)** : Modèle de référence léger et rapide de Meta, souvent utilisé par défaut dans les configurations de base d'Ollama.<br>*   **Perplexity / ChatGPT** : Assistants conversationnels tiers mentionnés pour conseiller l'utilisateur sur la compatibilité des modèles en fonction de sa configuration matérielle (RAM, VRAM).<br><br>---<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>*   **Accessibilité totale et coût zéro** : L'utilisation conjointe de n8n et d'Ollama en local permet de s'affranchir complètement des coûts d'API facturés à l'utilisation par les fournisseurs propriétaires.<br>*   **Simplicité de déploiement des modèles** : L'ajout de nouveaux LLM open-source se résume à une simple commande d'administration (`ollama pull`) exécutée au sein du conteneur Docker, démocratisant l'accès à l'ingénierie des agents.<br>*   **Mise à jour en temps réel** : L'intégration entre Ollama et l'interface n8n est instantanée ; l'ajout ou la suppression de modèles ne nécessite aucun redémarrage des conteneurs (`docker compose down/up`).<br>*   **Maîtrise des commandes fondamentales** : La gestion du catalogue de modèles locaux repose sur des commandes CLI intuitives, telles que `ollama list` pour auditer l'existant et `ollama rm` pour purger les fichiers inutiles.<br>*   **Adéquation entre taille du modèle et cas d'usage** : Les petits modèles (1,5 à 1,7 milliard de paramètres) conviennent parfaitement aux tests, au prototypage rapide et aux interactions conversationnelles basiques.<br>*   **Exigences matérielles pour l'appel d'outils (*Tool Calling*)** : Pour concevoir des agents IA autonomes capables d'exécuter des actions complexes et d'utiliser des outils, il est fortement recommandé d'utiliser des modèles d'au moins 14 à 32 milliards de paramètres.<br>*   **Goulot d'étranglement de la puissance locale** : Les performances des LLM locaux dépendent intrinsèquement des capacités de la machine hôte (notamment la VRAM du GPU et la RAM), contrairement aux modèles propriétaires géants (comme GPT-4 ou Claude 3.5 Sonnet).<br>*   **Stratégie de dimensionnement matériel** : En cas de doute sur les capacités de son ordinateur, il est conseillé de soumettre ses spécifications techniques (RAM, puissance de traitement) à un assistant IA pour identifier les limites de charge des modèles locaux.<br>*   **Indépendance vis-à-vis du Cloud** : L'auto-hébergement garantit une confidentialité totale des données traitées, les requêtes et les prompts ne quittant jamais la machine de l'utilisateur.<br>*   **Courbe d'apprentissage amoindrie** : La mise en place de structures d'agents complexes autrefois réservées aux experts en infrastructure devient accessible aux débutants grâce aux interfaces visuelles sans code de n8n.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">n8n (Version auto-hébergée locale)</span><span class="tool-tag">Ollama</span><span class="tool-tag">Docker &amp; Docker Compose</span><span class="tool-tag">DeepSeek R1 (1,5B)</span><span class="tool-tag">Qwen (1,7B)</span><span class="tool-tag">Llama 3.2 (Latest)</span><span class="tool-tag">Perplexity / ChatGPT</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Accessibilité totale et coût zéro** : L&#x27;utilisation conjointe de n8n et d&#x27;Ollama en local permet de s&#x27;affranchir complètement des coûts d&#x27;API facturés à l&#x27;utilisation par les fournisseurs propriétaires.</span></li><li><span class="point-bullet">✦</span><span>Simplicité de déploiement des modèles** : L&#x27;ajout de nouveaux LLM open-source se résume à une simple commande d&#x27;administration (`ollama pull`) exécutée au sein du conteneur Docker, démocratisant l&#x27;accès à l&#x27;ingénierie des agents.</span></li><li><span class="point-bullet">✦</span><span>Mise à jour en temps réel** : L&#x27;intégration entre Ollama et l&#x27;interface n8n est instantanée ; l&#x27;ajout ou la suppression de modèles ne nécessite aucun redémarrage des conteneurs (`docker compose down/up`).</span></li><li><span class="point-bullet">✦</span><span>Maîtrise des commandes fondamentales** : La gestion du catalogue de modèles locaux repose sur des commandes CLI intuitives, telles que `ollama list` pour auditer l&#x27;existant et `ollama rm` pour purger les fichiers inutiles.</span></li><li><span class="point-bullet">✦</span><span>Adéquation entre taille du modèle et cas d&#x27;usage** : Les petits modèles (1,5 à 1,7 milliard de paramètres) conviennent parfaitement aux tests, au prototypage rapide et aux interactions conversationnelles basiques.</span></li><li><span class="point-bullet">✦</span><span>Exigences matérielles pour l&#x27;appel d&#x27;outils (*Tool Calling*)** : Pour concevoir des agents IA autonomes capables d&#x27;exécuter des actions complexes et d&#x27;utiliser des outils, il est fortement recommandé d&#x27;utiliser des modèles d&#x27;au moins 14 à 32 milliards de paramètres.</span></li><li><span class="point-bullet">✦</span><span>Goulot d&#x27;étranglement de la puissance locale** : Les performances des LLM locaux dépendent intrinsèquement des capacités de la machine hôte (notamment la VRAM du GPU et la RAM), contrairement aux modèles propriétaires géants (comme GPT-4 ou Claude 3.5 Sonnet).</span></li><li><span class="point-bullet">✦</span><span>Stratégie de dimensionnement matériel** : En cas de doute sur les capacités de son ordinateur, il est conseillé de soumettre ses spécifications techniques (RAM, puissance de traitement) à un assistant IA pour identifier les limites de charge des modèles locaux.</span></li><li><span class="point-bullet">✦</span><span>Indépendance vis-à-vis du Cloud** : L&#x27;auto-hébergement garantit une confidentialité totale des données traitées, les requêtes et les prompts ne quittant jamais la machine de l&#x27;utilisateur.</span></li><li><span class="point-bullet">✦</span><span>Courbe d&#x27;apprentissage amoindrie** : La mise en place de structures d&#x27;agents complexes autrefois réservées aux experts en infrastructure devient accessible aux débutants grâce aux interfaces visuelles sans code de n8n.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:22</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Aujourd&#x27;hui, je vais vous montrer comment vous pouvez utiliser vos agents IA N8N de manière totalement gratuite. Il y a une tonne de modèles open source différents que nous pouvons installer et utiliser, et je vais vous montrer à quel point c&#x27;est simple à configurer. Tout ce que vous avez à faire, c&#x27;est de suivre cette vidéo. Alors, commençons. Donc, comme prérequis, je pars du principe que vous avez déjà configuré votre instance N8N hébergée localement en utilisant le kit de démarrage IA auto-hébergé. Si vous ne l&#x27;avez pas fait, regardez cette vidéo que je vais épingler juste ici très rapidement, puis revenez sur cette vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (Interface web de création de workflows d&#x27;automatisation et d&#x27;agents IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow comprenant un déclencheur de chat, un agent IA et un modèle Ollama pour l&#x27;utilisation de modèles open source locaux.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du diagramme de workflow n8n configuré avec Ollama pour exécuter des agents IA localement et gratuitement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000006_seg1.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface du workflow n8n avec un nœud &quot;When chat message received&quot; relié à un nœud &quot;AI Agent&quot;, lui-même connecté à un modèle &quot;Ollama Chat Model&quot;, avec la webcam du présentateur incrustée en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000006_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:06</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface du workflow n8n avec un nœud &quot;When chat message received&quot; relié à un nœud &quot;AI Agent&quot;, lui-même connecté à un modèle &quot;Ollama Chat Model&quot;, avec la webcam du présentateur incrustée en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:23 - 00:00:56</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc une fois que vous avez tout configuré, vous pouvez voir ce que nous avons en ce moment, c&#x27;est une version complètement hébergée localement de N8N en cours d&#x27;exécution. Nous avons notre Ollama qui est un modèle local, mais ici tout ce que nous pouvons voir, c&#x27;est que nous avons llama 3.2 latest. Donc ce que nous devons faire, c&#x27;est fondamentalement aller sur Ollama et choisir parmi tous les différents modèles open source qui sont disponibles et les installer sur notre machine très rapidement et tout cela va être gratuit. Donc laissez-moi vous montrer comment nous faisons cela. Donc vous allez aller sur ollama.com, je mettrai le lien dans la description, et vous n&#x27;avez même pas besoin de venir ici et de télécharger quoi que ce soit. Allez simplement ici, cliquez sur modèles, et maintenant nous avons tous les différents modèles que nous pouvons réellement télécharger et commencer à utiliser avec nos agents IA N8N.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de n8n (éditeur de workflow) et navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres du nœud Ollama Chat Model avec le champ Modèle configuré sur &quot;llama3.2:latest&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration d&#x27;un modèle d&#x27;IA local (Ollama) à l&#x27;intérieur d&#x27;un workflow n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000031_seg2.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de configuration du nœud Ollama Chat Model dans n8n, avec la sélection du modèle llama3.2:latest." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000031_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:31</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de configuration du nœud Ollama Chat Model dans n8n, avec la sélection du modèle llama3.2:latest.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:56 - 00:01:16</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous avons DeepSeek, qui a été le modèle open source le plus populaire, avec 48,1 millions de téléchargements. Nous avons tous ces autres modèles parmi lesquels choisir. Nous avons d&#x27;autres modèles Llama. Et c&#x27;est fondamentalement notre répertoire de différents modèles d&#x27;IA que nous pouvons tester gratuitement. Et juste pour vous montrer un exemple, faisons DeepSeek R1, qui est un modèle de réflexion. Et tout ce que nous allons faire, c&#x27;est que nous allons cliquer dessus. Et maintenant, nous avons quelques éléments à examiner.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de catalogue de modèles d&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des modèles open-source avec leurs statistiques de téléchargement (deepseek-r1 affichant 48,1M pulls).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation du répertoire de modèles d&#x27;IA disponibles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000101_seg3.jpg" alt="Capture d&#x27;écran montrant le répertoire de modèles d&#x27;IA avec deepseek-r1, gemma3, qwen3 et devstral." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000101_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:01</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le répertoire de modèles d&#x27;IA avec deepseek-r1, gemma3, qwen3 et devstral.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:16 - 00:01:50</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc tout d&#x27;abord, nous avons les différents paramètres dans lesquels la version open source de DeepSeek est proposée. Nous avons donc 1,5 milliard, 7 milliards, 8 milliards, tout ce genre de choses. Et en bas, vous pouvez voir tous les différents modèles avec leurs tailles et leurs fenêtres de contexte. Et je ne suis pas vraiment un expert en matériel informatique et tout le reste. Mais ce que je ferais, c&#x27;est que j&#x27;irais sur Perplexity ou ChatGPT et je dirais, hé, voici les caractéristiques de mon ordinateur. Voici ma RAM, ma VRAM, ma puissance de traitement, tout ce genre de choses. Et je dirais, quel modèle devrais-je être capable d&#x27;utiliser ? Et juste pour référence, ceux-ci sont plutôt minuscules. Par exemple, si nous allons ici sur ma recherche Perplexity, si nous regardons certains des modèles propriétaires les plus populaires, comme GPT et Claude,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site d&#x27;Ollama.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau listant les modèles deepseek-r1 (1.5b, 7b, 8b, 14b, 32b, 70b, 671b) avec leurs tailles en Go et fenêtres de contexte (128K/160K).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les différentes tailles de modèles open source de DeepSeek affichées à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000125_seg4.jpg" alt="Page web de Ollama montrant le modèle deepseek-r1 avec la liste des différentes tailles de paramètres disponibles." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000125_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:25</span>
+                        <span class="caption-text">Page web de Ollama montrant le modèle deepseek-r1 avec la liste des différentes tailles de paramètres disponibles.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:50 - 00:02:09</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">GPT-4 fait presque 1 800 milliards, ce qui est tout simplement massif. Vous savez, par exemple GPT-4-o fait 200 milliards. Claude 3.5 Sonnet tourne autour de 175 milliards. Donc ces modèles propriétaires vont être beaucoup plus rapides et plus puissants que la plupart de ces modèles open source. Cet écart se réduit lentement et un jour, il y aura des modèles open source qui seront tout aussi puissants que ceux-ci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant des pages d&#x27;information et de documentation sur les modèles d&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparatif sur le nombre de paramètres de GPT-4 (1.8 trillion), GPT-4o (200 milliards) et Claude 3.5 Sonnet (175 milliards) ; tableau des tailles des modèles DeepSeek-R1 sur Ollama.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente et compare les tailles de différents modèles d&#x27;intelligence artificielle propriétaires et open source.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000155_seg5.jpg" alt="Page web affichant les estimations du nombre de paramètres pour différents modèles de langage propriétaires comme GPT-4, GPT-4o, et Claude 3.5 Sonnet." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000155_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:55</span>
+                        <span class="caption-text">Page web affichant les estimations du nombre de paramètres pour différents modèles de langage propriétaires comme GPT-4, GPT-4o, et Claude 3.5 Sonnet.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000204_seg5.jpg" alt="Page web de la bibliothèque de modèles DeepSeek-R1 montrant les différentes tailles disponibles, de 1.5b à 671b paramètres." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000204_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:04</span>
+                        <span class="caption-text">Page web de la bibliothèque de modèles DeepSeek-R1 montrant les différentes tailles disponibles, de 1.5b à 671b paramètres.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:09 - 00:02:43</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais pour l&#x27;instant, c&#x27;est le genre de limitation des modèles open source. Et vous allez aussi être limité en fonction de la machine locale réelle sur laquelle vous allez installer et exécuter ces modèles. Mais bref, maintenant que c&#x27;est fait, allons-y par exemple, dans ce cas, téléchargeons DeepSeek R1. Ça fait 1,5 milliard de paramètres. Donc tout ce que je vais faire, c&#x27;est aller de l&#x27;avant et cliquer sur ce bouton de copie ici. Donc je copie juste le nom DeepSeek tiret R1 deux-points 1,5B. Je vais ouvrir notre Docker et nous pouvons voir notre conteneur avec tous ces différents conteneurs dedans. Et ce que je vais faire, c&#x27;est en gros juste ouvrir le conteneur Ollama qui a l&#x27;image Ollama dedans. Et tout ce que j&#x27;ai à faire, c&#x27;est de cliquer sur exec.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web et application Docker Desktop</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des variantes du modèle deepseek-r1 (latest, 1.5b, 7b, 8b, 14b, 32b, 70b, 671b) et liste des conteneurs Docker (self-hosted-ai-starter-kit).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des différentes tailles de modèles DeepSeek-R1 disponibles sur Ollama et visualisation des services conteneurisés dans Docker.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000218_seg6.jpg" alt="Page web affichant les détails du modèle DeepSeek-R1 avec les différentes tailles disponibles (1.5b, 7b, 8b, etc.) et les commandes Ollama associées." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000218_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:18</span>
+                        <span class="caption-text">Page web affichant les détails du modèle DeepSeek-R1 avec les différentes tailles disponibles (1.5b, 7b, 8b, etc.) et les commandes Ollama associées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000234_seg6.jpg" alt="Interface de Docker Desktop montrant la liste des conteneurs en cours d&#x27;exécution, incluant n8n, ollama, postgres et qdrant." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000234_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:34</span>
+                        <span class="caption-text">Interface de Docker Desktop montrant la liste des conteneurs en cours d&#x27;exécution, incluant n8n, ollama, postgres et qdrant.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:43 - 00:03:17</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et je vais juste taper Ollama pull. Je vais juste coller ce qu&#x27;on vient de copier, c&#x27;est-à-dire DeepSeek R1. Je vais appuyer sur entrée. En ce moment, ce qu&#x27;il fait, c&#x27;est qu&#x27;il récupère DeepSeek. Il l&#x27;installe sur notre machine. Et ensuite, une fois que ce sera fait, nous pourrons y accéder dans n8n. D&#x27;accord. Nous venons donc d&#x27;obtenir notre message de réussite. Je vais retourner dans notre n8n local et ouvrir ce nœud Ollama. Et maintenant, si je clique sur cette flèche, nous voyons DeepSeek R1 juste ici. Je suis donc passé à autre chose. Maintenant, nous utilisons DeepSeek et testons simplement que ça fonctionne. Je vais juste dire, raconte-moi une blague. Et maintenant, nous n&#x27;accédons plus à notre modèle Ollama local. Nous utilisons notre</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Docker Desktop et n8n (éditeur de workflows d&#x27;automatisation).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commande `ollama pull deepseek-r1:1.5b` dans le terminal Docker et diagramme de workflow n8n (When chat message received -&gt; AI Agent -&gt; Ollama Chat Model).</p>
+                        <p><strong>Action / Démonstration :</strong> Téléchargement et installation du modèle DeepSeek R1 via Docker, suivi de sa configuration dans un workflow n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000251_seg7.jpg" alt="Interface de Docker Desktop montrant le terminal en cours d&#x27;exécution avec la commande ollama pull deepseek-r1:1.5b qui télécharge le modèle." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000251_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:51</span>
+                        <span class="caption-text">Interface de Docker Desktop montrant le terminal en cours d&#x27;exécution avec la commande ollama pull deepseek-r1:1.5b qui télécharge le modèle.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000308_seg7.jpg" alt="Interface de n8n affichant un workflow d&#x27;agent conversationnel IA connecté à un composant Ollama Chat Model." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000308_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:08</span>
+                        <span class="caption-text">Interface de n8n affichant un workflow d&#x27;agent conversationnel IA connecté à un composant Ollama Chat Model.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:17 - 00:03:45</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">le DeepSeek R1. Et vous pouvez le voir parce que c&#x27;est un modèle de réflexion et il a dit, réfléchis, réfléchis, pourquoi est-ce que les squelettes ne se battent pas entre eux ? Parce qu&#x27;ils n&#x27;ont pas de cran. Et donc c&#x27;est vraiment aussi simple que ça. Et maintenant tout ce qu&#x27;on aurait à faire, c&#x27;est de revenir dans Ollama, de cliquer sur modèles, et on pourrait regarder tous les différents modèles d&#x27;IA, ainsi que les différents paramètres qui sont proposés et simplement les importer dans notre Docker. Donc par exemple, disons que nous voulions importer Qwen et que je veux importer Qwen 1,7 milliard de paramètres. Je copiereis simplement le nom, irais dans notre Ollama sur Docker dans l&#x27;onglet exec.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface n8n / workflow visuel et page web de documentation/catalogue de modèles IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Blague générée par DeepSeek R1 sur les squelettes : &quot;Why don&#x27;t skeletons fight each other? Because they don&#x27;t have the &#x27;Guts&#x27;!&quot; avec balises de pensée &lt;think&gt;.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;exécution d&#x27;un workflow d&#x27;agent IA utilisant le modèle DeepSeek R1 via Ollama.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000324_seg8.jpg" alt="Interface d&#x27;un workflow visuel montrant un nœud Ollama Chat Model et un panneau de chat affichant la sortie de la blague sur les squelettes avec les balises de réflexion du modèle DeepSeek R1." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000324_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:24</span>
+                        <span class="caption-text">Interface d&#x27;un workflow visuel montrant un nœud Ollama Chat Model et un panneau de chat affichant la sortie de la blague sur les squelettes avec les balises de réflexion du modèle DeepSeek R1.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000331_seg8.jpg" alt="Page web listant différents modèles d&#x27;intelligence artificielle open source, notamment deepseek-r1, gemma3, qwen3, devstral et llama4." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000331_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:31</span>
+                        <span class="caption-text">Page web listant différents modèles d&#x27;intelligence artificielle open source, notamment deepseek-r1, gemma3, qwen3, devstral et llama4.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:45 - 00:04:19</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">nous allons dire ollama pull et je vais simplement coller cette valeur et maintenant nous allons simplement récupérer qwen juste comme ça super simple nous avons notre message de réussite je vais retourner dans n8n cliquer sur ollama et nous l&#x27;ouvrons et nous pouvons voir que maintenant nous avons notre modèle qwen 3 1.7 milliard de paramètres et c&#x27;est tellement cool parce que encore une fois cela tourne localement sur mon pc là-bas tout va être complètement gratuit et nous avons tellement d&#x27;options différentes parmi lesquelles choisir et comme je l&#x27;ai dit je ne suis pas un expert en poids de modèles et en paramètres mais gardez juste à l&#x27;esprit que je ne compterais probablement pas trop sur un modèle de 1,7 milliard de paramètres ou de 1,5 milliard de paramètres pour autre chose que des choses très basiques</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Docker Desktop (pour la gestion des conteneurs) et n8n (interface de workflow d&#x27;automatisation).</p>
+                        <p><strong>Contenu textuel & Code :</strong> - Terminal : `ollama pull deepseek-r1:1.5b`, `ollama pull qwen:1.7b`, avec logs de succès.
+- n8n : champ &quot;Model&quot; réglé sur `qwen:1.7b`, réponse JSON affichant la génération de texte (blague sur les squelettes).</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution de commandes dans le terminal du conteneur Docker pour télécharger de nouveaux modèles IA, suivie de la sélection et de l&#x27;utilisation du modèle &#x27;qwen:1.7b&#x27; au sein d&#x27;un workflow n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000354_seg9.jpg" alt="Interface Docker Desktop montrant l&#x27;onglet &quot;Exec&quot; du conteneur Ollama, affichant le journal de téléchargement réussi des modèles &#x27;deepseek-r1:1.5b&#x27; et &#x27;qwen:1.7b&#x27;." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000354_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:54</span>
+                        <span class="caption-text">Interface Docker Desktop montrant l&#x27;onglet &quot;Exec&quot; du conteneur Ollama, affichant le journal de téléchargement réussi des modèles &#x27;deepseek-r1:1.5b&#x27; et &#x27;qwen:1.7b&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000402_seg9.jpg" alt="Interface de configuration du nœud &quot;Ollama Chat Model&quot; dans n8n, avec le champ &quot;Model&quot; configuré sur &#x27;qwen:1.7b&#x27; et l&#x27;affichage du résultat de la requête en sortie." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000402_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:02</span>
+                        <span class="caption-text">Interface de configuration du nœud &quot;Ollama Chat Model&quot; dans n8n, avec le champ &quot;Model&quot; configuré sur &#x27;qwen:1.7b&#x27; et l&#x27;affichage du résultat de la requête en sortie.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:19 - 00:04:37</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">utilisation conversationnelle. Si vous voulez avoir des agents avec l&#x27;appel d&#x27;outils et tout ce genre de choses en utilisant des modèles locaux, vous allez probablement en vouloir au moins environ 14 milliards ou 32 milliards. Mais encore une fois, ils sont complètement gratuits. Vous pouvez donc simplement tester autant que vous voulez. Quoi qu&#x27;il en soit, laissez-moi juste vous montrer quelques commandes utiles que vous pouvez utiliser à l&#x27;intérieur de cet exec du conteneur olama.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (catalogue de modèles) et Docker Desktop.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de modèles open source (deepseek-r1, gemma3, qwen3, devstral) et commandes terminal de téléchargement (ollama pull deepseek-r1:1.5b, ollama pull qwen3:1.7b).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans le catalogue de modèles et téléchargement de modèles via le terminal dans Docker.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000424_seg10.jpg" alt="Capture d&#x27;écran montrant un catalogue de modèles de langage open source avec différentes tailles de paramètres." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000424_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:24</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un catalogue de modèles de langage open source avec différentes tailles de paramètres.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000433_seg10.jpg" alt="Interface de Docker Desktop affichant un terminal en cours d&#x27;exécution avec des commandes de téléchargement de modèles (ollama pull)." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000433_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:33</span>
+                        <span class="caption-text">Interface de Docker Desktop affichant un terminal en cours d&#x27;exécution avec des commandes de téléchargement de modèles (ollama pull).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:38 - 00:05:11</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors, disons que vous voulez simplement voir quels modèles vous avez à disposition. Vous pouvez aller de l&#x27;avant et taper ollama list. Et cela va nous montrer, ok, vous avez qwen, deepseek et llama 3.2. Maintenant, disons que nous voulions nous débarrasser de l&#x27;un d&#x27;eux. Débarrassons-nous simplement du qwen que nous venons d&#x27;installer. Je taperais simplement ollama rm, ce qui signifie remove (supprimer). Et je pourrais simplement coller le nom du modèle que nous voulons supprimer, appuyer sur entrée. Et maintenant, il est dit que qwen est supprimé. Si je retourne dans nos modèles locaux, que nous ouvrons celui-ci, nous n&#x27;avons plus qwen. Comme vous pouvez le voir, nous avons seulement deepseek ou llama à choisir. Et c&#x27;est aussi simple que ça. Ça se met à jour en temps réel. Vous n&#x27;avez même pas besoin, vous savez, de faire docker compose down et de le relancer. Nous sommes essentiellement prêts à repartir</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de commandes et interface de workflow de type n8n.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes Ollama (ollama pull, ollama list) et liste des modèles locaux (qwen3:1.7b, deepseek-r1:1.5b, llama3.2).</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage de la liste des modèles disponibles et sélection d&#x27;un modèle dans une interface de workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000446_seg11.jpg" alt="Vue d&#x27;un terminal intégré montrant la liste des modèles Ollama (qwen3:1.7b, deepseek-r1:1.5b, llama3.2:latest)." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000446_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:46</span>
+                        <span class="caption-text">Vue d&#x27;un terminal intégré montrant la liste des modèles Ollama (qwen3:1.7b, deepseek-r1:1.5b, llama3.2:latest).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000503_seg11.jpg" alt="Interface de workflow montrant la configuration d&#x27;un nœud Ollama Chat Model avec le menu déroulant des modèles disponibles." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000503_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:03</span>
+                        <span class="caption-text">Interface de workflow montrant la configuration d&#x27;un nœud Ollama Chat Model avec le menu déroulant des modèles disponibles.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:11 - 00:05:31</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">rapide et facile. Et comme je l&#x27;ai dit, vous avez tous ces modèles parmi lesquels choisir. Donc, c&#x27;est tout pour celui-ci. Je sais que c&#x27;était court, mais je voulais juste vous montrer à quel point il est simple et facile de faire tourner ces différents modèles locaux. Et cela peut sembler un peu intimidant au début, mais après cette vidéo, vous pouvez voir que ce n&#x27;est vraiment pas si terrible. Alors, si vous avez appris quelque chose de nouveau ou si vous avez apprécié cette vidéo, mettez un pouce bleu, ça m&#x27;aide énormément. Et je vous dis à tous à la prochaine. Merci tout le monde.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web n8n ou équivalent d&#x27;automatisation de workflow, panneau de chat intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow comprenant les nœuds &#x27;When chat message received&#x27;, &#x27;AI Agent&#x27; et &#x27;Ollama Chat Model&#x27;. Sortie du chat affichant une blague : &#x27;Why don&#x27;t skeletons fight each other? Because they don&#x27;t have the Guts!&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution d&#x27;un workflow testant un modèle de langage local via Ollama dans un agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000516_seg12.jpg" alt="Interface d&#x27;un éditeur de workflow avec un nœud d&#x27;agent IA connecté à un modèle Ollama, et un panneau de chat en bas à gauche affichant une blague générée." loading="lazy" onclick="openLightbox('../screenshots/DcEMf2K6cPQ/DcEMf2K6cPQ_000516_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:16</span>
+                        <span class="caption-text">Interface d&#x27;un éditeur de workflow avec un nœud d&#x27;agent IA connecté à un modèle Ollama, et un panneau de chat en bas à gauche affichant une blague générée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
