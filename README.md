@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `285 / 358` (`79.6%`)
+- **Vidéos traitées** : `286 / 358` (`79.9%`)
 - **Modèle Audio & Synthèse** : `gemini-3.5-flash-lite` / `whisper-v3-large-turbo` (100% Verbatim Français)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse d'écrans, code, terminaux & démonstrations)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -302,6 +302,7 @@
 | 2025-07-10 | [FFH3uQDk2yU](https://www.youtube.com/watch?v=FFH3uQDk2yU) | **Créez n'importe quoi avec Grok 4 et les agents IA n8n** | [2025-07-10_YT-[FFH3uQDk2yU]_Créez n'importe quoi avec Grok 4 et les agents IA n8n_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-07-10_YT-[FFH3uQDk2yU]_Créez n'importe quoi avec Grok 4 et les agents IA n8n_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-07-10_YT-[FFH3uQDk2yU]_Créez n'importe quoi avec Grok 4 et les agents IA n8n_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `34` |
 | 2025-07-09 | [qNW9KaLe1nY](https://www.youtube.com/watch?v=qNW9KaLe1nY) | **Utilisez la parallélisation pour rendre vos workflows n8n plus rapides et évolutifs** | [2025-07-09_YT-[qNW9KaLe1nY]_Utilisez la parallélisation pour rendre vos workflows n8n plus rapides et évolut_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-07-09_YT-[qNW9KaLe1nY]_Utilisez la parallélisation pour rendre vos workflows n8n plus rapides et évolut_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-07-09_YT-[qNW9KaLe1nY]_Utilisez la parallélisation pour rendre vos workflows n8n plus rapides et évolut_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `37` |
 | 2025-07-07 | [DcEMf2K6cPQ](https://www.youtube.com/watch?v=DcEMf2K6cPQ) | **Agents IA n8n en local en 5 minutes (GRATUIT et sans code)** | [2025-07-07_YT-[DcEMf2K6cPQ]_Agents IA n8n en local en 5 minutes (GRATUIT et sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-07-07_YT-[DcEMf2K6cPQ]_Agents IA n8n en local en 5 minutes (GRATUIT et sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-07-07_YT-[DcEMf2K6cPQ]_Agents IA n8n en local en 5 minutes (GRATUIT et sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `19` |
+| 2025-07-02 | [UBx4Zudvf8s](https://www.youtube.com/watch?v=UBx4Zudvf8s) | **Créez votre premier agent IA de recherche en 12 minutes (Sans code)** | [2025-07-02_YT-[UBx4Zudvf8s]_Créez votre premier agent IA de recherche en 12 minutes (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_NateHerk_Transcript/2025-07-02_YT-[UBx4Zudvf8s]_Créez votre premier agent IA de recherche en 12 minutes (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_NateHerk_Transcript/2025-07-02_YT-[UBx4Zudvf8s]_Créez votre premier agent IA de recherche en 12 minutes (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `43` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
